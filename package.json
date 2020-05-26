@@ -1,5 +1,5 @@
 {
-  "name": "lodash",
+  "name": "newdash",
   "version": "5.0.0",
   "license": "MIT",
   "private": true,
@@ -10,6 +10,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint src",
+    "coverage": "npm test -- --coverage --no-cache",
     "build": "babel src --ignore src/test --out-dir lib"
   },
   "devDependencies": {
@@ -20,5 +21,16 @@
     "eslint": "^7.1.0",
     "eslint-plugin-import": "^2.20.2",
     "jest": "^26.0.1"
+  },
+  "jest": {
+    "testTimeout": 30000,
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!**/node_modules/**"
+    ],
+    "coveragePathIgnorePatterns": [
+      "node_modules/",
+      "src/test"
+    ]
   }
 }
