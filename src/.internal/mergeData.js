@@ -1,4 +1,5 @@
 import { WRAP_BIND_FLAG, WRAP_BIND_KEY_FLAG, WRAP_ARY_FLAG, WRAP_CURRY_FLAG, WRAP_REARG_FLAG } from "./CONSTANTS";
+import nativeMin from "./nativeMin";
 
 /**
  * Merges the function metadata of `source` into `data`.

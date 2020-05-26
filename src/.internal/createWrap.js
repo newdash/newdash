@@ -7,6 +7,7 @@ import baseSetData from "./baseSetData";
 import setData from "./setData"
 import setWrapToString from "./setWrapToString";
 import createHybrid from "./createHybrid";
+import mergeData from "./mergeData";
 
 /**
   * Creates a function that either curries or invokes `func` with optional

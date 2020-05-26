@@ -1,4 +1,7 @@
 import { WRAP_ARY_FLAG, WRAP_BIND_FLAG, WRAP_BIND_KEY_FLAG, WRAP_CURRY_FLAG, WRAP_CURRY_RIGHT_FLAG, WRAP_FLIP_FLAG, WRAP_PARTIAL_FLAG, WRAP_PARTIAL_RIGHT_FLAG, WRAP_REARG_FLAG } from "./CONSTANTS";
+import toSource from "./toSource";
+import overArg from "./overArg";
+
 
 /** Used to associate wrap methods with their bit flags. */
 export const wrapFlags = [
@@ -380,3 +383,83 @@ export const nodeIsArrayBuffer = nodeUtil && nodeUtil.isArrayBuffer,
   nodeIsRegExp = nodeUtil && nodeUtil.isRegExp,
   nodeIsSet = nodeUtil && nodeUtil.isSet,
   nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
+
+/** Used for built-in method references. */
+export const arrayProto = Array.prototype,
+  funcProto = Function.prototype,
+  objectProto = Object.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+export const funcToString = funcProto.toString;
+
+/** Used to check objects for own properties. */
+export const hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Used to generate unique IDs. */
+export const idCounter = 0;
+
+/** Used to detect methods masquerading as native. */
+export const maskSrcKey = ''
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+export const nativeObjectToString = objectProto.toString;
+
+/** Used to infer the `Object` constructor. */
+export const objectCtorString = funcToString.call(Object);
+
+/** Built-in value references. */
+export const allocUnsafe = Buffer ? Buffer.allocUnsafe : undefined,
+  getPrototype = overArg(Object.getPrototypeOf, Object),
+  objectCreate = Object.create,
+  propertyIsEnumerable = objectProto.propertyIsEnumerable,
+  splice = arrayProto.splice,
+  spreadableSymbol = Symbol ? Symbol.isConcatSpreadable : undefined,
+  symIterator = Symbol ? Symbol.iterator : undefined,
+  symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+
+export const defineProperty = Object.defineProperty
+
+/** Mocked built-ins. */
+export const ctxClearTimeout = clearTimeout
+export const ctxNow = Date.now
+export const ctxSetTimeout = setTimeout
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+export const nativeCeil = Math.ceil,
+  nativeFloor = Math.floor,
+  nativeGetSymbols = Object.getOwnPropertySymbols,
+  nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined,
+  nativeIsFinite = isFinite,
+  nativeJoin = arrayProto.join,
+  nativeKeys = overArg(Object.keys, Object),
+  nativeMax = Math.max,
+  nativeMin = Math.min,
+  nativeNow = Date.now,
+  nativeParseInt = parseInt,
+  nativeRandom = Math.random,
+  nativeReverse = arrayProto.reverse;
+
+/* Built-in method references that are verified to be native. */
+export const nativeCreate = Object.create
+
+/** Used to store function metadata. */
+export const metaMap = WeakMap && new WeakMap;
+
+/** Used to lookup unminified function names. */
+export const realNames = {};
+
+/** Used to detect maps, sets, and weakmaps. */
+export const dataViewCtorString = toSource(DataView),
+  mapCtorString = toSource(Map),
+  promiseCtorString = toSource(Promise),
+  setCtorString = toSource(Set),
+  weakMapCtorString = toSource(WeakMap);
+
+/** Used to convert symbols to primitives and strings. */
+export const symbolProto = Symbol ? Symbol.prototype : undefined,
+  symbolValueOf = symbolProto ? symbolProto.valueOf : undefined,
+  symbolToString = symbolProto ? symbolProto.toString : undefined;

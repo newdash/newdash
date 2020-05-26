@@ -76,10 +76,10 @@ describe('ary', () => {
   })
 
   it('should work when combined with other methods that use metadata', () => {
-    let array = ['a', 'b', 'c'],
-      includes = curry(rearg(ary(includes, 2), 1, 0), 2)
+    const array = ['a', 'b', 'c']
+    const i2 = curry(rearg(ary(includes, 2), 1, 0), 2)
 
-    assert.strictEqual(includes('b')(array, 2), true)
+    assert.strictEqual(i2('b')(array, 2), true)
 
 
   })

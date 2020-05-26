@@ -1,6 +1,11 @@
 import createCtor from "./createCtor";
 import replaceHolders from "./replaceHolders";
 import getHolder from "./getHolder";
+import reorder from "./reorder";
+import { root } from "./GLOBAL"
+import countHolders from "./countHolders";
+import createRecurry from "./createRecurry";
+import composeArgs from "./composeArgs";
 import { WRAP_ARY_FLAG, WRAP_BIND_FLAG, WRAP_BIND_KEY_FLAG, WRAP_CURRY_FLAG, WRAP_CURRY_RIGHT_FLAG, WRAP_FLIP_FLAG } from "./CONSTANTS";
 
 /**
@@ -24,23 +29,23 @@ import { WRAP_ARY_FLAG, WRAP_BIND_FLAG, WRAP_BIND_KEY_FLAG, WRAP_CURRY_FLAG, WRA
  */
 function createHybrid(func, bitmask, thisArg, partials, holders, partialsRight, holdersRight, argPos, ary, arity) {
   var isAry = bitmask & WRAP_ARY_FLAG,
-      isBind = bitmask & WRAP_BIND_FLAG,
-      isBindKey = bitmask & WRAP_BIND_KEY_FLAG,
-      isCurried = bitmask & (WRAP_CURRY_FLAG | WRAP_CURRY_RIGHT_FLAG),
-      isFlip = bitmask & WRAP_FLIP_FLAG,
-      Ctor = isBindKey ? undefined : createCtor(func);
+    isBind = bitmask & WRAP_BIND_FLAG,
+    isBindKey = bitmask & WRAP_BIND_KEY_FLAG,
+    isCurried = bitmask & (WRAP_CURRY_FLAG | WRAP_CURRY_RIGHT_FLAG),
+    isFlip = bitmask & WRAP_FLIP_FLAG,
+    Ctor = isBindKey ? undefined : createCtor(func);
 
   function wrapper() {
     var length = arguments.length,
-        args = Array(length),
-        index = length;
+      args = Array(length),
+      index = length;
 
     while (index--) {
       args[index] = arguments[index];
     }
     if (isCurried) {
       var placeholder = getHolder(wrapper),
-          holdersCount = countHolders(args, placeholder);
+        holdersCount = countHolders(args, placeholder);
     }
     if (partials) {
       args = composeArgs(args, partials, holders, isCurried);
@@ -57,7 +62,7 @@ function createHybrid(func, bitmask, thisArg, partials, holders, partialsRight, 
       );
     }
     var thisBinding = isBind ? thisArg : this,
-        fn = isBindKey ? thisBinding[func] : func;
+      fn = isBindKey ? thisBinding[func] : func;
 
     length = args.length;
     if (argPos) {

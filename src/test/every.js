@@ -1,17 +1,19 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { identity, empties, stubTrue, stubFalse } from './utils.js'
+import identity from "../.internal/identity";
+import {  empties, stubTrue, stubFalse } from './utils.js'
 import every from '../every.js'
+import map from '../map';
 
 describe('every', () => {
+
   it('should return `true` if `predicate` returns truthy for all elements', () => {
-    assert.strictEqual(lodashStable.every([true, 1, 'a'], identity), true)
+    assert.strictEqual(every([true, 1, 'a'], identity), true)
   })
 
   it('should return `true` for empty collections', () => {
-    const expected = lodashStable.map(empties, stubTrue)
+    const expected = map(empties, stubTrue)
 
-    const actual = lodashStable.map(empties, (value) => {
+    const actual = map(empties, (value) => {
       try {
         return every(value, identity)
       } catch (e) {}
@@ -37,17 +39,17 @@ describe('every', () => {
 
   it('should use `_.identity` when `predicate` is nullish', () => {
     let values = [, null, undefined],
-      expected = lodashStable.map(values, stubFalse)
+      expected = map(values, stubFalse)
 
-    let actual = lodashStable.map(values, (value, index) => {
+    let actual = map(values, (value, index) => {
       const array = [0]
       return index ? every(array, value) : every(array)
     })
 
     assert.deepStrictEqual(actual, expected)
 
-    expected = lodashStable.map(values, stubTrue)
-    actual = lodashStable.map(values, (value, index) => {
+    expected = map(values, stubTrue)
+    actual = map(values, (value, index) => {
       const array = [1]
       return index ? every(array, value) : every(array)
     })
@@ -68,7 +70,7 @@ describe('every', () => {
   })
 
   it('should work as an iteratee for methods like `_.map`', () => {
-    const actual = lodashStable.map([[1]], every)
+    const actual = map([[1]], every)
     assert.deepStrictEqual(actual, [true])
   })
 })
