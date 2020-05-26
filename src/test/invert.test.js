@@ -20,11 +20,4 @@ describe('invert', function() {
     assert.deepStrictEqual(invert(object), { 'a': '0', 'b': '1', '2': 'length' });
   });
 
-  it('should return a wrapped value when chaining', function() {
-    var object = { 'a': 1, 'b': 2 },
-        wrapped = _(object).invert();
-
-    assert.ok(wrapped instanceof _);
-    assert.deepEqual(wrapped.value(), { '1': 'a', '2': 'b' });
-  });
 });

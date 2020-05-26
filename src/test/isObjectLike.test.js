@@ -1,10 +1,9 @@
 import assert from 'assert';
-import lodashStable from 'lodash';
+import { map, isObjectLike } from "../index"
 import { args, falsey, slice, symbol, stubFalse, realm } from './utils.js';
-import isObjectLike from '../isObjectLike.js';
 
-describe('isObjectLike', function() {
-  it('should return `true` for objects', function() {
+describe('isObjectLike', function () {
+  it('should return `true` for objects', function () {
     assert.strictEqual(isObjectLike(args), true);
     assert.strictEqual(isObjectLike([1, 2, 3]), true);
     assert.strictEqual(isObjectLike(Object(false)), true);
@@ -16,18 +15,18 @@ describe('isObjectLike', function() {
     assert.strictEqual(isObjectLike(Object('a')), true);
   });
 
-  it('should return `false` for non-objects', function() {
-    var values = falsey.concat(true, _, slice, 1, 'a', symbol),
-        expected = lodashStable.map(values, stubFalse);
+  it('should return `false` for non-objects', function () {
+    var values = falsey.concat(true, function () { }, slice, 1, 'a', symbol),
+      expected = map(values, stubFalse);
 
-    var actual = lodashStable.map(values, function(value, index) {
+    var actual = map(values, function (value, index) {
       return index ? isObjectLike(value) : isObjectLike();
     });
 
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should work with objects from another realm', function() {
+  it('should work with objects from another realm', function () {
     if (realm.object) {
       assert.strictEqual(isObjectLike(realm.boolean), true);
       assert.strictEqual(isObjectLike(realm.date), true);

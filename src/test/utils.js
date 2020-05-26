@@ -213,7 +213,7 @@ var filePath = (function() {
     result = params = phantom.args || require('system').args;
   }
   var last = result[result.length - 1];
-  result = (result.length > min && !/test(?:\.js)?$/.test(last)) ? last : '../node_modules/lodash/lodash.js';
+  result = (result.length > min && !/test(?:\.js)?$/.test(last)) ? last : '../index.js';
 
   if (!amd) {
     try {
@@ -275,15 +275,7 @@ try {
 } catch (e) {}
 
 /** Load stable Lodash. */
-var lodashStable = root.lodashStable;
-if (!lodashStable) {
-  try {
-    lodashStable = interopRequire('../node_modules/lodash/lodash.js');
-  } catch (e) {
-    console.log('Error: The stable lodash dev dependency should be at least a version behind master branch.');
-  }
-  lodashStable = lodashStable.noConflict();
-}
+var lodashStable = require("../index");
 
 /** The `lodash` function to test. */
 var _ = root._ || (root._ = interopRequire(filePath));
@@ -292,7 +284,7 @@ var _ = root._ || (root._ = interopRequire(filePath));
 var mapCaches = (function() {
   var MapCache = _.memoize.Cache;
   var result = {
-    'Hash': new MapCache().__data__.hash.constructor,
+    'Hash': require("../.internal/Hash"),
     'MapCache': MapCache
   };
   _.isMatchWith({ 'a': 1 }, { 'a': 1 }, function() {
@@ -304,9 +296,9 @@ var mapCaches = (function() {
 }());
 
 /** Used to detect instrumented istanbul code coverage runs. */
-var coverage = root.__coverage__ || root[lodashStable.find(lodashStable.keys(root), function(key) {
-  return /^(?:\$\$cov_\d+\$\$)$/.test(key);
-})];
+// var coverage = root.__coverage__ || root[lodashStable.find(lodashStable.keys(root), function(key) {
+//   return /^(?:\$\$cov_\d+\$\$)$/.test(key);
+// })];
 
 /** Used to test async functions. */
 var asyncFunc = lodashStable.attempt(function() {
@@ -661,7 +653,7 @@ lodashStable.attempt(function() {
     '  object[type.toLowerCase()] = Ctor ? new Ctor(new ArrayBuffer(24)) : undefined;',
     '});',
     '',
-    '_.assign(_._realm, object);',
+    'Object.assign(_._realm, object);',
     '</script>',
     '</body>',
     '</html>'
@@ -784,7 +776,7 @@ export {
   lodashStable,
   _,
   mapCaches,
-  coverage,
+  // coverage,
   asyncFunc,
   genFunc,
   oldDash,

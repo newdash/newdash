@@ -1,6 +1,5 @@
 import assert from 'assert';
-import lodashStable from 'lodash';
-import { arrayProto, LARGE_ARRAY_SIZE } from './utils.js';
+import { arrayProto } from './utils.js';
 import toArray from '../toArray.js';
 
 describe('toArray', function() {
@@ -32,17 +31,4 @@ describe('toArray', function() {
     assert.deepStrictEqual(toArray(Object('ab')), ['a', 'b']);
   });
 
-  it('should work in a lazy sequence', function() {
-    var array = lodashStable.range(LARGE_ARRAY_SIZE + 1);
-
-    var object = lodashStable.zipObject(lodashStable.times(LARGE_ARRAY_SIZE, function(index) {
-      return ['key' + index, index];
-    }));
-
-    var actual = _(array).slice(1).map(String).toArray().value();
-    assert.deepEqual(actual, lodashStable.map(array.slice(1), String));
-
-    actual = _(object).toArray().slice(1).map(String).value();
-    assert.deepEqual(actual, _.map(toArray(object).slice(1), String));
-  });
 });
