@@ -1,17 +1,17 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { slice, _ } from './utils.js'
-import ary from '../ary.js'
 import curry from '../curry.js'
 import rearg from '../rearg.js'
+import { map, includes, ary } from "../index"
 
 describe('ary', () => {
+
   function fn(a, b, c) {
     return slice.call(arguments)
   }
 
   it('should cap the number of arguments provided to `func`', () => {
-    const actual = lodashStable.map(['6', '8', '10'], ary(parseInt, 1))
+    const actual = map(['6', '8', '10'], ary(parseInt, 1))
     assert.deepStrictEqual(actual, [6, 8, 10])
 
     const capped = ary(fn, 2)
@@ -28,7 +28,7 @@ describe('ary', () => {
 
     try {
       var actual = capped('a')
-    } catch (e) {}
+    } catch (e) { }
 
     assert.deepStrictEqual(actual, [])
   })
@@ -37,7 +37,7 @@ describe('ary', () => {
     const values = ['1', 1.6, 'xyz'],
       expected = [['a'], ['a'], []]
 
-    const actual = lodashStable.map(values, (n) => {
+    const actual = map(values, (n) => {
       const capped = ary(fn, n)
       return capped('a', 'b')
     })
@@ -49,15 +49,15 @@ describe('ary', () => {
     const args = ['a', 'b', 'c'],
       capped = ary(fn, 3)
 
-    const expected = lodashStable.map(args, (arg, index) => args.slice(0, index))
+    const expected = map(args, (arg, index) => args.slice(0, index))
 
-    const actual = lodashStable.map(expected, (array) => capped.apply(undefined, array))
+    const actual = map(expected, (array) => capped.apply(undefined, array))
 
     assert.deepStrictEqual(actual, expected)
   })
 
   it('should use `this` binding of function', () => {
-    const capped = ary(function(a, b) { return this }, 1),
+    const capped = ary(function (a, b) { return this }, 1),
       object = { 'capped': capped }
 
     assert.strictEqual(object.capped(), object)
@@ -69,7 +69,7 @@ describe('ary', () => {
   })
 
   it('should work as an iteratee for methods like `_.map`', () => {
-    const funcs = lodashStable.map([fn], ary),
+    const funcs = map([fn], ary),
       actual = funcs[0]('a', 'b', 'c')
 
     assert.deepStrictEqual(actual, ['a', 'b', 'c'])
@@ -77,11 +77,10 @@ describe('ary', () => {
 
   it('should work when combined with other methods that use metadata', () => {
     let array = ['a', 'b', 'c'],
-      includes = curry(rearg(ary(_.includes, 2), 1, 0), 2)
+      includes = curry(rearg(ary(includes, 2), 1, 0), 2)
 
     assert.strictEqual(includes('b')(array, 2), true)
 
-    includes = _(_.includes).ary(2).rearg(1, 0).curry(2).value()
-    assert.strictEqual(includes('b')(array, 2), true)
+
   })
 })

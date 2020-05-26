@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { args, toArgs, identity } from './utils.js'
+import { toArgs, identity } from './utils.js'
 import difference from '../difference.js'
 import union from '../union.js'
 import compact from '../compact.js'

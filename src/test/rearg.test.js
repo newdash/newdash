@@ -1,7 +1,10 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { slice, empties } from './utils.js'
 import rearg from '../rearg.js'
+import reject from '../reject.js'
+import isArray from '../isArray.js'
+import map from '../map.js'
+import constant from '../constant.js'
 
 describe('rearg', () => {
   function fn() {
@@ -24,11 +27,11 @@ describe('rearg', () => {
   })
 
   it('should use `undefined` for non-index values', () => {
-    const values = lodashStable.reject(empties, (value) => (value === 0) || lodashStable.isArray(value)).concat(-1, 1.1)
+    const values = reject(empties, (value) => (value === 0) || isArray(value)).concat(-1, 1.1)
 
-    const expected = lodashStable.map(values, lodashStable.constant([undefined, 'b', 'c']))
+    const expected = map(values, constant([undefined, 'b', 'c']))
 
-    const actual = lodashStable.map(values, (value) => {
+    const actual = map(values, (value) => {
       const rearged = rearg(fn, [value])
       return rearged('a', 'b', 'c')
     })

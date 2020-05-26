@@ -1,18 +1,18 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-
+import { each, map, constant, every, times } from "../index"
+import partial from "../partial";
 import {
   noop,
   create,
   args,
   realm,
   arrayViews,
-  map,
   promise,
   set,
   defineProperty,
   document,
-  stubFalse
+  stubFalse,
+  root
 } from './utils.js'
 
 import isEqual from '../isEqual.js'
@@ -34,9 +34,9 @@ describe('isEqual', () => {
       [undefined, undefined, true], [undefined, null, false], [undefined, '', false]
     ]
 
-    const expected = lodashStable.map(pairs, (pair) => pair[2])
+    const expected = map(pairs, (pair) => pair[2])
 
-    const actual = lodashStable.map(pairs, (pair) => isEqual(pair[0], pair[1]))
+    const actual = map(pairs, (pair) => isEqual(pair[0], pair[1]))
 
     assert.deepStrictEqual(actual, expected)
   })
@@ -82,12 +82,12 @@ describe('isEqual', () => {
       array2 = [1, 2, 3]
 
     array1.every = array1.filter = array1.forEach =
-    array1.indexOf = array1.lastIndexOf = array1.map =
-    array1.some = array1.reduce = array1.reduceRight = null
+      array1.indexOf = array1.lastIndexOf = array1.map =
+      array1.some = array1.reduce = array1.reduceRight = null
 
     array2.concat = array2.join = array2.pop =
-    array2.reverse = array2.shift = array2.slice =
-    array2.sort = array2.splice = array2.unshift = null
+      array2.reverse = array2.shift = array2.slice =
+      array2.sort = array2.splice = array2.unshift = null
 
     assert.strictEqual(isEqual(array1, array2), true)
 
@@ -197,8 +197,8 @@ describe('isEqual', () => {
   })
 
   it('should compare objects with constructor properties', () => {
-    assert.strictEqual(isEqual({ 'constructor': 1 },   { 'constructor': 1 }), true)
-    assert.strictEqual(isEqual({ 'constructor': 1 },   { 'constructor': '1' }), false)
+    assert.strictEqual(isEqual({ 'constructor': 1 }, { 'constructor': 1 }), true)
+    assert.strictEqual(isEqual({ 'constructor': 1 }, { 'constructor': '1' }), false)
     assert.strictEqual(isEqual({ 'constructor': [1] }, { 'constructor': [1] }), true)
     assert.strictEqual(isEqual({ 'constructor': [1] }, { 'constructor': ['1'] }), false)
     assert.strictEqual(isEqual({ 'constructor': Object }, {}), false)
@@ -363,9 +363,9 @@ describe('isEqual', () => {
   })
 
   it('should compare `arguments` objects', () => {
-    const args1 = (function() { return arguments }()),
-      args2 = (function() { return arguments }()),
-      args3 = (function() { return arguments }(1, 2))
+    const args1 = (function () { return arguments }()),
+      args2 = (function () { return arguments }()),
+      args3 = (function () { return arguments }(1, 2))
 
     assert.strictEqual(isEqual(args1, args2), true)
     assert.strictEqual(isEqual(args1, args3), false)
@@ -374,7 +374,7 @@ describe('isEqual', () => {
   it('should treat `arguments` objects like `Object` objects', () => {
     const object = { '0': 1, '1': 2, '2': 3 }
 
-    function Foo() {}
+    function Foo() { }
     Foo.prototype = object
 
     assert.strictEqual(isEqual(args, object), true)
@@ -393,13 +393,13 @@ describe('isEqual', () => {
   })
 
   it('should compare array views', () => {
-    lodashStable.times(2, (index) => {
+    times(2, (index) => {
       const ns = index ? realm : root
 
-      const pairs = lodashStable.map(arrayViews, (type, viewIndex) => {
+      const pairs = map(arrayViews, (type, viewIndex) => {
         const otherType = arrayViews[(viewIndex + 1) % arrayViews.length],
-          CtorA = ns[type] || function(n) { this.n = n },
-          CtorB = ns[otherType] || function(n) { this.n = n },
+          CtorA = ns[type] || function (n) { this.n = n },
+          CtorB = ns[otherType] || function (n) { this.n = n },
           bufferA = ns[type] ? new ns.ArrayBuffer(8) : 8,
           bufferB = ns[otherType] ? new ns.ArrayBuffer(8) : 8,
           bufferC = ns[otherType] ? new ns.ArrayBuffer(16) : 16
@@ -407,9 +407,9 @@ describe('isEqual', () => {
         return [new CtorA(bufferA), new CtorA(bufferA), new CtorB(bufferB), new CtorB(bufferC)]
       })
 
-      const expected = lodashStable.map(pairs, lodashStable.constant([true, false, false]))
+      const expected = map(pairs, constant([true, false, false]))
 
-      const actual = lodashStable.map(pairs, (pair) => [isEqual(pair[0], pair[1]), isEqual(pair[0], pair[2]), isEqual(pair[2], pair[3])])
+      const actual = map(pairs, (pair) => [isEqual(pair[0], pair[1]), isEqual(pair[0], pair[2]), isEqual(pair[2], pair[3])])
 
       assert.deepStrictEqual(actual, expected)
     })
@@ -431,11 +431,11 @@ describe('isEqual', () => {
     assert.strictEqual(isEqual(date, new Date(2012, 4, 23)), true)
     assert.strictEqual(isEqual(new Date('a'), new Date('b')), true)
     assert.strictEqual(isEqual(date, new Date(2013, 3, 25)), false)
-    assert.strictEqual(isEqual(date, { 'getTime': lodashStable.constant(+date) }), false)
+    assert.strictEqual(isEqual(date, { 'getTime': constant(+date) }), false)
   })
 
   it('should compare error objects', () => {
-    const pairs = lodashStable.map([
+    const pairs = map([
       'Error',
       'EvalError',
       'RangeError',
@@ -451,9 +451,9 @@ describe('isEqual', () => {
       return [new CtorA('a'), new CtorA('a'), new CtorB('a'), new CtorB('b')]
     })
 
-    const expected = lodashStable.map(pairs, lodashStable.constant([true, false, false]))
+    const expected = map(pairs, constant([true, false, false]))
 
-    const actual = lodashStable.map(pairs, (pair) => [isEqual(pair[0], pair[1]), isEqual(pair[0], pair[2]), isEqual(pair[2], pair[3])])
+    const actual = map(pairs, (pair) => [isEqual(pair[0], pair[1]), isEqual(pair[0], pair[2]), isEqual(pair[2], pair[3])])
 
     assert.deepStrictEqual(actual, expected)
   })
@@ -468,7 +468,7 @@ describe('isEqual', () => {
 
   it('should compare maps', () => {
     if (Map) {
-      lodashStable.each([[map, new Map], [map, realm.map]], (maps) => {
+      each([[new Map, new Map]], (maps) => {
         const map1 = maps[0],
           map2 = maps[1]
 
@@ -510,7 +510,7 @@ describe('isEqual', () => {
 
   it('should compare promises by reference', () => {
     if (promise) {
-      lodashStable.each([[promise, Promise.resolve(1)], [promise, realm.promise]], (promises) => {
+      each([[promise, Promise.resolve(1)], [promise, realm.promise]], (promises) => {
         const promise1 = promises[0],
           promise2 = promises[1]
 
@@ -530,7 +530,7 @@ describe('isEqual', () => {
 
   it('should compare sets', () => {
     if (Set) {
-      lodashStable.each([[set, new Set], [set, realm.set]], (sets) => {
+      each([[set, new Set], [set, realm.set]], (sets) => {
         const set1 = sets[0],
           set2 = sets[1]
 
@@ -596,53 +596,10 @@ describe('isEqual', () => {
     }
   })
 
-  it('should compare wrapped values', () => {
-    const stamp = +new Date
 
-    const values = [
-      [[1, 2], [1, 2], [1, 2, 3]],
-      [true, true, false],
-      [new Date(stamp), new Date(stamp), new Date(stamp - 100)],
-      [{ 'a': 1, 'b': 2 }, { 'a': 1, 'b': 2 }, { 'a': 1, 'b': 1 }],
-      [1, 1, 2],
-      [NaN, NaN, Infinity],
-      [/x/, /x/, /x/i],
-      ['a', 'a', 'A']
-    ]
-
-    lodashStable.each(values, (vals) => {
-      let wrapped1 = _(vals[0]),
-        wrapped2 = _(vals[1]),
-        actual = wrapped1.isEqual(wrapped2)
-
-      assert.strictEqual(actual, true)
-      assert.strictEqual(isEqual(_(actual), _(true)), true)
-
-      wrapped1 = _(vals[0])
-      wrapped2 = _(vals[2])
-
-      actual = wrapped1.isEqual(wrapped2)
-      assert.strictEqual(actual, false)
-      assert.strictEqual(isEqual(_(actual), _(false)), true)
-    })
-  })
-
-  it('should compare wrapped and non-wrapped values', () => {
-    let object1 = _({ 'a': 1, 'b': 2 }),
-      object2 = { 'a': 1, 'b': 2 }
-
-    assert.strictEqual(object1.isEqual(object2), true)
-    assert.strictEqual(isEqual(object1, object2), true)
-
-    object1 = _({ 'a': 1, 'b': 2 })
-    object2 = { 'a': 1, 'b': 1 }
-
-    assert.strictEqual(object1.isEqual(object2), false)
-    assert.strictEqual(isEqual(object1, object2), false)
-  })
 
   it('should work as an iteratee for `_.every`', () => {
-    const actual = lodashStable.every([1, 1, 1], lodashStable.partial(isEqual, 1))
+    const actual = every([1, 1, 1], partial(isEqual, 1))
     assert.ok(actual)
   })
 
@@ -670,11 +627,11 @@ describe('isEqual', () => {
 
   it('should return `false` for objects with custom `toString` methods', () => {
     let primitive,
-      object = { 'toString': function() { return primitive } },
+      object = { 'toString': function () { return primitive } },
       values = [true, null, 1, 'a', undefined],
-      expected = lodashStable.map(values, stubFalse)
+      expected = map(values, stubFalse)
 
-    const actual = lodashStable.map(values, (value) => {
+    const actual = map(values, (value) => {
       primitive = value
       return isEqual(object, value)
     })
@@ -682,11 +639,4 @@ describe('isEqual', () => {
     assert.deepStrictEqual(actual, expected)
   })
 
-  it('should return an unwrapped value when implicitly chaining', () => {
-    assert.strictEqual(_('a').isEqual('a'), true)
-  })
-
-  it('should return a wrapped value when explicitly chaining', () => {
-    assert.ok(_('a').chain().isEqual('a') instanceof _)
-  })
 })

@@ -1,3 +1,5 @@
+import memoize from '../memoize'
+
 /** Used to detect when a function becomes hot. */
 const HOT_COUNT = 150
 
@@ -259,11 +261,11 @@ try {
 const lodashStable = require('../index')
 
 /** The `lodash` function to test. */
-const _ = root._ || (root._ = interopRequire(filePath))
+const _ = root._ || (root._ = lodashStable)
 
 /** Used to test pseudo private map caches. */
 const mapCaches = (function() {
-  const MapCache = _.memoize.Cache
+  const MapCache = memoize.Cache
   const result = {
     'Hash': require('../.internal/Hash'),
     'MapCache': MapCache

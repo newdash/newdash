@@ -253,6 +253,10 @@ import zipObject from './zipObject.js'
 import zipObjectDeep from './zipObjectDeep.js'
 import zipWith from './zipWith.js'
 
+import iteratee from './iteratee.js'
+import includes from './includes.js'
+import ary from './ary'
+
 export {
   add,
   after,
@@ -507,7 +511,10 @@ export {
   zip,
   zipObject,
   zipObjectDeep,
-  zipWith
+  zipWith,
+  iteratee,
+  includes,
+  ary
 }
 
 export default {
@@ -764,5 +771,8 @@ export default {
   zip,
   zipObject,
   zipObjectDeep,
-  zipWith
+  zipWith,
+  iteratee,
+  includes,
+  ary
 }
