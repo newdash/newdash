@@ -3,10 +3,11 @@ module.exports = {
   'plugins': ['import'],
   'env': {
     'es6': true,
-    'node': true
+    'node': true,
+    'jest': true
   },
   'parserOptions': {
-    'ecmaVersion': 6,
+    'ecmaVersion': 2018,
     'sourceType': 'module',
     'ecmaFeatures': {
       'impliedStrict': true,
@@ -122,4 +123,4 @@ module.exports = {
 
     'template-curly-spacing': ['error', 'never']
   }
-};
+}

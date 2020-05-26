@@ -7,9 +7,9 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "sideEffects": false,
   "scripts": {
     "test": "jest",
+    "lint": "eslint src",
     "build": "babel src --ignore src/test --out-dir lib"
   },
   "devDependencies": {
@@ -17,6 +17,8 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "babel-jest": "^26.0.1",
+    "eslint": "^7.1.0",
+    "eslint-plugin-import": "^2.20.2",
     "jest": "^26.0.1"
   }
 }

@@ -1,37 +1,37 @@
-import assert from 'assert';
-import lodashStable from 'lodash';
-import { _ } from './utils.js';
+import assert from 'assert'
+import lodashStable from 'lodash'
+import { _ } from './utils.js'
 
-describe('exit early', function() {
-  lodashStable.each(['_baseEach', 'forEach', 'forEachRight', 'forIn', 'forInRight', 'forOwn', 'forOwnRight', 'transform'], function(methodName) {
-    var func = _[methodName];
+describe('exit early', () => {
+  lodashStable.each(['_baseEach', 'forEach', 'forEachRight', 'forIn', 'forInRight', 'forOwn', 'forOwnRight', 'transform'], (methodName) => {
+    const func = _[methodName]
 
-    it('`_.' + methodName + '` can exit early when iterating arrays', function() {
+    it(`\`_.${methodName}\` can exit early when iterating arrays`, () => {
       if (func) {
-        var array = [1, 2, 3],
-            values = [];
+        const array = [1, 2, 3],
+          values = []
 
-        func(array, function(value, other) {
-          values.push(lodashStable.isArray(value) ? other : value);
-          return false;
-        });
+        func(array, (value, other) => {
+          values.push(lodashStable.isArray(value) ? other : value)
+          return false
+        })
 
-        assert.deepStrictEqual(values, [lodashStable.endsWith(methodName, 'Right') ? 3 : 1]);
+        assert.deepStrictEqual(values, [lodashStable.endsWith(methodName, 'Right') ? 3 : 1])
       }
-    });
+    })
 
-    it('`_.' + methodName + '` can exit early when iterating objects', function() {
+    it(`\`_.${methodName}\` can exit early when iterating objects`, () => {
       if (func) {
-        var object = { 'a': 1, 'b': 2, 'c': 3 },
-            values = [];
+        const object = { 'a': 1, 'b': 2, 'c': 3 },
+          values = []
 
-        func(object, function(value, other) {
-          values.push(lodashStable.isArray(value) ? other : value);
-          return false;
-        });
+        func(object, (value, other) => {
+          values.push(lodashStable.isArray(value) ? other : value)
+          return false
+        })
 
-        assert.strictEqual(values.length, 1);
+        assert.strictEqual(values.length, 1)
       }
-    });
-  });
-});
+    })
+  })
+})

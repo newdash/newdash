@@ -1,35 +1,31 @@
-import assert from 'assert';
-import lodashStable from 'lodash';
-import { stubTrue } from './utils.js';
-import pad from '../pad.js';
+import assert from 'assert'
+import lodashStable from 'lodash'
+import { stubTrue } from './utils.js'
+import pad from '../pad.js'
 
-describe('pad', function() {
-  var string = 'abc';
+describe('pad', () => {
+  const string = 'abc'
 
-  it('should pad a string to a given length', function() {
-    var values = [, undefined],
-        expected = lodashStable.map(values, lodashStable.constant(' abc  '));
+  it('should pad a string to a given length', () => {
+    const values = [, undefined],
+      expected = lodashStable.map(values, lodashStable.constant(' abc  '))
 
-    var actual = lodashStable.map(values, function(value, index) {
-      return index ? pad(string, 6, value) : pad(string, 6);
-    });
+    const actual = lodashStable.map(values, (value, index) => index ? pad(string, 6, value) : pad(string, 6))
 
-    assert.deepStrictEqual(actual, expected);
-  });
+    assert.deepStrictEqual(actual, expected)
+  })
 
-  it('should truncate pad characters to fit the pad length', function() {
-    assert.strictEqual(pad(string, 8), '  abc   ');
-    assert.strictEqual(pad(string, 8, '_-'), '_-abc_-_');
-  });
+  it('should truncate pad characters to fit the pad length', () => {
+    assert.strictEqual(pad(string, 8), '  abc   ')
+    assert.strictEqual(pad(string, 8, '_-'), '_-abc_-_')
+  })
 
-  it('should coerce `string` to a string', function() {
-    var values = [Object(string), { 'toString': lodashStable.constant(string) }],
-        expected = lodashStable.map(values, stubTrue);
+  it('should coerce `string` to a string', () => {
+    const values = [Object(string), { 'toString': lodashStable.constant(string) }],
+      expected = lodashStable.map(values, stubTrue)
 
-    var actual = lodashStable.map(values, function(value) {
-      return pad(value, 6) === ' abc  ';
-    });
+    const actual = lodashStable.map(values, (value) => pad(value, 6) === ' abc  ')
 
-    assert.deepStrictEqual(actual, expected);
-  });
-});
+    assert.deepStrictEqual(actual, expected)
+  })
+})

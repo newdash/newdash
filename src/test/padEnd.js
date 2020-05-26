@@ -1,34 +1,30 @@
-import assert from 'assert';
-import lodashStable from 'lodash';
-import { stubTrue } from './utils.js';
-import padEnd from '../padEnd.js';
+import assert from 'assert'
+import lodashStable from 'lodash'
+import { stubTrue } from './utils.js'
+import padEnd from '../padEnd.js'
 
-describe('padEnd', function() {
-  var string = 'abc';
+describe('padEnd', () => {
+  const string = 'abc'
 
-  it('should pad a string to a given length', function() {
-    var values = [, undefined],
-        expected = lodashStable.map(values, lodashStable.constant('abc   '));
+  it('should pad a string to a given length', () => {
+    const values = [, undefined],
+      expected = lodashStable.map(values, lodashStable.constant('abc   '))
 
-    var actual = lodashStable.map(values, function(value, index) {
-      return index ? padEnd(string, 6, value) : padEnd(string, 6);
-    });
+    const actual = lodashStable.map(values, (value, index) => index ? padEnd(string, 6, value) : padEnd(string, 6))
 
-    assert.deepStrictEqual(actual, expected);
-  });
+    assert.deepStrictEqual(actual, expected)
+  })
 
-  it('should truncate pad characters to fit the pad length', function() {
-    assert.strictEqual(padEnd(string, 6, '_-'), 'abc_-_');
-  });
+  it('should truncate pad characters to fit the pad length', () => {
+    assert.strictEqual(padEnd(string, 6, '_-'), 'abc_-_')
+  })
 
-  it('should coerce `string` to a string', function() {
-    var values = [Object(string), { 'toString': lodashStable.constant(string) }],
-        expected = lodashStable.map(values, stubTrue);
+  it('should coerce `string` to a string', () => {
+    const values = [Object(string), { 'toString': lodashStable.constant(string) }],
+      expected = lodashStable.map(values, stubTrue)
 
-    var actual = lodashStable.map(values, function(value) {
-      return padEnd(value, 6) === 'abc   ';
-    });
+    const actual = lodashStable.map(values, (value) => padEnd(value, 6) === 'abc   ')
 
-    assert.deepStrictEqual(actual, expected);
-  });
-});
+    assert.deepStrictEqual(actual, expected)
+  })
+})

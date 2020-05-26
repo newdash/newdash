@@ -1,8 +1,8 @@
-import assert from 'assert';
-import lodashStable from 'lodash';
+import assert from 'assert'
+import lodashStable from 'lodash'
 
-describe('lodash(...) methods that return unwrapped values', function() {
-  var funcs = [
+describe('lodash(...) methods that return unwrapped values', () => {
+  const funcs = [
     'add',
     'camelCase',
     'capitalize',
@@ -96,17 +96,17 @@ describe('lodash(...) methods that return unwrapped values', function() {
     'unescape',
     'upperCase',
     'upperFirst'
-  ];
+  ]
 
-  lodashStable.each(funcs, function(methodName) {
-    it('`_(...).' + methodName + '` should return an unwrapped value when implicitly chaining', function() {
-      var actual = _()[methodName]();
-      assert.notOk(actual instanceof _);
-    });
+  lodashStable.each(funcs, (methodName) => {
+    it(`\`_(...).${methodName}\` should return an unwrapped value when implicitly chaining`, () => {
+      const actual = _()[methodName]()
+      assert.notOk(actual instanceof _)
+    })
 
-    it('`_(...).' + methodName + '` should return a wrapped value when explicitly chaining', function() {
-      var actual = _().chain()[methodName]();
-      assert.ok(actual instanceof _);
-    });
-  });
-});
+    it(`\`_(...).${methodName}\` should return a wrapped value when explicitly chaining`, () => {
+      const actual = _().chain()[methodName]()
+      assert.ok(actual instanceof _)
+    })
+  })
+})
