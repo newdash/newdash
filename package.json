@@ -1,17 +1,29 @@
 {
-  "name": "newdash",
-  "version": "5.0.0",
+  "name": "@newdash/newdash",
+  "version": "0.0.1",
   "license": "MIT",
   "private": true,
   "main": "./lib",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0"
   },
+  "contributors": [
+    {
+      "name": "Lodash Contributors",
+      "url": "https://github.com/lodash/lodash"
+    },
+    {
+      "name": "Theo Sun",
+      "email": "theo.sun@outlook.com",
+      "url": "https://github.com/Soontao"
+    }
+  ],
   "scripts": {
     "test": "jest",
     "lint": "eslint src",
     "coverage": "npm test -- --coverage --no-cache",
-    "build": "babel src --ignore src/test --out-dir lib"
+    "build": "babel src --ignore src/test --out-dir lib",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
