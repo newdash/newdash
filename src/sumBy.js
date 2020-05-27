@@ -1,4 +1,4 @@
-import baseSum from './.internal/baseSum.js'
+import baseSum from './.internal/baseSum.js';
 
 /**
  * This method is like `sum` except that it accepts `iteratee` which is
@@ -20,7 +20,7 @@ import baseSum from './.internal/baseSum.js'
 function sumBy(array, iteratee) {
   return (array != null && array.length)
     ? baseSum(array, iteratee)
-    : 0
+    : 0;
 }
 
-export default sumBy
+export default sumBy;

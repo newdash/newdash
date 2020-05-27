@@ -1,4 +1,4 @@
-import map from './map.js'
+import map from './map.js';
 
 /**
  * Creates a function that invokes `iteratees` with the arguments it receives
@@ -18,8 +18,8 @@ import map from './map.js'
  */
 function over(iteratees) {
   return function(...args) {
-    return map(iteratees, (iteratee) => iteratee.apply(this, args))
-  }
+    return map(iteratees, (iteratee) => iteratee.apply(this, args));
+  };
 }
 
-export default over
+export default over;

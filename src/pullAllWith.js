@@ -1,4 +1,4 @@
-import basePullAll from './.internal/basePullAll.js'
+import basePullAll from './.internal/basePullAll.js';
 
 /**
  * This method is like `pullAll` except that it accepts `comparator` which
@@ -25,7 +25,7 @@ import basePullAll from './.internal/basePullAll.js'
 function pullAllWith(array, values, comparator) {
   return (array != null && array.length && values != null && values.length)
     ? basePullAll(array, values, undefined, comparator)
-    : array
+    : array;
 }
 
-export default pullAllWith
+export default pullAllWith;

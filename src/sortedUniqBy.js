@@ -1,4 +1,4 @@
-import baseSortedUniq from './.internal/baseSortedUniq.js'
+import baseSortedUniq from './.internal/baseSortedUniq.js';
 
 /**
  * This method is like `uniqBy` except that it's designed and optimized
@@ -17,7 +17,7 @@ import baseSortedUniq from './.internal/baseSortedUniq.js'
 function sortedUniqBy(array, iteratee) {
   return (array != null && array.length)
     ? baseSortedUniq(array, iteratee)
-    : []
+    : [];
 }
 
-export default sortedUniqBy
+export default sortedUniqBy;

@@ -1,5 +1,5 @@
-import slice from './slice.js'
-import toInteger from './toInteger.js'
+import slice from './slice.js';
+import toInteger from './toInteger.js';
 
 /**
  * Creates an array of elements split into groups the length of `size`.
@@ -20,19 +20,19 @@ import toInteger from './toInteger.js'
  * // => [['a', 'b', 'c'], ['d']]
  */
 function chunk(array, size = 1) {
-  size = Math.max(toInteger(size), 0)
-  const length = array == null ? 0 : array.length
+  size = Math.max(toInteger(size), 0);
+  const length = array == null ? 0 : array.length;
   if (!length || size < 1) {
-    return []
+    return [];
   }
-  let index = 0
-  let resIndex = 0
-  const result = new Array(Math.ceil(length / size))
+  let index = 0;
+  let resIndex = 0;
+  const result = new Array(Math.ceil(length / size));
 
   while (index < length) {
-    result[resIndex++] = slice(array, index, (index += size))
+    result[resIndex++] = slice(array, index, (index += size));
   }
-  return result
+  return result;
 }
 
-export default chunk
+export default chunk;

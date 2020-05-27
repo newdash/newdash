@@ -1,4 +1,4 @@
-import isError from './isError.js'
+import isError from './isError.js';
 
 /**
  * Attempts to invoke `func`, returning either the result or the caught error
@@ -21,10 +21,10 @@ import isError from './isError.js'
  */
 function attempt(func, ...args) {
   try {
-    return func(...args)
+    return func(...args);
   } catch (e) {
-    return isError(e) ? e : new Error(e)
+    return isError(e) ? e : new Error(e);
   }
 }
 
-export default attempt
+export default attempt;

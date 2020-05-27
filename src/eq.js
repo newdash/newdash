@@ -29,7 +29,7 @@
  * // => true
  */
 function eq(value, other) {
-  return value === other || (value !== value && other !== other)
+  return value === other || (value !== value && other !== other);
 }
 
-export default eq
+export default eq;

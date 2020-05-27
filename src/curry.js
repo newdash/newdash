@@ -1,5 +1,5 @@
-import createWrap from './.internal/createWrap'
-import { WRAP_CURRY_FLAG } from './.internal/CONSTANTS'
+import createWrap from './.internal/createWrap';
+import { WRAP_CURRY_FLAG } from './.internal/CONSTANTS';
 
 /**
  * Creates a function that accepts arguments of `func` and either invokes
@@ -43,11 +43,11 @@ import { WRAP_CURRY_FLAG } from './.internal/CONSTANTS'
  * // => [1, 2, 3]
  */
 function curry(func, arity, guard) {
-  arity = guard ? undefined : arity
-  const result = createWrap(func, WRAP_CURRY_FLAG, undefined, undefined, undefined, undefined, undefined, arity)
-  result.placeholder = curry.placeholder
-  return result
+  arity = guard ? undefined : arity;
+  const result = createWrap(func, WRAP_CURRY_FLAG, undefined, undefined, undefined, undefined, undefined, arity);
+  result.placeholder = curry.placeholder;
+  return result;
 }
 
 
-export default curry
+export default curry;

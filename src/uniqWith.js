@@ -1,4 +1,4 @@
-import baseUniq from './.internal/baseUniq.js'
+import baseUniq from './.internal/baseUniq.js';
 
 /**
  * This method is like `uniq` except that it accepts `comparator` which
@@ -20,10 +20,10 @@ import baseUniq from './.internal/baseUniq.js'
  * // => [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }]
  */
 function uniqWith(array, comparator) {
-  comparator = typeof comparator === 'function' ? comparator : undefined
+  comparator = typeof comparator === 'function' ? comparator : undefined;
   return (array != null && array.length)
     ? baseUniq(array, undefined, comparator)
-    : []
+    : [];
 }
 
-export default uniqWith
+export default uniqWith;

@@ -1,6 +1,6 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import concat from '../concat.js'
+import concat from '../concat'
+import map from "../map";
 
 describe('concat', () => {
   it('should shallow clone `array`', () => {
@@ -22,15 +22,15 @@ describe('concat', () => {
   it('should cast non-array `array` values to arrays', () => {
     const values = [, null, undefined, false, true, 1, NaN, 'a']
 
-    let expected = lodashStable.map(values, (value, index) => index ? [value] : [])
+    let expected = map(values, (value, index) => index ? [value] : [])
 
-    let actual = lodashStable.map(values, (value, index) => index ? concat(value) : concat())
+    let actual = map(values, (value, index) => index ? concat(value) : concat())
 
     assert.deepStrictEqual(actual, expected)
 
-    expected = lodashStable.map(values, (value) => [value, 2, [3]])
+    expected = map(values, (value) => [value, 2, [3]])
 
-    actual = lodashStable.map(values, (value) => concat(value, [2], [[3]]))
+    actual = map(values, (value) => concat(value, [2], [[3]]))
 
     assert.deepStrictEqual(actual, expected)
   })
@@ -46,12 +46,5 @@ describe('concat', () => {
     assert.deepStrictEqual(actual, expected)
   })
 
-  it('should return a new wrapped array', () => {
-    const array = [1],
-      wrapped = _(array).concat([2, 3]),
-      actual = wrapped.value()
-
-    assert.deepEqual(array, [1])
-    assert.deepEqual(actual, [1, 2, 3])
-  })
+ 
 })

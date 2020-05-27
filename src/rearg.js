@@ -1,6 +1,6 @@
-import createWrap from './.internal/createWrap'
-import { WRAP_REARG_FLAG } from './.internal/CONSTANTS'
-import flatRest from './.internal/flatRest'
+import createWrap from './.internal/createWrap';
+import { WRAP_REARG_FLAG } from './.internal/CONSTANTS';
+import flatRest from './.internal/flatRest';
 
 /**
  * Creates a function that invokes `func` with arguments arranged according
@@ -24,6 +24,6 @@ import flatRest from './.internal/flatRest'
  * rearged('b', 'c', 'a')
  * // => ['a', 'b', 'c']
  */
-const rearg = flatRest((func, indexes) => createWrap(func, WRAP_REARG_FLAG, undefined, undefined, undefined, indexes))
+const rearg = flatRest((func, indexes) => createWrap(func, WRAP_REARG_FLAG, undefined, undefined, undefined, indexes));
 
-export default rearg
+export default rearg;

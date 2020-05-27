@@ -1,6 +1,6 @@
-import baseXor from './.internal/baseXor.js'
-import isArrayLikeObject from './isArrayLikeObject.js'
-import last from './last.js'
+import baseXor from './.internal/baseXor.js';
+import isArrayLikeObject from './isArrayLikeObject.js';
+import last from './last.js';
 
 /**
  * This method is like `xor` except that it accepts `iteratee` which is
@@ -21,11 +21,11 @@ import last from './last.js'
  * // => [1.2, 3.4]
  */
 function xorBy(...arrays) {
-  let iteratee = last(arrays)
+  let iteratee = last(arrays);
   if (isArrayLikeObject(iteratee)) {
-    iteratee = undefined
+    iteratee = undefined;
   }
-  return baseXor(arrays.filter(isArrayLikeObject), iteratee)
+  return baseXor(arrays.filter(isArrayLikeObject), iteratee);
 }
 
-export default xorBy
+export default xorBy;

@@ -27,7 +27,7 @@
  * // => false
  */
 function isFunction(value) {
-  return typeof value === 'function'
+  return typeof value === 'function';
 }
 
-export default isFunction
+export default isFunction;

@@ -1,8 +1,8 @@
-import baseFindIndex from './.internal/baseFindIndex'
-import toInteger from './toInteger'
-import lodash from './index'
-import baseIteratee from './.internal/baseIteratee'
-import iteratee from './iteratee'
+import baseFindIndex from './.internal/baseFindIndex';
+import toInteger from './toInteger';
+import lodash from './index';
+import baseIteratee from './.internal/baseIteratee';
+import iteratee from './iteratee';
 
 /**
  * Gets the appropriate "iteratee" function. If `_.iteratee` is customized,
@@ -16,10 +16,10 @@ import iteratee from './iteratee'
  * @returns {Function} Returns the chosen function or its result.
  */
 function getIteratee() {
-  let result = lodash.iteratee || iteratee
-  result = result === iteratee ? baseIteratee : result
+  let result = lodash.iteratee || iteratee;
+  result = result === iteratee ? baseIteratee : result;
   // eslint-disable-next-line prefer-rest-params
-  return arguments.length ? result(arguments[0], arguments[1]) : result
+  return arguments.length ? result(arguments[0], arguments[1]) : result;
 }
 
 /**
@@ -58,16 +58,16 @@ function getIteratee() {
  * // => 2
  */
 function findIndex(array, predicate, fromIndex) {
-  const length = array == null ? 0 : array.length
+  const length = array == null ? 0 : array.length;
   if (!length) {
-    return -1
+    return -1;
   }
-  let index = fromIndex == null ? 0 : toInteger(fromIndex)
+  let index = fromIndex == null ? 0 : toInteger(fromIndex);
   if (index < 0) {
-    index = Math.max(length + index, 0)
+    index = Math.max(length + index, 0);
   }
-  return baseFindIndex(array, getIteratee(predicate, 3), index)
+  return baseFindIndex(array, getIteratee(predicate, 3), index);
 }
 
 
-export default findIndex
+export default findIndex;

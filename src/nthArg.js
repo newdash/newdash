@@ -1,4 +1,4 @@
-import nth from './nth.js'
+import nth from './nth.js';
 
 /**
  * Creates a function that gets the argument at index `n`. If `n` is negative,
@@ -19,7 +19,7 @@ import nth from './nth.js'
  * // => 'c'
  */
 function nthArg(n) {
-  return (...args) => nth(args, n)
+  return (...args) => nth(args, n);
 }
 
-export default nthArg
+export default nthArg;

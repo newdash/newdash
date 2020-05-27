@@ -1,5 +1,5 @@
-import getTag from './.internal/getTag.js'
-import isObjectLike from './isObjectLike.js'
+import getTag from './.internal/getTag.js';
+import isObjectLike from './isObjectLike.js';
 
 /**
  * Checks if `value` is classified as a `Number` primitive or object.
@@ -28,7 +28,7 @@ import isObjectLike from './isObjectLike.js'
  */
 function isNumber(value) {
   return typeof value === 'number' ||
-    (isObjectLike(value) && getTag(value) == '[object Number]')
+    (isObjectLike(value) && getTag(value) == '[object Number]');
 }
 
-export default isNumber
+export default isNumber;

@@ -21,13 +21,13 @@
  * // => { 'fred': 40, 'pebbles': 1 } (iteration order is not guaranteed)
  */
 function mapValue(object, iteratee) {
-  object = Object(object)
-  const result = {}
+  object = Object(object);
+  const result = {};
 
   Object.keys(object).forEach((key) => {
-    result[key] = iteratee(object[key], key, object)
-  })
-  return result
+    result[key] = iteratee(object[key], key, object);
+  });
+  return result;
 }
 
-export default mapValue
+export default mapValue;

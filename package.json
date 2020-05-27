@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "lint": "eslint src",
+    "lint": "eslint",
     "coverage": "npm test -- --coverage --no-cache",
     "build": "tsc && webpack",
     "prepublishOnly": "npm run build"

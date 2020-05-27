@@ -1,8 +1,8 @@
-import isArrayLike from './isArrayLike'
-import values from './values'
-import toInteger from './toInteger'
-import isString from './isString'
-import baseIndexOf from './.internal/baseIndexOf'
+import isArrayLike from './isArrayLike';
+import values from './values';
+import toInteger from './toInteger';
+import isString from './isString';
+import baseIndexOf from './.internal/baseIndexOf';
 
 /**
  * Checks if `value` is in `collection`. If `collection` is a string, it's
@@ -35,16 +35,16 @@ import baseIndexOf from './.internal/baseIndexOf'
  * // => true
  */
 function includes(collection, value, fromIndex, guard) {
-  collection = isArrayLike(collection) ? collection : values(collection)
-  fromIndex = (fromIndex && !guard) ? toInteger(fromIndex) : 0
+  collection = isArrayLike(collection) ? collection : values(collection);
+  fromIndex = (fromIndex && !guard) ? toInteger(fromIndex) : 0;
 
-  const length = collection.length
+  const length = collection.length;
   if (fromIndex < 0) {
-    fromIndex = Math.max(length + fromIndex, 0)
+    fromIndex = Math.max(length + fromIndex, 0);
   }
   return isString(collection)
     ? (fromIndex <= length && collection.indexOf(value, fromIndex) > -1)
-    : (!!length && baseIndexOf(collection, value, fromIndex) > -1)
+    : (!!length && baseIndexOf(collection, value, fromIndex) > -1);
 }
 
-export default includes
+export default includes;

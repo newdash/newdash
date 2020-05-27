@@ -19,16 +19,16 @@
  * // => [5, 10]
  */
 function filterObject(object, predicate) {
-  object = Object(object)
-  const result = []
+  object = Object(object);
+  const result = [];
 
   Object.keys(object).forEach((key) => {
-    const value = object[key]
+    const value = object[key];
     if (predicate(value, key, object)) {
-      result.push(value)
+      result.push(value);
     }
-  })
-  return result
+  });
+  return result;
 }
 
-export default filterObject
+export default filterObject;

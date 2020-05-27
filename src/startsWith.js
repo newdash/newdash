@@ -21,16 +21,16 @@
  * // => true
  */
 function startsWith(string, target, position) {
-  const { length } = string
-  position = position == null ? 0 : position
+  const { length } = string;
+  position = position == null ? 0 : position;
   if (position < 0) {
-    position = 0
+    position = 0;
   }
   else if (position > length) {
-    position = length
+    position = length;
   }
-  target = `${target}`
-  return string.slice(position, position + target.length) == target
+  target = `${target}`;
+  return string.slice(position, position + target.length) == target;
 }
 
-export default startsWith
+export default startsWith;

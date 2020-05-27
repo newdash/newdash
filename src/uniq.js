@@ -1,4 +1,4 @@
-import baseUniq from './.internal/baseUniq.js'
+import baseUniq from './.internal/baseUniq.js';
 
 /**
  * Creates a duplicate-free version of an array, using
@@ -20,7 +20,7 @@ import baseUniq from './.internal/baseUniq.js'
 function uniq(array) {
   return (array != null && array.length)
     ? baseUniq(array)
-    : []
+    : [];
 }
 
-export default uniq
+export default uniq;

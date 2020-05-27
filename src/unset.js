@@ -1,4 +1,4 @@
-import baseUnset from './.internal/baseUnset.js'
+import baseUnset from './.internal/baseUnset.js';
 
 /**
  * Removes the property at `path` of `object`.
@@ -27,7 +27,7 @@ import baseUnset from './.internal/baseUnset.js'
  * // => { 'a': [{ 'b': {} }] }
  */
 function unset(object, path) {
-  return object == null ? true : baseUnset(object, path)
+  return object == null ? true : baseUnset(object, path);
 }
 
-export default unset
+export default unset;

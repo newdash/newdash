@@ -1,4 +1,4 @@
-import baseFlatten from './.internal/baseFlatten.js'
+import baseFlatten from './.internal/baseFlatten.js';
 
 /**
  * Recursively flatten `array` up to `depth` times.
@@ -20,12 +20,12 @@ import baseFlatten from './.internal/baseFlatten.js'
  * // => [1, 2, 3, [4], 5]
  */
 function flattenDepth(array, depth) {
-  const length = array == null ? 0 : array.length
+  const length = array == null ? 0 : array.length;
   if (!length) {
-    return []
+    return [];
   }
-  depth = depth === undefined ? 1 : +depth
-  return baseFlatten(array, depth)
+  depth = depth === undefined ? 1 : +depth;
+  return baseFlatten(array, depth);
 }
 
-export default flattenDepth
+export default flattenDepth;

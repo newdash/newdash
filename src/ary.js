@@ -1,5 +1,5 @@
-import createWrap from './.internal/createWrap'
-import { WRAP_ARY_FLAG } from './.internal/CONSTANTS'
+import createWrap from './.internal/createWrap';
+import { WRAP_ARY_FLAG } from './.internal/CONSTANTS';
 
 /**
  * Creates a function that invokes `func`, with up to `n` arguments,
@@ -19,9 +19,9 @@ import { WRAP_ARY_FLAG } from './.internal/CONSTANTS'
  * // => [6, 8, 10]
  */
 function ary(func, n, guard) {
-  n = guard ? undefined : n
-  n = (func && n == null) ? func.length : n
-  return createWrap(func, WRAP_ARY_FLAG, undefined, undefined, undefined, undefined, n)
+  n = guard ? undefined : n;
+  n = (func && n == null) ? func.length : n;
+  return createWrap(func, WRAP_ARY_FLAG, undefined, undefined, undefined, undefined, n);
 }
 
-export default ary
+export default ary;

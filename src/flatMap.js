@@ -1,5 +1,5 @@
-import baseFlatten from './.internal/baseFlatten.js'
-import map from './map.js'
+import baseFlatten from './.internal/baseFlatten.js';
+import map from './map.js';
 
 /**
  * Creates a flattened array of values by running each element in `collection`
@@ -22,7 +22,7 @@ import map from './map.js'
  * // => [1, 1, 2, 2]
  */
 function flatMap(collection, iteratee) {
-  return baseFlatten(map(collection, iteratee), 1)
+  return baseFlatten(map(collection, iteratee), 1);
 }
 
-export default flatMap
+export default flatMap;

@@ -1,19 +1,19 @@
-import copyArray from './.internal/copyArray.js'
-import getTag from './.internal/getTag.js'
-import isArrayLike from './isArrayLike.js'
-import isString from './isString.js'
-import iteratorToArray from './.internal/iteratorToArray.js'
-import mapToArray from './.internal/mapToArray.js'
-import setToArray from './.internal/setToArray.js'
-import stringToArray from './.internal/stringToArray.js'
-import values from './values.js'
+import copyArray from './.internal/copyArray.js';
+import getTag from './.internal/getTag.js';
+import isArrayLike from './isArrayLike.js';
+import isString from './isString.js';
+import iteratorToArray from './.internal/iteratorToArray.js';
+import mapToArray from './.internal/mapToArray.js';
+import setToArray from './.internal/setToArray.js';
+import stringToArray from './.internal/stringToArray.js';
+import values from './values.js';
 
 /** `Object#toString` result references. */
-const mapTag = '[object Map]'
-const setTag = '[object Set]'
+const mapTag = '[object Map]';
+const setTag = '[object Set]';
 
 /** Built-in value references. */
-const symIterator = Symbol.iterator
+const symIterator = Symbol.iterator;
 
 /**
  * Converts `value` to an array.
@@ -38,18 +38,18 @@ const symIterator = Symbol.iterator
  */
 function toArray(value) {
   if (!value) {
-    return []
+    return [];
   }
   if (isArrayLike(value)) {
-    return isString(value) ? stringToArray(value) : copyArray(value)
+    return isString(value) ? stringToArray(value) : copyArray(value);
   }
   if (symIterator && value[symIterator]) {
-    return iteratorToArray(value[symIterator]())
+    return iteratorToArray(value[symIterator]());
   }
-  const tag = getTag(value)
-  const func = tag == mapTag ? mapToArray : (tag == setTag ? setToArray : values)
+  const tag = getTag(value);
+  const func = tag == mapTag ? mapToArray : (tag == setTag ? setToArray : values);
 
-  return func(value)
+  return func(value);
 }
 
-export default toArray
+export default toArray;

@@ -1,4 +1,4 @@
-import baseUniq from './.internal/baseUniq.js'
+import baseUniq from './.internal/baseUniq.js';
 
 /**
  * This method is like `uniq` except that it accepts `iteratee` which is
@@ -21,7 +21,7 @@ import baseUniq from './.internal/baseUniq.js'
 function uniqBy(array, iteratee) {
   return (array != null && array.length)
     ? baseUniq(array, iteratee)
-    : []
+    : [];
 }
 
-export default uniqBy
+export default uniqBy;

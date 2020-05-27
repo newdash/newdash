@@ -1,8 +1,8 @@
-import baseClone from './.internal/baseClone.js'
+import baseClone from './.internal/baseClone.js';
 
 /** Used to compose bitmasks for cloning. */
-const CLONE_DEEP_FLAG = 1
-const CLONE_SYMBOLS_FLAG = 4
+const CLONE_DEEP_FLAG = 1;
+const CLONE_SYMBOLS_FLAG = 4;
 
 /**
  * This method is like `clone` except that it recursively clones `value`.
@@ -22,7 +22,7 @@ const CLONE_SYMBOLS_FLAG = 4
  * // => false
  */
 function cloneDeep(value) {
-  return baseClone(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG)
+  return baseClone(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG);
 }
 
-export default cloneDeep
+export default cloneDeep;

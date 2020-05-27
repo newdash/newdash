@@ -24,8 +24,8 @@
  * // => Logs 'a' then 'b' (iteration order is not guaranteed).
  */
 function forOwn(object, iteratee) {
-  object = Object(object)
-  Object.keys(object).forEach((key) => iteratee(object[key], key, object))
+  object = Object(object);
+  Object.keys(object).forEach((key) => iteratee(object[key], key, object));
 }
 
-export default forOwn
+export default forOwn;

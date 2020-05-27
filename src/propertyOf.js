@@ -1,4 +1,4 @@
-import baseGet from './.internal/baseGet.js'
+import baseGet from './.internal/baseGet.js';
 
 /**
  * The opposite of `property`s method creates a function that returns
@@ -20,7 +20,7 @@ import baseGet from './.internal/baseGet.js'
  * // => [2, 0]
  */
 function propertyOf(object) {
-  return (path) => object == null ? undefined : baseGet(object, path)
+  return (path) => object == null ? undefined : baseGet(object, path);
 }
 
-export default propertyOf
+export default propertyOf;

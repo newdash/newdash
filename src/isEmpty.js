@@ -1,12 +1,12 @@
-import getTag from './.internal/getTag.js'
-import isArguments from './isArguments.js'
-import isArrayLike from './isArrayLike.js'
-import isBuffer from './isBuffer.js'
-import isPrototype from './.internal/isPrototype.js'
-import isTypedArray from './isTypedArray.js'
+import getTag from './.internal/getTag.js';
+import isArguments from './isArguments.js';
+import isArrayLike from './isArrayLike.js';
+import isBuffer from './isBuffer.js';
+import isPrototype from './.internal/isPrototype.js';
+import isTypedArray from './isTypedArray.js';
 
 /** Used to check objects for own properties. */
-const hasOwnProperty = Object.prototype.hasOwnProperty
+const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 /**
  * Checks if `value` is an empty object, collection, map, or set.
@@ -44,26 +44,26 @@ const hasOwnProperty = Object.prototype.hasOwnProperty
  */
 function isEmpty(value) {
   if (value == null) {
-    return true
+    return true;
   }
   if (isArrayLike(value) &&
       (Array.isArray(value) || typeof value === 'string' || typeof value.splice === 'function' ||
         isBuffer(value) || isTypedArray(value) || isArguments(value))) {
-    return !value.length
+    return !value.length;
   }
-  const tag = getTag(value)
+  const tag = getTag(value);
   if (tag == '[object Map]' || tag == '[object Set]') {
-    return !value.size
+    return !value.size;
   }
   if (isPrototype(value)) {
-    return !Object.keys(value).length
+    return !Object.keys(value).length;
   }
   for (const key in value) {
     if (hasOwnProperty.call(value, key)) {
-      return false
+      return false;
     }
   }
-  return true
+  return true;
 }
 
-export default isEmpty
+export default isEmpty;

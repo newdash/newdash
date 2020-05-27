@@ -1,5 +1,5 @@
-import arrayReduce from './.internal/arrayReduce.js'
-import defaultTo from './defaultTo.js'
+import arrayReduce from './.internal/arrayReduce.js';
+import defaultTo from './defaultTo.js';
 
 /**
  * This method is like `defaultTo` except that it accepts multiple default values and returns the first one that is not
@@ -26,7 +26,7 @@ import defaultTo from './defaultTo.js'
  * // => NaN
  */
 function defaultToAny(value, ...defaultValues) {
-  return arrayReduce(defaultValues, defaultTo, value)
+  return arrayReduce(defaultValues, defaultTo, value);
 }
 
-export default defaultToAny
+export default defaultToAny;

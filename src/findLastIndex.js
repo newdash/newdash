@@ -1,5 +1,5 @@
-import baseFindIndex from './.internal/baseFindIndex.js'
-import toInteger from './toInteger.js'
+import baseFindIndex from './.internal/baseFindIndex.js';
+import toInteger from './toInteger.js';
 
 /**
  * This method is like `findIndex` except that it iterates over elements
@@ -24,18 +24,18 @@ import toInteger from './toInteger.js'
  * // => 2
  */
 function findLastIndex(array, predicate, fromIndex) {
-  const length = array == null ? 0 : array.length
+  const length = array == null ? 0 : array.length;
   if (!length) {
-    return -1
+    return -1;
   }
-  let index = length - 1
+  let index = length - 1;
   if (fromIndex !== undefined) {
-    index = toInteger(fromIndex)
+    index = toInteger(fromIndex);
     index = fromIndex < 0
       ? Math.max(length + index, 0)
-      : Math.min(index, length - 1)
+      : Math.min(index, length - 1);
   }
-  return baseFindIndex(array, predicate, index, true)
+  return baseFindIndex(array, predicate, index, true);
 }
 
-export default findLastIndex
+export default findLastIndex;

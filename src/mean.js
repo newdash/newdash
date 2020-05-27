@@ -1,4 +1,4 @@
-import baseMean from './meanBy.js'
+import baseMean from './meanBy.js';
 
 /**
  * Computes the mean of the values in `array`.
@@ -13,7 +13,7 @@ import baseMean from './meanBy.js'
  * // => 5
  */
 function mean(array) {
-  return baseMean(array, (value) => value)
+  return baseMean(array, (value) => value);
 }
 
-export default mean
+export default mean;

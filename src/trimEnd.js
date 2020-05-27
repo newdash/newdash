@@ -1,8 +1,8 @@
-import castSlice from './.internal/castSlice.js'
-import charsEndIndex from './.internal/charsEndIndex.js'
-import stringToArray from './.internal/stringToArray.js'
+import castSlice from './.internal/castSlice.js';
+import charsEndIndex from './.internal/charsEndIndex.js';
+import stringToArray from './.internal/stringToArray.js';
 
-const methodName = ''.trimRight ? 'trimRight': 'trimEnd'
+const methodName = ''.trimRight ? 'trimRight': 'trimEnd';
 
 /**
  * Removes trailing whitespace or specified characters from `string`.
@@ -23,14 +23,14 @@ const methodName = ''.trimRight ? 'trimRight': 'trimEnd'
  */
 function trimEnd(string, chars) {
   if (string && chars === undefined) {
-    return string[methodName]()
+    return string[methodName]();
   }
   if (!string || !chars) {
-    return (string || '')
+    return (string || '');
   }
-  const strSymbols = stringToArray(string)
-  const end = charsEndIndex(strSymbols, stringToArray(chars)) + 1
-  return castSlice(strSymbols, 0, end).join('')
+  const strSymbols = stringToArray(string);
+  const end = charsEndIndex(strSymbols, stringToArray(chars)) + 1;
+  return castSlice(strSymbols, 0, end).join('');
 }
 
-export default trimEnd
+export default trimEnd;

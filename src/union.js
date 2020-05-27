@@ -1,6 +1,6 @@
-import baseFlatten from './.internal/baseFlatten.js'
-import baseUniq from './.internal/baseUniq.js'
-import isArrayLikeObject from './isArrayLikeObject.js'
+import baseFlatten from './.internal/baseFlatten.js';
+import baseUniq from './.internal/baseUniq.js';
+import isArrayLikeObject from './isArrayLikeObject.js';
 
 /**
  * Creates an array of unique values, in order, from all given arrays using
@@ -18,7 +18,7 @@ import isArrayLikeObject from './isArrayLikeObject.js'
  * // => [2, 3, 1]
  */
 function union(...arrays) {
-  return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true))
+  return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true));
 }
 
-export default union
+export default union;

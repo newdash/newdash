@@ -1,4 +1,4 @@
-import pullAll from './pullAll.js'
+import pullAll from './pullAll.js';
 
 /**
  * Removes all given values from `array` using
@@ -23,7 +23,7 @@ import pullAll from './pullAll.js'
  * // => ['b', 'b']
  */
 function pull(array, ...values) {
-  return pullAll(array, values)
+  return pullAll(array, values);
 }
 
-export default pull
+export default pull;

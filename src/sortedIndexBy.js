@@ -1,4 +1,4 @@
-import baseSortedIndexBy from './.internal/baseSortedIndexBy.js'
+import baseSortedIndexBy from './.internal/baseSortedIndexBy.js';
 
 /**
  * This method is like `sortedIndex` except that it accepts `iteratee`
@@ -20,7 +20,7 @@ import baseSortedIndexBy from './.internal/baseSortedIndexBy.js'
  * // => 0
  */
 function sortedIndexBy(array, value, iteratee) {
-  return baseSortedIndexBy(array, value, iteratee)
+  return baseSortedIndexBy(array, value, iteratee);
 }
 
-export default sortedIndexBy
+export default sortedIndexBy;

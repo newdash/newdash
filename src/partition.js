@@ -1,4 +1,4 @@
-import reduce from './reduce.js'
+import reduce from './reduce.js';
 
 /**
  * Creates an array of elements split into two groups, the first of which
@@ -26,7 +26,7 @@ import reduce from './reduce.js'
 function partition(collection, predicate) {
   return reduce(collection, (result, value, key) => (
     result[predicate(value) ? 0 : 1].push(value), result
-  ), [[], []])
+  ), [[], []]);
 }
 
-export default partition
+export default partition;

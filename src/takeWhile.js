@@ -1,4 +1,4 @@
-import baseWhile from './.internal/baseWhile.js'
+import baseWhile from './.internal/baseWhile.js';
 
 /**
  * Creates a slice of `array` with elements taken from the beginning. Elements
@@ -24,7 +24,7 @@ import baseWhile from './.internal/baseWhile.js'
 function takeWhile(array, predicate) {
   return (array != null && array.length)
     ? baseWhile(array, predicate)
-    : []
+    : [];
 }
 
-export default takeWhile
+export default takeWhile;

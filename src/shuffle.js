@@ -1,4 +1,4 @@
-import copyArray from './.internal/copyArray.js'
+import copyArray from './.internal/copyArray.js';
 
 /**
  * Creates an array of shuffled values, using a version of the
@@ -14,20 +14,20 @@ import copyArray from './.internal/copyArray.js'
  * // => [4, 1, 3, 2]
  */
 function shuffle(array) {
-  const length = array == null ? 0 : array.length
+  const length = array == null ? 0 : array.length;
   if (!length) {
-    return []
+    return [];
   }
-  let index = -1
-  const lastIndex = length - 1
-  const result = copyArray(array)
+  let index = -1;
+  const lastIndex = length - 1;
+  const result = copyArray(array);
   while (++index < length) {
-    const rand = index + Math.floor(Math.random() * (lastIndex - index + 1))
-    const value = result[rand]
-    result[rand] = result[index]
-    result[index] = value
+    const rand = index + Math.floor(Math.random() * (lastIndex - index + 1));
+    const value = result[rand];
+    result[rand] = result[index];
+    result[index] = value;
   }
-  return result
+  return result;
 }
 
-export default shuffle
+export default shuffle;

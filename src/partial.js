@@ -1,8 +1,8 @@
-import { WRAP_PARTIAL_FLAG } from './.internal/CONSTANTS'
-import createWrap from './.internal/createWrap'
-import baseRest from './.internal/baseRest'
-import replaceHolders from './.internal/replaceHolders'
-import getHolder from './.internal/getHolder'
+import { WRAP_PARTIAL_FLAG } from './.internal/CONSTANTS';
+import createWrap from './.internal/createWrap';
+import baseRest from './.internal/baseRest';
+import replaceHolders from './.internal/replaceHolders';
+import getHolder from './.internal/getHolder';
 
 /**
  * Creates a function that invokes `func` with `partials` prepended to the
@@ -38,8 +38,8 @@ import getHolder from './.internal/getHolder'
  * // => 'hi fred'
  */
 const partial = baseRest((func, partials) => {
-  const holders = replaceHolders(partials, getHolder(partial))
-  return createWrap(func, WRAP_PARTIAL_FLAG, undefined, partials, holders)
-})
+  const holders = replaceHolders(partials, getHolder(partial));
+  return createWrap(func, WRAP_PARTIAL_FLAG, undefined, partials, holders);
+});
 
-export default partial
+export default partial;

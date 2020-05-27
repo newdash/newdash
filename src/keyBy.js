@@ -1,5 +1,5 @@
-import baseAssignValue from './.internal/baseAssignValue.js'
-import reduce from './reduce.js'
+import baseAssignValue from './.internal/baseAssignValue.js';
+import reduce from './reduce.js';
 
 /**
  * Creates an object composed of keys generated from the results of running
@@ -26,7 +26,7 @@ import reduce from './reduce.js'
 function keyBy(collection, iteratee) {
   return reduce(collection, (result, value, key) => (
     baseAssignValue(result, iteratee(value), value), result
-  ), {})
+  ), {});
 }
 
-export default keyBy
+export default keyBy;

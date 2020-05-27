@@ -1,7 +1,7 @@
-import toFinite from './toFinite.js'
+import toFinite from './toFinite.js';
 
 /** Built-in method references without a dependency on `root`. */
-const freeParseFloat = parseFloat
+const freeParseFloat = parseFloat;
 
 /**
  * Produces a random number between the inclusive `lower` and `upper` bounds.
@@ -36,38 +36,38 @@ const freeParseFloat = parseFloat
 function random(lower, upper, floating) {
   if (floating === undefined) {
     if (typeof upper === 'boolean') {
-      floating = upper
-      upper = undefined
+      floating = upper;
+      upper = undefined;
     }
     else if (typeof lower === 'boolean') {
-      floating = lower
-      lower = undefined
+      floating = lower;
+      lower = undefined;
     }
   }
   if (lower === undefined && upper === undefined) {
-    lower = 0
-    upper = 1
+    lower = 0;
+    upper = 1;
   }
   else {
-    lower = toFinite(lower)
+    lower = toFinite(lower);
     if (upper === undefined) {
-      upper = lower
-      lower = 0
+      upper = lower;
+      lower = 0;
     } else {
-      upper = toFinite(upper)
+      upper = toFinite(upper);
     }
   }
   if (lower > upper) {
-    const temp = lower
-    lower = upper
-    upper = temp
+    const temp = lower;
+    lower = upper;
+    upper = temp;
   }
   if (floating || lower % 1 || upper % 1) {
-    const rand = Math.random()
-    const randLength = `${rand}`.length - 1
-    return Math.min(lower + (rand * (upper - lower + freeParseFloat(`1e-${randLength}`))), upper)
+    const rand = Math.random();
+    const randLength = `${rand}`.length - 1;
+    return Math.min(lower + (rand * (upper - lower + freeParseFloat(`1e-${randLength}`))), upper);
   }
-  return lower + Math.floor(Math.random() * (upper - lower + 1))
+  return lower + Math.floor(Math.random() * (upper - lower + 1));
 }
 
-export default random
+export default random;

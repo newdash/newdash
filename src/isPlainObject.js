@@ -1,5 +1,5 @@
-import getTag from './.internal/getTag.js'
-import isObjectLike from './isObjectLike.js'
+import getTag from './.internal/getTag.js';
+import isObjectLike from './isObjectLike.js';
 
 /**
  * Checks if `value` is a plain object, that is, an object created by the
@@ -29,16 +29,16 @@ import isObjectLike from './isObjectLike.js'
  */
 function isPlainObject(value) {
   if (!isObjectLike(value) || getTag(value) != '[object Object]') {
-    return false
+    return false;
   }
   if (Object.getPrototypeOf(value) === null) {
-    return true
+    return true;
   }
-  let proto = value
+  let proto = value;
   while (Object.getPrototypeOf(proto) !== null) {
-    proto = Object.getPrototypeOf(proto)
+    proto = Object.getPrototypeOf(proto);
   }
-  return Object.getPrototypeOf(value) === proto
+  return Object.getPrototypeOf(value) === proto;
 }
 
-export default isPlainObject
+export default isPlainObject;

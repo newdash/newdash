@@ -1,4 +1,4 @@
-import createMathOperation from './.internal/createMathOperation.js'
+import createMathOperation from './.internal/createMathOperation.js';
 
 /**
  * Multiply two numbers.
@@ -13,6 +13,6 @@ import createMathOperation from './.internal/createMathOperation.js'
  * multiply(6, 4)
  * // => 24
  */
-const multiply = createMathOperation((multiplier, multiplicand) => multiplier * multiplicand, 1)
+const multiply = createMathOperation((multiplier, multiplicand) => multiplier * multiplicand, 1);
 
-export default multiply
+export default multiply;

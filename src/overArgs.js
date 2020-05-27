@@ -27,15 +27,15 @@
  * // => [100, 10]
  */
 function overArgs(func, transforms) {
-  const funcsLength = transforms.length
+  const funcsLength = transforms.length;
   return function(...args) {
-    let index = -1
-    const length = Math.min(args.length, funcsLength)
+    let index = -1;
+    const length = Math.min(args.length, funcsLength);
     while (++index < length) {
-      args[index] = transforms[index].call(this, args[index])
+      args[index] = transforms[index].call(this, args[index]);
     }
-    return func.apply(this, args)
-  }
+    return func.apply(this, args);
+  };
 }
 
-export default overArgs
+export default overArgs;

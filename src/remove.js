@@ -1,4 +1,4 @@
-import basePullAt from './.internal/basePullAt.js'
+import basePullAt from './.internal/basePullAt.js';
 
 /**
  * Removes all elements from `array` that `predicate` returns truthy for
@@ -26,23 +26,23 @@ import basePullAt from './.internal/basePullAt.js'
  * // => [2, 4]
  */
 function remove(array, predicate) {
-  const result = []
+  const result = [];
   if (!(array != null && array.length)) {
-    return result
+    return result;
   }
-  let index = -1
-  const indexes = []
-  const { length } = array
+  let index = -1;
+  const indexes = [];
+  const { length } = array;
 
   while (++index < length) {
-    const value = array[index]
+    const value = array[index];
     if (predicate(value, index, array)) {
-      result.push(value)
-      indexes.push(index)
+      result.push(value);
+      indexes.push(index);
     }
   }
-  basePullAt(array, indexes)
-  return result
+  basePullAt(array, indexes);
+  return result;
 }
 
-export default remove
+export default remove;

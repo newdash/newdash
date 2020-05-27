@@ -1,7 +1,7 @@
-import baseIteratee from './.internal/baseIteratee'
-import baseClone from './.internal/baseClone'
+import baseIteratee from './.internal/baseIteratee';
+import baseClone from './.internal/baseClone';
 
-const CLONE_DEEP_FLAG = 1
+const CLONE_DEEP_FLAG = 1;
 
 /**
  * Creates a function that invokes `func` with the arguments of the created
@@ -46,7 +46,7 @@ const CLONE_DEEP_FLAG = 1
  * // => ['def']
  */
 function iteratee(func) {
-  return baseIteratee(typeof func == 'function' ? func : baseClone(func, CLONE_DEEP_FLAG))
+  return baseIteratee(typeof func == 'function' ? func : baseClone(func, CLONE_DEEP_FLAG));
 }
 
-export default iteratee
+export default iteratee;

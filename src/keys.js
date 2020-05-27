@@ -1,5 +1,5 @@
-import arrayLikeKeys from './.internal/arrayLikeKeys.js'
-import isArrayLike from './isArrayLike.js'
+import arrayLikeKeys from './.internal/arrayLikeKeys.js';
+import isArrayLike from './isArrayLike.js';
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -31,7 +31,7 @@ import isArrayLike from './isArrayLike.js'
 function keys(object) {
   return isArrayLike(object)
     ? arrayLikeKeys(object)
-    : Object.keys(Object(object))
+    : Object.keys(Object(object));
 }
 
-export default keys
+export default keys;

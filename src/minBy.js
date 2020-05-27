@@ -1,4 +1,4 @@
-import isSymbol from './isSymbol.js'
+import isSymbol from './isSymbol.js';
 
 /**
  * This method is like `min` except that it accepts `iteratee` which is
@@ -18,23 +18,23 @@ import isSymbol from './isSymbol.js'
  * // => { 'n': 1 }
  */
 function minBy(array, iteratee) {
-  let result
+  let result;
   if (array == null) {
-    return result
+    return result;
   }
-  let computed
+  let computed;
   for (const value of array) {
-    const current = iteratee(value)
+    const current = iteratee(value);
 
     if (current != null && (computed === undefined
       ? (current === current && !isSymbol(current))
       : (current < computed)
     )) {
-      computed = current
-      result = value
+      computed = current;
+      result = value;
     }
   }
-  return result
+  return result;
 }
 
-export default minBy
+export default minBy;

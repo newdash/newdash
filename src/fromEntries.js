@@ -12,14 +12,14 @@
  * // => { 'a': 1, 'b': 2 }
  */
 function fromEntries(pairs) {
-  const result = {}
+  const result = {};
   if (pairs == null) {
-    return result
+    return result;
   }
   for (const pair of pairs) {
-    result[pair[0]] = pair[1]
+    result[pair[0]] = pair[1];
   }
-  return result
+  return result;
 }
 
-export default fromEntries
+export default fromEntries;

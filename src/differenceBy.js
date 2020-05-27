@@ -1,7 +1,7 @@
-import baseDifference from './.internal/baseDifference.js'
-import baseFlatten from './.internal/baseFlatten.js'
-import isArrayLikeObject from './isArrayLikeObject.js'
-import last from './last.js'
+import baseDifference from './.internal/baseDifference.js';
+import baseFlatten from './.internal/baseFlatten.js';
+import isArrayLikeObject from './isArrayLikeObject.js';
+import last from './last.js';
 
 /**
  * This method is like `difference` except that it accepts `iteratee` which
@@ -24,13 +24,13 @@ import last from './last.js'
  * // => [1.2]
  */
 function differenceBy(array, ...values) {
-  let iteratee = last(values)
+  let iteratee = last(values);
   if (isArrayLikeObject(iteratee)) {
-    iteratee = undefined
+    iteratee = undefined;
   }
   return isArrayLikeObject(array)
     ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true), iteratee)
-    : []
+    : [];
 }
 
-export default differenceBy
+export default differenceBy;

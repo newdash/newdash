@@ -1,4 +1,4 @@
-import baseSum from './.internal/baseSum.js'
+import baseSum from './.internal/baseSum.js';
 
 /**
  * Computes the sum of the values in `array`.
@@ -15,7 +15,7 @@ import baseSum from './.internal/baseSum.js'
 function sum(array) {
   return (array != null && array.length)
     ? baseSum(array, (value) => value)
-    : 0
+    : 0;
 }
 
-export default sum
+export default sum;

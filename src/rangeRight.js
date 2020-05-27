@@ -1,4 +1,4 @@
-import createRange from './.internal/createRange.js'
+import createRange from './.internal/createRange.js';
 
 /**
  * This method is like `range` except that it populates values in
@@ -34,6 +34,6 @@ import createRange from './.internal/createRange.js'
  * rangeRight(0)
  * // => []
  */
-const rangeRight = createRange(true)
+const rangeRight = createRange(true);
 
-export default rangeRight
+export default rangeRight;

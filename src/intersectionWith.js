@@ -1,7 +1,7 @@
-import map from './map.js'
-import baseIntersection from './.internal/baseIntersection.js'
-import castArrayLikeObject from './.internal/castArrayLikeObject.js'
-import last from './last.js'
+import map from './map.js';
+import baseIntersection from './.internal/baseIntersection.js';
+import castArrayLikeObject from './.internal/castArrayLikeObject.js';
+import last from './last.js';
 
 /**
  * This method is like `intersection` except that it accepts `comparator`
@@ -23,16 +23,16 @@ import last from './last.js'
  * // => [{ 'x': 1, 'y': 2 }]
  */
 function intersectionWith(...arrays) {
-  let comparator = last(arrays)
-  const mapped = map(arrays, castArrayLikeObject)
+  let comparator = last(arrays);
+  const mapped = map(arrays, castArrayLikeObject);
 
-  comparator = typeof comparator === 'function' ? comparator : undefined
+  comparator = typeof comparator === 'function' ? comparator : undefined;
   if (comparator) {
-    mapped.pop()
+    mapped.pop();
   }
   return (mapped.length && mapped[0] === arrays[0])
     ? baseIntersection(mapped, undefined, comparator)
-    : []
+    : [];
 }
 
-export default intersectionWith
+export default intersectionWith;

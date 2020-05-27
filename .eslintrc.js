@@ -66,7 +66,7 @@ module.exports = {
       'avoidEscape': true
     }],
 
-    'semi': ['error', 'never'],
+    'semi': ['error'],
 
     'space-before-blocks': ['error', 'always'],
 
@@ -126,4 +126,4 @@ module.exports = {
 
     'template-curly-spacing': ['error', 'never']
   }
-}
+};

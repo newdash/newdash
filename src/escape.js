@@ -5,11 +5,11 @@ const htmlEscapes = {
   '>': '&gt;',
   '"': '&quot;',
   "'": '&#39;'
-}
+};
 
 /** Used to match HTML entities and HTML characters. */
-const reUnescapedHtml = /[&<>"']/g
-const reHasUnescapedHtml = RegExp(reUnescapedHtml.source)
+const reUnescapedHtml = /[&<>"']/g;
+const reHasUnescapedHtml = RegExp(reUnescapedHtml.source);
 
 /**
  * Converts the characters "&", "<", ">", '"', and "'" in `string` to their
@@ -41,7 +41,7 @@ const reHasUnescapedHtml = RegExp(reUnescapedHtml.source)
 function escape(string) {
   return (string && reHasUnescapedHtml.test(string))
     ? string.replace(reUnescapedHtml, (chr) => htmlEscapes[chr])
-    : (string || '')
+    : (string || '');
 }
 
-export default escape
+export default escape;

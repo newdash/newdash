@@ -18,7 +18,7 @@
  * // => false
  */
 function hasIn(object, key) {
-  return object != null && key in Object(object)
+  return object != null && key in Object(object);
 }
 
-export default hasIn
+export default hasIn;

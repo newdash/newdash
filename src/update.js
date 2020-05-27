@@ -1,4 +1,4 @@
-import baseUpdate from './.internal/baseUpdate.js'
+import baseUpdate from './.internal/baseUpdate.js';
 
 /**
  * This method is like `set` except that it accepts `updater` to produce the
@@ -26,7 +26,7 @@ import baseUpdate from './.internal/baseUpdate.js'
  * // => 0
  */
 function update(object, path, updater) {
-  return object == null ? object : baseUpdate(object, path, updater)
+  return object == null ? object : baseUpdate(object, path, updater);
 }
 
-export default update
+export default update;

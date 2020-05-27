@@ -1,5 +1,5 @@
-import baseMerge from './.internal/baseMerge.js'
-import createAssigner from './.internal/createAssigner.js'
+import baseMerge from './.internal/baseMerge.js';
+import createAssigner from './.internal/createAssigner.js';
 
 /**
  * This method is like `merge` except that it accepts `customizer` which
@@ -31,7 +31,7 @@ import createAssigner from './.internal/createAssigner.js'
  * // => { 'a': [1, 3], 'b': [2, 4] }
  */
 const mergeWith = createAssigner((object, source, srcIndex, customizer) => {
-  baseMerge(object, source, srcIndex, customizer)
-})
+  baseMerge(object, source, srcIndex, customizer);
+});
 
-export default mergeWith
+export default mergeWith;

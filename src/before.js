@@ -15,19 +15,19 @@
  * // => Allows adding up to 4 contacts to the list.
  */
 function before(n, func) {
-  let result
+  let result;
   if (typeof func !== 'function') {
-    throw new TypeError('Expected a function')
+    throw new TypeError('Expected a function');
   }
   return function(...args) {
     if (--n > 0) {
-      result = func.apply(this, args)
+      result = func.apply(this, args);
     }
     if (n <= 1) {
-      func = undefined
+      func = undefined;
     }
-    return result
-  }
+    return result;
+  };
 }
 
-export default before
+export default before;

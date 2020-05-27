@@ -1,6 +1,6 @@
-import filter from './filter.js'
-import filterObject from './filterObject.js'
-import negate from './negate.js'
+import filter from './filter.js';
+import filterObject from './filterObject.js';
+import negate from './negate.js';
 
 /**
  * The opposite of `filter` this method returns the elements of `collection`
@@ -23,8 +23,8 @@ import negate from './negate.js'
  * // => objects for ['fred']
  */
 function reject(collection, predicate) {
-  const func = Array.isArray(collection) ? filter : filterObject
-  return func(collection, negate(predicate))
+  const func = Array.isArray(collection) ? filter : filterObject;
+  return func(collection, negate(predicate));
 }
 
-export default reject
+export default reject;

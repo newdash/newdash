@@ -1,9 +1,9 @@
-import assignValue from './.internal/assignValue'
-import copyObject from './.internal/copyObject'
-import createAssigner from './.internal/createAssigner'
-import isPrototype from './.internal/isPrototype'
-import isArrayLike from './isArrayLike'
-import keys from './keys'
+import assignValue from './.internal/assignValue';
+import copyObject from './.internal/copyObject';
+import createAssigner from './.internal/createAssigner';
+import isPrototype from './.internal/isPrototype';
+import isArrayLike from './isArrayLike';
+import keys from './keys';
 
 /**
   * Assigns own enumerable string keyed properties of source objects to the
@@ -39,15 +39,15 @@ import keys from './keys'
   */
 const assign = createAssigner((object, source) => {
   if (isPrototype(source) || isArrayLike(source)) {
-    copyObject(source, keys(source), object)
-    return
+    copyObject(source, keys(source), object);
+    return;
   }
   for (const key in source) {
     if (hasOwnProperty.call(source, key)) {
-      assignValue(object, key, source[key])
+      assignValue(object, key, source[key]);
     }
   }
-})
+});
 
 
-export default assign
+export default assign;

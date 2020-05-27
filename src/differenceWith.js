@@ -1,7 +1,7 @@
-import baseDifference from './.internal/baseDifference.js'
-import baseFlatten from './.internal/baseFlatten.js'
-import isArrayLikeObject from './isArrayLikeObject.js'
-import last from './last.js'
+import baseDifference from './.internal/baseDifference.js';
+import baseFlatten from './.internal/baseFlatten.js';
+import isArrayLikeObject from './isArrayLikeObject.js';
+import last from './last.js';
 
 /**
  * This method is like `difference` except that it accepts `comparator`
@@ -25,13 +25,13 @@ import last from './last.js'
  * // => [{ 'x': 2, 'y': 1 }]
  */
 function differenceWith(array, ...values) {
-  let comparator = last(values)
+  let comparator = last(values);
   if (isArrayLikeObject(comparator)) {
-    comparator = undefined
+    comparator = undefined;
   }
   return isArrayLikeObject(array)
     ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true), undefined, comparator)
-    : []
+    : [];
 }
 
-export default differenceWith
+export default differenceWith;

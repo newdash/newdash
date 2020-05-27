@@ -1,6 +1,6 @@
-import map from './map.js'
-import baseIntersection from './.internal/baseIntersection.js'
-import castArrayLikeObject from './.internal/castArrayLikeObject.js'
+import map from './map.js';
+import baseIntersection from './.internal/baseIntersection.js';
+import castArrayLikeObject from './.internal/castArrayLikeObject.js';
 
 /**
  * Creates an array of unique values that are included in all given arrays
@@ -18,10 +18,10 @@ import castArrayLikeObject from './.internal/castArrayLikeObject.js'
  * // => [2]
  */
 function intersection(...arrays) {
-  const mapped = map(arrays, castArrayLikeObject)
+  const mapped = map(arrays, castArrayLikeObject);
   return (mapped.length && mapped[0] === arrays[0])
     ? baseIntersection(mapped)
-    : []
+    : [];
 }
 
-export default intersection
+export default intersection;

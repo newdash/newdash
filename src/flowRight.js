@@ -1,4 +1,4 @@
-import flow from './flow.js'
+import flow from './flow.js';
 
 /**
  * This method is like `flow` except that it composes a function that
@@ -22,7 +22,7 @@ import flow from './flow.js'
  * // => 9
  */
 function flowRight(...funcs) {
-  return flow(...funcs.reverse())
+  return flow(...funcs.reverse());
 }
 
-export default flowRight
+export default flowRight;

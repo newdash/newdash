@@ -1,5 +1,5 @@
-import baseFlatten from './.internal/baseFlatten.js'
-import map from './map.js'
+import baseFlatten from './.internal/baseFlatten.js';
+import map from './map.js';
 
 /**
  * This method is like `flatMap` except that it recursively flattens the
@@ -22,8 +22,8 @@ import map from './map.js'
  * // => [[1, 1], [2, 2]]
  */
 function flatMapDepth(collection, iteratee, depth) {
-  depth = depth === undefined ? 1 : +depth
-  return baseFlatten(map(collection, iteratee), depth)
+  depth = depth === undefined ? 1 : +depth;
+  return baseFlatten(map(collection, iteratee), depth);
 }
 
-export default flatMapDepth
+export default flatMapDepth;

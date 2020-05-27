@@ -1,4 +1,4 @@
-import invoke from './invoke.js'
+import invoke from './invoke.js';
 
 /**
  * The opposite of `method` this method creates a function that invokes
@@ -22,7 +22,7 @@ import invoke from './invoke.js'
  * // => [2, 0]f
  */
 function methodOf(object, args) {
-  return (path) => invoke(object, path, args)
+  return (path) => invoke(object, path, args);
 }
 
-export default methodOf
+export default methodOf;

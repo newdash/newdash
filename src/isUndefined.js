@@ -14,7 +14,7 @@
  * // => false
  */
 function isUndefined(value) {
-  return value === undefined
+  return value === undefined;
 }
 
-export default isUndefined
+export default isUndefined;

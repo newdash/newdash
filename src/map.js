@@ -1,8 +1,8 @@
-import identity from './.internal/identity'
-import isArray from './isArray'
-import baseMap from './.internal/baseMap'
-import arrayMap from './.internal/arrayMap'
-import getIteratee from './.internal/getIteratee'
+import identity from './.internal/identity';
+import isArray from './isArray';
+import baseMap from './.internal/baseMap';
+import arrayMap from './.internal/arrayMap';
+import getIteratee from './.internal/getIteratee';
 
 /**
  * Creates an array of values by running each element in `collection` thru
@@ -46,8 +46,8 @@ import getIteratee from './.internal/getIteratee'
  * // => ['barney', 'fred']
  */
 function map(collection, iteratee = identity) {
-  const func = isArray(collection) ? arrayMap : baseMap
-  return func(collection, getIteratee(iteratee, 3))
+  const func = isArray(collection) ? arrayMap : baseMap;
+  return func(collection, getIteratee(iteratee, 3));
 }
 
-export default map
+export default map;

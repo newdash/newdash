@@ -1,4 +1,4 @@
-import createRange from './.internal/createRange.js'
+import createRange from './.internal/createRange.js';
 
 /**
  * Creates an array of numbers (positive and/or negative) progressing from
@@ -39,6 +39,6 @@ import createRange from './.internal/createRange.js'
  * range(0)
  * // => []
  */
-const range = createRange()
+const range = createRange();
 
-export default range
+export default range;

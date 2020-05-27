@@ -1,4 +1,4 @@
-const toString = Object.prototype.toString
+const toString = Object.prototype.toString;
 
 /**
  * Creates an object composed of the inverted keys and values of `object`.
@@ -17,15 +17,15 @@ const toString = Object.prototype.toString
  * // => { '1': 'c', '2': 'b' }
  */
 function invert(object) {
-  const result = {}
+  const result = {};
   Object.keys(object).forEach((key) => {
-    let value = object[key]
+    let value = object[key];
     if (value != null && typeof value.toString !== 'function') {
-      value = toString.call(value)
+      value = toString.call(value);
     }
-    result[value] = key
-  })
-  return result
+    result[value] = key;
+  });
+  return result;
 }
 
-export default invert
+export default invert;

@@ -1,5 +1,5 @@
-import forEach from './forEach'
+import forEach from './forEach';
 
-const each = forEach
+const each = forEach;
 
-export default each
+export default each;

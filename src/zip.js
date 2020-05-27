@@ -1,4 +1,4 @@
-import unzip from './unzip.js'
+import unzip from './unzip.js';
 
 /**
  * Creates an array of grouped elements, the first of which contains the
@@ -16,7 +16,7 @@ import unzip from './unzip.js'
  * // => [['a', 1, true], ['b', 2, false]]
  */
 function zip(...arrays) {
-  return unzip(arrays)
+  return unzip(arrays);
 }
 
-export default zip
+export default zip;
