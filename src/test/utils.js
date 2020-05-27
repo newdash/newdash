@@ -1,4 +1,12 @@
 import memoize from '../memoize'
+import isMatchWith from "../isMatchWith";
+import last from "../last"
+import attempt from "../attempt";
+import filter from "../filter"
+import constant from "../constant";
+import forOwn from "../forOwn";
+import assign from "../assign";
+import each from "../each"
 
 /** Used to detect when a function becomes hot. */
 const HOT_COUNT = 150
@@ -51,14 +59,14 @@ const phantom = root.phantom,
   fnToString = funcProto.toString,
   freeze = Object.freeze,
   getSymbols = Object.getOwnPropertySymbols,
-  identity = function(value) { return value },
-  noop = function() { },
+  identity = function (value) { return value },
+  noop = function () { },
   objToString = objectProto.toString,
   params = argv,
   push = arrayProto.push,
   realm = {},
   slice = arrayProto.slice,
-  strictArgs = (function() { 'use strict'; return arguments }(1, 2, 3))
+  strictArgs = (function () { 'use strict'; return arguments }(1, 2, 3))
 
 const ArrayBuffer = root.ArrayBuffer,
   Buffer = root.Buffer,
@@ -80,31 +88,31 @@ const arrayBuffer = ArrayBuffer ? new ArrayBuffer(2) : undefined,
   weakSet = WeakSet ? new WeakSet : undefined
 
 /** Math helpers. */
-const add = function(x, y) { return x + y },
-  doubled = function(n) { return n * 2 },
-  isEven = function(n) { return n % 2 == 0 },
-  square = function(n) { return n * n }
+const add = function (x, y) { return x + y },
+  doubled = function (n) { return n * 2 },
+  isEven = function (n) { return n % 2 == 0 },
+  square = function (n) { return n * n }
 
 /** Stub functions. */
-const stubA = function() { return 'a' },
-  stubB = function() { return 'b' },
-  stubC = function() { return 'c' }
+const stubA = function () { return 'a' },
+  stubB = function () { return 'b' },
+  stubC = function () { return 'c' }
 
-const stubTrue = function() { return true },
-  stubFalse = function() { return false }
+const stubTrue = function () { return true },
+  stubFalse = function () { return false }
 
-const stubNaN = function() { return NaN },
-  stubNull = function() { return null }
+const stubNaN = function () { return NaN },
+  stubNull = function () { return null }
 
-const stubZero = function() { return 0 },
-  stubOne = function() { return 1 },
-  stubTwo = function() { return 2 },
-  stubThree = function() { return 3 },
-  stubFour = function() { return 4 }
+const stubZero = function () { return 0 },
+  stubOne = function () { return 1 },
+  stubTwo = function () { return 2 },
+  stubThree = function () { return 3 },
+  stubFour = function () { return 4 }
 
-const stubArray = function() { return [] },
-  stubObject = function() { return {} },
-  stubString = function() { return '' }
+const stubArray = function () { return [] },
+  stubObject = function () { return {} },
+  stubString = function () { return '' }
 
 /** List of Latin Unicode letters. */
 const burredLetters = [
@@ -253,7 +261,7 @@ try {
   defineProperty(global.root, 'root', {
     'configurable': false,
     'enumerable': false,
-    'get': function() { throw new ReferenceError }
+    'get': function () { throw new ReferenceError }
   })
 } catch (e) { }
 
@@ -264,14 +272,14 @@ const lodashStable = require('../index')
 const _ = root._ || (root._ = lodashStable)
 
 /** Used to test pseudo private map caches. */
-const mapCaches = (function() {
+const mapCaches = (function () {
   const MapCache = memoize.Cache
   const result = {
     'Hash': require('../.internal/Hash'),
     'MapCache': MapCache
   }
-  _.isMatchWith({ 'a': 1 }, { 'a': 1 }, function() {
-    const stack = lodashStable.last(arguments)
+  isMatchWith({ 'a': 1 }, { 'a': 1 }, function () {
+    const stack = last(arguments)
     result.ListCache = stack.__data__.constructor
     result.Stack = stack.constructor
   })
@@ -284,10 +292,10 @@ const mapCaches = (function() {
 // })];
 
 /** Used to test async functions. */
-const asyncFunc = lodashStable.attempt(() => Function('return async () => {}'))
+const asyncFunc = attempt(() => Function('return async () => {}'))
 
 /** Used to test generator functions. */
-const genFunc = lodashStable.attempt(() => Function('return function*(){}'))
+const genFunc = attempt(() => Function('return function*(){}'))
 
 /** Used to restore the `_` reference. */
 const oldDash = root._
@@ -296,7 +304,7 @@ const oldDash = root._
  * Used to check for problems removing whitespace. For a whitespace reference,
  * see [V8's unit test](https://code.google.com/p/v8/source/browse/branches/bleeding_edge/test/mjsunit/whitespaces.js).
  */
-const whitespace = lodashStable.filter([
+const whitespace = filter([
   // Basic whitespace characters.
   ' ', '\t', '\x0b', '\f', '\xa0', '\ufeff',
 
@@ -307,7 +315,7 @@ const whitespace = lodashStable.filter([
   '\u1680', '\u180e', '\u2000', '\u2001', '\u2002', '\u2003', '\u2004', '\u2005',
   '\u2006', '\u2007', '\u2008', '\u2009', '\u200a', '\u202f', '\u205f', '\u3000'
 ],
-(chr) => /\s/.exec(chr))
+  (chr) => /\s/.exec(chr))
   .join('')
 
 /**
@@ -322,7 +330,7 @@ function CustomError(message) {
   this.message = message
 }
 
-CustomError.prototype = lodashStable.create(Error.prototype, {
+CustomError.prototype = create(Error.prototype, {
   'constructor': CustomError
 })
 
@@ -333,7 +341,7 @@ CustomError.prototype = lodashStable.create(Error.prototype, {
  * @param {Object} object The object to empty.
  */
 function emptyObject(object) {
-  lodashStable.forOwn(object, (value, key, object) => {
+  forOwn(object, (value, key, object) => {
     delete object[key]
   })
 }
@@ -422,13 +430,13 @@ function skipAssert(assert, count) {
  * @returns {Object} Returns the converted `arguments` object.
  */
 function toArgs(array) {
-  return (function() { return arguments }.apply(undefined, array))
+  return (function () { return arguments }.apply(undefined, array))
 }
 
 /*--------------------------------------------------------------------------*/
 
 // Add bizarro values.
-(function() {
+(function () {
   return // fixme
   if (document || (typeof require !== 'function')) {
     return
@@ -437,7 +445,7 @@ function toArgs(array) {
     reToString = /toString/g
 
   function createToString(funcName) {
-    return lodashStable.constant(nativeString.replace(reToString, funcName))
+    return constant(nativeString.replace(reToString, funcName))
   }
 
   // Allow bypassing native checks.
@@ -456,7 +464,7 @@ function toArgs(array) {
   setProperty(Object, 'getOwnPropertySymbols', undefined)
 
   const _propertyIsEnumerable = objectProto.propertyIsEnumerable
-  setProperty(objectProto, 'propertyIsEnumerable', function(key) {
+  setProperty(objectProto, 'propertyIsEnumerable', function (key) {
     return !(key == 'valueOf' && this && this.valueOf === 1) && _propertyIsEnumerable.call(this, key)
   })
 
@@ -475,9 +483,9 @@ function toArgs(array) {
     })
   }
   if (Map) {
-    setProperty(root, 'Map', (function() {
+    setProperty(root, 'Map', (function () {
       let count = 0
-      return function() {
+      return function () {
         if (count++) {
           return new Map
         }
@@ -543,8 +551,8 @@ function toArgs(array) {
 }())
 
 // Add other realm values from the `vm` module.
-lodashStable.attempt(() => {
-  lodashStable.assign(realm, require('vm').runInNewContext([
+attempt(() => {
+  assign(realm, require('vm').runInNewContext([
     '(function() {',
     '  var noop = function() {},',
     '      root = this;',
@@ -585,7 +593,7 @@ lodashStable.attempt(() => {
 })
 
 // Add other realm values from an iframe.
-lodashStable.attempt(() => {
+attempt(() => {
   _._realm = realm
 
   const iframe = document.createElement('iframe')
@@ -643,7 +651,7 @@ lodashStable.attempt(() => {
 })
 
 // Add a web worker.
-lodashStable.attempt(() => {
+attempt(() => {
   const worker = new Worker(`./asset/worker.js?t=${+new Date}`)
   worker.addEventListener('message', (e) => {
     _._VERSION = e.data || ''
@@ -653,12 +661,12 @@ lodashStable.attempt(() => {
 })
 
 // Expose internal modules for better code coverage.
-lodashStable.attempt(() => {
+attempt(() => {
   const path = require('path'),
     basePath = path.dirname(filePath)
 
   if (isModularize && !(amd || isNpm)) {
-    lodashStable.each([
+    each([
       'baseEach',
       'isIndex',
       'isIterateeCall',

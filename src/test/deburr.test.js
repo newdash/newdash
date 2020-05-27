@@ -1,6 +1,8 @@
 import assert from 'assert'
-import { map, constant, deburr } from '../'
 import { burredLetters, deburredLetters, comboMarks } from './utils.js'
+import map from '../map.js'
+import constant from '../constant.js'
+import deburr from "../deburr";
 
 describe('deburr', () => {
   it('should convert Latin Unicode letters to basic Latin', () => {

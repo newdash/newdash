@@ -1,6 +1,7 @@
 import setToString from "./setToString";
 import overRest from "./overRest";
-import { identity } from "../test/utils";
+import identity from "./identity";
+
 
 /**
  * The base implementation of `_.rest` which doesn't validate or coerce arguments.

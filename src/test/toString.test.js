@@ -1,6 +1,8 @@
 import assert from 'assert'
-import { map, toString } from '../'
 import { stubString, symbol } from './utils.js'
+import map from '../map.js'
+import toString from "../toString";
+
 
 describe('toString', () => {
   it('should treat nullish values as empty strings', () => {

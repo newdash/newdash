@@ -1,8 +1,10 @@
 import assert from 'assert'
-import { map, isObjectLike } from '../index'
 import { args, falsey, slice, symbol, stubFalse, realm } from './utils.js'
+import isObjectLike from '../isObjectLike.js'
+import map from '../map.js'
 
 describe('isObjectLike', () => {
+
   it('should return `true` for objects', () => {
     assert.strictEqual(isObjectLike(args), true)
     assert.strictEqual(isObjectLike([1, 2, 3]), true)

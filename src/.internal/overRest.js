@@ -1,4 +1,4 @@
-import nativeMax from './nativeMax'
+const nativeMax = Math.max
 
 /**
  * A specialized version of `baseRest` which transforms the rest array.

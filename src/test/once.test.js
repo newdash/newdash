@@ -1,10 +1,10 @@
 import assert from 'assert'
-import { _ } from './utils.js'
+import fOnce from "../once";
 
 describe('once', () => {
   it('should invoke `func` once', () => {
     let count = 0,
-      once = _.once(() => ++count)
+      once = fOnce(() => ++count)
 
     once()
     assert.strictEqual(once(), 1)
@@ -14,7 +14,7 @@ describe('once', () => {
   it('should ignore recursive calls', () => {
     let count = 0
 
-    var once = _.once(() => {
+    var once = fOnce(() => {
       once()
       return ++count
     })
@@ -24,7 +24,7 @@ describe('once', () => {
   })
 
   it('should not throw more than once', () => {
-    const once = _.once(() => {
+    const once = fOnce(() => {
       throw new Error
     })
 
