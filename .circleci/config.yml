@@ -17,7 +17,7 @@ jobs:
       - run: npm run build
 
       # run tests!
-      - run: npm run coverage
+      - run: ./node_modules/.bin/jest -w 1 --coverage
 
       # upload coverage
       - run: bash <(curl -s https://codecov.io/bash)
