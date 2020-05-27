@@ -1,6 +1,9 @@
 module.exports = {
-  'extends': ['plugin:import/errors'],
-  'plugins': ['import'],
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: [
+    '@typescript-eslint'
+  ],
   'env': {
     'es6': true,
     'node': true,

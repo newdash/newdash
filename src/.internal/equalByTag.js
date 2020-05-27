@@ -42,10 +42,13 @@ const symbolValueOf = Symbol.prototype.valueOf
  * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
  */
 function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
+
+  let convert
+
   switch (tag) {
     case dataViewTag:
       if ((object.byteLength != other.byteLength) ||
-          (object.byteOffset != other.byteOffset)) {
+        (object.byteOffset != other.byteOffset)) {
         return false
       }
       object = object.buffer
@@ -53,7 +56,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 
     case arrayBufferTag:
       if ((object.byteLength != other.byteLength) ||
-          !equalFunc(new Uint8Array(object), new Uint8Array(other))) {
+        !equalFunc(new Uint8Array(object), new Uint8Array(other))) {
         return false
       }
       return true
@@ -76,7 +79,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
       return object == `${other}`
 
     case mapTag:
-      let convert = mapToArray
+      convert = mapToArray
 
     case setTag:
       const isPartial = bitmask & COMPARE_PARTIAL_FLAG
