@@ -1,0 +1,56 @@
+
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run: npm install
+
+      # run build
+      - run: npm run build
+
+      # run tests!
+      - run: npm run coverage
+
+      # upload coverage
+      - run: bash <(curl -s https://codecov.io/bash)
+
+
+  deploy:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - deploy:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
+      - build:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: /.*/
