@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "charset": "UTF-8",
+    "newLine": "lf",
+    "allowJs": true,
+    "target": "ES6",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "lib": [
+      "ES6"
+    ]
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "src/test"
+  ]
+}
