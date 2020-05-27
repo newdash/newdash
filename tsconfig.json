@@ -1,22 +1,22 @@
 {
   "compilerOptions": {
-      "charset": "UTF-8",
-      "newLine": "lf",
-      "allowJs": true,
-      "target": "ES6",
-      "module": "CommonJS",
-      "outDir": "lib",
-      "esModuleInterop": true,
-      "moduleResolution": "node",
-      "declaration": true,
-      "lib": [
-          "ES6",
-      ]
+    "charset": "UTF-8",
+    "newLine": "lf",
+    "allowJs": true,
+    "target": "ES6",
+    "module": "CommonJS",
+    "outDir": "lib",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "lib": [
+      "ES6"
+    ]
   },
   "include": [
-      "src"
+    "src"
   ],
   "exclude": [
-      "src/test"
+    "src/test"
   ]
 }

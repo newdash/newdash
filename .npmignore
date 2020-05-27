@@ -3,3 +3,7 @@ coverage
 node_modules
 .vscode
 .github
+.editorconfig
+.eslintignore
+.gitattributes
+.eslintrc.js
