@@ -8,5 +8,6 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash)](https://www.npmjs.com/package/@newdash/newdash)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@newdash/newdash)
+[![](https://data.jsdelivr.com/v1/package/npm/@newdash/newdash/badge)](https://www.jsdelivr.com/package/npm/@newdash/newdash)
 
 **NewDash** is a hard fork project of the [lodash](https://github.com/lodash/lodash) utility project.
