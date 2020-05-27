@@ -1,5 +1,3 @@
-import times from './times'
-import isFunction from './isFunction'
 
 /**
  * Creates a function that invokes `func`, with the `this` binding and arguments

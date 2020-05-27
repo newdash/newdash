@@ -1,7 +1,8 @@
 import baseFindIndex from './.internal/baseFindIndex'
 import toInteger from './toInteger'
-import lodash, { iteratee } from './index'
+import lodash from './index'
 import baseIteratee from './.internal/baseIteratee'
+import iteratee from './iteratee'
 
 /**
  * Gets the appropriate "iteratee" function. If `_.iteratee` is customized,
