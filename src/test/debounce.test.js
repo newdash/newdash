@@ -1,6 +1,7 @@
 import assert from 'assert'
-import { identity, argv, isPhantom, push } from './utils.js'
+import {  argv, isPhantom, push } from './utils.js'
 import debounce from '../debounce.js'
+import identity from "../.internal/identity";
 
 describe('debounce', () => {
   it('should debounce a function', (done) => {

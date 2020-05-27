@@ -59,4 +59,3 @@ export const MAX_ARRAY_LENGTH = 4294967295
 export const MAX_ARRAY_INDEX = MAX_ARRAY_LENGTH - 1
 export const HALF_MAX_ARRAY_LENGTH = MAX_ARRAY_LENGTH >>> 1
 
-export const metaMap = WeakMap && new WeakMap;

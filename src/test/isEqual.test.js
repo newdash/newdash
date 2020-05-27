@@ -1,5 +1,9 @@
 import assert from 'assert'
-import { each, map, constant, every, times } from "../index"
+import map from '../map'
+import constant from '../constant'
+import each from '../each'
+import every from '../every'
+import times from '../times'
 import partial from "../partial";
 import {
   noop,

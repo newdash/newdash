@@ -8,4 +8,5 @@ describe('filter', () => {
   it('should return elements `predicate` returns truthy for', () => {
     assert.deepStrictEqual(filter(array, isEven), [2])
   })
+
 })

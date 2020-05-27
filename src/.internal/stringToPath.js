@@ -23,22 +23,15 @@ const rePropName = RegExp(
  * @param {string} string The string to convert.
  * @returns {Array} Returns the property path array.
  */
-const stringToPath = memoizeCapped((string) => {
-  const result = []
-  if (string.charCodeAt(0) === charCodeOfDot) {
-    result.push('')
+const stringToPath = memoizeCapped(function(string) {
+  var result = [];
+  if (string.charCodeAt(0) === 46 /* . */) {
+    result.push('');
   }
-  string.replace(rePropName, (match, expression, quote, subString) => {
-    let key = match
-    if (quote) {
-      key = subString.replace(reEscapeChar, '$1')
-    }
-    else if (expression) {
-      key = expression.trim()
-    }
-    result.push(key)
-  })
-  return result
-})
+  string.replace(rePropName, function(match, number, quote, subString) {
+    result.push(quote ? subString.replace(reEscapeChar, '$1') : (number || match));
+  });
+  return result;
+});
 
 export default stringToPath

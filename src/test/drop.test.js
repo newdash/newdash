@@ -1,7 +1,8 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { falsey, LARGE_ARRAY_SIZE, isEven } from './utils.js'
-import { map, each, drop } from '../index'
+import map from '../map'
+import drop from '../drop'
+import each from '../each'
+import falsey from '../.internal/falsey'
 
 describe('drop', () => {
   const array = [1, 2, 3]

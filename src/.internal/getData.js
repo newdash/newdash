@@ -1,4 +1,4 @@
-import { metaMap } from "./CONSTANTS";
+import { metaMap } from "./GLOBAL";
 import { noop } from "./noop";
 
 /**

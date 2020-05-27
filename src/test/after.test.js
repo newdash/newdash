@@ -1,5 +1,6 @@
 import assert from 'assert'
-import { times, after } from '../index'
+import times from "../times";
+import after from "../after";
 
 describe('after', () => {
   function testAfter(n, ts) {

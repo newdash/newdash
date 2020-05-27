@@ -1,5 +1,5 @@
-import { metaMap } from "./CONSTANTS";
-import { identity } from "../test/utils";
+import { metaMap } from "./GLOBAL";
+import { identity } from "./identity";
 
 /**
  * The base implementation of `setData` without support for hot loop shorting.

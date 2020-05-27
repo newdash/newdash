@@ -1,8 +1,10 @@
 import assert from 'assert'
-import { slice, _ } from './utils.js'
-import curry from '../curry.js'
-import rearg from '../rearg.js'
-import { map, includes, ary } from "../index"
+import { slice, _ } from './utils'
+import curry from '../curry'
+import rearg from '../rearg'
+import ary from "../ary";
+import map from '../map';
+import includes from '../includes';
 
 describe('ary', () => {
 

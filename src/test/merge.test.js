@@ -1,5 +1,14 @@
 import assert from 'assert'
-import { merge, map, isArray, range, isBuffer, isEqual, isArguments, assign } from '../index'
+
+import merge from '../merge'
+import map from '../map'
+import isArray from '../isArray'
+import range from '../range'
+import isBuffer from '../isBuffer'
+import isEqual from '../isEqual'
+import assign from '../assign'
+import isArguments from '../isArguments'
+
 import { args, typedArrays, stubTrue, defineProperty, document, root } from './utils.js'
 
 describe('merge', () => {

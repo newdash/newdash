@@ -2,6 +2,7 @@ import isArray from "../isArray";
 import baseMatchesProperty from "./baseMatchesProperty";
 import baseMatches from "./baseMatches";
 import property from "../property";
+import identity from "./identity";
 
 /**
  * The base implementation of `_.iteratee`.

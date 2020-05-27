@@ -1,7 +1,8 @@
 import assert from 'assert'
-import { map, each } from '../index'
 import { falsey, stubZero, args, push, arrayProto, realm, MAX_SAFE_INTEGER } from './utils.js'
 import size from '../size.js'
+import map from '../map.js'
+import each from '../each'
 
 describe('size', () => {
   const array = [1, 2, 3]

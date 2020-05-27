@@ -1,7 +1,10 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { falsey, stubFalse, args, slice, symbol, realm } from './utils.js'
+import { args, symbol, realm } from './utils.js'
 import isArray from '../isArray.js'
+import map from '../map.js'
+import falsey  from '../.internal/falsey.js'
+import { stubFalse } from './stubs.js'
+import slice from '../slice.js'
 
 describe('isArray', () => {
   it('should return `true` for arrays', () => {
@@ -9,9 +12,9 @@ describe('isArray', () => {
   })
 
   it('should return `false` for non-arrays', () => {
-    const expected = lodashStable.map(falsey, stubFalse)
+    const expected = map(falsey, stubFalse)
 
-    const actual = lodashStable.map(falsey, (value, index) => index ? isArray(value) : isArray())
+    const actual = map(falsey, (value, index) => index ? isArray(value) : isArray())
 
     assert.deepStrictEqual(actual, expected)
 

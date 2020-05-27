@@ -1,8 +1,9 @@
 import assert from 'assert'
-import { slice } from './utils.js'
 import reduce from '../reduce.js'
 import head from '../head.js'
 import keys from '../keys.js'
+
+const slice = Array.prototype.slice
 
 describe('reduce', () => {
   const array = [1, 2, 3]

@@ -1,1 +1,5 @@
-export { default } from './forEach.js'
+import forEach from './forEach'
+
+const each = forEach
+
+export default each

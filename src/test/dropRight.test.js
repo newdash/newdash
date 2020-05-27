@@ -1,6 +1,8 @@
 import assert from 'assert'
-import { falsey } from './utils.js'
-import { map, each, dropRight } from '../index'
+import map from '../map'
+import dropRight from '../dropRight'
+import each from '../each'
+import falsey from '../.internal/falsey'
 
 
 describe('dropRight', () => {

@@ -1,39 +1,48 @@
+import isArray from './isArray'
+import getIteratee from './.internal/getIteratee'
+import arrayFilter from './.internal/arrayFilter'
+import baseFilter from './.internal/baseFilter'
+
 /**
- * Iterates over elements of `array`, returning an array of all elements
+ * Iterates over elements of `collection`, returning an array of all elements
  * `predicate` returns truthy for. The predicate is invoked with three
- * arguments: (value, index, array).
+ * arguments: (value, index|key, collection).
  *
- * **Note:** Unlike `remove`, this method returns a new array.
+ * **Note:** Unlike `_.remove`, this method returns a new array.
  *
- * @since 5.0.0
- * @category Array
- * @param {Array} array The array to iterate over.
- * @param {Function} predicate The function invoked per iteration.
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Collection
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} [predicate=_.identity] The function invoked per iteration.
  * @returns {Array} Returns the new filtered array.
- * @see pull, pullAll, pullAllBy, pullAllWith, pullAt, remove, reject
+ * @see _.reject
  * @example
  *
- * const users = [
- *   { 'user': 'barney', 'active': true },
- *   { 'user': 'fred',   'active': false }
- * ]
+ * var users = [
+ *   { 'user': 'barney', 'age': 36, 'active': true },
+ *   { 'user': 'fred',   'age': 40, 'active': false }
+ * ];
  *
- * filter(users, ({ active }) => active)
+ * _.filter(users, function(o) { return !o.active; });
+ * // => objects for ['fred']
+ *
+ * // The `_.matches` iteratee shorthand.
+ * _.filter(users, { 'age': 36, 'active': true });
+ * // => objects for ['barney']
+ *
+ * // The `_.matchesProperty` iteratee shorthand.
+ * _.filter(users, ['active', false]);
+ * // => objects for ['fred']
+ *
+ * // The `_.property` iteratee shorthand.
+ * _.filter(users, 'active');
  * // => objects for ['barney']
  */
-function filter(array, predicate) {
-  let index = -1
-  let resIndex = 0
-  const length = array == null ? 0 : array.length
-  const result = []
-
-  while (++index < length) {
-    const value = array[index]
-    if (predicate(value, index, array)) {
-      result[resIndex++] = value
-    }
-  }
-  return result
+function filter(collection, predicate) {
+  const func = isArray(collection) ? arrayFilter : baseFilter
+  return func(collection, getIteratee(predicate, 3))
 }
 
 export default filter

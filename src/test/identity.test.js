@@ -1,5 +1,5 @@
 import assert from 'assert'
-import identity from '../identity.js'
+import identity from '../.internal/identity'
 
 describe('identity', () => {
   it('should return the first argument given', () => {

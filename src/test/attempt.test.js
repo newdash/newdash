@@ -1,6 +1,9 @@
 import assert from 'assert'
-import { slice, errors, stubTrue, CustomError, realm } from './utils.js'
-import { attempt, constant, map, isEqual } from '../index'
+import { errors, stubTrue, CustomError, realm } from './utils.js'
+import constant from '../constant.js'
+import attempt from '../attempt.js'
+import map from '../map.js'
+import isEqual from '../eqDeep.js'
 
 describe('attempt', () => {
   it('should return the result of `func`', () => {
@@ -8,7 +11,7 @@ describe('attempt', () => {
   })
 
   it('should provide additional arguments to `func`', () => {
-    const actual = attempt(function() { return slice.call(arguments) }, 1, 2)
+    const actual = attempt(function() { return Array.prototype.slice.call(arguments) }, 1, 2)
     assert.deepStrictEqual(actual, [1, 2])
   })
 
