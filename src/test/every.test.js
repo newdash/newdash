@@ -1,7 +1,7 @@
 import assert from 'assert'
 import identity from "../.internal/identity";
-import {  empties, stubTrue, stubFalse } from './utils.js'
-import every from '../every.js'
+import { empties, stubTrue, stubFalse } from './utils.js'
+import every from '../every'
 import map from '../map';
 
 describe('every', () => {
@@ -73,4 +73,5 @@ describe('every', () => {
     const actual = map([[1]], every)
     assert.deepStrictEqual(actual, [true])
   })
+
 })

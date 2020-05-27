@@ -4,7 +4,7 @@ import empties from "../.internal/empties";
 import { stubFalse } from "./stubs";
 import map from '../map.js';
 import each from '../each';
-import every from '../every.js';
+import every from '../every';
 import partial from "../partial";
 
 describe('includes', () => {

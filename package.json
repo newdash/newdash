@@ -39,7 +39,7 @@
     },
     "testTimeout": 30000,
     "collectCoverageFrom": [
-      "src/**/*.js",
+      "src/**/*",
       "!**/node_modules/**"
     ],
     "coveragePathIgnorePatterns": [

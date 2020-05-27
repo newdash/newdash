@@ -223,7 +223,7 @@ const ui = root.ui || (root.ui = {
   'buildPath': filePath,
   'loaderPath': '',
   'isModularize': /\b(?:amd|commonjs|es|node|npm|(index|main)\.js)\b/.test(filePath),
-  'isStrict': /\bes\b/.test(filePath) || 'default' in require(filePath),
+  'isStrict': true,
   'urlParams': {}
 })
 
