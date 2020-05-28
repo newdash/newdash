@@ -2,7 +2,7 @@ import isObject from './isObject';
 import isSymbol from './isSymbol';
 
 /** Used as references for various `Number` constants. */
-const NAN = 0 / 0;
+const NAN = Number.NaN;
 
 /** Used to match leading and trailing whitespace. */
 const reTrim = /^\s+|\s+$/g;

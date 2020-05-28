@@ -3,6 +3,7 @@ import { slice } from './utils'
 import meanBy from '../meanBy'
 
 describe('meanBy', () => {
+
   const objects = [{ 'a': 2 }, { 'a': 3 }, { 'a': 1 }]
 
   it('should work with an `iteratee`', () => {
@@ -26,4 +27,5 @@ describe('meanBy', () => {
     assert.strictEqual(meanBy(arrays, 0), 2)
     assert.strictEqual(meanBy(objects, 'a'), 2)
   })
+
 })

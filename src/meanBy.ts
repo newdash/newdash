@@ -1,7 +1,8 @@
 import baseSum from './.internal/baseSum';
+import getIteratee from './.internal/getIteratee';
 
 /** Used as references for various `Number` constants. */
-const NAN = 0 / 0;
+const NAN = Number.NaN
 
 /**
  * This method is like `mean` except that it accepts `iteratee` which is
@@ -22,7 +23,7 @@ const NAN = 0 / 0;
  */
 function meanBy(array, iteratee) {
   const length = array == null ? 0 : array.length;
-  return length ? (baseSum(array, iteratee) / length) : NAN;
+  return length ? (baseSum(array, getIteratee(iteratee, 2)) / length) : NAN;
 }
 
 export default meanBy;
