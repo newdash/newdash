@@ -1,12 +1,14 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { slice, doubled, falsey, stubArray } from './utils'
 import times from '../times'
-import identity from '../identity'
+import identity from '../.internal/identity'
+import map from "../map";
+import each from '../each';
+import constant from '../constant';
 
 describe('times', () => {
   it('should coerce non-finite `n` values to `0`', () => {
-    lodashStable.each([-Infinity, NaN, Infinity], (n) => {
+    each([-Infinity, NaN, Infinity], (n) => {
       assert.deepStrictEqual(times(n), [])
     })
   })
@@ -28,9 +30,9 @@ describe('times', () => {
 
   it('should use `_.identity` when `iteratee` is nullish', () => {
     const values = [, null, undefined],
-      expected = lodashStable.map(values, lodashStable.constant([0, 1, 2]))
+      expected = map(values, constant([0, 1, 2]))
 
-    const actual = lodashStable.map(values, (value, index) => index ? times(3, value) : times(3))
+    const actual = map(values, (value, index) => index ? times(3, value) : times(3))
 
     assert.deepStrictEqual(actual, expected)
   })
@@ -41,18 +43,11 @@ describe('times', () => {
 
   it('should return an empty array for falsey and negative `n` values', () => {
     const values = falsey.concat(-1, -Infinity),
-      expected = lodashStable.map(values, stubArray)
+      expected = map(values, stubArray)
 
-    const actual = lodashStable.map(values, (value, index) => index ? times(value) : times())
+    const actual = map(values, (value, index) => index ? times(value) : times())
 
     assert.deepStrictEqual(actual, expected)
   })
 
-  it('should return an unwrapped value when implicitly chaining', () => {
-    assert.deepStrictEqual(_(3).times(), [0, 1, 2])
-  })
-
-  it('should return a wrapped value when explicitly chaining', () => {
-    assert.ok(_(3).chain().times() instanceof _)
-  })
 })

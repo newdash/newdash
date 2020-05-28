@@ -1,24 +1,16 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 
-import {
-  empties,
-  stubTrue,
-  slice,
-  symbol,
-  args,
-  push,
-  arrayProto,
-  realm,
-  MAX_SAFE_INTEGER
-} from './utils'
+import { empties, stubTrue, slice, symbol, args, push, arrayProto, realm, MAX_SAFE_INTEGER } from './utils'
 
+import map from "../map";
 import isEmpty from '../isEmpty'
+import each from "../each";
+
 
 describe('isEmpty', () => {
   it('should return `true` for empty values', () => {
-    const expected = lodashStable.map(empties, stubTrue),
-      actual = lodashStable.map(empties, isEmpty)
+    const expected = map(empties, stubTrue),
+      actual = map(empties, isEmpty)
 
     assert.deepStrictEqual(actual, expected)
 
@@ -51,7 +43,7 @@ describe('isEmpty', () => {
   })
 
   it('should work with prototype objects', () => {
-    function Foo() {}
+    function Foo() { }
     Foo.prototype = { 'constructor': Foo }
 
     assert.strictEqual(isEmpty(Foo.prototype), true)
@@ -71,7 +63,7 @@ describe('isEmpty', () => {
 
   it('should work with maps', () => {
     if (Map) {
-      lodashStable.each([new Map, realm.map], (map) => {
+      each([new Map, realm.map], (map) => {
         assert.strictEqual(isEmpty(map), true)
         map.set('a', 1)
         assert.strictEqual(isEmpty(map), false)
@@ -82,7 +74,7 @@ describe('isEmpty', () => {
 
   it('should work with sets', () => {
     if (Set) {
-      lodashStable.each([new Set, realm.set], (set) => {
+      each([new Set, realm.set], (set) => {
         assert.strictEqual(isEmpty(set), true)
         set.add(1)
         assert.strictEqual(isEmpty(set), false)
@@ -92,14 +84,14 @@ describe('isEmpty', () => {
   })
 
   it('should not treat objects with negative lengths as array-like', () => {
-    function Foo() {}
+    function Foo() { }
     Foo.prototype.length = -1
 
     assert.strictEqual(isEmpty(new Foo), true)
   })
 
   it('should not treat objects with lengths larger than `MAX_SAFE_INTEGER` as array-like', () => {
-    function Foo() {}
+    function Foo() { }
     Foo.prototype.length = MAX_SAFE_INTEGER + 1
 
     assert.strictEqual(isEmpty(new Foo), true)
@@ -109,11 +101,5 @@ describe('isEmpty', () => {
     assert.strictEqual(isEmpty({ 'length': '0' }), false)
   })
 
-  it('should return an unwrapped value when implicitly chaining', () => {
-    assert.strictEqual(_({}).isEmpty(), true)
-  })
 
-  it('should return a wrapped value when explicitly chaining', () => {
-    assert.ok(_({}).chain().isEmpty() instanceof _)
-  })
 })

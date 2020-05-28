@@ -10,6 +10,7 @@ import isObject from '../isObject'
 import isPlainObject from '../isPlainObject'
 import isTypedArray from '../isTypedArray'
 import toPlainObject from '../toPlainObject'
+import safeGet from "./safeGet";
 
 /**
  * A specialized version of `baseMerge` for arrays and objects which performs
@@ -27,8 +28,8 @@ import toPlainObject from '../toPlainObject'
  *  counterparts.
  */
 function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, stack) {
-  const objValue = object[key]
-  const srcValue = source[key]
+  const objValue = safeGet(object, key);
+  const srcValue = safeGet(source, key);
   const stacked = stack.get(srcValue)
 
   if (stacked) {

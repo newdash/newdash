@@ -8,6 +8,7 @@ import constant from "../constant";
 import forOwn from "../forOwn";
 import assign from "../assign";
 import each from "../each"
+import root from "../.internal/root";
 
 /** Used to detect when a function becomes hot. */
 const HOT_COUNT = 150
@@ -33,9 +34,6 @@ const MAX_ARRAY_LENGTH = 4294967295,
 const funcTag = '[object Function]',
   numberTag = '[object Number]',
   objectTag = '[object Object]'
-
-/** Used as a reference to the global object. */
-const root = (typeof global === 'object' && global) || this
 
 /** Used to store lodash to test for bad extensions/shims. */
 let lodashBizarro = root.lodashBizarro
