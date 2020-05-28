@@ -1,6 +1,7 @@
 /**
- * The base implementation of methods like `findKey` and `findLastKey`
- * which iterates over `collection` using `eachFunc`.
+ * The base implementation of methods like `_.findKey` and `_.findLastKey`,
+ * without support for iteratee shorthands, which iterates over `collection`
+ * using `eachFunc`.
  *
  * @private
  * @param {Array|Object} collection The collection to inspect.
@@ -9,14 +10,13 @@
  * @returns {*} Returns the found element or its key, else `undefined`.
  */
 function baseFindKey(collection, predicate, eachFunc) {
-  let result
-  eachFunc(collection, (value, key, collection) => {
+  var result;
+  eachFunc(collection, function (value, key, collection) {
     if (predicate(value, key, collection)) {
-      result = key
-      return false
+      result = key;
+      return false;
     }
-  })
-  return result
+  });
+  return result;
 }
-
 export default baseFindKey

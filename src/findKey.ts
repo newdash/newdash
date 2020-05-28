@@ -1,3 +1,7 @@
+import baseFindKey from "./.internal/baseFindKey";
+import getIteratee from "./.internal/getIteratee";
+import baseForOwn from "./.internal/baseForOwn";
+
 /**
  * This method is like `find` except that it returns the key of the first
  * element `predicate` returns truthy for instead of the element itself.
@@ -20,19 +24,8 @@
  * findKey(users, ({ age }) => age < 40)
  * // => 'barney' (iteration order is not guaranteed)
  */
-function findKey(object, predicate) {
-  let result;
-  if (object == null) {
-    return result;
-  }
-  Object.keys(object).some((key) => {
-    const value = object[key];
-    if (predicate(value, key, object)) {
-      result = key;
-      return true;
-    }
-  });
-  return result;
+function findKey(object, predicate): string | undefined {
+  return baseFindKey(object, getIteratee(predicate, 3), baseForOwn);
 }
 
 export default findKey;
