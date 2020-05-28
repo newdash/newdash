@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice } from './utils.js'
-import sumBy from '../sumBy.js'
+import { slice } from './utils'
+import sumBy from '../sumBy'
 
 describe('sumBy', () => {
   const array = [6, 4, 2],

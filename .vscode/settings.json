@@ -6,5 +6,6 @@
   },
   "cSpell.words": [
     "falsey"
-  ]
+  ],
+  "eslint.enable": false
 }

@@ -1,5 +1,5 @@
-import baseGet from './baseGet.js'
-import baseSet from './baseSet.js'
+import baseGet from './baseGet'
+import baseSet from './baseSet'
 
 /**
  * The base implementation of `update`.

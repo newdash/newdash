@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { identity, empties, stubFalse, stubTrue } from './utils.js'
-import some from '../some.js'
+import { identity, empties, stubFalse, stubTrue } from './utils'
+import some from '../some'
 
 describe('some', () => {
   it('should return `true` if `predicate` returns truthy for any element', () => {

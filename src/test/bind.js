@@ -1,8 +1,8 @@
 import assert from 'assert';
 import lodashStable from 'lodash';
-import { push, falsey, stubTrue } from './utils.js';
-import bind from '../bind.js';
-import placeholder from '../placeholder.js';
+import { push, falsey, stubTrue } from './utils';
+import bind from '../bind';
+import placeholder from '../placeholder';
 
 describe('bind', function() {
   function fn() {

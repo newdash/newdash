@@ -1,10 +1,10 @@
-import Stack from './Stack.js'
-import equalArrays from './equalArrays.js'
-import equalByTag from './equalByTag.js'
-import equalObjects from './equalObjects.js'
-import getTag from './getTag.js'
-import isBuffer from '../isBuffer.js'
-import isTypedArray from '../isTypedArray.js'
+import Stack from './Stack'
+import equalArrays from './equalArrays'
+import equalByTag from './equalByTag'
+import equalObjects from './equalObjects'
+import getTag from './getTag'
+import isBuffer from '../isBuffer'
+import isTypedArray from '../isTypedArray'
 
 /** Used to compose bitmasks for value comparisons. */
 const COMPARE_PARTIAL_FLAG = 1

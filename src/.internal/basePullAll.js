@@ -1,7 +1,7 @@
-import map from '../map.js'
-import baseIndexOf from './baseIndexOf.js'
-import baseIndexOfWith from './baseIndexOfWith.js'
-import copyArray from './copyArray.js'
+import map from '../map'
+import baseIndexOf from './baseIndexOf'
+import baseIndexOfWith from './baseIndexOfWith'
+import copyArray from './copyArray'
 
 /**
  * The base implementation of `pullAllBy`.

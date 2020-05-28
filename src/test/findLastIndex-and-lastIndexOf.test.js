@@ -1,8 +1,8 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { identity, stubZero, falsey } from './utils.js'
-import findLastIndex from '../findLastIndex.js'
-import lastIndexOf from '../lastIndexOf.js'
+import { identity, stubZero, falsey } from './utils'
+import findLastIndex from '../findLastIndex'
+import lastIndexOf from '../lastIndexOf'
 
 const methods = {
   findLastIndex,

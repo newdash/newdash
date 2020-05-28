@@ -1,5 +1,5 @@
-import castPath from './castPath.js'
-import toKey from './toKey.js'
+import castPath from './castPath'
+import toKey from './toKey'
 
 /**
  * The base implementation of `get` without support for default values.

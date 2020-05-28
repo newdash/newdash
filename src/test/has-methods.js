@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, toArgs, stubTrue, args, symbol, defineProperty, stubFalse } from './utils.js'
+import { _, toArgs, stubTrue, args, symbol, defineProperty, stubFalse } from './utils'
 
 describe('has methods', () => {
   lodashStable.each(['has', 'hasIn'], (methodName) => {

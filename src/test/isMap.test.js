@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { map, falsey, stubFalse, args, slice, symbol, weakMap, realm } from './utils.js'
-import isMap from '../isMap.js'
+import { map, falsey, stubFalse, args, slice, symbol, weakMap, realm } from './utils'
+import isMap from '../isMap'
 
 describe('isMap', () => {
   it('should return `true` for maps', () => {

@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, identity, falsey, stubArray } from './utils.js'
+import { _, identity, falsey, stubArray } from './utils'
 
 describe('flatMap methods', () => {
   lodashStable.each(['flatMap', 'flatMapDeep', 'flatMapDepth'], (methodName) => {

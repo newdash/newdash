@@ -1,4 +1,4 @@
-import assocIndexOf from './assocIndexOf.js'
+import assocIndexOf from './assocIndexOf'
 
 class ListCache {
 

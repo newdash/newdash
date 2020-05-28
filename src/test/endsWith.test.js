@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { MAX_SAFE_INTEGER, falsey, stubTrue } from './utils.js'
-import endsWith from '../endsWith.js'
+import { MAX_SAFE_INTEGER, falsey, stubTrue } from './utils'
+import endsWith from '../endsWith'
 
 describe('endsWith', () => {
   const string = 'abc'

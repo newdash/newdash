@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { slice, stubOne } from './utils.js'
-import invokeMap from '../invokeMap.js'
+import { slice, stubOne } from './utils'
+import invokeMap from '../invokeMap'
 
 describe('invokeMap', () => {
   it('should invoke a methods on each element of `collection`', () => {

@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { stubTrue } from './utils.js'
-import pad from '../pad.js'
+import { stubTrue } from './utils'
+import pad from '../pad'
 
 describe('pad', () => {
   const string = 'abc'

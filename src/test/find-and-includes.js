@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, identity, args, falsey } from './utils.js'
+import { _, identity, args, falsey } from './utils'
 
 describe('find and includes', () => {
   lodashStable.each(['includes', 'find'], (methodName) => {

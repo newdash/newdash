@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { LARGE_ARRAY_SIZE } from './utils.js'
-import last from '../last.js'
+import { LARGE_ARRAY_SIZE } from './utils'
+import last from '../last'
 
 describe('last', () => {
   const array = [1, 2, 3, 4]

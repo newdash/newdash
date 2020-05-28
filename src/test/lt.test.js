@@ -1,5 +1,5 @@
 import assert from 'assert'
-import lt from '../lt.js'
+import lt from '../lt'
 
 describe('lt', () => {
   it('should return `true` if `value` is less than `other`', () => {

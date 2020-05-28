@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { noop, slice, stubA } from './utils.js'
-import wrap from '../wrap.js'
+import { noop, slice, stubA } from './utils'
+import wrap from '../wrap'
 
 describe('wrap', () => {
   it('should create a wrapped function', () => {

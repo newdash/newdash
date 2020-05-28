@@ -1,11 +1,11 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { slice, getUnwrappedValue, noop } from './utils.js'
-import has from '../has.js'
-import mixin from '../mixin.js'
-import prototype from '../prototype.js'
-import countBy from '../countBy.js'
-import filter from '../filter.js'
+import { slice, getUnwrappedValue, noop } from './utils'
+import has from '../has'
+import mixin from '../mixin'
+import prototype from '../prototype'
+import countBy from '../countBy'
+import filter from '../filter'
 
 describe('mixin', () => {
   function reset(wrapper) {

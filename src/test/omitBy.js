@@ -1,5 +1,5 @@
 import assert from 'assert'
-import omitBy from '../omitBy.js'
+import omitBy from '../omitBy'
 
 describe('omitBy', () => {
   it('should work with a predicate argument', () => {

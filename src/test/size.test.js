@@ -1,7 +1,7 @@
 import assert from 'assert'
-import { falsey, stubZero, args, push, arrayProto, realm, MAX_SAFE_INTEGER } from './utils.js'
-import size from '../size.js'
-import map from '../map.js'
+import { falsey, stubZero, args, push, arrayProto, realm, MAX_SAFE_INTEGER } from './utils'
+import size from '../size'
+import map from '../map'
 import each from '../each'
 
 describe('size', () => {

@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { symbol } from './utils.js'
-import toPath from '../toPath.js'
+import { symbol } from './utils'
+import toPath from '../toPath'
 
 describe('toPath', () => {
   it('should convert a string to a path', () => {

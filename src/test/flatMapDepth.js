@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { identity } from './utils.js'
-import flatMapDepth from '../flatMapDepth.js'
+import { identity } from './utils'
+import flatMapDepth from '../flatMapDepth'
 
 describe('flatMapDepth', () => {
   const array = [1, [2, [3, [4]], 5]]

@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, slice, MAX_ARRAY_LENGTH, MAX_ARRAY_INDEX } from './utils.js'
+import { _, slice, MAX_ARRAY_LENGTH, MAX_ARRAY_INDEX } from './utils'
 
 describe('sortedIndexBy methods', () => {
   lodashStable.each(['sortedIndexBy', 'sortedLastIndexBy'], (methodName) => {

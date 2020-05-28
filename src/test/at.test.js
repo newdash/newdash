@@ -1,11 +1,11 @@
 import assert from 'assert'
-import { empties, stubOne, falsey, args } from './utils.js'
-import at from '../at.js'
-import reject from '../reject.js'
-import transform from '../transform.js'
-import map from '../map.js'
-import constant from '../constant.js'
-import isArray from '../isArray.js'
+import { empties, stubOne, falsey, args } from './utils'
+import at from '../at'
+import reject from '../reject'
+import transform from '../transform'
+import map from '../map'
+import constant from '../constant'
+import isArray from '../isArray'
 
 describe('at', () => {
 

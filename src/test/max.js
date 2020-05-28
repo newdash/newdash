@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, noop } from './utils.js'
-import max from '../max.js'
+import { falsey, noop } from './utils'
+import max from '../max'
 
 describe('max', () => {
   it('should return the largest value from a collection', () => {

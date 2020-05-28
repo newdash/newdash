@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { slice } from './utils.js'
-import unary from '../unary.js'
+import { slice } from './utils'
+import unary from '../unary'
 
 describe('unary', () => {
   function fn() {

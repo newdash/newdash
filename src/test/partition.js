@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { identity, stubTrue, stubFalse } from './utils.js'
-import partition from '../partition.js'
+import { identity, stubTrue, stubFalse } from './utils'
+import partition from '../partition'
 
 describe('partition', () => {
   const array = [1, 0, 1]

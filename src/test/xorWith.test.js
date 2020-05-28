@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import xorWith from '../xorWith.js'
+import xorWith from '../xorWith'
 
 describe('xorWith', () => {
   it('should work with a `comparator`', () => {

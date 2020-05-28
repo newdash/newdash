@@ -1,5 +1,5 @@
-import baseUnset from './baseUnset.js'
-import isIndex from './isIndex.js'
+import baseUnset from './baseUnset'
+import isIndex from './isIndex'
 
 /**
  * The base implementation of `pullAt` without support for individual

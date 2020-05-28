@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { symbol, noop, mapCaches, LARGE_ARRAY_SIZE } from './utils.js'
+import { symbol, noop, mapCaches, LARGE_ARRAY_SIZE } from './utils'
 
 describe('map caches', () => {
   const keys = [null, undefined, false, true, 1, -Infinity, NaN, {}, 'a', symbol || noop]

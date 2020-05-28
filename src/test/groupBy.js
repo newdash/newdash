@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { LARGE_ARRAY_SIZE } from './utils.js'
-import groupBy from '../groupBy.js'
+import { LARGE_ARRAY_SIZE } from './utils'
+import groupBy from '../groupBy'
 
 describe('groupBy', () => {
   const array = [6.1, 4.2, 6.3]

@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, whitespace } from './utils.js'
+import { _, whitespace } from './utils'
 
 describe('trim methods', () => {
   lodashStable.each(['trim', 'trimStart', 'trimEnd'], (methodName, index) => {

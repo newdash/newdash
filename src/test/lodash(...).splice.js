@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, stubTrue } from './utils.js'
+import { falsey, stubTrue } from './utils'
 
 describe('lodash(...).splice', () => {
   it('should support removing and inserting elements', () => {

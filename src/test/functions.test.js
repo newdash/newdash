@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { identity, noop } from './utils.js'
-import functions from '../functions.js'
+import { identity, noop } from './utils'
+import functions from '../functions'
 
 describe('functions', () => {
   it('should return the function names of an object', () => {

@@ -1,9 +1,9 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { args, _ } from './utils.js'
-import flatten from '../flatten.js'
-import flattenDeep from '../flattenDeep.js'
-import flattenDepth from '../flattenDepth.js'
+import { args, _ } from './utils'
+import flatten from '../flatten'
+import flattenDeep from '../flattenDeep'
+import flattenDepth from '../flattenDepth'
 
 describe('flatten methods', () => {
   const array = [1, [2, [3, [4]], 5]],

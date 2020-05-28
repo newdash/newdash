@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, stubTrue, MAX_INTEGER, stubFalse, falsey, args, symbol } from './utils.js'
+import { _, stubTrue, MAX_INTEGER, stubFalse, falsey, args, symbol } from './utils'
 
 describe('isInteger methods', () => {
   lodashStable.each(['isInteger', 'isSafeInteger'], (methodName) => {

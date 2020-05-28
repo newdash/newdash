@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, stubFalse, stubTrue, empties } from './utils.js'
-import conformsTo from '../conformsTo.js'
+import { _, stubFalse, stubTrue, empties } from './utils'
+import conformsTo from '../conformsTo'
 
 describe('conforms methods', () => {
   lodashStable.each(['conforms', 'conformsTo'], (methodName) => {

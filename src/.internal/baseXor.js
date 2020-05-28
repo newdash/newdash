@@ -1,6 +1,6 @@
-import baseDifference from './baseDifference.js'
-import baseFlatten from './baseFlatten.js'
-import baseUniq from './baseUniq.js'
+import baseDifference from './baseDifference'
+import baseFlatten from './baseFlatten'
+import baseUniq from './baseUniq'
 
 /**
  * The base implementation of methods like `xor` which accepts an array of

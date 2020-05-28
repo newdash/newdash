@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, stubFalse, args, slice, symbol, realm } from './utils.js'
-import isRegExp from '../isRegExp.js'
+import { falsey, stubFalse, args, slice, symbol, realm } from './utils'
+import isRegExp from '../isRegExp'
 
 describe('isRegExp', () => {
   it('should return `true` for regexes', () => {

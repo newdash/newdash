@@ -1,10 +1,10 @@
 import assert from 'assert'
-import { document } from './utils.js'
-import map from '../map.js'
+import { document } from './utils'
+import map from '../map'
 import identity from "../.internal/identity";
 import { stubArray } from "./stubs";
-import falsey from '../.internal/falsey.js';
-import property from '../property.js';
+import falsey from '../.internal/falsey';
+import property from '../property';
 
 describe('map', () => {
 

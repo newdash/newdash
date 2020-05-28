@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, args, slice, symbol, realm } from './utils.js'
-import isUndefined from '../isUndefined.js'
+import { falsey, args, slice, symbol, realm } from './utils'
+import isUndefined from '../isUndefined'
 
 describe('isUndefined', () => {
   it('should return `true` for `undefined` values', () => {

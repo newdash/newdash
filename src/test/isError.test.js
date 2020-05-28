@@ -11,9 +11,9 @@ import {
   slice,
   symbol,
   realm
-} from './utils.js'
+} from './utils'
 
-import isError from '../isError.js'
+import isError from '../isError'
 
 describe('isError', () => {
   it('should return `true` for error objects', () => {

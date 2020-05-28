@@ -1,6 +1,6 @@
-import asciiSize from './asciiSize.js'
-import hasUnicode from './hasUnicode.js'
-import unicodeSize from './unicodeSize.js'
+import asciiSize from './asciiSize'
+import hasUnicode from './hasUnicode'
+import unicodeSize from './unicodeSize'
 
 /**
  * Gets the number of symbols in `string`.

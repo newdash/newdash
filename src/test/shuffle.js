@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import shuffle from '../shuffle.js'
+import shuffle from '../shuffle'
 
 describe('shuffle', () => {
   const array = [1, 2, 3],

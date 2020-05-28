@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { noop, stubA, stubB, stubOne } from './utils.js'
-import invoke from '../invoke.js'
+import { noop, stubA, stubB, stubOne } from './utils'
+import invoke from '../invoke'
 
 describe('invoke', () => {
   it('should invoke a method on `object`', () => {

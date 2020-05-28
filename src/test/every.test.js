@@ -1,6 +1,6 @@
 import assert from 'assert'
 import identity from "../.internal/identity";
-import { empties, stubTrue, stubFalse } from './utils.js'
+import { empties, stubTrue, stubFalse } from './utils'
 import every from '../every'
 import map from '../map';
 

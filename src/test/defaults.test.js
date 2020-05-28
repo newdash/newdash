@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { objectProto } from './utils.js'
-import defaults from '../defaults.js'
+import { objectProto } from './utils'
+import defaults from '../defaults'
 
 describe('defaults', () => {
   it('should assign source properties if missing on `object`', () => {

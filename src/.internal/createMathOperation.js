@@ -1,5 +1,5 @@
-import baseToNumber from './baseToNumber.js'
-import baseToString from './baseToString.js'
+import baseToNumber from './baseToNumber'
+import baseToString from './baseToString'
 
 /**
  * Creates a function that performs a mathematical operation on two values.

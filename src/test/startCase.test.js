@@ -1,5 +1,5 @@
 import assert from 'assert'
-import startCase from '../startCase.js'
+import startCase from '../startCase'
 
 describe('startCase', () => {
   it('should uppercase only the first character of each word', () => {

@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _ } from './utils.js'
+import { _ } from './utils'
 
 describe('forIn methods', () => {
   lodashStable.each(['forIn', 'forInRight'], (methodName) => {

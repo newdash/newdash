@@ -1,4 +1,4 @@
-import baseIndexOf from './baseIndexOf.js'
+import baseIndexOf from './baseIndexOf'
 
 /**
  * Used by `trim` and `trimStart` to get the index of the first string symbol

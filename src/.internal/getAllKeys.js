@@ -1,5 +1,5 @@
-import getSymbols from './getSymbols.js'
-import keys from '../keys.js'
+import getSymbols from './getSymbols'
+import keys from '../keys'
 
 /**
  * Creates an array of own enumerable property names and symbols of `object`.

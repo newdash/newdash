@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, args, document, body } from './utils.js'
+import { _, args, document, body } from './utils'
 
 describe('slice and toArray', () => {
   lodashStable.each(['slice', 'toArray'], (methodName) => {

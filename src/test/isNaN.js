@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, args, slice, symbol, realm } from './utils.js'
-import isNaN from '../isNaN.js'
+import { falsey, args, slice, symbol, realm } from './utils'
+import isNaN from '../isNaN'
 
 describe('isNaN', () => {
   it('should return `true` for NaNs', () => {

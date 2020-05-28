@@ -11,9 +11,9 @@ import {
   falsey,
   slice,
   realm
-} from './utils.js'
+} from './utils'
 
-import transform from '../transform.js'
+import transform from '../transform'
 
 describe('transform', () => {
   function Foo() {

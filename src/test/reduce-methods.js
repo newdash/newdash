@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, empties, noop, add } from './utils.js'
+import { _, empties, noop, add } from './utils'
 
 describe('reduce methods', () => {
   lodashStable.each(['reduce', 'reduceRight'], (methodName) => {

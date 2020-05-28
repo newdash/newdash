@@ -1,5 +1,5 @@
 import assert from 'assert'
-import add from '../add.js'
+import add from '../add'
 
 describe('add', () => {
   it('should add two numbers', () => {

@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice } from './utils.js'
-import delay from '../delay.js'
+import { slice } from './utils'
+import delay from '../delay'
 
 describe('delay', () => {
   it('should delay `func` execution', (done) => {

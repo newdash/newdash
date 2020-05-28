@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { weakSet, falsey, stubFalse, args, slice, set, symbol, realm } from './utils.js'
-import isWeakSet from '../isWeakSet.js'
+import { weakSet, falsey, stubFalse, args, slice, set, symbol, realm } from './utils'
+import isWeakSet from '../isWeakSet'
 
 describe('isWeakSet', () => {
   it('should return `true` for weak sets', () => {

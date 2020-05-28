@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, args } from './utils.js'
+import { _, args } from './utils'
 
 describe('union methods', () => {
   lodashStable.each(['union', 'unionBy', 'unionWith'], (methodName) => {

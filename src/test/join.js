@@ -1,5 +1,5 @@
 import assert from 'assert'
-import join from '../join.js'
+import join from '../join'
 
 describe('join', () => {
   const array = ['a', 'b', 'c']

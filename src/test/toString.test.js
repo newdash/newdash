@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { stubString, symbol } from './utils.js'
-import map from '../map.js'
+import { stubString, symbol } from './utils'
+import map from '../map'
 import toString from "../toString";
 
 

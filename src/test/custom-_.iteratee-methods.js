@@ -1,7 +1,7 @@
 import assert from 'assert'
-import partial from '../partial.js'
-import property from '../property.js'
-import iteratee from '../iteratee.js'
+import partial from '../partial'
+import property from '../property'
+import iteratee from '../iteratee'
 
 describe('custom `_.iteratee` methods', () => {
   var array = ['one', 'two', 'three'],

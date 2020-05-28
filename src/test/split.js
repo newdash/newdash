@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import split from '../split.js'
+import split from '../split'
 
 describe('split', () => {
   it('should split a string by `separator`', () => {

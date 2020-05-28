@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, empties } from './utils.js'
+import { _, empties } from './utils'
 
 describe('stub methods', () => {
   lodashStable.each(['noop', 'stubTrue', 'stubFalse', 'stubArray', 'stubObject', 'stubString'], (methodName) => {

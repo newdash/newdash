@@ -1,11 +1,11 @@
 import assert from 'assert';
 import lodashStable from 'lodash';
-import { slice, stubArray } from './utils.js';
-import curry from '../curry.js';
-import placeholder from '../placeholder.js';
-import bind from '../bind.js';
-import partial from '../partial.js';
-import partialRight from '../partialRight.js';
+import { slice, stubArray } from './utils';
+import curry from '../curry';
+import placeholder from '../placeholder';
+import bind from '../bind';
+import partial from '../partial';
+import partialRight from '../partialRight';
 
 describe('curry', function() {
   function fn(a, b, c, d) {

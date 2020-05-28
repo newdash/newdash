@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { oldDash, coverage, document, isModularize, realm, filePath } from './utils.js'
-import noConflict from '../noConflict.js'
+import { oldDash, coverage, document, isModularize, realm, filePath } from './utils'
+import noConflict from '../noConflict'
 
 describe('noConflict', () => {
   it('should return the `lodash` function', () => {

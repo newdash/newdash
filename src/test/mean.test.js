@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { empties, stubNaN } from './utils.js'
-import mean from '../mean.js'
+import { empties, stubNaN } from './utils'
+import mean from '../mean'
 
 describe('mean', () => {
   it('should return the mean of an array of numbers', () => {

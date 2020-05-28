@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, LARGE_ARRAY_SIZE, slice } from './utils.js'
-import sortBy from '../sortBy.js'
+import { _, LARGE_ARRAY_SIZE, slice } from './utils'
+import sortBy from '../sortBy'
 
 describe('uniqBy methods', () => {
   lodashStable.each(['uniqBy', 'sortedUniqBy'], (methodName) => {

@@ -1,8 +1,8 @@
-import SetCache from './SetCache.js'
-import arrayIncludes from './arrayIncludes.js'
-import arrayIncludesWith from './arrayIncludesWith.js'
-import map from '../map.js'
-import cacheHas from './cacheHas.js'
+import SetCache from './SetCache'
+import arrayIncludes from './arrayIncludes'
+import arrayIncludesWith from './arrayIncludesWith'
+import map from '../map'
+import cacheHas from './cacheHas'
 
 /**
  * The base implementation of methods like `intersection` that accepts an

@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import sortedUniq from '../sortedUniq.js'
+import sortedUniq from '../sortedUniq'
 
 describe('sortedUniq', () => {
   it('should return unique values of a sorted array', () => {

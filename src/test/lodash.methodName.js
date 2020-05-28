@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, empties } from './utils.js'
+import { _, empties } from './utils'
 
 lodashStable.each(['find', 'findIndex', 'findKey', 'findLast', 'findLastIndex', 'findLastKey'], (methodName) => {
   describe(`lodash.${methodName}`)

@@ -1,7 +1,7 @@
 import assert from 'assert';
 import lodashStable from 'lodash';
-import { falsey } from './utils.js';
-import orderBy from '../orderBy.js';
+import { falsey } from './utils';
+import orderBy from '../orderBy';
 
 describe('orderBy', function() {
   var objects = [

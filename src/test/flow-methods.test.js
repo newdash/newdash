@@ -1,11 +1,11 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { add, square, noop, identity } from './utils.js'
-import head from '../head.js'
-import map from '../map.js'
-import uniq from '../uniq.js'
-import flow from '../flow.js'
-import flowRight from '../flowRight.js'
+import { add, square, noop, identity } from './utils'
+import head from '../head'
+import map from '../map'
+import uniq from '../uniq'
+import flow from '../flow'
+import flowRight from '../flowRight'
 
 const methods = {
   flow,

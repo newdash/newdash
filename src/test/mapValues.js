@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import mapValues from '../mapValues.js'
+import mapValues from '../mapValues'
 
 describe('mapValues', () => {
   const array = [1, 2],

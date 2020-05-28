@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, LARGE_ARRAY_SIZE } from './utils.js'
-import slice from '../slice.js'
+import { falsey, LARGE_ARRAY_SIZE } from './utils'
+import slice from '../slice'
 
 describe('slice', () => {
   const array = [1, 2, 3]

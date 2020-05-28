@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, args, slice, symbol, realm } from './utils.js'
-import isNil from '../isNil.js'
+import { falsey, args, slice, symbol, realm } from './utils'
+import isNil from '../isNil'
 
 describe('isNil', () => {
   it('should return `true` for nullish values', () => {

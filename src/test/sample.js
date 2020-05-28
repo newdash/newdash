@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { empties, noop } from './utils.js'
-import sample from '../sample.js'
+import { empties, noop } from './utils'
+import sample from '../sample'
 
 describe('sample', () => {
   const array = [1, 2, 3]

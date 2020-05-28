@@ -1,6 +1,6 @@
-import baseIsMatch from './baseIsMatch.js'
-import getMatchData from './getMatchData.js'
-import matchesStrictComparable from './matchesStrictComparable.js'
+import baseIsMatch from './baseIsMatch'
+import getMatchData from './getMatchData'
+import matchesStrictComparable from './matchesStrictComparable'
 
 /**
  * The base implementation of `matches` which doesn't clone `source`.

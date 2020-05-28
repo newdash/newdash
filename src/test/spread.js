@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { slice, _, stubTrue, falsey } from './utils.js'
+import { slice, _, stubTrue, falsey } from './utils'
 
 describe('spread', () => {
   function fn(a, b, c) {

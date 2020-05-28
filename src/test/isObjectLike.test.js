@@ -1,7 +1,7 @@
 import assert from 'assert'
-import { args, falsey, slice, symbol, stubFalse, realm } from './utils.js'
-import isObjectLike from '../isObjectLike.js'
-import map from '../map.js'
+import { args, falsey, slice, symbol, stubFalse, realm } from './utils'
+import isObjectLike from '../isObjectLike'
+import map from '../map'
 
 describe('isObjectLike', () => {
 

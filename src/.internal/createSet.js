@@ -1,4 +1,4 @@
-import setToArray from './setToArray.js'
+import setToArray from './setToArray'
 
 /** Used as references for various `Number` constants. */
 const INFINITY = 1 / 0

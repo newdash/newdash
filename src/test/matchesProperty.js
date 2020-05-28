@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { stubTrue, stubFalse, noop, numberProto } from './utils.js'
-import matchesProperty from '../matchesProperty.js'
+import { stubTrue, stubFalse, noop, numberProto } from './utils'
+import matchesProperty from '../matchesProperty'
 
 describe('matchesProperty', () => {
   it('should create a function that performs a deep comparison between a property value and `srcValue`', () => {

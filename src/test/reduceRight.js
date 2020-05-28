@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { slice } from './utils.js'
-import reduceRight from '../reduceRight.js'
+import { slice } from './utils'
+import reduceRight from '../reduceRight'
 
 describe('reduceRight', () => {
   const array = [1, 2, 3]

@@ -17,9 +17,9 @@ import {
   document,
   stubFalse,
   root
-} from './utils.js'
+} from './utils'
 
-import isEqual from '../isEqual.js'
+import isEqual from '../isEqual'
 
 describe('isEqual', () => {
   const symbol1 = Symbol ? Symbol('a') : true,

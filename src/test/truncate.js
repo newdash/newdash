@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import truncate from '../truncate.js'
+import truncate from '../truncate'
 
 describe('truncate', () => {
   const string = 'hi-diddly-ho there, neighborino'

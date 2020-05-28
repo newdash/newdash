@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, empties, stubZero } from './utils.js'
+import { _, empties, stubZero } from './utils'
 
 describe('sum methods', () => {
   lodashStable.each(['sum', 'sumBy'], (methodName) => {

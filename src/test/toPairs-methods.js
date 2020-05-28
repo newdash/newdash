@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _ } from './utils.js'
+import { _ } from './utils'
 
 describe('toPairs methods', () => {
   lodashStable.each(['toPairs', 'toPairsIn'], (methodName) => {

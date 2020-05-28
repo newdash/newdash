@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey } from './utils.js'
-import fill from '../fill.js'
+import { falsey } from './utils'
+import fill from '../fill'
 
 describe('fill', () => {
   it('should use a default `start` of `0` and a default `end` of `length`', () => {

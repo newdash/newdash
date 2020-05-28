@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, args, LARGE_ARRAY_SIZE, stubNaN } from './utils.js'
+import { _, args, LARGE_ARRAY_SIZE, stubNaN } from './utils'
 
 describe('intersection methods', () => {
   lodashStable.each(['intersection', 'intersectionBy', 'intersectionWith'], (methodName) => {

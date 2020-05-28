@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { burredLetters, _, stubArray } from './utils.js'
-import words from '../words.js'
+import { burredLetters, _, stubArray } from './utils'
+import words from '../words'
 
 describe('words', () => {
   it('should match words containing Latin Unicode letters', () => {

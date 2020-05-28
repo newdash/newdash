@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, LARGE_ARRAY_SIZE, isEven, square } from './utils.js'
+import { _, LARGE_ARRAY_SIZE, isEven, square } from './utils'
 
 describe('filter methods', () => {
   lodashStable.each(['filter', 'reject'], (methodName) => {

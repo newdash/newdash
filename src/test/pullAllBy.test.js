@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice } from './utils.js'
-import pullAllBy from '../pullAllBy.js'
+import { slice } from './utils'
+import pullAllBy from '../pullAllBy'
 
 describe('pullAllBy', () => {
   it('should accept an `iteratee`', () => {

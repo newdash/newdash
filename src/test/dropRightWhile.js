@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice } from './utils.js'
-import dropRightWhile from '../dropRightWhile.js'
+import { slice } from './utils'
+import dropRightWhile from '../dropRightWhile'
 
 describe('dropRightWhile', () => {
   const array = [1, 2, 3, 4]

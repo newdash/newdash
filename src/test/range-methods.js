@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, falsey } from './utils.js'
+import { _, falsey } from './utils'
 
 describe('range methods', () => {
   lodashStable.each(['range', 'rangeRight'], (methodName) => {

@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import unionWith from '../unionWith.js'
+import unionWith from '../unionWith'
 
 describe('unionWith', () => {
   it('should work with a `comparator`', () => {

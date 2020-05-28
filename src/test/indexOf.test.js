@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { stubZero, falsey } from './utils.js'
-import indexOf from '../indexOf.js'
+import { stubZero, falsey } from './utils'
+import indexOf from '../indexOf'
 
 describe('indexOf', () => {
   const array = [1, 2, 3, 1, 2, 3]

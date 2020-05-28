@@ -1,5 +1,5 @@
 import assert from 'assert'
-import eq from '../eq.js'
+import eq from '../eq'
 
 describe('eq', () => {
   it('should perform a `SameValueZero` comparison of two values', () => {

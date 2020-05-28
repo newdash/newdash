@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { stubB } from './utils.js'
-import result from '../result.js'
+import { stubB } from './utils'
+import result from '../result'
 
 describe('result', () => {
   const object = { 'a': 1, 'b': stubB }

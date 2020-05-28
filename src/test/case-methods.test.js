@@ -1,12 +1,12 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { stubTrue, burredLetters, deburredLetters } from './utils.js'
-import camelCase from '../camelCase.js'
-import kebabCase from '../kebabCase.js'
-import lowerCase from '../lowerCase.js'
-import snakeCase from '../snakeCase.js'
-import startCase from '../startCase.js'
-import upperCase from '../upperCase.js'
+import { stubTrue, burredLetters, deburredLetters } from './utils'
+import camelCase from '../camelCase'
+import kebabCase from '../kebabCase'
+import lowerCase from '../lowerCase'
+import snakeCase from '../snakeCase'
+import startCase from '../startCase'
+import upperCase from '../upperCase'
 
 const caseMethods = {
   camelCase,

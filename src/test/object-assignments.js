@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, primitives, stubTrue, defineProperty, slice } from './utils.js'
-import has from '../has.js'
+import { _, primitives, stubTrue, defineProperty, slice } from './utils'
+import has from '../has'
 
 describe('object assignments', () => {
   lodashStable.each(['assign', 'assignIn', 'defaults', 'defaultsDeep', 'merge'], (methodName) => {

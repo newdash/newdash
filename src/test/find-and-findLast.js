@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { LARGE_ARRAY_SIZE, square, isEven } from './utils.js'
+import { LARGE_ARRAY_SIZE, square, isEven } from './utils'
 
 describe('find and findLast', () => {
   lodashStable.each(['find', 'findLast'], (methodName) => {

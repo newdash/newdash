@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice } from './utils.js'
-import meanBy from '../meanBy.js'
+import { slice } from './utils'
+import meanBy from '../meanBy'
 
 describe('meanBy', () => {
   const objects = [{ 'a': 2 }, { 'a': 3 }, { 'a': 1 }]

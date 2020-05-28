@@ -1,6 +1,6 @@
 import assert from 'assert'
-import extendWith from '../extendWith.js'
-import assignInWith from '../assignInWith.js'
+import extendWith from '../extendWith'
+import assignInWith from '../assignInWith'
 
 describe('assignInWith', () => {
   it('should be aliased', () => {

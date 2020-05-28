@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { arrayBuffer, falsey, stubFalse, args, slice, symbol, realm } from './utils.js'
-import isArrayBuffer from '../isArrayBuffer.js'
+import { arrayBuffer, falsey, stubFalse, args, slice, symbol, realm } from './utils'
+import isArrayBuffer from '../isArrayBuffer'
 
 describe('isArrayBuffer', () => {
   it('should return `true` for array buffers', () => {

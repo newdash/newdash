@@ -1,8 +1,8 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { noop, stubTrue, identity } from './utils.js'
-import memoize from '../memoize.js'
-import isFunction from '../isFunction.js'
+import { noop, stubTrue, identity } from './utils'
+import memoize from '../memoize'
+import isFunction from '../isFunction'
 
 describe('memoize', () => {
   function CustomCache() {

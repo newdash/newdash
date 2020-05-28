@@ -1,8 +1,8 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { identity, isModularize, argv, isPhantom } from './utils.js'
-import throttle from '../throttle.js'
-import runInContext from '../runInContext.js'
+import { identity, isModularize, argv, isPhantom } from './utils'
+import throttle from '../throttle'
+import runInContext from '../runInContext'
 
 describe('throttle', () => {
   it('should throttle a function', (done) => {

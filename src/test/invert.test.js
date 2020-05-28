@@ -1,5 +1,5 @@
 import assert from 'assert'
-import invert from '../invert.js'
+import invert from '../invert'
 
 describe('invert', () => {
   it('should invert an object', () => {

@@ -1,8 +1,8 @@
 import assert from 'assert'
-import includes from '../includes.js'
+import includes from '../includes'
 import empties from "../.internal/empties";
 import { stubFalse } from "./stubs";
-import map from '../map.js';
+import map from '../map';
 import each from '../each';
 import every from '../every';
 import partial from "../partial";

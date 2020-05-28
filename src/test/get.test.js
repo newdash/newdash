@@ -1,10 +1,10 @@
 import assert from 'assert'
 
-import { _, symbol, numberProto, } from './utils.js'
-import get from '../get.js'
+import { _, symbol, numberProto, } from './utils'
+import get from '../get'
 import empties from "../.internal/empties";
-import noop from '../.internal/noop.js';
-import map from '../map.js';
+import noop from '../.internal/noop';
+import map from '../map';
 import each from '../each';
 
 

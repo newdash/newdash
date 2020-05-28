@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { args, stubTrue, falsey, asyncFunc, genFunc, slice, symbol, realm } from './utils.js'
-import isArrayLike from '../isArrayLike.js'
+import { args, stubTrue, falsey, asyncFunc, genFunc, slice, symbol, realm } from './utils'
+import isArrayLike from '../isArrayLike'
 
 describe('isArrayLike', () => {
   it('should return `true` for array-like values', () => {

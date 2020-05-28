@@ -1,8 +1,8 @@
-import baseEach from './baseEach.js'
-import baseSortBy from './baseSortBy.js'
-import baseGet from './baseGet.js'
-import compareMultiple from './compareMultiple.js'
-import isArrayLike from '../isArrayLike.js'
+import baseEach from './baseEach'
+import baseSortBy from './baseSortBy'
+import baseGet from './baseGet'
+import compareMultiple from './compareMultiple'
+import isArrayLike from '../isArrayLike'
 
 const identity = (value) => value
 

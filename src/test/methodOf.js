@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { stubOne, _, stubTwo, stubThree, stubFour, noop, slice } from './utils.js'
-import constant from '../constant.js'
+import { stubOne, _, stubTwo, stubThree, stubFour, noop, slice } from './utils'
+import constant from '../constant'
 
 describe('methodOf', () => {
   it('should create a function that calls a method of a given key', () => {

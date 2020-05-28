@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice } from './utils.js'
-import unionBy from '../unionBy.js'
+import { slice } from './utils'
+import unionBy from '../unionBy'
 
 describe('unionBy', () => {
   it('should accept an `iteratee`', () => {

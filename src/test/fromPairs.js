@@ -1,8 +1,8 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, stubObject, LARGE_ARRAY_SIZE } from './utils.js'
-import fromPairs from '../fromPairs.js'
-import toPairs from '../toPairs.js'
+import { falsey, stubObject, LARGE_ARRAY_SIZE } from './utils'
+import fromPairs from '../fromPairs'
+import toPairs from '../toPairs'
 
 describe('fromPairs', () => {
   it('should accept a two dimensional array', () => {

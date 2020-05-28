@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { noop } from './utils.js'
-import defaultsDeep from '../defaultsDeep.js'
+import { noop } from './utils'
+import defaultsDeep from '../defaultsDeep'
 
 describe('defaultsDeep', () => {
   it('should deep assign source properties if missing on `object`', () => {

@@ -1,5 +1,5 @@
-import isKey from './isKey.js'
-import stringToPath from './stringToPath.js'
+import isKey from './isKey'
+import stringToPath from './stringToPath'
 
 /**
  * Casts `value` to a path array if it's not one.

@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, stubThree } from './utils.js'
-import repeat from '../repeat.js'
+import { falsey, stubThree } from './utils'
+import repeat from '../repeat'
 
 describe('repeat', () => {
   const string = 'abc'

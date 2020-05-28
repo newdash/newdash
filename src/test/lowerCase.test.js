@@ -1,5 +1,5 @@
 import assert from 'assert'
-import lowerCase from '../lowerCase.js'
+import lowerCase from '../lowerCase'
 
 describe('lowerCase', () => {
   it('should lowercase as space-separated words', () => {

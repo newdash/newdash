@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, stubTrue } from './utils.js'
-import inRange from '../inRange.js'
+import { falsey, stubTrue } from './utils'
+import inRange from '../inRange'
 
 describe('inRange', () => {
   it('should work with an `end`', () => {

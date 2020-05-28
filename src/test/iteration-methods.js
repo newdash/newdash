@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, slice, isNpm, noop, MAX_SAFE_INTEGER, stubTrue } from './utils.js'
+import { _, slice, isNpm, noop, MAX_SAFE_INTEGER, stubTrue } from './utils'
 
 describe('iteration methods', () => {
   const methods = [

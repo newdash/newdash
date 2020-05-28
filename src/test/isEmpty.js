@@ -11,9 +11,9 @@ import {
   arrayProto,
   realm,
   MAX_SAFE_INTEGER
-} from './utils.js'
+} from './utils'
 
-import isEmpty from '../isEmpty.js'
+import isEmpty from '../isEmpty'
 
 describe('isEmpty', () => {
   it('should return `true` for empty values', () => {

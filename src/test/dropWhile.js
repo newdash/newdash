@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { slice, LARGE_ARRAY_SIZE } from './utils.js'
-import dropWhile from '../dropWhile.js'
+import { slice, LARGE_ARRAY_SIZE } from './utils'
+import dropWhile from '../dropWhile'
 
 describe('dropWhile', () => {
   const array = [1, 2, 3, 4]

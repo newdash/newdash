@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { lodashBizarro, whitespace, stubZero } from './utils.js'
-import parseInt from '../parseInt.js'
+import { lodashBizarro, whitespace, stubZero } from './utils'
+import parseInt from '../parseInt'
 
 describe('parseInt', () => {
   it('should accept a `radix`', () => {

@@ -1,8 +1,8 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { LARGE_ARRAY_SIZE, _, falsey } from './utils.js'
-import compact from '../compact.js'
-import slice from '../slice.js'
+import { LARGE_ARRAY_SIZE, _, falsey } from './utils'
+import compact from '../compact'
+import slice from '../slice'
 
 describe('compact', () => {
   const largeArray = lodashStable.range(LARGE_ARRAY_SIZE).concat(null)

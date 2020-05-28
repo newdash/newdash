@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, symbol, defineProperty } from './utils.js'
+import { _, symbol, defineProperty } from './utils'
 
 describe('omit methods', () => {
   lodashStable.each(['omit', 'omitBy'], (methodName) => {

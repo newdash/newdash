@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { square, isNpm } from './utils.js'
-import compact from '../compact.js'
+import { square, isNpm } from './utils'
+import compact from '../compact'
 
 describe('lodash(...).plant', () => {
   it('should clone the chained sequence planting `value` as the wrapped value', () => {

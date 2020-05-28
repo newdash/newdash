@@ -1,5 +1,5 @@
 import assert from 'assert'
-import replace from '../replace.js'
+import replace from '../replace'
 
 describe('replace', () => {
   it('should replace the matched pattern', () => {

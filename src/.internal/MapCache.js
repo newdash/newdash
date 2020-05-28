@@ -1,5 +1,5 @@
 
-import Hash from './Hash.js'
+import Hash from './Hash'
 
 /**
  * Gets the data for `map`.

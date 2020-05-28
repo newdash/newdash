@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { square } from './utils.js'
-import chain from '../chain.js'
+import { square } from './utils'
+import chain from '../chain'
 
 describe('chain', () => {
   it('should return a wrapped value', () => {

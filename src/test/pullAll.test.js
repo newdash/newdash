@@ -1,5 +1,5 @@
 import assert from 'assert'
-import pullAll from '../pullAll.js'
+import pullAll from '../pullAll'
 
 describe('pullAll', () => {
   it('should work with the same value for `array` and `values`', () => {

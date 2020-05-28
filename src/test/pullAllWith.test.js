@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import pullAllWith from '../pullAllWith.js'
+import pullAllWith from '../pullAllWith'
 
 describe('pullAllWith', () => {
   it('should work with a `comparator`', () => {

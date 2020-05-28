@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import escape from '../escape.js'
-import unescape from '../unescape.js'
+import escape from '../escape'
+import unescape from '../unescape'
 
 describe('escape', () => {
   let escaped = '&amp;&lt;&gt;&quot;&#39;/',

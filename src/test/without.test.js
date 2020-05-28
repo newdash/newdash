@@ -1,5 +1,5 @@
 import assert from 'assert'
-import without from '../without.js'
+import without from '../without'
 
 describe('without', () => {
   it('should return the difference of values', () => {

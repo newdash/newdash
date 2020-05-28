@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { stubTrue, stubFalse, args, symbol } from './utils.js'
-import isFinite from '../isFinite.js'
+import { stubTrue, stubFalse, args, symbol } from './utils'
+import isFinite from '../isFinite'
 
 describe('isFinite', () => {
   it('should return `true` for finite values', () => {

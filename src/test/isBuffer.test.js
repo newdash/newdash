@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, stubFalse, args, slice, symbol, isStrict, lodashBizarro } from './utils.js'
-import isBuffer from '../isBuffer.js'
+import { falsey, stubFalse, args, slice, symbol, isStrict, lodashBizarro } from './utils'
+import isBuffer from '../isBuffer'
 
 describe('isBuffer', () => {
 

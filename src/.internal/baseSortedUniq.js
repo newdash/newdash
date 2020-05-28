@@ -1,4 +1,4 @@
-import eq from '../eq.js'
+import eq from '../eq'
 
 /**
  * The base implementation of `sortedUniq` and `sortedUniqBy`.

@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import partialRight from '../partialRight.js'
-import mergeWith from '../mergeWith.js'
+import partialRight from '../partialRight'
+import mergeWith from '../mergeWith'
 
 describe('partialRight', () => {
   it('should work as a deep `_.defaults`', () => {

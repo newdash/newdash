@@ -9,7 +9,7 @@ import isEqual from '../isEqual'
 import assign from '../assign'
 import isArguments from '../isArguments'
 
-import { args, typedArrays, stubTrue, defineProperty, document, root } from './utils.js'
+import { args, typedArrays, stubTrue, defineProperty, document, root } from './utils'
 
 describe('merge', () => {
   it('should merge `source` into `object`', () => {

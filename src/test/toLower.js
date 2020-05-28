@@ -1,5 +1,5 @@
 import assert from 'assert'
-import toLower from '../toLower.js'
+import toLower from '../toLower'
 
 describe('toLower', () => {
   it('should convert whole string to lower case', () => {

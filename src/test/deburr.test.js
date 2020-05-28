@@ -1,7 +1,7 @@
 import assert from 'assert'
-import { burredLetters, deburredLetters, comboMarks } from './utils.js'
-import map from '../map.js'
-import constant from '../constant.js'
+import { burredLetters, deburredLetters, comboMarks } from './utils'
+import map from '../map'
+import constant from '../constant'
 import deburr from "../deburr";
 
 describe('deburr', () => {

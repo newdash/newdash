@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { args, toArgs } from './utils.js'
-import pick from '../pick.js'
+import { args, toArgs } from './utils'
+import pick from '../pick'
 
 describe('pick', () => {
   const args = toArgs(['a', 'c']),

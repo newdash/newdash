@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import invertBy from '../invertBy.js'
+import invertBy from '../invertBy'
 
 describe('invertBy', () => {
   const object = { 'a': 1, 'b': 2, 'c': 1 }

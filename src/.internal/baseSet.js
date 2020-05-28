@@ -1,8 +1,8 @@
-import assignValue from './assignValue.js'
-import castPath from './castPath.js'
-import isIndex from './isIndex.js'
-import isObject from '../isObject.js'
-import toKey from './toKey.js'
+import assignValue from './assignValue'
+import castPath from './castPath'
+import isIndex from './isIndex'
+import isObject from '../isObject'
+import toKey from './toKey'
 
 /**
  * The base implementation of `set`.

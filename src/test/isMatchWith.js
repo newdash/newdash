@@ -1,10 +1,10 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { slice, noop, stubA, falsey, stubFalse, isNpm, mapCaches } from './utils.js'
-import isMatchWith from '../isMatchWith.js'
-import isString from '../isString.js'
-import last from '../last.js'
-import partial from '../partial.js'
+import { slice, noop, stubA, falsey, stubFalse, isNpm, mapCaches } from './utils'
+import isMatchWith from '../isMatchWith'
+import isString from '../isString'
+import last from '../last'
+import partial from '../partial'
 
 describe('isMatchWith', () => {
   it('should provide correct `customizer` arguments', () => {

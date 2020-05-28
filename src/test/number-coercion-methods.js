@@ -10,7 +10,7 @@ import {
   MAX_ARRAY_LENGTH,
   symbol,
   falsey
-} from './utils.js'
+} from './utils'
 
 describe('number coercion methods', () => {
   lodashStable.each(['toFinite', 'toInteger', 'toNumber', 'toSafeInteger'], (methodName) => {

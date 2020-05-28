@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, stubA, stubB, stubC, slice, stubFalse, stubTrue } from './utils.js'
+import { _, stubA, stubB, stubC, slice, stubFalse, stubTrue } from './utils'
 
 describe('cond', () => {
   it('should create a conditional function', () => {

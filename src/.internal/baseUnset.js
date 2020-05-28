@@ -1,7 +1,7 @@
-import castPath from './castPath.js'
-import last from '../last.js'
-import parent from './parent.js'
-import toKey from './toKey.js'
+import castPath from './castPath'
+import last from '../last'
+import parent from './parent'
+import toKey from './toKey'
 
 /**
  * The base implementation of `unset`.

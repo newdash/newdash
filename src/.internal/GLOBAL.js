@@ -340,7 +340,7 @@ export const stringEscapes = {
 export const freeParseFloat = parseFloat,
   freeParseInt = parseInt;
 
-/** Detect free variable `global` from Node.js. */
+/** Detect free variable `global` from Node. */
 export const freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
 
 /** Detect free variable `self`. */
@@ -358,25 +358,25 @@ export const freeModule = freeExports && typeof module == 'object' && module && 
 /** Detect the popular CommonJS extension `module.exports`. */
 export const moduleExports = freeModule && freeModule.exports === freeExports;
 
-/** Detect free variable `process` from Node.js. */
+/** Detect free variable `process` from Node. */
 export const freeProcess = moduleExports && freeGlobal.process;
 
-/** Used to access faster Node.js helpers. */
+/** Used to access faster Node helpers. */
 export const nodeUtil = (function () {
   try {
-    // Use `util.types` for Node.js 10+.
+    // Use `util.types` for Node 10+.
     var types = freeModule && freeModule.require && freeModule.require('util').types;
 
     if (types) {
       return types;
     }
 
-    // Legacy `process.binding('util')` for Node.js < 10.
+    // Legacy `process.binding('util')` for Node < 10.
     return freeProcess && freeProcess.binding && freeProcess.binding('util');
   } catch (e) { }
 }());
 
-/* Node.js helper references. */
+/* Node helper references. */
 export const nodeIsArrayBuffer = nodeUtil && nodeUtil.isArrayBuffer,
   nodeIsDate = nodeUtil && nodeUtil.isDate,
   nodeIsMap = nodeUtil && nodeUtil.isMap,

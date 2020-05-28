@@ -14,11 +14,11 @@ import {
   filePath,
   emptyObject,
   interopRequire
-} from './utils.js'
+} from './utils'
 
-import isNative from '../isNative.js'
-import runInContext from '../runInContext.js'
-import _baseEach from '../.internal/baseEach.js'
+import isNative from '../isNative'
+import runInContext from '../runInContext'
+import _baseEach from '../.internal/baseEach'
 
 describe('isNative', () => {
   it('should return `true` for native methods', () => {
@@ -66,7 +66,7 @@ describe('isNative', () => {
     assert.raises(() => { lodash.isNative(noop) })
   })
 
-  it('should detect methods masquerading as native (test in Node.js)', () => {
+  it('should detect methods masquerading as native (test in Node)', () => {
     if (!amd && _baseEach) {
       const path = require('path'),
         basePath = path.dirname(filePath),

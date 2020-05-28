@@ -11,10 +11,10 @@ import {
   LARGE_ARRAY_SIZE,
   symbol,
   setProperty
-} from './utils.js'
+} from './utils'
 
-import _VERSION from '../.internal/VERSION.js'
-import VERSION from '../VERSION.js'
+import _VERSION from '../.internal/VERSION'
+import VERSION from '../VERSION'
 
 describe(basename, () => {
   it(`should support loading ${basename} as the "lodash" module`, () => {
@@ -23,7 +23,7 @@ describe(basename, () => {
     }
   })
 
-  it(`should support loading ${basename} with the Require.js "shim" configuration option`, () => {
+  it(`should support loading ${basename} with the Require "shim" configuration option`, () => {
     if (amd && lodashStable.includes(ui.loaderPath, 'requirejs')) {
       assert.strictEqual((shimmedModule || {}).moduleName, 'shimmed')
     }

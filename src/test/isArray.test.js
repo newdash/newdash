@@ -1,10 +1,10 @@
 import assert from 'assert'
-import { args, symbol, realm } from './utils.js'
-import isArray from '../isArray.js'
-import map from '../map.js'
-import falsey  from '../.internal/falsey.js'
-import { stubFalse } from './stubs.js'
-import slice from '../slice.js'
+import { args, symbol, realm } from './utils'
+import isArray from '../isArray'
+import map from '../map'
+import falsey  from '../.internal/falsey'
+import { stubFalse } from './stubs'
+import slice from '../slice'
 
 describe('isArray', () => {
   it('should return `true` for arrays', () => {

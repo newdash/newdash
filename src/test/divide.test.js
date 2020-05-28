@@ -1,5 +1,5 @@
 import assert from 'assert'
-import divide from '../divide.js'
+import divide from '../divide'
 
 describe('divide', () => {
   it('should divide two numbers', () => {

@@ -1,4 +1,4 @@
-import isIterateeCall from './isIterateeCall.js'
+import isIterateeCall from './isIterateeCall'
 
 /**
  * Creates a function like `assign`.

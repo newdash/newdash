@@ -1,4 +1,4 @@
-import slice from '../slice.js'
+import slice from '../slice'
 
 /**
  * The base implementation of methods like `dropWhile` and `takeWhile`.

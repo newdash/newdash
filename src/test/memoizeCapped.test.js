@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { identity, MAX_MEMOIZE_SIZE } from './utils.js'
-import _memoizeCapped from '../.internal/memoizeCapped.js'
+import { identity, MAX_MEMOIZE_SIZE } from './utils'
+import _memoizeCapped from '../.internal/memoizeCapped'
 
 describe('memoizeCapped', () => {
   const func = _memoizeCapped

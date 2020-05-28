@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { isNpm } from './utils.js'
-import prototype from '../prototype.js'
+import { isNpm } from './utils'
+import prototype from '../prototype'
 
 describe('lodash(...).value', () => {
   it('should execute the chained sequence and extract the unwrapped value', () => {

@@ -1,9 +1,9 @@
 import assert from 'assert'
-import { errors, stubTrue, CustomError, realm } from './utils.js'
-import constant from '../constant.js'
-import attempt from '../attempt.js'
-import map from '../map.js'
-import isEqual from '../eqDeep.js'
+import { errors, stubTrue, CustomError, realm } from './utils'
+import constant from '../constant'
+import attempt from '../attempt'
+import map from '../map'
+import isEqual from '../eqDeep'
 
 describe('attempt', () => {
   it('should return the result of `func`', () => {

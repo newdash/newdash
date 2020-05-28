@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, args, LARGE_ARRAY_SIZE } from './utils.js'
+import { _, args, LARGE_ARRAY_SIZE } from './utils'
 
 describe('xor methods', () => {
   lodashStable.each(['xor', 'xorBy', 'xorWith'], (methodName) => {

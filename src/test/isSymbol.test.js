@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { symbol, falsey, stubFalse, args, slice, realm } from './utils.js'
-import isSymbol from '../isSymbol.js'
+import { symbol, falsey, stubFalse, args, slice, realm } from './utils'
+import isSymbol from '../isSymbol'
 
 describe('isSymbol', () => {
   it('should return `true` for symbols', () => {

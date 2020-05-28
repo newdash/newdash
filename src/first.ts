@@ -1,4 +1,4 @@
-import head from './head.js';
+import head from './head';
 
 const first = head;
 

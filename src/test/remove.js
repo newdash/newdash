@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { isEven, slice } from './utils.js'
-import remove from '../remove.js'
+import { isEven, slice } from './utils'
+import remove from '../remove'
 
 describe('remove', () => {
   it('should modify the array and return removed elements', () => {

@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, isEven, stubTrue } from './utils.js'
+import { _, isEven, stubTrue } from './utils'
 
 describe('negate', () => {
   it('should create a function that negates the result of `func`', () => {

@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, symbol, defineProperty } from './utils.js'
-import unset from '../unset.js'
+import { _, symbol, defineProperty } from './utils'
+import unset from '../unset'
 
 describe('set methods', () => {
   lodashStable.each(['update', 'updateWith', 'set', 'setWith'], (methodName) => {

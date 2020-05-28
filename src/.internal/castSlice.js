@@ -1,4 +1,4 @@
-import slice from '../slice.js'
+import slice from '../slice'
 
 /**
  * Casts `array` to a slice if it's needed.

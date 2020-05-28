@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice } from './utils.js'
-import differenceBy from '../differenceBy.js'
+import { slice } from './utils'
+import differenceBy from '../differenceBy'
 
 describe('differenceBy', () => {
   it('should accept an `iteratee`', () => {

@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice } from './utils.js'
-import xorBy from '../xorBy.js'
+import { slice } from './utils'
+import xorBy from '../xorBy'
 
 describe('xorBy', () => {
   it('should accept an `iteratee`', () => {

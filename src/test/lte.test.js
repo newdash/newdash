@@ -1,6 +1,6 @@
 import assert from 'assert'
-import lte from '../lte.js'
-import lt from '../lt.js'
+import lte from '../lte'
+import lt from '../lt'
 
 describe('lte', () => {
   it('should return `true` if `value` is <= `other`', () => {

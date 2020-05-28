@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import sortBy from '../sortBy.js'
+import sortBy from '../sortBy'
 
 describe('sortBy', () => {
   const objects = [

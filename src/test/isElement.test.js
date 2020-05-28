@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { document, body, falsey, stubFalse, args, slice, symbol, realm } from './utils.js'
-import isElement from '../isElement.js'
+import { document, body, falsey, stubFalse, args, slice, symbol, realm } from './utils'
+import isElement from '../isElement'
 
 describe('isElement', () => {
   it('should return `true` for elements', () => {

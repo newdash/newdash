@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import uniqueId from '../uniqueId.js'
+import uniqueId from '../uniqueId'
 
 describe('uniqueId', () => {
   it('should generate unique ids', () => {

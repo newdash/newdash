@@ -1,7 +1,7 @@
 import assert from 'assert'
-import reduce from '../reduce.js'
-import head from '../head.js'
-import keys from '../keys.js'
+import reduce from '../reduce'
+import head from '../head'
+import keys from '../keys'
 
 const slice = Array.prototype.slice
 

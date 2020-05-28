@@ -1,5 +1,5 @@
 import assert from 'assert'
-import conforms from '../conforms.js'
+import conforms from '../conforms'
 
 describe('conforms', () => {
   it('should not change behavior if `source` is modified', () => {

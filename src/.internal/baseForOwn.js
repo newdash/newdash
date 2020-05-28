@@ -1,5 +1,5 @@
-import baseFor from './baseFor.js'
-import keys from '../keys.js'
+import baseFor from './baseFor'
+import keys from '../keys'
 
 /**
  * The base implementation of `forOwn`.

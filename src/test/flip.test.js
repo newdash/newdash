@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice } from './utils.js'
-import flip from '../flip.js'
+import { slice } from './utils'
+import flip from '../flip'
 
 describe('flip', () => {
   function fn() {

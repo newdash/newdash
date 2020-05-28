@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, falsey, stubObject, noop } from './utils.js'
+import { _, falsey, stubObject, noop } from './utils'
 
 describe('mapKeys and mapValues', () => {
   lodashStable.each(['mapKeys', 'mapValues'], (methodName) => {

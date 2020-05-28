@@ -1,4 +1,4 @@
-import isPrototype from './isPrototype.js'
+import isPrototype from './isPrototype'
 
 /**
  * Initializes an object clone.

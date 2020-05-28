@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { _, stubA } from './utils.js'
+import { _, stubA } from './utils'
 
 describe('now', () => {
   it('should return the number of milliseconds that have elapsed since the Unix epoch', (done) => {

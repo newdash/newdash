@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _ } from './utils.js'
+import { _ } from './utils'
 
 describe('sortBy methods', () => {
   lodashStable.each(['orderBy', 'sortBy'], (methodName) => {

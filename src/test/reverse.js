@@ -1,9 +1,9 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { LARGE_ARRAY_SIZE, identity } from './utils.js'
-import reverse from '../reverse.js'
-import compact from '../compact.js'
-import head from '../head.js'
+import { LARGE_ARRAY_SIZE, identity } from './utils'
+import reverse from '../reverse'
+import compact from '../compact'
+import head from '../head'
 
 describe('reverse', () => {
   const largeArray = lodashStable.range(LARGE_ARRAY_SIZE).concat(null),

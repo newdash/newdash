@@ -1,4 +1,4 @@
-import isSymbol from '../isSymbol.js'
+import isSymbol from '../isSymbol'
 
 /**
  * Compares values to sort them in ascending order.

@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { MAX_SAFE_INTEGER } from './utils.js'
-import _isIterateeCall from '../.internal/isIterateeCall.js'
+import { MAX_SAFE_INTEGER } from './utils'
+import _isIterateeCall from '../.internal/isIterateeCall'
 
 describe('isIterateeCall', () => {
   const array = [1],

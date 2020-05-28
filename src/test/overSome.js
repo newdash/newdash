@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { stubFalse, stubOne, stubString, stubNull, stubA, stubZero, stubTrue, slice } from './utils.js'
-import overSome from '../overSome.js'
+import { stubFalse, stubOne, stubString, stubNull, stubA, stubZero, stubTrue, slice } from './utils'
+import overSome from '../overSome'
 
 describe('overSome', () => {
   it('should create a function that returns `true` if any predicates return truthy', () => {

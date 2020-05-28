@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import camelCase from '../camelCase.js'
+import camelCase from '../camelCase'
 
 describe('camelCase', () => {
   it('should work with numbers', () => {

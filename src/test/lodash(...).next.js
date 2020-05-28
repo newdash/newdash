@@ -1,8 +1,8 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, isNpm, LARGE_ARRAY_SIZE, isEven } from './utils.js'
-import toArray from '../toArray.js'
-import filter from '../filter.js'
+import { _, isNpm, LARGE_ARRAY_SIZE, isEven } from './utils'
+import toArray from '../toArray'
+import filter from '../filter'
 
 describe('lodash(...).next', () => {
   lodashStable.each([false, true], (implicit) => {

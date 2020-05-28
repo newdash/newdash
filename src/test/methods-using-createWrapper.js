@@ -1,11 +1,11 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { slice, _, push, HOT_COUNT } from './utils.js'
-import bind from '../bind.js'
-import bindKey from '../bindKey.js'
-import partial from '../partial.js'
-import partialRight from '../partialRight.js'
-import last from '../last.js'
+import { slice, _, push, HOT_COUNT } from './utils'
+import bind from '../bind'
+import bindKey from '../bindKey'
+import partial from '../partial'
+import partialRight from '../partialRight'
+import last from '../last'
 
 describe('methods using `createWrapper`', () => {
   function fn() {

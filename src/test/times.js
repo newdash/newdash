@@ -1,8 +1,8 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { slice, doubled, falsey, stubArray } from './utils.js'
-import times from '../times.js'
-import identity from '../identity.js'
+import { slice, doubled, falsey, stubArray } from './utils'
+import times from '../times'
+import identity from '../identity'
 
 describe('times', () => {
   it('should coerce non-finite `n` values to `0`', () => {

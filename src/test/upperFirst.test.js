@@ -1,5 +1,5 @@
 import assert from 'assert'
-import upperFirst from '../upperFirst.js'
+import upperFirst from '../upperFirst'
 
 describe('upperFirst', () => {
   it('should uppercase only the first character', () => {

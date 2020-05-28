@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import flattenDepth from '../flattenDepth.js'
+import flattenDepth from '../flattenDepth'
 
 describe('flattenDepth', () => {
   const array = [1, [2, [3, [4]], 5]]

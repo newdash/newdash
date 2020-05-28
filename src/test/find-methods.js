@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, empties, LARGE_ARRAY_SIZE, slice } from './utils.js'
-import each from '../each.js'
+import { _, empties, LARGE_ARRAY_SIZE, slice } from './utils'
+import each from '../each'
 
 describe('find methods', () => {
   lodashStable.each(['find', 'findIndex', 'findKey', 'findLast', 'findLastIndex', 'findLastKey'], (methodName) => {

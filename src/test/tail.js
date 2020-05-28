@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, stubArray, LARGE_ARRAY_SIZE } from './utils.js'
-import tail from '../tail.js'
+import { falsey, stubArray, LARGE_ARRAY_SIZE } from './utils'
+import tail from '../tail'
 
 describe('tail', () => {
   const array = [1, 2, 3]

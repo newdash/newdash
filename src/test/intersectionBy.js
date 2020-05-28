@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice } from './utils.js'
-import intersectionBy from '../intersectionBy.js'
+import { slice } from './utils'
+import intersectionBy from '../intersectionBy'
 
 describe('intersectionBy', () => {
   it('should accept an `iteratee`', () => {

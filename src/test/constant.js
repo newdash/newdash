@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { empties, _, falsey, stubTrue } from './utils.js'
+import { empties, _, falsey, stubTrue } from './utils'
 
 describe('constant', () => {
   it('should create a function that returns `value`', () => {

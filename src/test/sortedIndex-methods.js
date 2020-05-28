@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _ } from './utils.js'
-import sortBy from '../sortBy.js'
+import { _ } from './utils'
+import sortBy from '../sortBy'
 
 describe('sortedIndex methods', () => {
   lodashStable.each(['sortedIndex', 'sortedLastIndex'], (methodName) => {

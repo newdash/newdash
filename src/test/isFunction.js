@@ -14,9 +14,9 @@ import {
   symbol,
   document,
   realm
-} from './utils.js'
+} from './utils'
 
-import isFunction from '../isFunction.js'
+import isFunction from '../isFunction'
 
 describe('isFunction', () => {
   it('should return `true` for functions', () => {

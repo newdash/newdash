@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, noop } from './utils.js'
-import min from '../min.js'
+import { falsey, noop } from './utils'
+import min from '../min'
 
 describe('min', () => {
   it('should return the smallest value from a collection', () => {

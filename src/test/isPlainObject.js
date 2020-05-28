@@ -10,9 +10,9 @@ import {
   symbol,
   defineProperty,
   realm
-} from './utils.js'
+} from './utils'
 
-import isPlainObject from '../isPlainObject.js'
+import isPlainObject from '../isPlainObject'
 
 describe('isPlainObject', () => {
   const element = document && document.createElement('div')

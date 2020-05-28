@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, MAX_SAFE_INTEGER } from './utils.js'
+import { _, MAX_SAFE_INTEGER } from './utils'
 
 describe('startsWith and endsWith', () => {
   lodashStable.each(['startsWith', 'endsWith'], (methodName) => {

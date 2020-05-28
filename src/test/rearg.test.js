@@ -1,10 +1,10 @@
 import assert from 'assert'
-import { slice, empties } from './utils.js'
-import rearg from '../rearg.js'
-import reject from '../reject.js'
-import isArray from '../isArray.js'
-import map from '../map.js'
-import constant from '../constant.js'
+import { slice, empties } from './utils'
+import rearg from '../rearg'
+import reject from '../reject'
+import isArray from '../isArray'
+import map from '../map'
+import constant from '../constant'
 
 describe('rearg', () => {
   function fn() {

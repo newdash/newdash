@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { arrayProto } from './utils.js'
-import toArray from '../toArray.js'
+import { arrayProto } from './utils'
+import toArray from '../toArray'
 
 describe('toArray', () => {
   it('should convert objects to arrays', () => {

@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _ } from './utils.js'
-import pad from '../pad.js'
+import { _ } from './utils'
+import pad from '../pad'
 
 describe('pad methods', () => {
   lodashStable.each(['pad', 'padStart', 'padEnd'], (methodName) => {

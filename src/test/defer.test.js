@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice } from './utils.js'
-import defer from '../defer.js'
+import { slice } from './utils'
+import defer from '../defer'
 
 describe('defer', () => {
   it('should defer `func` execution', (done) => {

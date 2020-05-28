@@ -21,11 +21,11 @@ import {
   arrayViews,
   slice,
   noop
-} from './utils.js'
+} from './utils'
 
-import cloneDeep from '../cloneDeep.js'
-import cloneDeepWith from '../cloneDeepWith.js'
-import last from '../last.js'
+import cloneDeep from '../cloneDeep'
+import cloneDeepWith from '../cloneDeepWith'
+import last from '../last'
 
 describe('clone methods', function() {
   function Foo() {

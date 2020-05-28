@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { _, slice } from './utils.js'
+import { _, slice } from './utils'
 
 describe('over', () => {
   it('should create a function that invokes `iteratees`', () => {

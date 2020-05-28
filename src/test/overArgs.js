@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice, doubled, square, identity, noop } from './utils.js'
-import overArgs from '../overArgs.js'
+import { slice, doubled, square, identity, noop } from './utils'
+import overArgs from '../overArgs'
 
 describe('overArgs', () => {
   function fn() {

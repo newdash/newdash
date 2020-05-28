@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, slice } from './utils.js'
-import curry from '../curry.js'
+import { _, slice } from './utils'
+import curry from '../curry'
 
 describe('curry methods', () => {
   lodashStable.each(['curry', 'curryRight'], (methodName) => {

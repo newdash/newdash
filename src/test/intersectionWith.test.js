@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { LARGE_ARRAY_SIZE, stubZero } from './utils.js'
-import intersectionWith from '../intersectionWith.js'
+import { LARGE_ARRAY_SIZE, stubZero } from './utils'
+import intersectionWith from '../intersectionWith'
 
 describe('intersectionWith', () => {
   it('should work with a `comparator`', () => {

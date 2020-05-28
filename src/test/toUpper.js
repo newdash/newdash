@@ -1,5 +1,5 @@
 import assert from 'assert'
-import toUpper from '../toUpper.js'
+import toUpper from '../toUpper'
 
 describe('toUpper', () => {
   it('should convert whole string to upper case', () => {

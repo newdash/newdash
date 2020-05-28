@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { isEven } from './utils.js'
-import reject from '../reject.js'
+import { isEven } from './utils'
+import reject from '../reject'
 
 describe('reject', () => {
   const array = [1, 2, 3]

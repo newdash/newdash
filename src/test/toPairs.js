@@ -1,6 +1,6 @@
 import assert from 'assert'
-import entries from '../entries.js'
-import toPairs from '../toPairs.js'
+import entries from '../entries'
+import toPairs from '../toPairs'
 
 describe('toPairs', () => {
   it('should be aliased', () => {

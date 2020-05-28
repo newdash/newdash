@@ -1,4 +1,4 @@
-import getSymbols from './getSymbols.js'
+import getSymbols from './getSymbols'
 
 /**
  * Creates an array of the own and inherited enumerable symbols of `object`.

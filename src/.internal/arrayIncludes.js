@@ -1,4 +1,4 @@
-import baseIndexOf from './baseIndexOf.js'
+import baseIndexOf from './baseIndexOf'
 
 /**
  * A specialized version of `includes` for arrays without support for

@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, MAX_SAFE_INTEGER, stubFalse } from './utils.js'
-import round from '../round.js'
+import { _, MAX_SAFE_INTEGER, stubFalse } from './utils'
+import round from '../round'
 
 describe('round methods', () => {
   lodashStable.each(['ceil', 'floor', 'round'], (methodName) => {

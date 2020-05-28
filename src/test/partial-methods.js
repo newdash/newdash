@@ -1,8 +1,8 @@
 import assert from 'assert';
 import lodashStable from 'lodash';
-import { _, identity, slice } from './utils.js';
-import placeholder from '../placeholder.js';
-import curry from '../curry.js';
+import { _, identity, slice } from './utils';
+import placeholder from '../placeholder';
+import curry from '../curry';
 
 describe('partial methods', function() {
   lodashStable.each(['partial', 'partialRight'], function(methodName) {

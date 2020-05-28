@@ -1,8 +1,8 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, falsey, stubArray, oldDash, stubTrue, FUNC_ERROR_TEXT } from './utils.js'
-import functions from '../functions.js'
-import bind from '../bind.js'
+import { _, falsey, stubArray, oldDash, stubTrue, FUNC_ERROR_TEXT } from './utils'
+import functions from '../functions'
+import bind from '../bind'
 
 describe('lodash methods', () => {
   const allMethods = lodashStable.reject(functions(_).sort(), (methodName) => lodashStable.startsWith(methodName, '_'))

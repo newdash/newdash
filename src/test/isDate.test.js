@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { falsey, stubFalse, args, slice, symbol, realm } from './utils.js'
-import isDate from '../isDate.js'
+import { falsey, stubFalse, args, slice, symbol, realm } from './utils'
+import isDate from '../isDate'
 
 describe('isDate', () => {
   it('should return `true` for dates', () => {

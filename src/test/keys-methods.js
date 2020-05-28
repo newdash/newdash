@@ -11,7 +11,7 @@ import {
   primitives,
   numberProto,
   stubArray
-} from './utils.js'
+} from './utils'
 
 describe('keys methods', () => {
   lodashStable.each(['keys', 'keysIn'], (methodName) => {

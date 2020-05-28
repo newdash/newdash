@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, LARGE_ARRAY_SIZE, square, isEven } from './utils.js'
+import { _, LARGE_ARRAY_SIZE, square, isEven } from './utils'
 
 describe('zipObject methods', () => {
   lodashStable.each(['zipObject', 'zipObjectDeep'], (methodName) => {

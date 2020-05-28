@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import runInContext from '../runInContext.js'
-import uniqueId from '../uniqueId.js'
+import runInContext from '../runInContext'
+import uniqueId from '../uniqueId'
 
 describe('runInContext', () => {
   it('should not require a fully populated `context` object', () => {

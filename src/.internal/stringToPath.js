@@ -1,4 +1,4 @@
-import memoizeCapped from './memoizeCapped.js'
+import memoizeCapped from './memoizeCapped'
 
 const charCodeOfDot = '.'.charCodeAt(0)
 const reEscapeChar = /\\(\\)?/g

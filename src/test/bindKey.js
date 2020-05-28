@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { slice } from './utils.js'
-import bindKey from '../bindKey.js'
+import { slice } from './utils'
+import bindKey from '../bindKey'
 
 describe('bindKey', () => {
   it('should work when the target function is overwritten', () => {

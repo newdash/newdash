@@ -1,5 +1,5 @@
 import assert from 'assert'
-import clamp from '../clamp.js'
+import clamp from '../clamp'
 
 describe('clamp', () => {
   it('should work with a `max`', () => {

@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { MAX_INTEGER, MAX_ARRAY_LENGTH } from './utils.js'
-import toLength from '../toLength.js'
+import { MAX_INTEGER, MAX_ARRAY_LENGTH } from './utils'
+import toLength from '../toLength'
 
 describe('toLength', () => {
   it('should return a valid length', () => {

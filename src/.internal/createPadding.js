@@ -1,9 +1,9 @@
-import repeat from '../repeat.js'
-import baseToString from './baseToString.js'
-import castSlice from './castSlice.js'
-import hasUnicode from './hasUnicode.js'
-import stringSize from './stringSize.js'
-import stringToArray from './stringToArray.js'
+import repeat from '../repeat'
+import baseToString from './baseToString'
+import castSlice from './castSlice'
+import hasUnicode from './hasUnicode'
+import stringSize from './stringSize'
+import stringToArray from './stringToArray'
 
 /**
  * Creates the padding for `string` based on `length`. The `chars` string

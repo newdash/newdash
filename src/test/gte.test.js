@@ -1,5 +1,5 @@
 import assert from 'assert'
-import gte from '../gte.js'
+import gte from '../gte'
 
 describe('gte', () => {
   it('should return `true` if `value` >= `other`', () => {

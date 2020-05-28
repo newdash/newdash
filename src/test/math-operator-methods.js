@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, symbol } from './utils.js'
+import { _, symbol } from './utils'
 
 describe('math operator methods', () => {
   lodashStable.each(['add', 'divide', 'multiply', 'subtract'], (methodName) => {

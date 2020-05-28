@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, falsey, stubArray } from './utils.js'
+import { _, falsey, stubArray } from './utils'
 
 describe('unzip and zip', () => {
   lodashStable.each(['unzip', 'zip'], (methodName, index) => {

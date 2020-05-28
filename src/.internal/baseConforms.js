@@ -1,5 +1,5 @@
-import baseConformsTo from './baseConformsTo.js'
-import keys from '../keys.js'
+import baseConformsTo from './baseConformsTo'
+import keys from '../keys'
 
 /**
  * The base implementation of `conforms` which doesn't clone `source`.

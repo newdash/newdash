@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { empties, stubOne, noop, falsey } from './utils.js'
-import pullAt from '../pullAt.js'
+import { empties, stubOne, noop, falsey } from './utils'
+import pullAt from '../pullAt'
 
 describe('pullAt', () => {
   it('should modify the array and return removed elements', () => {

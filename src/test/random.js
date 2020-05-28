@@ -1,7 +1,7 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { MAX_INTEGER, stubTrue } from './utils.js'
-import random from '../random.js'
+import { MAX_INTEGER, stubTrue } from './utils'
+import random from '../random'
 
 describe('random', () => {
   const array = Array(1000)

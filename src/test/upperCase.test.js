@@ -1,5 +1,5 @@
 import assert from 'assert'
-import upperCase from '../upperCase.js'
+import upperCase from '../upperCase'
 
 describe('upperCase', () => {
   it('should uppercase as space-separated words', () => {

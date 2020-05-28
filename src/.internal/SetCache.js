@@ -1,4 +1,4 @@
-import MapCache from './MapCache.js'
+import MapCache from './MapCache'
 
 /** Used to stand-in for `undefined` hash values. */
 const HASH_UNDEFINED = '__lodash_hash_undefined__'

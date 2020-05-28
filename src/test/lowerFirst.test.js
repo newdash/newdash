@@ -1,5 +1,5 @@
 import assert from 'assert'
-import lowerFirst from '../lowerFirst.js'
+import lowerFirst from '../lowerFirst'
 
 describe('lowerFirst', () => {
   it('should lowercase only the first character', () => {

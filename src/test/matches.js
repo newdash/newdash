@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import matches from '../matches.js'
+import matches from '../matches'
 
 describe('matches', () => {
   it('should not change behavior if `source` is modified', () => {

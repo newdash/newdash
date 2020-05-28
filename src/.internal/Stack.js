@@ -1,5 +1,6 @@
-import ListCache from './ListCache.js'
-import MapCache from './MapCache.js'
+// @ts-nocheck
+import ListCache from './ListCache'
+import MapCache from './MapCache'
 
 /** Used as the size to enable large array optimizations. */
 const LARGE_ARRAY_SIZE = 200

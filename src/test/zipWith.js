@@ -1,8 +1,8 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { slice } from './utils.js'
-import zipWith from '../zipWith.js'
-import zip from '../zip.js'
+import { slice } from './utils'
+import zipWith from '../zipWith'
+import zip from '../zip'
 
 describe('zipWith', () => {
   it('should zip arrays combining grouped elements with `iteratee`', () => {

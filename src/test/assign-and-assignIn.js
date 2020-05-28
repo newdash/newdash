@@ -1,6 +1,6 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
-import { _, defineProperty, stubOne, noop, stubNaN } from './utils.js'
+import { _, defineProperty, stubOne, noop, stubNaN } from './utils'
 
 describe('assign and assignIn', () => {
   lodashStable.each(['assign', 'assignIn'], (methodName) => {

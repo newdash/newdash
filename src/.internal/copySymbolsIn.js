@@ -1,5 +1,5 @@
-import copyObject from './copyObject.js'
-import getSymbolsIn from './getSymbolsIn.js'
+import copyObject from './copyObject'
+import getSymbolsIn from './getSymbolsIn'
 
 /**
  * Copies own and inherited symbols of `source` to `object`.
