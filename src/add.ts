@@ -10,8 +10,11 @@ import createMathOperation from './.internal/createMathOperation';
  * @returns {number} Returns the total.
  * @example
  *
+ * ```js
  * add(6, 4)
  * // => 10
+ * ```
+ *
  */
 const add = createMathOperation((augend, addend) => augend + addend, 0);
 

@@ -7,6 +7,7 @@
  * @param {Array|Object} collection The collection to inspect.
  * @param {Function} predicate The function invoked per iteration.
  * @param {Function} eachFunc The function to iterate over `collection`.
+ * @ignore
  * @returns {*} Returns the found element or its key, else `undefined`.
  */
 function baseFindKey(collection, predicate, eachFunc) {

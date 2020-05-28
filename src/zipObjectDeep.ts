@@ -12,8 +12,10 @@ import baseZipObject from './.internal/baseZipObject';
  * @see unzip, unzipWith, zip, zipObject, zipWith
  * @example
  *
+ * ```js
  * zipObjectDeep(['a.b[0].c', 'a.b[1].d'], [1, 2])
  * // => { 'a': { 'b': [{ 'c': 1 }, { 'd': 2 }] } }
+ * ```
  */
 function zipObjectDeep(props, values) {
   return baseZipObject(props || [], values || [], baseSet);
