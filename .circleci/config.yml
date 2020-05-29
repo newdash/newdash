@@ -43,14 +43,14 @@ workflows:
   main:
     jobs:
 
-      - build:
+      - build
+
+      - deploy-approval:
           filters:
             tags:
               only: /.*/
             branches:
-              only: /.*/
-
-      - deploy-approval:
+              ignore: /.*/
           type: approval
           requires:
             - build
