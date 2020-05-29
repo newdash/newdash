@@ -17,7 +17,7 @@ jobs:
       - run: npm run build
 
       # run tests!
-      - run: ./node_modules/.bin/jest -w 1 --coverage
+      - run: ./node_modules/.bin/jest -w 2 --coverage
 
       # upload coverage
       - run: bash <(curl -s https://codecov.io/bash)
@@ -30,7 +30,8 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npm run build
+      # run tests!
+      - run: ./node_modules/.bin/jest -w 2 --coverage
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
@@ -42,15 +43,17 @@ workflows:
   version: 2
   main:
     jobs:
-
-      - build
-
       - deploy:
           filters:
             tags:
               only: /.*/
             branches:
               ignore: /.*/
-          requires:
-            - build
+      - build:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: /.*/
+
 
