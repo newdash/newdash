@@ -45,16 +45,6 @@ workflows:
 
       - build
 
-      - deploy-approval:
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore: /.*/
-          type: approval
-          requires:
-            - build
-
       - deploy:
           filters:
             tags:
@@ -62,5 +52,5 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - deploy-approval
+            - build
 
