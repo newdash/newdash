@@ -8,20 +8,22 @@ import isArrayLikeObject from './isArrayLikeObject';
  * elements and creates an array regrouping the elements to their pre-zip
  * configuration.
  *
- * @since 1.2.0
+ * @since
  * @category Array
  * @param {Array} array The array of grouped elements to process.
  * @returns {Array} Returns the new array of regrouped elements.
  * @see unzipWith, zip, zipObject, zipObjectDeep, zipWith
  * @example
  *
+ * ```js
  * const zipped = zip(['a', 'b'], [1, 2], [true, false])
  * // => [['a', 1, true], ['b', 2, false]]
  *
  * unzip(zipped)
  * // => [['a', 'b'], [1, 2], [true, false]]
+ * ```
  */
-function unzip(array) {
+function unzip(array: Array<any>) {
   if (!(array != null && array.length)) {
     return [];
   }
