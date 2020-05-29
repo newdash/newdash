@@ -11,12 +11,14 @@ import map from './map';
  * @returns {Function} Returns the new function.
  * @example
  *
+ * ```js
  * const func = over([Math.max, Math.min])
  *
  * func(1, 2, 3, 4)
  * // => [4, 1]
+ * ```
  */
-function over(iteratees) {
+function over(iteratees: Array<Function>) {
   return function(...args) {
     return map(iteratees, (iteratee) => iteratee.apply(this, args));
   };
