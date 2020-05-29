@@ -13,3 +13,7 @@
 [![Netlify](https://img.shields.io/netlify/267b7429-c295-4d0e-90d0-97d772b9a821?label=docs)](https://newdash.netlify.fornever.org/)
 
 **NewDash** is a hard fork project of the [lodash](https://github.com/lodash/lodash) utility project.
+
+## [CHANGELOG](./CHANGELOG.md)
+
+## [LICENSE](./LICENSE)
