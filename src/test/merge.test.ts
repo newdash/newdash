@@ -56,11 +56,14 @@ describe('merge', () => {
     }
 
     source.foo.b.c.d = source
+    // @ts-ignore
     source.bar.b = source.foo.b
 
     const actual = merge(object, source)
 
+    // @ts-ignore
     assert.notStrictEqual(actual.bar.b, actual.foo.b)
+    // @ts-ignore
     assert.strictEqual(actual.foo.b.c.d, actual.foo.b.c.d.foo.b.c.d)
   })
 
@@ -78,11 +81,12 @@ describe('merge', () => {
       actual = merge(Foo, source)
 
     assert.strictEqual(actual, Foo)
+    // @ts-ignore
     assert.strictEqual(Foo.a, 1)
   })
 
   it('should merge first source object properties to function', () => {
-    const fn = function() { },
+    const fn = function () { },
       object = { 'prop': {} },
       actual = merge({ 'prop': fn }, object)
 
@@ -90,7 +94,7 @@ describe('merge', () => {
   })
 
   it('should merge first and second source object properties to function', () => {
-    const fn = function() { },
+    const fn = function () { },
       object = { 'prop': {} },
       actual = merge({ 'prop': fn }, { 'prop': fn }, object)
 
@@ -98,7 +102,7 @@ describe('merge', () => {
   })
 
   it('should not merge onto function values of sources', () => {
-    let source1 = { 'a': function() { } },
+    let source1 = { 'a': function () { } },
       source2 = { 'a': { 'b': 2 } },
       expected = { 'a': { 'b': 2 } },
       actual = merge({}, source1, source2)
@@ -151,6 +155,7 @@ describe('merge', () => {
     assert.ok(!isArguments(actual.value))
     assert.deepStrictEqual(actual.value, expected)
 
+    // @ts-ignore
     expected = { '0': 1, '1': 2, '2': 3 }
 
     actual = merge({}, object1)
@@ -207,6 +212,7 @@ describe('merge', () => {
   it('should assign non array/buffer/typed-array/plain-object source values directly', () => {
     function Foo() { }
 
+    // @ts-ignore
     const values = [new Foo, new Boolean, new Date, Foo, new Number, new String, new RegExp],
       expected = map(values, stubTrue)
 
@@ -264,9 +270,11 @@ describe('merge', () => {
     assert.deepStrictEqual(source2.a, [{ 'b': 2 }])
     assert.deepStrictEqual(actual.a, [{ 'a': 1, 'b': 2 }])
 
-    var source1 = { 'a': [[1, 2, 3]] },
-      source2 = { 'a': [[3, 4]] },
-      actual = merge({}, source1, source2)
+    // @ts-ignore
+    source1 = { 'a': [[1, 2, 3]] }
+    // @ts-ignore
+    source2 = { 'a': [[3, 4]] }
+    actual = merge({}, source1, source2)
 
     assert.deepStrictEqual(source1.a, [[1, 2, 3]])
     assert.deepStrictEqual(source2.a, [[3, 4]])
@@ -274,7 +282,7 @@ describe('merge', () => {
   })
 
   it('should merge plain objects onto non-plain objects', () => {
-    function Foo(object) {
+    function Foo(object?) {
       assign(this, object)
     }
 
@@ -317,8 +325,8 @@ describe('merge', () => {
     defineProperty(object, 'a', {
       'configurable': true,
       'enumerable': true,
-      'get': function() { pass = false },
-      'set': function() { pass = false }
+      'get': function () { pass = false },
+      'set': function () { pass = false }
     })
 
     merge(object, object)
@@ -331,6 +339,7 @@ describe('merge', () => {
 
     assert.deepStrictEqual(actual, { 'a': ['x', 'y'] })
 
+    // @ts-ignore
     actual = merge({ 'a': {} }, { 'a': [] })
     assert.deepStrictEqual(actual, { 'a': [] })
   })
@@ -350,6 +359,7 @@ describe('merge', () => {
 
     const actual = map(pairs, (pair) => {
       try {
+        // @ts-ignore
         return merge(pair[0], pair[1]).el === pair[1].el
       } catch (e) { }
     })

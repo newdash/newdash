@@ -5,7 +5,7 @@ import isBuffer from './isBuffer';
 import isPrototype from './.internal/isPrototype';
 import isTypedArray from './isTypedArray';
 import isArray from './isArray';
-import baseKeys from "./.internal/baseKeys";
+import baseKeys from './.internal/baseKeys';
 
 /** Used to check objects for own properties. */
 const hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -22,7 +22,7 @@ const setTag = '[object Set]';
  * jQuery-like collections are considered empty if they have a `length` of `0`.
  * Similarly, maps and sets are considered empty if they have a `size` of `0`.
  *
- * @since 0.1.0
+ * @since 0.0.3
  * @category Lang
  * @param {*} value The value to check.
  * @returns {boolean} Returns `true` if `value` is empty, else `false`.
@@ -46,7 +46,7 @@ const setTag = '[object Set]';
  * isEmpty({ 'a': 1 })
  * // => false
  */
-function isEmpty(value: any): boolean {
+function isEmpty(value?: any): boolean {
   if (value == null) {
     return true;
   }
@@ -55,14 +55,14 @@ function isEmpty(value: any): boolean {
       isBuffer(value) || isTypedArray(value) || isArguments(value))) {
     return !value.length;
   }
-  var tag = getTag(value);
+  const tag = getTag(value);
   if (tag == mapTag || tag == setTag) {
     return !value.size;
   }
   if (isPrototype(value)) {
     return !baseKeys(value).length;
   }
-  for (var key in value) {
+  for (const key in value) {
     if (hasOwnProperty.call(value, key)) {
       return false;
     }

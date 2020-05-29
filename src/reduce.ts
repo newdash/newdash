@@ -3,6 +3,16 @@ import baseEach from './.internal/baseEach';
 import baseReduce from './.internal/baseReduce';
 import getIteratee from './.internal/getIteratee';
 
+interface Iteratee<T, R, K> {
+  (accumulator?: R, value?: T, key?: K): R | void
+}
+
+type ArrayIteratee<T = any, R = any> = Iteratee<T, R, number>
+
+type ObjectIteratee<T = any, R = any> = Iteratee<T, R, string>
+
+type TypedObject<T> = { [key: string]: T }
+
 /**
  * Reduces `collection` to a value which is the accumulated result of running
  * each element in `collection` thru `iteratee`, where each successive
@@ -18,15 +28,16 @@ import getIteratee from './.internal/getIteratee';
  * `assign`, `defaults`, `defaultsDeep`, `includes`, `merge`, `orderBy`,
  * and `sortBy`
  *
- * @since 0.1.0
+ * @since 0.0.3
  * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @param {*} [accumulator] The initial value.
- * @returns {*} Returns the accumulated value.
+ * @param collection The collection to iterate over.
+ * @param iteratee The function invoked per iteration.
+ * @param accumulator The initial value.
+ * @returns  Returns the accumulated value.
  * @see reduceRight, transform
  * @example
  *
+ * ```js
  * reduce([1, 2], (sum, n) => sum + n, 0)
  * // => 3
  *
@@ -35,8 +46,11 @@ import getIteratee from './.internal/getIteratee';
  *   return result
  * }, {})
  * // => { '1': ['a', 'c'], '2': ['b'] } (iteration order is not guaranteed)
+ * ```
  */
-function reduce(collection, iteratee, accumulator) {
+function reduce<T, R>(collection?: Array<T>, iteratee?: ArrayIteratee<T, R>, accumulator?: R): R;
+function reduce<T, R>(collection?: TypedObject<T>, iteratee?: ObjectIteratee<T, R>, accumulator?: R): R;
+function reduce<T, R>(collection?: any, iteratee?: any, accumulator?: any): any {
   const func = Array.isArray(collection) ? arrayReduce : baseReduce;
   const initAccum = arguments.length < 3;
   return func(collection, getIteratee(iteratee, 4), accumulator, initAccum, baseEach);

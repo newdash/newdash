@@ -14,7 +14,7 @@
  * console.log(_.identity(object) === object);
  * // => true
  */
-function identity(value) {
+function identity<T>(value: T): T {
   return value;
 }
 

@@ -25,10 +25,11 @@
   ],
   "scripts": {
     "test": "jest",
-    "lint": "eslint",
+    "lint": "eslint .",
     "coverage": "npm test -- --coverage --no-cache",
     "build": "tsc && webpack",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "release": "standard-version --no-verify && git push --follow-tags origin master"
   },
   "devDependencies": {
     "@types/jest": "^25.2.3",
@@ -36,6 +37,7 @@
     "@typescript-eslint/parser": "^3.0.1",
     "eslint": "^7.1.0",
     "jest": "^26.0.1",
+    "standard-version": "^8.0.0",
     "terser-webpack-plugin": "^3.0.2",
     "ts-jest": "^26.0.0",
     "ts-loader": "^7.0.5",

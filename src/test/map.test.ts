@@ -14,8 +14,11 @@ describe('map', () => {
     const object = { 'a': 1, 'b': 2 },
       expected = ['1', '2']
 
+    assert.deepStrictEqual(map(array), array, "empty mapping")
+    assert.deepStrictEqual(map(array, function () { }), new Array(2).fill(undefined))
     assert.deepStrictEqual(map(array, String), expected)
     assert.deepStrictEqual(map(object, String), expected)
+
   })
 
   it('should work with `_.property` shorthands', () => {
@@ -47,8 +50,8 @@ describe('map', () => {
 
   it('should treat a node list as an array-like object', () => {
     if (document) {
+      // @ts-ignore
       const actual = map(document.getElementsByTagName('body'), (element) => element.nodeName.toLowerCase())
-
       assert.deepStrictEqual(actual, ['body'])
     }
   })

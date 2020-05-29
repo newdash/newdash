@@ -1,7 +1,14 @@
 import arrayEach from './.internal/arrayEach';
 import baseEach from './.internal/baseEach';
 
+type ObjectIteratee<T> = (value?: T, key?: string) => void
+
+type Iteratee<T> = (value?: T, key?: any) => void
+
+type TypedObject<T> = { [key: string]: T }
+
 /**
+ *
  * Iterates over elements of `collection` and invokes `iteratee` for each element.
  * The iteratee is invoked with three arguments: (value, index|key, collection).
  * Iteratee functions may exit iteration early by explicitly returning `false`.
@@ -10,7 +17,7 @@ import baseEach from './.internal/baseEach';
  * property are iterated like arrays. To avoid this behavior use `forIn`
  * or `forOwn` for object iteration.
  *
- * @since 0.1.0
+ * @since 0.0.1
  * @alias each
  * @category Collection
  * @param {Array|Object} collection The collection to iterate over.
@@ -19,13 +26,19 @@ import baseEach from './.internal/baseEach';
  * @see forEachRight, forIn, forInRight, forOwn, forOwnRight
  * @example
  *
+ *
+ * ```js
  * forEach([1, 2], value => console.log(value))
  * // => Logs `1` then `2`.
  *
  * forEach({ 'a': 1, 'b': 2 }, (value, key) => console.log(key))
  * // => Logs 'a' then 'b' (iteration order is not guaranteed).
+ * ```
+ *
  */
-function forEach(collection, iteratee) {
+function forEach<T>(collection?: Array<T>, iteratee?: Iteratee<T>): void;
+function forEach<T>(collection?: TypedObject<T>, iteratee?: ObjectIteratee<T>): void;
+function forEach(collection?: any, iteratee?: any): any {
   const func = Array.isArray(collection) ? arrayEach : baseEach;
   return func(collection, iteratee);
 }

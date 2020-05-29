@@ -1,5 +1,5 @@
-const { join } = require('path')
-const TerserPlugin = require('terser-webpack-plugin')
+const { join } = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
@@ -31,4 +31,4 @@ module.exports = {
     minimize: true,
     minimizer: [new TerserPlugin()]
   }
-}
+};

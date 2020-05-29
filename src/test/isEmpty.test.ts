@@ -63,7 +63,7 @@ describe('isEmpty', () => {
 
   it('should work with maps', () => {
     if (Map) {
-      each([new Map, realm.map], (map) => {
+      each([new Map], (map) => {
         assert.strictEqual(isEmpty(map), true)
         map.set('a', 1)
         assert.strictEqual(isEmpty(map), false)
@@ -74,7 +74,7 @@ describe('isEmpty', () => {
 
   it('should work with sets', () => {
     if (Set) {
-      each([new Set, realm.set], (set) => {
+      each([new Set], (set) => {
         assert.strictEqual(isEmpty(set), true)
         set.add(1)
         assert.strictEqual(isEmpty(set), false)

@@ -1,8 +1,17 @@
-import identity from './.internal/identity';
 import isArray from './isArray';
 import baseMap from './.internal/baseMap';
 import arrayMap from './.internal/arrayMap';
 import getIteratee from './.internal/getIteratee';
+
+interface Iteratee<T, R, K> {
+  (value?: T, key?: K): R
+}
+
+type ArrayIteratee<T = any, R = any> = Iteratee<T, R, number>
+
+type ObjectIteratee<T = any, R = any> = Iteratee<T, R, string>
+
+type TypedObject<T> = { [key: string]: T }
 
 /**
  * Creates an array of values by running each element in `collection` thru
@@ -19,12 +28,8 @@ import getIteratee from './.internal/getIteratee';
  * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
  *
  * @static
- * @memberOf _
- * @since 0.1.0
+ * @since 0.0.2
  * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} [iteratee=_.identity] The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
  * @example
  *
  * function square(n) {
@@ -44,10 +49,20 @@ import getIteratee from './.internal/getIteratee';
  *
  * _.map(users, 'user');
  * // => ['barney', 'fred']
+ *
  */
-function map(collection, iteratee = identity) {
-  const func = isArray(collection) ? arrayMap : baseMap;
-  return func(collection, getIteratee(iteratee, 3));
+function map<T, R>(collection: Array<T>): T[];
+function map<T, R>(collection: TypedObject<T>): T[];
+function map<T, R>(collection: any): any;
+function map<T, R>(collection: Array<T>, iteratee?: ArrayIteratee<T, R>): R[];
+function map<T, R>(collection: TypedObject<T>, iteratee?: ObjectIteratee<T, R>): R[];
+function map<T, R>(collection: any, iteratee?: any) {
+  const oIteratee = getIteratee(iteratee, 3);
+  if (isArray(collection)) {
+    return arrayMap(collection as any, oIteratee) as R[];
+  }
+  return baseMap(collection as any, oIteratee) as R[];
+
 }
 
 export default map;

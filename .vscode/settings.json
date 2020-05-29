@@ -7,5 +7,7 @@
   "cSpell.words": [
     "falsey"
   ],
-  "eslint.enable": false
+  "eslint.enable": true,
+  "javascript.autoClosingTags": false,
+  "typescript.autoClosingTags": false
 }

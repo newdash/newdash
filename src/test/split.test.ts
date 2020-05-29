@@ -16,14 +16,14 @@ describe('split', () => {
     const values = [, null, undefined, ''],
       expected = map(values, constant(['']))
 
-    const actual = map(values, (value, index) => index ? split(value) : split())
+    const actual = map(values, (value: any, index: any) => index ? split(value) : split())
 
     assert.deepStrictEqual(actual, expected)
   })
 
   it('should work as an iteratee for methods like `_.map`', () => {
     const strings = ['abc', 'def', 'ghi'],
-      actual = map(strings, split)
+      actual = map(strings, v => split(v))
 
     assert.deepStrictEqual(actual, [['abc'], ['def'], ['ghi']])
   })
