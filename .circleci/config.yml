@@ -42,15 +42,25 @@ workflows:
   version: 2
   main:
     jobs:
-      - deploy:
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore: /.*/
+
       - build:
           filters:
             tags:
               only: /.*/
             branches:
               only: /.*/
+
+      - deploy-approval:
+          type: approval
+          requires:
+            - build
+
+      - deploy:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - deploy-approval
+
