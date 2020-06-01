@@ -14,9 +14,7 @@ import isArray from './isArray';
  * [everything is true](https://en.wikipedia.org/wiki/Vacuous_truth) of
  * elements of empty collections.
  *
- * @static
- * @memberOf _
- * @since 0.1.0
+ * @since 5.3.0
  * @category Collection
  * @param {Array|Object} collection The collection to iterate over.
  * @param {Function} [predicate=identity] The function invoked per iteration.

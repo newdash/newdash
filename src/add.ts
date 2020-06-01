@@ -1,13 +1,15 @@
 import createMathOperation from './.internal/createMathOperation';
 
+const internalAdd = createMathOperation((augend, addend) => augend + addend, 0);
+
 /**
  * Adds two numbers.
  *
- * @since 3.4.0
+ * @since 5.3.0
  * @category Math
- * @param {number} augend The first number in an addition.
- * @param {number} addend The second number in an addition.
- * @returns {number} Returns the total.
+ * @param augend The first number in an addition.
+ * @param addend The second number in an addition.
+ * @returns Returns the total.
  * @example
  *
  * ```js
@@ -16,6 +18,6 @@ import createMathOperation from './.internal/createMathOperation';
  * ```
  *
  */
-const add = createMathOperation((augend, addend) => augend + addend, 0);
+const add = (augend: number, addend: number): number => internalAdd(augend, addend);
 
 export default add;

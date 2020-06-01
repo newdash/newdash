@@ -9,7 +9,7 @@ const CLONE_SYMBOLS_FLAG = 4;
  * cloning is handled by the method instead. The `customizer` is invoked with
  * one argument (value).
  *
- * @since 4.0.0
+ * @since 5.3.0
  * @category Lang
  * @param {*} value The value to clone.
  * @param {Function} [customizer] The function to customize cloning.
@@ -17,6 +17,7 @@ const CLONE_SYMBOLS_FLAG = 4;
  * @see cloneDeepWith
  * @example
  *
+ * ```js
  * function customizer(value) {
  *   if (isElement(value)) {
  *     return value.cloneNode(false)
@@ -31,8 +32,9 @@ const CLONE_SYMBOLS_FLAG = 4;
  * // => 'BODY'
  * console.log(el.childNodes.length)
  * // => 0
+ * ```
  */
-function cloneWith(value, customizer) {
+function cloneWith(value: any, customizer: (...any) => any): any {
   customizer = typeof customizer === 'function' ? customizer : undefined;
   return baseClone(value, CLONE_SYMBOLS_FLAG, customizer);
 }

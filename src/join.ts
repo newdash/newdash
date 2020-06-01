@@ -1,19 +1,19 @@
 
-const nativeJoin = Array.prototype.join
+const nativeJoin = Array.prototype.join;
 
 
 /**
   * Converts all elements in `array` into a string separated by `separator`.
   *
   * @static
-  * @since 0.0.4
+  * @since 5.0.0
   * @category Array
-  * @param {Array} array The array to convert.
-  * @param {string} [separator=','] The element separator.
-  * @returns {string} Returns the joined string.
+  * @param array The array to convert.
+  * @param separator The element separator.
+  * @returns Returns the joined string.
   * @example
   *
-  * ```typescript
+  * ```js
   * join(['a', 'b', 'c'], '~');
   * // => 'a~b~c'
   * ```
@@ -23,4 +23,4 @@ function join(array: Array<any>, separator: string = ','): string {
 }
 
 
-export default join
+export default join;

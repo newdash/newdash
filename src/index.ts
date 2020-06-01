@@ -16,8 +16,21 @@ import memoize from './memoize';
 import some from './some';
 import find from './find';
 import debounce from './debounce';
+import add from './add';
+import head from './head';
+import has from './has';
+import clone from './clone';
+import cloneDeep from './cloneDeep';
 
-export { filter, get, reduce, map, each, every, concat, first, attempt, forEach, merge, isEmpty, split, join, memoize, some, find, debounce };
+export {
+  filter, get, reduce, map, each, every, concat, first,
+  attempt, forEach, merge, isEmpty, split, join, memoize,
+  some, find, debounce, add, head, has, clone, cloneDeep
+};
 
-export default { filter, get, reduce, map, each, every, concat, first, attempt, forEach, merge, isEmpty, split, join, memoize, some, find, debounce };
+export default {
+  filter, get, reduce, map, each, every, concat, first,
+  attempt, forEach, merge, isEmpty, split, join, memoize,
+  some, find, debounce, add, head, has, clone, cloneDeep
+};
 

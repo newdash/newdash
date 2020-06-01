@@ -3,7 +3,6 @@ import arrayEach from './arrayEach'
 import assignValue from './assignValue'
 import cloneBuffer from './cloneBuffer'
 import copyArray from './copyArray'
-import copyObject from './copyObject'
 import cloneArrayBuffer from './cloneArrayBuffer'
 import cloneDataView from './cloneDataView'
 import cloneRegExp from './cloneRegExp'
@@ -17,9 +16,15 @@ import getTag from './getTag'
 import initCloneObject from './initCloneObject'
 import isBuffer from '../isBuffer'
 import isObject from '../isObject'
-import isTypedArray from '../isTypedArray'
 import keys from '../keys'
 import keysIn from '../keysIn'
+import isArray from '../isArray'
+import baseAssignIn from "./baseAssignIn";
+import baseAssign from "./baseAssign";
+
+import { funcTag, genTag } from './GLOBAL'
+import isSet from '../isSet'
+import isMap from '../isMap'
 
 /** Used to compose bitmasks for cloning. */
 const CLONE_DEEP_FLAG = 1
@@ -56,16 +61,16 @@ const uint32Tag = '[object Uint32Array]'
 /** Used to identify `toStringTag` values supported by `clone`. */
 const cloneableTags = {}
 cloneableTags[argsTag] = cloneableTags[arrayTag] =
-cloneableTags[arrayBufferTag] = cloneableTags[dataViewTag] =
-cloneableTags[boolTag] = cloneableTags[dateTag] =
-cloneableTags[float32Tag] = cloneableTags[float64Tag] =
-cloneableTags[int8Tag] = cloneableTags[int16Tag] =
-cloneableTags[int32Tag] = cloneableTags[mapTag] =
-cloneableTags[numberTag] = cloneableTags[objectTag] =
-cloneableTags[regexpTag] = cloneableTags[setTag] =
-cloneableTags[stringTag] = cloneableTags[symbolTag] =
-cloneableTags[uint8Tag] = cloneableTags[uint8ClampedTag] =
-cloneableTags[uint16Tag] = cloneableTags[uint32Tag] = true
+  cloneableTags[arrayBufferTag] = cloneableTags[dataViewTag] =
+  cloneableTags[boolTag] = cloneableTags[dateTag] =
+  cloneableTags[float32Tag] = cloneableTags[float64Tag] =
+  cloneableTags[int8Tag] = cloneableTags[int16Tag] =
+  cloneableTags[int32Tag] = cloneableTags[mapTag] =
+  cloneableTags[numberTag] = cloneableTags[objectTag] =
+  cloneableTags[regexpTag] = cloneableTags[setTag] =
+  cloneableTags[stringTag] = cloneableTags[symbolTag] =
+  cloneableTags[uint8Tag] = cloneableTags[uint8ClampedTag] =
+  cloneableTags[uint16Tag] = cloneableTags[uint32Tag] = true
 cloneableTags[errorTag] = cloneableTags[weakMapTag] = false
 
 /** Used to check objects for own properties. */
@@ -143,99 +148,93 @@ function initCloneArray(array) {
  * traversed objects.
  *
  * @private
- * @param {*} value The value to clone.
- * @param {number} bitmask The bitmask flags.
+ * @param value The value to clone.
+ * @param bitmask The bitmask flags.
  *  1 - Deep clone
  *  2 - Flatten inherited properties
  *  4 - Clone symbols
- * @param {Function} [customizer] The function to customize cloning.
- * @param {string} [key] The key of `value`.
- * @param {Object} [object] The parent object of `value`.
- * @param {Object} [stack] Tracks traversed objects and their clone counterparts.
- * @returns {*} Returns the cloned value.
+ * @param customizer The function to customize cloning.
+ * @param key The key of `value`.
+ * @param object The parent object of `value`.
+ * @param stack Tracks traversed objects and their clone counterparts.
+ * @returns Returns the cloned value.
  */
-function baseClone(value, bitmask, customizer, key, object, stack) {
-  let result
-  const isDeep = bitmask & CLONE_DEEP_FLAG
-  const isFlat = bitmask & CLONE_FLAT_FLAG
-  const isFull = bitmask & CLONE_SYMBOLS_FLAG
+function baseClone(value, bitmask, customizer?, key?, object?, stack?) {
+  var result,
+    isDeep = bitmask & CLONE_DEEP_FLAG,
+    isFlat = bitmask & CLONE_FLAT_FLAG,
+    isFull = bitmask & CLONE_SYMBOLS_FLAG;
 
   if (customizer) {
-    result = object ? customizer(value, key, object, stack) : customizer(value)
+    result = object ? customizer(value, key, object, stack) : customizer(value);
   }
   if (result !== undefined) {
-    return result
+    return result;
   }
   if (!isObject(value)) {
-    return value
+    return value;
   }
-  const isArr = Array.isArray(value)
-  const tag = getTag(value)
+  var isArr = isArray(value);
   if (isArr) {
-    result = initCloneArray(value)
+    result = initCloneArray(value);
     if (!isDeep) {
-      return copyArray(value, result)
+      return copyArray(value, result);
     }
   } else {
-    const isFunc = typeof value === 'function'
+    var tag = getTag(value),
+      isFunc = tag == funcTag || tag == genTag;
 
     if (isBuffer(value)) {
-      return cloneBuffer(value, isDeep)
+      // @ts-ignore
+      return cloneBuffer(value, isDeep);
     }
     if (tag == objectTag || tag == argsTag || (isFunc && !object)) {
-      result = (isFlat || isFunc) ? {} : initCloneObject(value)
+      result = (isFlat || isFunc) ? {} : initCloneObject(value);
       if (!isDeep) {
         return isFlat
-          ? copySymbolsIn(value, copyObject(value, keysIn(value), result))
-          : copySymbols(value, Object.assign(result, value))
+          ? copySymbolsIn(value, baseAssignIn(result, value))
+          : copySymbols(value, baseAssign(result, value));
       }
     } else {
-      if (isFunc || !cloneableTags[tag]) {
-        return object ? value : {}
+      if (!cloneableTags[tag]) {
+        return object ? value : {};
       }
-      result = initCloneByTag(value, tag, isDeep)
+      result = initCloneByTag(value, tag, isDeep);
     }
   }
   // Check for circular references and return its corresponding clone.
-  stack || (stack = new Stack)
-  const stacked = stack.get(value)
+  // @ts-ignore
+  stack || (stack = new Stack);
+  var stacked = stack.get(value);
   if (stacked) {
-    return stacked
+    return stacked;
   }
-  stack.set(value, result)
+  stack.set(value, result);
 
-  if (tag == mapTag) {
-    value.forEach((subValue, key) => {
-      result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack))
-    })
-    return result
-  }
-
-  if (tag == setTag) {
-    value.forEach((subValue) => {
-      result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack))
-    })
-    return result
+  if (isSet(value)) {
+    value.forEach(function (subValue) {
+      result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
+    });
+  } else if (isMap(value)) {
+    value.forEach(function (subValue, key) {
+      result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
+    });
   }
 
-  if (isTypedArray(value)) {
-    return result
-  }
-
-  const keysFunc = isFull
+  var keysFunc = isFull
     ? (isFlat ? getAllKeysIn : getAllKeys)
-    : (isFlat ? keysIn : keys)
+    : (isFlat ? keysIn : keys);
 
-  const props = isArr ? undefined : keysFunc(value)
-  arrayEach(props || value, (subValue, key) => {
+  var props = isArr ? undefined : keysFunc(value);
+  arrayEach(props || value, function (subValue, key) {
     if (props) {
-      key = subValue
-      subValue = value[key]
+      key = subValue;
+      subValue = value[key];
     }
     // Recursively populate clone (susceptible to call stack limits).
-    assignValue(result, key, baseClone(subValue, bitmask, customizer, key, value, stack))
-  })
-  return result
+    assignValue(result, key, baseClone(subValue, bitmask, customizer, key, value, stack));
+  });
+  return result;
 }
 
 export default baseClone

@@ -10,27 +10,26 @@ import baseIsEqual from './.internal/baseIsEqual';
  * by their own, not inherited, enumerable properties. Functions and DOM
  * nodes are compared by strict equality, i.e. `===`.
  *
- * @static
- * @memberOf _
- * @since 0.1.0
+ * @since 5.3.0
  * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @param value The value to compare.
+ * @param other The other value to compare.
+ * @returns Returns `true` if the values are equivalent, else `false`.
  * @example
  *
+ * ```js
  * var object = { 'a': 1 };
  * var other = { 'a': 1 };
  *
- * isEqual(object, other);
+ * _.isEqual(object, other);
  * // => true
  *
  * object === other;
  * // => false
+ * ```
  */
-function isEqual(value, other) {
-  return baseIsEqual(value, other, undefined, undefined, undefined);
+function isEqual(value: any, other: any): boolean {
+  return baseIsEqual(value, other);
 }
-
 
 export default isEqual;

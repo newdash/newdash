@@ -9,14 +9,15 @@ const CLONE_SYMBOLS_FLAG = 4;
  * The customizer is invoked with up to four arguments
  * (value [, index|key, object, stack]).
  *
- * @since 4.0.0
+ * @since 5.3.0
  * @category Lang
- * @param {*} value The value to recursively clone.
- * @param {Function} [customizer] The function to customize cloning.
- * @returns {*} Returns the deep cloned value.
+ * @param value The value to recursively clone.
+ * @param customizer The function to customize cloning.
+ * @returns Returns the deep cloned value.
  * @see cloneWith
  * @example
  *
+ * ```js
  * function customizer(value) {
  *   if (isElement(value)) {
  *     return value.cloneNode(true)
@@ -31,8 +32,9 @@ const CLONE_SYMBOLS_FLAG = 4;
  * // => 'BODY'
  * console.log(el.childNodes.length)
  * // => 20
+ * ```
  */
-function cloneDeepWith(value, customizer) {
+function cloneDeepWith(value: any, customizer: (...any) => any): any {
   customizer = typeof customizer === 'function' ? customizer : undefined;
   return baseClone(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG, customizer);
 }

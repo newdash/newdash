@@ -1,5 +1,5 @@
 
-interface MapLike<K = any, V = any> {
+export interface MapLike<K = any, V = any> {
   clear?(): void;
   delete?(key: K): boolean;
   forEach?(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void;
@@ -65,7 +65,7 @@ type MemorizedFunction<T extends (...any) => any, K = any, V = any> = {
  * memoize.Cache = WeakMap
  * ```
  */
-function memoize<T extends(...any) => any, K>(func: T, resolver?: (...args) => K): MemorizedFunction<T, K, ReturnType<T>> {
+function memoize<T extends(...any) => any, K>(func: T, resolver?: (...args: Parameters<T>) => K): MemorizedFunction<T, K, ReturnType<T>> {
   if (typeof func !== 'function' || (resolver != null && typeof resolver !== 'function')) {
     throw new TypeError('Expected a function');
   }
