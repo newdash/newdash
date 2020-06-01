@@ -1,9 +1,10 @@
 import assert from 'assert'
-import {  argv, isPhantom, push } from './utils'
+import { argv, isPhantom, push } from './utils'
 import debounce from '../debounce'
 import identity from "../.internal/identity";
 
 describe('debounce', () => {
+
   it('should debounce a function', (done) => {
     let callCount = 0
 
@@ -17,6 +18,7 @@ describe('debounce', () => {
     assert.strictEqual(callCount, 0)
 
     setTimeout(() => {
+
       assert.strictEqual(callCount, 1)
 
       const results = [debounced('d'), debounced('e'), debounced('f')]
@@ -140,7 +142,7 @@ describe('debounce', () => {
   it('should support a `maxWait` option', (done) => {
     let callCount = 0
 
-    const debounced = debounce((value) => {
+    const debounced = debounce((value?) => {
       ++callCount
       return value
     }, 32, { 'maxWait': 64 })
@@ -176,6 +178,7 @@ describe('debounce', () => {
     }, 96)
 
     const start = +new Date
+    // @ts-ignore
     while ((new Date - start) < limit) {
       withMaxWait()
       withoutMaxWait()
@@ -230,7 +233,7 @@ describe('debounce', () => {
     let actual, callCount = 0
     const object = {}
 
-    const debounced = debounce(function(value) {
+    const debounced = debounce(function (value) {
       actual = [this]
       // eslint-disable-next-line prefer-rest-params
       push.apply(actual, arguments)

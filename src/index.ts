@@ -15,8 +15,9 @@ import join from './join';
 import memoize from './memoize';
 import some from './some';
 import find from './find';
+import debounce from './debounce';
 
-export { filter, get, reduce, map, each, every, concat, first, attempt, forEach, merge, isEmpty, split, join, memoize, some, find };
+export { filter, get, reduce, map, each, every, concat, first, attempt, forEach, merge, isEmpty, split, join, memoize, some, find, debounce };
 
-export default { filter, get, reduce, map, each, every, concat, first, attempt, forEach, merge, isEmpty, split, join, memoize, some, find };
+export default { filter, get, reduce, map, each, every, concat, first, attempt, forEach, merge, isEmpty, split, join, memoize, some, find, debounce };
 

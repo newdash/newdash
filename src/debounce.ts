@@ -1,6 +1,28 @@
 import isObject from './isObject';
 import root from './.internal/root';
 
+interface Options {
+  /**
+   * Specify invoking on the leading edge of the timeout.
+   */
+  leading?: boolean;
+  /**
+   * The maximum time `func` is allowed to be delayed before it's invoked.
+   */
+  maxWait?: number;
+  /**
+   * Specify invoking on the trailing edge of the timeout.
+   */
+  trailing?: boolean;
+}
+
+type DebouncedFunction<F extends (...any) => any> = {
+  (...args: Parameters<F>): ReturnType<F>;
+  cancel: () => void;
+  flush: () => any;
+  pending: () => boolean;
+}
+
 /**
  * Creates a debounced function that delays invoking `func` until after `wait`
  * milliseconds have elapsed since the last time the debounced function was
@@ -26,21 +48,15 @@ import root from './.internal/root';
  * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
  * for details over the differences between `debounce` and `throttle`.
  *
- * @since 0.1.0
+ * @since 5.3.0
  * @category Function
- * @param {Function} func The function to debounce.
- * @param {number} [wait=0]
- *  The number of milliseconds to delay; if omitted, `requestAnimationFrame` is
- *  used (if available).
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=false]
- *  Specify invoking on the leading edge of the timeout.
- * @param {number} [options.maxWait]
- *  The maximum time `func` is allowed to be delayed before it's invoked.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
+ * @param func The function to debounce.
+ * @param wait The number of milliseconds to delay; if omitted, `requestAnimationFrame` is used (if available).
+ * @param options The options object.
  * @returns {Function} Returns the new debounced function.
  * @example
+ *
+ * ```js
  *
  * // Avoid costly calculations while the window size is in flux.
  * jQuery(window).on('resize', debounce(calculateLayout, 150))
@@ -61,8 +77,10 @@ import root from './.internal/root';
  *
  * // Check for pending invocations.
  * const status = debounced.pending() ? "Pending..." : "Ready"
+ *
+ * ```
  */
-function debounce(func, wait, options) {
+function debounce<F extends(...any) => any>(func: F, wait?: number, options?: Options): DebouncedFunction<F> {
   let lastArgs,
     lastThis,
     maxWait,
