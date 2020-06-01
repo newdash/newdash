@@ -2,12 +2,13 @@
  * Checks if `value` is object-like. A value is object-like if it's not `null`
  * and has a `typeof` result of "object".
  *
- * @since 4.0.0
+ * @since 5.3.0
  * @category Lang
- * @param {*} value The value to check.
+ * @param value The value to check.
  * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
  * @example
  *
+ * ```js
  * isObjectLike({})
  * // => true
  *
@@ -19,9 +20,10 @@
  *
  * isObjectLike(null)
  * // => false
+ * ```
  */
 function isObjectLike(value) {
-  return typeof value === 'object' && value !== null;
+  return value != null && typeof value == 'object';
 }
 
 export default isObjectLike;

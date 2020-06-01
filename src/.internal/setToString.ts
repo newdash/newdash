@@ -1,3 +1,6 @@
+import shortOut from "./shortOut";
+import baseSetToString from "./baseSetToString";
+
 /**
  * Sets the `toString` method of `func` to return `string`.
  *
@@ -6,13 +9,6 @@
  * @param {Function} string The `toString` result.
  * @returns {Function} Returns `func`.
  */
-function setToString(func, string) {
-  return Object.defineProperty(func, 'toString', {
-    'configurable': true,
-    'enumerable': false,
-    'value': () => string,
-    'writable': true
-  })
-}
+const setToString = shortOut(baseSetToString);
 
 export default setToString
