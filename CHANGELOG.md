@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.3.0](https://github.com/newdash/newdash/compare/v5.2.0...v5.3.0) (2020-06-01)
+
+
+### Features
+
+* add, clone, head functions ([9917ef2](https://github.com/newdash/newdash/commit/9917ef25ee4bbc7677d449fb9734193a951008b6))
+* es5 build & set, get functions ([95e7bfb](https://github.com/newdash/newdash/commit/95e7bfb8d6b6c0bd0c9084f19592e1edd40f1e37))
+* function debounce ([cd32137](https://github.com/newdash/newdash/commit/cd32137517689e310c3378b88a14aba978656c95))
+* zip & unzip ([b213567](https://github.com/newdash/newdash/commit/b213567c200169132031671b14dd94705a20bfed))
+
 ## [5.2.0](https://github.com/newdash/newdash/compare/v5.1.4...v5.2.0) (2020-06-01)
 
 
