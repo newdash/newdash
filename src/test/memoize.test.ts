@@ -1,57 +1,80 @@
-import assert from 'assert'
-import lodashStable from 'lodash'
-import { noop, stubTrue, identity } from './utils'
-import memoize from '../memoize'
-import isFunction from '../isFunction'
+import assert from 'assert';
+import identity from '../.internal/identity';
+import find from "../find";
+import isFunction from '../isFunction';
+import map from "../map";
+import memoize from '../memoize';
+import some from "../some";
+import times from "../times";
+import { stubTrue } from "./stubs";
+import { noop } from './utils';
+
 
 describe('memoize', () => {
-  function CustomCache() {
-    this.clear()
-  }
 
-  CustomCache.prototype = {
-    'clear': function() {
+  class CustomCache {
+
+    constructor() { }
+
+    protected __data__: any[] = []
+
+    // mock
+    delete(...args): boolean {
+      return true
+    }
+
+    // mock
+    forEach(...args) {
+
+    }
+
+    clear() {
       this.__data__ = []
       return this
-    },
-    'get': function(key) {
-      const entry = lodashStable.find(this.__data__, ['key', key])
+    }
+
+    get(key) {
+      // @ts-ignore
+      const entry = find(this.__data__, ['key', key])
       return entry && entry.value
-    },
-    'has': function(key) {
-      return lodashStable.some(this.__data__, ['key', key])
-    },
-    'set': function(key, value) {
+    }
+
+    has(key) {
+      return some(this.__data__, ['key', key])
+    }
+
+    set(key, value) {
       this.__data__.push({ 'key': key, 'value': value })
       return this
     }
+
   }
 
-  function ImmutableCache() {
-    this.__data__ = []
-  }
-
-  ImmutableCache.prototype = lodashStable.create(CustomCache.prototype, {
-    'constructor': ImmutableCache,
-    'clear': function() {
+  class ImmutableCache extends CustomCache {
+    constructor() {
+      super()
+      this.__data__ = []
+    }
+    // @ts-ignore
+    clear() {
       return new ImmutableCache
-    },
-    'set': function(key, value) {
+    }
+    // @ts-ignore
+    set(key, value) {
       const result = new ImmutableCache
       result.__data__ = this.__data__.concat({ 'key': key, 'value': value })
       return result
     }
-  })
+  }
 
   it('should memoize results based on the first argument given', () => {
-    const memoized = memoize((a, b, c) => a + b + c)
-
+    const memoized = memoize((a: number, b: number, c: number): number => a + b + c)
     assert.strictEqual(memoized(1, 2, 3), 6)
     assert.strictEqual(memoized(1, 3, 5), 6)
   })
 
   it('should support a `resolver`', () => {
-    const fn = function(a, b, c) { return a + b + c },
+    const fn = function (a, b, c) { return a + b + c },
       memoized = memoize(fn, fn)
 
     assert.strictEqual(memoized(1, 2, 3), 6)
@@ -59,29 +82,32 @@ describe('memoize', () => {
   })
 
   it('should use `this` binding of function for `resolver`', () => {
-    const fn = function(a, b, c) { return a + this.b + this.c },
+    const fn = function (a, b, c) { return a + this.b + this.c },
       memoized = memoize(fn, fn)
 
     const object = { 'memoized': memoized, 'b': 2, 'c': 3 }
+    // @ts-ignore
     assert.strictEqual(object.memoized(1), 6)
 
     object.b = 3
     object.c = 5
+    // @ts-ignore
     assert.strictEqual(object.memoized(1), 9)
   })
 
   it('should throw a TypeError if `resolve` is truthy and not a function', () => {
+    // @ts-ignore
     assert.throws(() => { memoize(noop, true) }, TypeError)
   })
 
   it('should not error if `resolver` is nullish', () => {
     const values = [, null, undefined],
-      expected = lodashStable.map(values, stubTrue)
+      expected = map(values, stubTrue)
 
-    const actual = lodashStable.map(values, (resolver, index) => {
+    const actual = map(values, (resolver, index) => {
       try {
         return isFunction(index ? memoize(noop, resolver) : memoize(noop))
-      } catch (e) {}
+      } catch (e) { }
     })
 
     assert.deepStrictEqual(actual, expected)
@@ -100,7 +126,7 @@ describe('memoize', () => {
 
     const memoized = memoize(identity)
 
-    const actual = lodashStable.map(props, (value) => memoized(value))
+    const actual = map(props, (value) => memoized(value))
 
     assert.deepStrictEqual(actual, props)
   })
@@ -109,11 +135,11 @@ describe('memoize', () => {
     const array = [],
       key = '__proto__'
 
-    lodashStable.times(2, (index) => {
+    times(2, (index) => {
       let count = 0,
         resolver = index ? identity : undefined
 
-      const memoized = memoize(() => {
+      const memoized = memoize((param) => {
         count++
         return array
       }, resolver)
@@ -125,6 +151,7 @@ describe('memoize', () => {
 
       assert.strictEqual(count, 1)
       assert.strictEqual(cache.get(key), array)
+      // @ts-ignore
       assert.ok(!(cache.__data__ instanceof Array))
       assert.strictEqual(cache.delete(key), true)
     })
@@ -151,6 +178,7 @@ describe('memoize', () => {
 
   it('should works with an immutable `_.memoize.Cache` ', () => {
     const oldCache = memoize.Cache
+    // @ts-ignore
     memoize.Cache = ImmutableCache
 
     const memoized = memoize((object) => object.id)

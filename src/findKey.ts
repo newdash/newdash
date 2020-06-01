@@ -1,6 +1,6 @@
-import baseFindKey from "./.internal/baseFindKey";
-import getIteratee from "./.internal/getIteratee";
-import baseForOwn from "./.internal/baseForOwn";
+import baseFindKey from './.internal/baseFindKey';
+import getIteratee from './.internal/getIteratee';
+import baseForOwn from './.internal/baseForOwn';
 
 /**
  * This method is like `find` except that it returns the key of the first

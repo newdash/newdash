@@ -12,8 +12,11 @@ import merge from './merge';
 import isEmpty from './isEmpty';
 import split from './split';
 import join from './join';
+import memoize from './memoize';
+import some from './some';
+import find from './find';
 
-export { filter, get, reduce, map, each, every, concat, first, attempt, forEach, merge, isEmpty, split, join };
+export { filter, get, reduce, map, each, every, concat, first, attempt, forEach, merge, isEmpty, split, join, memoize, some, find };
 
-export default { filter, get, reduce, map, each, every, concat, first, attempt, forEach, merge, isEmpty, split, join };
+export default { filter, get, reduce, map, each, every, concat, first, attempt, forEach, merge, isEmpty, split, join, memoize, some, find };
 

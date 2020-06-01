@@ -1,5 +1,5 @@
 import findLastIndex from './findLastIndex';
-import isArrayLike from './isArrayLike';
+import createFind from './.internal/createFind';
 
 /**
  * This method is like `find` except that it iterates over elements of
@@ -14,19 +14,13 @@ import isArrayLike from './isArrayLike';
  * @see find, findIndex, findKey, findLastIndex, findLastKey
  * @example
  *
+ *
+ * ```js
  * findLast([1, 2, 3, 4], n => n % 2 == 1)
  * // => 3
+ * ```
+ *
  */
-function findLast(collection, predicate, fromIndex) {
-  let iteratee;
-  const iterable = Object(collection);
-  if (!isArrayLike(collection)) {
-    collection = Object.keys(collection);
-    iteratee = predicate;
-    predicate = (key) => iteratee(iterable[key], key, iterable);
-  }
-  const index = findLastIndex(collection, predicate, fromIndex);
-  return index > -1 ? iterable[iteratee ? collection[index] : index] : undefined;
-}
+const findLast = createFind(findLastIndex);
 
 export default findLast;

@@ -1,18 +1,19 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { identity, empties, stubFalse, stubTrue } from './utils'
 import some from '../some'
+import map from '../map'
 
 describe('some', () => {
+
   it('should return `true` if `predicate` returns truthy for any element', () => {
     assert.strictEqual(some([false, 1, ''], identity), true)
     assert.strictEqual(some([null, 'a', 0], identity), true)
   })
 
   it('should return `false` for empty collections', () => {
-    const expected = lodashStable.map(empties, stubFalse)
+    const expected = map(empties, stubFalse)
 
-    const actual = lodashStable.map(empties, (value) => {
+    const actual = map(empties, (value) => {
       try {
         return some(value, identity)
       } catch (e) {}
@@ -39,17 +40,17 @@ describe('some', () => {
 
   it('should use `_.identity` when `predicate` is nullish', () => {
     let values = [, null, undefined],
-      expected = lodashStable.map(values, stubFalse)
+      expected = map(values, stubFalse)
 
-    let actual = lodashStable.map(values, (value, index) => {
+    let actual = map(values, (value, index) => {
       const array = [0, 0]
       return index ? some(array, value) : some(array)
     })
 
     assert.deepStrictEqual(actual, expected)
 
-    expected = lodashStable.map(values, stubTrue)
-    actual = lodashStable.map(values, (value, index) => {
+    expected = map(values, stubTrue)
+    actual = map(values, (value, index) => {
       const array = [0, 1]
       return index ? some(array, value) : some(array)
     })
@@ -70,7 +71,8 @@ describe('some', () => {
   })
 
   it('should work as an iteratee for methods like `_.map`', () => {
-    const actual = lodashStable.map([[1]], some)
+    const actual = map([[1]], some)
     assert.deepStrictEqual(actual, [true])
   })
+
 })

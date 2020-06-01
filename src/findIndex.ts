@@ -1,26 +1,7 @@
 // @ts-nocheck
 import baseFindIndex from './.internal/baseFindIndex';
 import toInteger from './toInteger';
-import baseIteratee from './.internal/baseIteratee';
-import iteratee from './iteratee';
-
-/**
- * Gets the appropriate "iteratee" function. If `_.iteratee` is customized,
- * this function returns the custom method, otherwise it returns `baseIteratee`.
- * If arguments are provided, the chosen function is invoked with them and
- * its result is returned.
- *
- * @private
- * @param {*} [value] The value to convert to an iteratee.
- * @param {number} [arity] The arity of the created iteratee.
- * @returns {Function} Returns the chosen function or its result.
- */
-function getIteratee() {
-  let result = iteratee;
-  result = result === iteratee ? baseIteratee : result;
-  // eslint-disable-next-line prefer-rest-params
-  return arguments.length ? result(arguments[0], arguments[1]) : result;
-}
+import getIteratee from './.internal/getIteratee';
 
 /**
  * This method is like `_.find` except that it returns the index of the first
@@ -68,6 +49,5 @@ function findIndex(array, predicate, fromIndex) {
   }
   return baseFindIndex(array, getIteratee(predicate, 3), index);
 }
-
 
 export default findIndex;

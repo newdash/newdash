@@ -9,6 +9,7 @@ import forOwn from "../forOwn";
 import assign from "../assign";
 import each from "../each"
 import root from "../.internal/root";
+import identity from "../.internal/identity";
 
 /** Used to detect when a function becomes hot. */
 const HOT_COUNT = 150
@@ -58,7 +59,6 @@ const phantom = root.phantom,
   fnToString = funcProto.toString,
   freeze = Object.freeze,
   getSymbols = Object.getOwnPropertySymbols,
-  identity = function (value) { return value },
   noop = function () { },
   objToString = objectProto.toString,
   params = argv,

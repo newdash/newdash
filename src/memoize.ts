@@ -1,3 +1,20 @@
+
+
+interface CacheLike<K = any, V = any> {
+  clear(): void;
+  delete(key: K): boolean;
+  forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void;
+  get(key: K): V | undefined;
+  has(key: K): boolean;
+  set(key: K, value: V): this;
+}
+
+interface CacheLikeConstructor<K = any, V = any> {
+  new(): CacheLike<K, V>
+}
+
+type MemorizedFunction<T = any, K = any, V = any> = T & { cache: CacheLike<K, V> }
+
 /**
  * Creates a function that memoizes the result of `func`. If `resolver` is
  * provided, it determines the cache key for storing the result based on the
@@ -11,13 +28,15 @@
  * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)
  * method interface of `clear`, `delete`, `get`, `has`, and `set`.
  *
- * @since 0.1.0
+ * @since 5.2.0
  * @category Function
- * @param {Function} func The function to have its output memoized.
- * @param {Function} [resolver] The function to resolve the cache key.
- * @returns {Function} Returns the new memoized function.
+ * @param func The function to have its output memoized.
+ * @param resolver The function to resolve the cache key. default will use the **FIRST** argument as key
+ * @returns Returns the new memoized function.
  * @example
  *
+ *
+ * ```js
  * const object = { 'a': 1, 'b': 2 }
  * const other = { 'c': 3, 'd': 4 }
  *
@@ -37,10 +56,11 @@
  * values(object)
  * // => ['a', 'b']
  *
- * // Replace `memoize.Cache`.
+ * // Replace `memoize.Cache` constructor implementation.
  * memoize.Cache = WeakMap
+ * ```
  */
-function memoize(func, resolver) {
+function memoize<T extends(...any) => any, K>(func: T, resolver?: (...args) => K): MemorizedFunction<T, K, ReturnType<T>> {
   if (typeof func !== 'function' || (resolver != null && typeof resolver !== 'function')) {
     throw new TypeError('Expected a function');
   }
@@ -56,9 +76,10 @@ function memoize(func, resolver) {
     return result;
   };
   memoized.cache = new (memoize.Cache || Map);
+  // @ts-ignore
   return memoized;
 }
 
-memoize.Cache = Map;
+memoize['Cache'] = Map as CacheLikeConstructor;
 
 export default memoize;
