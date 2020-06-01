@@ -27,11 +27,11 @@ type TypedObject<T> = { [key: string]: T }
  * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
  * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
  *
- * @static
- * @since 0.0.2
+ * @since 5.0.0
  * @category Collection
  * @example
  *
+ * ```js
  * function square(n) {
  *   return n * n;
  * }
@@ -49,6 +49,8 @@ type TypedObject<T> = { [key: string]: T }
  *
  * map(users, 'user');
  * // => ['barney', 'fred']
+ *
+ * ```
  *
  */
 function map<T, R>(collection: Array<T>): T[];
