@@ -19,7 +19,7 @@ type TypedObject<T> = { [key: string]: T }
  * (value, index|key, collection).
  *
  * Many lodash methods are guarded to work as iteratees for methods like
- * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
+ * `every`, `filter`, `map`, `mapValues`, `reject`, and `some`.
  *
  * The guarded methods are:
  * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
@@ -36,10 +36,10 @@ type TypedObject<T> = { [key: string]: T }
  *   return n * n;
  * }
  *
- * _.map([4, 8], square);
+ * map([4, 8], square);
  * // => [16, 64]
  *
- * _.map({ 'a': 4, 'b': 8 }, square);
+ * map({ 'a': 4, 'b': 8 }, square);
  * // => [16, 64] (iteration order is not guaranteed)
  *
  * var users = [
@@ -47,7 +47,7 @@ type TypedObject<T> = { [key: string]: T }
  *   { 'user': 'fred' }
  * ];
  *
- * _.map(users, 'user');
+ * map(users, 'user');
  * // => ['barney', 'fred']
  *
  */

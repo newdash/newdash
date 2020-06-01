@@ -22,7 +22,7 @@ import baseIsEqual from './.internal/baseIsEqual';
  * var object = { 'a': 1 };
  * var other = { 'a': 1 };
  *
- * _.isEqual(object, other);
+ * isEqual(object, other);
  * // => true
  *
  * object === other;

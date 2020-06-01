@@ -9,7 +9,7 @@
    * @returns {Function} Returns the new constant function.
    * @example
    *
-   * var objects = _.times(2, _.constant({ 'a': 1 }));
+   * var objects = times(2, constant({ 'a': 1 }));
    *
    * console.log(objects);
    * // => [{ 'a': 1 }, { 'a': 1 }]

@@ -4,7 +4,7 @@ import getIteratee from './.internal/getIteratee';
 import baseEach from './.internal/baseEach';
 
 /**
- * A specialized version of `_.some` for arrays without support for iteratee
+ * A specialized version of `some` for arrays without support for iteratee
  * shorthands.
  *
  * @private
@@ -27,7 +27,7 @@ function arraySome(array, predicate) {
 
 
 /**
- * The base implementation of `_.some` without support for iteratee shorthands.
+ * The base implementation of `some` without support for iteratee shorthands.
  *
  * @private
  * @param {Array|Object} collection The collection to iterate over.
@@ -56,12 +56,12 @@ function baseSome(collection, predicate) {
  * @category Collection
  * @param collection The collection to iterate over.
  * @param predicate The function invoked per iteration.
- * @param guard Enables use as an iteratee for methods like `_.map`.
+ * @param guard Enables use as an iteratee for methods like `map`.
  * @returns Returns `true` if any element passes the predicate check,
  *  else `false`.
  * @example
  *
- * _.some([null, 0, 'yes', false], Boolean);
+ * some([null, 0, 'yes', false], Boolean);
  * // => true
  *
  * var users = [
@@ -69,16 +69,16 @@ function baseSome(collection, predicate) {
  *   { 'user': 'fred',   'active': false }
  * ];
  *
- * // The `_.matches` iteratee shorthand.
- * _.some(users, { 'user': 'barney', 'active': false });
+ * // The `matches` iteratee shorthand.
+ * some(users, { 'user': 'barney', 'active': false });
  * // => false
  *
- * // The `_.matchesProperty` iteratee shorthand.
- * _.some(users, ['active', false]);
+ * // The `matchesProperty` iteratee shorthand.
+ * some(users, ['active', false]);
  * // => true
  *
- * // The `_.property` iteratee shorthand.
- * _.some(users, 'active');
+ * // The `property` iteratee shorthand.
+ * some(users, 'active');
  * // => true
  */
 function some(collection, predicate?, guard?) {

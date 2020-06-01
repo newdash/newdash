@@ -5,13 +5,13 @@ import createFind from './.internal/createFind';
  * This method is like `find` except that it iterates over elements of
  * `collection` from right to left.
  *
- * @since 2.0.0
+ * @since 5.2.0
  * @category Collection
- * @param {Array|Object} collection The collection to inspect.
- * @param {Function} predicate The function invoked per iteration.
- * @param {number} [fromIndex=collection.length-1] The index to search from.
- * @returns {*} Returns the matched element, else `undefined`.
- * @see find, findIndex, findKey, findLastIndex, findLastKey
+ * @param collection The collection to inspect.
+ * @param predicate The function invoked per iteration.
+ * @param fromIndex The index to search from.
+ * @returns Returns the matched element, else `undefined`.
+ * @see find,findIndex,findKey,findLastIndex,findLastKey
  * @example
  *
  *

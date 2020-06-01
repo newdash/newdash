@@ -16,7 +16,7 @@ import { WRAP_CURRY_FLAG } from './.internal/CONSTANTS';
  * @category Function
  * @param {Function} func The function to curry.
  * @param {number} [arity=func.length] The arity of `func`.
- * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
+ * @param- {Object} [guard] Enables use as an iteratee for methods like `map`.
  * @returns {Function} Returns the new curried function.
  * @example
  *
@@ -24,7 +24,7 @@ import { WRAP_CURRY_FLAG } from './.internal/CONSTANTS';
  *   return [a, b, c];
  * };
  *
- * var curried = _.curry(abc);
+ * var curried = curry(abc);
  *
  * curried(1)(2)(3);
  * // => [1, 2, 3]

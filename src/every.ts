@@ -1,8 +1,8 @@
-import arrayEvery from './.internal/arrayEvery'
-import baseEvery from './.internal/baseEvery'
-import getIteratee from './.internal/getIteratee'
-import isIterateeCall from './.internal/isIterateeCall'
-import isArray from './isArray'
+import arrayEvery from './.internal/arrayEvery';
+import baseEvery from './.internal/baseEvery';
+import getIteratee from './.internal/getIteratee';
+import isIterateeCall from './.internal/isIterateeCall';
+import isArray from './isArray';
 
 /**
  * Checks if `predicate` returns truthy for **all** elements of `collection`.
@@ -19,13 +19,13 @@ import isArray from './isArray'
  * @since 0.1.0
  * @category Collection
  * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} [predicate=_.identity] The function invoked per iteration.
- * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
+ * @param {Function} [predicate=identity] The function invoked per iteration.
+ * @param- {Object} [guard] Enables use as an iteratee for methods like `map`.
  * @returns {boolean} Returns `true` if all elements pass the predicate check,
  *  else `false`.
  * @example
  *
- * _.every([true, 1, null, 'yes'], Boolean);
+ * every([true, 1, null, 'yes'], Boolean);
  * // => false
  *
  * var users = [
@@ -33,27 +33,27 @@ import isArray from './isArray'
  *   { 'user': 'fred',   'age': 40, 'active': false }
  * ];
  *
- * // The `_.matches` iteratee shorthand.
- * _.every(users, { 'user': 'barney', 'active': false });
+ * // The `matches` iteratee shorthand.
+ * every(users, { 'user': 'barney', 'active': false });
  * // => false
  *
- * // The `_.matchesProperty` iteratee shorthand.
- * _.every(users, ['active', false]);
+ * // The `matchesProperty` iteratee shorthand.
+ * every(users, ['active', false]);
  * // => true
  *
- * // The `_.property` iteratee shorthand.
- * _.every(users, 'active');
+ * // The `property` iteratee shorthand.
+ * every(users, 'active');
  * // => false
  */
 function every(collection: any[] | object, predicate: Function, guard = undefined): boolean {
   if (guard && isIterateeCall(collection, predicate, guard)) {
-    predicate = undefined
+    predicate = undefined;
   }
   if (isArray(collection)) {
-    return arrayEvery(collection, getIteratee(predicate, 3))
+    return arrayEvery(collection, getIteratee(predicate, 3));
   }
-  return baseEvery(collection, getIteratee(predicate, 3))
+  return baseEvery(collection, getIteratee(predicate, 3));
 
 }
 
-export default every
+export default every;

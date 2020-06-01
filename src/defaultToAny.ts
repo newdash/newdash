@@ -10,7 +10,7 @@ import defaultTo from './defaultTo';
  * @param {*} value The value to check.
  * @param {...*} defaultValues The default values.
  * @returns {*} Returns the resolved value.
- * @see _.defaultTo
+ * @see defaultTo
  * @example
  *
  * defaultToAny(1, 10, 20)

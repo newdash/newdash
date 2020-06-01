@@ -1,5 +1,5 @@
 import baseAssignValue from './.internal/baseAssignValue';
-import createAggregator from "./.internal/createAggregator";
+import createAggregator from './.internal/createAggregator';
 
 /** Used to check objects for own properties. */
 const hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -16,18 +16,18 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * @since 0.1.0
  * @category Collection
  * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} [iteratee=_.identity] The iteratee to transform keys.
+ * @param {Function} [iteratee=identity] The iteratee to transform keys.
  * @returns {Object} Returns the composed aggregate object.
  * @example
  *
- * _.groupBy([6.1, 4.2, 6.3], Math.floor);
+ * groupBy([6.1, 4.2, 6.3], Math.floor);
  * // => { '4': [4.2], '6': [6.1, 6.3] }
  *
- * // The `_.property` iteratee shorthand.
- * _.groupBy(['one', 'two', 'three'], 'length');
+ * // The `property` iteratee shorthand.
+ * groupBy(['one', 'two', 'three'], 'length');
  * // => { '3': ['one', 'two'], '5': ['three'] }
  */
-var groupBy = createAggregator(function (result, value, key) {
+const groupBy = createAggregator((result, value, key) => {
   if (hasOwnProperty.call(result, key)) {
     result[key].push(value);
   } else {

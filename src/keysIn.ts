@@ -17,7 +17,7 @@
  *
  * Foo.prototype.c = 3;
  *
- * _.keysIn(new Foo);
+ * keysIn(new Foo);
  * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
  */
 function keysIn(object) {

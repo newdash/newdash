@@ -15,7 +15,7 @@ import isArray from './isArray';
  * @example
  *
  * var array = [1];
- * var other = _.concat(array, 2, [3], [[4]]);
+ * var other = concat(array, 2, [3], [[4]]);
  *
  * console.log(other);
  * // => [1, 2, 3, [4]]

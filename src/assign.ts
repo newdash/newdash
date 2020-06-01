@@ -21,7 +21,7 @@ import { hasOwnProperty } from './.internal/GLOBAL';
   * @param {Object} object The destination object.
   * @param {...Object} [sources] The source objects.
   * @returns {Object} Returns `object`.
-  * @see _.assignIn
+  * @see assignIn
   * @example
   *
   * function Foo() {
@@ -35,7 +35,7 @@ import { hasOwnProperty } from './.internal/GLOBAL';
   * Foo.prototype.b = 2;
   * Bar.prototype.d = 4;
   *
-  * _.assign({ 'a': 0 }, new Foo, new Bar);
+  * assign({ 'a': 0 }, new Foo, new Bar);
   * // => { 'a': 1, 'c': 3 }
   */
 const assign = createAssigner((object, source) => {

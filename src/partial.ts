@@ -6,10 +6,10 @@ import getHolder from './.internal/getHolder';
 
 /**
  * Creates a function that invokes `func` with `partials` prepended to the
- * arguments it receives. This method is like `_.bind` except it does **not**
+ * arguments it receives. This method is like `bind` except it does **not**
  * alter the `this` binding.
  *
- * The `_.partial.placeholder` value, which defaults to `_` in monolithic
+ * The `partial.placeholder` value, which defaults to `_` in monolithic
  * builds, may be used as a placeholder for partially applied arguments.
  *
  * **Note:** This method doesn't set the "length" property of partially
@@ -28,12 +28,12 @@ import getHolder from './.internal/getHolder';
  *   return greeting + ' ' + name;
  * }
  *
- * var sayHelloTo = _.partial(greet, 'hello');
+ * var sayHelloTo = partial(greet, 'hello');
  * sayHelloTo('fred');
  * // => 'hello fred'
  *
  * // Partially applied with placeholders.
- * var greetFred = _.partial(greet, _, 'fred');
+ * var greetFred = partial(greet, _, 'fred');
  * greetFred('hi');
  * // => 'hi fred'
  */

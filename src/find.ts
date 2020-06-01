@@ -6,36 +6,36 @@ import createFind from './.internal/createFind';
  * `predicate` returns truthy for. The predicate is invoked with three
  * arguments: (value, index|key, collection).
  *
- * @static
- * @memberOf _
- * @since 0.1.0
+ * @since 5.2.0
  * @category Collection
- * @param {Array|Object} collection The collection to inspect.
- * @param {Function} [predicate=_.identity] The function invoked per iteration.
- * @param {number} [fromIndex=0] The index to search from.
+ * @param collection The collection to inspect.
+ * @param predicateThe function invoked per iteration.
+ * @param fromIndex The index to search from.
  * @returns {*} Returns the matched element, else `undefined`.
  * @example
  *
+ * ```js
  * var users = [
  *   { 'user': 'barney',  'age': 36, 'active': true },
  *   { 'user': 'fred',    'age': 40, 'active': false },
  *   { 'user': 'pebbles', 'age': 1,  'active': true }
  * ];
  *
- * _.find(users, function(o) { return o.age < 40; });
+ * find(users, function(o) { return o.age < 40; });
  * // => object for 'barney'
  *
- * // The `_.matches` iteratee shorthand.
- * _.find(users, { 'age': 1, 'active': true });
+ * // The `matches` iteratee shorthand.
+ * find(users, { 'age': 1, 'active': true });
  * // => object for 'pebbles'
  *
- * // The `_.matchesProperty` iteratee shorthand.
- * _.find(users, ['active', false]);
+ * // The `matchesProperty` iteratee shorthand.
+ * find(users, ['active', false]);
  * // => object for 'fred'
  *
- * // The `_.property` iteratee shorthand.
- * _.find(users, 'active');
+ * // The `property` iteratee shorthand.
+ * find(users, 'active');
  * // => object for 'barney'
+ * ```
  */
 const find = createFind(findIndex);
 

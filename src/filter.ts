@@ -10,14 +10,14 @@ type Predicate<T> = (value?: T) => boolean
  * `predicate` returns truthy for. The predicate is invoked with three
  * arguments: (value, index|key, collection).
  *
- * **Note:** Unlike `_.remove`, this method returns a new array.
+ * **Note:** Unlike `remove`, this method returns a new array.
  *
- * @since 0.0.3
+ * @since 5.0.0
  * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} [predicate=_.identity] The function invoked per iteration.
- * @returns {Array} Returns the new filtered array.
- * @see _.reject
+ * @param collection The collection to iterate over.
+ * @param predicate The function invoked per iteration.
+ * @returns Returns the new filtered array.
+ * @see reject
  * @example
  *
  * ```js
@@ -26,19 +26,19 @@ type Predicate<T> = (value?: T) => boolean
  *   { 'user': 'fred',   'age': 40, 'active': false }
  * ];
  *
- * _.filter(users, function(o) { return !o.active; });
+ * filter(users, function(o) { return !o.active; });
  * // => objects for ['fred']
  *
- * // The `_.matches` iteratee shorthand.
- * _.filter(users, { 'age': 36, 'active': true });
+ * // The `matches` iteratee shorthand.
+ * filter(users, { 'age': 36, 'active': true });
  * // => objects for ['barney']
  *
- * // The `_.matchesProperty` iteratee shorthand.
- * _.filter(users, ['active', false]);
+ * // The `matchesProperty` iteratee shorthand.
+ * filter(users, ['active', false]);
  * // => objects for ['fred']
  *
- * // The `_.property` iteratee shorthand.
- * _.filter(users, 'active');
+ * // The `property` iteratee shorthand.
+ * filter(users, 'active');
  * // => objects for ['barney']
  * ```
  */
