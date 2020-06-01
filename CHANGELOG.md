@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/newdash/newdash/compare/v5.1.4...v5.2.0) (2020-06-01)
+
+
+### Features
+
+* find, memorize & some ([6947baa](https://github.com/newdash/newdash/commit/6947baa5de736574b77df50ccf2c63455832fdde))
+
 ### [5.1.4](https://github.com/newdash/newdash/compare/v5.1.3...v5.1.4) (2020-05-29)
 
 

@@ -1,7 +1,7 @@
 {
   "name": "@newdash/newdash",
   "description": "yet another javascript util library",
-  "version": "5.1.4",
+  "version": "5.2.0",
   "license": "MIT",
   "main": "./lib",
   "unpkg": "./dist/newdash.js",
