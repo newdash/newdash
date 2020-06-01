@@ -3,14 +3,26 @@ import baseMap from './.internal/baseMap';
 import arrayMap from './.internal/arrayMap';
 import getIteratee from './.internal/getIteratee';
 
+/**
+ * @ignore
+ */
 interface Iteratee<T, R, K> {
   (value?: T, key?: K): R
 }
 
+/**
+ * @ignore
+ */
 type ArrayIteratee<T = any, R = any> = Iteratee<T, R, number>
 
+/**
+ * @ignore
+ */
 type ObjectIteratee<T = any, R = any> = Iteratee<T, R, string>
 
+/**
+ * @ignore
+ */
 type TypedObject<T> = { [key: string]: T }
 
 /**

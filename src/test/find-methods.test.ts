@@ -22,7 +22,6 @@ describe('find methods', () => {
     [findLastIndex, 'findLastIndex'],
     [findLastKey, 'findLastKey'],
   ], ([func, methodName]) => {
-    const array = [1, 2, 3, 4]
 
     const objects = [
       { 'a': 0, 'b': 0 },

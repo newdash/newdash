@@ -1,8 +1,22 @@
 import baseAssignValue from './.internal/baseAssignValue';
 import createAggregator from './.internal/createAggregator';
 
-/** Used to check objects for own properties. */
+/**
+ * Used to check objects for own properties.
+ * @ignore
+ */
 const hasOwnProperty = Object.prototype.hasOwnProperty;
+
+/**
+ * @ignore
+ */
+const internalGroupBy = createAggregator((result, value, key) => {
+  if (hasOwnProperty.call(result, key)) {
+    result[key].push(value);
+  } else {
+    baseAssignValue(result, key, [value]);
+  }
+});
 
 /**
  * Creates an object composed of keys generated from the results of running
@@ -11,28 +25,24 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * value of each key is an array of elements responsible for generating the
  * key. The iteratee is invoked with one argument: (value).
  *
- * @static
- * @memberOf _
- * @since 0.1.0
+ * @since 5.5.0
  * @category Collection
  * @param {Array|Object} collection The collection to iterate over.
  * @param {Function} [iteratee=identity] The iteratee to transform keys.
  * @returns {Object} Returns the composed aggregate object.
  * @example
  *
+ * ```js
  * groupBy([6.1, 4.2, 6.3], Math.floor);
  * // => { '4': [4.2], '6': [6.1, 6.3] }
  *
  * // The `property` iteratee shorthand.
  * groupBy(['one', 'two', 'three'], 'length');
  * // => { '3': ['one', 'two'], '5': ['three'] }
+ * ```
  */
-const groupBy = createAggregator((result, value, key) => {
-  if (hasOwnProperty.call(result, key)) {
-    result[key].push(value);
-  } else {
-    baseAssignValue(result, key, [value]);
-  }
-});
+function groupBy(result, value?, key?) {
+  return internalGroupBy(result, value, key);
+}
 
 export default groupBy;

@@ -1,10 +1,19 @@
 import arrayEach from './.internal/arrayEach';
 import baseEach from './.internal/baseEach';
 
+/**
+ * @ignore
+ */
 type ObjectIteratee<T> = (value?: T, key?: string) => void
 
+/**
+ * @ignore
+ */
 type Iteratee<T> = (value?: T, key?: any) => void
 
+/**
+ * @ignore
+ */
 type TypedObject<T> = { [key: string]: T }
 
 /**

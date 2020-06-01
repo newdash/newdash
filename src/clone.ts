@@ -1,6 +1,11 @@
 import baseClone from './.internal/baseClone';
 
-/** Used to compose bitmasks for cloning. */
+/**
+ * Used to compose bitmasks for cloning.
+ *
+ * @ignore
+ *
+ */
 const CLONE_SYMBOLS_FLAG = 4;
 
 /**

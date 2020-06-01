@@ -2,6 +2,11 @@ import findIndex from './findIndex';
 import createFind from './.internal/createFind';
 
 /**
+ * @ignore
+ */
+const internalFind = createFind(findIndex);
+
+/**
  * Iterates over elements of `collection`, returning the first element
  * `predicate` returns truthy for. The predicate is invoked with three
  * arguments: (value, index|key, collection).
@@ -9,9 +14,9 @@ import createFind from './.internal/createFind';
  * @since 5.2.0
  * @category Collection
  * @param collection The collection to inspect.
- * @param predicateThe function invoked per iteration.
+ * @param predicate function invoked per iteration.
  * @param fromIndex The index to search from.
- * @returns {*} Returns the matched element, else `undefined`.
+ * @returns Returns the matched element, else `undefined`.
  * @example
  *
  * ```js
@@ -37,6 +42,12 @@ import createFind from './.internal/createFind';
  * // => object for 'barney'
  * ```
  */
-const find = createFind(findIndex);
+function find<T>(collection: ArrayLike<T>, predicate?: string, fromIndex?): T | undefined;
+function find<T>(collection: ArrayLike<T>, predicate?: (item: T) => boolean, fromIndex?): T | undefined;
+function find<T>(collection: ArrayLike<T>, predicate?: Partial<T>, fromIndex?): T | undefined;
+function find<T>(collection: ArrayLike<T>, predicate?, fromIndex?): T | undefined;
+function find(collection, predicate?, fromIndex?) {
+  return internalFind(collection, predicate, fromIndex);
+}
 
 export default find;

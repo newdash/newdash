@@ -1,4 +1,7 @@
-/** Used to map HTML entities to characters. */
+/**
+ * Used to map HTML entities to characters.
+ * @ignore
+ */
 const htmlUnescapes = {
   '&amp;': '&',
   '&lt;': '<',
@@ -7,8 +10,14 @@ const htmlUnescapes = {
   '&#39;': "'"
 };
 
-/** Used to match HTML entities and HTML characters. */
+/**
+ * Used to match HTML entities and HTML characters.
+ * @ignore
+ */
 const reEscapedHtml = /&(?:amp|lt|gt|quot|#(0+)?39);/g;
+/**
+ * @ignore
+ */
 const reHasEscapedHtml = RegExp(reEscapedHtml.source);
 
 /**

@@ -1,8 +1,6 @@
 import assignValue from './.internal/assignValue';
 import baseZipObject from './.internal/baseZipObject';
 
-export type ValuesOf<T extends any[]> = T[number];
-
 /**
  * This method is like `fromPairs` except that it accepts two arrays,
  * one of property identifiers and one of corresponding values.

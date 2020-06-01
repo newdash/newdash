@@ -3,6 +3,9 @@ import basePropertyDeep from './.internal/basePropertyDeep';
 import isKey from './.internal/isKey';
 import toKey from './.internal/toKey';
 
+/**
+ * @ignore
+ */
 interface Accessor {
   (obj: any): any
 }

@@ -3,14 +3,26 @@ import baseEach from './.internal/baseEach';
 import baseReduce from './.internal/baseReduce';
 import getIteratee from './.internal/getIteratee';
 
+/**
+ * @ignore
+ */
 interface Iteratee<T, R, K> {
   (accumulator?: R, value?: T, key?: K): R | void
 }
 
+/**
+ * @ignore
+ */
 type ArrayIteratee<T = any, R = any> = Iteratee<T, R, number>
 
+/**
+ * @ignore
+ */
 type ObjectIteratee<T = any, R = any> = Iteratee<T, R, string>
 
+/**
+ * @ignore
+ */
 type TypedObject<T> = { [key: string]: T }
 
 /**
@@ -34,7 +46,7 @@ type TypedObject<T> = { [key: string]: T }
  * @param iteratee The function invoked per iteration.
  * @param accumulator The initial value.
  * @returns  Returns the accumulated value.
- * @see reduceRight, transform
+ * @see [[reduceRight]],[[transform]]
  * @example
  *
  * ```js

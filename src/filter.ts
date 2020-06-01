@@ -3,6 +3,9 @@ import getIteratee from './.internal/getIteratee';
 import arrayFilter from './.internal/arrayFilter';
 import baseFilter from './.internal/baseFilter';
 
+/**
+ * @ignore
+ */
 type Predicate<T> = (value?: T) => boolean
 
 /**

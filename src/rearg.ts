@@ -2,28 +2,33 @@ import createWrap from './.internal/createWrap';
 import { WRAP_REARG_FLAG } from './.internal/CONSTANTS';
 import flatRest from './.internal/flatRest';
 
+const internalRearg = flatRest((func, indexes) => createWrap(func, WRAP_REARG_FLAG, undefined, undefined, undefined, indexes));
+
 /**
  * Creates a function that invokes `func` with arguments arranged according
  * to the specified `indexes` where the argument value at the first index is
  * provided as the first argument, the argument value at the second index is
  * provided as the second argument, and so on.
  *
- * @static
- * @memberOf _
- * @since 3.0.0
+ * @since 5.5.0
  * @category Function
- * @param {Function} func The function to rearrange arguments for.
- * @param {...(number|number[])} indexes The arranged argument indexes.
- * @returns {Function} Returns the new function.
+ * @param func The function to rearrange arguments for.
+ * @param indexes The arranged argument indexes.
+ * @returns Returns the new function.
  * @example
  *
+ * ```js
  * var rearged = rearg(function(a, b, c) {
  *   return [a, b, c];
  * }, [2, 0, 1]);
  *
  * rearged('b', 'c', 'a')
  * // => ['a', 'b', 'c']
+ * ```
  */
-const rearg = flatRest((func, indexes) => createWrap(func, WRAP_REARG_FLAG, undefined, undefined, undefined, indexes));
+function rearg(func, indexes);
+function rearg(...args) {
+  return internalRearg(...args);
+};
 
 export default rearg;

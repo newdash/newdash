@@ -1,6 +1,9 @@
 import isObject from './isObject';
 import root from './.internal/root';
 
+/**
+ * @ignore
+ */
 interface Options {
   /**
    * Specify invoking on the leading edge of the timeout.
@@ -16,6 +19,9 @@ interface Options {
   trailing?: boolean;
 }
 
+/**
+ * @ignore
+ */
 type DebouncedFunction<F extends (...any) => any> = {
   (...args: Parameters<F>): ReturnType<F>;
   cancel: () => void;

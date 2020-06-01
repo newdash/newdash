@@ -1,4 +1,7 @@
 
+/**
+ * @ignore
+ */
 export interface MapLike<K = any, V = any> {
   clear?(): void;
   delete?(key: K): boolean;
@@ -8,10 +11,16 @@ export interface MapLike<K = any, V = any> {
   set(key: K, value: V): this;
 }
 
+/**
+ * @ignore
+ */
 interface MapLikeConstructor<K = any, V = any> {
   new(): MapLike<K, V>
 }
 
+/**
+ * @ignore
+ */
 type MemorizedFunction<T extends (...any) => any, K = any, V = any> = {
   (...args: Parameters<T>): ReturnType<T>;
   /**

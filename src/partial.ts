@@ -5,6 +5,14 @@ import replaceHolders from './.internal/replaceHolders';
 import getHolder from './.internal/getHolder';
 
 /**
+ * @ignore
+ */
+const internalPartial = baseRest((func, partials) => {
+  const holders = replaceHolders(partials, getHolder(partial));
+  return createWrap(func, WRAP_PARTIAL_FLAG, undefined, partials, holders);
+});
+
+/**
  * Creates a function that invokes `func` with `partials` prepended to the
  * arguments it receives. This method is like `bind` except it does **not**
  * alter the `this` binding.
@@ -15,15 +23,14 @@ import getHolder from './.internal/getHolder';
  * **Note:** This method doesn't set the "length" property of partially
  * applied functions.
  *
- * @static
- * @memberOf _
- * @since 0.2.0
+ * @since 5.5.0
  * @category Function
- * @param {Function} func The function to partially apply arguments to.
- * @param {...*} [partials] The arguments to be partially applied.
- * @returns {Function} Returns the new partially applied function.
+ * @param func The function to partially apply arguments to.
+ * @param partials The arguments to be partially applied.
+ * @returns  Returns the new partially applied function.
  * @example
  *
+ * ```js
  * function greet(greeting, name) {
  *   return greeting + ' ' + name;
  * }
@@ -36,10 +43,12 @@ import getHolder from './.internal/getHolder';
  * var greetFred = partial(greet, _, 'fred');
  * greetFred('hi');
  * // => 'hi fred'
+ * ```
  */
-const partial = baseRest((func, partials) => {
-  const holders = replaceHolders(partials, getHolder(partial));
-  return createWrap(func, WRAP_PARTIAL_FLAG, undefined, partials, holders);
-});
+function partial(func, partials);
+function partial(...args) {
+  return internalPartial(...args);
+}
+
 
 export default partial;

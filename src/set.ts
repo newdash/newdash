@@ -14,7 +14,7 @@ import baseSet from './.internal/baseSet';
  * @param path The path of the property to set.
  * @param value The value to set.
  * @returns Returns `object`.
- * @see has,hasIn,get,unset
+ * @see [[has]],[[hasIn]],[[get]],[[unset]]
  * @example
  *
  * ```js
