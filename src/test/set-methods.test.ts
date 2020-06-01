@@ -1,19 +1,31 @@
+// @ts-nocheck
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { _, symbol, defineProperty } from './utils'
+import { symbol, defineProperty } from './utils'
 import unset from '../unset'
+import each from "../each";
+import constant from "../constant";
+import map from "../map";
+import update from "../update";
+import updateWith from "../updateWith";
+import set from "../set";
+import setWith from "../setWith";
+import toString from "../toString";
+import get from './../get';
+
+
 
 describe('set methods', () => {
-  lodashStable.each(['update', 'updateWith', 'set', 'setWith'], (methodName) => {
-    const func = _[methodName],
-      isUpdate = /^update/.test(methodName)
+
+  each([[update, 'update'], [updateWith, 'updateWith'], [set, 'set'], [setWith, 'setWith']], ([func, methodName]) => {
+
+    const isUpdate = /^update/.test(methodName as string)
 
     const oldValue = 1,
       value = 2,
-      updater = isUpdate ? lodashStable.constant(value) : value
+      updater = isUpdate ? constant(value) : value
 
     it(`\`_.${methodName}\` should set property values`, () => {
-      lodashStable.each(['a', ['a']], (path) => {
+      each(['a', ['a']], (path) => {
         const object = { 'a': oldValue },
           actual = func(object, path, updater)
 
@@ -24,12 +36,12 @@ describe('set methods', () => {
 
     it(`\`_.${methodName}\` should preserve the sign of \`0\``, () => {
       const props = [-0, Object(-0), 0, Object(0)],
-        expected = lodashStable.map(props, lodashStable.constant(value))
+        expected = map(props, constant(value))
 
-      const actual = lodashStable.map(props, (key) => {
+      const actual = map(props, (key) => {
         const object = { '-0': 'a', '0': 'b' }
         func(object, key, updater)
-        return object[lodashStable.toString(key)]
+        return object[toString(key)]
       })
 
       assert.deepStrictEqual(actual, expected)
@@ -46,7 +58,7 @@ describe('set methods', () => {
     })
 
     it(`\`_.${methodName}\` should set deep property values`, () => {
-      lodashStable.each(['a.b', ['a', 'b']], (path) => {
+      each(['a.b', ['a', 'b']], (path) => {
         const object = { 'a': { 'b': oldValue } },
           actual = func(object, path, updater)
 
@@ -56,7 +68,7 @@ describe('set methods', () => {
     })
 
     it(`\`_.${methodName}\` should set a key over a path`, () => {
-      lodashStable.each(['a.b', ['a.b']], (path) => {
+      each(['a.b', ['a.b']], (path) => {
         const object = { 'a.b': oldValue },
           actual = func(object, path, updater)
 
@@ -80,7 +92,7 @@ describe('set methods', () => {
     })
 
     it(`\`_.${methodName}\` should handle empty paths`, () => {
-      lodashStable.each([['', ''], [[], ['']]], (pair, index) => {
+      each([['', ''], [[], ['']]], (pair, index) => {
         const object = {}
 
         func(object, pair[0], updater)
@@ -99,7 +111,7 @@ describe('set methods', () => {
         ['a', '-1.23', '["b"]', 'c', "['d']", '\ne\n', 'f', 'g']
       ]
 
-      lodashStable.each(paths, (path) => {
+      each(paths, (path) => {
         func(object, path, updater)
         assert.strictEqual(object.a[-1.23]['["b"]'].c["['d']"]['\ne\n'].f.g, value)
         object.a[-1.23]['["b"]'].c["['d']"]['\ne\n'].f.g = oldValue
@@ -108,12 +120,13 @@ describe('set methods', () => {
 
     it(`\`_.${methodName}\` should create parts of \`path\` that are missing`, () => {
       const object = {}
+      const expect = { 'a': [undefined, { 'b': { 'c': value } }] }
 
-      lodashStable.each(['a[1].b.c', ['a', '1', 'b', 'c']], (path) => {
+      each(['a[1].b.c', ['a', '1', 'b', 'c']], (path) => {
         const actual = func(object, path, updater)
 
         assert.strictEqual(actual, object)
-        assert.deepStrictEqual(actual, { 'a': [undefined, { 'b': { 'c': value } }] })
+        assert.strictEqual(get(actual, path), value)
         assert.ok(!('0' in object.a))
 
         delete object.a
@@ -124,7 +137,7 @@ describe('set methods', () => {
       const values = [null, undefined],
         expected = [[null, null], [undefined, undefined]]
 
-      const actual = lodashStable.map(values, (value) => {
+      const actual = map(values, (value) => {
         try {
           return [func(value, 'a.b', updater), func(value, ['a', 'b'], updater)]
         } catch (e) {
@@ -136,7 +149,7 @@ describe('set methods', () => {
     })
 
     it(`\`_.${methodName}\` should overwrite primitives in the path`, () => {
-      lodashStable.each(['a.b', ['a', 'b']], (path) => {
+      each(['a.b', ['a', 'b']], (path) => {
         const object = { 'a': '' }
 
         func(object, path, updater)
@@ -152,16 +165,16 @@ describe('set methods', () => {
     })
 
     it(`\`_.${methodName}\` should not assign values that are the same as their destinations`, () => {
-      lodashStable.each(['a', ['a'], { 'a': 1 }, NaN], (value) => {
+      each(['a', ['a'], { 'a': 1 }, NaN], (value) => {
         let object = {},
           pass = true,
-          updater = isUpdate ? lodashStable.constant(value) : value
+          updater = isUpdate ? constant(value) : value
 
         defineProperty(object, 'a', {
           'configurable': true,
           'enumerable': true,
-          'get': lodashStable.constant(value),
-          'set': function() { pass = false }
+          'get': constant(value),
+          'set': function () { pass = false }
         })
 
         func(object, 'a', updater)

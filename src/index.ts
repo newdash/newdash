@@ -21,16 +21,22 @@ import head from './head';
 import has from './has';
 import clone from './clone';
 import cloneDeep from './cloneDeep';
+import set from './set';
+import update from './update';
+import unset from './unset';
+import capitalize from './capitalize';
 
 export {
   filter, get, reduce, map, each, every, concat, first,
   attempt, forEach, merge, isEmpty, split, join, memoize,
-  some, find, debounce, add, head, has, clone, cloneDeep
+  some, find, debounce, add, head, has, clone, cloneDeep,
+  set, update, unset, capitalize
 };
 
 export default {
   filter, get, reduce, map, each, every, concat, first,
   attempt, forEach, merge, isEmpty, split, join, memoize,
-  some, find, debounce, add, head, has, clone, cloneDeep
+  some, find, debounce, add, head, has, clone, cloneDeep,
+  set, update, unset, capitalize
 };
 

@@ -23,6 +23,7 @@ import isArray from './isArray';
  *  else `false`.
  * @example
  *
+ * ```js
  * every([true, 1, null, 'yes'], Boolean);
  * // => false
  *
@@ -42,8 +43,9 @@ import isArray from './isArray';
  * // The `property` iteratee shorthand.
  * every(users, 'active');
  * // => false
+ * ```
  */
-function every(collection: any[] | object, predicate: Function, guard = undefined): boolean {
+function every(collection: any[] | object, predicate?: Function, guard = undefined): boolean {
   if (guard && isIterateeCall(collection, predicate, guard)) {
     predicate = undefined;
   }

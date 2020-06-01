@@ -5,14 +5,15 @@ import baseUnset from './.internal/baseUnset';
  *
  * **Note:** This method mutates `object`.
  *
- * @since 4.0.0
+ * @since 5.3.0
  * @category Object
  * @param {Object} object The object to modify.
  * @param {Array|string} path The path of the property to unset.
  * @returns {boolean} Returns `true` if the property is deleted, else `false`.
- * @see get, has, set
+ * @see get,has,set
  * @example
  *
+ * ```js
  * const object = { 'a': [{ 'b': { 'c': 7 } }] }
  * unset(object, 'a[0].b.c')
  * // => true
@@ -25,7 +26,10 @@ import baseUnset from './.internal/baseUnset';
  *
  * console.log(object)
  * // => { 'a': [{ 'b': {} }] }
+ * ```
  */
+function unset(object, path: Array<string>);
+function unset(object, path: string);
 function unset(object, path) {
   return object == null ? true : baseUnset(object, path);
 }

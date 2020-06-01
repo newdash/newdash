@@ -27,7 +27,7 @@
     "test": "jest",
     "lint": "tsc --noEmit && eslint .",
     "coverage": "npm test -- --coverage --no-cache",
-    "build": "tsc && webpack",
+    "build": "tsc --build tsconfig.json && tsc --build tsconfig.es5.json && webpack",
     "prepublishOnly": "npm run build",
     "release": "standard-version --no-verify && git push --follow-tags origin master"
   },

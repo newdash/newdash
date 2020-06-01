@@ -1,3 +1,4 @@
+// @ts-nocheck
 import assert from 'assert'
 
 import { _, symbol, numberProto, } from './utils'
@@ -9,6 +10,7 @@ import each from '../each';
 
 
 describe('get and result', () => {
+
   const func = get
 
   it(`'_.get' should get string keyed property values`, () => {

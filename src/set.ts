@@ -8,15 +8,16 @@ import baseSet from './.internal/baseSet';
  *
  * **Note:** This method mutates `object`.
  *
- * @since 3.7.0
+ * @since 5.3.0
  * @category Object
- * @param {Object} object The object to modify.
- * @param {Array|string} path The path of the property to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns `object`.
- * @see has, hasIn, get, unset
+ * @param object The object to modify.
+ * @param path The path of the property to set.
+ * @param value The value to set.
+ * @returns Returns `object`.
+ * @see has,hasIn,get,unset
  * @example
  *
+ * ```js
  * const object = { 'a': [{ 'b': { 'c': 3 } }] }
  *
  * set(object, 'a[0].b.c', 4)
@@ -26,7 +27,10 @@ import baseSet from './.internal/baseSet';
  * set(object, ['x', '0', 'y', 'z'], 5)
  * console.log(object.x[0].y.z)
  * // => 5
+ * ```
  */
+function set(object: any, path: Array<string>, value: any);
+function set(object: any, path: string, value: any);
 function set(object, path, value) {
   return object == null ? object : baseSet(object, path, value);
 }

@@ -7,14 +7,15 @@ import baseUpdate from './.internal/baseUpdate';
  *
  * **Note:** This method mutates `object`.
  *
- * @since 4.6.0
+ * @since 5.3.0
  * @category Object
- * @param {Object} object The object to modify.
- * @param {Array|string} path The path of the property to set.
- * @param {Function} updater The function to produce the updated value.
- * @returns {Object} Returns `object`.
+ * @param object The object to modify.
+ * @param path The path of the property to set.
+ * @param updater The function to produce the updated value.
+ * @returns Returns `object`.
  * @example
  *
+ * ```js
  * const object = { 'a': [{ 'b': { 'c': 3 } }] }
  *
  * update(object, 'a[0].b.c', n => n * n)
@@ -24,8 +25,9 @@ import baseUpdate from './.internal/baseUpdate';
  * update(object, 'x[0].y.z', n => n ? n + 1 : 0)
  * console.log(object.x[0].y.z)
  * // => 0
+ * ```
  */
-function update(object, path, updater) {
+function update<U extends(...any) => any>(object: any, path: Array<string> | string, updater?: U): ReturnType<U> {
   return object == null ? object : baseUpdate(object, path, updater);
 }
 

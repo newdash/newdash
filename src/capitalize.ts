@@ -5,16 +5,18 @@ import toString from './toString';
  * Converts the first character of `string` to upper case and the remaining
  * to lower case.
  *
- * @since 3.0.0
+ * @since 5.3.0
  * @category String
- * @param {string} [string=''] The string to capitalize.
- * @returns {string} Returns the capitalized string.
+ * @param s The string to capitalize.
+ * @returns Returns the capitalized string.
  * @example
  *
+ * ```js
  * capitalize('FRED')
  * // => 'Fred'
+ * ```
  */
-const capitalize = (string) => upperFirst(toString(string).toLowerCase());
+const capitalize = (s: string) => upperFirst(toString(s).toLowerCase());
 
 
 export default capitalize;

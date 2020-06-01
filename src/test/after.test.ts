@@ -3,6 +3,7 @@ import times from "../times";
 import after from "../after";
 
 describe('after', () => {
+  
   function testAfter(n, ts) {
     let count = 0
     times(ts, after(n, () => { count++ }))
@@ -28,4 +29,5 @@ describe('after', () => {
     assert.strictEqual(object.after(), 2)
     assert.strictEqual(object.count, 2)
   })
+  
 })

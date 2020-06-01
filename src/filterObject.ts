@@ -5,20 +5,22 @@
  *
  * If you want an object in return, consider `pickBy`.
  *
- * @since 5.0.0
+ * @since 5.3.0
  * @category Object
- * @param {Object} object The object to iterate over.
- * @param {Function} predicate The function invoked per iteration.
- * @returns {Array} Returns the new filtered array.
- * @see pickBy, pull, pullAll, pullAllBy, pullAllWith, pullAt, remove, reject
+ * @param object The object to iterate over.
+ * @param predicate The function invoked per iteration.
+ * @returns Returns the new filtered array.
+ * @see pickBy,pull,pullAll,pullAllBy,pullAllWith,pullAt,remove,reject
  * @example
  *
+ * ```js
  * const object = { 'a': 5, 'b': 8, 'c': 10 }
  *
  * filterObject(object, (n) => !(n % 5))
  * // => [5, 10]
+ * ```
  */
-function filterObject(object, predicate) {
+function filterObject(object: any, predicate?) {
   object = Object(object);
   const result = [];
 
@@ -28,6 +30,7 @@ function filterObject(object, predicate) {
       result.push(value);
     }
   });
+
   return result;
 }
 
