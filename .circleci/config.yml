@@ -41,7 +41,7 @@ jobs:
           command: ./node_modules/.bin/jest -w 2 --coverage
       - run:
           name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run:
           name: Build packages
           command: npm run build

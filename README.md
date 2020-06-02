@@ -6,11 +6,14 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=newdash_newdash&metric=alert_status)](https://sonarcloud.io/dashboard?id=newdash_newdash)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=newdash_newdash&metric=security_rating)](https://sonarcloud.io/dashboard?id=newdash_newdash)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/newdash/newdash.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/newdash/newdash/alerts/)
-
-[![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash)](https://www.npmjs.com/package/@newdash/newdash)
-![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@newdash/newdash)
-[![](https://data.jsdelivr.com/v1/package/npm/@newdash/newdash/badge)](https://www.jsdelivr.com/package/npm/@newdash/newdash)
 [![Netlify](https://img.shields.io/netlify/267b7429-c295-4d0e-90d0-97d772b9a821?label=docs)](https://newdash.netlify.fornever.org/)
+
+![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash?label=all)
+![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash-es5?label=es5)
+![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash-es6?label=es6)
+![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash-umd?label=umd)
+![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash-node?label=node)
+[![](https://data.jsdelivr.com/v1/package/npm/@newdash/newdash/badge)](https://www.jsdelivr.com/package/npm/@newdash/newdash)
 
 **NewDash** is a hard fork project of the [lodash](https://github.com/lodash/lodash) utility project.
 
