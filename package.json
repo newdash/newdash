@@ -58,5 +58,10 @@
       "node_modules/",
       "src/test"
     ]
-  }
+  },
+  "keywords": [
+    "javascript",
+    "lodash",
+    "utilities"
+  ]
 }

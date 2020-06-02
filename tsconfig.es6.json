@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "charset": "UTF-8",
+    "newLine": "lf",
+    "allowJs": true,
+    "target": "ES6",
+    "module": "AMD",
+    "outDir": "es6",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "lib": [
+      "ES6"
+    ]
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "src/test",
+    "lib",
+    "dist"
+  ]
+}
