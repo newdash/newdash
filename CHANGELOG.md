@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.0](https://github.com/newdash/newdash/compare/v5.3.0...v5.4.0) (2020-06-02)
+
+
+### Features
+
+* [#13](https://github.com/newdash/newdash/issues/13), [#14](https://github.com/newdash/newdash/issues/14) different distributions ([8102c17](https://github.com/newdash/newdash/commit/8102c1739c14479202aebd22a5c2caca3537d5e7))
+* [#15](https://github.com/newdash/newdash/issues/15) npm keywords ([631025d](https://github.com/newdash/newdash/commit/631025d86e0d73d89d0458c47ed5063f7bf0ba11))
+* flatten & flatmap ([6331a84](https://github.com/newdash/newdash/commit/6331a84af56d88a9af83a822e200077a6b4dce8e))
+
 ## [5.3.0](https://github.com/newdash/newdash/compare/v5.2.0...v5.3.0) (2020-06-01)
 
 
