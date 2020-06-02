@@ -24,11 +24,12 @@ if (require.main == module) {
 
         const directory = distributions[i];
         const libPackageJson = Object.assign({}, packageJson) // clone
-        libPackageJson.name = `${libPackageJson.name}-${directory}`
 
         if (directory == "dist") {
+          libPackageJson.name = `${libPackageJson.name}-umd`
           libPackageJson.main = libPackageJson.unpkg = "./newdash.js"
         } else {
+          libPackageJson.name = `${libPackageJson.name}-${directory}`
           libPackageJson.main = "./index"
         }
 
