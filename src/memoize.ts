@@ -14,14 +14,14 @@ export interface MapLike<K = any, V = any> {
 /**
  * @ignore
  */
-interface MapLikeConstructor<K = any, V = any> {
+export interface MapLikeConstructor<K = any, V = any> {
   new(): MapLike<K, V>
 }
 
 /**
  * @ignore
  */
-type MemorizedFunction<T extends (...any) => any, K = any, V = any> = {
+export type MemorizedFunction<T extends (...any) => any, K = any, V = any> = {
   (...args: Parameters<T>): ReturnType<T>;
   /**
    * cache instance for this function instance

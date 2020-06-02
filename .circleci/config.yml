@@ -32,16 +32,37 @@ jobs:
       - image: circleci/node:10
     steps:
       - checkout
-      - run: npm install
+      - run:
+          name: Install dependency
+          command: npm install
       # run tests!
       - run:
-          name: Unit Tests
+          name: Execute unit tests
           command: ./node_modules/.bin/jest -w 2 --coverage
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
       - run:
-          name: Publish package
+          name: Build packages
+          command: npm run build
+      - run:
+          name: Publish package - main
+          command: npm publish --access public
+      - run:
+          name: Publish package - umd
+          working_directory: ~/repo/dist/umd
+          command: npm publish --access public
+      - run:
+          name: Publish package - node
+          working_directory: ~/repo/dist/node
+          command: npm publish --access public
+      - run:
+          name: Publish package - es5
+          working_directory: ~/repo/dist/es5
+          command: npm publish --access public
+      - run:
+          name: Publish package - es6
+          working_directory: ~/repo/dist/es6
           command: npm publish --access public
 
 workflows:
