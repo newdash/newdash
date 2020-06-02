@@ -130,4 +130,17 @@ describe('`__proto__` property bugs', () => {
 
   });
 
+  it('should not have prototype pollution', () => {
+
+    const testValue = 42;
+
+    const notExistKey = "not_exist_key";
+
+    zipObjectDeep([`__proto__.${notExistKey}`], [testValue]); // try to prototype pollution
+
+    expect(global[notExistKey]).toBeUndefined();
+
+  });
+
+
 })
