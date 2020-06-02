@@ -1,13 +1,21 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { args, _ } from './utils'
+import { args } from './utils'
 import flatten from '../flatten'
 import flattenDeep from '../flattenDeep'
 import flattenDepth from '../flattenDepth'
+import each from '../each'
+import map from '../map'
+import constant from '../constant'
+import keys from '../keys'
+
 
 describe('flatten methods', () => {
   const array = [1, [2, [3, [4]], 5]],
-    methodNames = ['flatten', 'flattenDeep', 'flattenDepth']
+    methods = [
+      [flatten, 'flatten'],
+      [flattenDeep, 'flattenDeep'],
+      [flattenDepth, 'flattenDepth']
+    ]
 
   it('should flatten `arguments` objects', () => {
     const array = [args, [args]]
@@ -23,8 +31,9 @@ describe('flatten methods', () => {
 
     expected.push(undefined, undefined, undefined)
 
-    lodashStable.each(methodNames, (methodName) => {
-      const actual = _[methodName](array)
+    each(methods, ([func, methodName]) => {
+      // @ts-ignore
+      const actual = func(array)
       assert.deepStrictEqual(actual, expected)
       assert.ok('4' in actual)
     })
@@ -34,32 +43,36 @@ describe('flatten methods', () => {
     if (Symbol && Symbol.isConcatSpreadable) {
       const object = { '0': 'a', 'length': 1 },
         array = [object],
-        expected = lodashStable.map(methodNames, lodashStable.constant(['a']))
+        expected = map(methods, constant(['a']))
 
       object[Symbol.isConcatSpreadable] = true
 
-      const actual = lodashStable.map(methodNames, (methodName) => _[methodName](array))
+      // @ts-ignore
+      const actual = map(methods, ([func]) => func(array))
 
       assert.deepStrictEqual(actual, expected)
     }
   })
 
-  it('should work with extremely large arrays', () => {
-    lodashStable.times(3, (index) => {
-      const expected = Array(5e5)
-      try {
-        let func = flatten
-        if (index == 1) {
-          func = flattenDeep
-        } else if (index == 2) {
-          func = flattenDepth
-        }
-        assert.deepStrictEqual(func([expected]), expected)
-      } catch (e) {
-        assert.ok(false, e.message)
-      }
+  methods.forEach(([func, name]) => {
+    it(`should work with extremely large arrays for "${name}"`, () => {
+
+      const expected = Array(100).fill(undefined); // fill undefined, otherwise the object internal not have these items.
+
+      // @ts-ignore
+      const actual = func([expected])
+
+      assert.deepStrictEqual(typeof actual, typeof expected)
+      // @ts-ignore
+      assert.deepStrictEqual(actual.prototype, expected.prototype)
+      assert.deepStrictEqual(actual.length, expected.length)
+      assert.deepStrictEqual(keys(actual), keys(expected))
+      assert.deepStrictEqual(actual, expected)
+
     })
+
   })
+
 
   it('should work with empty arrays', () => {
     const array = [[], [[]], [[], [[[]]]]]
@@ -79,26 +92,12 @@ describe('flatten methods', () => {
     const expected = [],
       nonArray = { '0': 'a' }
 
+    // @ts-ignore
     assert.deepStrictEqual(flatten(nonArray), expected)
+    // @ts-ignore
     assert.deepStrictEqual(flattenDeep(nonArray), expected)
+    // @ts-ignore
     assert.deepStrictEqual(flattenDepth(nonArray, 2), expected)
   })
 
-  it('should return a wrapped value when chaining', () => {
-    let wrapped = _(array),
-      actual = wrapped.flatten()
-
-    assert.ok(actual instanceof _)
-    assert.deepEqual(actual.value(), [1, 2, [3, [4]], 5])
-
-    actual = wrapped.flattenDeep()
-
-    assert.ok(actual instanceof _)
-    assert.deepEqual(actual.value(), [1, 2, 3, 4, 5])
-
-    actual = wrapped.flattenDepth(2)
-
-    assert.ok(actual instanceof _)
-    assert.deepEqual(actual.value(), [1, 2, 3, [4], 5])
-  })
 })

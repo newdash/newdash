@@ -2,9 +2,10 @@
  * Appends the elements of `values` to `array`.
  *
  * @private
- * @param {Array} array The array to modify.
- * @param {Array} values The values to append.
- * @returns {Array} Returns `array`.
+ * @ignore
+ * @param array The array to modify.
+ * @param values The values to append.
+ * @returns Returns `array`.
  */
 function arrayPush(array, values) {
   var index = -1,

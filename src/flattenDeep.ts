@@ -1,22 +1,24 @@
 import baseFlatten from './.internal/baseFlatten';
 
 /** Used as references for various `Number` constants. */
-const INFINITY = 1 / 0;
+const INFINITY = Infinity;
 
 /**
  * Recursively flattens `array`.
  *
- * @since 3.0.0
+ * @since 5.4.0
  * @category Array
- * @param {Array} array The array to flatten.
- * @returns {Array} Returns the new flattened array.
- * @see flatMap, flatMapDeep, flatMapDepth, flatten, flattenDepth
+ * @param array The array to flatten.
+ * @returns Returns the new flattened array.
+ * @see [[flatMap]],[[flatMapDeep]],[[flatMapDepth]],[[flatten]],[[flattenDepth]]
  * @example
  *
+ * ```js
  * flattenDeep([1, [2, [3, [4]], 5]])
  * // => [1, 2, 3, 4, 5]
+ * ```
  */
-function flattenDeep(array) {
+function flattenDeep(array: Array<any>): Array<any> {
   const length = array == null ? 0 : array.length;
   return length ? baseFlatten(array, INFINITY) : [];
 }

@@ -1,11 +1,19 @@
-import assert from 'assert'
-import lodashStable from 'lodash'
-import { _, identity, falsey, stubArray } from './utils'
+// @ts-nocheck
+import assert from 'assert';
+import constant from '../constant';
+import each from '../each';
+import flatMap from "../flatMap";
+import flatMapDeep from "../flatMapDeep";
+import flatMapDepth from "../flatMapDepth";
+import flatten from '../flatten';
+import map from '../map';
+import { falsey, stubArray } from './utils';
+import identity from '../.internal/identity';
 
 describe('flatMap methods', () => {
-  lodashStable.each(['flatMap', 'flatMapDeep', 'flatMapDepth'], (methodName) => {
-    const func = _[methodName],
-      array = [1, 2, 3, 4]
+
+  each([[flatMap, 'flatMap'], [flatMapDeep, 'flatMapDeep'], [flatMapDepth, 'flatMapDepth']], ([func, methodName]) => {
+    const array = [1, 2, 3, 4]
 
     function duplicate(n) {
       return [n, n]
@@ -13,7 +21,7 @@ describe('flatMap methods', () => {
 
     it(`\`_.${methodName}\` should map values in \`array\` to a new flattened array`, () => {
       const actual = func(array, duplicate),
-        expected = lodashStable.flatten(lodashStable.map(array, duplicate))
+        expected = flatten(map(array, duplicate))
 
       assert.deepStrictEqual(actual, expected)
     })
@@ -37,22 +45,22 @@ describe('flatMap methods', () => {
       const array = [[1, 2], [3, 4]],
         object = { 'a': [1, 2], 'b': [3, 4] },
         values = [, null, undefined],
-        expected = lodashStable.map(values, lodashStable.constant([1, 2, 3, 4]))
+        expected = map(values, constant([1, 2, 3, 4]))
 
-      lodashStable.each([array, object], (collection) => {
-        const actual = lodashStable.map(values, (value, index) => index ? func(collection, value) : func(collection))
+      each([array, object], (collection) => {
+        const actual = map(values, (value, index) => index ? func(collection, value) : func(collection))
 
         assert.deepStrictEqual(actual, expected)
       })
     })
 
     it(`\`_.${methodName}\` should accept a falsey \`collection\``, () => {
-      const expected = lodashStable.map(falsey, stubArray)
+      const expected = map(falsey, stubArray)
 
-      const actual = lodashStable.map(falsey, (collection, index) => {
+      const actual = map(falsey, (collection, index) => {
         try {
           return index ? func(collection) : func()
-        } catch (e) {}
+        } catch (e) { }
       })
 
       assert.deepStrictEqual(actual, expected)
