@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.4.1](https://github.com/newdash/newdash/compare/v5.4.0...v5.4.1) (2020-06-02)
+
+
+### Bug Fixes
+
+* **ci:** no auth error ([b7f40e9](https://github.com/newdash/newdash/commit/b7f40e900bf1236fedd79dfbf24cabd75617bf5a))
+
 ## [5.4.0](https://github.com/newdash/newdash/compare/v5.3.0...v5.4.0) (2020-06-02)
 
 
