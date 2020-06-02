@@ -4,9 +4,9 @@
     "newLine": "lf",
     "allowJs": true,
     "target": "ES6",
-    "module": "AMD",
+    "module": "ES6",
     "outDir": "es6",
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "moduleResolution": "node",
     "declaration": true,
     "lib": [

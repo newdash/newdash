@@ -3,8 +3,6 @@
   "description": "yet another javascript util library",
   "version": "5.3.0",
   "license": "MIT",
-  "main": "./lib",
-  "unpkg": "./dist/newdash.js",
   "engines": {
     "node": ">=10.0.0"
   },
@@ -27,7 +25,8 @@
     "test": "jest",
     "lint": "tsc --noEmit && eslint .",
     "coverage": "npm test -- --coverage --no-cache",
-    "build": "tsc --build tsconfig.json && tsc --build tsconfig.es5.json && webpack",
+    "build": "tsc --build tsconfig.json && tsc --build tsconfig.es5.json && tsc --build tsconfig.es6.json && webpack && npm run gen:package",
+    "gen:package": "node scripts/copy-package-json.js",
     "prepublishOnly": "npm run build",
     "release": "standard-version --no-verify && git push --follow-tags origin master"
   },

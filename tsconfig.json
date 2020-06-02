@@ -5,7 +5,7 @@
     "allowJs": true,
     "target": "ES6",
     "module": "CommonJS",
-    "outDir": "lib",
+    "outDir": "node",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "declaration": true,
