@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'source-map',
   output: {
     library: '_',
-    path: join(__dirname, './dist'),
+    path: join(__dirname, './dist/umd'),
     filename: 'newdash.js',
     libraryTarget: 'umd'
   },

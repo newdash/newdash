@@ -5,7 +5,7 @@
     "allowJs": true,
     "target": "ES5",
     "module": "CommonJS",
-    "outDir": "es5",
+    "outDir": "dist/es5",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "declaration": true,
