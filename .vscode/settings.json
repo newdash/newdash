@@ -5,7 +5,8 @@
     "source.fixAll": true
   },
   "cSpell.words": [
-    "falsey"
+    "falsey",
+    "newdash"
   ],
   "eslint.enable": true,
   "javascript.autoClosingTags": false,
