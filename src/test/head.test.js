@@ -16,6 +16,7 @@ describe('head', () => {
   it('should return `undefined` when querying empty arrays', () => {
     arrayProto[0] = 1
     assert.strictEqual(head([]), undefined)
+    assert.strictEqual(first([]), undefined)
     arrayProto.length = 0
   })
 
@@ -26,8 +27,11 @@ describe('head', () => {
     assert.deepStrictEqual(actual, [1, 4, 7])
   })
 
-  it('should be aliased', () => {
-    assert.strictEqual(first, head)
+  it('should process string', () => {
+
+    assert.strictEqual(first("abc"), "a")
+    assert.strictEqual(head("abc"), "a")
+
   })
 
 })

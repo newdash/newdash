@@ -1,8 +1,15 @@
 import toNumber from './toNumber';
 
-/** Used as references for various `Number` constants. */
-const INFINITY = 1 / 0;
-const MAX_INTEGER = 1.7976931348623157e+308;
+/**
+ * Used as references for various `Number` constants.
+ * @ignore
+ *
+ */
+const INFINITY = Infinity;
+/**
+ * @ignore
+ */
+const MAX_INTEGER = Number.MAX_VALUE || 1.7976931348623157e+308;
 
 /**
  * Converts `value` to a finite number.

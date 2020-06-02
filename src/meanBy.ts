@@ -1,8 +1,11 @@
 import baseSum from './.internal/baseSum';
 import getIteratee from './.internal/getIteratee';
 
-/** Used as references for various `Number` constants. */
-const NAN = Number.NaN
+/**
+ * Used as references for various `Number` constants.
+ * @ignore
+ */
+const NAN = Number.NaN;
 
 /**
  * This method is like `mean` except that it accepts `iteratee` which is

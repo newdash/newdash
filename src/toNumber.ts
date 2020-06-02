@@ -1,7 +1,10 @@
 import isObject from './isObject';
 import isSymbol from './isSymbol';
 
-/** Used as references for various `Number` constants. */
+/**
+ * Used as references for various `Number` constants.
+ * @ignore
+ */
 const NAN = Number.NaN;
 
 /** Used to match leading and trailing whitespace. */

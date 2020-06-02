@@ -5,7 +5,7 @@
  * @alias first
  * @category Array
  * @param array The array to query.
- * @returns {*} Returns the first element of `array`.
+ * @returns Returns the first element of `array`.
  * @see last
  * @example
  *
@@ -17,7 +17,7 @@
  * // => undefined
  * ```
  */
-function head<T>(array: Array<T>): T | undefined {
+function head<T>(array: ArrayLike<T>): T | undefined {
   return (array != null && array.length)
     ? array[0]
     : undefined;

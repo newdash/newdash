@@ -15,7 +15,7 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash-umd?label=umd)](https://www.npmjs.com/package/@newdash/newdash-umd)
 [![](https://data.jsdelivr.com/v1/package/npm/@newdash/newdash/badge)](https://www.jsdelivr.com/package/npm/@newdash/newdash)
 
-**NewDash** is a hard fork project of the [lodash](https://github.com/lodash/lodash) utility project.
+**NewDash** is a hard fork of the [lodash](https://github.com/lodash/lodash) utility project, and re-build it with `typescript`.
 
 ## Quick Start
 
@@ -48,7 +48,7 @@ first("abc")
 
 In most cases, just use the `@newdash/newdash-node` package is enough.
 
-* `@newdash/newdash-node` - for modern `nodejs` environment, ready for all build tool based on nodejs `commonjs` module system (node, react, vuejs).
+* `@newdash/newdash-node` - for modern `nodejs` environment, ready for all build tools which based on the nodejs `commonjs` module system (node, react, vuejs, webpack and more).
 * `@newdash/newdash-es5` - for old `nodejs` environment, ready for `0.12 <= node version <= 8`.
 * `@newdash/newdash-es6` - for modern build system, with `es6` module keywords so that build tool could strip the unused modules.
 * `@newdash/newdash-umd` - for native browser without any build system, please access it with `unpkg` or `jsdeliver`
