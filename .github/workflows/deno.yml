@@ -26,7 +26,4 @@ jobs:
     - run: npm ci
     - run: npm run build:deno
     - name: run deno test
-      env:
-        DENO_INSTALL: /home/runner/.deno
-        PATH: $DENO_INSTALL/bin:$PATH
-      run: npm run test:deno
+      run: /home/runner/.deno/bin/deno test ./dist/deno/test/*.test.ts
