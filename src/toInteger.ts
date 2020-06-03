@@ -6,13 +6,14 @@ import toFinite from './toFinite';
  * **Note:** This method is loosely based on
  * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
  *
- * @since 4.0.0
+ * @since 5.5.0
  * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted integer.
- * @see isInteger, isNumber, toNumber
+ * @param value The value to convert.
+ * @returns Returns the converted integer.
+ * @see [[isInteger]], [[isNumber]], [[toNumber]]
  * @example
  *
+ * ```js
  * toInteger(3.2)
  * // => 3
  *
@@ -24,8 +25,9 @@ import toFinite from './toFinite';
  *
  * toInteger('3.2')
  * // => 3
+ * ```
  */
-function toInteger(value) {
+function toInteger(value: any): number {
   const result = toFinite(value);
   const remainder = result % 1;
 

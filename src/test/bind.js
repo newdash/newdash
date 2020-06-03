@@ -82,7 +82,6 @@ describe('bind', function() {
         bound = bind(fn, object, _ph, 'b', ph);
 
     assert.deepEqual(bound('a', 'c'), [object, 'a', 'b', ph, 'c']);
-    delete placeholder;
   });
 
   it('should create a function with a `length` of `0`', function() {

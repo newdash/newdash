@@ -7,16 +7,29 @@ import isSymbol from './isSymbol';
  */
 const NAN = Number.NaN;
 
-/** Used to match leading and trailing whitespace. */
+/**
+ * Used to match leading and trailing whitespace.
+ * @ignore
+ */
 const reTrim = /^\s+|\s+$/g;
 
-/** Used to detect bad signed hexadecimal string values. */
+/**
+ * Used to detect bad signed hexadecimal string values.
+ * @ignore
+ */
 const reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
 
-/** Used to detect binary string values. */
+/**
+ * Used to detect binary string values.
+ *
+ * @ignore
+ */
 const reIsBinary = /^0b[01]+$/i;
 
-/** Used to detect octal string values. */
+/**
+ * Used to detect octal string values.
+ * @ignore
+ */
 const reIsOctal = /^0o[0-7]+$/i;
 
 /** Built-in method references without a dependency on `root`. */
@@ -25,13 +38,14 @@ const freeParseInt = parseInt;
 /**
  * Converts `value` to a number.
  *
- * @since 4.0.0
+ * @since 5.0.0
  * @category Lang
- * @param {*} value The value to process.
- * @returns {number} Returns the number.
- * @see isInteger, toInteger, isNumber
+ * @param value The value to process.
+ * @returns Returns the number.
+ * @see [[isInteger]], [[toInteger]], [[isNumber]]
  * @example
  *
+ * ```js
  * toNumber(3.2)
  * // => 3.2
  *
@@ -43,8 +57,9 @@ const freeParseInt = parseInt;
  *
  * toNumber('3.2')
  * // => 3.2
+ * ```
  */
-function toNumber(value) {
+function toNumber(value: any): number {
   if (typeof value === 'number') {
     return value;
   }

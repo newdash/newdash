@@ -1,6 +1,5 @@
 {
   "imports": {
-    "assert": "./assert",
     "lodash": "https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"
   }
 }

@@ -58,7 +58,6 @@ describe('partial methods', function() {
           expected = isPartial ? ['a', 'b', ph, 'c'] : ['a', 'c', 'b', ph];
 
       assert.deepEqual(par('a', 'c'), expected);
-      delete placeholder;
     });
 
     it('`_.' + methodName + '` creates a function with a `length` of `0`', function() {

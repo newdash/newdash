@@ -14,12 +14,13 @@ const MAX_INTEGER = Number.MAX_VALUE || 1.7976931348623157e+308;
 /**
  * Converts `value` to a finite number.
  *
- * @since 4.12.0
+ * @since 5.5.0
  * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted number.
+ * @param value The value to convert.
+ * @returns Returns the converted number.
  * @example
  *
+ * ```js
  * toFinite(3.2)
  * // => 3.2
  *
@@ -31,8 +32,9 @@ const MAX_INTEGER = Number.MAX_VALUE || 1.7976931348623157e+308;
  *
  * toFinite('3.2')
  * // => 3.2
+ * ```
  */
-function toFinite(value) {
+function toFinite(value: any): number {
   if (!value) {
     return value === 0 ? value : 0;
   }

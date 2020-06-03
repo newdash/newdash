@@ -1,6 +1,6 @@
 import createMathOperation from './.internal/createMathOperation';
 
-const internalAdd = createMathOperation((augend, addend) => augend + addend, 0);
+const internalAdd = createMathOperation((augend: any, addend: any) => augend + addend, 0);
 
 /**
  * Adds two numbers.
@@ -21,7 +21,7 @@ const internalAdd = createMathOperation((augend, addend) => augend + addend, 0);
  *
  */
 function add<T>(augend: T, addend: T): T;
-function add(augend, addend) {
+function add(augend: any, addend: any): any {
   return internalAdd(augend, addend);
 }
 

@@ -11,7 +11,6 @@ import each from "../each";
 import map from "../map";
 import assign from '../assign'
 import defaults from "../defaults";
-import merge from "../merge";
 import zipObjectDeep from '../zipObjectDeep'
 import root from '../.internal/root'
 

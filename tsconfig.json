@@ -19,6 +19,7 @@
   "exclude": [
     "src/test",
     "lib",
-    "dist"
+    "dist",
+    "deno"
   ]
 }

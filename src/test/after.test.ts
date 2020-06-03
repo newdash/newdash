@@ -3,8 +3,8 @@ import times from "../times";
 import after from "../after";
 
 describe('after', () => {
-  
-  function testAfter(n, ts) {
+
+  function testAfter(n: number, ts: number) {
     let count = 0
     times(ts, after(n, () => { count++ }))
     return count
@@ -22,12 +22,12 @@ describe('after', () => {
   })
 
   it('should use `this` binding of function', () => {
-    const afterFn = after(1, function() { return ++this.count }),
+    const afterFn = after(1, function () { return ++(this as typeof object).count }),
       object = { 'after': afterFn, 'count': 0 }
 
     object.after()
     assert.strictEqual(object.after(), 2)
     assert.strictEqual(object.count, 2)
   })
-  
+
 })
