@@ -18,6 +18,8 @@ const internalAdd = createMathOperation((augend, addend) => augend + addend, 0);
  * ```
  *
  */
-const add = (augend: number, addend: number): number => internalAdd(augend, addend);
+function add(augend: number, addend: number): number {
+  return internalAdd(augend, addend);
+}
 
 export default add;

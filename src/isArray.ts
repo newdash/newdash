@@ -1,14 +1,14 @@
+
 /**
  * Checks if `value` is classified as an `Array` object.
  *
- * @static
- * @memberOf _
- * @since 0.1.0
+ * @since 5.5.0
  * @category Lang
- * @param {*} value The value to check.
+ * @param value The value to check.
  * @returns {boolean} Returns `true` if `value` is an array, else `false`.
  * @example
  *
+ * ```js
  * isArray([1, 2, 3]);
  * // => true
  *
@@ -20,7 +20,10 @@
  *
  * isArray(noop);
  * // => false
+ * ```
  */
-const isArray = Array.isArray;
+function isArray(value: any): boolean {
+  return Array.isArray(value);
+}
 
 export default isArray;

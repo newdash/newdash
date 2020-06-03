@@ -4,7 +4,28 @@ import createAssigner from './.internal/createAssigner';
 import isPrototype from './.internal/isPrototype';
 import isArrayLike from './isArrayLike';
 import keys from './keys';
-import { hasOwnProperty } from './.internal/GLOBAL';
+
+/**
+ * @internal
+ * @ignore
+ */
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
+/**
+ * @internal
+ * @ignore
+ */
+const internal = createAssigner((object, source) => {
+  if (isPrototype(source) || isArrayLike(source)) {
+    copyObject(source, keys(source), object);
+    return;
+  }
+  for (const key in source) {
+    if (hasOwnProperty.call(source, key)) {
+      assignValue(object, key, source[key]);
+    }
+  }
+});
 
 /**
   * Assigns own enumerable string keyed properties of source objects to the
@@ -14,16 +35,15 @@ import { hasOwnProperty } from './.internal/GLOBAL';
   * **Note:** This method mutates `object` and is loosely based on
   * [`Object.assign`](https://mdn.io/Object/assign).
   *
-  * @static
-  * @memberOf _
-  * @since 0.10.0
+  * @since 5.5.0
   * @category Object
-  * @param {Object} object The destination object.
-  * @param {...Object} [sources] The source objects.
-  * @returns {Object} Returns `object`.
-  * @see assignIn
+  * @param object The destination object.
+  * @param sources The source objects.
+  * @returns Returns `object`.
+  * @see [[assignIn]]
   * @example
   *
+  * ```js
   * function Foo() {
   *   this.a = 1;
   * }
@@ -37,18 +57,10 @@ import { hasOwnProperty } from './.internal/GLOBAL';
   *
   * assign({ 'a': 0 }, new Foo, new Bar);
   * // => { 'a': 1, 'c': 3 }
+  * ```
   */
-const assign = createAssigner((object, source) => {
-  if (isPrototype(source) || isArrayLike(source)) {
-    copyObject(source, keys(source), object);
-    return;
-  }
-  for (const key in source) {
-    if (hasOwnProperty.call(source, key)) {
-      assignValue(object, key, source[key]);
-    }
-  }
-});
-
+function assign(target, ...args) {
+  return internal(target, ...args);
+}
 
 export default assign;

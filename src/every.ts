@@ -16,10 +16,10 @@ import isArray from './isArray';
  *
  * @since 5.3.0
  * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} [predicate=identity] The function invoked per iteration.
- * @param- {Object} [guard] Enables use as an iteratee for methods like `map`.
- * @returns {boolean} Returns `true` if all elements pass the predicate check,
+ * @param collection The collection to iterate over.
+ * @param predicate The function invoked per iteration.
+ * @param guard Enables use as an iteratee for methods like `map`.
+ * @returns Returns `true` if all elements pass the predicate check,
  *  else `false`.
  * @example
  *
@@ -45,14 +45,17 @@ import isArray from './isArray';
  * // => false
  * ```
  */
-function every(collection: any[] | object, predicate?: Function, guard = undefined): boolean {
+function every(collection: any[] | object, predicate?: Function, guard?): boolean {
+
   if (guard && isIterateeCall(collection, predicate, guard)) {
     predicate = undefined;
   }
+
   if (isArray(collection)) {
-    return arrayEvery(collection, getIteratee(predicate, 3));
+    return arrayEvery(collection as any[], getIteratee(predicate, 3));
   }
-  return baseEvery(collection, getIteratee(predicate, 3));
+
+  return baseEvery(collection as object, getIteratee(predicate, 3));
 
 }
 

@@ -23,7 +23,7 @@ type ObjectIteratee<T = any, R = any> = Iteratee<T, R, string>
 /**
  * @ignore
  */
-type TypedObject<T> = { [key: string]: T }
+type Tuple<T> = { [K in keyof T]: T[K] };
 
 /**
  * Creates an array of values by running each element in `collection` thru
@@ -65,17 +65,18 @@ type TypedObject<T> = { [key: string]: T }
  * ```
  *
  */
-function map<T, R>(collection: Array<T>): T[];
-function map<T, R>(collection: TypedObject<T>): T[];
-function map<T, R>(collection: any): any;
+function map<T extends any[] | []>(collection: T): Tuple<T>;
+function map<T>(collection: Record<string, T>): T[];
 function map<T, R>(collection: Array<T>, iteratee?: ArrayIteratee<T, R>): R[];
-function map<T, R>(collection: TypedObject<T>, iteratee?: ObjectIteratee<T, R>): R[];
-function map<T, R>(collection: any, iteratee?: any) {
+function map<T, R>(collection: Record<string, T>, iteratee?: ObjectIteratee<T, R>): R[];
+function map(collection: any, iteratee?: any): [];
+function map(collection: any, iteratee?: any) {
+
   const oIteratee = getIteratee(iteratee, 3);
   if (isArray(collection)) {
-    return arrayMap(collection as any, oIteratee) as R[];
+    return arrayMap(collection as any, oIteratee);
   }
-  return baseMap(collection as any, oIteratee) as R[];
+  return baseMap(collection as any, oIteratee);
 
 }
 

@@ -5,13 +5,14 @@ import isObjectLike from './isObjectLike';
  * This method is like `isArrayLike` except that it also checks if `value`
  * is an object.
  *
- * @since 4.0.0
+ * @since 5.5.0
  * @category Lang
- * @param {*} value The value to check.
+ * @param value The value to check.
  * @returns {boolean} Returns `true` if `value` is an array-like object,
  *  else `false`.
  * @example
  *
+ * ```js
  * isArrayLikeObject([1, 2, 3])
  * // => true
  *
@@ -23,8 +24,9 @@ import isObjectLike from './isObjectLike';
  *
  * isArrayLikeObject(Function)
  * // => false
+ * ```
  */
-function isArrayLikeObject(value) {
+function isArrayLikeObject(value: any): boolean {
   return isObjectLike(value) && isArrayLike(value);
 }
 
