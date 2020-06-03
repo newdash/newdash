@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Stack from './Stack'
 import arrayEach from './arrayEach'
 import assignValue from './assignValue'

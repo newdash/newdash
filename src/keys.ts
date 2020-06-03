@@ -8,13 +8,14 @@ import isArrayLike from './isArrayLike';
  * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
  * for more details.
  *
- * @since 0.1.0
+ * @since 5.5.0
  * @category Object
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- * @see values, valuesIn
+ * @param object The object to query.
+ * @returns Returns the array of property names.
+ * @see [[values]], [[valuesIn]]
  * @example
  *
+ * ```js
  * function Foo() {
  *   this.a = 1
  *   this.b = 2
@@ -27,8 +28,9 @@ import isArrayLike from './isArrayLike';
  *
  * keys('hi')
  * // => ['0', '1']
+ * ```
  */
-function keys(object) {
+function keys(object: any): string[] {
   return isArrayLike(object)
     ? arrayLikeKeys(object)
     : Object.keys(Object(object));

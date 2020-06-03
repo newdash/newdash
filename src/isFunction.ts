@@ -2,12 +2,13 @@
 /**
  * Checks if `value` is classified as a `Function` object.
  *
- * @since 0.1.0
+ * @since 5.5.0
  * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+ * @param value The value to check.
+ * @returns Returns `true` if `value` is a function, else `false`.
  * @example
  *
+ * ```js
  * isFunction(class Any{})
  * // => true
  *
@@ -25,8 +26,9 @@
  *
  * isFunction(/abc/)
  * // => false
+ * ```
  */
-function isFunction(value) {
+function isFunction(value: any): boolean {
   return typeof value === 'function';
 }
 

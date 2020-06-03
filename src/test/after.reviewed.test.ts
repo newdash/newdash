@@ -22,8 +22,11 @@ describe('after', () => {
   })
 
   it('should use `this` binding of function', () => {
-    const afterFn = after(1, function () { return ++(this as typeof object).count }),
-      object = { 'after': afterFn, 'count': 0 }
+    const afterFn = after(1, function () {
+      // @ts-ignore
+      return ++(this as typeof object).count
+    })
+    const object = { 'after': afterFn, 'count': 0 }
 
     object.after()
     assert.strictEqual(object.after(), 2)

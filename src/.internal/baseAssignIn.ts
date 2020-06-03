@@ -6,11 +6,12 @@ import keysIn from "../keysIn";
  * or `customizer` functions.
  *
  * @private
+ * @ignore
  * @param object The destination object.
  * @param source The source object.
  * @returns Returns `object`.
  */
-function baseAssignIn(object, source) {
+function baseAssignIn(object: any, source: any) {
   return object && copyObject(source, keysIn(source), object);
 }
 

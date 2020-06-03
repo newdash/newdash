@@ -10,14 +10,13 @@ const CLONE_DEEP_FLAG = 1;
  * created function returns `true` for elements that contain the equivalent
  * source properties, otherwise it returns `false`.
  *
- * @static
- * @since 4.0.0
- * @memberOf _
+ * @since 5.5.0
  * @category Util
- * @param {*} [func=identity] The value to convert to a callback.
- * @returns {Function} Returns the callback.
+ * @param func The value to convert to a callback.
+ * @returns Returns the callback.
  * @example
  *
+ * ```js
  * var users = [
  *   { 'user': 'barney', 'age': 36, 'active': true },
  *   { 'user': 'fred',   'age': 40, 'active': false }
@@ -44,8 +43,10 @@ const CLONE_DEEP_FLAG = 1;
  *
  * filter(['abc', 'def'], /ef/);
  * // => ['def']
+ * ```
  */
-function iteratee(func) {
+function iteratee(func: any): (...args: any[]) => any {
+  // @ts-ignore
   return baseIteratee(typeof func == 'function' ? func : baseClone(func, CLONE_DEEP_FLAG));
 }
 

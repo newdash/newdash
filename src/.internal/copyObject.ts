@@ -11,12 +11,12 @@ import baseAssignValue from './baseAssignValue'
  * @param customizer The function to customize copied values.
  * @returns Returns `object`.
  */
-function copyObject(source, props, object, customizer?) {
+function copyObject(source: any, props: any, object: any, customizer?: any) {
   var isNew = !object;
   object || (object = {});
 
   var index = -1,
-      length = props.length;
+    length = props.length;
 
   while (++index < length) {
     var key = props[index];

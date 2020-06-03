@@ -6,11 +6,12 @@ import keys from "../keys";
  * or `customizer` functions.
  *
  * @private
- * @param {Object} object The destination object.
- * @param {Object} source The source object.
- * @returns {Object} Returns `object`.
+ * @ignore
+ * @param object The destination object.
+ * @param source The source object.
+ * @returns Returns `object`.
  */
-function baseAssign(object, source) {
+function baseAssign(object: any, source: any): any {
   return object && copyObject(source, keys(source), object);
 }
 
