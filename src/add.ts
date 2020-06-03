@@ -15,10 +15,13 @@ const internalAdd = createMathOperation((augend, addend) => augend + addend, 0);
  * ```js
  * add(6, 4)
  * // => 10
+ * add('6', '4')
+ * // => '64'
  * ```
  *
  */
-function add(augend: number, addend: number): number {
+function add<T>(augend: T, addend: T): T;
+function add(augend, addend) {
   return internalAdd(augend, addend);
 }
 
