@@ -21,7 +21,12 @@ jobs:
       with:
         node-version: 12.x
 
-    - run: curl -fsSL https://deno.land/x/install/install.sh | sh
+    - name: install deno
+      run: curl -fsSL https://deno.land/x/install/install.sh | sh
     - run: npm ci
     - run: npm run build:deno
-    - run: npm run test:deno
+    - name: run deno test
+      env:
+        DENO_INSTALL: /home/runner/.deno
+        PATH: $DENO_INSTALL/bin:$PATH
+      run: npm run test:deno
