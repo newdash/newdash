@@ -25,5 +25,5 @@ jobs:
       run: curl -fsSL https://deno.land/x/install/install.sh | sh
     - run: npm ci
     - run: npm run build:deno
-    - name: run deno test
-      run: /home/runner/.deno/bin/deno test ./dist/deno/test/*.reviewed.test.ts
+    # - name: run deno test
+    #   run: /home/runner/.deno/bin/deno test ./dist/deno/test/*.test.ts

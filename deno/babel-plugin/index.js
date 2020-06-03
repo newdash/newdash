@@ -6,6 +6,17 @@ module.exports = function (babel) {
 
   const isUnitTestFile = (filename = '') => filename.endsWith("test.js") || filename.endsWith("test.ts")
 
+  const functionExpression = (path, { file: { opts: { filename } } }) => {
+    // only unit test files
+    if (!isUnitTestFile(filename)) {
+      return
+    }
+    // describe("suite", () => { })
+    if (path.parent.type == "CallExpression" && path.parent.callee.name == "describe") {
+      path.node.params.push(t.identifier("it"))
+    }
+  }
+
   return {
     visitor: {
 
@@ -14,7 +25,7 @@ module.exports = function (babel) {
           path.node.body.unshift(
             t.importDeclaration(
               [
-                t.importSpecifier(t.identifier("it"), t.identifier("it")),
+                // t.importSpecifier(t.identifier("it"), t.identifier("it")),
                 t.importSpecifier(t.identifier("describe"), t.identifier("describe"))
               ],
               t.stringLiteral("../../../deno/test/describe.ts")
@@ -52,7 +63,10 @@ module.exports = function (babel) {
           console.info(`can not find module '${mName}' from ${filename}, no transform.`)
         }
 
-      }
+      },
+
+      ArrowFunctionExpression: functionExpression,
+      FunctionExpression: functionExpression,
     }
   };
 }

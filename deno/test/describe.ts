@@ -1,10 +1,10 @@
+// @ts-nocheck
 
-const describe = (name: string, fn: (...args: any[]) => void) => {
-  Deno.test(name, fn)
+const describe = (suite: string, fn: (...args: any[]) => void) => {
+  const it = (name: string, fn: (...args: any[]) => void) => {
+    Deno.test(`suite '${suite}' - '${name}'`, fn)
+  }
+  fn(it)
 }
 
-const it = (name: string, fn: (...args: any[]) => void) => {
-  Deno.test(name, fn)
-}
-
-export { it, describe }
+export { describe }
