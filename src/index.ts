@@ -34,6 +34,7 @@ import assign from './assign';
 import assignIn from './assignIn';
 import at from './at';
 import bind from './bind';
+import filterObject from './filterObject';
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -41,7 +42,7 @@ export {
   some, find, debounce, add, head, has, clone, cloneDeep,
   set, update, unset, capitalize, flatten, flattenDeep,
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
-  bind
+  bind, filterObject
 };
 
 export default {
@@ -50,6 +51,6 @@ export default {
   some, find, debounce, add, head, has, clone, cloneDeep,
   set, update, unset, capitalize, flatten, flattenDeep,
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
-  bind
+  bind, filterObject
 };
 

@@ -1,3 +1,8 @@
+
+interface Predicate<K = any, V = any, O = any> {
+  (value?: V, key?: K, object?: O): boolean
+}
+
 /**
  * Iterates over properties of `object`, returning an array of all elements
  * `predicate` returns truthy for. The predicate is invoked with three
@@ -10,7 +15,7 @@
  * @param object The object to iterate over.
  * @param predicate The function invoked per iteration.
  * @returns Returns the new filtered array.
- * @see pickBy,pull,pullAll,pullAllBy,pullAllWith,pullAt,remove,reject
+ * @see [[pickBy]],[[pull]],[[pullAll]],[[pullAllBy]],[[pullAllWith]],[[pullAt]],[[remove]],[[reject]]
  * @example
  *
  * ```js
@@ -20,7 +25,10 @@
  * // => [5, 10]
  * ```
  */
-function filterObject(object: any, predicate?) {
+function filterObject<T>(object: Record<string, T>, predicate?: Predicate<string, T, Record<string, T>>): T[];
+function filterObject<T>(object: Array<T>, predicate?: Predicate<string, T, Array<T>>): T[];
+function filterObject(object: any, predicate?: Predicate): any[];
+function filterObject(object: any, predicate?: any) {
   object = Object(object);
   const result = [];
 
@@ -33,5 +41,8 @@ function filterObject(object: any, predicate?) {
 
   return result;
 }
+
+
+export { filterObject };
 
 export default filterObject;
