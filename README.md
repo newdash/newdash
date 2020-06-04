@@ -30,7 +30,7 @@ first("abc")
 ### Load Single Module
 
 ```js
-const first = require("@newdash/newdash-node/first").default // Compatible with es6 module
+const { first } = require("@newdash/newdash-node/first") // Compatible with es6 module
 first("abc")
 // => "a"
 ```

@@ -19,7 +19,7 @@ import head from './head';
  * // => undefined
  * ```
  */
-function first<T>(array: ArrayLike<T>): T | undefined {
+export function first<T>(array: ArrayLike<T>): T | undefined {
   return head(array);
 };
 
