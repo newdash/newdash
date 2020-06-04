@@ -1,13 +1,18 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { MAX_INTEGER, stubTrue } from './utils'
 import random from '../random'
+import uniq from '../uniq'
+import some from '../some'
+import map from '../map'
+import every from '../every'
+
 
 describe('random', () => {
+
   const array = Array(1000)
 
   it('should return `0` or `1` when no arguments are given', () => {
-    const actual = lodashStable.uniq(lodashStable.map(array, () => random())).sort()
+    const actual = uniq(map(array, () => random())).sort()
 
     assert.deepStrictEqual(actual, [0, 1])
   })
@@ -16,7 +21,7 @@ describe('random', () => {
     const min = 5,
       max = 10
 
-    assert.ok(lodashStable.some(array, () => {
+    assert.ok(some(array, () => {
       const result = random(min, max)
       return result >= min && result <= max
     }))
@@ -26,7 +31,7 @@ describe('random', () => {
     const min = 0,
       max = 5
 
-    assert.ok(lodashStable.some(array, () => {
+    assert.ok(some(array, () => {
       const result = random(max)
       return result >= min && result <= max
     }))
@@ -37,7 +42,7 @@ describe('random', () => {
       max = 2,
       expected = [2, 3, 4]
 
-    const actual = lodashStable.uniq(lodashStable.map(array, () => random(min, max))).sort()
+    const actual = uniq(map(array, () => random(min, max))).sort()
 
     assert.deepStrictEqual(actual, expected)
   })
@@ -46,12 +51,12 @@ describe('random', () => {
     const min = Math.pow(2, 31),
       max = Math.pow(2, 62)
 
-    assert.ok(lodashStable.every(array, () => {
+    assert.ok(every(array, () => {
       const result = random(min, max)
       return result >= min && result <= max
     }))
 
-    assert.ok(lodashStable.some(array, () => random(MAX_INTEGER)))
+    assert.ok(some(array, () => random(MAX_INTEGER)))
   })
 
   it('should coerce arguments to finite numbers', () => {
@@ -86,10 +91,10 @@ describe('random', () => {
 
   it('should work as an iteratee for methods like `_.map`', () => {
     const array = [1, 2, 3],
-      expected = lodashStable.map(array, stubTrue),
-      randoms = lodashStable.map(array, random)
+      expected = map(array, stubTrue),
+      randoms = map(array, random)
 
-    const actual = lodashStable.map(randoms, (result, index) => result >= 0 && result <= array[index] && (result % 1) == 0)
+    const actual = map(randoms, (result, index) => result >= 0 && result <= array[index] && (result % 1) == 0)
 
     assert.deepStrictEqual(actual, expected)
   })
