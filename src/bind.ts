@@ -4,8 +4,9 @@ import replaceHolders from './.internal/replaceHolders';
 import getHolder from './.internal/getHolder';
 import createWrap from './.internal/createWrap';
 
+// @ts-ignore
 const internalBind = baseRest((func, thisArg, partials?) => {
-  let holders;
+  let holders: any;
   let bitmask = WRAP_BIND_FLAG;
   if (partials.length) {
     holders = replaceHolders(partials, getHolder(bind));
@@ -29,7 +30,7 @@ const internalBind = baseRest((func, thisArg, partials?) => {
  * @category Function
  * @param func The function to bind.
  * @param thisArg The `this` binding of `func`.
- * @param partials]The arguments to be partially applied.
+ * @param partials The arguments to be partially applied.
  * @returns Returns the new bound function.
  * @example
  *
@@ -50,6 +51,13 @@ const internalBind = baseRest((func, thisArg, partials?) => {
  * // => 'hi fred!'
  * ```
  */
-const bind = <T>(func: T, thisArg, partials?): T => internalBind(func, thisArg, partials);
+export function bind<T>(func: T, thisArg?: any, ...partials: any[]): T {
+  return internalBind(func, thisArg, ...partials);
+}
+
+/**
+ * placeholder of bind function
+ */
+bind['placeholder'] = '__bind__placeholder__';
 
 export default bind;

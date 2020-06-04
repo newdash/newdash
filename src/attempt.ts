@@ -21,7 +21,7 @@ import isError from './isError';
  * }
  * ```
  */
-function attempt<T extends(...any) => any>(func: T, ...args): ReturnType<T> | Error {
+export function attempt<T extends(...args: any[]) => any>(func: T, ...args: any[]): ReturnType<T> | Error {
   try {
     return func(...args);
   } catch (e) {

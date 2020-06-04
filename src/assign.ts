@@ -59,7 +59,7 @@ const internal = createAssigner((object, source) => {
   * // => { 'a': 1, 'c': 3 }
   * ```
   */
-function assign(target, ...args) {
+export function assign(target: any, ...args: any[]): any {
   return internal(target, ...args);
 }
 

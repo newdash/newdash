@@ -29,13 +29,19 @@ import flatten from './flatten';
 import flattenDeep from './flattenDeep';
 import flatMap from './flatMap';
 import flatMapDeep from './flatMapDeep';
+import ceil from './ceil';
+import assign from './assign';
+import assignIn from './assignIn';
+import at from './at';
+import bind from './bind';
 
 export {
   filter, get, reduce, map, each, every, concat, first,
   attempt, forEach, merge, isEmpty, split, join, memoize,
   some, find, debounce, add, head, has, clone, cloneDeep,
   set, update, unset, capitalize, flatten, flattenDeep,
-  flatMap, flatMapDeep
+  flatMap, flatMapDeep, ceil, assign, assignIn, at,
+  bind
 };
 
 export default {
@@ -43,6 +49,7 @@ export default {
   attempt, forEach, merge, isEmpty, split, join, memoize,
   some, find, debounce, add, head, has, clone, cloneDeep,
   set, update, unset, capitalize, flatten, flattenDeep,
-  flatMap, flatMapDeep
+  flatMap, flatMapDeep, ceil, assign, assignIn, at,
+  bind
 };
 

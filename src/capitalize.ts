@@ -16,7 +16,9 @@ import toString from './toString';
  * // => 'Fred'
  * ```
  */
-const capitalize = (s: string) => upperFirst(toString(s).toLowerCase());
+function capitalize(s: string): string {
+  return upperFirst(toString(s).toLowerCase());
+}
 
 
 export default capitalize;

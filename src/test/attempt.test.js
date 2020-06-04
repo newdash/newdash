@@ -6,6 +6,7 @@ import map from '../map'
 import isEqual from '../eqDeep'
 
 describe('attempt', () => {
+
   it('should return the result of `func`', () => {
     assert.strictEqual(attempt(constant('x')), 'x')
   })

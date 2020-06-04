@@ -2,7 +2,13 @@ import createWrap from './.internal/createWrap';
 import { WRAP_REARG_FLAG } from './.internal/CONSTANTS';
 import flatRest from './.internal/flatRest';
 
-const internalRearg = flatRest((func, indexes) => createWrap(func, WRAP_REARG_FLAG, undefined, undefined, undefined, indexes));
+/**
+ * @ignore
+ * @private
+ */
+const internalRearg = flatRest(
+  (func: any, indexes: any): any => createWrap(func, WRAP_REARG_FLAG, undefined, undefined, undefined, indexes)
+);
 
 /**
  * Creates a function that invokes `func` with arguments arranged according
@@ -26,7 +32,8 @@ const internalRearg = flatRest((func, indexes) => createWrap(func, WRAP_REARG_FL
  * // => ['a', 'b', 'c']
  * ```
  */
-function rearg(func, indexes);
+function rearg(func: Function, indexes: number[]);
+function rearg(func: Function, ...indexes: number[]);
 function rearg(...args) {
   return internalRearg(...args);
 };

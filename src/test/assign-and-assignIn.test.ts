@@ -1,10 +1,14 @@
+// @ts-nocheck
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { _, defineProperty, stubOne, noop, stubNaN } from './utils'
+import { defineProperty, stubOne, noop, stubNaN } from './utils'
+import assign from '../assign'
+import assignIn from '../assignIn'
+import each from '../each'
+import constant from '../constant'
 
 describe('assign and assignIn', () => {
-  lodashStable.each(['assign', 'assignIn'], (methodName) => {
-    const func = _[methodName]
+
+  each([[assign, 'assign'], [assignIn, 'assignIn']], ([func, methodName]) => {
 
     it(`\`_.${methodName}\` should assign source properties to \`object\``, () => {
       assert.deepStrictEqual(func({ 'a': 1 }, { 'b': 2 }), { 'a': 1, 'b': 2 })
@@ -32,7 +36,7 @@ describe('assign and assignIn', () => {
       const descriptor = {
         'configurable': true,
         'enumerable': true,
-        'set': function() { throw new Error }
+        'set': function () { throw new Error }
       }
 
       const source = {
@@ -41,28 +45,28 @@ describe('assign and assignIn', () => {
         'c': NaN,
         'd': undefined,
         'constructor': Object,
-        'toString': lodashStable.constant('source')
+        'toString': constant('source')
       }
 
-      defineProperty(object, 'a', lodashStable.assign({}, descriptor, {
+      defineProperty(object, 'a', assign({}, descriptor, {
         'get': stubOne
       }))
 
-      defineProperty(object, 'b', lodashStable.assign({}, descriptor, {
+      defineProperty(object, 'b', assign({}, descriptor, {
         'get': noop
       }))
 
-      defineProperty(object, 'c', lodashStable.assign({}, descriptor, {
+      defineProperty(object, 'c', assign({}, descriptor, {
         'get': stubNaN
       }))
 
-      defineProperty(object, 'constructor', lodashStable.assign({}, descriptor, {
-        'get': lodashStable.constant(Object)
+      defineProperty(object, 'constructor', assign({}, descriptor, {
+        'get': constant(Object)
       }))
 
       try {
         var actual = func(object, source)
-      } catch (e) {}
+      } catch (e) { }
 
       assert.deepStrictEqual(actual, source)
     })
@@ -75,7 +79,7 @@ describe('assign and assignIn', () => {
     })
 
     it(`\`_.${methodName}\` should assign values of prototype objects`, () => {
-      function Foo() {}
+      function Foo() { }
       Foo.prototype.a = 1
 
       assert.deepStrictEqual(func({}, Foo.prototype), { 'a': 1 })
@@ -84,5 +88,6 @@ describe('assign and assignIn', () => {
     it(`\`_.${methodName}\` should coerce string sources to objects`, () => {
       assert.deepStrictEqual(func({}, 'a'), { '0': 'a' })
     })
+
   })
 })

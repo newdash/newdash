@@ -17,12 +17,13 @@
  * // => Logs 'done saving!' after the two async saves have completed.
  * ```
  */
-function after(n: number, func: (...args: any[]) => any) {
+function after<T extends(...args: any[]) => any>(n: number, func: T): T {
   if (typeof func !== 'function') {
     throw new TypeError('Expected a function');
   }
   n = n || 0;
-  return function(...args: any[]) {
+  // @ts-ignore
+  return function(...args: any[]): any {
     if (--n < 1) {
       // @ts-ignore
       return func.apply(this, args);

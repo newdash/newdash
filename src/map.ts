@@ -80,4 +80,6 @@ function map(collection: any, iteratee?: any) {
 
 }
 
+export { map };
+
 export default map;

@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { slice, _ } from './utils'
+import { slice } from './utils'
 import curry from '../curry'
 import rearg from '../rearg'
 import ary from "../ary";
@@ -8,7 +8,7 @@ import includes from '../includes';
 
 describe('ary', () => {
 
-  function fn(a, b, c) {
+  function fn(a: any, b: any, c: any): any {
     return slice.call(arguments)
   }
 
@@ -80,9 +80,8 @@ describe('ary', () => {
   it('should work when combined with other methods that use metadata', () => {
     const array = ['a', 'b', 'c']
     const i2 = curry(rearg(ary(includes, 2), 1, 0), 2)
-
     assert.strictEqual(i2('b')(array, 2), true)
 
-
   })
+
 })

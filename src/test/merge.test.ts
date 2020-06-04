@@ -131,13 +131,10 @@ describe('merge', () => {
     const actual = merge([], array),
       expected = array.slice()
 
-
-    assert.deepStrictEqual(actual, expected)
-
     expected[1] = undefined
 
-    assert.equal('1' in actual, false)
-    assert.notDeepStrictEqual(actual, expected)
+    assert.ok('1' in actual)
+    assert.deepStrictEqual(actual, expected)
   })
 
   it('should merge `arguments` objects', () => {

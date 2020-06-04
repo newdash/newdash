@@ -1,47 +1,53 @@
 import assert from 'assert';
-import lodashStable from 'lodash';
 import { push, falsey, stubTrue } from './utils';
 import bind from '../bind';
-import placeholder from '../placeholder';
+import reject from '../reject';
+import map from '../map';
+import every from '../every';
+import isEqual from '../eqDeep';
+import times from '../times';
+import constant from '../constant';
+import attempt from '../attempt';
 
-describe('bind', function() {
-  function fn() {
+describe('bind', function () {
+
+  function fn(...args: any[]) {
     var result = [this];
     push.apply(result, arguments);
     return result;
   }
 
-  it('should bind a function to an object', function() {
+  it('should bind a function to an object', function () {
     var object = {},
-        bound = bind(fn, object);
+      bound = bind(fn, object);
 
     assert.deepStrictEqual(bound('a'), [object, 'a']);
   });
 
-  it('should accept a falsey `thisArg`', function() {
-    var values = lodashStable.reject(falsey.slice(1), function(value) { return value == null; }),
-        expected = lodashStable.map(values, function(value) { return [value]; });
+  it('should accept a falsey `thisArg`', function () {
+    var values = reject(falsey.slice(1), function (value) { return value == null; }),
+      expected = map(values, function (value) { return [value]; });
 
-    var actual = lodashStable.map(values, function(value) {
+    var actual = map(values, function (value) {
       try {
         var bound = bind(fn, value);
         return bound();
-      } catch (e) {}
+      } catch (e) { }
     });
 
-    assert.ok(lodashStable.every(actual, function(value, index) {
-      return lodashStable.isEqual(value, expected[index]);
+    assert.ok(every(actual, function (value, index) {
+      return isEqual(value, expected[index]);
     }));
   });
 
-  it('should bind a function to nullish values', function() {
+  it('should bind a function to nullish values', function () {
     var bound = bind(fn, null),
-        actual = bound('a');
+      actual = bound('a');
 
     assert.ok((actual[0] === null) || (actual[0] && actual[0].Array));
     assert.strictEqual(actual[1], 'a');
 
-    lodashStable.times(2, function(index) {
+    times(2, function (index) {
       bound = index ? bind(fn, undefined) : bind(fn);
       actual = bound('b');
 
@@ -50,9 +56,9 @@ describe('bind', function() {
     });
   });
 
-  it('should partially apply arguments ', function() {
+  it('should partially apply arguments ', function () {
     var object = {},
-        bound = bind(fn, object, 'a');
+      bound = bind(fn, object, 'a');
 
     assert.deepStrictEqual(bound(), [object, 'a']);
 
@@ -64,10 +70,9 @@ describe('bind', function() {
     assert.deepStrictEqual(bound('c', 'd'), [object, 'a', 'b', 'c', 'd']);
   });
 
-  it('should support placeholders', function() {
-    var object = {},
-        ph = bind.placeholder,
-        bound = bind(fn, object, ph, 'b', ph);
+  it('should support placeholders', function () {
+    var object = {}
+    const bound = bind(fn, object, bind.placeholder, 'b', bind.placeholder);
 
     assert.deepStrictEqual(bound('a', 'c'), [object, 'a', 'b', 'c']);
     assert.deepStrictEqual(bound('a'), [object, 'a', 'b', undefined]);
@@ -75,18 +80,10 @@ describe('bind', function() {
     assert.deepStrictEqual(bound(), [object, undefined, 'b', undefined]);
   });
 
-  it('should use `_.placeholder` when set', function() {
-    var _ph = placeholder = {},
-        ph = bind.placeholder,
-        object = {},
-        bound = bind(fn, object, _ph, 'b', ph);
 
-    assert.deepEqual(bound('a', 'c'), [object, 'a', 'b', ph, 'c']);
-  });
-
-  it('should create a function with a `length` of `0`', function() {
-    var fn = function(a, b, c) {},
-        bound = bind(fn, {});
+  it('should create a function with a `length` of `0`', function () {
+    var fn = function (a, b, c) { },
+      bound = bind(fn, {});
 
     assert.strictEqual(bound.length, 0);
 
@@ -94,33 +91,34 @@ describe('bind', function() {
     assert.strictEqual(bound.length, 0);
   });
 
-  it('should ignore binding when called with the `new` operator', function() {
+  it('should ignore binding when called with the `new` operator', function () {
     function Foo() {
       return this;
     }
 
-    var bound = bind(Foo, { 'a': 1 }),
-        newBound = new bound;
+    var bound = bind(Foo, { 'a': 1 });
+    // @ts-ignore
+    const newBound = new bound;
 
     assert.strictEqual(bound().a, 1);
     assert.strictEqual(newBound.a, undefined);
     assert.ok(newBound instanceof Foo);
   });
 
-  it('should handle a number of arguments when called with the `new` operator', function() {
-    function Foo() {
-      return this;
+  it('should handle a number of arguments when called with the `new` operator', function () {
+    function Foo(...args: any[]) {
+
     }
 
-    function Bar() {}
+    function Bar(...args: any[]) { }
 
     var thisArg = { 'a': 1 },
-        boundFoo = bind(Foo, thisArg),
-        boundBar = bind(Bar, thisArg),
-        count = 9,
-        expected = lodashStable.times(count, lodashStable.constant([undefined, undefined]));
+      boundFoo = bind(Foo, thisArg),
+      boundBar = bind(Bar, thisArg),
+      count = 9,
+      expected = times(count, constant([undefined, undefined]));
 
-    var actual = lodashStable.times(count, function(index) {
+    var actual = times(count, function (index) {
       try {
         switch (index) {
           case 0: return [new boundFoo().a, new boundBar().a];
@@ -133,52 +131,54 @@ describe('bind', function() {
           case 7: return [new boundFoo(1, 2, 3, 4, 5, 6, 7).a, new boundBar(1, 2, 3, 4, 5, 6, 7).a];
           case 8: return [new boundFoo(1, 2, 3, 4, 5, 6, 7, 8).a, new boundBar(1, 2, 3, 4, 5, 6, 7, 8).a];
         }
-      } catch (e) {}
+      } catch (e) { }
     });
 
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should ensure `new bound` is an instance of `func`', function() {
+  it('should ensure `new bound` is an instance of `func`', function () {
     function Foo(value) {
       return value && object;
     }
 
     var bound = bind(Foo),
-        object = {};
+      object = {};
 
+    // @ts-ignore
     assert.ok(new bound instanceof Foo);
+    // @ts-ignore
     assert.strictEqual(new bound(true), object);
   });
 
-  it('should append array arguments to partially applied arguments', function() {
+  it('should append array arguments to partially applied arguments', function () {
     var object = {},
-        bound = bind(fn, object, 'a');
+      bound = bind(fn, object, 'a');
 
     assert.deepStrictEqual(bound(['b'], 'c'), [object, 'a', ['b'], 'c']);
   });
 
-  it('should not rebind functions', function() {
+  it('should not rebind functions', function () {
     var object1 = {},
-        object2 = {},
-        object3 = {};
+      object2 = {},
+      object3 = {};
 
     var bound1 = bind(fn, object1),
-        bound2 = bind(bound1, object2, 'a'),
-        bound3 = bind(bound1, object3, 'b');
+      bound2 = bind(bound1, object2, 'a'),
+      bound3 = bind(bound1, object3, 'b');
 
     assert.deepStrictEqual(bound1(), [object1]);
     assert.deepStrictEqual(bound2(), [object1, 'a']);
     assert.deepStrictEqual(bound3(), [object1, 'b']);
   });
 
-  it('should not error when instantiating bound built-ins', function() {
+  it('should not error when instantiating bound built-ins', function () {
     var Ctor = bind(Date, null),
-        expected = new Date(2012, 4, 23, 0, 0, 0, 0);
+      expected = new Date(2012, 4, 23, 0, 0, 0, 0);
 
     try {
       var actual = new Ctor(2012, 4, 23, 0, 0, 0, 0);
-    } catch (e) {}
+    } catch (e) { }
 
     assert.deepStrictEqual(actual, expected);
 
@@ -186,20 +186,20 @@ describe('bind', function() {
 
     try {
       actual = new Ctor(0, 0, 0, 0);
-    } catch (e) {}
+    } catch (e) { }
 
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should not error when calling bound class constructors with the `new` operator', function() {
-    var createCtor = lodashStable.attempt(Function, '"use strict";return class A{}');
+  it('should not error when calling bound class constructors with the `new` operator', function () {
+    var createCtor = attempt(Function, '"use strict";return class A{}');
 
     if (typeof createCtor === 'function') {
       var bound = bind(createCtor()),
-          count = 8,
-          expected = lodashStable.times(count, stubTrue);
+        count = 8,
+        expected = times(count, stubTrue);
 
-      var actual = lodashStable.times(count, function(index) {
+      var actual = times(count, function (index) {
         try {
           switch (index) {
             case 0: return !!(new bound);
@@ -211,20 +211,11 @@ describe('bind', function() {
             case 6: return !!(new bound(1, 2, 3, 4, 5, 6));
             case 7: return !!(new bound(1, 2, 3, 4, 5, 6, 7));
           }
-        } catch (e) {}
+        } catch (e) { }
       });
 
       assert.deepStrictEqual(actual, expected);
     }
   });
 
-  it('should return a wrapped value when chaining', function() {
-    var object = {},
-        bound = _(fn).bind({}, 'a', 'b');
-
-    assert.ok(bound instanceof _);
-
-    var actual = bound.value()('c');
-    assert.deepEqual(actual, [object, 'a', 'b', 'c']);
-  });
 });

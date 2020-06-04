@@ -1,15 +1,25 @@
 import createRound from './.internal/createRound';
 
+
 /**
- * Computes `number` rounded up to `precision`. (Round up: the smallest integer greater than or equal to a given number.)
+ * @ignore
+ * @private
+ * @internal
+ */
+const internalCeil = createRound('ceil');
+
+/**
+ * Computes `number` rounded up to `precision`.
+ * (Round up: the smallest integer greater than or equal to a given number.)
  *
- * @since 3.10.0
+ * @since 5.5.0
  * @category Math
- * @param {number} number The number to round up.
- * @param {number} [precision=0] The precision to round up to.
- * @returns {number} Returns the rounded up number.
+ * @param number The number to round up.
+ * @param precision The precision to round up to.
+ * @returns Returns the rounded up number.
  * @example
  *
+ * ```
  * ceil(4.006)
  * // => 5
  *
@@ -18,7 +28,10 @@ import createRound from './.internal/createRound';
  *
  * ceil(6040, -2)
  * // => 6100
+ * ```
  */
-const ceil = createRound('ceil');
+export function ceil(number: number, precision: number = 0): number {
+  return internalCeil(number, precision);
+}
 
 export default ceil;

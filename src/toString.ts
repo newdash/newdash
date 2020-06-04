@@ -1,18 +1,22 @@
 import isSymbol from './isSymbol';
 
-/** Used as references for various `Number` constants. */
-const INFINITY = 1 / 0;
+/**
+ * Used as references for various `Number` constants.
+ * @ignore
+ */
+const INFINITY = Infinity;
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
  * and `undefined` values. The sign of `-0` is preserved.
  *
- * @since 4.0.0
+ * @since 5.5.0
  * @category Lang
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
+ * @param value The value to convert.
+ * @returns Returns the converted string.
  * @example
  *
+ * ```js
  * toString(null)
  * // => ''
  *
@@ -21,8 +25,9 @@ const INFINITY = 1 / 0;
  *
  * toString([1, 2, 3])
  * // => '1,2,3'
+ * ```
  */
-function toString(value) {
+function toString(value: any): string {
   if (value == null) {
     return '';
   }

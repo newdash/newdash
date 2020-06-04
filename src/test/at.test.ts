@@ -9,8 +9,8 @@ import isArray from '../isArray'
 
 describe('at', () => {
 
-  const array = ['a', 'b', 'c'],
-    object = { 'a': [{ 'b': { 'c': 3 } }, 4] }
+  const array = ['a', 'b', 'c']
+  const object = { 'a': [{ 'b': { 'c': 3 } }, 4] }
 
   it('should return the elements corresponding to the specified keys', () => {
     const actual = at(array, [0, 2])

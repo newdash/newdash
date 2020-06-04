@@ -8,6 +8,7 @@ import setData from "./setData"
 import setWrapToString from "./setWrapToString";
 import createHybrid from "./createHybrid";
 import mergeData from "./mergeData";
+import createBind from "./createBind";
 
 /**
   * Creates a function that either curries or invokes `func` with optional
@@ -76,8 +77,9 @@ function createWrap(func, bitmask, thisArg, partials, holders, argPos, ary, arit
   if (!arity && bitmask & (WRAP_CURRY_FLAG | WRAP_CURRY_RIGHT_FLAG)) {
     bitmask &= ~(WRAP_CURRY_FLAG | WRAP_CURRY_RIGHT_FLAG);
   }
+  let result
   if (!bitmask || bitmask == WRAP_BIND_FLAG) {
-    var result = createBind(func, bitmask, thisArg);
+    result = createBind(func, bitmask, thisArg);
   } else if (bitmask == WRAP_CURRY_FLAG || bitmask == WRAP_CURRY_RIGHT_FLAG) {
     result = createCurry(func, bitmask, arity);
   } else if ((bitmask == WRAP_PARTIAL_FLAG || bitmask == (WRAP_BIND_FLAG | WRAP_PARTIAL_FLAG)) && !holders.length) {
