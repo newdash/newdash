@@ -25,4 +25,6 @@ function add(augend: any, addend: any): any {
   return internalAdd(augend, addend);
 }
 
+export { add };
+
 export default add;

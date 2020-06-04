@@ -86,13 +86,13 @@ type DebouncedFunction<F extends (...any) => any> = {
  *
  * ```
  */
-function debounce<F extends(...any) => any>(func: F, wait?: number, options?: Options): DebouncedFunction<F> {
-  let lastArgs,
-    lastThis,
-    maxWait,
-    result,
-    timerId,
-    lastCallTime;
+export function debounce<F extends(...args: any[]) => any>(func: F, wait?: number, options?: Options): DebouncedFunction<F> {
+  let lastArgs: any,
+    lastThis: any,
+    maxWait: any,
+    result: any,
+    timerId: any,
+    lastCallTime: any;
 
   let lastInvokeTime = 0;
   let leading = false;
@@ -177,7 +177,7 @@ function debounce<F extends(...any) => any>(func: F, wait?: number, options?: Op
     timerId = startTimer(timerExpired, remainingWait(time));
   }
 
-  function trailingEdge(time) {
+  function trailingEdge(time: any) {
     timerId = undefined;
 
     // Only invoke if we have `lastArgs` which means `func` has been

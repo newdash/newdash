@@ -33,4 +33,6 @@ function get(object: any, path: any, defaultValue?: any): any {
   return result === undefined ? defaultValue : result;
 }
 
+export { get };
+
 export default get;

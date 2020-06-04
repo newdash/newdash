@@ -68,4 +68,6 @@ function reduce<T, R>(collection?: any, iteratee?: any, accumulator?: any): any 
   return func(collection, getIteratee(iteratee, 4), accumulator, initAccum, baseEach);
 }
 
+export { reduce };
+
 export default reduce;

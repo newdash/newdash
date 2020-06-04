@@ -18,7 +18,7 @@ const nativeJoin = Array.prototype.join;
   * // => 'a~b~c'
   * ```
   */
-function join(array: Array<any>, separator: string = ','): string {
+export function join(array: Array<any>, separator: string = ','): string {
   return array == null ? '' : nativeJoin.call(array, separator);
 }
 

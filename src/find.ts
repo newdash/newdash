@@ -50,4 +50,6 @@ function find(collection, predicate?, fromIndex?) {
   return internalFind(collection, predicate, fromIndex);
 }
 
+export { find };
+
 export default find;

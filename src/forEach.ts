@@ -26,13 +26,13 @@ type TypedObject<T> = { [key: string]: T }
  * property are iterated like arrays. To avoid this behavior use `forIn`
  * or `forOwn` for object iteration.
  *
- * @since 0.0.1
+ * @since 5.0.0
  * @alias each
  * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array|Object} Returns `collection`.
- * @see forEachRight, forIn, forInRight, forOwn, forOwnRight
+ * @param collection The collection to iterate over.
+ * @param iteratee The function invoked per iteration.
+ * @returns Returns `collection`.
+ * @see [[forEachRight]],[[forIn]],[[forInRight]],[[forOwn]],[[forOwnRight]]
  * @example
  *
  *

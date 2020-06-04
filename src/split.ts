@@ -6,7 +6,12 @@ import isIterateeCall from './.internal/isIterateeCall';
 import toString from './toString';
 import baseToString from './.internal/baseToString';
 
-/** Used as references for the maximum length and index of an array. */
+/**
+ * Used as references for the maximum length and index of an array.
+ * @ignore
+ * @internal
+ * @private
+ */
 const MAX_ARRAY_LENGTH = 4294967295;
 
 /**
@@ -15,12 +20,12 @@ const MAX_ARRAY_LENGTH = 4294967295;
  * **Note:** This method is based on
  * [`String#split`](https://mdn.io/String/split).
  *
- * @since 0.0.3
+ * @since 5.0.0
  * @category String
- * @param {string} [str=''] The string to split.
- * @param {RegExp|string} separator The separator pattern to split by.
- * @param {number} [limit] The length to truncate results to.
- * @returns {Array} Returns the string segments.
+ * @param str The string to split.
+ * @param separator The separator pattern to split by.
+ * @param limit The length to truncate results to.
+ * @returns Returns the string segments.
  * @example
  *
  * ```js
