@@ -1,8 +1,9 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import camelCase from '../camelCase'
+import each from '../each'
 
 describe('camelCase', () => {
+
   it('should work with numbers', () => {
     assert.strictEqual(camelCase('12 feet'), '12Feet')
     assert.strictEqual(camelCase('enable 6h format'), 'enable6HFormat')
@@ -13,16 +14,18 @@ describe('camelCase', () => {
   })
 
   it('should handle acronyms', () => {
-    lodashStable.each(['safe HTML', 'safeHTML'], (string) => {
+
+    each(['safe HTML', 'safeHTML'], (string) => {
       assert.strictEqual(camelCase(string), 'safeHtml')
     })
 
-    lodashStable.each(['escape HTML entities', 'escapeHTMLEntities'], (string) => {
+    each(['escape HTML entities', 'escapeHTMLEntities'], (string) => {
       assert.strictEqual(camelCase(string), 'escapeHtmlEntities')
     })
 
-    lodashStable.each(['XMLHttpRequest', 'XmlHTTPRequest'], (string) => {
+    each(['XMLHttpRequest', 'XmlHTTPRequest'], (string) => {
       assert.strictEqual(camelCase(string), 'xmlHttpRequest')
     })
+
   })
 })
