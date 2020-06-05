@@ -1,27 +1,24 @@
 import getTag from './.internal/getTag';
 import isObjectLike from './isObjectLike';
-import nodeTypes from './.internal/nodeTypes';
-
-/* Node helper references. */
-const nodeIsDate = nodeTypes && nodeTypes.isDate;
 
 /**
  * Checks if `value` is classified as a `Date` object.
  *
- * @since 0.1.0
+ * @since 5.5.0
  * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a date object, else `false`.
+ * @param value The value to check.
+ * @returns Returns `true` if `value` is a date object, else `false`.
  * @example
  *
+ * ```js
  * isDate(new Date)
  * // => true
  *
  * isDate('Mon April 23 2012')
  * // => false
+ * ```
  */
-const isDate = nodeIsDate
-  ? (value) => nodeIsDate(value)
-  : (value) => isObjectLike(value) && getTag(value) == '[object Date]';
-
+export function isDate(value: any): boolean {
+  return isObjectLike(value) && getTag(value) == '[object Date]';
+}
 export default isDate;

@@ -4,13 +4,27 @@ import isArrayLike from './isArrayLike';
 import isBuffer from './isBuffer';
 import isPrototype from './.internal/isPrototype';
 import isTypedArray from './isTypedArray';
-import isArray from './isArray';
 import baseKeys from './.internal/baseKeys';
 
-/** Used to check objects for own properties. */
+/**
+ * Used to check objects for own properties.
+ * @ignore
+ */
 const hasOwnProperty = Object.prototype.hasOwnProperty;
+/**
+ * @ignore
+ */
 const mapTag = '[object Map]';
+/**
+ * @ignore
+ */
 const setTag = '[object Set]';
+/**
+ * @ignore
+ * @internal
+ * @private
+ */
+const isArray = Array.isArray;
 
 /**
  * Checks if `value` is an empty object, collection, map, or set.
@@ -22,12 +36,15 @@ const setTag = '[object Set]';
  * jQuery-like collections are considered empty if they have a `length` of `0`.
  * Similarly, maps and sets are considered empty if they have a `size` of `0`.
  *
- * @since 0.0.3
+ * heavy operation
+ *
+ * @since 5.5.0
  * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is empty, else `false`.
+ * @param value The value to check.
+ * @returns Returns `true` if `value` is empty, else `false`.
  * @example
  *
+ * ```js
  * isEmpty(null)
  * // => true
  *
@@ -45,6 +62,7 @@ const setTag = '[object Set]';
  *
  * isEmpty({ 'a': 1 })
  * // => false
+ * ```
  */
 function isEmpty(value?: any): boolean {
   if (value == null) {

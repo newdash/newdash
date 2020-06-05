@@ -20,6 +20,6 @@ const nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
  * // => false
  * ```
  */
-const isBuffer = nativeIsBuffer || (() => false);
+export const isBuffer = nativeIsBuffer || (() => false);
 
 export default isBuffer;

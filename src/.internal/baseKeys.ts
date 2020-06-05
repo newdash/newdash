@@ -6,10 +6,10 @@ const nativeKeys = Object.keys;
  * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
  *
  * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
+ * @param object The object to query.
+ * @returns Returns the array of property names.
  */
-function baseKeys(object) {
+export function baseKeys(object: any): string[] {
   if (!isPrototype(object)) {
     return nativeKeys(object);
   }

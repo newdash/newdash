@@ -1,27 +1,25 @@
 import getTag from './.internal/getTag';
 import isObjectLike from './isObjectLike';
-import nodeTypes from './.internal/nodeTypes';
-
-/* Node helper references. */
-const nodeIsArrayBuffer = nodeTypes && nodeTypes.isArrayBuffer;
 
 /**
  * Checks if `value` is classified as an `ArrayBuffer` object.
  *
- * @since 4.3.0
+ * @since 5.5.0
  * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array buffer, else `false`.
+ * @param value The value to check.
+ * @returns Returns `true` if `value` is an array buffer, else `false`.
  * @example
  *
+ * ```js
  * isArrayBuffer(new ArrayBuffer(2))
  * // => true
  *
  * isArrayBuffer(new Array(2))
  * // => false
+ * ```
  */
-const isArrayBuffer = nodeIsArrayBuffer
-  ? (value) => nodeIsArrayBuffer(value)
-  : (value) => isObjectLike(value) && getTag(value) == '[object ArrayBuffer]';
+export function isArrayBuffer(value: any): boolean {
+  return isObjectLike(value) && getTag(value) == '[object ArrayBuffer]';
+}
 
 export default isArrayBuffer;
