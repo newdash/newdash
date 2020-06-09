@@ -10,9 +10,9 @@ import baseForOwn from './.internal/baseForOwn';
  * @category Object
  * @param object The object to inspect.
  * @param predicate The function invoked per iteration.
- * @returns {string|undefined} Returns the key of the matched element,
+ * @returns Returns the key of the matched element,
  *  else `undefined`.
- * @see find, findIndex, findLast, findLastIndex, findLastKey
+ * @see [[find]], [[findIndex]], [[findLast]], [[findLastIndex]], [[findLastKey]]
  * @example
  *
  * ```js
@@ -26,7 +26,7 @@ import baseForOwn from './.internal/baseForOwn';
  * // => 'barney' (iteration order is not guaranteed)
  * ```
  */
-function findKey(object, predicate?): string | undefined {
+function findKey(object: any, predicate?: Function): string | undefined {
   return baseFindKey(object, getIteratee(predicate, 3), baseForOwn);
 }
 

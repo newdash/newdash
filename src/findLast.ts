@@ -26,11 +26,11 @@ const internalFind = createFind(findLastIndex);
  * ```
  *
  */
-function findLast<T>(collection: ArrayLike<T>, predicate?: string, fromIndex?): T | undefined;
-function findLast<T>(collection: ArrayLike<T>, predicate?: (item: T) => boolean, fromIndex?): T | undefined;
-function findLast<T>(collection: ArrayLike<T>, predicate?: Partial<T>, fromIndex?): T | undefined;
-function findLast<T>(collection: ArrayLike<T>, predicate?, fromIndex?): T | undefined;
-function findLast(collection, predicate?, fromIndex?) {
+function findLast<T>(collection: ArrayLike<T>, predicate?: string, fromIndex?: number): T | undefined;
+function findLast<T>(collection: ArrayLike<T>, predicate?: (item: T) => boolean, fromIndex?: number): T | undefined;
+function findLast<T>(collection: ArrayLike<T>, predicate?: Partial<T>, fromIndex?: number): T | undefined;
+function findLast<T>(collection: ArrayLike<T>, predicate?: any, fromIndex?: number): T | undefined;
+function findLast(collection: any, predicate?: any, fromIndex?: any): any {
   return internalFind(collection, predicate, fromIndex);
 }
 
