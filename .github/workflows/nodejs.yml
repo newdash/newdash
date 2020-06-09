@@ -25,8 +25,6 @@ jobs:
       with:
         path: ~/.npm
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
 
     - run: npm i -g npm
     - run: npm ci
@@ -60,9 +58,7 @@ jobs:
         cache-name: cache-node-modules
       with:
         path: ~/.npm
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
 
     - run: npm i -g npm
     - run: npm ci
@@ -112,9 +108,7 @@ jobs:
         cache-name: cache-node-modules
       with:
         path: ~/.npm
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
 
     - run: npm i -g npm
     - run: npm ci
