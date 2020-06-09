@@ -1,5 +1,5 @@
 import isObject from './isObject';
-import root from './.internal/root';
+import toNumber from './toNumber';
 
 /**
  * @ignore
@@ -22,7 +22,7 @@ interface Options {
 /**
  * @ignore
  */
-type DebouncedFunction<F extends (...any) => any> = {
+type DebouncedFunction<F extends (...args: any[]) => any> = {
   (...args: Parameters<F>): ReturnType<F>;
   cancel: () => void;
   flush: () => any;
@@ -99,13 +99,10 @@ export function debounce<F extends(...args: any[]) => any>(func: F, wait?: numbe
   let maxing = false;
   let trailing = true;
 
-  // Bypass `requestAnimationFrame` by explicitly setting `wait=0`.
-  const useRAF = (!wait && wait !== 0 && typeof root.requestAnimationFrame === 'function');
-
   if (typeof func !== 'function') {
     throw new TypeError('Expected a function');
   }
-  wait = +wait || 0;
+  wait = toNumber(wait) || 0;
   if (isObject(options)) {
     leading = !!options.leading;
     maxing = 'maxWait' in options;
@@ -123,26 +120,11 @@ export function debounce<F extends(...args: any[]) => any>(func: F, wait?: numbe
     return result;
   }
 
-  function startTimer(pendingFunc, wait) {
-    if (useRAF) {
-      root.cancelAnimationFrame(timerId);
-      return root.requestAnimationFrame(pendingFunc);
-    }
-    return setTimeout(pendingFunc, wait);
-  }
-
-  function cancelTimer(id) {
-    if (useRAF) {
-      return root.cancelAnimationFrame(id);
-    }
-    clearTimeout(id);
-  }
-
   function leadingEdge(time) {
     // Reset any `maxWait` timer.
     lastInvokeTime = time;
     // Start the timer for the trailing edge.
-    timerId = startTimer(timerExpired, wait);
+    timerId = setTimeout(timerExpired, wait);
     // Invoke the leading edge.
     return leading ? invokeFunc(time) : result;
   }
@@ -174,10 +156,10 @@ export function debounce<F extends(...args: any[]) => any>(func: F, wait?: numbe
       return trailingEdge(time);
     }
     // Restart the timer.
-    timerId = startTimer(timerExpired, remainingWait(time));
+    timerId = setTimeout(timerExpired, remainingWait(time));
   }
 
-  function trailingEdge(time: any) {
+  function trailingEdge(time) {
     timerId = undefined;
 
     // Only invoke if we have `lastArgs` which means `func` has been
@@ -191,7 +173,7 @@ export function debounce<F extends(...args: any[]) => any>(func: F, wait?: numbe
 
   function cancel() {
     if (timerId !== undefined) {
-      cancelTimer(timerId);
+      clearTimeout(timerId);
     }
     lastInvokeTime = 0;
     lastArgs = lastCallTime = lastThis = timerId = undefined;
@@ -219,12 +201,12 @@ export function debounce<F extends(...args: any[]) => any>(func: F, wait?: numbe
       }
       if (maxing) {
         // Handle invocations in a tight loop.
-        timerId = startTimer(timerExpired, wait);
+        timerId = setTimeout(timerExpired, wait);
         return invokeFunc(lastCallTime);
       }
     }
     if (timerId === undefined) {
-      timerId = startTimer(timerExpired, wait);
+      timerId = setTimeout(timerExpired, wait);
     }
     return result;
   }
