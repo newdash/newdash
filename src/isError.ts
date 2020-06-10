@@ -6,19 +6,21 @@ import isPlainObject from './isPlainObject';
  * Checks if `value` is an `Error`, `EvalError`, `RangeError`, `ReferenceError`,
  * `SyntaxError`, `TypeError`, or `URIError` object.
  *
- * @since 3.0.0
+ * @since 5.6.0
  * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an error object, else `false`.
+ * @param value The value to check.
+ * @returns Returns `true` if `value` is an error object, else `false`.
  * @example
  *
+ * ```js
  * isError(new Error)
  * // => true
  *
  * isError(Error)
  * // => false
+ * ```
  */
-function isError(value) {
+export function isError(value: any): boolean {
   if (!isObjectLike(value)) {
     return false;
   }

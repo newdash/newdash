@@ -1,4 +1,5 @@
 // @ts-nocheck
+import path from "path";
 import memoize from '../memoize'
 import isMatchWith from "../isMatchWith";
 import last from "../last"
@@ -10,6 +11,10 @@ import assign from "../assign";
 import each from "../each"
 import root from "../.internal/root";
 import identity from "../.internal/identity";
+import { Hash } from "../.internal/Hash";
+import Stack from "../.internal/Stack";
+import ListCache from "../.internal/ListCache";
+
 
 /** Used to detect when a function becomes hot. */
 const HOT_COUNT = 150
@@ -212,7 +217,6 @@ const typedArrays = [
 /** Used to check whether methods support array views. */
 const arrayViews = typedArrays.concat('DataView')
 
-const path = require('path')
 
 /** The file path of the lodash file to test. */
 const filePath = path.join(__dirname, '../index')
@@ -274,14 +278,11 @@ const _ = root._ || (root._ = lodashStable)
 const mapCaches = (function () {
   const MapCache = memoize.Cache
   const result = {
-    'Hash': require('../.internal/Hash'),
-    'MapCache': MapCache
+    Hash,
+    MapCache,
+    ListCache,
+    Stack,
   }
-  isMatchWith({ 'a': 1 }, { 'a': 1 }, function () {
-    const stack = last(arguments)
-    result.ListCache = stack.__data__.constructor
-    result.Stack = stack.constructor
-  })
   return result
 }())
 

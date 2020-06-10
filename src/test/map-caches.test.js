@@ -1,11 +1,17 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { symbol, noop, mapCaches, LARGE_ARRAY_SIZE } from './utils'
+import map from '../map'
+import times from '../times'
+import forOwn from '../forOwn'
+import each from '../each'
+import { every } from "../every";
+
 
 describe('map caches', () => {
+
   const keys = [null, undefined, false, true, 1, -Infinity, NaN, {}, 'a', symbol || noop]
 
-  const pairs = lodashStable.map(keys, (key, index) => {
+  const pairs = map(keys, (key, index) => {
     const lastIndex = keys.length - 1
     return [key, keys[lastIndex - index]]
   })
@@ -14,7 +20,7 @@ describe('map caches', () => {
     const largeStack = new mapCaches.Stack(pairs),
       length = pairs ? pairs.length : 0
 
-    lodashStable.times(LARGE_ARRAY_SIZE - length, () => {
+    times(LARGE_ARRAY_SIZE - length, () => {
       largeStack.set({}, {})
     })
 
@@ -27,11 +33,11 @@ describe('map caches', () => {
     }
   }
 
-  lodashStable.forOwn(createCaches(pairs), (cache, kind) => {
+  forOwn(createCaches(pairs), (cache, kind) => {
     const isLarge = /^large/.test(kind)
 
     it(`should implement a \`Map\` interface for ${kind}`, () => {
-      lodashStable.each(keys, (key, index) => {
+      each(keys, (key, index) => {
         const value = pairs[index][1]
 
         assert.deepStrictEqual(cache.get(key), value)
@@ -46,16 +52,18 @@ describe('map caches', () => {
 
       assert.strictEqual(cache.size, isLarge ? LARGE_ARRAY_SIZE : keys.length)
       assert.strictEqual(cache.clear(), undefined)
-      assert.ok(lodashStable.every(keys, (key) => !cache.has(key)))
+      assert.ok(every(keys, (key) => !cache.has(key)))
     })
   })
 
-  lodashStable.forOwn(createCaches(), (cache, kind) => {
+  forOwn(createCaches(), (cache, kind) => {
+
     it(`should support changing values of ${kind}`, () => {
-      lodashStable.each(keys, (key) => {
+      each(keys, (key) => {
         cache.set(key, 1).set(key, 2)
         assert.strictEqual(cache.get(key), 2)
       })
     })
+
   })
 })

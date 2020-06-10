@@ -4,19 +4,21 @@ import isPlainObject from './isPlainObject';
 /**
  * Checks if `value` is likely a DOM element.
  *
- * @since 0.1.0
+ * @since 5.6.0
  * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a DOM element, else `false`.
+ * @param value The value to check.
+ * @returns Returns `true` if `value` is a DOM element, else `false`.
  * @example
  *
+ * ```js
  * isElement(document.body)
  * // => true
  *
  * isElement('<body>')
  * // => false
+ * ```
  */
-function isElement(value) {
+export function isElement(value: any): boolean {
   return isObjectLike(value) && value.nodeType === 1 && !isPlainObject(value);
 }
 

@@ -1,6 +1,5 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-
+import { map } from "../map";
 import {
   slice,
   asyncFunc,
@@ -20,7 +19,6 @@ import isFunction from '../isFunction'
 
 describe('isFunction', () => {
   it('should return `true` for functions', () => {
-    assert.strictEqual(isFunction(_), true)
     assert.strictEqual(isFunction(slice), true)
   })
 
@@ -39,17 +37,17 @@ describe('isFunction', () => {
   })
 
   it('should return `true` for array view constructors', () => {
-    const expected = lodashStable.map(arrayViews, (type) => objToString.call(root[type]) == funcTag)
+    const expected = map(arrayViews, (type) => objToString.call(global[type]) == funcTag)
 
-    const actual = lodashStable.map(arrayViews, (type) => isFunction(root[type]))
+    const actual = map(arrayViews, (type) => isFunction(global[type]))
 
     assert.deepStrictEqual(actual, expected)
   })
 
   it('should return `false` for non-functions', () => {
-    const expected = lodashStable.map(falsey, stubFalse)
+    const expected = map(falsey, stubFalse)
 
-    const actual = lodashStable.map(falsey, (value, index) => index ? isFunction(value) : isFunction())
+    const actual = map(falsey, (value, index) => index ? isFunction(value) : isFunction())
 
     assert.deepStrictEqual(actual, expected)
 

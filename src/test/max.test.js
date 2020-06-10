@@ -1,7 +1,7 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { falsey, noop } from './utils'
 import max from '../max'
+import map from "../map"
 
 describe('max', () => {
   it('should return the largest value from a collection', () => {
@@ -10,12 +10,12 @@ describe('max', () => {
 
   it('should return `undefined` for empty collections', () => {
     const values = falsey.concat([[]]),
-      expected = lodashStable.map(values, noop)
+      expected = map(values, noop)
 
-    const actual = lodashStable.map(values, (value, index) => {
+    const actual = map(values, (value, index) => {
       try {
         return index ? max(value) : max()
-      } catch (e) {}
+      } catch (e) { }
     })
 
     assert.deepStrictEqual(actual, expected)

@@ -6,28 +6,30 @@ import stringToArray from './.internal/stringToArray';
 /**
  * Removes leading and trailing whitespace or specified characters from `string`.
  *
- * @since 3.0.0
+ * @since 5.6.0
  * @category String
- * @param {string} [string=''] The string to trim.
- * @param {string} [chars=whitespace] The characters to trim.
- * @returns {string} Returns the trimmed string.
- * @see trimEnd, trimStart
+ * @param str The string to trim.
+ * @param chars The characters to trim.
+ * @returns Returns the trimmed string.
+ * @see [[trimEnd]],[[trimStart]]
  * @example
  *
+ * ```js
  * trim('  abc  ')
  * // => 'abc'
  *
  * trim('-_-abc-_-', '_-')
  * // => 'abc'
+ * ```
  */
-function trim(string, chars) {
-  if (string && chars === undefined) {
-    return string.trim();
+export function trim(str: string, chars: string): string {
+  if (str && chars === undefined) {
+    return str.trim();
   }
-  if (!string || !chars) {
-    return (string || '');
+  if (!str || !chars) {
+    return (str || '');
   }
-  const strSymbols = stringToArray(string);
+  const strSymbols = stringToArray(str);
   const chrSymbols = stringToArray(chars);
   const start = charsStartIndex(strSymbols, chrSymbols);
   const end = charsEndIndex(strSymbols, chrSymbols) + 1;

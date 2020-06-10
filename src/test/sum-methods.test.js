@@ -1,20 +1,24 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { _, empties, stubZero } from './utils'
+import { empties, stubZero } from './utils'
+import each from '../each'
+import map from '../map'
+import { sum } from "../sum";
+import { sumBy } from "../sumBy";
 
 describe('sum methods', () => {
-  lodashStable.each(['sum', 'sumBy'], (methodName) => {
-    const array = [6, 4, 2],
-      func = _[methodName]
+
+  each([['sum', sum], ['sumBy', sumBy]], ([methodName,func]) => {
+    
+    const array = [6, 4, 2];
 
     it(`\`_.${methodName}\` should return the sum of an array of numbers`, () => {
       assert.strictEqual(func(array), 12)
     })
 
     it(`\`_.${methodName}\` should return \`0\` when passing empty \`array\` values`, () => {
-      const expected = lodashStable.map(empties, stubZero)
+      const expected = map(empties, stubZero)
 
-      const actual = lodashStable.map(empties, (value) => func(value))
+      const actual = map(empties, (value) => func(value))
 
       assert.deepStrictEqual(actual, expected)
     })
@@ -31,4 +35,5 @@ describe('sum methods', () => {
       assert.strictEqual(func(['1', '2']), '12')
     })
   })
+
 })

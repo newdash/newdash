@@ -1,6 +1,6 @@
 import assocIndexOf from './assocIndexOf'
 
-class ListCache {
+export class ListCache {
 
   /**
    * Creates an list cache object.

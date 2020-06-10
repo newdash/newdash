@@ -12,6 +12,10 @@ describe('trim test suite', () => {
     expect(trimPrefix("aaa", "aaa")).toBe("")
     expect(trimPrefix(" aa", " ")).toBe("aa")
 
+    expect(trimPrefix("123456", "123")).toBe("456")
+    expect(trimPrefix("123456")).toBe("123456")
+
+
   });
 
   it('should trim suffix', () => {

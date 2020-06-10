@@ -3,11 +3,16 @@
  * trimSuffix
  *
  * @since 5.5.0
- *
+ * @category String
  * @param str to be processed string
  * @param suffix string
  *
  * @see [[trimPrefix]]
+ *
+ * ```js
+ * trimSuffix("123456789", "789")
+ * // => '123456'
+ * ```
  *
  */
 export function trimSuffix(str = '', suffix = ''): string {
