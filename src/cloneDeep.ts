@@ -23,7 +23,7 @@ const CLONE_SYMBOLS_FLAG = 4;
  * // => false
  * ```
  */
-function cloneDeep<T>(value: T): T {
+export function cloneDeep<T>(value: T): T {
   return baseClone(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG);
 }
 

@@ -18,7 +18,7 @@ const INFINITY = Infinity;
  * // => [1, 2, 3, 4, 5]
  * ```
  */
-function flattenDeep(array: Array<any>): Array<any> {
+export function flattenDeep(array: Array<any>): Array<any> {
   const length = array == null ? 0 : array.length;
   return length ? baseFlatten(array, INFINITY) : [];
 }

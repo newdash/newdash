@@ -1,3 +1,4 @@
+// @ts-nocheck
 import isArray from './isArray';
 import isIterateeCall from './.internal/isIterateeCall';
 import getIteratee from './.internal/getIteratee';
@@ -8,9 +9,9 @@ import baseEach from './.internal/baseEach';
  * shorthands.
  *
  * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} predicate The function invoked per iteration.
- * @returns {boolean} Returns `true` if any element passes the predicate check,
+ * @param array The array to iterate over.
+ * @param predicate The function invoked per iteration.
+ * @returns Returns `true` if any element passes the predicate check,
  *  else `false`.
  */
 function arraySome(array, predicate) {
@@ -50,8 +51,6 @@ function baseSome(collection, predicate) {
  * Iteration is stopped once `predicate` returns truthy. The predicate is
  * invoked with three arguments: (value, index|key, collection).
  *
- * @static
- * @memberOf _
  * @since 5.2.0
  * @category Collection
  * @param collection The collection to iterate over.
@@ -81,7 +80,8 @@ function baseSome(collection, predicate) {
  * some(users, 'active');
  * // => true
  */
-function some(collection, predicate?, guard?) {
+export function some<T>(collection: ArrayLike<T>, predicate?: any, guard?: any): boolean;
+export function some(collection: any, predicate?: any, guard?: any): boolean {
   const func = isArray(collection) ? arraySome : baseSome;
   if (guard && isIterateeCall(collection, predicate, guard)) {
     predicate = undefined;

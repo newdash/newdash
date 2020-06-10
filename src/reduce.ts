@@ -60,7 +60,7 @@ type TypedObject<T> = { [key: string]: T }
  * // => { '1': ['a', 'c'], '2': ['b'] } (iteration order is not guaranteed)
  * ```
  */
-function reduce<T, R>(collection?: Array<T>, iteratee?: ArrayIteratee<T, R>, accumulator?: R): R;
+function reduce<T, R>(collection?: ArrayLike<T>, iteratee?: ArrayIteratee<T, R>, accumulator?: R): R;
 function reduce<T, R>(collection?: TypedObject<T>, iteratee?: ObjectIteratee<T, R>, accumulator?: R): R;
 function reduce<T, R>(collection?: any, iteratee?: any, accumulator?: any): any {
   const func = Array.isArray(collection) ? arrayReduce : baseReduce;

@@ -15,7 +15,7 @@ import baseFlatten from './.internal/baseFlatten';
  * // => [1, 2, [3, [4]], 5]
  * ```
  */
-function flatten(array: Array<any>): Array<any> {
+export function flatten(array: Array<any>): Array<any> {
   const length = array == null ? 0 : array.length;
   return length ? baseFlatten(array, 1) : [];
 }

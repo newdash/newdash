@@ -7,22 +7,25 @@ import toInteger from './toInteger';
  * This method is like `indexOf` except that it iterates over elements of
  * `array` from right to left.
  *
- * @since 0.1.0
+ * @since 5.6.0
  * @category Array
- * @param {Array} array The array to inspect.
- * @param {*} value The value to search for.
- * @param {number} [fromIndex=array.length-1] The index to search from.
- * @returns {number} Returns the index of the matched value, else `-1`.
+ * @param array The array to inspect.
+ * @param value The value to search for.
+ * @param fromIndex The index to search from.
+ * @returns Returns the index of the matched value, else `-1`.
  * @example
  *
+ * ```js
  * lastIndexOf([1, 2, 1, 2], 2)
  * // => 3
  *
  * // Search from the `fromIndex`.
  * lastIndexOf([1, 2, 1, 2], 2, 2)
  * // => 1
+ * ```
  */
-function lastIndexOf(array, value, fromIndex) {
+export function lastIndexOf<T>(array: ArrayLike<T>, value: T, fromIndex: number): number;
+export function lastIndexOf(array: any, value: any, fromIndex: number): number {
   const length = array == null ? 0 : array.length;
   if (!length) {
     return -1;

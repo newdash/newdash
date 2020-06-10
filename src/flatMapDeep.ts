@@ -31,9 +31,9 @@ const INFINITY = Infinity;
  * // => [1, 1, 2, 2]
  * ```
  */
-function flatMapDeep<T, R = any>(collection: Array<T>, iteratee?: Iteratee<number, T, Array<T>>): Array<R>;
-function flatMapDeep<T, R = any>(collection: Record<string, T>, iteratee?: Iteratee<string, T, Record<string, T>>): Array<R>;
-function flatMapDeep(collection, iteratee) {
+export function flatMapDeep<T, R = any>(collection: Array<T>, iteratee?: Iteratee<number, T, Array<T>>): Array<R>;
+export function flatMapDeep<T, R = any>(collection: Record<string, T>, iteratee?: Iteratee<string, T, Record<string, T>>): Array<R>;
+export function flatMapDeep(collection, iteratee) {
   return baseFlatten(map(collection, iteratee), INFINITY);
 }
 

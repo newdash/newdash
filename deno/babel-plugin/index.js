@@ -15,6 +15,7 @@ module.exports = function (babel) {
     if (path.parent.type == "CallExpression" && path.parent.callee.name == "describe") {
       path.node.params.push(t.identifier("it"))
     }
+
   }
 
   return {
@@ -63,6 +64,18 @@ module.exports = function (babel) {
           console.info(`can not find module '${mName}' from ${filename}, no transform.`)
         }
 
+      },
+
+      Identifier(path, { file: { opts: { filename } } }) {
+        // add `any` for all un-typed parameters
+        if (filename.endsWith(".ts")) {
+          // is typescript
+          if (path.parent.type == "FunctionDeclaration" || path.parent.type == "ArrowFunctionExpression") {
+            if (!path.node.typeAnnotation) {
+              path.node.typeAnnotation = t.typeAnnotation(t.anyTypeAnnotation())
+            }
+          }
+        }
       },
 
       ArrowFunctionExpression: functionExpression,

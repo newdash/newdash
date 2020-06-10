@@ -28,9 +28,9 @@ import baseUnset from './.internal/baseUnset';
  * // => { 'a': [{ 'b': {} }] }
  * ```
  */
-function unset(object, path: Array<string>);
-function unset(object, path: string);
-function unset(object, path) {
+export function unset<T>(object: T, path: Array<string>): T;
+export function unset<T>(object: T, path: string): T;
+export function unset(object: any, path: any): any {
   return object == null ? true : baseUnset(object, path);
 }
 

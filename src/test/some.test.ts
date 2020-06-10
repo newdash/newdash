@@ -15,6 +15,7 @@ describe('some', () => {
 
     const actual = map(empties, (value) => {
       try {
+        // @ts-ignore
         return some(value, identity)
       } catch (e) {}
     })

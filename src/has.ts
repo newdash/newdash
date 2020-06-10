@@ -9,7 +9,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * @param object The object to query.
  * @param key The key to check.
  * @returns Returns `true` if `key` exists, else `false`.
- * @see hasIn,hasPath,hasPathIn
+ * @see [[hasIn]],[[hasPath]],[[hasPathIn]]
  * @example
  *
  * ```js
@@ -23,7 +23,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * // => false
  * ```
  */
-function has(object: any, key: string): boolean {
+export function has(object: any, key: string): boolean {
   return object != null && hasOwnProperty.call(object, key);
 }
 

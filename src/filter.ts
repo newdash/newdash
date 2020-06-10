@@ -45,9 +45,9 @@ type Predicate<T> = (value?: T) => boolean
  * // => objects for ['barney']
  * ```
  */
-function filter<T>(collection: Array<T>, predicate?: Predicate<T>): Array<T>;
-function filter<T>(collection: Array<T>, predicate?: any): Array<T>;
-function filter(collection: any, predicate: any): any {
+export function filter<T>(collection: Array<T>, predicate?: Predicate<T>): Array<T>;
+export function filter<T>(collection: Array<T>, predicate?: any): Array<T>;
+export function filter(collection: any, predicate: any): any {
   const func = isArray(collection) ? arrayFilter : baseFilter;
   return func(collection, getIteratee(predicate, 3));
 }

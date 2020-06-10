@@ -29,9 +29,9 @@ import baseSet from './.internal/baseSet';
  * // => 5
  * ```
  */
-function set(object: any, path: Array<string>, value: any): any;
-function set(object: any, path: string, value: any): any;
-function set(object: any, path: any, value: any): any {
+export function set(object: any, path: Array<string>, value: any): any;
+export function set(object: any, path: string, value: any): any;
+export function set(object: any, path: any, value: any): any {
   return object == null ? object : baseSet(object, path, value);
 }
 

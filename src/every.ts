@@ -45,7 +45,7 @@ import isArray from './isArray';
  * // => false
  * ```
  */
-function every(collection: any[] | object, predicate?: Function, guard?): boolean {
+export function every(collection: any[] | object, predicate?: Function, guard?): boolean {
 
   if (guard && isIterateeCall(collection, predicate, guard)) {
     predicate = undefined;

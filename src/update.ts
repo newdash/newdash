@@ -27,7 +27,7 @@ import baseUpdate from './.internal/baseUpdate';
  * // => 0
  * ```
  */
-function update<U extends(...any) => any>(object: any, path: Array<string> | string, updater?: U): ReturnType<U> {
+export function update<U extends(...args: any[]) => any>(object: any, path: Array<string> | string, updater?: U): ReturnType<U> {
   return object == null ? object : baseUpdate(object, path, updater);
 }
 

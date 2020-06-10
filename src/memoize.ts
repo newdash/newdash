@@ -74,7 +74,7 @@ export type MemorizedFunction<T extends (...any) => any, K = any, V = any> = {
  * memoize.Cache = WeakMap
  * ```
  */
-function memoize<T extends(...any) => any, K>(func: T, resolver?: (...args: Parameters<T>) => K): MemorizedFunction<T, K, ReturnType<T>> {
+export function memoize<T extends(...any) => any, K>(func: T, resolver?: (...args: Parameters<T>) => K): MemorizedFunction<T, K, ReturnType<T>> {
   if (typeof func !== 'function' || (resolver != null && typeof resolver !== 'function')) {
     throw new TypeError('Expected a function');
   }

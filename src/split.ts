@@ -33,7 +33,7 @@ const MAX_ARRAY_LENGTH = 4294967295;
  * // => ['a', 'b']
  * ```
  */
-function split(str?: string, separator?: RegExp | string, limit?: number): Array<string> {
+export function split(str?: string, separator?: RegExp | string, limit?: number): Array<string> {
   if (limit && typeof limit != 'number' && isIterateeCall(str, separator, limit)) {
     separator = limit = undefined;
   }

@@ -36,10 +36,10 @@ const internalMerge = createAssigner((object, source, srcIndex) => {
  * // => { 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] }
  * ```
  */
-function merge<A, B, C, D>(target: A, s1: B, s2: C, s3: D): A & B & C & D;
-function merge<A, B, C>(target: A, s1: B, s2: C): A & B & C;
-function merge<A, B>(target: A, s1: B): A & B;
-function merge(target?: any, ...sources: any[]) {
+export function merge<A, B, C, D>(target: A, s1: B, s2: C, s3: D): A & B & C & D;
+export function merge<A, B, C>(target: A, s1: B, s2: C): A & B & C;
+export function merge<A, B>(target: A, s1: B): A & B;
+export function merge(target?: any, ...sources: any[]) {
   return internalMerge(target, ...sources);
 }
 

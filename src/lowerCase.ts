@@ -6,13 +6,14 @@ const reQuotes = /['\u2019]/g;
 /**
  * Converts `string`, as space separated words, to lower case.
  *
- * @since 4.0.0
+ * @since 5.6.0
  * @category String
- * @param {string} [string=''] The string to convert.
- * @returns {string} Returns the lower cased string.
+ * @param str The string to convert.
+ * @returns Returns the lower cased string.
  * @see camelCase, kebabCase, snakeCase, startCase, upperCase, upperFirst
  * @example
  *
+ * ```js
  * lowerCase('--Foo-Bar--')
  * // => 'foo bar'
  *
@@ -21,11 +22,12 @@ const reQuotes = /['\u2019]/g;
  *
  * lowerCase('__FOO_BAR__')
  * // => 'foo bar'
+ * ```
  */
-const lowerCase = (string) => (
-  words(toString(string).replace(reQuotes, '')).reduce((result, word, index) => (
+export function lowerCase(str: string): string {
+  return words(toString(str).replace(reQuotes, '')).reduce((result, word, index) => (
     result + (index ? ' ' : '') + word.toLowerCase()
-  ), '')
-);
+  ), '');
+}
 
 export default lowerCase;

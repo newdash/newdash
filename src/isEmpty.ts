@@ -64,7 +64,7 @@ const isArray = Array.isArray;
  * // => false
  * ```
  */
-function isEmpty(value?: any): boolean {
+export function isEmpty(value?: any): boolean {
   if (value == null) {
     return true;
   }

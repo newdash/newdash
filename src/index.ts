@@ -1,43 +1,47 @@
-import filter from './filter';
-import get from './get';
-import reduce from './reduce';
-import map from './map';
-import each from './each';
-import every from './every';
-import concat from './concat';
-import first from './first';
-import attempt from './attempt';
-import forEach from './forEach';
-import merge from './merge';
-import isEmpty from './isEmpty';
-import split from './split';
-import join from './join';
-import memoize from './memoize';
-import some from './some';
-import find from './find';
-import debounce from './debounce';
-import add from './add';
-import head from './head';
-import has from './has';
-import clone from './clone';
-import cloneDeep from './cloneDeep';
-import set from './set';
-import update from './update';
-import unset from './unset';
-import capitalize from './capitalize';
-import flatten from './flatten';
-import flattenDeep from './flattenDeep';
-import flatMap from './flatMap';
-import flatMapDeep from './flatMapDeep';
-import ceil from './ceil';
-import assign from './assign';
-import assignIn from './assignIn';
-import at from './at';
-import bind from './bind';
-import filterObject from './filterObject';
-import random from './random';
-import trimPrefix from './trimPrefix';
-import trimSuffix from './trimSuffix';
+import { filter } from './filter';
+import { get } from './get';
+import { reduce } from './reduce';
+import { map } from './map';
+import { each } from './each';
+import { every } from './every';
+import { concat } from './concat';
+import { first } from './first';
+import { attempt } from './attempt';
+import { forEach } from './forEach';
+import { merge } from './merge';
+import { isEmpty } from './isEmpty';
+import { split } from './split';
+import { join } from './join';
+import { memoize } from './memoize';
+import { some } from './some';
+import { find } from './find';
+import { debounce } from './debounce';
+import { add } from './add';
+import { head } from './head';
+import { has } from './has';
+import { clone } from './clone';
+import { cloneDeep } from './cloneDeep';
+import { set } from './set';
+import { update } from './update';
+import { unset } from './unset';
+import { capitalize } from './capitalize';
+import { flatten } from './flatten';
+import { flattenDeep } from './flattenDeep';
+import { flatMap } from './flatMap';
+import { flatMapDeep } from './flatMapDeep';
+import { ceil } from './ceil';
+import { assign } from './assign';
+import { assignIn } from './assignIn';
+import { at } from './at';
+import { bind } from './bind';
+import { filterObject } from './filterObject';
+import { random } from './random';
+import { trimPrefix } from './trimPrefix';
+import { trimSuffix } from './trimSuffix';
+import { last } from './last';
+import { lastIndexOf } from './lastIndexOf';
+import { lowerCase } from './lowerCase';
+import { lt } from './lt';
 
 
 export {
@@ -46,7 +50,8 @@ export {
   some, find, debounce, add, head, has, clone, cloneDeep,
   set, update, unset, capitalize, flatten, flattenDeep,
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
-  bind, filterObject, random, trimPrefix, trimSuffix
+  bind, filterObject, random, trimPrefix, trimSuffix,
+  last, lastIndexOf, lowerCase, lt
 };
 
 export default {
@@ -55,6 +60,7 @@ export default {
   some, find, debounce, add, head, has, clone, cloneDeep,
   set, update, unset, capitalize, flatten, flattenDeep,
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
-  bind, filterObject, random, trimPrefix, trimSuffix
+  bind, filterObject, random, trimPrefix, trimSuffix,
+  last, lastIndexOf, lowerCase, lt
 };
 

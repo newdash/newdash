@@ -17,7 +17,7 @@
  * // => undefined
  * ```
  */
-function head<T>(array: ArrayLike<T>): T | undefined {
+export function head<T>(array: ArrayLike<T>): T | undefined {
   return (array != null && array.length)
     ? array[0]
     : undefined;

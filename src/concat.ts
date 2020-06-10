@@ -23,7 +23,7 @@ import isArray from './isArray';
  * console.log(array);
  * // => [1]
  */
-function concat<T>(...arrays: Array<Array<T>>): Array<T> {
+export function concat<T>(...arrays: Array<Array<T>>): Array<T> {
   const length = arrays.length;
   if (!length) {
     return [];

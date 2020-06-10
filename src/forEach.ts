@@ -45,9 +45,9 @@ type TypedObject<T> = { [key: string]: T }
  * ```
  *
  */
-function forEach<T>(collection?: Array<T>, iteratee?: Iteratee<T>): void;
-function forEach<T>(collection?: TypedObject<T>, iteratee?: ObjectIteratee<T>): void;
-function forEach(collection?: any, iteratee?: any): any {
+export function forEach<T>(collection?: Array<T>, iteratee?: Iteratee<T>): void;
+export function forEach<T>(collection?: TypedObject<T>, iteratee?: ObjectIteratee<T>): void;
+export function forEach(collection?: any, iteratee?: any): any {
   const func = Array.isArray(collection) ? arrayEach : baseEach;
   return func(collection, iteratee);
 }

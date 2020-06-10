@@ -24,7 +24,7 @@ const CLONE_SYMBOLS_FLAG = 4;
  * @category Lang
  * @param value The value to clone.
  * @returns Returns the cloned value.
- * @see cloneDeep
+ * @see [[cloneDeep]]
  * @example
  *
  * ```js
@@ -35,7 +35,7 @@ const CLONE_SYMBOLS_FLAG = 4;
  * // => true
  * ```
  */
-function clone<T>(value: T): T {
+export function clone<T>(value: T): T {
   return baseClone(value, CLONE_SYMBOLS_FLAG);
 }
 

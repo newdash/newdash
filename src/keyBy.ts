@@ -7,14 +7,15 @@ import reduce from './reduce';
  * each key is the last element responsible for generating the key. The
  * iteratee is invoked with one argument: (value).
  *
- * @since 4.0.0
+ * @since 5.6.0
  * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} iteratee The iteratee to transform keys.
- * @returns {Object} Returns the composed aggregate object.
- * @see groupBy, partition
+ * @param collection The collection to iterate over.
+ * @param iteratee The iteratee to transform keys.
+ * @returns Returns the composed aggregate object.
+ * @see [[groupBy]],[[partition]]
  * @example
  *
+ * ```js
  * const array = [
  *   { 'dir': 'left', 'code': 97 },
  *   { 'dir': 'right', 'code': 100 }
@@ -22,8 +23,10 @@ import reduce from './reduce';
  *
  * keyBy(array, ({ code }) => String.fromCharCode(code))
  * // => { 'a': { 'dir': 'left', 'code': 97 }, 'd': { 'dir': 'right', 'code': 100 } }
+ * ```
  */
-function keyBy(collection, iteratee) {
+export function keyBy<T>(collection: ArrayLike<T>, iteratee?: (obj: T) => any): Record<string, T>;
+export function keyBy(collection: any, iteratee?: any): any {
   return reduce(collection, (result, value, key) => (
     baseAssignValue(result, iteratee(value), value), result
   ), {});

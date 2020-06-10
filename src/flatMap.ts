@@ -30,9 +30,9 @@ interface Iteratee<K, V, C> {
  * // => [1, 1, 2, 2]
  * ```
  */
-function flatMap<T, R = any>(collection: Array<T>, iteratee?: Iteratee<number, T, Array<T>>): Array<R>;
-function flatMap<T, R = any>(collection: Record<string, T>, iteratee?: Iteratee<string, T, Record<string, T>>): Array<R>;
-function flatMap(collection, iteratee?) {
+export function flatMap<T, R = any>(collection: Array<T>, iteratee?: Iteratee<number, T, Array<T>>): Array<R>;
+export function flatMap<T, R = any>(collection: Record<string, T>, iteratee?: Iteratee<string, T, Record<string, T>>): Array<R>;
+export function flatMap(collection, iteratee?) {
   return baseFlatten(map(collection, iteratee), 1);
 }
 
