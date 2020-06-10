@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.5.0](https://github.com/newdash/newdash/compare/v5.4.1...v5.5.0) (2020-06-10)
+
+
+### Features
+
+* [#17](https://github.com/newdash/newdash/issues/17) related unit test ([e000888](https://github.com/newdash/newdash/commit/e0008882fc0f4d0a9502e57d8f2c8ce0705115da))
+* [#18](https://github.com/newdash/newdash/issues/18) trim prefix/suffix functions ([0f16f1b](https://github.com/newdash/newdash/commit/0f16f1beffc71bb12a46a4710830980fec9fab80))
+* [#4](https://github.com/newdash/newdash/issues/4) remove nodejs related code ([ec9b2d1](https://github.com/newdash/newdash/commit/ec9b2d155e0010c6eeba687be1374ec8007489ed))
+* [#7](https://github.com/newdash/newdash/issues/7) deno support init ([198cfab](https://github.com/newdash/newdash/commit/198cfab604ebf44e24cd62976e1abc528fd76e23))
+* ceil,assign,at,bind functions ([119ba1e](https://github.com/newdash/newdash/commit/119ba1e0262c6f8b1f96eab255fb91d153c11b64))
+* deno ci ([0825bea](https://github.com/newdash/newdash/commit/0825bea8efec222f36affec310db3d929ab9fedb))
+* filter object & test ([f43d2db](https://github.com/newdash/newdash/commit/f43d2db608a8ed67851d8168475e7294a1a83859))
+* random function ([9ff65a0](https://github.com/newdash/newdash/commit/9ff65a03f1a8bb02f6c54d2f4099f1cba9fe4bfc))
+* types ([d44c545](https://github.com/newdash/newdash/commit/d44c54570788d02b63cb312f5f667754052a8636))
+
+
+### Bug Fixes
+
+* ci script ([42c0690](https://github.com/newdash/newdash/commit/42c069074a920b6163de58ca8aeac6fd7ff0ee8c))
+* debounce function on macos ([94126f5](https://github.com/newdash/newdash/commit/94126f567440dbb3f8e4a829467772d3712c5b84))
+* debounce function on macos ([3b7d94f](https://github.com/newdash/newdash/commit/3b7d94f6d952fa6d1a8d559c5d483a279f8e81ad))
+* deno ci ([3124806](https://github.com/newdash/newdash/commit/31248068593f336da77359dd654b9d87c2385403))
+* deno ci ([9b8dd9b](https://github.com/newdash/newdash/commit/9b8dd9b360d7c818ebeeb0a0e1d155e13127b011))
+* remove debounce test for macos ([af214e1](https://github.com/newdash/newdash/commit/af214e15f190f61d9939a8fff67774acb9ebcee4))
+
 ### [5.4.1](https://github.com/newdash/newdash/compare/v5.4.0...v5.4.1) (2020-06-02)
 
 
