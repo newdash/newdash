@@ -1,4 +1,5 @@
 import baseSum from './.internal/baseSum';
+import getIteratee from './.internal/getIteratee';
 
 /**
  * This method is like `sum` except that it accepts `iteratee` which is
@@ -21,7 +22,7 @@ import baseSum from './.internal/baseSum';
  */
 export function sumBy(array: any, iteratee: any): number {
   return (array != null && array.length)
-    ? baseSum(array, iteratee)
+    ? baseSum(array, getIteratee(iteratee))
     : 0;
 }
 
