@@ -36,6 +36,8 @@ import at from './at';
 import bind from './bind';
 import filterObject from './filterObject';
 import random from './random';
+import trimPrefix from './trimPrefix';
+import trimSuffix from './trimSuffix';
 
 
 export {
@@ -44,7 +46,7 @@ export {
   some, find, debounce, add, head, has, clone, cloneDeep,
   set, update, unset, capitalize, flatten, flattenDeep,
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
-  bind, filterObject, random
+  bind, filterObject, random, trimPrefix, trimSuffix
 };
 
 export default {
@@ -53,6 +55,6 @@ export default {
   some, find, debounce, add, head, has, clone, cloneDeep,
   set, update, unset, capitalize, flatten, flattenDeep,
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
-  bind, filterObject, random
+  bind, filterObject, random, trimPrefix, trimSuffix
 };
 
