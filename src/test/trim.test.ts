@@ -23,6 +23,10 @@ describe('trim test suite', () => {
     expect(trimSuffix(" aa", "aa")).toBe(" ")
     expect(trimSuffix(" aa", " aa")).toBe("")
 
+    expect(trimSuffix("123456789", "789")).toBe("123456")
+    expect(trimSuffix("123456789", "4789")).toBe("123456789")
+
+
   });
 
 

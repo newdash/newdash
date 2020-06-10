@@ -2,8 +2,13 @@
 /**
  * trimSuffix
  *
+ * @since 5.5.0
+ *
  * @param str to be processed string
  * @param suffix string
+ *
+ * @see [[trimPrefix]]
+ *
  */
 export function trimSuffix(str = '', suffix = ''): string {
   if (suffix.length > str.length) {
