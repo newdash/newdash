@@ -7,22 +7,25 @@ import toInteger from './toInteger';
  * for equality comparisons. If `fromIndex` is negative, it's used as the
  * offset from the end of `array`.
  *
- * @since 0.1.0
+ * @since 5.5.1
  * @category Array
- * @param {Array} array The array to inspect.
- * @param {*} value The value to search for.
- * @param {number} [fromIndex=0] The index to search from.
- * @returns {number} Returns the index of the matched value, else `-1`.
+ * @param array The array to inspect.
+ * @param value The value to search for.
+ * @param fromIndex The index to search from.
+ * @returns Returns the index of the matched value, else `-1`.
  * @example
  *
+ * ```js
  * indexOf([1, 2, 1, 2], 2)
  * // => 1
  *
  * // Search from the `fromIndex`.
  * indexOf([1, 2, 1, 2], 2, 2)
  * // => 3
+ * ```
  */
-function indexOf(array, value, fromIndex) {
+export function indexOf<T>(array: ArrayLike<T>, value: T, fromIndex?: number): number;
+export function indexOf(array: any, value: any, fromIndex?: any): number {
   const length = array == null ? 0 : array.length;
   if (!length) {
     return -1;
