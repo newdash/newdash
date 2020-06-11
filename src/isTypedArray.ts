@@ -12,15 +12,17 @@ const reTypedTag = /^\[object (?:Float(?:32|64)|(?:Int|Uint)(?:8|16|32)|Uint8Cla
  *
  * @since 5.5.0
  * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+ * @param value The value to check.
+ * @returns Returns `true` if `value` is a typed array, else `false`.
  * @example
  *
+ * ```js
  * isTypedArray(new Uint8Array)
  * // => true
  *
  * isTypedArray([])
  * // => false
+ * ```
  */
 export function isTypedArray(value: any): boolean {
   return isObjectLike(value) && reTypedTag.test(getTag(value));

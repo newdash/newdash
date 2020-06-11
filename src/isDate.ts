@@ -18,7 +18,7 @@ import isObjectLike from './isObjectLike';
  * // => false
  * ```
  */
-export function isDate(value: any): boolean {
+export function isDate(value: any): value is Date {
   return isObjectLike(value) && getTag(value) == '[object Date]';
 }
 export default isDate;

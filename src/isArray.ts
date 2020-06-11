@@ -22,7 +22,7 @@
  * // => false
  * ```
  */
-function isArray(value: any): boolean {
+function isArray(value: any): value is any[] {
   return Array.isArray(value);
 }
 

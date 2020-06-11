@@ -15,21 +15,35 @@ const DEFAULT_TRUNC_OMISSION = '...';
 const reFlags = /\w*$/;
 
 /**
+ * @ignore
+ */
+interface Options {
+  length?: number;
+  omission?: any;
+  separator?: RegExp | string;
+}
+
+/**
+ * @ignore
+ */
+interface ToStringAble {
+  toString(): string;
+}
+
+/**
  * Truncates `string` if it's longer than the given maximum string length.
  * The last characters of the truncated string are replaced with the omission
  * string which defaults to "...".
  *
- * @since 4.0.0
+ * @since 5.6.0
  * @category String
- * @param {string} [string=''] The string to truncate.
- * @param {Object} [options={}] The options object.
- * @param {number} [options.length=30] The maximum string length.
- * @param {string} [options.omission='...'] The string to indicate text is omitted.
- * @param {RegExp|string} [options.separator] The separator pattern to truncate to.
- * @returns {string} Returns the truncated string.
- * @see replace
+ * @param str The string to truncate.
+ * @param options The options object.
+ * @returns Returns the truncated string.
+ * @see [[replace]]
  * @example
  *
+ * ```js
  * truncate('hi-diddly-ho there, neighborino')
  * // => 'hi-diddly-ho there, neighbo...'
  *
@@ -49,8 +63,11 @@ const reFlags = /\w*$/;
  *   'omission': ' [...]'
  * })
  * // => 'hi-diddly-ho there, neig [...]'
+ * ```
  */
-function truncate(string, options) {
+export function truncate(str: ToStringAble, options?: Options): string;
+export function truncate(str: string, options?: Options): string;
+export function truncate(str: any, options?: any): any {
   let separator;
   let length = DEFAULT_TRUNC_LENGTH;
   let omission = DEFAULT_TRUNC_OMISSION;
@@ -61,16 +78,16 @@ function truncate(string, options) {
     omission = 'omission' in options ? baseToString(options.omission) : omission;
   }
 
-  string = toString(string);
+  str = toString(str);
 
   let strSymbols;
-  let strLength = string.length;
-  if (hasUnicode(string)) {
-    strSymbols = stringToArray(string);
+  let strLength = str.length;
+  if (hasUnicode(str)) {
+    strSymbols = stringToArray(str);
     strLength = strSymbols.length;
   }
   if (length >= strLength) {
-    return string;
+    return str;
   }
   let end = length - stringSize(omission);
   if (end < 1) {
@@ -78,7 +95,7 @@ function truncate(string, options) {
   }
   let result = strSymbols
     ? castSlice(strSymbols, 0, end).join('')
-    : string.slice(0, end);
+    : str.slice(0, end);
 
   if (separator === undefined) {
     return result + omission;
@@ -87,7 +104,7 @@ function truncate(string, options) {
     end += (result.length - end);
   }
   if (isRegExp(separator)) {
-    if (string.slice(end).search(separator)) {
+    if (str.slice(end).search(separator)) {
       let match;
       let newEnd;
       const substring = result;
@@ -101,7 +118,7 @@ function truncate(string, options) {
       }
       result = result.slice(0, newEnd === undefined ? end : newEnd);
     }
-  } else if (string.indexOf(baseToString(separator), end) != end) {
+  } else if (str.indexOf(baseToString(separator), end) != end) {
     const index = result.lastIndexOf(separator);
     if (index > -1) {
       result = result.slice(0, index);

@@ -78,4 +78,5 @@ describe('"Strings" category methods', () => {
       assert.deepStrictEqual(actual, expected)
     })
   })
+
 })

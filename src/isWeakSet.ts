@@ -18,7 +18,7 @@ import isObjectLike from './isObjectLike';
  * // => false
  * ```
  */
-export function isWeakSet(value: any): boolean {
+export function isWeakSet(value: any): value is WeakSet<any> {
   return isObjectLike(value) && getTag(value) == '[object WeakSet]';
 }
 

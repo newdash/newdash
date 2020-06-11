@@ -20,9 +20,15 @@ import isPlainObject from './isPlainObject';
  * // => false
  * ```
  */
-export function isError(value: any): boolean {
+export function isError(value: any): value is Error {
   if (!isObjectLike(value)) {
     return false;
+  }
+  if (Error && value instanceof Error) {
+    return true;
+  }
+  if (DOMException && value instanceof DOMException) {
+    return true;
   }
   const tag = getTag(value);
   return tag == '[object Error]' || tag == '[object DOMException]' ||

@@ -18,12 +18,13 @@ const symIterator = Symbol.iterator;
 /**
  * Converts `value` to an array.
  *
- * @since 0.1.0
+ * @since 5.6.0
  * @category Lang
- * @param {*} value The value to convert.
- * @returns {Array} Returns the converted array.
+ * @param value The value to convert.
+ * @returns Returns the converted array.
  * @example
  *
+ * ```js
  * toArray({ 'a': 1, 'b': 2 })
  * // => [1, 2]
  *
@@ -35,8 +36,9 @@ const symIterator = Symbol.iterator;
  *
  * toArray(null)
  * // => []
+ * ```
  */
-function toArray(value) {
+export function toArray(value: any): any {
   if (!value) {
     return [];
   }

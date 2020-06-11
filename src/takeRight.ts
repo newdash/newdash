@@ -3,13 +3,14 @@ import slice from './slice';
 /**
  * Creates a slice of `array` with `n` elements taken from the end.
  *
- * @since 3.0.0
+ * @since 5.6.0
  * @category Array
- * @param {Array} array The array to query.
- * @param {number} [n=1] The number of elements to take.
- * @returns {Array} Returns the slice of `array`.
+ * @param array The array to query.
+ * @param n The number of elements to take.
+ * @returns Returns the slice of `array`.
  * @example
  *
+ * ```js
  * takeRight([1, 2, 3])
  * // => [3]
  *
@@ -21,8 +22,10 @@ import slice from './slice';
  *
  * takeRight([1, 2, 3], 0)
  * // => []
+ * ```
  */
-function takeRight(array, n=1) {
+export function takeRight<T>(array: ArrayLike<T>, n?: number): Array<T>;
+export function takeRight(array: any, n = 1): any {
   const length = array == null ? 0 : array.length;
   if (!length) {
     return [];

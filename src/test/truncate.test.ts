@@ -1,8 +1,11 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import truncate from '../truncate'
+import constant from '../constant'
+import each from '../each'
+import { map } from "../map";
 
 describe('truncate', () => {
+
   const string = 'hi-diddly-ho there, neighborino'
 
   it('should use a default `length` of `30`', () => {
@@ -38,27 +41,21 @@ describe('truncate', () => {
   })
 
   it('should treat negative `length` as `0`', () => {
-    lodashStable.each([0, -2], (length) => {
+    each([0, -2], (length) => {
       assert.strictEqual(truncate(string, { 'length': length }), '...')
-    })
-  })
-
-  it('should coerce `length` to an integer', () => {
-    lodashStable.each(['', NaN, 4.6, '4'], (length, index) => {
-      const actual = index > 1 ? 'h...' : '...'
-      assert.strictEqual(truncate(string, { 'length': { 'valueOf': lodashStable.constant(length) } }), actual)
     })
   })
 
   it('should coerce `string` to a string', () => {
     assert.strictEqual(truncate(Object(string), { 'length': 4 }), 'h...')
-    assert.strictEqual(truncate({ 'toString': lodashStable.constant(string) }, { 'length': 5 }), 'hi...')
+    assert.strictEqual(truncate({ 'toString': constant(string) }, { 'length': 5 }), 'hi...')
   })
 
   it('should work as an iteratee for methods like `_.map`', () => {
-    const actual = lodashStable.map([string, string, string], truncate),
+    const actual = map([string, string, string], truncate),
       truncated = 'hi-diddly-ho there, neighbo...'
 
     assert.deepStrictEqual(actual, [truncated, truncated, truncated])
   })
+
 })

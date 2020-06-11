@@ -3,13 +3,14 @@ import slice from './slice';
 /**
  * Creates a slice of `array` with `n` elements taken from the beginning.
  *
- * @since 0.1.0
+ * @since 5.6.0
  * @category Array
- * @param {Array} array The array to query.
- * @param {number} [n=1] The number of elements to take.
- * @returns {Array} Returns the slice of `array`.
+ * @param array The array to query.
+ * @param n The number of elements to take.
+ * @returns Returns the slice of `array`.
  * @example
  *
+ * ```js
  * take([1, 2, 3])
  * // => [1]
  *
@@ -21,8 +22,10 @@ import slice from './slice';
  *
  * take([1, 2, 3], 0)
  * // => []
+ * ```
  */
-function take(array, n=1) {
+export function take<T>(array: ArrayLike<T>, n?: number): Array<T>;
+export function take(array: any, n = 1): any {
   if (!(array != null && array.length)) {
     return [];
   }

@@ -1,12 +1,14 @@
+
 /**
  * Checks if `value` is `null` or `undefined`.
  *
- * @since 4.0.0
+ * @since 5.6.0
  * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is nullish, else `false`.
+ * @param value The value to check.
+ * @returns Returns `true` if `value` is nullish, else `false`.
  * @example
  *
+ * ```js
  * isNil(null)
  * // => true
  *
@@ -15,9 +17,11 @@
  *
  * isNil(NaN)
  * // => false
+ * ```
  */
-function isNil(value) {
+export function isNil(value: any): boolean {
   return value == null;
 }
+
 
 export default isNil;

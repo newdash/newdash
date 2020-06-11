@@ -1,19 +1,21 @@
 /**
  * Checks if `value` is `null`.
  *
- * @since 0.1.0
+ * @since 5.6.0
  * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is `null`, else `false`.
+ * @param value The value to check.
+ * @returns Returns `true` if `value` is `null`, else `false`.
  * @example
  *
+ * ```js
  * isNull(null)
  * // => true
  *
  * isNull(void 0)
  * // => false
+ * ```
  */
-function isNull(value) {
+function isNull(value: any): value is null {
   return value === null;
 }
 

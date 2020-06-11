@@ -18,7 +18,7 @@ import isObjectLike from './isObjectLike';
  * // => false
  * ```
  */
-export function isWeakMap(value: any): boolean {
+export function isWeakMap(value: any): value is WeakMap<any, any> {
   return isObjectLike(value) && getTag(value) == '[object WeakMap]';
 }
 

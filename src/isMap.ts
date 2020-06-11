@@ -10,13 +10,15 @@ import isObjectLike from './isObjectLike';
  * @returns Returns `true` if `value` is a map, else `false`.
  * @example
  *
+ * ```js
  * isMap(new Map)
  * // => true
  *
  * isMap(new WeakMap)
  * // => false
+ * ```
  */
-function isMap(value: any) {
+function isMap(value: any): value is Map<any, any> {
   return isObjectLike(value) && getTag(value) == '[object Map]';
 }
 

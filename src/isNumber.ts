@@ -7,13 +7,14 @@ import isObjectLike from './isObjectLike';
  * **Note:** To exclude `Infinity`, `-Infinity`, and `NaN`, which are
  * classified as numbers, use the `Number.isFinite` method.
  *
- * @since 0.1.0
+ * @since 5.6.0
  * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a number, else `false`.
- * @see isInteger, toInteger, toNumber
+ * @param value The value to check.
+ * @returns Returns `true` if `value` is a number, else `false`.
+ * @see [[isInteger]], [[toInteger]], [[[[toNumber]]]]
  * @example
  *
+ * ```js
  * isNumber(3)
  * // => true
  *
@@ -25,8 +26,9 @@ import isObjectLike from './isObjectLike';
  *
  * isNumber('3')
  * // => false
+ * ```
  */
-function isNumber(value) {
+function isNumber(value: any): value is number {
   return typeof value === 'number' ||
     (isObjectLike(value) && getTag(value) == '[object Number]');
 }

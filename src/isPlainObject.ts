@@ -5,12 +5,13 @@ import isObjectLike from './isObjectLike';
  * Checks if `value` is a plain object, that is, an object created by the
  * `Object` constructor or one with a `[[Prototype]]` of `null`.
  *
- * @since 0.8.0
+ * @since 5.6.0
  * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
+ * @param value The value to check.
+ * @returns Returns `true` if `value` is a plain object, else `false`.
  * @example
  *
+ * ```js
  * function Foo() {
  *   this.a = 1
  * }
@@ -26,8 +27,9 @@ import isObjectLike from './isObjectLike';
  *
  * isPlainObject(Object.create(null))
  * // => true
+ * ```
  */
-function isPlainObject(value) {
+function isPlainObject(value: any): boolean {
   if (!isObjectLike(value) || getTag(value) != '[object Object]') {
     return false;
   }
