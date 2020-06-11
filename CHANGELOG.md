@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.6.0](https://github.com/newdash/newdash/compare/v5.5.0...v5.6.0) (2020-06-11)
+
+
+### Features
+
+* refactor again ([93a53c4](https://github.com/newdash/newdash/commit/93a53c4f83db48793911072750978061cea64a08))
+
+
+### Bug Fixes
+
+* circleci ([24ce8f5](https://github.com/newdash/newdash/commit/24ce8f5e8f6da5be74db5bf4ae30057e31ec2dbc))
+* function sumby ([012dcb0](https://github.com/newdash/newdash/commit/012dcb0a889f90ef8daf0c90a354a305ca703428))
+* types ([5db4799](https://github.com/newdash/newdash/commit/5db4799d94249af0f7c055928107a2996029c007))
+* unit ([07d520a](https://github.com/newdash/newdash/commit/07d520adf47f5a1e3eacb293878ac48012592e98))
+
 ## [5.5.0](https://github.com/newdash/newdash/compare/v5.4.1...v5.5.0) (2020-06-10)
 
 
