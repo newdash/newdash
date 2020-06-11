@@ -3,9 +3,7 @@ import isArguments from './isArguments';
 import isIndex from './.internal/isIndex';
 import isLength from './isLength';
 import toKey from './.internal/toKey';
-
-/** Used to check objects for own properties. */
-const hasOwnProperty = Object.prototype.hasOwnProperty;
+import isArray from './isArray';
 
 /**
  * Checks if `path` is a direct property of `object`.
@@ -18,6 +16,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * @see has, hasIn, hasPathIn
  * @example
  *
+ * ```js
  * const object = { 'a': { 'b': 2 } }
  * const other = create({ 'a': create({ 'b': 2 }) })
  *
@@ -26,18 +25,18 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  *
  * hasPath(object, ['a', 'b'])
  * // => true
+ * ```
  */
-function hasPath(object, path) {
+export function hasPath(object, path, hasFunc) {
   path = castPath(path, object);
 
-  let index = -1;
-  let { length } = path;
-  let result = false;
-  let key;
-
+  let index = -1,
+    length = path.length,
+    result = false;
+  let key: any;
   while (++index < length) {
     key = toKey(path[index]);
-    if (!(result = object != null && hasOwnProperty.call(object, key))) {
+    if (!(result = object != null && hasFunc(object, key))) {
       break;
     }
     object = object[key];
@@ -47,7 +46,7 @@ function hasPath(object, path) {
   }
   length = object == null ? 0 : object.length;
   return !!length && isLength(length) && isIndex(key, length) &&
-    (Array.isArray(object) || isArguments(object));
+    (isArray(object) || isArguments(object));
 }
 
 export default hasPath;

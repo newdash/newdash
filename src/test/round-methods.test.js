@@ -1,13 +1,16 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { _, MAX_SAFE_INTEGER, stubFalse } from './utils'
-import round from '../round'
+import { MAX_SAFE_INTEGER, stubFalse } from './utils'
+import { ceil } from "../ceil";
+import { floor } from "../floor";
+import { round } from "../round";
+import each from '../each';
+import map from '../map';
 
 describe('round methods', () => {
-  lodashStable.each(['ceil', 'floor', 'round'], (methodName) => {
-    const func = _[methodName],
-      isCeil = methodName == 'ceil',
-      isFloor = methodName == 'floor'
+
+  each([['ceil', ceil], ['floor', floor], ['round', round]], ([methodName, func]) => {
+    const isCeil = methodName == 'ceil',
+    const isFloor = methodName == 'floor'
 
     it(`\`_.${methodName}\` should return a rounded number without a precision`, () => {
       const actual = func(4.006)
@@ -60,7 +63,7 @@ describe('round methods', () => {
       const values = [[0], [-0], ['0'], ['-0'], [0, 1], [-0, 1], ['0', 1], ['-0', 1]],
         expected = [Infinity, -Infinity, Infinity, -Infinity, Infinity, -Infinity, Infinity, -Infinity]
 
-      const actual = lodashStable.map(values, (args) => 1 / func.apply(undefined, args))
+      const actual = map(values, (args) => 1 / func.apply(undefined, args))
 
       assert.deepStrictEqual(actual, expected)
     })
@@ -71,8 +74,8 @@ describe('round methods', () => {
         round(MAX_SAFE_INTEGER, 293)
       ]
 
-      const expected = lodashStable.map(results, stubFalse),
-        actual = lodashStable.map(results, lodashStable.isNaN)
+      const expected = map(results, stubFalse),
+        actual = map(results, Number.isNaN)
 
       assert.deepStrictEqual(actual, expected)
     })

@@ -1,4 +1,12 @@
 import isSymbol from './isSymbol';
+import isArray from './isArray';
+import arrayMap from './.internal/arrayMap';
+
+/**
+ * @ignore
+ * @private
+ */
+const symbolToString = Symbol?.prototype?.toString;
 
 /**
  * Used as references for various `Number` constants.
@@ -27,22 +35,22 @@ const INFINITY = Infinity;
  * // => '1,2,3'
  * ```
  */
-function toString(value: any): string {
+export function toString(value: any): string {
   if (value == null) {
     return '';
   }
   // Exit early for strings to avoid a performance hit in some environments.
-  if (typeof value === 'string') {
+  if (typeof value == 'string') {
     return value;
   }
-  if (Array.isArray(value)) {
+  if (isArray(value)) {
     // Recursively convert values (susceptible to call stack limits).
-    return `${value.map((other) => other == null ? other : toString(other))}`;
+    return `${arrayMap(value, toString)}`;
   }
   if (isSymbol(value)) {
-    return value.toString();
+    return symbolToString ? symbolToString.call(value) : '';
   }
-  const result = `${value}`;
+  const result = (`${value}`);
   return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
 }
 

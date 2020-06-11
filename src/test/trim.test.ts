@@ -3,8 +3,6 @@ import { trimSuffix } from "../trimSuffix";
 
 describe('trim test suite', () => {
 
-
-
   it('should trim prefix', () => {
 
     expect(trimPrefix("aaa", "a")).toBe("aa")

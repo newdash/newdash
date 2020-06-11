@@ -1,4 +1,6 @@
 import baseInRange from './.internal/baseInRange';
+import toFinite from './toFinite';
+import toNumber from './toNumber';
 
 /**
  * Checks if `number` is between `start` and up to, but not including, `end`. If
@@ -6,15 +8,16 @@ import baseInRange from './.internal/baseInRange';
  * If `start` is greater than `end` the params are swapped to support
  * negative ranges.
  *
- * @since 3.3.0
+ * @since 5.7.0
  * @category Number
- * @param {number} number The number to check.
- * @param {number} [start=0] The start of the range.
- * @param {number} end The end of the range.
- * @returns {boolean} Returns `true` if `number` is in the range, else `false`.
- * @see range, rangeRight
+ * @param  number The number to check.
+ * @param  start The start of the range.
+ * @param  end The end of the range.
+ * @returns Returns `true` if `number` is in the range, else `false`.
+ * @see [[range]],[[rangeRight]]
  * @example
  *
+ * ```js
  * inRange(3, 2, 4)
  * // => true
  *
@@ -35,13 +38,18 @@ import baseInRange from './.internal/baseInRange';
  *
  * inRange(-3, -2, -6)
  * // => true
+ * ```
  */
-function inRange(number, start, end) {
+export function inRange(number: number, start?: number, end?: number): boolean {
+  start = toFinite(start);
   if (end === undefined) {
     end = start;
     start = 0;
+  } else {
+    end = toFinite(end);
   }
-  return baseInRange(+number, +start, +end);
+  number = toNumber(number);
+  return baseInRange(number, start, end);
 }
 
 export default inRange;

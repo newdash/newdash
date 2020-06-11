@@ -1,5 +1,7 @@
 import isKey from './isKey'
 import stringToPath from './stringToPath'
+import isArray from '../isArray';
+import toString from '../toString';
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -10,10 +12,10 @@ import stringToPath from './stringToPath'
  * @returns {Array} Returns the cast property path array.
  */
 function castPath(value, object) {
-  if (Array.isArray(value)) {
-    return value
+  if (isArray(value)) {
+    return value;
   }
-  return isKey(value, object) ? [value] : stringToPath(value)
+  return isKey(value, object) ? [value] : stringToPath(toString(value));
 }
 
 export default castPath

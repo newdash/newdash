@@ -42,14 +42,12 @@ const internalFind = createFind(findIndex);
  * // => object for 'barney'
  * ```
  */
-function find<T>(collection: ArrayLike<T>, predicate?: string, fromIndex?): T | undefined;
-function find<T>(collection: ArrayLike<T>, predicate?: (item: T) => boolean, fromIndex?): T | undefined;
-function find<T>(collection: ArrayLike<T>, predicate?: Partial<T>, fromIndex?): T | undefined;
-function find<T>(collection: ArrayLike<T>, predicate?, fromIndex?): T | undefined;
-function find(collection, predicate?, fromIndex?) {
+export function find<T>(collection: ArrayLike<T>, predicate?: string, fromIndex?: number): T | undefined;
+export function find<T>(collection: ArrayLike<T>, predicate?: (item: T) => boolean, fromIndex?: number): T | undefined;
+export function find<T>(collection: ArrayLike<T>, predicate?: Partial<T>, fromIndex?: number): T | undefined;
+export function find<T>(collection: ArrayLike<T>, predicate?, fromIndex?: number): T | undefined;
+export function find(collection: any, predicate?: any, fromIndex?: number) {
   return internalFind(collection, predicate, fromIndex);
 }
-
-export { find };
 
 export default find;

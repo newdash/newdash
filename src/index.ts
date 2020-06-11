@@ -50,6 +50,10 @@ import { trimSuffix } from './trimSuffix';
 import { unset } from './unset';
 import { update } from './update';
 
+import { pick } from './pick';
+import { pickBy } from './pickBy';
+import { delay } from './delay';
+
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -59,7 +63,7 @@ export {
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
   bind, filterObject, random, trimPrefix, trimSuffix,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
-  isEqual, isError, sum, sumBy
+  isEqual, isError, sum, sumBy, pick, pickBy, delay
 };
 
 export default {
@@ -70,6 +74,6 @@ export default {
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
   bind, filterObject, random, trimPrefix, trimSuffix,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
-  isEqual, isError, sum, sumBy
+  isEqual, isError, sum, sumBy, pick, pickBy, delay
 };
 

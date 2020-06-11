@@ -1,9 +1,10 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { args, toArgs } from './utils'
+import { toArgs } from './utils'
 import pick from '../pick'
+import each from '../each'
 
 describe('pick', () => {
+
   const args = toArgs(['a', 'c']),
     object = { 'a': 1, 'b': 2, 'c': 3, 'd': 4 },
     nested = { 'a': 1, 'b': { 'c': 2, 'd': 3 } }
@@ -19,7 +20,7 @@ describe('pick', () => {
 
   it('should support path arrays', () => {
     const object = { 'a.b': 1, 'a': { 'b': 2 } },
-      actual = pick(object, [['a.b']])
+      actual = pick(object, ['a.b'])
 
     assert.deepStrictEqual(actual, { 'a.b': 1 })
   })
@@ -27,7 +28,7 @@ describe('pick', () => {
   it('should pick a key over a path', () => {
     const object = { 'a.b': 1, 'a': { 'b': 2 } }
 
-    lodashStable.each(['a.b', ['a.b']], (path) => {
+    each(['a.b', ['a.b']], (path) => {
       assert.deepStrictEqual(pick(object, path), { 'a.b': 1 })
     })
   })
@@ -37,7 +38,7 @@ describe('pick', () => {
   })
 
   it('should return an empty object when `object` is nullish', () => {
-    lodashStable.each([null, undefined], (value) => {
+    each([null, undefined], (value) => {
       assert.deepStrictEqual(pick(value, 'valueOf'), {})
     })
   })
@@ -49,4 +50,5 @@ describe('pick', () => {
   it('should work with `arguments` object `paths`', () => {
     assert.deepStrictEqual(pick(object, args), { 'a': 1, 'c': 3 })
   })
+
 })

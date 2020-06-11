@@ -1,8 +1,13 @@
 import castSlice from './.internal/castSlice';
 import charsStartIndex from './.internal/charsStartIndex';
 import stringToArray from './.internal/stringToArray';
+import toString from './toString';
+import baseToString from './.internal/baseToString';
 
-const methodName =  ''.trimLeft ? 'trimLeft' : 'trimStart';
+/**
+ * @ignore
+ */
+const reTrimStart = /^\s+/;
 
 /**
  * Removes leading whitespace or specified characters from `string`.
@@ -12,24 +17,28 @@ const methodName =  ''.trimLeft ? 'trimLeft' : 'trimStart';
  * @param str The string to trim.
  * @param chars The characters to trim.
  * @returns Returns the trimmed string.
- * @see trim, trimEnd
+ * @see [[trim]],[[trimEnd]]
  * @example
  *
+ * ```js
  * trimStart('  abc  ')
  * // => 'abc  '
  *
  * trimStart('-_-abc-_-', '_-')
  * // => 'abc-_-'
+ * ```
  */
-export function trimStart(str: string, chars: string): string {
-  if (str && chars === undefined) {
-    return str[methodName]();
+export function trimStart(str: string, chars: string, guard?: any): string {
+  const string = toString(str);
+  if (string && (guard || chars === undefined)) {
+    return string.replace(reTrimStart, '');
   }
-  if (!str || !chars) {
-    return (str || '');
+  if (!string || !(chars = baseToString(chars))) {
+    return string;
   }
-  const strSymbols = stringToArray(str);
-  const start = charsStartIndex(strSymbols, stringToArray(chars));
+  const strSymbols = stringToArray(string),
+    start = charsStartIndex(strSymbols, stringToArray(chars));
+
   return castSlice(strSymbols, start).join('');
 }
 

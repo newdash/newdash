@@ -1,6 +1,7 @@
 import baseGet from './baseGet'
 import baseSet from './baseSet'
 import castPath from './castPath'
+import flatten from '../flatten';
 
 /**
  * The base implementation of `pickBy`.
@@ -11,19 +12,18 @@ import castPath from './castPath'
  * @param {Function} predicate The function invoked per property.
  * @returns {Object} Returns the new object.
  */
-function basePickBy(object, paths, predicate) {
-  let index = -1
-  const length = paths.length
-  const result = {}
+function basePickBy(object, paths = [], predicate = () => true) {
 
-  while (++index < length) {
-    const path = paths[index]
-    const value = baseGet(object, path)
+  const result = {};
+
+  flatten(paths).forEach(path => {
+    const value = baseGet(object, path);
     if (predicate(value, path)) {
-      baseSet(result, castPath(path, object), value)
+      baseSet(result, castPath(path, object), value);
     }
-  }
-  return result
+  })
+
+  return result;
 }
 
 export default basePickBy

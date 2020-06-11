@@ -1,9 +1,11 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { falsey, stubTrue } from './utils'
 import inRange from '../inRange'
+import each from '../each'
+import map from '../map'
 
 describe('inRange', () => {
+
   it('should work with an `end`', () => {
     assert.strictEqual(inRange(3, 5), true)
     assert.strictEqual(inRange(5, 5), false)
@@ -18,7 +20,7 @@ describe('inRange', () => {
   })
 
   it('should treat falsey `start` as `0`', () => {
-    lodashStable.each(falsey, (value, index) => {
+    each(falsey, (value, index) => {
       if (index) {
         assert.strictEqual(inRange(0, value), false)
         assert.strictEqual(inRange(0, value, 1), true)
@@ -49,6 +51,7 @@ describe('inRange', () => {
       inRange(-1, -1, NaN)
     ]
 
-    assert.deepStrictEqual(actual, lodashStable.map(actual, stubTrue))
+    assert.deepStrictEqual(actual, map(actual, stubTrue))
   })
+
 })

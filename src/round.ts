@@ -1,15 +1,23 @@
 import createRound from './.internal/createRound';
 
 /**
+ * @internal
+ * @private
+ * @ignore
+ */
+const internal = createRound('round');
+
+/**
  * Computes `number` rounded to `precision`.
  *
- * @since 3.10.0
+ * @since 4.7.0
  * @category Math
- * @param {number} number The number to round.
- * @param {number} [precision=0] The precision to round to.
- * @returns {number} Returns the rounded number.
+ * @param num The number to round down.
+ * @param precision The precision to round down to.
+ * @returns Returns the rounded down number.
  * @example
  *
+ * ```js
  * round(4.006)
  * // => 4
  *
@@ -18,7 +26,9 @@ import createRound from './.internal/createRound';
  *
  * round(4060, -2)
  * // => 4100
+ * ```
  */
-const round = createRound('round');
-
+export function round(num: number, precision: number = 0): number {
+  return internal(num, precision);
+}
 export default round;

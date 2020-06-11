@@ -2,6 +2,14 @@ import castSlice from './.internal/castSlice';
 import charsEndIndex from './.internal/charsEndIndex';
 import charsStartIndex from './.internal/charsStartIndex';
 import stringToArray from './.internal/stringToArray';
+import toString from './toString';
+import baseToString from './.internal/baseToString';
+
+
+/**
+ * @ignore
+ */
+const reTrim = /^\s+|\s+$/g;
 
 /**
  * Removes leading and trailing whitespace or specified characters from `string`.
@@ -22,17 +30,18 @@ import stringToArray from './.internal/stringToArray';
  * // => 'abc'
  * ```
  */
-export function trim(str: string, chars: string): string {
-  if (str && chars === undefined) {
-    return str.trim();
+export function trim(str: string, chars: string, guard?: any): string {
+  const string = toString(str);
+  if (string && (guard || chars === undefined)) {
+    return string.replace(reTrim, '');
   }
-  if (!str || !chars) {
-    return (str || '');
+  if (!string || !(chars = baseToString(chars))) {
+    return string;
   }
-  const strSymbols = stringToArray(str);
-  const chrSymbols = stringToArray(chars);
-  const start = charsStartIndex(strSymbols, chrSymbols);
-  const end = charsEndIndex(strSymbols, chrSymbols) + 1;
+  const strSymbols = stringToArray(string),
+    chrSymbols = stringToArray(chars),
+    start = charsStartIndex(strSymbols, chrSymbols),
+    end = charsEndIndex(strSymbols, chrSymbols) + 1;
 
   return castSlice(strSymbols, start, end).join('');
 }

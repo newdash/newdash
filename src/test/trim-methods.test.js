@@ -1,11 +1,17 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { _, whitespace } from './utils'
+import { whitespace } from './utils'
+import each from '../each'
+import constant from '../constant'
+import { map } from "../map";
+import { trim } from "../trim";
+import { trimStart } from "../trimStart";
+import { trimEnd } from "../trimEnd";
 
 describe('trim methods', () => {
-  lodashStable.each(['trim', 'trimStart', 'trimEnd'], (methodName, index) => {
-    let func = _[methodName],
-      parts = []
+
+  each([['trim', trim], ['trimStart', trimStart], ['trimEnd', trimEnd]], ([methodName, func], index) => {
+
+    let parts = []
 
     if (index != 2) {
       parts.push('leading')
@@ -23,7 +29,7 @@ describe('trim methods', () => {
     })
 
     it(`\`_.${methodName}\` should coerce \`string\` to a string`, () => {
-      const object = { 'toString': lodashStable.constant(`${whitespace}a b c${whitespace}`) },
+      const object = { 'toString': constant(`${whitespace}a b c${whitespace}`) },
         expected = `${index == 2 ? whitespace : ''}a b c${index == 1 ? whitespace : ''}`
 
       assert.strictEqual(func(object), expected)
@@ -37,7 +43,7 @@ describe('trim methods', () => {
     })
 
     it(`\`_.${methodName}\` should coerce \`chars\` to a string`, () => {
-      const object = { 'toString': lodashStable.constant('_-') },
+      const object = { 'toString': constant('_-') },
         string = '-_-a-b-c-_-',
         expected = `${index == 2 ? '-_-' : ''}a-b-c${index == 1 ? '-_-' : ''}`
 
@@ -45,7 +51,7 @@ describe('trim methods', () => {
     })
 
     it(`\`_.${methodName}\` should return an empty string for empty values and \`chars\``, () => {
-      lodashStable.each([null, '_-'], (chars) => {
+      each([null, '_-'], (chars) => {
         assert.strictEqual(func(null, chars), '')
         assert.strictEqual(func(undefined, chars), '')
         assert.strictEqual(func('', chars), '')
@@ -61,23 +67,13 @@ describe('trim methods', () => {
     })
 
     it(`\`_.${methodName}\` should work as an iteratee for methods like \`_.map\``, () => {
-      const string = Object(`${whitespace}a b c${whitespace}`),
-        trimmed = `${index == 2 ? whitespace : ''}a b c${index == 1 ? whitespace : ''}`,
-        actual = lodashStable.map([string, string, string], func)
+      const string = `${whitespace}a b c${whitespace}`;
+      const trimmed = `${index == 2 ? whitespace : ''}a b c${index == 1 ? whitespace : ''}`
+      const actual = map([string, string, string], func)
 
       assert.deepStrictEqual(actual, [trimmed, trimmed, trimmed])
     })
 
-    it(`\`_.${methodName}\` should return an unwrapped value when implicitly chaining`, () => {
-      const string = `${whitespace}a b c${whitespace}`,
-        expected = `${index == 2 ? whitespace : ''}a b c${index == 1 ? whitespace : ''}`
-
-      assert.strictEqual(_(string)[methodName](), expected)
-    })
-
-    it(`\`_.${methodName}\` should return a wrapped value when explicitly chaining`, () => {
-      const string = `${whitespace}a b c${whitespace}`
-      assert.ok(_(string).chain()[methodName]() instanceof _)
-    })
   })
+
 })

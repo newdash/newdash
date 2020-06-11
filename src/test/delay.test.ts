@@ -3,6 +3,7 @@ import { slice } from './utils'
 import delay from '../delay'
 
 describe('delay', () => {
+
   it('should delay `func` execution', (done) => {
     let pass = false
     delay(() => { pass = true }, 32)
@@ -20,7 +21,7 @@ describe('delay', () => {
   it('should provide additional arguments to `func`', (done) => {
     let args
 
-    delay(function() {
+    delay(function (...args1) {
       args = slice.call(arguments)
     }, 32, 1, 2)
 
@@ -43,8 +44,9 @@ describe('delay', () => {
   })
 
   it('should be cancelable', (done) => {
-    let pass = true,
-      timerId = delay(() => { pass = false }, 32)
+    let pass = true
+    const timerId = delay(() => { pass = false }, 32)
+    assert.strictEqual(typeof timerId, "number")
 
     clearTimeout(timerId)
 
@@ -54,14 +56,17 @@ describe('delay', () => {
     }, 64)
   })
 
-  it('should work with mocked `setTimeout`', () => {
-    let pass = false,
-      setTimeout = root.setTimeout
+  it('should works with parameter type', (done) => {
+    let value: any;
+    const f1 = (v1: number, v2: string, v3: boolean = false) => { value = v3 ? v1 : v2 }
 
-    setProperty(root, 'setTimeout', (func) => { func() })
-    delay(() => { pass = true }, 32)
-    setProperty(root, 'setTimeout', setTimeout)
+    delay(f1, 32, 1, "2") // with typescript type check
 
-    assert.ok(pass)
-  })
+    setTimeout(() => {
+      assert.strictEqual(value, "2")
+      done()
+    }, 64);
+
+  });
+
 })

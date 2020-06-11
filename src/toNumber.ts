@@ -1,11 +1,6 @@
 import isObject from './isObject';
 import isSymbol from './isSymbol';
 
-/**
- * Used as references for various `Number` constants.
- * @ignore
- */
-const NAN = Number.NaN;
 
 /**
  * Used to match leading and trailing whitespace.
@@ -42,7 +37,7 @@ const freeParseInt = parseInt;
  * @category Lang
  * @param value The value to process.
  * @returns Returns the number.
- * @see [[isInteger]], [[toInteger]], [[isNumber]]
+ * @see [[isInteger]],[[toInteger]],[[isNumber]]
  * @example
  *
  * ```js
@@ -60,24 +55,24 @@ const freeParseInt = parseInt;
  * ```
  */
 function toNumber(value: any): number {
-  if (typeof value === 'number') {
+  if (typeof value == 'number') {
     return value;
   }
   if (isSymbol(value)) {
-    return NAN;
+    return Number.NaN;
   }
   if (isObject(value)) {
-    const other = typeof value.valueOf === 'function' ? value.valueOf() : value;
-    value = isObject(other) ? `${other}` : other;
+    const other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? (`${other}`) : other;
   }
-  if (typeof value !== 'string') {
+  if (typeof value != 'string') {
     return value === 0 ? value : +value;
   }
   value = value.replace(reTrim, '');
   const isBinary = reIsBinary.test(value);
   return (isBinary || reIsOctal.test(value))
     ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
-    : (reIsBadHex.test(value) ? NAN : +value);
+    : (reIsBadHex.test(value) ? Number.NaN : +value);
 }
 
 export default toNumber;

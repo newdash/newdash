@@ -26,7 +26,7 @@ import baseForOwn from './.internal/baseForOwn';
  * // => 'barney' (iteration order is not guaranteed)
  * ```
  */
-function findKey(object: any, predicate?: Function): string | undefined {
+export function findKey(object: any, predicate?: Function): string | undefined {
   return baseFindKey(object, getIteratee(predicate, 3), baseForOwn);
 }
 

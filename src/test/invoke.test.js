@@ -1,11 +1,14 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { noop, stubA, stubB, stubOne } from './utils'
 import invoke from '../invoke'
+import constant from '../constant'
+import map from '../map'
+import each from '../each'
 
 describe('invoke', () => {
+
   it('should invoke a method on `object`', () => {
-    const object = { 'a': lodashStable.constant('A') },
+    const object = { 'a': constant('A') },
       actual = invoke(object, 'a')
 
     assert.strictEqual(actual, 'A')
@@ -20,9 +23,9 @@ describe('invoke', () => {
 
   it('should not error on nullish elements', () => {
     const values = [null, undefined],
-      expected = lodashStable.map(values, noop)
+      expected = map(values, noop)
 
-    const actual = lodashStable.map(values, (value) => {
+    const actual = map(values, (value) => {
       try {
         return invoke(value, 'a.b', 1, 2)
       } catch (e) {}
@@ -35,7 +38,7 @@ describe('invoke', () => {
     const object = { '-0': stubA, '0': stubB },
       props = [-0, Object(-0), 0, Object(0)]
 
-    const actual = lodashStable.map(props, (key) => invoke(object, key))
+    const actual = map(props, (key) => invoke(object, key))
 
     assert.deepStrictEqual(actual, ['a', 'a', 'b', 'b'])
   })
@@ -43,7 +46,7 @@ describe('invoke', () => {
   it('should support deep paths', () => {
     const object = { 'a': { 'b': function(a, b) { return [a, b] } } }
 
-    lodashStable.each(['a.b', ['a', 'b']], (path) => {
+    each(['a.b', ['a', 'b']], (path) => {
       const actual = invoke(object, path, 1, 2)
       assert.deepStrictEqual(actual, [1, 2])
     })
@@ -52,18 +55,9 @@ describe('invoke', () => {
   it('should invoke deep property methods with the correct `this` binding', () => {
     const object = { 'a': { 'b': function() { return this.c }, 'c': 1 } }
 
-    lodashStable.each(['a.b', ['a', 'b']], (path) => {
+    each(['a.b', ['a', 'b']], (path) => {
       assert.deepStrictEqual(invoke(object, path), 1)
     })
   })
 
-  it('should return an unwrapped value when implicitly chaining', () => {
-    const object = { 'a': stubOne }
-    assert.strictEqual(_(object).invoke('a'), 1)
-  })
-
-  it('should return a wrapped value when explicitly chaining', () => {
-    const object = { 'a': stubOne }
-    assert.ok(_(object).chain().invoke('a') instanceof _)
-  })
 })

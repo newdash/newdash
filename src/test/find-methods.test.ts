@@ -4,6 +4,7 @@ import { _, empties, LARGE_ARRAY_SIZE, slice } from './utils'
 import each from '../each'
 import find from '../find'
 import findIndex from '../findIndex'
+import findKey from '../findKey'
 import findLast from '../findLast'
 import findLastIndex from '../findLastIndex'
 import findLastKey from '../findLastKey'
@@ -18,6 +19,7 @@ describe('find methods', () => {
   each([
     [find, 'find'],
     [findIndex, 'findIndex'],
+    [findKey, 'findKey'],
     [findLast, 'findLast'],
     [findLastIndex, 'findLastIndex'],
     [findLastKey, 'findLastKey'],
