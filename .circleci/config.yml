@@ -12,8 +12,8 @@ jobs:
       - checkout
 
       - restore_cache:
-        keys:
-          - node-v10-{{ checksum "package-lock.json" }}
+          keys:
+            - node-v10-{{ checksum "package-lock.json" }}
 
       - run: npm ci
 
@@ -31,9 +31,9 @@ jobs:
           command: bash <(curl -s https://codecov.io/bash)
 
       - save_cache:
-        paths:
-          - ~/.npm
-        key: node-v10-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/.npm
+          key: node-v10-{{ checksum "package-lock.json" }}
 
 
   deploy:
