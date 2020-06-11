@@ -9,7 +9,7 @@ import map from '../map';
 describe('round methods', () => {
 
   each([['ceil', ceil], ['floor', floor], ['round', round]], ([methodName, func]) => {
-    const isCeil = methodName == 'ceil',
+    const isCeil = methodName == 'ceil'
     const isFloor = methodName == 'floor'
 
     it(`\`_.${methodName}\` should return a rounded number without a precision`, () => {
