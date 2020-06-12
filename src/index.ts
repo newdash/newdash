@@ -55,6 +55,7 @@ import { pickBy } from './pickBy';
 import { delay } from './delay';
 
 import { repeat } from './repeat';
+import { sleep } from './sleep';
 
 
 export {
@@ -66,7 +67,7 @@ export {
   bind, filterObject, random, trimPrefix, trimSuffix,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
   isEqual, isError, sum, sumBy, pick, pickBy, delay,
-  repeat
+  repeat, sleep
 };
 
 export default {
@@ -78,6 +79,6 @@ export default {
   bind, filterObject, random, trimPrefix, trimSuffix,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
   isEqual, isError, sum, sumBy, pick, pickBy, delay,
-  repeat
+  repeat, sleep
 };
 
