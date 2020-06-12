@@ -2,6 +2,7 @@
 /**
  * async sleep, release CPU and go to next action after milliseconds
  *
+ * @category Async
  * @param ms millisecond
  * @example
  *
