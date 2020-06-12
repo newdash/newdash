@@ -6,6 +6,7 @@ import { root } from "./GLOBAL"
 import countHolders from "./countHolders";
 import createRecurry from "./createRecurry";
 import composeArgs from "./composeArgs";
+import composeArgsRight from "./composeArgsRight";
 import { WRAP_ARY_FLAG, WRAP_BIND_FLAG, WRAP_BIND_KEY_FLAG, WRAP_CURRY_FLAG, WRAP_CURRY_RIGHT_FLAG, WRAP_FLIP_FLAG } from "./CONSTANTS";
 
 /**

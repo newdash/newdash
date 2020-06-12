@@ -8,7 +8,7 @@ describe('sleep', () => {
   it('should sleep in async function', async () => {
 
     const t1 = new Date()
-    await sleep(testSleepMS)
+    await sleep(testSleepMS * 2)
 
     // @ts-ignore
     const diff = Math.abs(new Date() - t1)

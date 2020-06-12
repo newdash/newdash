@@ -6,14 +6,14 @@ import getHolder from './.internal/getHolder';
 /**
  * @ignore
  */
-const WRAP_PARTIAL_FLAG = 32;
+const WRAP_PARTIAL_RIGHT_FLAG = 64;
 
 /**
  * @ignore
  */
 const internalPartial = baseRest((func, partials) => {
-  const holders = replaceHolders(partials, getHolder(partial));
-  return createWrap(func, WRAP_PARTIAL_FLAG, undefined, partials, holders);
+  const holders = replaceHolders(partials, getHolder(partialRight));
+  return createWrap(func, WRAP_PARTIAL_RIGHT_FLAG, undefined, partials, holders);
 });
 
 /**
@@ -31,32 +31,32 @@ const internalPartial = baseRest((func, partials) => {
  * @category Function
  * @param func The function to partially apply arguments to.
  * @param partials The arguments to be partially applied.
- * @returns  Returns the new partially applied function.
+ * @returns Returns the new partially applied function.
  * @example
  *
  * ```js
- * function greet(greeting, name) {
- *   return greeting + ' ' + name;
- * }
- *
- * var sayHelloTo = partial(greet, 'hello');
- * sayHelloTo('fred');
- * // => 'hello fred'
- *
- * // Partially applied with placeholders.
- * var greetFred = partial(greet, partial.placeholder, 'fred');
- * greetFred('hi');
- * // => 'hi fred'
+* function greet(greeting, name) {
+*   return greeting + ' ' + name;
+* }
+*
+* var greetFred = partialRight(greet, 'fred');
+* greetFred('hi');
+* // => 'hi fred'
+*
+* // Partially applied with placeholders.
+* var sayHelloTo = partialRight(greet, 'hello', _);
+* sayHelloTo('fred');
+* // => 'hello fred'
  * ```
  */
-export function partial<F extends (...args: any[]) => any>(func: F, ...partials: any[]): (...args: any[]) => ReturnType<F>;
-export function partial(...args: any[]): any {
+export function partialRight<F extends (...args: any[]) => any>(func: F, ...partials: any[]): (...args: any[]) => ReturnType<F>;
+export function partialRight(...args: any[]): any {
   return internalPartial(...args);
 }
 
 /**
  * placeholder of partial function
  */
-partial['placeholder'] = '__partial__placeholder__';
+partialRight['placeholder'] = '__partial__placeholder__';
 
-export default partial;
+export default partialRight;

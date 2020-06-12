@@ -39,11 +39,16 @@ import { WRAP_CURRY_FLAG } from './.internal/CONSTANTS';
  * // => [1, 2, 3]
  * ```
  */
-function curry(func: Function, arity: number = func.length, guard?: any): Function {
+export function curry(func: Function, arity: number = func.length, guard?: any): Function {
   arity = guard ? undefined : arity;
   const result = createWrap(func, WRAP_CURRY_FLAG, undefined, undefined, undefined, undefined, undefined, arity);
   return result;
 }
 
+
+/**
+ * placeholder of curry function
+ */
+curry['placeholder'] = '__curry__placeholder__';
 
 export default curry;

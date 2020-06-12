@@ -1,5 +1,7 @@
-import { WRAP_BIND_FLAG, WRAP_BIND_KEY_FLAG, WRAP_ARY_FLAG, WRAP_CURRY_FLAG, WRAP_REARG_FLAG } from "./CONSTANTS";
-import nativeMin from "./nativeMin";
+import { WRAP_BIND_FLAG, WRAP_BIND_KEY_FLAG, WRAP_ARY_FLAG, WRAP_CURRY_FLAG, WRAP_REARG_FLAG, PLACEHOLDER } from "./CONSTANTS";
+import composeArgs from "./composeArgs";
+import composeArgsRight from "./composeArgsRight";
+import replaceHolders from "./replaceHolders";
 
 /**
  * Merges the function metadata of `source` into `data`.
@@ -13,15 +15,16 @@ import nativeMin from "./nativeMin";
  * and or `_.rearg` applied.
  *
  * @private
+ * @ignore
  * @param {Array} data The destination metadata.
  * @param {Array} source The source metadata.
  * @returns {Array} Returns `data`.
  */
 function mergeData(data, source) {
   var bitmask = data[1],
-      srcBitmask = source[1],
-      newBitmask = bitmask | srcBitmask,
-      isCommon = newBitmask < (WRAP_BIND_FLAG | WRAP_BIND_KEY_FLAG | WRAP_ARY_FLAG);
+    srcBitmask = source[1],
+    newBitmask = bitmask | srcBitmask,
+    isCommon = newBitmask < (WRAP_BIND_FLAG | WRAP_BIND_KEY_FLAG | WRAP_ARY_FLAG);
 
   var isCombo =
     ((srcBitmask == WRAP_ARY_FLAG) && (bitmask == WRAP_CURRY_FLAG)) ||
@@ -59,7 +62,7 @@ function mergeData(data, source) {
   }
   // Use source `ary` if it's smaller.
   if (srcBitmask & WRAP_ARY_FLAG) {
-    data[8] = data[8] == null ? source[8] : nativeMin(data[8], source[8]);
+    data[8] = data[8] == null ? source[8] : Math.min(data[8], source[8]);
   }
   // Use source `arity` if one is not provided.
   if (data[9] == null) {
