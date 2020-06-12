@@ -8,6 +8,7 @@
     "outDir": "dist/es5",
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "downlevelIteration": true,
     "declaration": true,
     "lib": [
       "ES6",
