@@ -15,9 +15,10 @@ const internal = createRange(true);
  * @param  end The end of the range.
  * @param  step The value to increment or decrement by.
  * @returns Returns the range of numbers.
- * @see inRange, range
+ * @see [[inRange]],[[range]]
  * @example
  *
+ * ```js
  * rangeRight(4)
  * // => [3, 2, 1, 0]
  *
@@ -38,8 +39,9 @@ const internal = createRange(true);
  *
  * rangeRight(0)
  * // => []
+ * ```
  */
-export function rangeRight(start: number, end: number, step: number): Array<number>
+export function rangeRight(start: number, end?: number, step?: number): Array<number>
 export function rangeRight(...args: any[]) {
   return internal(...args);
 }

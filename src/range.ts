@@ -46,7 +46,7 @@ const internal = createRange();
  * // => []
  * ```
  */
-export function range(start: number, end: number, step: number): Array<number>
+export function range(start: number, end?: number, step?: number): Array<number>
 export function range(...args: any[]) {
   return internal(...args);
 }
