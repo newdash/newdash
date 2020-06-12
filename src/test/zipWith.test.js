@@ -1,20 +1,22 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { slice } from './utils'
 import zipWith from '../zipWith'
 import zip from '../zip'
+import map from '../map'
+import constant from '../constant'
 
 describe('zipWith', () => {
+
   it('should zip arrays combining grouped elements with `iteratee`', () => {
     const array1 = [1, 2, 3],
       array2 = [4, 5, 6],
       array3 = [7, 8, 9]
 
-    var actual = zipWith(array1, array2, array3, (a, b, c) => a + b + c)
+    var actual = zipWith([array1, array2, array3], (a, b, c) => a + b + c)
 
     assert.deepStrictEqual(actual, [12, 15, 18])
 
-    var actual = zipWith(array1, [], (a, b) => a + (b || 0))
+    var actual = zipWith([array1, []], (a, b) => a + (b || 0))
 
     assert.deepStrictEqual(actual, [1, 2, 3])
   })
@@ -22,7 +24,7 @@ describe('zipWith', () => {
   it('should provide correct `iteratee` arguments', () => {
     let args
 
-    zipWith([1, 2], [3, 4], [5, 6], function() {
+    zipWith([[1, 2], [3, 4], [5, 6]], function () {
       args || (args = slice.call(arguments))
     })
 
@@ -33,10 +35,14 @@ describe('zipWith', () => {
     const array1 = [1, 2],
       array2 = [3, 4],
       values = [, null, undefined],
-      expected = lodashStable.map(values, lodashStable.constant(zip(array1, array2)))
+      expected = map(values, constant(zip(array1, array2)))
 
-    const actual = lodashStable.map(values, (value, index) => index ? zipWith(array1, array2, value) : zipWith(array1, array2))
+    const actual = map(values,
+      (value, index) => index ? zipWith([array1, array2, value]) : zipWith([array1, array2])
+    )
 
     assert.deepStrictEqual(actual, expected)
+
   })
+
 })

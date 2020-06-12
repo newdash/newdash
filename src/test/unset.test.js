@@ -1,11 +1,14 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { symbol, numberProto, stringProto, defineProperty } from './utils'
 import unset from '../unset'
+import each from '../each'
+import map from '../map'
+import constant from '../constant'
+import toString from '../toString'
 
 describe('unset', () => {
   it('should unset property values', () => {
-    lodashStable.each(['a', ['a']], (path) => {
+    each(['a', ['a']], (path) => {
       const object = { 'a': 1, 'c': 2 }
       assert.strictEqual(unset(object, path), true)
       assert.deepStrictEqual(object, { 'c': 2 })
@@ -14,11 +17,11 @@ describe('unset', () => {
 
   it('should preserve the sign of `0`', () => {
     const props = [-0, Object(-0), 0, Object(0)],
-      expected = lodashStable.map(props, lodashStable.constant([true, false]))
+      expected = map(props, constant([true, false]))
 
-    const actual = lodashStable.map(props, (key) => {
+    const actual = map(props, (key) => {
       const object = { '-0': 'a', '0': 'b' }
-      return [unset(object, key), lodashStable.toString(key) in object]
+      return [unset(object, key), toString(key) in object]
     })
 
     assert.deepStrictEqual(actual, expected)
@@ -35,7 +38,7 @@ describe('unset', () => {
   })
 
   it('should unset deep property values', () => {
-    lodashStable.each(['a.b', ['a', 'b']], (path) => {
+    each(['a.b', ['a', 'b']], (path) => {
       const object = { 'a': { 'b': null } }
       assert.strictEqual(unset(object, path), true)
       assert.deepStrictEqual(object, { 'a': {} })
@@ -48,7 +51,7 @@ describe('unset', () => {
       ['a', '-1.23', '["b"]', 'c', "['d']", '\ne\n', 'f', 'g']
     ]
 
-    lodashStable.each(paths, (path) => {
+    each(paths, (path) => {
       const object = { 'a': { '-1.23': { '["b"]': { 'c': { "['d']": { '\ne\n': { 'f': { 'g': 8 } } } } } } } }
       assert.strictEqual(unset(object, path), true)
       assert.ok(!('g' in object.a[-1.23]['["b"]'].c["['d']"]['\ne\n'].f))
@@ -58,7 +61,7 @@ describe('unset', () => {
   it('should return `true` for nonexistent paths', () => {
     const object = { 'a': { 'b': { 'c': null } } }
 
-    lodashStable.each(['z', 'a.z', 'a.b.z', 'a.b.c.z'], (path) => {
+    each(['z', 'a.z', 'a.b.z', 'a.b.c.z'], (path) => {
       assert.strictEqual(unset(object, path), true)
     })
 
@@ -69,7 +72,7 @@ describe('unset', () => {
     const values = [null, undefined],
       expected = [[true, true], [true, true]]
 
-    const actual = lodashStable.map(values, (value) => {
+    const actual = map(values, (value) => {
       try {
         return [unset(value, 'a.b'), unset(value, ['a', 'b'])]
       } catch (e) {
@@ -84,7 +87,7 @@ describe('unset', () => {
     const object = { 'a': '' },
       paths = ['constructor.prototype.a', ['constructor', 'prototype', 'a']]
 
-    lodashStable.each(paths, (path) => {
+    each(paths, (path) => {
       numberProto.a = 1
 
       const actual = unset(0, path)
@@ -94,7 +97,7 @@ describe('unset', () => {
       delete numberProto.a
     })
 
-    lodashStable.each(['a.replace.b', ['a', 'replace', 'b']], (path) => {
+    each(['a.replace.b', ['a', 'replace', 'b']], (path) => {
       stringProto.replace.b = 1
 
       const actual = unset(object, path)
@@ -114,6 +117,9 @@ describe('unset', () => {
       'writable': true,
       'value': 1
     })
+
     assert.strictEqual(unset(object, 'a'), false)
+
   })
+
 })

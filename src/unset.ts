@@ -7,10 +7,10 @@ import baseUnset from './.internal/baseUnset';
  *
  * @since 5.3.0
  * @category Object
- * @param {Object} object The object to modify.
- * @param {Array|string} path The path of the property to unset.
- * @returns {boolean} Returns `true` if the property is deleted, else `false`.
- * @see get,has,set
+ * @param object The object to modify.
+ * @param path The path of the property to unset.
+ * @returns Returns `true` if the property is deleted, else `false`.
+ * @see [[get]],[[has]],[[set]]
  * @example
  *
  * ```js
