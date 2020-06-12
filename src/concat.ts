@@ -7,13 +7,12 @@ import isArray from './isArray';
  * Creates a new array concatenating `array` with any additional arrays
  * and/or values.
  *
- * @static
- * @memberOf _
- * @since 4.0.0
+ * @since 5.0.0
  * @category Array
- * @returns {Array} Returns the new concatenated array.
+ * @returns Returns the new concatenated array.
  * @example
  *
+ * ```js
  * var array = [1];
  * var other = concat(array, 2, [3], [[4]]);
  *
@@ -22,6 +21,7 @@ import isArray from './isArray';
  *
  * console.log(array);
  * // => [1]
+ * ```
  */
 export function concat<T>(...arrays: Array<Array<T>>): Array<T> {
   const length = arrays.length;

@@ -1,10 +1,11 @@
 import assert from 'assert'
-import { falsey, stubZero, args, push, arrayProto, realm, MAX_SAFE_INTEGER } from './utils'
+import { falsey, stubZero, args, push, arrayProto, MAX_SAFE_INTEGER } from './utils'
 import size from '../size'
 import map from '../map'
 import each from '../each'
 
 describe('size', () => {
+
   const array = [1, 2, 3]
 
   it('should return the number of own enumerable string keyed properties of an object', () => {

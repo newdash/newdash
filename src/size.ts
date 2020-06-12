@@ -11,12 +11,13 @@ const setTag = '[object Set]';
  * Gets the size of `collection` by returning its length for array-like
  * values or the number of own enumerable string keyed properties for objects.
  *
- * @since 0.1.0
+ * @since 5.7.0
  * @category Collection
- * @param {Array|Object|string} collection The collection to inspect.
- * @returns {number} Returns the collection size.
+ * @param collection The collection to inspect.
+ * @returns Returns the collection size.
  * @example
  *
+ * ```js
  * size([1, 2, 3])
  * // => 3
  *
@@ -25,8 +26,12 @@ const setTag = '[object Set]';
  *
  * size('pebbles')
  * // => 7
+ * ```
  */
-function size(collection) {
+function size(collection: string): number;
+function size(collection: ArrayLike<any>): number;
+function size(collection: any): number;
+function size(collection: any): any {
   if (collection == null) {
     return 0;
   }

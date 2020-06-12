@@ -1,20 +1,22 @@
 /**
  * This method returns the first argument it receives.
  *
- * @static
+ * @ignore
+ * @private
  * @since 0.1.0
- * @memberOf _
  * @category Util
- * @param {*} value Any value.
- * @returns {*} Returns `value`.
+ * @param value Any value.
+ * @returns Returns `value`.
  * @example
  *
+ * ```js
  * var object = { 'a': 1 };
  *
- * console.log(_.identity(object) === object);
+ * console.log(identity(object) === object);
  * // => true
+ * ```
  */
-function identity<T>(value: T): T {
+export function identity<T>(value: T): T {
   return value;
 }
 

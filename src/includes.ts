@@ -11,8 +11,6 @@ import baseIndexOf from './.internal/baseIndexOf';
  * is used for equality comparisons. If `fromIndex` is negative, it's used as
  * the offset from the end of `collection`.
  *
- * @static
- * @memberOf _
  * @since 0.1.0
  * @category Collection
  * @param {Array|Object|string} collection The collection to inspect.
@@ -34,7 +32,7 @@ import baseIndexOf from './.internal/baseIndexOf';
  * includes('abcd', 'bc');
  * // => true
  */
-function includes(collection, value, fromIndex, guard) {
+export function includes(collection, value, fromIndex, guard) {
   collection = isArrayLike(collection) ? collection : values(collection);
   fromIndex = (fromIndex && !guard) ? toInteger(fromIndex) : 0;
 
