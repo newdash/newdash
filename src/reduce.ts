@@ -11,21 +11,6 @@ interface Iteratee<T, R, K> {
 }
 
 /**
- * @ignore
- */
-type ArrayIteratee<T = any, R = any> = Iteratee<T, R, number>
-
-/**
- * @ignore
- */
-type ObjectIteratee<T = any, R = any> = Iteratee<T, R, string>
-
-/**
- * @ignore
- */
-type TypedObject<T> = { [key: string]: T }
-
-/**
  * Reduces `collection` to a value which is the accumulated result of running
  * each element in `collection` thru `iteratee`, where each successive
  * invocation is supplied the return value of the previous. If `accumulator`
@@ -60,14 +45,12 @@ type TypedObject<T> = { [key: string]: T }
  * // => { '1': ['a', 'c'], '2': ['b'] } (iteration order is not guaranteed)
  * ```
  */
-function reduce<T, R>(collection?: ArrayLike<T>, iteratee?: ArrayIteratee<T, R>, accumulator?: R): R;
-function reduce<T, R>(collection?: TypedObject<T>, iteratee?: ObjectIteratee<T, R>, accumulator?: R): R;
-function reduce<T, R>(collection?: any, iteratee?: any, accumulator?: any): any {
+export function reduce<T, R>(collection?: ArrayLike<T>, iteratee?: Iteratee<T, R, number>, accumulator?: R): R;
+export function reduce<T, R>(collection?: Record<string, T>, iteratee?: Iteratee<T, R, string>, accumulator?: R): R;
+export function reduce(collection?: any, iteratee?: any, accumulator?: any): any {
   const func = Array.isArray(collection) ? arrayReduce : baseReduce;
   const initAccum = arguments.length < 3;
   return func(collection, getIteratee(iteratee, 4), accumulator, initAccum, baseEach);
 }
-
-export { reduce };
 
 export default reduce;

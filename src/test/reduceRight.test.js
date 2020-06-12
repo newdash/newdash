@@ -1,7 +1,7 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { slice } from './utils'
 import reduceRight from '../reduceRight'
+import keys from '../keys'
 
 describe('reduceRight', () => {
   const array = [1, 2, 3]
@@ -30,7 +30,7 @@ describe('reduceRight', () => {
   it('should provide correct `iteratee` arguments when iterating an object', () => {
     let args,
       object = { 'a': 1, 'b': 2 },
-      isFIFO = lodashStable.keys(object)[0] == 'a'
+      isFIFO = keys(object)[0] == 'a'
 
     let expected = isFIFO
       ? [0, 2, 'b', object]

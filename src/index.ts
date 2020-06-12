@@ -54,6 +54,8 @@ import { pick } from './pick';
 import { pickBy } from './pickBy';
 import { delay } from './delay';
 
+import { repeat } from './repeat';
+
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -63,7 +65,8 @@ export {
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
   bind, filterObject, random, trimPrefix, trimSuffix,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
-  isEqual, isError, sum, sumBy, pick, pickBy, delay
+  isEqual, isError, sum, sumBy, pick, pickBy, delay,
+  repeat
 };
 
 export default {
@@ -74,6 +77,7 @@ export default {
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
   bind, filterObject, random, trimPrefix, trimSuffix,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
-  isEqual, isError, sum, sumBy, pick, pickBy, delay
+  isEqual, isError, sum, sumBy, pick, pickBy, delay,
+  repeat
 };
 
