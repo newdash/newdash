@@ -27,7 +27,7 @@ if (require.main == module) {
         libPackageJson.name = `${libPackageJson.name}-${directory}`
 
         if (directory == "umd") {
-          libPackageJson.main = libPackageJson.unpkg = "./newdash.js"
+          libPackageJson.main = libPackageJson.unpkg = libPackageJson.jsdelivr = "./newdash.js"
         } else {
 
           libPackageJson.main = "./index"
