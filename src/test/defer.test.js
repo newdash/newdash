@@ -1,8 +1,10 @@
 import assert from 'assert'
 import { slice } from './utils'
 import defer from '../defer'
+import { assertShouldThrowError } from "./helpers";
 
 describe('defer', () => {
+
   it('should defer `func` execution', (done) => {
     let pass = false
     defer(() => { pass = true })
@@ -16,7 +18,7 @@ describe('defer', () => {
   it('should provide additional arguments to `func`', (done) => {
     let args
 
-    defer(function() {
+    defer(function () {
       args = slice.call(arguments)
     }, 1, 2)
 
@@ -37,4 +39,13 @@ describe('defer', () => {
       done()
     }, 32)
   })
+
+  it('should throw error when type error', async () => {
+
+    await assertShouldThrowError(() => {
+      defer(1)
+    })
+
+  });
+
 })

@@ -1,11 +1,14 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { _, falsey } from './utils'
+import { falsey } from './utils'
+import { range } from "../range";
+import { rangeRight } from "../rangeRight";
+import each from '../each';
+import map from '../map';
 
 describe('range methods', () => {
-  lodashStable.each(['range', 'rangeRight'], (methodName) => {
-    const func = _[methodName],
-      isRange = methodName == 'range'
+
+  each([['range', range], ['rangeRight', rangeRight]], ([methodName, func]) => {
+    const isRange = methodName == 'range'
 
     function resolve(range) {
       return isRange ? range : range.reverse()
@@ -46,7 +49,7 @@ describe('range methods', () => {
     })
 
     it(`\`_.${methodName}\` should treat falsey \`start\` as \`0\``, () => {
-      lodashStable.each(falsey, (value, index) => {
+      each(falsey, (value, index) => {
         if (index) {
           assert.deepStrictEqual(func(value), [])
           assert.deepStrictEqual(func(value, 1), [0])
@@ -71,10 +74,10 @@ describe('range methods', () => {
     it(`\`_.${methodName}\` should work as an iteratee for methods like \`_.map\``, () => {
       const array = [1, 2, 3],
         object = { 'a': 1, 'b': 2, 'c': 3 },
-        expected = lodashStable.map([[0], [0, 1], [0, 1, 2]], resolve)
+        expected = map([[0], [0, 1], [0, 1, 2]], resolve)
 
-      lodashStable.each([array, object], (collection) => {
-        const actual = lodashStable.map(collection, func)
+      each([array, object], (collection) => {
+        const actual = map(collection, func)
         assert.deepStrictEqual(actual, expected)
       })
     })

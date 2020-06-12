@@ -1,6 +1,11 @@
 import createRange from './.internal/createRange';
 
 /**
+ * @ignore
+ */
+const internal = createRange();
+
+/**
  * Creates an array of numbers (positive and/or negative) progressing from
  * `start` up to, but not including, `end`. A step of `-1` is used if a negative
  * `start` is specified without an `end` or `step`. If `end` is not specified,
@@ -9,15 +14,16 @@ import createRange from './.internal/createRange';
  * **Note:** JavaScript follows the IEEE-754 standard for resolving
  * floating-point values which can produce unexpected results.
  *
- * @since 0.1.0
+ * @since 5.7.0
  * @category Util
- * @param {number} [start=0] The start of the range.
- * @param {number} end The end of the range.
- * @param {number} [step=1] The value to increment or decrement by.
- * @returns {Array} Returns the range of numbers.
- * @see inRange, rangeRight
+ * @param  start The start of the range.
+ * @param  end The end of the range.
+ * @param  step The value to increment or decrement by.
+ * @returns Returns the range of numbers.
+ * @see [[inRange]],[[rangeRight]]
  * @example
  *
+ * ```js
  * range(4)
  * // => [0, 1, 2, 3]
  *
@@ -38,7 +44,11 @@ import createRange from './.internal/createRange';
  *
  * range(0)
  * // => []
+ * ```
  */
-const range = createRange();
+export function range(start: number, end: number, step: number): Array<number>
+export function range(...args: any[]) {
+  return internal(...args);
+}
 
 export default range;

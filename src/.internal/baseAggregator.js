@@ -1,3 +1,5 @@
+import baseEach from "./baseEach";
+
 /**
  * Aggregates elements of `collection` on `accumulator` with keys transformed
  * by `iteratee` and values set by `setter`.

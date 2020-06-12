@@ -1,9 +1,11 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { symbol } from './utils'
 import toPath from '../toPath'
+import each from '../each'
+import isSymbol from '../isSymbol'
 
 describe('toPath', () => {
+
   it('should convert a string to a path', () => {
     assert.deepStrictEqual(toPath('a.b.c'), ['a', 'b', 'c'])
     assert.deepStrictEqual(toPath('a[0].b.c'), ['a', '0', 'b', 'c'])
@@ -11,12 +13,9 @@ describe('toPath', () => {
 
   it('should coerce array elements to strings', () => {
     const array = ['a', 'b', 'c']
-
-    lodashStable.each([array, lodashStable.map(array, Object)], (value) => {
-      const actual = toPath(value)
-      assert.deepStrictEqual(actual, array)
-      assert.notStrictEqual(actual, array)
-    })
+    const actual = toPath(array)
+    assert.deepStrictEqual(actual, array)
+    assert.notStrictEqual(actual, array)
   })
 
   it('should return new path array', () => {
@@ -26,9 +25,9 @@ describe('toPath', () => {
   it('should not coerce symbols to strings', () => {
     if (Symbol) {
       const object = Object(symbol)
-      lodashStable.each([symbol, object, [symbol], [object]], (value) => {
+      each([symbol, object, [symbol], [object]], (value) => {
         const actual = toPath(value)
-        assert.ok(lodashStable.isSymbol(actual[0]))
+        assert.ok(isSymbol(actual[0]))
       })
     }
   })
@@ -63,4 +62,5 @@ describe('toPath', () => {
     assert.deepStrictEqual(toPath('a..'), expected)
     assert.deepStrictEqual(toPath('a[][]'), expected)
   })
+
 })

@@ -1,5 +1,14 @@
 import baseAssignValue from './.internal/baseAssignValue';
 import reduce from './reduce';
+import createAggregator from './.internal/createAggregator';
+
+
+/**
+ * @ignore
+ */
+const internal = createAggregator((result, value, key) => {
+  baseAssignValue(result, key, value);
+});
 
 /**
  * Creates an object composed of keys generated from the results of running
@@ -27,9 +36,7 @@ import reduce from './reduce';
  */
 export function keyBy<T>(collection: ArrayLike<T>, iteratee?: (obj: T) => any): Record<string, T>;
 export function keyBy(collection: any, iteratee?: any): any {
-  return reduce(collection, (result, value, key) => (
-    baseAssignValue(result, iteratee(value), value), result
-  ), {});
+  return internal(collection, iteratee);
 }
 
 export default keyBy;

@@ -9,7 +9,7 @@ import last from './last';
  * by the order they occur in the arrays. The iteratee is invoked with one
  * argument: (value).
  *
- * @since 4.0.0
+ * @since 5.9.0
  * @category Array
  * @param {...Array} [arrays] The arrays to inspect.
  * @param {Function} iteratee The iteratee invoked per element.
@@ -17,8 +17,10 @@ import last from './last';
  * @see difference, union, unionBy, unionWith, without, xor, xorWith
  * @example
  *
+ * ```js
  * xorBy([2.1, 1.2], [2.3, 3.4], Math.floor)
  * // => [1.2, 3.4]
+ * ```
  */
 function xorBy(...arrays) {
   let iteratee = last(arrays);

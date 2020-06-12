@@ -10,7 +10,9 @@ import times from "../times";
 import each from "../each";
 import map from "../map";
 import assign from '../assign'
+import assignIn from '../assignIn'
 import defaults from "../defaults";
+import defaultsDeep from "../defaultsDeep";
 import zipObjectDeep from '../zipObjectDeep'
 import root from '../.internal/root'
 
@@ -33,12 +35,11 @@ describe('`__proto__` property bugs', () => {
     const methods = [
       assign,
       defaults,
-      merge
-      // 'assign',
-      // 'assignIn',
-      // 'defaults',
-      // 'defaultsDeep',
-      // 'merge'
+      merge,
+      assign,
+      assignIn,
+      defaults,
+      defaultsDeep
     ]
 
     const source = create(null)

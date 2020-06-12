@@ -1,15 +1,20 @@
 import createRange from './.internal/createRange';
 
 /**
+ * @ignore
+ */
+const internal = createRange(true);
+
+/**
  * This method is like `range` except that it populates values in
  * descending order.
  *
- * @since 4.0.0
+ * @since 5.7.0
  * @category Util
- * @param {number} [start=0] The start of the range.
- * @param {number} end The end of the range.
- * @param {number} [step=1] The value to increment or decrement by.
- * @returns {Array} Returns the range of numbers.
+ * @param  start The start of the range.
+ * @param  end The end of the range.
+ * @param  step The value to increment or decrement by.
+ * @returns Returns the range of numbers.
  * @see inRange, range
  * @example
  *
@@ -34,6 +39,9 @@ import createRange from './.internal/createRange';
  * rangeRight(0)
  * // => []
  */
-const rangeRight = createRange(true);
+export function rangeRight(start: number, end: number, step: number): Array<number>
+export function rangeRight(...args: any[]) {
+  return internal(...args);
+}
 
 export default rangeRight;

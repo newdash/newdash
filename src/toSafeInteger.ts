@@ -1,18 +1,19 @@
 import toInteger from './toInteger';
 
 /** Used as references for various `Number` constants. */
-const MAX_SAFE_INTEGER = 9007199254740991;
+const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || 9007199254740991;
 
 /**
  * Converts `value` to a safe integer. A safe integer can be compared and
  * represented correctly.
  *
- * @since 4.0.0
+ * @since 5.7.0
  * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted integer.
+ * @param value The value to convert.
+ * @returns Returns the converted integer.
  * @example
  *
+ * ```js
  * toSafeInteger(3.2)
  * // => 3
  *
@@ -24,8 +25,9 @@ const MAX_SAFE_INTEGER = 9007199254740991;
  *
  * toSafeInteger('3.2')
  * // => 3
+ * ```
  */
-function toSafeInteger(value) {
+export function toSafeInteger(value: number): number {
   if (!value) {
     return value === 0 ? value : 0;
   }

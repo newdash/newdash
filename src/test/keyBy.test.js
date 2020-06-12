@@ -1,9 +1,10 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { LARGE_ARRAY_SIZE } from './utils'
 import keyBy from '../keyBy'
+import map from '../map'
+import constant from '../constant'
 
 describe('keyBy', () => {
+
   const array = [
     { 'dir': 'left', 'code': 97 },
     { 'dir': 'right', 'code': 100 }
@@ -20,9 +21,9 @@ describe('keyBy', () => {
   it('should use `_.identity` when `iteratee` is nullish', () => {
     const array = [4, 6, 6],
       values = [, null, undefined],
-      expected = lodashStable.map(values, lodashStable.constant({ '4': 4, '6': 6 }))
+      expected = map(values, constant({ '4': 4, '6': 6 }))
 
-    const actual = lodashStable.map(values, (value, index) => index ? keyBy(array, value) : keyBy(array))
+    const actual = map(values, (value, index) => index ? keyBy(array, value) : keyBy(array))
 
     assert.deepStrictEqual(actual, expected)
   })
@@ -57,14 +58,5 @@ describe('keyBy', () => {
     assert.deepStrictEqual(actual, { '4': 4.2, '6': 6.3 })
   })
 
-  it('should work in a lazy sequence', () => {
-    const array = lodashStable.range(LARGE_ARRAY_SIZE).concat(
-      lodashStable.range(Math.floor(LARGE_ARRAY_SIZE / 2), LARGE_ARRAY_SIZE),
-      lodashStable.range(Math.floor(LARGE_ARRAY_SIZE / 1.5), LARGE_ARRAY_SIZE)
-    )
 
-    const actual = _(array).keyBy().map(square).filter(isEven).take().value()
-
-    assert.deepEqual(actual, _.take(_.filter(_.map(keyBy(array), square), isEven)))
-  })
 })

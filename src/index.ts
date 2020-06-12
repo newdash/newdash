@@ -57,6 +57,8 @@ import { delay } from './delay';
 import { repeat } from './repeat';
 import { sleep } from './sleep';
 import { partial } from './partial';
+import { range } from './range';
+import { any } from './any';
 
 
 export {
@@ -68,7 +70,7 @@ export {
   bind, filterObject, random, trimPrefix, trimSuffix,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
   isEqual, isError, sum, sumBy, pick, pickBy, delay,
-  repeat, sleep, partial
+  repeat, sleep, partial, range, any
 };
 
 export default {
@@ -80,6 +82,6 @@ export default {
   bind, filterObject, random, trimPrefix, trimSuffix,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
   isEqual, isError, sum, sumBy, pick, pickBy, delay,
-  repeat, sleep, partial
+  repeat, sleep, partial, range, any
 };
 

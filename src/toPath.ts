@@ -1,3 +1,4 @@
+// @ts-nocheck
 import map from './map';
 import copyArray from './.internal/copyArray';
 import isSymbol from './isSymbol';
@@ -7,19 +8,23 @@ import toKey from './.internal/toKey';
 /**
  * Converts `value` to a property path array.
  *
- * @since 4.0.0
+ * @since 5.7.0
  * @category Util
- * @param {*} value The value to convert.
- * @returns {Array} Returns the new property path array.
+ * @param value The value to convert.
+ * @returns Returns the new property path array.
  * @example
  *
+ * ```js
  * toPath('a.b.c')
  * // => ['a', 'b', 'c']
  *
  * toPath('a[0].b.c')
  * // => ['a', '0', 'b', 'c']
+ * ```
  */
-function toPath(value) {
+function toPath(value: Array<string>): Array<string>;
+function toPath(value: string): Array<string>;
+function toPath(value: any): Array<string> {
   if (Array.isArray(value)) {
     return map(value, toKey);
   }

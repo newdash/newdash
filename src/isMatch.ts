@@ -12,13 +12,14 @@ import getMatchData from './.internal/getMatchData';
  * values against any array or object value, respectively. See `isEqual`
  * for a list of supported value comparisons.
  *
- * @since 3.0.0
+ * @since 5.7.0
  * @category Lang
- * @param {Object} object The object to inspect.
- * @param {Object} source The object of property values to match.
- * @returns {boolean} Returns `true` if `object` is a match, else `false`.
+ * @param object The object to inspect.
+ * @param source The object of property values to match.
+ * @returns Returns `true` if `object` is a match, else `false`.
  * @example
  *
+ * ```js
  * const object = { 'a': 1, 'b': 2 }
  *
  * isMatch(object, { 'b': 2 })
@@ -26,8 +27,10 @@ import getMatchData from './.internal/getMatchData';
  *
  * isMatch(object, { 'b': 1 })
  * // => false
+ * ```
  */
-function isMatch(object, source) {
+export function isMatch<T>(object: T, source: Partial<T>): boolean;
+export function isMatch(object: any, source: any): boolean {
   return object === source || baseIsMatch(object, source, getMatchData(source));
 }
 
