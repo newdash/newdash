@@ -2,7 +2,7 @@ import copyObject from "./copyObject";
 import keysIn from "../keysIn";
 
 /**
- * The base implementation of `_.assignIn` without support for multiple sources
+ * The base implementation of `assignIn` without support for multiple sources
  * or `customizer` functions.
  *
  * @private

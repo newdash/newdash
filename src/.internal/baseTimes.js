@@ -1,5 +1,5 @@
 /**
- * The base implementation of `_.times` without support for iteratee shorthands
+ * The base implementation of `times` without support for iteratee shorthands
  * or max array length checks.
  *
  * @private

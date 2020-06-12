@@ -5,10 +5,10 @@ import property from "../property";
 import identity from "./identity";
 
 /**
- * The base implementation of `_.iteratee`.
+ * The base implementation of `iteratee`.
  *
  * @private
- * @param {*} [value=_.identity] The value to convert to an iteratee.
+ * @param {*} [value=identity] The value to convert to an iteratee.
  * @returns {Function} Returns the iteratee.
  */
 function baseIteratee(value) {

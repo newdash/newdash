@@ -3,7 +3,7 @@ import isArrayLike from "../isArrayLike";
 import keys from "../keys";
 
 /**
- * Creates a `_.find` or `_.findLast` function.
+ * Creates a `find` or `findLast` function.
  *
  * @private
  * @param {Function} findIndexFunc The function to find the collection index.

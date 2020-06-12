@@ -2,7 +2,7 @@ import iteratee from "../iteratee";
 import baseIteratee from "./baseIteratee";
 
 /**
- * Gets the appropriate "iteratee" function. If `_.iteratee` is customized,
+ * Gets the appropriate "iteratee" function. If `iteratee` is customized,
  * this function returns the custom method, otherwise it returns `baseIteratee`.
  * If arguments are provided, the chosen function is invoked with them and
  * its result is returned.

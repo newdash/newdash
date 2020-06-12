@@ -3,7 +3,7 @@ import isPrototype from "./isPrototype";
 const nativeKeys = Object.keys;
 
 /**
- * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+ * The base implementation of `keys` which doesn't treat sparse arrays as dense.
  *
  * @private
  * @param object The object to query.

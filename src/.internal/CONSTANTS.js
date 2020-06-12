@@ -35,7 +35,7 @@ export const WRAP_ARY_FLAG = 128
 export const WRAP_REARG_FLAG = 256
 export const WRAP_FLIP_FLAG = 512
 
-/** Used as default options for `_.truncate`. */
+/** Used as default options for `truncate`. */
 export const DEFAULT_TRUNC_LENGTH = 30
 export const DEFAULT_TRUNC_OMISSION = '...'
 

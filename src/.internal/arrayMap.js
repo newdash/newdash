@@ -1,5 +1,5 @@
 /**
- * A specialized version of `_.map` for arrays without support for iteratee
+ * A specialized version of `map` for arrays without support for iteratee
  * shorthands.
  *
  * @private

@@ -1,5 +1,5 @@
 /**
- * A specialized version of `_.every` for arrays without support for
+ * A specialized version of `every` for arrays without support for
  * iteratee shorthands.
  *
  * @private

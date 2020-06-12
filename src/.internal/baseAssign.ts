@@ -2,7 +2,7 @@ import copyObject from "./copyObject";
 import keys from "../keys";
 
 /**
- * The base implementation of `_.assign` without support for multiple sources
+ * The base implementation of `assign` without support for multiple sources
  * or `customizer` functions.
  *
  * @private

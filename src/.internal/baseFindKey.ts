@@ -1,5 +1,5 @@
 /**
- * The base implementation of methods like `_.findKey` and `_.findLastKey`,
+ * The base implementation of methods like `findKey` and `findLastKey`,
  * without support for iteratee shorthands, which iterates over `collection`
  * using `eachFunc`.
  *

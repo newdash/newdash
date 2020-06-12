@@ -1,6 +1,6 @@
 import baseEach from "./baseEach";
 /**
- * The base implementation of `_.every` without support for iteratee shorthands.
+ * The base implementation of `every` without support for iteratee shorthands.
  *
  * @private
  * @param {Array|Object} collection The collection to iterate over.

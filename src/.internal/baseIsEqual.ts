@@ -2,7 +2,7 @@ import baseIsEqualDeep from './baseIsEqualDeep'
 import isObjectLike from '../isObjectLike'
 
 /**
- * The base implementation of `_.isEqual` which supports partial comparisons
+ * The base implementation of `isEqual` which supports partial comparisons
  * and tracks traversed objects.
  *
  * @private

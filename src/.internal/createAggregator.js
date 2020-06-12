@@ -4,8 +4,9 @@ import baseAggregator from "./baseAggregator";
 import arrayAggregator from "./arrayAggregator";
 
 /**
- * Creates a function like `_.groupBy`.
+ * Creates a function like `groupBy`.
  *
+ * @ignore
  * @private
  * @param {Function} setter The function to set accumulator values.
  * @param {Function} [initializer] The accumulator object initializer.

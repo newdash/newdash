@@ -234,7 +234,7 @@ typedArrayTags[argsTag] = typedArrayTags[arrayTag] =
   typedArrayTags[setTag] = typedArrayTags[stringTag] =
   typedArrayTags[weakMapTag] = false;
 
-/** Used to identify `toStringTag` values supported by `_.clone`. */
+/** Used to identify `toStringTag` values supported by `clone`. */
 export const cloneableTags = {};
 cloneableTags[argsTag] = cloneableTags[arrayTag] =
   cloneableTags[arrayBufferTag] = cloneableTags[dataViewTag] =

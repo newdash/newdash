@@ -4,7 +4,7 @@ import identity from "./identity";
 
 
 /**
- * The base implementation of `_.rest` which doesn't validate or coerce arguments.
+ * The base implementation of `rest` which doesn't validate or coerce arguments.
  *
  * @private
  * @param {Function} func The function to apply a rest parameter to.

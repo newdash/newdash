@@ -1,5 +1,5 @@
 /**
- * A specialized version of `_.filter` for arrays without support for
+ * A specialized version of `filter` for arrays without support for
  * iteratee shorthands.
  *
  * @private
