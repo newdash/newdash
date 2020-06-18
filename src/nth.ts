@@ -1,16 +1,34 @@
 import isIndex from './.internal/isIndex';
+import toInteger from './toInteger';
+
+/**
+ * @ignore
+ * @private
+ * @internal
+ * @param array
+ * @param n
+ */
+function baseNth(array: any, n: any): any {
+  const length = array.length;
+  if (!length) {
+    return;
+  }
+  n += n < 0 ? length : 0;
+  return isIndex(n, length) ? array[n] : undefined;
+}
 
 /**
  * Gets the element at index `n` of `array`. If `n` is negative, the nth
  * element from the end is returned.
  *
- * @since 4.11.0
+ * @since 5.7.0
  * @category Array
- * @param {Array} array The array to query.
- * @param {number} [n=0] The index of the element to return.
- * @returns {*} Returns the nth element of `array`.
+ * @param array The array to query.
+ * @param n The index of the element to return.
+ * @returns Returns the nth element of `array`.
  * @example
  *
+ * ```js
  * const array = ['a', 'b', 'c', 'd']
  *
  * nth(array, 1)
@@ -18,14 +36,10 @@ import isIndex from './.internal/isIndex';
  *
  * nth(array, -2)
  * // => 'c'
+ * ```
  */
-function nth(array, n) {
-  const length = array == null ? 0 : array.length;
-  if (!length) {
-    return;
-  }
-  n += n < 0 ? length : 0;
-  return isIndex(n, length) ? array[n] : undefined;
+export function nth<T>(array: Array<T>, n = 0): T {
+  return (array && array.length) ? baseNth(array, toInteger(n)) : undefined;
 }
 
 export default nth;

@@ -2,6 +2,7 @@ import assert from 'assert'
 import clamp from '../clamp'
 
 describe('clamp', () => {
+
   it('should work with a `max`', () => {
     assert.strictEqual(clamp(5, 3), 3)
     assert.strictEqual(clamp(1, 3), 1)
@@ -55,4 +56,5 @@ describe('clamp', () => {
     assert.deepStrictEqual(clamp(1, -5, NaN), 0)
     assert.deepStrictEqual(clamp(-1, NaN, 5), 0)
   })
+
 })

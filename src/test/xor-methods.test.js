@@ -1,10 +1,12 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { _, args, LARGE_ARRAY_SIZE } from './utils'
+import { args } from './utils'
+import each from '../each'
+import xor from '../xor'
+
 
 describe('xor methods', () => {
-  lodashStable.each(['xor', 'xorBy', 'xorWith'], (methodName) => {
-    const func = _[methodName]
+
+  each([['xor', xor]], ([methodName, func]) => {
 
     it(`\`_.${methodName}\` should return the symmetric difference of two arrays`, () => {
       const actual = func([2, 1], [2, 3])
@@ -51,18 +53,7 @@ describe('xor methods', () => {
       assert.deepStrictEqual(func(array, null, args, null), [3])
     })
 
-    it(`\`_.${methodName}\` should return a wrapped value when chaining`, () => {
-      const wrapped = _([1, 2, 3])[methodName]([5, 2, 1, 4])
-      assert.ok(wrapped instanceof _)
-    })
 
-    it(`\`_.${methodName}\` should work when in a lazy sequence before \`head\` or \`last\``, () => {
-      const array = lodashStable.range(LARGE_ARRAY_SIZE + 1),
-        wrapped = _(array).slice(1)[methodName]([LARGE_ARRAY_SIZE, LARGE_ARRAY_SIZE + 1])
-
-      const actual = lodashStable.map(['head', 'last'], (methodName) => wrapped[methodName]())
-
-      assert.deepEqual(actual, [1, LARGE_ARRAY_SIZE + 1])
-    })
   })
+
 })

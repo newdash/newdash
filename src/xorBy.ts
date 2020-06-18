@@ -1,6 +1,6 @@
 import baseXor from './.internal/baseXor';
 import isArrayLikeObject from './isArrayLikeObject';
-import last from './last';
+import getIteratee from './.internal/getIteratee';
 
 /**
  * This method is like `xor` except that it accepts `iteratee` which is
@@ -11,10 +11,10 @@ import last from './last';
  *
  * @since 5.9.0
  * @category Array
- * @param {...Array} [arrays] The arrays to inspect.
- * @param {Function} iteratee The iteratee invoked per element.
- * @returns {Array} Returns the new array of filtered values.
- * @see difference, union, unionBy, unionWith, without, xor, xorWith
+ * @param arrays The arrays to inspect.
+ * @param iteratee The iteratee invoked per element.
+ * @returns Returns the new array of filtered values.
+ * @see [[difference]],[[union]],[[unionBy]],[[unionWith]],[[without]],[[xor]],[[xorWith]]
  * @example
  *
  * ```js
@@ -22,12 +22,8 @@ import last from './last';
  * // => [1.2, 3.4]
  * ```
  */
-function xorBy(...arrays) {
-  let iteratee = last(arrays);
-  if (isArrayLikeObject(iteratee)) {
-    iteratee = undefined;
-  }
-  return baseXor(arrays.filter(isArrayLikeObject), iteratee);
+function xorBy<T>(iteratee: Function, ...arrays: Array<Array<T>>): Array<T> {
+  return baseXor(arrays.filter(isArrayLikeObject), getIteratee(iteratee, 2));
 }
 
 export default xorBy;

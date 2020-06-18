@@ -1,16 +1,17 @@
 /**
  * Checks if `string` ends with the given target string.
  *
- * @since 3.0.0
+ * @since 5.7.0
  * @category String
- * @param {string} [string=''] The string to inspect.
- * @param {string} [target] The string to search for.
- * @param {number} [position=string.length] The position to search up to.
- * @returns {boolean} Returns `true` if `string` ends with `target`,
+ * @param str The string to inspect.
+ * @param target The string to search for.
+ * @param position The position to search up to.
+ * @returns Returns `true` if `string` ends with `target`,
  *  else `false`.
- * @see includes, startsWith
+ * @see [[includes]],[[startsWith]]
  * @example
  *
+ * ```js
  * endsWith('abc', 'c')
  * // => true
  *
@@ -19,9 +20,10 @@
  *
  * endsWith('abc', 'b', 2)
  * // => true
+ * ```
  */
-function endsWith(string, target, position) {
-  const { length } = string;
+export function endsWith(str: string, target: string, position = str.length): boolean {
+  const { length } = str;
   position = position === undefined ? length : +position;
   if (position < 0 || position != position) {
     position = 0;
@@ -31,7 +33,7 @@ function endsWith(string, target, position) {
   }
   const end = position;
   position -= target.length;
-  return position >= 0 && string.slice(position, end) == target;
+  return position >= 0 && str.slice(position, end) == target;
 }
 
 export default endsWith;

@@ -10,7 +10,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * each key is the number of times the key was returned by `iteratee`. The
  * iteratee is invoked with one argument: (value).
  *
- * @since 0.5.0
+ * @since 5.7.0
  * @category Collection
  * @param {Array|Object} collection The collection to iterate over.
  * @param {Function} iteratee The iteratee to transform keys.
@@ -28,7 +28,9 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * // => { 'true': 2, 'false': 1 }
  * ```
  */
-function countBy(collection, iteratee) {
+export function countBy<T>(collection: ArrayLike<T>, iteratee: any): Record<string, number>;
+export function countBy(collection: any, iteratee: any): Record<string, number>;
+export function countBy(collection: any, iteratee: any): any {
   return reduce(collection, (result, value, key) => {
     key = iteratee(value);
     if (hasOwnProperty.call(result, key)) {

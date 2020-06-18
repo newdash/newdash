@@ -4,19 +4,20 @@ import xorBy from '../xorBy'
 
 describe('xorBy', () => {
   it('should accept an `iteratee`', () => {
-    let actual = xorBy([2.1, 1.2], [2.3, 3.4], Math.floor)
+    let actual = xorBy(Math.floor, [2.1, 1.2], [2.3, 3.4],)
     assert.deepStrictEqual(actual, [1.2, 3.4])
 
-    actual = xorBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x')
+    actual = xorBy('x', [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])
     assert.deepStrictEqual(actual, [{ 'x': 2 }])
   })
 
   it('should provide correct `iteratee` arguments', () => {
     let args
-
-    xorBy([2.1, 1.2], [2.3, 3.4], function() {
+    let f = function () {
       args || (args = slice.call(arguments))
-    })
+    }
+
+    xorBy(f, [2.1, 1.2], [2.3, 3.4])
 
     assert.deepStrictEqual(args, [2.3])
   })

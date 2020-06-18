@@ -1,7 +1,9 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { MAX_SAFE_INTEGER, falsey, stubTrue } from './utils'
 import endsWith from '../endsWith'
+import each from '../each'
+import { map } from "../map";
+import { every } from "../every";
 
 describe('endsWith', () => {
   const string = 'abc'
@@ -19,22 +21,22 @@ describe('endsWith', () => {
   })
 
   it('should work with `position` >= `length`', () => {
-    lodashStable.each([3, 5, MAX_SAFE_INTEGER, Infinity], (position) => {
+    each([3, 5, MAX_SAFE_INTEGER, Infinity], (position) => {
       assert.strictEqual(endsWith(string, 'c', position), true)
     })
   })
 
   it('should treat falsey `position` values, except `undefined`, as `0`', () => {
-    const expected = lodashStable.map(falsey, stubTrue)
+    const expected = map(falsey, stubTrue)
 
-    const actual = lodashStable.map(falsey, (position) => endsWith(string, position === undefined ? 'c' : '', position))
+    const actual = map(falsey, (position) => endsWith(string, position === undefined ? 'c' : '', position))
 
     assert.deepStrictEqual(actual, expected)
   })
 
   it('should treat a negative `position` as `0`', () => {
-    lodashStable.each([-1, -3, -Infinity], (position) => {
-      assert.ok(lodashStable.every(string, (chr) => !endsWith(string, chr, position)))
+    each([-1, -3, -Infinity], (position) => {
+      assert.ok(every(string, (chr) => !endsWith(string, chr, position)))
       assert.strictEqual(endsWith(string, '', position), true)
     })
   })
@@ -42,4 +44,5 @@ describe('endsWith', () => {
   it('should coerce `position` to an integer', () => {
     assert.strictEqual(endsWith(string, 'ab', 2.2), true)
   })
+
 })

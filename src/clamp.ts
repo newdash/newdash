@@ -1,31 +1,58 @@
+import toNumber from './toNumber';
+
+/**
+ * @internal
+ * @ignore
+ * @private
+ * @param number
+ * @param lower
+ * @param upper
+ */
+function baseClamp(number: number, lower?: number, upper?: number) {
+  if (number === number) {
+    if (upper !== undefined) {
+      number = number <= upper ? number : upper;
+    }
+    if (lower !== undefined) {
+      number = number >= lower ? number : lower;
+    }
+  }
+  return number;
+}
+
 /**
  * Clamps `number` within the inclusive `lower` and `upper` bounds.
  *
- * @since 4.0.0
+ * @since 5.7.0
  * @category Number
- * @param {number} number The number to clamp.
- * @param {number} lower The lower bound.
- * @param {number} upper The upper bound.
- * @returns {number} Returns the clamped number.
+ * @param  num The number to clamp.
+ * @param lower The lower bound.
+ * @param upper The upper bound.
+ * @returns Returns the clamped number.
  * @example
  *
+ * ```js
  * clamp(-10, -5, 5)
  * // => -5
  *
  * clamp(10, -5, 5)
  * // => 5
+ * ```
  */
-function clamp(number, lower, upper) {
-  number = +number;
-  lower = +lower;
-  upper = +upper;
-  lower = lower === lower ? lower : 0;
-  upper = upper === upper ? upper : 0;
-  if (number === number) {
-    number = number <= upper ? number : upper;
-    number = number >= lower ? number : lower;
+export function clamp(num: number, lower?: number, upper?: number): number {
+  if (upper === undefined) {
+    upper = lower;
+    lower = undefined;
   }
-  return number;
+  if (upper !== undefined) {
+    upper = toNumber(upper);
+    upper = upper === upper ? upper : 0;
+  }
+  if (lower !== undefined) {
+    lower = toNumber(lower);
+    lower = lower === lower ? lower : 0;
+  }
+  return baseClamp(toNumber(num), lower, upper);
 }
 
 export default clamp;

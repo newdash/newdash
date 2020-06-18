@@ -5,18 +5,20 @@ const toString = Object.prototype.toString;
  * If `object` contains duplicate values, subsequent values overwrite
  * property assignments of previous values.
  *
- * @since 0.7.0
+ * @since 5.7.0
  * @category Object
  * @param {Object} object The object to invert.
  * @returns {Object} Returns the new inverted object.
  * @example
  *
+ * ```js
  * const object = { 'a': 1, 'b': 2, 'c': 1 }
  *
  * invert(object)
  * // => { '1': 'c', '2': 'b' }
+ * ```
  */
-function invert(object) {
+export function invert<T>(object: T): any {
   const result = {};
   Object.keys(object).forEach((key) => {
     let value = object[key];
