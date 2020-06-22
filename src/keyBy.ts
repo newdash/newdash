@@ -1,5 +1,4 @@
 import baseAssignValue from './.internal/baseAssignValue';
-import reduce from './reduce';
 import createAggregator from './.internal/createAggregator';
 
 
