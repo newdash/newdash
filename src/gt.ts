@@ -1,15 +1,16 @@
 /**
  * Checks if `value` is greater than `other`.
  *
- * @since 3.9.0
+ * @since 5.7.0
  * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if `value` is greater than `other`,
+ * @param value The value to compare.
+ * @param other The other value to compare.
+ * @returns Returns `true` if `value` is greater than `other`,
  *  else `false`.
- * @see gte, lt, lte
+ * @see [[gte]], [[lt]], [[lte]]
  * @example
  *
+ * ```js
  * gt(3, 1)
  * // => true
  *
@@ -18,8 +19,10 @@
  *
  * gt(1, 3)
  * // => false
+ * ```
  */
-function gt(value, other) {
+export function gt<T>(value: T, other: T): boolean;
+export function gt(value: any, other: any): any {
   if (!(typeof value === 'string' && typeof other === 'string')) {
     value = +value;
     other = +other;

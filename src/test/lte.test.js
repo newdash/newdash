@@ -3,6 +3,7 @@ import lte from '../lte'
 import lt from '../lt'
 
 describe('lte', () => {
+
   it('should return `true` if `value` is <= `other`', () => {
     assert.strictEqual(lte(1, 3), true)
     assert.strictEqual(lte(3, 3), true)
@@ -14,4 +15,5 @@ describe('lte', () => {
     assert.strictEqual(lt(3, 1), false)
     assert.strictEqual(lt('def', 'abc'), false)
   })
+
 })

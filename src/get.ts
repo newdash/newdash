@@ -26,13 +26,12 @@ import baseGet from './.internal/baseGet';
  * // => 'default'
  * ```
  */
-function get(object: any, path: Array<string>, defaultValue?: any): any;
-function get(object: any, path: string, defaultValue?: any): any;
-function get(object: any, path: any, defaultValue?: any): any {
+export function get(object: any, path: Array<string>, defaultValue?: any): any;
+export function get(object: any, path: string, defaultValue?: any): any;
+export function get(object: any, path: any, defaultValue?: any): any {
   const result = object == null ? undefined : baseGet(object, path);
   return result === undefined ? defaultValue : result;
 }
 
-export { get };
 
 export default get;

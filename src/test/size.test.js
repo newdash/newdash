@@ -74,4 +74,14 @@ describe('size', () => {
   it('should not treat objects with non-number lengths as array-like', () => {
     assert.strictEqual(size({ 'length': '0' }), 1)
   })
+
+  it('should return zero for weak map/set', () => {
+    const wm = new WeakMap()
+    const ws = new WeakSet()
+    wm.set({}, 1)
+    ws.add({})
+    assert.strictEqual(size(wm), 0)
+    assert.strictEqual(size(ws), 0)
+  });
+
 })

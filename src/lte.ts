@@ -1,15 +1,16 @@
 /**
  * Checks if `value` is less than or equal to `other`.
  *
- * @since 3.9.0
+ * @since 5.7.0
  * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if `value` is less than or equal to
+ * @param value The value to compare.
+ * @param other The other value to compare.
+ * @returns Returns `true` if `value` is less than or equal to
  *  `other`, else `false`.
- * @see gt, gte, lt
+ * @see [[gt]], [[gte]], [[lt]]
  * @example
  *
+ * ```js
  * lte(1, 3)
  * // => true
  *
@@ -18,8 +19,10 @@
  *
  * lte(3, 1)
  * // => false
+ * ```
  */
-function lte(value, other) {
+export function lte<T>(value: T, other: T): boolean;
+export function lte(value:any, other:any):any {
   if (!(typeof value === 'string' && typeof other === 'string')) {
     value = +value;
     other = +other;

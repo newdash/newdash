@@ -19,7 +19,7 @@ const internalMerge = createAssigner((object: any, source: any, srcIndex: any) =
  *
  * **Note:** This method mutates `object`.
  *
- * @since 0.0.3
+ * @since 5.0.0
  * @category Object
  * @param object The destination object.
  * @param sources The source objects.

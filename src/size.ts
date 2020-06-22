@@ -3,8 +3,14 @@ import isArrayLike from './isArrayLike';
 import isString from './isString';
 import stringSize from './.internal/stringSize';
 
-/** `Object#toString` result references. */
+/**
+ * `Object#toString` result references.
+ * @ignore
+ */
 const mapTag = '[object Map]';
+/**
+ * @ignore
+ */
 const setTag = '[object Set]';
 
 /**
@@ -30,6 +36,7 @@ const setTag = '[object Set]';
  */
 function size(collection: string): number;
 function size(collection: ArrayLike<any>): number;
+function size(collection: Record<string, any>): number;
 function size(collection: any): number;
 function size(collection: any): any {
   if (collection == null) {
