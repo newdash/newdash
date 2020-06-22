@@ -1,6 +1,10 @@
 import toInteger from './toInteger';
 
-/** Used as references for various `Number` constants. */
+/**
+ * @ignore
+ * @private
+ * @internal
+ */
 const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || 9007199254740991;
 
 /**

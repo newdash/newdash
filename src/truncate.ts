@@ -7,11 +7,25 @@ import stringSize from './.internal/stringSize';
 import stringToArray from './.internal/stringToArray';
 import toString from './toString';
 
-/** Used as default options for `truncate`. */
+/**
+ * @ignore
+ * @private
+ * @internal
+ */
 const DEFAULT_TRUNC_LENGTH = 30;
+
+/**
+ * @ignore
+ * @private
+ * @internal
+ */
 const DEFAULT_TRUNC_OMISSION = '...';
 
-/** Used to match `RegExp` flags from their coerced string values. */
+/**
+ * @ignore
+ * @private
+ * @internal
+ */
 const reFlags = /\w*$/;
 
 /**

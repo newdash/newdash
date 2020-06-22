@@ -2,8 +2,12 @@ import toInteger from './toInteger';
 import getIteratee from './.internal/getIteratee';
 import baseTimes from './.internal/baseTimes';
 
-/** Used as references for various `Number` constants. */
-const MAX_SAFE_INTEGER = 9007199254740991;
+/**
+ * @ignore
+ * @private
+ * @internal
+ */
+const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || 9007199254740991;
 
 /** Used as references for the maximum length and index of an array. */
 const MAX_ARRAY_LENGTH = 4294967295;

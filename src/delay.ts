@@ -2,6 +2,11 @@
 
 import isFunction from './isFunction';
 
+/**
+ * @ignore
+ * @private
+ * @internal
+ */
 const FUNC_ERROR_TEXT = 'Expected a function';
 
 /**

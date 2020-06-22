@@ -1,5 +1,10 @@
 import basePick from './.internal/basePick';
 
+/**
+ * @ignore
+ * @private
+ * @internal
+ */
 type Path = string | number | Array<Path>
 
 /**
