@@ -1,7 +1,10 @@
 import baseMerge from './.internal/baseMerge';
 import createAssigner from './.internal/createAssigner';
 
-const internalMerge = createAssigner((object, source, srcIndex) => {
+/**
+ * @ignore
+ */
+const internalMerge = createAssigner((object: any, source: any, srcIndex: any) => {
   baseMerge(object, source, srcIndex);
 });
 

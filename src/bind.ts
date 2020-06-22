@@ -1,10 +1,13 @@
+// @ts-nocheck
 import baseRest from './.internal/baseRest';
 import { WRAP_BIND_FLAG, WRAP_PARTIAL_FLAG } from './.internal/CONSTANTS';
 import replaceHolders from './.internal/replaceHolders';
 import getHolder from './.internal/getHolder';
 import createWrap from './.internal/createWrap';
 
-// @ts-ignore
+/**
+ * @ignore
+ */
 const internalBind = baseRest((func, thisArg, partials?) => {
   let holders: any;
   let bitmask = WRAP_BIND_FLAG;

@@ -1,5 +1,8 @@
 import createMathOperation from './.internal/createMathOperation';
 
+/**
+ * @ignore
+ */
 const internalAdd = createMathOperation((augend: any, addend: any) => augend + addend, 0);
 
 /**

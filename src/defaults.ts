@@ -1,9 +1,13 @@
 import eq from './eq';
 
-/** Used for built-in method references. */
+/**
+ * @ignore
+ */
 const objectProto = Object.prototype;
 
-/** Used to check objects for own properties. */
+/**
+ * @ignore
+ */
 const hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
@@ -14,18 +18,20 @@ const hasOwnProperty = objectProto.hasOwnProperty;
  *
  * **Note:** This method mutates `object`.
  *
- * @since 0.1.0
+ * @since 5.7.0
  * @category Object
- * @param {Object} object The destination object.
- * @param {...Object} [sources] The source objects.
- * @returns {Object} Returns `object`.
- * @see defaultsDeep
+ * @param object The destination object.
+ * @param sources The source objects.
+ * @returns Returns `object`.
+ * @see [[defaultsDeep]]
  * @example
  *
+ * ```js
  * defaults({ 'a': 1 }, { 'b': 2 }, { 'a': 3 })
  * // => { 'a': 1, 'b': 2 }
+ * ```
  */
-function defaults(object, ...sources) {
+export function defaults(object: any, ...sources: any[]): any {
   object = Object(object);
   sources.forEach((source) => {
     if (source != null) {
@@ -33,7 +39,7 @@ function defaults(object, ...sources) {
       for (const key in source) {
         const value = object[key];
         if (value === undefined ||
-            (eq(value, objectProto[key]) && !hasOwnProperty.call(object, key))) {
+          (eq(value, objectProto[key]) && !hasOwnProperty.call(object, key))) {
           object[key] = source[key];
         }
       }

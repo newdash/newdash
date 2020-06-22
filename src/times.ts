@@ -9,9 +9,14 @@ import baseTimes from './.internal/baseTimes';
  */
 const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || 9007199254740991;
 
-/** Used as references for the maximum length and index of an array. */
+/**
+ * @ignore
+ */
 const MAX_ARRAY_LENGTH = 4294967295;
 
+/**
+ * @ignore
+ */
 const nativeMin = Math.min;
 
 /**

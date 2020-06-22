@@ -1,4 +1,7 @@
 
+/**
+ * @ignore
+ */
 const nativeJoin = Array.prototype.join;
 
 

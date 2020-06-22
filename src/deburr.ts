@@ -1,22 +1,29 @@
+// @ts-nocheck
 import deburrLetter from './.internal/deburrLetter';
 
-/** Used to match Latin Unicode letters (excluding mathematical operators). */
+/**
+ * Used to match Latin Unicode letters (excluding mathematical operators).
+ * @ignore
+ */
 const reLatin = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g;
 
-/** Used to compose unicode character classes. */
-const rsComboMarksRange = '\\u0300-\\u036f';
-const reComboHalfMarksRange = '\\ufe20-\\ufe2f';
-const rsComboSymbolsRange = '\\u20d0-\\u20ff';
-const rsComboMarksExtendedRange = '\\u1ab0-\\u1aff';
-const rsComboMarksSupplementRange = '\\u1dc0-\\u1dff';
-const rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange + rsComboMarksExtendedRange + rsComboMarksSupplementRange;
+/** @ignore */ const rsComboMarksRange = '\\u0300-\\u036f';
+/** @ignore */ const reComboHalfMarksRange = '\\ufe20-\\ufe2f';
+/** @ignore */ const rsComboSymbolsRange = '\\u20d0-\\u20ff';
+/** @ignore */ const rsComboMarksExtendedRange = '\\u1ab0-\\u1aff';
+/** @ignore */ const rsComboMarksSupplementRange = '\\u1dc0-\\u1dff';
+/** @ignore */ const rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange + rsComboMarksExtendedRange + rsComboMarksSupplementRange;
 
-/** Used to compose unicode capture groups. */
+/**
+ * Used to compose unicode capture groups.
+ * @ignore
+ */
 const rsCombo = `[${rsComboRange}]`;
 
 /**
  * Used to match [combining diacritical marks](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks) and
  * [combining diacritical marks for symbols](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks_for_Symbols).
+ * @ignore
  */
 const reComboMark = RegExp(rsCombo, 'g');
 
@@ -27,17 +34,19 @@ const reComboMark = RegExp(rsCombo, 'g');
  * letters to basic Latin letters and removing
  * [combining diacritical marks](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks).
  *
- * @since 3.0.0
+ * @since 5.7.0
  * @category String
- * @param {string} [string=''] The string to deburr.
- * @returns {string} Returns the deburred string.
+ * @param str The string to deburr.
+ * @returns Returns the deburred string.
  * @example
  *
+ * ```js
  * deburr('déjà vu')
  * // => 'deja vu'
+ * ```
  */
-function deburr(string) {
-  return string && string.replace(reLatin, deburrLetter).replace(reComboMark, '');
+export function deburr(str: string): string {
+  return str && str.replace(reLatin, deburrLetter).replace(reComboMark, '');
 }
 
 export default deburr;
