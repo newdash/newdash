@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.7.0](https://github.com/newdash/newdash/compare/v5.6.0...v5.7.0) (2020-06-26)
+
+
+### Features
+
+* [#11](https://github.com/newdash/newdash/issues/11) any & range function ([48f002b](https://github.com/newdash/newdash/commit/48f002bfae78a23bd9057012cfd1c8c81233fd01))
+* defaults ([00d7b6b](https://github.com/newdash/newdash/commit/00d7b6bdf4125a83688633580a72670d58540f57))
+* function - repeat ([371ce6b](https://github.com/newdash/newdash/commit/371ce6b59225409da170b8bb638928706b7ca601))
+* pick & trim functions ([c6a57a5](https://github.com/newdash/newdash/commit/c6a57a5364ff97531e5ba4caa3ad37ceaaa948ac))
+* sleep & partial ([b32a939](https://github.com/newdash/newdash/commit/b32a939c5d86b12c6fbf230d40af438b32cf7f30))
+* sleep function ([79afdc4](https://github.com/newdash/newdash/commit/79afdc412bf5cf52a1b348decf4a431c16b4aa13))
+* xor, nth, clamp functions ([11ef56e](https://github.com/newdash/newdash/commit/11ef56e0abda332c8cd85a951eaa3c0eaba37d42))
+* zipwith & unset ([a0a35c7](https://github.com/newdash/newdash/commit/a0a35c775a4d7feb0ea35b18a2d7d49e171693de))
+
+
+### Bug Fixes
+
+* [#33](https://github.com/newdash/newdash/issues/33) unused import ([b0edd34](https://github.com/newdash/newdash/commit/b0edd34fe961879bc877a005188a6b49b1b0b807))
+* es5 build issue ([05ee04f](https://github.com/newdash/newdash/commit/05ee04ffda16e5f15e80d0da4e7babdad2d2b86a))
+* range type ([386642f](https://github.com/newdash/newdash/commit/386642f7edbcf8b67ee7249a97e7b44aca27bb81))
+* unit test ([15ff31e](https://github.com/newdash/newdash/commit/15ff31e3ec484304fa23d0d7615b799d84a9377d))
+
 ## [5.6.0](https://github.com/newdash/newdash/compare/v5.5.0...v5.6.0) (2020-06-11)
 
 
