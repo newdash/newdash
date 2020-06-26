@@ -17,7 +17,7 @@ import getTag from './.internal/getTag';
  * // => false
  * ```
  */
-function isSymbol(value: any): value is Symbol {
+export function isSymbol(value: any): value is Symbol {
   const type = typeof value;
   return type == 'symbol' || (type === 'object' && value != null && getTag(value) == '[object Symbol]');
 }

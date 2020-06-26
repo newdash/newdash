@@ -18,7 +18,7 @@ import isObjectLike from './isObjectLike';
  * // => false
  * ```
  */
-export function isRegExp(value: any): boolean {
+export function isRegExp(value: any): value is RegExp {
   return isObjectLike(value) && getTag(value) == '[object RegExp]';
 }
 

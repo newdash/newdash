@@ -24,7 +24,6 @@ import { forEach } from './forEach';
 import { get } from './get';
 import { has } from './has';
 import { head } from './head';
-import { isEmpty } from './isEmpty';
 import { isEqual } from './isEqual';
 import { isError } from './isError';
 import { join } from './join';
@@ -60,6 +59,23 @@ import { partial } from './partial';
 import { range } from './range';
 import { any } from './any';
 
+import { isArray } from './isArray';
+import { isFunction } from './isFunction';
+import { isArguments } from './isArguments';
+import { isArrayLike } from './isArrayLike';
+import { isDate } from './isDate';
+import { isEmpty } from './isEmpty';
+import { isNull } from './isNull';
+import { isMap } from './isMap';
+import { isString } from './isString';
+import { isObject } from './isObject';
+import { isNumber } from './isNumber';
+
+
+import { take } from './take';
+import { uniq } from './uniq';
+import { size } from './size';
+
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -70,7 +86,9 @@ export {
   bind, filterObject, random, trimPrefix, trimSuffix,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
   isEqual, isError, sum, sumBy, pick, pickBy, delay,
-  repeat, sleep, partial, range, any
+  repeat, sleep, partial, range, any, uniq, isArray, take,
+  size, isFunction, isArguments, isArrayLike, isDate,
+  isNull, isMap, isString, isObject, isNumber
 };
 
 export default {
@@ -82,6 +100,8 @@ export default {
   bind, filterObject, random, trimPrefix, trimSuffix,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
   isEqual, isError, sum, sumBy, pick, pickBy, delay,
-  repeat, sleep, partial, range, any
+  repeat, sleep, partial, range, any, uniq, isArray, take,
+  size, isFunction, isArguments, isArrayLike, isDate,
+  isNull, isMap, isString, isObject, isNumber
 };
 

@@ -29,7 +29,7 @@ import isObjectLike from './isObjectLike';
  * // => true
  * ```
  */
-function isPlainObject(value: any): boolean {
+export function isPlainObject(value: any): boolean {
   if (!isObjectLike(value) || getTag(value) != '[object Object]') {
     return false;
   }

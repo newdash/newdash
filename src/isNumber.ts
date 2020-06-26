@@ -28,7 +28,7 @@ import isObjectLike from './isObjectLike';
  * // => false
  * ```
  */
-function isNumber(value: any): value is number {
+export function isNumber(value: any): value is number {
   return typeof value === 'number' ||
     (isObjectLike(value) && getTag(value) == '[object Number]');
 }

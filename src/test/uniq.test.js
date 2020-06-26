@@ -1,11 +1,16 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
+import { uniq } from "../uniq";
+import { map } from "../map";
 
 describe('uniq', () => {
+
   it('should perform an unsorted uniq when used as an iteratee for methods like `_.map`', () => {
+
     const array = [[2, 1, 2], [1, 2, 1]],
-      actual = lodashStable.map(array, lodashStable.uniq)
+      actual = map(array, uniq)
 
     assert.deepStrictEqual(actual, [[2, 1], [1, 2]])
+
   })
+
 })

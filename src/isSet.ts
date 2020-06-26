@@ -11,13 +11,15 @@ import isObjectLike from './isObjectLike';
  * @returns Returns `true` if `value` is a set, else `false`.
  * @example
  *
+ * ```js
  * isSet(new Set)
  * // => true
  *
  * isSet(new WeakSet)
  * // => false
+ * ```
  */
-const isSet = function(value: any): boolean {
+export function isSet(value: any): value is Set<any> {
   return isObjectLike(value) && getTag(value) == '[object Set]';
 };
 

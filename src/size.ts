@@ -34,11 +34,11 @@ const setTag = '[object Set]';
  * // => 7
  * ```
  */
-function size(collection: string): number;
-function size(collection: ArrayLike<any>): number;
-function size(collection: Record<string, any>): number;
-function size(collection: any): number;
-function size(collection: any): any {
+export function size(collection: string): number;
+export function size(collection: ArrayLike<any>): number;
+export function size(collection: Record<string, any>): number;
+export function size(collection: any): number;
+export function size(collection: any): any {
   if (collection == null) {
     return 0;
   }

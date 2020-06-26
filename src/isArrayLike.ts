@@ -26,7 +26,7 @@ import isFunction from './isFunction';
  * // => false
  * ```
  */
-function isArrayLike(value: any): boolean {
+export function isArrayLike(value: any): boolean {
   return value != null && isLength(value.length) && !isFunction(value);
 }
 

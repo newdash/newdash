@@ -124,6 +124,7 @@ export function truncate(str: any, options?: any): any {
       const substring = result;
 
       if (!separator.global) {
+        // @ts-ignore
         separator = RegExp(separator.source, `${reFlags.exec(separator) || ''}g`);
       }
       separator.lastIndex = 0;

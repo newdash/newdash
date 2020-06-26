@@ -18,7 +18,7 @@ import isObjectLike from './isObjectLike';
  * // => false
  * ```
  */
-function isMap(value: any): value is Map<any, any> {
+export function isMap(value: any): value is Map<any, any> {
   return isObjectLike(value) && getTag(value) == '[object Map]';
 }
 
