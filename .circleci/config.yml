@@ -45,7 +45,6 @@ jobs:
       - run:
           name: Install dependency
           command: npm install
-      # run tests!
       - run:
           name: Execute unit tests
           command: ./node_modules/.bin/jest -w 2 --coverage
@@ -56,15 +55,12 @@ jobs:
           name: Build packages
           command: npm run build
       - run:
-          name: Publish package - main
+          name: Publish package - node/main
+          working_directory: ~/repo/dist/node
           command: npm publish --access public
       - run:
           name: Publish package - umd
           working_directory: ~/repo/dist/umd
-          command: npm publish --access public
-      - run:
-          name: Publish package - node
-          working_directory: ~/repo/dist/node
           command: npm publish --access public
       - run:
           name: Publish package - es5
