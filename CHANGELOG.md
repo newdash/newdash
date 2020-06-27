@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.8.0](https://github.com/newdash/newdash/compare/v5.7.0...v5.8.0) (2020-06-27)
+
+
+### Features
+
+* num methods ([27bed80](https://github.com/newdash/newdash/commit/27bed80e440d05259c3db3ede681d66d456e2489))
+
 ## [5.7.0](https://github.com/newdash/newdash/compare/v5.6.0...v5.7.0) (2020-06-26)
 
 
