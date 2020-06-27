@@ -1,5 +1,5 @@
 import identity from './.internal/identity';
-import baseExtremum from './.internal/baseExtremum';
+import maxBy from './maxBy';
 
 
 /**
@@ -22,9 +22,7 @@ import baseExtremum from './.internal/baseExtremum';
  */
 export function max<T>(array: ArrayLike<T>): T;
 export function max(array: any): any {
-  return (array && array.length)
-    ? baseExtremum(array, identity, (v1: any, v2: any) => v1 > v2)
-    : undefined;
+  return maxBy(array, identity);
 }
 
 

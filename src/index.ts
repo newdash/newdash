@@ -76,6 +76,11 @@ import { take } from './take';
 import { uniq } from './uniq';
 import { size } from './size';
 
+import max from './max';
+import min from './min';
+import maxBy from './maxBy';
+import minBy from './minBy';
+
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -88,7 +93,8 @@ export {
   isEqual, isError, sum, sumBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
-  isNull, isMap, isString, isObject, isNumber
+  isNull, isMap, isString, isObject, isNumber,
+  max, min, maxBy, minBy
 };
 
 export default {
@@ -102,6 +108,8 @@ export default {
   isEqual, isError, sum, sumBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
-  isNull, isMap, isString, isObject, isNumber
+  isNull, isMap, isString, isObject, isNumber,
+  max, min, maxBy, minBy
+
 };
 

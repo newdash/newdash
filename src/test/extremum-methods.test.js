@@ -1,11 +1,20 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { _ } from './utils'
+import each from '../each'
+import range from '../range'
+
+
+import { maxBy } from "../maxBy";
+import { max } from "../max";
+import { minBy } from "../minBy";
+import { min } from "../min";
+
+
 
 describe('extremum methods', () => {
-  lodashStable.each(['max', 'maxBy', 'min', 'minBy'], (methodName) => {
-    const func = _[methodName],
-      isMax = /^max/.test(methodName)
+
+  each([['max', max], ['maxBy', maxBy], ['min', min], ['minBy', minBy]], ([methodName, func]) => {
+
+    const isMax = /^max/.test(methodName)
 
     it(`\`_.${methodName}\` should work with Date objects`, () => {
       const curr = new Date,
@@ -15,19 +24,14 @@ describe('extremum methods', () => {
     })
 
     it(`\`_.${methodName}\` should work with extremely large arrays`, () => {
-      const array = lodashStable.range(0, 5e5)
+      const array = range(0, 5e5)
       assert.strictEqual(func(array), isMax ? 499999 : 0)
     })
 
-    it(`\`_.${methodName}\` should work when chaining on an array with only one value`, () => {
-      const actual = _([40])[methodName]()
-      assert.strictEqual(actual, 40)
-    })
   })
 
-  lodashStable.each(['maxBy', 'minBy'], (methodName) => {
+  each([['maxBy', maxBy], ['minBy', minBy]], ([methodName, func]) => {
     const array = [1, 2, 3],
-      func = _[methodName],
       isMax = methodName == 'maxBy'
 
     it(`\`_.${methodName}\` should work with an \`iteratee\``, () => {

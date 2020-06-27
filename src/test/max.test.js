@@ -4,6 +4,7 @@ import max from '../max'
 import map from "../map"
 
 describe('max', () => {
+
   it('should return the largest value from a collection', () => {
     assert.strictEqual(max([1, 2, 3]), 3)
   })
@@ -24,4 +25,5 @@ describe('max', () => {
   it('should work with non-numeric collection values', () => {
     assert.strictEqual(max(['a', 'b']), 'b')
   })
+  
 })

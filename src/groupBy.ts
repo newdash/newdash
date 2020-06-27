@@ -41,7 +41,7 @@ const internalGroupBy = createAggregator((result, value, key) => {
  * // => { '3': ['one', 'two'], '5': ['three'] }
  * ```
  */
-function groupBy(result, value?, key?) {
+export function groupBy(result, value?, key?) {
   return internalGroupBy(result, value, key);
 }
 
