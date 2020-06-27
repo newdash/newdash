@@ -80,6 +80,9 @@ import max from './max';
 import min from './min';
 import maxBy from './maxBy';
 import minBy from './minBy';
+import slice from './slice';
+import trim from './trim';
+import replace from './replace';
 
 
 export {
@@ -94,7 +97,7 @@ export {
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber,
-  max, min, maxBy, minBy
+  max, min, maxBy, minBy, slice, replace, trim
 };
 
 export default {
@@ -109,7 +112,6 @@ export default {
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber,
-  max, min, maxBy, minBy
-
+  max, min, maxBy, minBy, slice, replace, trim
 };
 
