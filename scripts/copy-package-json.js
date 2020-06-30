@@ -3,7 +3,7 @@
 
 const { writeFile, copyFile } = require("fs").promises;
 const path = require("path");
-const distributions = ["es5", "node", "es6", "umd"];
+const distributions = ["es5", "node", "es6", "umd", "deno"];
 // TODO: add deno distribution
 
 
