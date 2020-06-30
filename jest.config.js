@@ -2,7 +2,7 @@ module.exports = {
   'transform': {
     '.(js|ts|tsx)': 'ts-jest'
   },
-  'testTimeout': 30000,
+  'testTimeout': 30 * 1000,
   'collectCoverageFrom': [
     'src/**/*',
     '!**/node_modules/**'
@@ -15,5 +15,8 @@ module.exports = {
     '/node_modules/',
     '/deno/',
     '/dist/'
+  ],
+  'modulePathIgnorePatterns': [
+    '<rootDir>/dist'
   ]
 };

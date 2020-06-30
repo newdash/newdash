@@ -47,6 +47,13 @@ module.exports = function (babel) {
         const mName = path.node.source.value
 
         if (!mName.startsWith(".")) {
+          // transform lodash to current index module
+          if (mName == "lodash") {
+            path.node.source.value = "../index.ts"
+          }
+          if (mName == "path") {
+            path.node.source.value = "https://deno.land/std/path/mod.ts"
+          }
           return // no transform for npm modules
         }
 

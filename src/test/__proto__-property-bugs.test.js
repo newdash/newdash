@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { LARGE_ARRAY_SIZE, isEven, _, create, stubFalse, objectProto, funcProto } from './utils'
+import { LARGE_ARRAY_SIZE, isEven, create, stubFalse, objectProto, funcProto } from './utils'
 import difference from '../difference'
 import intersection from '../intersection'
 import uniq from '../uniq'

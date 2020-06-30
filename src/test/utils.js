@@ -1,8 +1,5 @@
-// @ts-nocheck
 import path from "path";
 import memoize from '../memoize'
-import isMatchWith from "../isMatchWith";
-import last from "../last"
 import attempt from "../attempt";
 import filter from "../filter"
 import constant from "../constant";

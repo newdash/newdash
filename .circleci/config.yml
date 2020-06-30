@@ -70,6 +70,10 @@ jobs:
           name: Publish package - es6
           working_directory: ~/repo/dist/es6
           command: npm publish --access public
+      - run:
+          name: Publish package - deno
+          working_directory: ~/repo/dist/deno
+          command: npm publish --access public
 
 workflows:
   version: 2
