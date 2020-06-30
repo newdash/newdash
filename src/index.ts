@@ -84,8 +84,6 @@ import slice from './slice';
 import trim from './trim';
 import replace from './replace';
 import countBy from './countBy';
-import differenceBy from './differenceBy';
-
 
 export {
   filter, get, reduce, map, each, every, concat, first,
