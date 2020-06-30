@@ -2,6 +2,7 @@ import assert from 'assert'
 import { falsey, noop } from './utils'
 import max from '../max'
 import map from "../map"
+import maxBy from '../maxBy'
 
 describe('max', () => {
 
@@ -25,5 +26,13 @@ describe('max', () => {
   it('should work with non-numeric collection values', () => {
     assert.strictEqual(max(['a', 'b']), 'b')
   })
-  
+
+  it('should work with maxBy', () => {
+    const items = [
+      { name: "v1", age: 10 },
+      { name: "v2", age: 5 }
+    ]
+    assert.strictEqual(maxBy(items, 'age').name, "v1")
+  });
+
 })

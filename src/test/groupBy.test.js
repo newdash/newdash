@@ -1,7 +1,7 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { LARGE_ARRAY_SIZE } from './utils'
 import groupBy from '../groupBy'
+import map from '../map'
+import constant from '../constant'
 
 describe('groupBy', () => {
   const array = [6.1, 4.2, 6.3]
@@ -14,9 +14,9 @@ describe('groupBy', () => {
   it('should use `_.identity` when `iteratee` is nullish', () => {
     const array = [6, 4, 6],
       values = [, null, undefined],
-      expected = lodashStable.map(values, lodashStable.constant({ '4': [4], '6':  [6, 6] }))
+      expected = map(values, constant({ '4': [4], '6': [6, 6] }))
 
-    const actual = lodashStable.map(values, (value, index) => index ? groupBy(array, value) : groupBy(array))
+    const actual = map(values, (value, index) => index ? groupBy(array, value) : groupBy(array))
 
     assert.deepStrictEqual(actual, expected)
   })
@@ -49,16 +49,5 @@ describe('groupBy', () => {
     assert.deepStrictEqual(actual, { '4': [4.2], '6': [6.1, 6.3] })
   })
 
-  it('should work in a lazy sequence', () => {
-    const array = lodashStable.range(LARGE_ARRAY_SIZE).concat(
-      lodashStable.range(Math.floor(LARGE_ARRAY_SIZE / 2), LARGE_ARRAY_SIZE),
-      lodashStable.range(Math.floor(LARGE_ARRAY_SIZE / 1.5), LARGE_ARRAY_SIZE)
-    )
 
-    const iteratee = function(value) { value.push(value[0]); return value },
-      predicate = function(value) { return isEven(value[0]) },
-      actual = _(array).groupBy().map(iteratee).filter(predicate).take().value()
-
-    assert.deepEqual(actual, _.take(_.filter(lodashStable.map(groupBy(array), iteratee), predicate)))
-  })
 })
