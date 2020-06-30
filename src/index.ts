@@ -83,6 +83,8 @@ import minBy from './minBy';
 import slice from './slice';
 import trim from './trim';
 import replace from './replace';
+import countBy from './countBy';
+import differenceBy from './differenceBy';
 
 
 export {
@@ -97,7 +99,8 @@ export {
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber,
-  max, min, maxBy, minBy, slice, replace, trim
+  max, min, maxBy, minBy, slice, replace, trim,
+  countBy
 };
 
 export default {
@@ -112,6 +115,7 @@ export default {
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber,
-  max, min, maxBy, minBy, slice, replace, trim
+  max, min, maxBy, minBy, slice, replace, trim,
+  countBy
 };
 

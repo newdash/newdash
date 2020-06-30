@@ -2,6 +2,8 @@ import assert from 'assert'
 import partial from '../partial'
 import property from '../property'
 import iteratee from '../iteratee'
+import _ from "../index"
+
 
 describe('custom `_.iteratee` methods', () => {
   var array = ['one', 'two', 'three'],

@@ -11,20 +11,22 @@ import last from './last';
  *
  * **Note:** Unlike `pullAllWith`, this method returns a new array.
  *
- * @since 4.0.0
+ * @since 5.9.0
  * @category Array
- * @param {Array} array The array to inspect.
- * @param {...Array} [values] The values to exclude.
- * @param {Function} [comparator] The comparator invoked per element.
- * @returns {Array} Returns the new array of filtered values.
+ * @param array The array to inspect.
+ * @param values The values to exclude.
+ * @param comparator The comparator invoked per element.
+ * @returns Returns the new array of filtered values.
  * @example
  *
+ * ```js
  * const objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }]
  *
  * differenceWith(objects, [{ 'x': 1, 'y': 2 }], isEqual)
  * // => [{ 'x': 2, 'y': 1 }]
+ * ```
  */
-function differenceWith(array, ...values) {
+export function differenceWith(array: any, ...values: any[]): any {
   let comparator = last(values);
   if (isArrayLikeObject(comparator)) {
     comparator = undefined;

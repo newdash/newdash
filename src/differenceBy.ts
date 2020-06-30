@@ -12,18 +12,24 @@ import last from './last';
  *
  * **Note:** Unlike `pullAllBy`, this method returns a new array.
  *
- * @since 4.0.0
+ * @since 5.9.0
  * @category Array
- * @param {Array} array The array to inspect.
- * @param {...Array} [values] The values to exclude.
- * @param {Function} iteratee The iteratee invoked per element.
- * @returns {Array} Returns the new array of filtered values.
+ * @param array The array to inspect.
+ * @param values The values to exclude.
+ * @param iteratee The iteratee invoked per element.
+ * @returns Returns the new array of filtered values.
  * @example
  *
- * differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor)
+ * ```js
+ * _.differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor);
  * // => [1.2]
+ *
+ * // The `_.property` iteratee shorthand.
+ * _.differenceBy([{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }], 'x');
+ * // => [{ 'x': 2 }]
+ * ```
  */
-function differenceBy(array, ...values) {
+export function differenceBy(array: any, ...values: any[]): any {
   let iteratee = last(values);
   if (isArrayLikeObject(iteratee)) {
     iteratee = undefined;

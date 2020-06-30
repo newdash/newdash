@@ -38,8 +38,8 @@ const nativeMin = Math.min;
  * // => [0, 0, 0, 0]
  * ```
  */
-function times<T extends (...args: any[]) => any>(n: number, iteratee?: T): ReturnType<T>
-function times(n: any, iteratee?: any) {
+export function times<T extends (...args: any[]) => any>(n: number, iteratee?: T): ReturnType<T>
+export function times(n: any, iteratee?: any) {
   n = toInteger(n);
   if (n < 1 || n > MAX_SAFE_INTEGER) {
     return [];

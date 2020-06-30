@@ -10,18 +10,20 @@ import isArrayLikeObject from './isArrayLikeObject';
  *
  * **Note:** Unlike `pullAll`, this method returns a new array.
  *
- * @since 0.1.0
+ * @since 5.9.0
  * @category Array
- * @param {Array} array The array to inspect.
- * @param {...Array} [values] The values to exclude.
- * @returns {Array} Returns the new array of filtered values.
+ * @param array The array to inspect.
+ * @param values The values to exclude.
+ * @returns Returns the new array of filtered values.
  * @see union, unionBy, unionWith, without, xor, xorBy, xorWith,
  * @example
  *
+ * ```js
  * difference([2, 1], [2, 3])
  * // => [1]
+ * ```
  */
-function difference(array, ...values) {
+export function difference(array: any, ...values: any[]): any {
   return isArrayLikeObject(array)
     ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true))
     : [];
