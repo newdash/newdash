@@ -1,6 +1,11 @@
 const p = require("path")
 const fs = require("fs")
 
+/**
+ *
+ * @param {import("@babel/core")} babel
+ * @returns {import("@babel/core").Visitor}
+ */
 module.exports = function (babel) {
   const { types: t } = babel
 
@@ -21,8 +26,15 @@ module.exports = function (babel) {
   return {
     visitor: {
 
+      /**
+       * @param {import("@babel/core").NodePath} path
+       */
       Program(path, { file: { opts: { filename } } }) {
+
+        path.addComment('leading', '@ts-nocheck', true)
+
         if (isUnitTestFile(filename)) {
+
           path.node.body.unshift(
             t.importDeclaration(
               [
@@ -32,36 +44,39 @@ module.exports = function (babel) {
               t.stringLiteral("../../../deno/test/describe.ts")
             )
           )
+
+
         }
       },
 
       ImportDeclaration(path, { file: { opts: { filename } } }) {
+        const dir = p.dirname(filename)
+        const prefix = "../../../deno/test"
+        const mName = path.node.source.value
+        const mPath = p.join(`${dir}/`, mName)
 
-        if (isUnitTestFile(filename)) {
-          if (path.node.source.value == "assert") {
-            path.node.source.value = "../../../deno/test/assert.ts"
-          }
+        if (mName == "assert") {
+          path.node.source.value = `${prefix}/assert.ts`
+          return
+        }
+        if (mName == "os") {
+          path.node.source.value = `${prefix}/os.ts`
+          return
         }
 
-        const dir = p.dirname(filename)
-        const mName = path.node.source.value
+        if (mName == "path") {
+          path.node.source.value = `${prefix}/path.ts`
+          return
+        }
 
-        if (!mName.startsWith(".")) {
-          // transform lodash to current index module
-          if (mName == "lodash") {
-            path.node.source.value = "../index.ts"
-          }
-          if (mName == "path") {
-            path.node.source.value = "https://deno.land/std/path/mod.ts"
-          }
+        if (mName == "lodash") {
+          path.node.source.value = "../index.ts"
           return // no transform for npm modules
         }
 
         if (mName.endsWith(".ts") || mName.endsWith(".js")) {
           return // no transform explicit module extension
         }
-
-        const mPath = p.join(`${dir}/`, mName)
 
         if (fs.existsSync(mPath + ".js")) {
           path.node.source.value = `${path.node.source.value}.js`;
@@ -73,6 +88,9 @@ module.exports = function (babel) {
 
       },
 
+      /**
+       * @param {import("@babel/core").NodePath} path
+       */
       Identifier(path, { file: { opts: { filename } } }) {
         // add `any` for all un-typed parameters
         if (filename.endsWith(".ts")) {
@@ -81,6 +99,13 @@ module.exports = function (babel) {
             if (!path.node.typeAnnotation) {
               path.node.typeAnnotation = t.typeAnnotation(t.anyTypeAnnotation())
             }
+          }
+        }
+        if (isUnitTestFile(filename)) {
+          // replace nodejs global '__dirname'
+          // only for test
+          if (path.node.name == "__dirname") {
+            path.replaceWith(t.stringLiteral(filename))
           }
         }
       },

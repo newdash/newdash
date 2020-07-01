@@ -2,7 +2,6 @@ import path from "path";
 import memoize from '../memoize'
 import attempt from "../attempt";
 import filter from "../filter"
-import constant from "../constant";
 import forOwn from "../forOwn";
 import assign from "../assign";
 import each from "../each"
