@@ -31,7 +31,7 @@ export function unzipWith<T>(array: Array<Array<T>>, iteratee?: Function): Array
   if (iteratee == null) {
     return result;
   }
-  return arrayMap(result, (group: any) => iteratee.apply(undefined, group));
+  return arrayMap(result, (group: any) => iteratee(...group));
 }
 
 export default unzipWith;

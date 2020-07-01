@@ -71,7 +71,6 @@ import { isString } from './isString';
 import { isObject } from './isObject';
 import { isNumber } from './isNumber';
 
-
 import { take } from './take';
 import { uniq } from './uniq';
 import { size } from './size';
@@ -85,6 +84,7 @@ import trim from './trim';
 import replace from './replace';
 import countBy from './countBy';
 import differenceBy from './differenceBy';
+import groupBy from './groupBy';
 
 
 export {
@@ -100,7 +100,7 @@ export {
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber,
   max, min, maxBy, minBy, slice, replace, trim,
-  countBy
+  countBy, differenceBy, groupBy
 };
 
 export default {
@@ -116,6 +116,6 @@ export default {
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber,
   max, min, maxBy, minBy, slice, replace, trim,
-  countBy
+  countBy, differenceBy, groupBy
 };
 

@@ -51,7 +51,7 @@ describe('map', () => {
   it('should treat a node list as an array-like object', () => {
     if (document) {
       // @ts-ignore
-      const actual = map(document.getElementsByTagName('body'), (element) => element.nodeName.toLowerCase())
+      const actual = map(document.getElementsByTagName('body'), (element: any) => element.nodeName.toLowerCase())
       assert.deepStrictEqual(actual, ['body'])
     }
   })

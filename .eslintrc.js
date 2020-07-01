@@ -1,8 +1,11 @@
 module.exports = {
-  root: true,
-  parser: '@typescript-eslint/parser',
-  plugins: [
+  'root': true,
+  'parser': '@typescript-eslint/parser',
+  'plugins': [
     '@typescript-eslint'
+  ],
+  'extends': [
+    'plugin:@typescript-eslint/eslint-recommended'
   ],
   'env': {
     'es6': true,
@@ -56,11 +59,6 @@ module.exports = {
     'no-undef': ['error'],
 
     'no-unexpected-multiline': ['error'],
-
-    'no-unused-vars': ['error', {
-      'args': 'none',
-      'vars': 'all'
-    }],
 
     'quotes': ['error', 'single', {
       'allowTemplateLiterals': true,
