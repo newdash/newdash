@@ -2,13 +2,7 @@ import arrayReduce from './.internal/arrayReduce';
 import baseEach from './.internal/baseEach';
 import baseReduce from './.internal/baseReduce';
 import getIteratee from './.internal/getIteratee';
-
-/**
- * @ignore
- */
-interface Iteratee<T, R, K> {
-  (accumulator?: R, value?: T, key?: K): R | void
-}
+import { AccCollectionIteratee, Collection } from './types';
 
 /**
  * Reduces `collection` to a value which is the accumulated result of running
@@ -25,7 +19,7 @@ interface Iteratee<T, R, K> {
  * `assign`, `defaults`, `defaultsDeep`, `includes`, `merge`, `orderBy`,
  * and `sortBy`
  *
- * @since 0.0.3
+ * @since 5.0.0
  * @category Collection
  * @param collection The collection to iterate over.
  * @param iteratee The function invoked per iteration.
@@ -45,12 +39,11 @@ interface Iteratee<T, R, K> {
  * // => { '1': ['a', 'c'], '2': ['b'] } (iteration order is not guaranteed)
  * ```
  */
-export function reduce<T, R>(collection?: ArrayLike<T>, iteratee?: Iteratee<T, R, number>, accumulator?: R): R;
-export function reduce<T, R>(collection?: Record<string, T>, iteratee?: Iteratee<T, R, string>, accumulator?: R): R;
+export function reduce<T, R>(collection?: Collection<T>, iteratee?: AccCollectionIteratee<T, R>, accumulator?: R): R;
 export function reduce(collection?: any, iteratee?: any, accumulator?: any): any {
   const func = Array.isArray(collection) ? arrayReduce : baseReduce;
-  const initAccum = arguments.length < 3;
-  return func(collection, getIteratee(iteratee, 4), accumulator, initAccum, baseEach);
+  const initialValue = arguments.length < 3;
+  return func(collection, getIteratee(iteratee, 4), accumulator, initialValue, baseEach);
 }
 
 export default reduce;
