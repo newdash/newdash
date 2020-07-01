@@ -1,17 +1,22 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { args, falsey } from './utils'
 import findLast from '../findLast'
+import curry from '../curry'
+import eq from '../eq'
+import each from '../each'
+import { toArray } from "../toArray";
+import map from '../map'
+import constant from '../constant'
 
 describe('findLast', () => {
-  const resolve = lodashStable.curry(lodashStable.eq)
+  const resolve = curry(eq)
 
-  lodashStable.each({
+  each({
     'an `arguments` object': args,
     'an array': [1, 2, 3]
   },
   (collection, key) => {
-    const values = lodashStable.toArray(collection)
+    const values = toArray(collection)
 
     it(`should work with ${key} and a positive \`fromIndex\``, () => {
       const expected = [
@@ -30,9 +35,9 @@ describe('findLast', () => {
     it(`should work with ${key} and a \`fromIndex\` >= \`length\``, () => {
       const indexes = [4, 6, Math.pow(2, 32), Infinity]
 
-      const expected = lodashStable.map(indexes, lodashStable.constant([values[0], undefined, undefined]))
+      const expected = map(indexes, constant([values[0], undefined, undefined]))
 
-      const actual = lodashStable.map(indexes, (fromIndex) => [
+      const actual = map(indexes, (fromIndex) => [
         findLast(collection, resolve(1), fromIndex),
         findLast(collection, resolve(undefined), fromIndex),
         findLast(collection, resolve(''), fromIndex)
@@ -42,9 +47,9 @@ describe('findLast', () => {
     })
 
     it(`should work with ${key} and treat falsey \`fromIndex\` values correctly`, () => {
-      const expected = lodashStable.map(falsey, (value) => value === undefined ? values[3] : undefined)
+      const expected = map(falsey, (value) => value === undefined ? values[3] : undefined)
 
-      const actual = lodashStable.map(falsey, (fromIndex) => findLast(collection, resolve(values[3]), fromIndex))
+      const actual = map(falsey, (fromIndex) => findLast(collection, resolve(values[3]), fromIndex))
 
       assert.deepStrictEqual(actual, expected)
     })
@@ -81,11 +86,13 @@ describe('findLast', () => {
 
     it(`should work with ${key} and a negative \`fromIndex\` <= \`-length\``, () => {
       const indexes = [-4, -6, -Infinity],
-        expected = lodashStable.map(indexes, lodashStable.constant(values[0]))
+        expected = map(indexes, constant(values[0]))
 
-      const actual = lodashStable.map(indexes, (fromIndex) => findLast(collection, resolve(values[0]), fromIndex))
+      const actual = map(indexes, (fromIndex) => findLast(collection, resolve(values[0]), fromIndex))
 
       assert.deepStrictEqual(actual, expected)
     })
+
   })
+
 })

@@ -85,7 +85,8 @@ import replace from './replace';
 import countBy from './countBy';
 import differenceBy from './differenceBy';
 import groupBy from './groupBy';
-
+import curry from './curry';
+import eq from './eq';
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -100,7 +101,7 @@ export {
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber,
   max, min, maxBy, minBy, slice, replace, trim,
-  countBy, differenceBy, groupBy
+  countBy, differenceBy, groupBy, curry, eq
 };
 
 export default {
@@ -116,6 +117,6 @@ export default {
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber,
   max, min, maxBy, minBy, slice, replace, trim,
-  countBy, differenceBy, groupBy
+  countBy, differenceBy, groupBy, curry, eq
 };
 

@@ -4,15 +4,15 @@ import debounce from '../debounce'
 import identity from "../.internal/identity";
 import { platform } from "os";
 
-var d = describe
+let describe2 = describe
 if (platform() == "darwin") {
   // setTimeout is Unstable on MacOS,
   // maybe caused by resource schedule,
   // so skip these tests
-  d = describe.skip
+  describe2 = describe.skip
 }
 
-d('debounce', () => {
+describe2('debounce', () => {
 
   it('should debounce a function', (done) => {
     let callCount = 0

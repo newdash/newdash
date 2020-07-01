@@ -37,4 +37,5 @@ describe('isBuffer', () => {
       assert.strictEqual(lodashBizarro.isBuffer(Buffer.alloc(2)), false)
     }
   })
+
 })

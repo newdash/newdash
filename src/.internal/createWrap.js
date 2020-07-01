@@ -9,6 +9,7 @@ import setWrapToString from "./setWrapToString";
 import createHybrid from "./createHybrid";
 import mergeData from "./mergeData";
 import createBind from "./createBind";
+import createCurry from "./createCurry";
 
 /**
   * Creates a function that either curries or invokes `func` with optional

@@ -1,11 +1,6 @@
 // @ts-nocheck
 
 /**
- * @ignore
- */
-const nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
-
-/**
  * Checks if `value` is a buffer.
  *
  * @since 5.4.0
@@ -22,6 +17,13 @@ const nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
  * // => false
  * ```
  */
-export const isBuffer = nativeIsBuffer || (() => false);
+export function isBuffer(value: any): value is Buffer {
+  const nativeIsBuffer = Buffer?.isBuffer;
+  if (nativeIsBuffer) {
+    return nativeIsBuffer(value);
+  }
+  const className = value?.constructor?.name;
+  return className == 'Buffer';
+}
 
 export default isBuffer;

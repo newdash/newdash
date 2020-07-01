@@ -534,7 +534,7 @@ describe('isEqual', () => {
 
   it('should compare sets', () => {
     if (Set) {
-      each([[set, new Set], [set, realm.set]], (sets) => {
+      each([[set, new Set]], (sets) => {
         const set1 = sets[0],
           set2 = sets[1]
 

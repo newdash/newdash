@@ -17,7 +17,7 @@ module.exports = function (babel) {
       return
     }
     // describe("suite", () => { })
-    if (path.parent.type == "CallExpression" && path.parent.callee.name == "describe") {
+    if (path.parent.type == "CallExpression" && (path.parent.callee.name == "describe" || path.parent.callee.name == "describe2")) {
       path.node.params.push(t.identifier("it"))
     }
 
@@ -101,12 +101,10 @@ module.exports = function (babel) {
             }
           }
         }
-        if (isUnitTestFile(filename)) {
-          // replace nodejs global '__dirname'
-          // only for test
-          if (path.node.name == "__dirname") {
-            path.replaceWith(t.stringLiteral(filename))
-          }
+        // replace nodejs global '__dirname'
+        // only for test
+        if (path.node.name == "__dirname") {
+          path.replaceWith(t.stringLiteral(filename))
         }
       },
 
