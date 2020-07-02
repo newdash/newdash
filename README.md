@@ -45,6 +45,21 @@ first("abc")
 // => "a"
 ```
 
+## Deno
+
+```js
+// import { add } from "https://cdn.jsdelivr.net/npm/@newdash/newdash-deno@5.9.0/index.ts"
+import { add } from "https://cdn.jsdelivr.net/npm/@newdash/newdash-deno@5.9.0/add.ts"
+
+add(1, 2)
+// => 3
+add('1', '2')
+// => '12'
+add('1', 2) // typescript type check for deno
+// error: TS2345 [ERROR]: Argument of type '2' is not assignable to parameter of type '"1"'.
+// console.log(add('1', 2))
+```
+
 ## [API Document](https://newdash.netlify.fornever.org/)
 
 ## Different Release
