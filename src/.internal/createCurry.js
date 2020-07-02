@@ -3,6 +3,7 @@ import getHolder from "./getHolder";
 import createCtor from "./createCtor";
 import createHybrid from "./createHybrid";
 import replaceHolders from "./replaceHolders";
+import apply from "./apply";
 
 /**
  * Creates a function that wraps `func` to enable currying.

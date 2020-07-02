@@ -23,7 +23,8 @@ describe('defer', () => {
     }, 1, 2)
 
     setTimeout(() => {
-      assert.deepStrictEqual(args, [1, 2])
+      assert.strictEqual(args[0], 1)
+      assert.strictEqual(args[1], 2)
       done()
     }, 32)
   })

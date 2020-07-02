@@ -163,7 +163,7 @@ describe('clone methods', function () {
     })
 
     it(`\`${methodName}\` should clone array buffers`, () => {
-      if (ArrayBuffer) {
+      if (typeof ArrayBuffer == "object") {
         const actual = func(arrayBuffer)
         assert.strictEqual(actual.byteLength, arrayBuffer.byteLength)
         assert.notStrictEqual(actual, arrayBuffer)
@@ -171,7 +171,7 @@ describe('clone methods', function () {
     })
 
     it(`\`${methodName}\` should clone buffers`, () => {
-      if (Buffer) {
+      if (typeof Buffer == "object") {
         const buffer = Buffer.from([1, 2]),
           actual = func(buffer)
 

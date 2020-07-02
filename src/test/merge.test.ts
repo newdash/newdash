@@ -222,7 +222,7 @@ describe('merge', () => {
   })
 
   it('should clone buffer source values', () => {
-    if (Buffer) {
+    if (typeof Buffer == "object") {
       const buffer = Buffer.from([1]),
         actual = merge({}, { 'value': buffer }).value
 

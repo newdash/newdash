@@ -21,6 +21,12 @@ module.exports = function (babel) {
       path.node.params.push(t.identifier("it"))
     }
 
+    // it('', (done) => {})
+    if (path?.parent?.callee?.name == "it" && path.node.params[0]?.name == "done") {
+      path.node.params = []
+      path.node.body = t.newExpression(t.identifier("Promise"), [t.arrowFunctionExpression([t.identifier("done")], path.node.body)])
+    }
+
   }
 
   return {

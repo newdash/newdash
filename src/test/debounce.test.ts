@@ -101,8 +101,9 @@ describe2('debounce', () => {
     assert.strictEqual(callCounts[1], 1)
 
     setTimeout(() => {
-      assert.deepStrictEqual(callCounts, [1, 2])
 
+      assert.strictEqual(callCounts[0], 1)
+      assert.strictEqual(callCounts[1], 2)
       withLeading()
       assert.strictEqual(callCounts[0], 2)
 
@@ -194,7 +195,8 @@ describe2('debounce', () => {
     }
     const actual = [Boolean(withoutCount), Boolean(withCount)]
     setTimeout(() => {
-      assert.deepStrictEqual(actual, [false, true])
+      assert.strictEqual(actual[0], false)
+      assert.strictEqual(actual[1], true)
       done()
     }, 1)
   })

@@ -18,9 +18,11 @@
  * ```
  */
 export function isBuffer(value: any): value is Buffer {
-  const nativeIsBuffer = Buffer?.isBuffer;
-  if (nativeIsBuffer) {
-    return nativeIsBuffer(value);
+  if (typeof Buffer == 'object') {
+    const nativeIsBuffer = Buffer?.isBuffer;
+    if (nativeIsBuffer) {
+      return nativeIsBuffer(value);
+    }
   }
   const className = value?.constructor?.name;
   return className == 'Buffer';

@@ -87,6 +87,11 @@ import differenceBy from './differenceBy';
 import groupBy from './groupBy';
 import curry from './curry';
 import eq from './eq';
+import constant from './constant';
+import keys from './keys';
+import times from './times';
+import reject from './reject';
+import ary from './ary';
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -99,9 +104,10 @@ export {
   isEqual, isError, sum, sumBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
-  isNull, isMap, isString, isObject, isNumber,
-  max, min, maxBy, minBy, slice, replace, trim,
-  countBy, differenceBy, groupBy, curry, eq
+  isNull, isMap, isString, isObject, isNumber, times,
+  max, min, maxBy, minBy, slice, replace, trim, keys,
+  countBy, differenceBy, groupBy, curry, eq, constant,
+  reject, ary
 };
 
 export default {
@@ -115,8 +121,9 @@ export default {
   isEqual, isError, sum, sumBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
-  isNull, isMap, isString, isObject, isNumber,
-  max, min, maxBy, minBy, slice, replace, trim,
-  countBy, differenceBy, groupBy, curry, eq
+  isNull, isMap, isString, isObject, isNumber, times,
+  max, min, maxBy, minBy, slice, replace, trim, keys,
+  countBy, differenceBy, groupBy, curry, eq, constant,
+  reject, ary
 };
 
