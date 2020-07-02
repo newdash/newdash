@@ -11,6 +11,7 @@
 [![Netlify](https://img.shields.io/netlify/267b7429-c295-4d0e-90d0-97d772b9a821?label=docs)](https://newdash.netlify.fornever.org/)
 
 [![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash?label=newdash)](https://www.npmjs.com/package/@newdash/newdash)
+[![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash-deno?label=deno)](https://www.npmjs.com/package/@newdash/newdash-deno)
 [![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash-es5?label=es5)](https://www.npmjs.com/package/@newdash/newdash-es5)
 [![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash-es6?label=es6)](https://www.npmjs.com/package/@newdash/newdash-es6)
 [![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash-umd?label=umd)](https://www.npmjs.com/package/@newdash/newdash-umd)
@@ -56,8 +57,7 @@ add(1, 2)
 add('1', '2')
 // => '12'
 add('1', 2) // typescript type check for deno
-// error: TS2345 [ERROR]: Argument of type '2' is not assignable to parameter of type '"1"'.
-// console.log(add('1', 2))
+// throw error: TS2345 [ERROR]: Argument of type '2' is not assignable to parameter of type '"1"'.
 ```
 
 ## [API Document](https://newdash.netlify.fornever.org/)
