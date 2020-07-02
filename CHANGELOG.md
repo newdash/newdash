@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.9.0](https://github.com/newdash/newdash/compare/v5.8.0...v5.9.0) (2020-07-02)
+
+
+### Features
+
+* [#32](https://github.com/newdash/newdash/issues/32) & groupBy functions ([c302d52](https://github.com/newdash/newdash/commit/c302d520b4df2160b1afe26d42bfbb7c6f53194a))
+* [#32](https://github.com/newdash/newdash/issues/32) generic types ([c69a214](https://github.com/newdash/newdash/commit/c69a2142a4050e0dafbf6faf55fac9ec95045da4))
+* [#7](https://github.com/newdash/newdash/issues/7) deno all tests ([0a24310](https://github.com/newdash/newdash/commit/0a2431036f36863361ed22b3e26cf7b4be1d937f))
+* [#7](https://github.com/newdash/newdash/issues/7) deno support more ([9095af6](https://github.com/newdash/newdash/commit/9095af6fe8c0a3130d52047445c23e3270e1d686))
+* difference functions ([6fb0524](https://github.com/newdash/newdash/commit/6fb05247f23f20361e28af927730f8f079c55eb3))
+
+
+### Bug Fixes
+
+* [#7](https://github.com/newdash/newdash/issues/7) deno ci error ([e16a9ba](https://github.com/newdash/newdash/commit/e16a9ba1762ee0d13d287c26c5bfb0dd7aa80ebd))
+* alias issue ([7d2aaee](https://github.com/newdash/newdash/commit/7d2aaeeada0c43a3307c2fa982995ee5169cad13))
+* assert function [#7](https://github.com/newdash/newdash/issues/7) ([b9b9316](https://github.com/newdash/newdash/commit/b9b93164fe8ac360615879ff70a06432ad824488))
+* deno build ci ([669113c](https://github.com/newdash/newdash/commit/669113ce11c00956416f1931b277d041de9e1bf3))
+
 ## [5.8.0](https://github.com/newdash/newdash/compare/v5.7.0...v5.8.0) (2020-06-27)
 
 
