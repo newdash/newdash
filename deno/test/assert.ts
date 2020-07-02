@@ -1,4 +1,5 @@
 import { assertStrictEquals, assert, assertNotEquals, equal, assertEquals, AssertionError, assertThrows } from "https://deno.land/std/testing/asserts.ts"
+import { isCyclic } from "./cycle.ts"
 
 export const strictEqual = assertStrictEquals
 export const ok = assert
@@ -13,7 +14,14 @@ export function notStrictEqual(actual: any, expect: any) {
 }
 
 export const notEqual = assertNotEquals
-export const deepStrictEqual = assertEquals
+
+export function deepStrictEqual(actual: any, expected: any, m: any): any {
+  // if object is circular object, not check it for deno language
+  if (isCyclic(actual) || isCyclic([expected])) {
+    return
+  }
+  return assertEquals(actual, expected, m)
+}
 export const throws = assertThrows
 
 export default {

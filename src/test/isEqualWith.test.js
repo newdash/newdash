@@ -15,6 +15,7 @@ describe('isEqualWith', () => {
       object1 = { 'a': [1, 2], 'b': null },
       object2 = { 'a': [1, 2], 'b': null }
 
+    // circular reference objects
     object1.b = object2
     object2.b = object1
 
@@ -29,10 +30,10 @@ describe('isEqualWith', () => {
     isEqualWith(object1, object2, function () {
       const length = arguments.length,
         args = slice.call(arguments, 0, length - (length > 2 ? 1 : 0))
-
       argsList.push(args)
     })
 
+    // deno assert not support circular reference
     assert.deepStrictEqual(argsList, expected)
   })
 
