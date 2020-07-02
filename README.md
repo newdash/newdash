@@ -24,20 +24,13 @@
 ### Traditional NodeJS
 
 ```js
-const { first } = require("@newdash/newdash")
-first("abc")
-// => "a"
-```
-
-### Load Single Module
-
-```js
+// const { first } = require("@newdash/newdash")
 const { first } = require("@newdash/newdash/first") // Compatible with es6 module
 first("abc")
 // => "a"
 ```
 
-### ES6 & Typescript
+### ES6 or Typescript
 
 ```js
 // import { first } from "@newdash/newdash" // load all functions of @newdash
@@ -46,7 +39,7 @@ first("abc")
 // => "a"
 ```
 
-## Deno
+### Deno Language
 
 ```js
 // import { add } from "https://cdn.jsdelivr.net/npm/@newdash/newdash-deno@5.9.0/index.ts"
@@ -67,6 +60,7 @@ add('1', 2) // typescript type check for deno
 In most cases, just use the `@newdash/newdash` package is enough.
 
 * `@newdash/newdash` - for modern `nodejs` environment, ready for all build tools which based on the nodejs `commonjs` module system (node, react, vuejs, webpack and more).
+* `@newdash/newdash-deno` - for deno language support, with some transform, like add the '.ts' suffix for modules.
 * `@newdash/newdash-es5` - for old `nodejs` environment, ready for `0.12 <= node version <= 8`.
 * `@newdash/newdash-es6` - for modern build system, with `es6` module keywords so that build tool could strip the unused modules.
 * `@newdash/newdash-umd` - for native browser without any build system, please access it with `unpkg` or `jsdeliver`
