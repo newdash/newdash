@@ -1,10 +1,13 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { slice, noop, stubA, falsey, stubFalse, isNpm, mapCaches } from './utils'
 import isMatchWith from '../isMatchWith'
 import isString from '../isString'
 import last from '../last'
 import partial from '../partial'
+import map from '../map'
+import each from '../each'
+import constant from '../constant'
+import toArray from '../toArray'
 
 describe('isMatchWith', () => {
   it('should provide correct `customizer` arguments', () => {
@@ -61,11 +64,11 @@ describe('isMatchWith', () => {
 
     assert.strictEqual(actual, true)
 
-    const expected = lodashStable.map(falsey, stubFalse)
+    const expected = map(falsey, stubFalse)
 
     actual = []
-    lodashStable.each(falsey, (value) => {
-      actual.push(isMatchWith(object, { 'a': 2 }, lodashStable.constant(value)))
+    each(falsey, (value) => {
+      actual.push(isMatchWith(object, { 'a': 2 }, constant(value)))
     })
 
     assert.deepStrictEqual(actual, expected)
@@ -87,7 +90,7 @@ describe('isMatchWith', () => {
   it('should ensure `customizer` is a function', () => {
     const object = { 'a': 1 },
       matches = partial(isMatchWith, object),
-      actual = lodashStable.map([object, { 'a': 2 }], matches)
+      actual = map([object, { 'a': 2 }], matches)
 
     assert.deepStrictEqual(actual, [true, false])
   })
@@ -109,10 +112,10 @@ describe('isMatchWith', () => {
       var set2 = new Set
       set2.add(value)
     }
-    lodashStable.each([[map1, map2], [set1, set2]], (pair, index) => {
+    each([[map1, map2], [set1, set2]], (pair, index) => {
       if (pair[0]) {
         const argsList = [],
-          array = lodashStable.toArray(pair[0]),
+          array = toArray(pair[0]),
           object1 = { 'a': pair[0] },
           object2 = { 'a': pair[1] }
 

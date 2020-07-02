@@ -1,9 +1,10 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { falsey, args, slice, symbol, realm } from './utils'
 import isNil from '../isNil'
+import map from '../map'
 
 describe('isNil', () => {
+
   it('should return `true` for nullish values', () => {
     assert.strictEqual(isNil(null), true)
     assert.strictEqual(isNil(), true)
@@ -11,9 +12,9 @@ describe('isNil', () => {
   })
 
   it('should return `false` for non-nullish values', () => {
-    const expected = lodashStable.map(falsey, (value) => value == null)
+    const expected = map(falsey, (value) => value == null)
 
-    const actual = lodashStable.map(falsey, (value, index) => index ? isNil(value) : isNil())
+    const actual = map(falsey, (value, index) => index ? isNil(value) : isNil())
 
     assert.deepStrictEqual(actual, expected)
 
