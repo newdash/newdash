@@ -15,21 +15,20 @@ import compareAscending from './compareAscending'
  * @returns {number} Returns the sort order indicator for `object`.
  */
 function compareMultiple(object, other, orders) {
-  let index = -1
-  const objCriteria = object.criteria
-  const othCriteria = other.criteria
-  const length = objCriteria.length
-  const ordersLength = orders.length
+  var index = -1,
+    objCriteria = object.criteria,
+    othCriteria = other.criteria,
+    length = objCriteria.length,
+    ordersLength = orders.length;
 
   while (++index < length) {
-    const order = index < ordersLength ? orders[index] : null
-    const cmpFn = (order && typeof order === 'function') ? order: compareAscending
-    const result = cmpFn(objCriteria[index], othCriteria[index])
+    var result = compareAscending(objCriteria[index], othCriteria[index]);
     if (result) {
-      if (order && typeof order !== 'function') {
-        return result * (order == 'desc' ? -1 : 1)
+      if (index >= ordersLength) {
+        return result;
       }
-      return result
+      var order = orders[index];
+      return result * (order == 'desc' ? -1 : 1);
     }
   }
   // Fixes an `Array#sort` bug in the JS engine embedded in Adobe applications
@@ -39,7 +38,7 @@ function compareMultiple(object, other, orders) {
   //
   // This also ensures a stable sort in V8 and other engines.
   // See https://bugs.chromium.org/p/v8/issues/detail?id=90 for more details.
-  return object.index - other.index
+  return object.index - other.index;
 }
 
 export default compareMultiple

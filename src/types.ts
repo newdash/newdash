@@ -37,11 +37,20 @@ interface AccumulatorIteratee<T, R> {
  * @template R return type
  */
 export type CollectionIteratee<T = any, R = any> = Iteratee<T, R>
-
+/**
+ * @ignore
+ */
 export type AccCollectionIteratee<T = any, R = any> = AccumulatorIteratee<T, R>
-
+/**
+ * @ignore
+ */
 export type KeyIteratee = string | number
-
+/**
+ * @ignore
+ */
 export type Entry<T = any> = [string, T]
 
-
+/**
+ * @ignore
+ */
+export type ArrayAble<T> = T | Array<T>

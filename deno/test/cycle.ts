@@ -10,7 +10,7 @@ export function isCyclic(obj: any): boolean {
       }
       objects.add(obj);
       for (var key in obj) {
-        if (obj.hasOwnProperty(key) && detect(obj[key])) {
+        if (typeof obj.hasOwnProperty == "function" && obj.hasOwnProperty(key) && detect(obj[key])) {
           return true;
         }
       }

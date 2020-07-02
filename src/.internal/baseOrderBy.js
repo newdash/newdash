@@ -1,10 +1,10 @@
-import baseEach from './baseEach'
 import baseSortBy from './baseSortBy'
-import baseGet from './baseGet'
+import baseUnary from './baseUnary'
 import compareMultiple from './compareMultiple'
-import isArrayLike from '../isArrayLike'
-
-const identity = (value) => value
+import arrayMap from './arrayMap'
+import getIteratee from './getIteratee'
+import baseMap from './baseMap'
+import identity from './identity'
 
 /**
  * The base implementation of `orderBy` without param guards.
@@ -16,34 +16,19 @@ const identity = (value) => value
  * @returns {Array} Returns the new sorted array.
  */
 function baseOrderBy(collection, iteratees, orders) {
-  if (iteratees.length) {
-    iteratees = iteratees.map((iteratee) => {
-      if (Array.isArray(iteratee)) {
-        return (value) => baseGet(value, iteratee.length === 1 ? iteratee[0] : iteratee)
-      }
+  var index = -1;
+  iteratees = arrayMap(iteratees.length ? iteratees : [identity], baseUnary(getIteratee()));
 
-      return iteratee
-    })
-  } else {
-    iteratees = [identity]
-  }
+  var result = baseMap(collection, function(value, key, collection) {
+    var criteria = arrayMap(iteratees, function(iteratee) {
+      return iteratee(value);
+    });
+    return { 'criteria': criteria, 'index': ++index, 'value': value };
+  });
 
-  let criteriaIndex = -1
-  let eachIndex = -1
-
-  const result = isArrayLike(collection) ? new Array(collection.length) : []
-
-  baseEach(collection, (value) => {
-    const criteria = iteratees.map((iteratee) => iteratee(value))
-
-    result[++eachIndex] = {
-      criteria,
-      index: ++criteriaIndex,
-      value
-    }
-  })
-
-  return baseSortBy(result, (object, other) => compareMultiple(object, other, orders))
+  return baseSortBy(result, function(object, other) {
+    return compareMultiple(object, other, orders);
+  });
 }
 
 export default baseOrderBy
