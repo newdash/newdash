@@ -1,5 +1,6 @@
 import baseAssignValue from './.internal/baseAssignValue';
 import createAggregator from './.internal/createAggregator';
+import { Collection, CollectionIteratee, KeyIteratee } from './types';
 
 /**
  * Used to check objects for own properties.
@@ -10,13 +11,14 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
 /**
  * @ignore
  */
-const internalGroupBy = createAggregator((result, value, key) => {
+const internalGroupBy = createAggregator((result: any, value: any, key: any) => {
   if (hasOwnProperty.call(result, key)) {
     result[key].push(value);
   } else {
     baseAssignValue(result, key, [value]);
   }
 });
+
 
 /**
  * Creates an object composed of keys generated from the results of running
@@ -27,9 +29,9 @@ const internalGroupBy = createAggregator((result, value, key) => {
  *
  * @since 5.5.0
  * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} [iteratee=identity] The iteratee to transform keys.
- * @returns {Object} Returns the composed aggregate object.
+ * @param collection The collection to iterate over.
+ * @param identity The iteratee to transform keys.
+ * @returns Returns the composed aggregate object.
  * @example
  *
  * ```js
@@ -41,8 +43,11 @@ const internalGroupBy = createAggregator((result, value, key) => {
  * // => { '3': ['one', 'two'], '5': ['three'] }
  * ```
  */
-export function groupBy(result, value?, key?) {
-  return internalGroupBy(result, value, key);
+export function groupBy<T, K>(result: Collection<T>): Record<string, Array<T>>;
+export function groupBy<T, K>(result: Collection<T>, iteratee: KeyIteratee): Record<string, Array<T>>;
+export function groupBy<T, K>(result: Collection<T>, iteratee: CollectionIteratee<T, any>): Record<string, Array<T>>;
+export function groupBy(result: any, iteratee?: any): any {
+  return internalGroupBy(result, iteratee);
 }
 
 export default groupBy;

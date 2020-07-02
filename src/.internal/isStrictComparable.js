@@ -9,7 +9,7 @@ import isObject from '../isObject'
  *  equality comparisons, else `false`.
  */
 function isStrictComparable(value) {
-  return value === value && !isObject(value)
+  return value === value && !isObject(value);
 }
 
 export default isStrictComparable

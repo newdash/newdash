@@ -4,15 +4,15 @@ import debounce from '../debounce'
 import identity from "../.internal/identity";
 import { platform } from "os";
 
-var d = describe
+let describe2 = describe
 if (platform() == "darwin") {
   // setTimeout is Unstable on MacOS,
   // maybe caused by resource schedule,
   // so skip these tests
-  d = describe.skip
+  describe2 = describe.skip
 }
 
-d('debounce', () => {
+describe2('debounce', () => {
 
   it('should debounce a function', (done) => {
     let callCount = 0
@@ -101,8 +101,9 @@ d('debounce', () => {
     assert.strictEqual(callCounts[1], 1)
 
     setTimeout(() => {
-      assert.deepStrictEqual(callCounts, [1, 2])
 
+      assert.strictEqual(callCounts[0], 1)
+      assert.strictEqual(callCounts[1], 2)
       withLeading()
       assert.strictEqual(callCounts[0], 2)
 
@@ -194,7 +195,8 @@ d('debounce', () => {
     }
     const actual = [Boolean(withoutCount), Boolean(withCount)]
     setTimeout(() => {
-      assert.deepStrictEqual(actual, [false, true])
+      assert.strictEqual(actual[0], false)
+      assert.strictEqual(actual[1], true)
       done()
     }, 1)
   })

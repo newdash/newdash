@@ -2,7 +2,6 @@ import path from "path";
 import memoize from '../memoize'
 import attempt from "../attempt";
 import filter from "../filter"
-import constant from "../constant";
 import forOwn from "../forOwn";
 import assign from "../assign";
 import each from "../each"
@@ -266,7 +265,7 @@ try {
 } catch (e) { }
 
 /** Load stable Lodash. */
-const lodashStable = require('../index')
+import lodashStable from "../index";
 
 /** The `lodash` function to test. */
 const _ = root._ || (root._ = lodashStable)
@@ -367,19 +366,6 @@ function getUnwrappedValue(wrapper) {
 }
 
 /**
- * Loads the module of `id`. If the module has an `exports.default`, the
- * exported default value is returned as the resolved module.
- *
- * @private
- * @param {string} id The identifier of the module to resolve.
- * @returns {*} Returns the resolved module.
- */
-function interopRequire(id) {
-  const result = require(id)
-  return 'default' in result ? result['default'] : result
-}
-
-/**
  * Sets a non-enumerable property value on `object`.
  *
  * Note: This function is used to avoid a bug in older versions of V8 where
@@ -429,135 +415,6 @@ function skipAssert(assert, count) {
 function toArgs(array) {
   return (function () { return arguments }.apply(undefined, array))
 }
-
-/*--------------------------------------------------------------------------*/
-
-// Add other realm values from the `vm` module.
-attempt(() => {
-  assign(realm, require('vm').runInNewContext([
-    '(function() {',
-    '  var noop = function() {},',
-    '      root = this;',
-    '',
-    '  var object = {',
-    "    'ArrayBuffer': root.ArrayBuffer,",
-    "    'arguments': (function() { return arguments; }(1, 2, 3)),",
-    "    'array': [1],",
-    "    'arrayBuffer': root.ArrayBuffer ? new root.ArrayBuffer : undefined,",
-    "    'boolean': Object(false),",
-    "    'date': new Date,",
-    "    'errors': [new Error, new EvalError, new RangeError, new ReferenceError, new SyntaxError, new TypeError, new URIError],",
-    "    'function': noop,",
-    "    'map': root.Map ? new root.Map : undefined,",
-    "    'nan': NaN,",
-    "    'null': null,",
-    "    'number': Object(0),",
-    "    'object': { 'a': 1 },",
-    "    'promise': root.Promise ? Promise.resolve(1) : undefined,",
-    "    'regexp': /x/,",
-    "    'set': root.Set ? new root.Set : undefined,",
-    "    'string': Object('a'),",
-    "    'symbol': root.Symbol ? root.Symbol() : undefined,",
-    "    'undefined': undefined,",
-    "    'weakMap': root.WeakMap ? new root.WeakMap : undefined,",
-    "    'weakSet': root.WeakSet ? new root.WeakSet : undefined",
-    '  };',
-    '',
-    `  ['${arrayViews.join("', '")}'].forEach(function(type) {`,
-    '    var Ctor = root[type]',
-    '    object[type] = Ctor;',
-    '    object[type.toLowerCase()] = Ctor ? new Ctor(new ArrayBuffer(24)) : undefined;',
-    '  });',
-    '',
-    '  return object;',
-    '}());'
-  ].join('\n')))
-})
-
-// Add other realm values from an iframe.
-attempt(() => {
-  _._realm = realm
-
-  const iframe = document.createElement('iframe')
-  iframe.frameBorder = iframe.height = iframe.width = 0
-  body.appendChild(iframe)
-
-  var idoc = (idoc = iframe.contentDocument || iframe.contentWindow).document || idoc
-  idoc.write([
-    '<html>',
-    '<body>',
-    '<script>',
-    'var _ = parent._,',
-    '    noop = function() {},',
-    '    root = this;',
-    '',
-    'var object = {',
-    "  'ArrayBuffer': root.ArrayBuffer,",
-    "  'arguments': (function() { return arguments; }(1, 2, 3)),",
-    "  'array': [1],",
-    "  'arrayBuffer': root.ArrayBuffer ? new root.ArrayBuffer : undefined,",
-    "  'boolean': Object(false),",
-    "  'date': new Date,",
-    "  'element': document.body,",
-    "  'errors': [new Error, new EvalError, new RangeError, new ReferenceError, new SyntaxError, new TypeError, new URIError],",
-    "  'function': noop,",
-    "  'map': root.Map ? new root.Map : undefined,",
-    "  'nan': NaN,",
-    "  'null': null,",
-    "  'number': Object(0),",
-    "  'object': { 'a': 1 },",
-    "  'promise': root.Promise ? Promise.resolve(1) : undefined,",
-    "  'regexp': /x/,",
-    "  'set': root.Set ? new root.Set : undefined,",
-    "  'string': Object('a'),",
-    "  'symbol': root.Symbol ? root.Symbol() : undefined,",
-    "  'undefined': undefined,",
-    "  'weakMap': root.WeakMap ? new root.WeakMap : undefined,",
-    "  'weakSet': root.WeakSet ? new root.WeakSet : undefined",
-    '};',
-    '',
-    `_.each(['${arrayViews.join("', '")}'], function(type) {`,
-    '  var Ctor = root[type];',
-    '  object[type] = Ctor;',
-    '  object[type.toLowerCase()] = Ctor ? new Ctor(new ArrayBuffer(24)) : undefined;',
-    '});',
-    '',
-    'Object.assign(_._realm, object);',
-    '</script>',
-    '</body>',
-    '</html>'
-  ].join('\n'))
-
-  idoc.close()
-  delete _._realm
-})
-
-// Add a web worker.
-attempt(() => {
-  const worker = new Worker(`./asset/worker?t=${+new Date}`)
-  worker.addEventListener('message', (e) => {
-    _._VERSION = e.data || ''
-  }, false)
-
-  worker.postMessage(ui.buildPath)
-})
-
-// Expose internal modules for better code coverage.
-attempt(() => {
-  const path = require('path'),
-    basePath = path.dirname(filePath)
-
-  if (isModularize && !(amd || isNpm)) {
-    each([
-      'baseEach',
-      'isIndex',
-      'isIterateeCall',
-      'memoizeCapped'
-    ], (funcName) => {
-      _[`_${funcName}`] = interopRequire(path.join(basePath, `_${funcName}`))
-    })
-  }
-})
 
 export {
   HOT_COUNT,
@@ -653,7 +510,6 @@ export {
   CustomError,
   emptyObject,
   getUnwrappedValue,
-  interopRequire,
   setProperty,
   skipAssert,
   toArgs

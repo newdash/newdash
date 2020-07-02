@@ -6,7 +6,7 @@ import isBuffer from '../isBuffer'
 describe('isBuffer', () => {
 
   it('should return `true` for buffers', () => {
-    if (Buffer) {
+    if (typeof Buffer == "object") {
       assert.strictEqual(isBuffer(Buffer.alloc(2)), true)
     }
   })
@@ -33,8 +33,9 @@ describe('isBuffer', () => {
   })
 
   it('should return `false` if `Buffer` is not defined', () => {
-    if (!isStrict && Buffer && lodashBizarro) {
+    if (!isStrict && typeof Buffer == "object" && lodashBizarro) {
       assert.strictEqual(lodashBizarro.isBuffer(Buffer.alloc(2)), false)
     }
   })
+
 })

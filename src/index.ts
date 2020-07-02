@@ -71,7 +71,6 @@ import { isString } from './isString';
 import { isObject } from './isObject';
 import { isNumber } from './isNumber';
 
-
 import { take } from './take';
 import { uniq } from './uniq';
 import { size } from './size';
@@ -84,6 +83,18 @@ import slice from './slice';
 import trim from './trim';
 import replace from './replace';
 import countBy from './countBy';
+import differenceBy from './differenceBy';
+import groupBy from './groupBy';
+import curry from './curry';
+import eq from './eq';
+import constant from './constant';
+import keys from './keys';
+import times from './times';
+import reject from './reject';
+import ary from './ary';
+import fromEntries from './fromEntries';
+import isEqualWith from './isEqualWith';
+
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -96,9 +107,10 @@ export {
   isEqual, isError, sum, sumBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
-  isNull, isMap, isString, isObject, isNumber,
-  max, min, maxBy, minBy, slice, replace, trim,
-  countBy
+  isNull, isMap, isString, isObject, isNumber, times,
+  max, min, maxBy, minBy, slice, replace, trim, keys,
+  countBy, differenceBy, groupBy, curry, eq, constant,
+  reject, ary, fromEntries, isEqualWith
 };
 
 export default {
@@ -112,8 +124,9 @@ export default {
   isEqual, isError, sum, sumBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
-  isNull, isMap, isString, isObject, isNumber,
-  max, min, maxBy, minBy, slice, replace, trim,
-  countBy
+  isNull, isMap, isString, isObject, isNumber, times,
+  max, min, maxBy, minBy, slice, replace, trim, keys,
+  countBy, differenceBy, groupBy, curry, eq, constant,
+  reject, ary, fromEntries, isEqualWith
 };
 

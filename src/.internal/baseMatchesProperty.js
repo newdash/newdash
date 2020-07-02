@@ -20,14 +20,14 @@ const COMPARE_UNORDERED_FLAG = 2
  */
 function baseMatchesProperty(path, srcValue) {
   if (isKey(path) && isStrictComparable(srcValue)) {
-    return matchesStrictComparable(toKey(path), srcValue)
+    return matchesStrictComparable(toKey(path), srcValue);
   }
-  return (object) => {
-    const objValue = get(object, path)
+  return function(object) {
+    var objValue = get(object, path);
     return (objValue === undefined && objValue === srcValue)
       ? hasIn(object, path)
-      : baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG)
-  }
+      : baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG);
+  };
 }
 
 export default baseMatchesProperty

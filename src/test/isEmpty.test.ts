@@ -22,7 +22,7 @@ describe('isEmpty', () => {
     assert.strictEqual(isEmpty(symbol), true)
     assert.strictEqual(isEmpty(), true)
 
-    if (Buffer) {
+    if (typeof Buffer == "object") {
       assert.strictEqual(isEmpty(Buffer.alloc(0)), true)
       assert.strictEqual(isEmpty(Buffer.alloc(1)), false)
     }

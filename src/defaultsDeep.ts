@@ -15,12 +15,14 @@ import mergeWith from './mergeWith';
  * @see defaults
  * @example
  *
+ * ```js
  * defaultsDeep({ 'a': { 'b': 2 } }, { 'a': { 'b': 1, 'c': 3 } })
  * // => { 'a': { 'b': 2, 'c': 3 } }
+ * ```
  */
-function defaultsDeep(...args) {
+export function defaultsDeep(...args: any[]): any {
   args.push(undefined, customDefaultsMerge);
-  return mergeWith.apply(undefined, args);
+  return mergeWith(...args);
 }
 
 export default defaultsDeep;

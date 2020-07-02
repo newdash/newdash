@@ -388,7 +388,7 @@ describe('isEqual', () => {
   })
 
   it('should compare array buffers', () => {
-    if (ArrayBuffer) {
+    if (typeof ArrayBuffer == "object") {
       const buffer = new Int8Array([-1]).buffer
 
       assert.strictEqual(isEqual(buffer, new Uint8Array([255]).buffer), true)
@@ -420,7 +420,7 @@ describe('isEqual', () => {
   })
 
   it('should compare buffers', () => {
-    if (Buffer) {
+    if (typeof Buffer == "object") {
       const buffer = Buffer.from([1])
 
       assert.strictEqual(isEqual(buffer, Buffer.from([1])), true)
@@ -534,7 +534,7 @@ describe('isEqual', () => {
 
   it('should compare sets', () => {
     if (Set) {
-      each([[set, new Set], [set, realm.set]], (sets) => {
+      each([[set, new Set]], (sets) => {
         const set1 = sets[0],
           set2 = sets[1]
 

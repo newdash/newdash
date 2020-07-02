@@ -37,11 +37,13 @@ describe('isFunction', () => {
   })
 
   it('should return `true` for array view constructors', () => {
-    const expected = map(arrayViews, (type) => objToString.call(global[type]) == funcTag)
+    if (typeof global == "object") {
+      const expected = map(arrayViews, (type) => objToString.call(global[type]) == funcTag)
 
-    const actual = map(arrayViews, (type) => isFunction(global[type]))
+      const actual = map(arrayViews, (type) => isFunction(global[type]))
 
-    assert.deepStrictEqual(actual, expected)
+      assert.deepStrictEqual(actual, expected)
+    }
   })
 
   it('should return `false` for non-functions', () => {

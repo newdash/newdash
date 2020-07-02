@@ -1,13 +1,16 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { burredLetters, _, stubArray } from './utils'
+import { burredLetters, stubArray } from './utils'
 import words from '../words'
+import map from '../map'
+import each from '../each'
+import times from '../times'
 
 describe('words', () => {
-  it('should match words containing Latin Unicode letters', () => {
-    const expected = lodashStable.map(burredLetters, (letter) => [letter])
 
-    const actual = lodashStable.map(burredLetters, (letter) => words(letter))
+  it('should match words containing Latin Unicode letters', () => {
+    const expected = map(burredLetters, (letter) => [letter])
+
+    const actual = map(burredLetters, (letter) => words(letter))
 
     assert.deepStrictEqual(actual, expected)
   })
@@ -41,16 +44,16 @@ describe('words', () => {
   it('should not treat contractions as separate words', () => {
     const postfixes = ['d', 'll', 'm', 're', 's', 't', 've']
 
-    lodashStable.each(["'", '\u2019'], (apos) => {
-      lodashStable.times(2, (index) => {
-        const actual = lodashStable.map(postfixes, (postfix) => {
+    each(["'", '\u2019'], (apos) => {
+      times(2, (index) => {
+        const actual = map(postfixes, (postfix) => {
           const string = `a b${apos}${postfix} c`
           return words(string[index ? 'toUpperCase' : 'toLowerCase']())
         })
 
-        const expected = lodashStable.map(postfixes, (postfix) => {
+        const expected = map(postfixes, (postfix) => {
           const words = ['a', `b${apos}${postfix}`, 'c']
-          return lodashStable.map(words, (word) => word[index ? 'toUpperCase' : 'toLowerCase']())
+          return map(words, (word) => word[index ? 'toUpperCase' : 'toLowerCase']())
         })
 
         assert.deepStrictEqual(actual, expected)
@@ -61,10 +64,10 @@ describe('words', () => {
   it('should not treat ordinal numbers as separate words', () => {
     const ordinals = ['1st', '2nd', '3rd', '4th']
 
-    lodashStable.times(2, (index) => {
-      const expected = lodashStable.map(ordinals, (ordinal) => [ordinal[index ? 'toUpperCase' : 'toLowerCase']()])
+    times(2, (index) => {
+      const expected = map(ordinals, (ordinal) => [ordinal[index ? 'toUpperCase' : 'toLowerCase']()])
 
-      const actual = lodashStable.map(expected, (expectedWords) => words(expectedWords[0]))
+      const actual = map(expected, (expectedWords) => words(expectedWords[0]))
 
       assert.deepStrictEqual(actual, expected)
     })
@@ -72,8 +75,8 @@ describe('words', () => {
 
   it('should not treat mathematical operators as words', () => {
     const operators = ['\xac', '\xb1', '\xd7', '\xf7'],
-      expected = lodashStable.map(operators, stubArray),
-      actual = lodashStable.map(operators, words)
+      expected = map(operators, stubArray),
+      actual = map(operators, words)
 
     assert.deepStrictEqual(actual, expected)
   })
@@ -85,8 +88,8 @@ describe('words', () => {
       '\u205d', '\u205e'
     ]
 
-    const expected = lodashStable.map(marks, stubArray),
-      actual = lodashStable.map(marks, words)
+    const expected = map(marks, stubArray),
+      actual = map(marks, words)
 
     assert.deepStrictEqual(actual, expected)
   })
@@ -95,11 +98,11 @@ describe('words', () => {
     const largeWordLen = 50000,
       largeWord = 'A'.repeat(largeWordLen),
       maxMs = 1000,
-      startTime = lodashStable.now()
+      startTime = Date.now()
 
     assert.deepStrictEqual(words(`${largeWord}ÆiouAreVowels`), [largeWord, 'Æiou', 'Are', 'Vowels'])
 
-    const endTime = lodashStable.now(),
+    const endTime = Date.now(),
       timeSpent = endTime - startTime
 
     assert.ok(timeSpent < maxMs, `operation took ${timeSpent}ms`)

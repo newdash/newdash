@@ -1,7 +1,7 @@
 {
   "name": "@newdash/newdash",
   "description": "javascript utility library",
-  "version": "5.8.0",
+  "version": "5.10.0",
   "license": "MIT",
   "main": "./dist/node/index",
   "engines": {
@@ -13,13 +13,13 @@
   },
   "contributors": [
     {
-      "name": "Lodash Contributors",
-      "url": "https://github.com/lodash/lodash"
-    },
-    {
       "name": "Theo Sun",
       "email": "theo.sun@outlook.com",
       "url": "https://github.com/Soontao"
+    },
+    {
+      "name": "Lodash Contributors",
+      "url": "https://github.com/lodash/lodash"
     }
   ],
   "scripts": {
@@ -38,21 +38,21 @@
     "release": "standard-version --no-verify && git push --follow-tags origin master"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.2",
-    "@babel/plugin-syntax-typescript": "^7.10.1",
-    "@types/jest": "^26.0.0",
-    "@typescript-eslint/eslint-plugin": "^3.2.0",
-    "@typescript-eslint/parser": "^3.2.0",
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-syntax-typescript": "^7.10.4",
+    "@types/jest": "^26.0.3",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
     "eslint": "^7.2.0",
-    "jest": "^26.0.1",
+    "jest": "^26.1.0",
     "standard-version": "^8.0.0",
     "terser-webpack-plugin": "^3.0.3",
-    "ts-jest": "^26.1.0",
+    "ts-jest": "^26.1.1",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.5",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.12"
   },
   "keywords": [
     "javascript",

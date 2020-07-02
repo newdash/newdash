@@ -1,10 +1,13 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { slice, noop, stubC, falsey, stubFalse } from './utils'
 import isEqualWith from '../isEqualWith'
 import isString from '../isString'
 import without from '../without'
 import partial from '../partial'
+import map from '../map'
+import each from '../each'
+import toArray from "../toArray";
+import constant from '../constant'
 
 describe('isEqualWith', () => {
   it('should provide correct `customizer` arguments', () => {
@@ -12,6 +15,7 @@ describe('isEqualWith', () => {
       object1 = { 'a': [1, 2], 'b': null },
       object2 = { 'a': [1, 2], 'b': null }
 
+    // circular reference objects
     object1.b = object2
     object2.b = object1
 
@@ -23,13 +27,13 @@ describe('isEqualWith', () => {
       [object1.b, object2.b, 'b', object1.b, object2.b]
     ]
 
-    isEqualWith(object1, object2, function() {
+    isEqualWith(object1, object2, function () {
       const length = arguments.length,
         args = slice.call(arguments, 0, length - (length > 2 ? 1 : 0))
-
       argsList.push(args)
     })
 
+    // deno assert not support circular reference
     assert.deepStrictEqual(argsList, expected)
   })
 
@@ -40,7 +44,7 @@ describe('isEqualWith', () => {
   })
 
   it('should not handle comparisons when `customizer` returns `true`', () => {
-    const customizer = function(value) {
+    const customizer = function (value) {
       return isString(value) || undefined
     }
 
@@ -50,7 +54,7 @@ describe('isEqualWith', () => {
   })
 
   it('should not handle comparisons when `customizer` returns `false`', () => {
-    const customizer = function(value) {
+    const customizer = function (value) {
       return isString(value) ? false : undefined
     }
 
@@ -64,11 +68,11 @@ describe('isEqualWith', () => {
     assert.strictEqual(actual, true)
 
     const values = without(falsey, undefined),
-      expected = lodashStable.map(values, stubFalse)
+      expected = map(values, stubFalse)
 
     actual = []
-    lodashStable.each(values, (value) => {
-      actual.push(isEqualWith('a', 'a', lodashStable.constant(value)))
+    each(values, (value) => {
+      actual.push(isEqualWith('a', 'a', constant(value)))
     })
 
     assert.deepStrictEqual(actual, expected)
@@ -77,7 +81,7 @@ describe('isEqualWith', () => {
   it('should ensure `customizer` is a function', () => {
     const array = [1, 2, 3],
       eq = partial(isEqualWith, array),
-      actual = lodashStable.map([array, [1, 0, 3]], eq)
+      actual = map([array, [1, 0, 3]], eq)
 
     assert.deepStrictEqual(actual, [true, false])
   })
@@ -99,10 +103,10 @@ describe('isEqualWith', () => {
       var set2 = new Set
       set2.add(value)
     }
-    lodashStable.each([[map1, map2], [set1, set2]], (pair, index) => {
+    each([[map1, map2], [set1, set2]], (pair, index) => {
       if (pair[0]) {
         const argsList = [],
-          array = lodashStable.toArray(pair[0])
+          array = toArray(pair[0])
 
         const expected = [
           [pair[0], pair[1]],
@@ -114,7 +118,7 @@ describe('isEqualWith', () => {
         if (index) {
           expected.length = 2
         }
-        isEqualWith(pair[0], pair[1], function() {
+        isEqualWith(pair[0], pair[1], function () {
           const length = arguments.length,
             args = slice.call(arguments, 0, length - (length > 2 ? 1 : 0))
 

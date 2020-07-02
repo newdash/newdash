@@ -1,1 +1,5 @@
-export { default } from './forEachRight';
+import { forEachRight } from './forEachRight';
+
+export const eachRight = forEachRight;
+
+export default forEachRight;

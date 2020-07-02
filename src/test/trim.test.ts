@@ -1,33 +1,35 @@
+import assert from "assert"
 import { trimPrefix } from "../trimPrefix";
 import { trimSuffix } from "../trimSuffix";
+
 
 describe('trim test suite', () => {
 
   it('should trim prefix', () => {
 
-    expect(trimPrefix("aaa", "a")).toBe("aa")
-    expect(trimPrefix("aaa", "c")).toBe("aaa")
-    expect(trimPrefix("aaa", "aaa")).toBe("")
-    expect(trimPrefix(" aa", " ")).toBe("aa")
 
-    expect(trimPrefix("123456", "123")).toBe("456")
-    expect(trimPrefix("123456")).toBe("123456")
+    assert.equal(trimPrefix("aaa", "a"), "aa")
+    assert.equal(trimPrefix("aaa", "c"), "aaa")
+    assert.equal(trimPrefix("aaa", "aaa"), "")
+    assert.equal(trimPrefix(" aa", " "), "aa")
+
+    assert.equal(trimPrefix("123456", "123"), "456")
+    assert.equal(trimPrefix("123456"), "123456")
 
 
   });
 
   it('should trim suffix', () => {
 
-    expect(trimSuffix("aaa", "a")).toBe("aa")
-    expect(trimSuffix("aaa", "c")).toBe("aaa")
-    expect(trimSuffix(" aa", " ")).toBe(" aa")
-    expect(trimSuffix(" aa", " aaa")).toBe(" aa")
-    expect(trimSuffix(" aa", "aa")).toBe(" ")
-    expect(trimSuffix(" aa", " aa")).toBe("")
+    assert.equal(trimSuffix("aaa", "a"), "aa")
+    assert.equal(trimSuffix("aaa", "c"), "aaa")
+    assert.equal(trimSuffix(" aa", " "), " aa")
+    assert.equal(trimSuffix(" aa", " aaa"), " aa")
+    assert.equal(trimSuffix(" aa", "aa"), " ")
+    assert.equal(trimSuffix(" aa", " aa"), "")
 
-    expect(trimSuffix("123456789", "789")).toBe("123456")
-    expect(trimSuffix("123456789", "4789")).toBe("123456789")
-
+    assert.equal(trimSuffix("123456789", "789"), "123456")
+    assert.equal(trimSuffix("123456789", "4789"), "123456789")
 
   });
 

@@ -1,6 +1,7 @@
 import { WRAP_BIND_FLAG } from "./CONSTANTS";
 import createCtor from "./createCtor";
 import apply from "./apply";
+import root from "./root";
 
 /**
  * Creates a function that wraps `func` to invoke it with the `this` binding

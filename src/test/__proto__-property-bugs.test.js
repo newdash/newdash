@@ -138,7 +138,9 @@ describe('`__proto__` property bugs', () => {
 
     zipObjectDeep([`__proto__.${notExistKey}`], [testValue]); // try to prototype pollution
 
-    expect(global[notExistKey]).toBeUndefined();
+    if (typeof global == "object") {
+      assert.equal(global[notExistKey], undefined);
+    }
 
   });
 

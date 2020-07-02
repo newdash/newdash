@@ -2,35 +2,15 @@ import isArray from './isArray';
 import baseMap from './.internal/baseMap';
 import arrayMap from './.internal/arrayMap';
 import getIteratee from './.internal/getIteratee';
+import { Collection, CollectionIteratee, Tuple } from './types';
 
-/**
- * @ignore
- */
-interface Iteratee<T, R, K> {
-  (value?: T, key?: K): R
-}
-
-/**
- * @ignore
- */
-type ArrayIteratee<T = any, R = any> = Iteratee<T, R, number>
-
-/**
- * @ignore
- */
-type ObjectIteratee<T = any, R = any> = Iteratee<T, R, string>
-
-/**
- * @ignore
- */
-type Tuple<T> = { [K in keyof T]: T[K] };
 
 /**
  * Creates an array of values by running each element in `collection` thru
  * `iteratee`. The iteratee is invoked with three arguments:
  * (value, index|key, collection).
  *
- * Many lodash methods are guarded to work as iteratees for methods like
+ * Many lodash methods are guarded to work as iteratee for methods like
  * `every`, `filter`, `map`, `mapValues`, `reject`, and `some`.
  *
  * The guarded methods are:
@@ -65,12 +45,11 @@ type Tuple<T> = { [K in keyof T]: T[K] };
  * ```
  *
  */
-function map<T extends any[] | []>(collection: T): Tuple<T>;
-function map<T>(collection: Record<string, T>): T[];
-function map<T, R>(collection: Array<T>, iteratee?: ArrayIteratee<T, R>): R[];
-function map<T, R>(collection: Record<string, T>, iteratee?: ObjectIteratee<T, R>): R[];
-function map(collection: any, iteratee?: any): [];
-function map(collection: any, iteratee?: any) {
+export function map<T extends any[] | []>(collection: T): Tuple<T>;
+export function map<T>(collection: Record<string, T>): T[];
+export function map<T, R>(collection: Collection<T>, iteratee: CollectionIteratee<T, R>): R[];
+export function map(collection: any, iteratee?: any): [];
+export function map(collection: any, iteratee?: any) {
 
   const oIteratee = getIteratee(iteratee, 3);
   if (isArray(collection)) {
@@ -79,7 +58,5 @@ function map(collection: any, iteratee?: any) {
   return baseMap(collection as any, oIteratee);
 
 }
-
-export { map };
 
 export default map;

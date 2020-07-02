@@ -412,7 +412,7 @@ export const nativeObjectToString = objectProto.toString;
 export const objectCtorString = funcToString.call(Object);
 
 /** Built-in value references. */
-export const allocUnsafe = Buffer ? Buffer.allocUnsafe : undefined,
+export const allocUnsafe = typeof Buffer == 'object' ? Buffer.allocUnsafe : undefined,
   getPrototype = overArg(Object.getPrototypeOf, Object),
   objectCreate = Object.create,
   propertyIsEnumerable = objectProto.propertyIsEnumerable,
@@ -432,7 +432,7 @@ export const ctxSetTimeout = setTimeout
 export const nativeCeil = Math.ceil,
   nativeFloor = Math.floor,
   nativeGetSymbols = Object.getOwnPropertySymbols,
-  nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined,
+  nativeIsBuffer = typeof Buffer == 'object' ? Buffer.isBuffer : undefined,
   nativeIsFinite = isFinite,
   nativeJoin = arrayProto.join,
   nativeKeys = overArg(Object.keys, Object),

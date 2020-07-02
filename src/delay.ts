@@ -30,7 +30,7 @@ export function delay<T extends(...args: any[]) => any>(func: T, wait: number = 
   if (!isFunction(func)) {
     throw new TypeError(FUNC_ERROR_TEXT);
   }
-  return setTimeout(() => { func.apply(undefined, args); }, wait);
+  return setTimeout(() => { func(...args); }, wait);
 }
 
 export default delay;

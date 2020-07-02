@@ -1,13 +1,14 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { args, falsey, stubA, stubB, noop } from './utils'
+import { falsey, stubA, stubB, noop } from './utils'
 import nthArg from '../nthArg'
+import map from '../map'
+import range from '../range'
 
 describe('nthArg', () => {
   const args = ['a', 'b', 'c', 'd']
 
   it('should create a function that returns its nth argument', () => {
-    const actual = lodashStable.map(args, (value, index) => {
+    const actual = map(args, (value, index) => {
       const func = nthArg(index)
       return func.apply(undefined, args)
     })
@@ -16,7 +17,7 @@ describe('nthArg', () => {
   })
 
   it('should work with a negative `n`', () => {
-    const actual = lodashStable.map(lodashStable.range(1, args.length + 1), (n) => {
+    const actual = map(range(1, args.length + 1), (n) => {
       const func = nthArg(-n)
       return func.apply(undefined, args)
     })
@@ -26,9 +27,9 @@ describe('nthArg', () => {
 
   it('should coerce `n` to an integer', () => {
     let values = falsey,
-      expected = lodashStable.map(values, stubA)
+      expected = map(values, stubA)
 
-    let actual = lodashStable.map(values, (n) => {
+    let actual = map(values, (n) => {
       const func = n ? nthArg(n) : nthArg()
       return func.apply(undefined, args)
     })
@@ -36,9 +37,9 @@ describe('nthArg', () => {
     assert.deepStrictEqual(actual, expected)
 
     values = ['1', 1.6]
-    expected = lodashStable.map(values, stubB)
+    expected = map(values, stubB)
 
-    actual = lodashStable.map(values, (n) => {
+    actual = map(values, (n) => {
       const func = nthArg(n)
       return func.apply(undefined, args)
     })
@@ -53,13 +54,14 @@ describe('nthArg', () => {
 
   it('should return `undefined` for non-indexes', () => {
     const values = [Infinity, args.length],
-      expected = lodashStable.map(values, noop)
+      expected = map(values, noop)
 
-    const actual = lodashStable.map(values, (n) => {
+    const actual = map(values, (n) => {
       const func = nthArg(n)
       return func.apply(undefined, args)
     })
 
     assert.deepStrictEqual(actual, expected)
   })
+
 })

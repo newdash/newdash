@@ -3,7 +3,7 @@
  *
  * @ignore
  * @private
- * @since 0.1.0
+ * @since 5.10.0
  * @category Util
  * @param value Any value.
  * @returns Returns `value`.

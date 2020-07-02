@@ -1,7 +1,9 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { falsey, stubArray } from './utils'
 import chunk from '../chunk'
+import map from '../map'
+import { isUndefined } from "../isUndefined";
+import reject from '../reject'
 
 describe('chunk', () => {
   const array = [0, 1, 2, 3, 4, 5]
@@ -17,18 +19,18 @@ describe('chunk', () => {
   })
 
   it('should treat falsey `size` values, except `undefined`, as `0`', () => {
-    const expected = lodashStable.map(falsey, (value) => value === undefined ? [[0], [1], [2], [3], [4], [5]] : [])
+    const expected = map(falsey, (value) => value === undefined ? [[0], [1], [2], [3], [4], [5]] : [])
 
-    const actual = lodashStable.map(falsey, (size, index) => index ? chunk(array, size) : chunk(array))
+    const actual = map(falsey, (size, index) => index ? chunk(array, size) : chunk(array))
 
     assert.deepStrictEqual(actual, expected)
   })
 
   it('should ensure the minimum `size` is `0`', () => {
-    const values = lodashStable.reject(falsey, lodashStable.isUndefined).concat(-1, -Infinity),
-      expected = lodashStable.map(values, stubArray)
+    const values = reject(falsey, isUndefined).concat(-1, -Infinity),
+      expected = map(values, stubArray)
 
-    const actual = lodashStable.map(values, (n) => chunk(array, n))
+    const actual = map(values, (n) => chunk(array, n))
 
     assert.deepStrictEqual(actual, expected)
   })

@@ -4,6 +4,7 @@ import map from '../map'
 import constant from '../constant'
 
 describe('groupBy', () => {
+
   const array = [6.1, 4.2, 6.3]
 
   it('should transform keys by `iteratee`', () => {
@@ -20,6 +21,10 @@ describe('groupBy', () => {
 
     assert.deepStrictEqual(actual, expected)
   })
+
+  it('should allow empty iteratee', () => {
+    assert.deepStrictEqual(groupBy([1, 1, 2, 3]), { '1': [1, 1], '2': [2], '3': [3] })
+  });
 
   it('should work with `_.property` shorthands', () => {
     const actual = groupBy(['one', 'two', 'three'], 'length')
