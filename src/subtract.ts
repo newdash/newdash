@@ -1,18 +1,32 @@
 import createMathOperation from './.internal/createMathOperation';
 
 /**
+ * @ignore
+ * @private
+ * @internal
+ */
+const internal = createMathOperation((minuend, subtrahend) => minuend - subtrahend, 0);
+
+/**
  * Subtract two numbers.
  *
- * @since 4.0.0
+ * @since 5.10.0
  * @category Math
- * @param {number} minuend The first number in a subtraction.
- * @param {number} subtrahend The second number in a subtraction.
- * @returns {number} Returns the difference.
+ * @param minuend The first number in a subtraction.
+ * @param subtrahend The second number in a subtraction.
+ * @returns Returns the difference.
  * @example
  *
+ * ```js
  * subtract(6, 4)
  * // => 2
+ * ```
  */
-const subtract = createMathOperation((minuend, subtrahend) => minuend - subtrahend, 0);
+export function subtract(minuend: string, subtrahend: string): number;
+export function subtract(minuend: number, subtrahend: number): number;
+export function subtract<T>(minuend: T, subtrahend: T): T;
+export function subtract(minuend: any, subtrahend: any): any {
+  return internal(minuend, subtrahend);
+};
 
 export default subtract;

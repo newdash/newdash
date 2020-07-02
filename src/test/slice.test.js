@@ -1,6 +1,5 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { falsey, LARGE_ARRAY_SIZE } from './utils'
+import { falsey } from './utils'
 import slice from '../slice'
 import each from '../each'
 import map from '../map'

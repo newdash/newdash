@@ -92,6 +92,8 @@ import keys from './keys';
 import times from './times';
 import reject from './reject';
 import ary from './ary';
+import fromEntries from './fromEntries';
+
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -107,7 +109,7 @@ export {
   isNull, isMap, isString, isObject, isNumber, times,
   max, min, maxBy, minBy, slice, replace, trim, keys,
   countBy, differenceBy, groupBy, curry, eq, constant,
-  reject, ary
+  reject, ary, fromEntries
 };
 
 export default {
@@ -124,6 +126,6 @@ export default {
   isNull, isMap, isString, isObject, isNumber, times,
   max, min, maxBy, minBy, slice, replace, trim, keys,
   countBy, differenceBy, groupBy, curry, eq, constant,
-  reject, ary
+  reject, ary, fromEntries
 };
 

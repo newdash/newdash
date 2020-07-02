@@ -42,4 +42,6 @@ export type AccCollectionIteratee<T = any, R = any> = AccumulatorIteratee<T, R>
 
 export type KeyIteratee = string | number
 
+export type Entry<T = any> = [string, T]
+
 
