@@ -1,6 +1,6 @@
-import { assertStrictEq, assert, assertNotEquals, equal, assertEquals, AssertionError, assertThrows } from "https://deno.land/std/testing/asserts.ts"
+import { assertStrictEquals, assert, assertNotEquals, equal, assertEquals, AssertionError, assertThrows } from "https://deno.land/std/testing/asserts.ts"
 
-export const strictEqual = assertStrictEq
+export const strictEqual = assertStrictEquals
 export const ok = assert
 
 export function notStrictEqual(actual: any, expect: any) {

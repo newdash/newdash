@@ -1,8 +1,9 @@
 # NewDash
 
 [![CircleCI](https://img.shields.io/circleci/build/github/newdash/newdash?label=circleci)](https://app.circleci.com/pipelines/github/newdash/newdash)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/newdash/newdash/Github%20CI?label=nodejs)](https://github.com/newdash/newdash/actions?query=workflow%3A%22Github+CI%22)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/newdash/newdash/Deno%20CI?label=deno)](https://github.com/newdash/newdash/actions?query=workflow%3A%22Deno+CI%22)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/newdash/newdash/Github%20CI?label=nodejs%20test)](https://github.com/newdash/newdash/actions?query=workflow%3A%22Github+CI%22)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/newdash/newdash/Deno%20CI?label=deno%20test)](https://github.com/newdash/newdash/actions?query=workflow%3A%22Deno+CI%22)
+
 [![Codecov](https://codecov.io/gh/newdash/newdash/branch/master/graph/badge.svg)](https://codecov.io/gh/newdash/newdash)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=newdash_newdash&metric=alert_status)](https://sonarcloud.io/dashboard?id=newdash_newdash)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=newdash_newdash&metric=security_rating)](https://sonarcloud.io/dashboard?id=newdash_newdash)
