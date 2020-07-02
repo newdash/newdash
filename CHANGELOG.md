@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.10.0](https://github.com/newdash/newdash/compare/v5.9.0...v5.10.0) (2020-07-02)
+
+
+### Features
+
+* fromEntries function ([14bd91a](https://github.com/newdash/newdash/commit/14bd91ac99ea6f7dbc8e5dd8d46d078e8ff87db8))
+* isEqualWith function ([20238d5](https://github.com/newdash/newdash/commit/20238d535621d88c57fbd57cd37a44d97636708b))
+* isMatchWith function ([4e3d49b](https://github.com/newdash/newdash/commit/4e3d49b0e3fee00c766b015a5ecc11fd4f51ef17))
+* nthArg function ([6931bf5](https://github.com/newdash/newdash/commit/6931bf55351acb63835cb61662dd89021601ff57))
+* orderby function ([926f8bc](https://github.com/newdash/newdash/commit/926f8bca15e9b36287de8c317c6450ce34e50aaa))
+
 ## [5.9.0](https://github.com/newdash/newdash/compare/v5.8.0...v5.9.0) (2020-07-02)
 
 
