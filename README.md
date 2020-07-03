@@ -21,7 +21,7 @@
 
 ## Quick Start
 
-### Traditional NodeJS
+### NodeJS
 
 ```js
 // const { first } = require("@newdash/newdash")
@@ -42,14 +42,14 @@ first("abc")
 ### Deno Language
 
 ```js
-// import { add } from "https://cdn.jsdelivr.net/npm/@newdash/newdash-deno@5.9.0/index.ts"
-import { add } from "https://cdn.jsdelivr.net/npm/@newdash/newdash-deno@5.9.0/add.ts"
+// import { add } from "https://deno.land/x/newdash/index.ts"
+import { add } from "https://deno.land/x/newdash/add.ts"
 
 add(1, 2)
 // => 3
 add('1', '2')
 // => '12'
-add('1', 2) // typescript type check for deno
+add('1', 2) // different types
 // throw error: TS2345 [ERROR]: Argument of type '2' is not assignable to parameter of type '"1"'.
 ```
 
