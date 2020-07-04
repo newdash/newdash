@@ -1,4 +1,6 @@
 import slice from './slice';
+import toInteger from './toInteger';
+import baseSlice from './.internal/baseSlice';
 
 /**
  * Creates a slice of `array` with `n` elements taken from the beginning.
@@ -24,12 +26,13 @@ import slice from './slice';
  * // => []
  * ```
  */
-export function take<T>(array: ArrayLike<T>, n?: number): Array<T>;
-export function take(array: any, n = 1): any {
-  if (!(array != null && array.length)) {
+export function take<T>(array: ArrayLike<T>, n?: number, guard?: any): Array<T>;
+export function take(array: any, n = 1, guard: any): any {
+  if (!(array && array.length)) {
     return [];
   }
-  return slice(array, 0, n < 0 ? 0 : n);
+  n = (guard || n === undefined) ? 1 : toInteger(n);
+  return baseSlice(array, 0, n < 0 ? 0 : n);
 }
 
 export default take;
