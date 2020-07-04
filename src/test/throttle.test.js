@@ -2,7 +2,7 @@ import assert from 'assert'
 import { identity, isModularize, argv, isPhantom } from './utils'
 import throttle from '../throttle'
 import times from '../times'
-
+import { platform } from "os";
 
 let describe2 = describe
 if (platform() == "darwin") {
