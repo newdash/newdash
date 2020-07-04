@@ -110,7 +110,7 @@ describe('`__proto__` property bugs', () => {
 
       const b = 'oldValue'
       zipObjectDeep([keyToTest + '.b'], ['newValue']);
-      assert.equal(b, 'oldValue');
+      assert.strictEqual(b, 'oldValue');
       assert.notEqual(root['b'], 'newValue');
 
       // ensure nothing was created
@@ -139,7 +139,7 @@ describe('`__proto__` property bugs', () => {
     zipObjectDeep([`__proto__.${notExistKey}`], [testValue]); // try to prototype pollution
 
     if (typeof global == "object") {
-      assert.equal(global[notExistKey], undefined);
+      assert.strictEqual(global[notExistKey], undefined);
     }
 
   });

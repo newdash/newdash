@@ -94,6 +94,10 @@ import reject from './reject';
 import ary from './ary';
 import fromEntries from './fromEntries';
 import isEqualWith from './isEqualWith';
+import everyValue from './everyValue';
+import forOwn from './forOwn';
+import forOwnRight from './forOwnRight';
+import throttle from './throttle';
 
 
 export {
@@ -110,7 +114,8 @@ export {
   isNull, isMap, isString, isObject, isNumber, times,
   max, min, maxBy, minBy, slice, replace, trim, keys,
   countBy, differenceBy, groupBy, curry, eq, constant,
-  reject, ary, fromEntries, isEqualWith
+  reject, ary, fromEntries, isEqualWith, everyValue,
+  forOwn, forOwnRight, throttle
 };
 
 export default {
@@ -127,6 +132,7 @@ export default {
   isNull, isMap, isString, isObject, isNumber, times,
   max, min, maxBy, minBy, slice, replace, trim, keys,
   countBy, differenceBy, groupBy, curry, eq, constant,
-  reject, ary, fromEntries, isEqualWith
+  reject, ary, fromEntries, isEqualWith, everyValue,
+  forOwn, forOwnRight, throttle
 };
 

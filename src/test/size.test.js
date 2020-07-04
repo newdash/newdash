@@ -84,4 +84,14 @@ describe('size', () => {
     assert.strictEqual(size(ws), 0)
   });
 
+  it('should support Typed Array', () => {
+
+    if (typeof Uint8Array == "function") {
+      const len = 100
+      const a = new Uint8Array(len)
+      assert.strictEqual(size(a), len)
+    }
+
+  });
+
 })

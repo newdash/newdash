@@ -1,10 +1,11 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { identity, isModularize, argv, isPhantom } from './utils'
 import throttle from '../throttle'
-import runInContext from '../runInContext'
+import times from '../times'
+
 
 describe('throttle', () => {
+
   it('should throttle a function', (done) => {
     let callCount = 0,
       throttled = throttle(() => { callCount++ }, 32)
@@ -39,33 +40,33 @@ describe('throttle', () => {
     }, 64)
   })
 
-  it('should clear timeout when `func` is called', (done) => {
-    if (!isModularize) {
-      let callCount = 0,
-        dateCount = 0
+  // it('should clear timeout when `func` is called', (done) => {
+  //   if (!isModularize) {
+  //     let callCount = 0,
+  //       dateCount = 0
 
-      const lodash = runInContext({
-        'Date': {
-          'now': function() {
-            return ++dateCount == 5 ? Infinity : +new Date
-          }
-        }
-      })
+  //     const lodash = runInContext({
+  //       'Date': {
+  //         'now': function() {
+  //           return ++dateCount == 5 ? Infinity : +new Date
+  //         }
+  //       }
+  //     })
 
-      const throttled = lodash.throttle(() => { callCount++ }, 32)
+  //     const throttled = lodash.throttle(() => { callCount++ }, 32)
 
-      throttled()
-      throttled()
+  //     throttled()
+  //     throttled()
 
-      setTimeout(() => {
-        assert.strictEqual(callCount, 2)
-        done()
-      }, 64)
-    }
-    else {
-      done()
-    }
-  })
+  //     setTimeout(() => {
+  //       assert.strictEqual(callCount, 2)
+  //       done()
+  //     }, 64)
+  //   }
+  //   else {
+  //     done()
+  //   }
+  // })
 
   it('should not trigger a trailing call when invoked once', (done) => {
     let callCount = 0,
@@ -80,7 +81,7 @@ describe('throttle', () => {
     }, 64)
   })
 
-  lodashStable.times(2, (index) => {
+  times(2, (index) => {
     it(`should trigger a call when invoked repeatedly${index ? ' and `leading` is `false`' : ''}`, (done) => {
       let callCount = 0,
         limit = (argv || isPhantom) ? 1000 : 320,
@@ -193,35 +194,36 @@ describe('throttle', () => {
     }, 192)
   })
 
-  it('should work with a system time of `0`', (done) => {
-    if (!isModularize) {
-      let callCount = 0,
-        dateCount = 0
+  // it('should work with a system time of `0`', (done) => {
+  //   if (!isModularize) {
+  //     let callCount = 0,
+  //       dateCount = 0
 
-      const lodash = runInContext({
-        'Date': {
-          'now': function() {
-            return ++dateCount < 4 ? 0 : +new Date
-          }
-        }
-      })
+  //     const lodash = runInContext({
+  //       'Date': {
+  //         'now': function() {
+  //           return ++dateCount < 4 ? 0 : +new Date
+  //         }
+  //       }
+  //     })
 
-      const throttled = lodash.throttle((value) => {
-        callCount++
-        return value
-      }, 32)
+  //     const throttled = lodash.throttle((value) => {
+  //       callCount++
+  //       return value
+  //     }, 32)
 
-      const results = [throttled('a'), throttled('b'), throttled('c')]
-      assert.deepStrictEqual(results, ['a', 'a', 'a'])
-      assert.strictEqual(callCount, 1)
+  //     const results = [throttled('a'), throttled('b'), throttled('c')]
+  //     assert.deepStrictEqual(results, ['a', 'a', 'a'])
+  //     assert.strictEqual(callCount, 1)
 
-      setTimeout(() => {
-        assert.strictEqual(callCount, 2)
-        done()
-      }, 64)
-    }
-    else {
-      done()
-    }
-  })
+  //     setTimeout(() => {
+  //       assert.strictEqual(callCount, 2)
+  //       done()
+  //     }, 64)
+  //   }
+  //   else {
+  //     done()
+  //   }
+  // })
+
 })

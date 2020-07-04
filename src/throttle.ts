@@ -25,20 +25,15 @@ import isObject from './isObject';
  * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
  * for details over the differences between `throttle` and `debounce`.
  *
- * @since 0.1.0
+ * @since 5.11.0
  * @category Function
- * @param {Function} func The function to throttle.
- * @param {number} [wait=0]
- *  The number of milliseconds to throttle invocations to; if omitted,
- *  `requestAnimationFrame` is used (if available).
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=true]
- *  Specify invoking on the leading edge of the timeout.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new throttled function.
+ * @param func The function to throttle.
+ * @param wait The number of milliseconds to delay; if omitted, `requestAnimationFrame` is used (if available).
+ * @param options The options object.
  * @example
  *
+ *
+ * ```js
  * // Avoid excessively updating the position while scrolling.
  * jQuery(window).on('scroll', throttle(updatePosition, 100))
  *
@@ -48,8 +43,9 @@ import isObject from './isObject';
  *
  * // Cancel the trailing throttled invocation.
  * jQuery(window).on('popstate', throttled.cancel)
+ * ```
  */
-function throttle(func, wait, options) {
+export function throttle(func: (...args: any[]) => any, wait = 0, options = { leading: true, trailing: true }) {
   let leading = true;
   let trailing = true;
 

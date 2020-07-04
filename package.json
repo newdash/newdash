@@ -23,7 +23,7 @@
     }
   ],
   "scripts": {
-    "test": "jest --bail",
+    "test": "jest --bail -w 1",
     "test:deno": "deno test ./dist/deno/test/*.test.ts",
     "lint": "tsc --noEmit && eslint .",
     "coverage": "npm test -- --coverage --no-cache",

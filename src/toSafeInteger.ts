@@ -31,7 +31,9 @@ const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || 9007199254740991;
  * // => 3
  * ```
  */
-export function toSafeInteger(value: number): number {
+export function toSafeInteger(value: string): number;
+export function toSafeInteger(value: number): number;
+export function toSafeInteger(value: any): number {
   if (!value) {
     return value === 0 ? value : 0;
   }
