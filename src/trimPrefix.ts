@@ -16,7 +16,7 @@
  * ```
  *
  */
-export function trimPrefix(str = '', prefix = ''): string {
+export function trimPrefix(str: string, prefix: string): string {
   if (prefix.length > str.length) {
     return str;
   }

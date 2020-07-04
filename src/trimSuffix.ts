@@ -15,7 +15,7 @@
  * ```
  *
  */
-export function trimSuffix(str = '', suffix = ''): string {
+export function trimSuffix(str: string, suffix: string): string {
   if (suffix.length > str.length) {
     return str;
   }

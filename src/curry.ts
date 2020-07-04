@@ -1,5 +1,5 @@
-import createWrap from './.internal/createWrap';
 import { WRAP_CURRY_FLAG } from './.internal/CONSTANTS';
+import createCurry from './.internal/createCurry';
 
 /**
  * Creates a function that accepts arguments of `func` and either invokes
@@ -35,20 +35,32 @@ import { WRAP_CURRY_FLAG } from './.internal/CONSTANTS';
  * // => [1, 2, 3]
  *
  * // Curried with placeholders.
- * curried(1)(_, 3)(2);
+ * curried(1)(curry.placeholder, 3)(2);
  * // => [1, 2, 3]
  * ```
  */
 export function curry(func: Function, arity: number = func?.length, guard?: any): Function {
   arity = guard ? undefined : arity;
-  const result = createWrap(func, WRAP_CURRY_FLAG, undefined, undefined, undefined, undefined, undefined, arity);
+  const result = createCurry(func, WRAP_CURRY_FLAG, arity);
+  // default placeholder
+  result['placeholder'] = curry.placeholder;
   return result;
 }
 
+if (typeof Symbol == 'function') {
 
-/**
- * placeholder of curry function
- */
-curry['placeholder'] = '__curry__placeholder__';
+  /**
+   * placeholder of curry function
+   */
+  curry['placeholder'] = Symbol('__curry__placeholder__');
+
+} else {
+
+  /**
+   * placeholder of curry function
+   */
+  curry['placeholder'] = '__curry__placeholder__';
+
+}
 
 export default curry;

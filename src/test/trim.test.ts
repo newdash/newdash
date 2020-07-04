@@ -1,12 +1,12 @@
 import assert from "assert"
 import { trimPrefix } from "../trimPrefix";
 import { trimSuffix } from "../trimSuffix";
+import { curry } from "../curry";
 
 
 describe('trim test suite', () => {
 
   it('should trim prefix', () => {
-
 
     assert.equal(trimPrefix("aaa", "a"), "aa")
     assert.equal(trimPrefix("aaa", "c"), "aaa")
@@ -14,7 +14,6 @@ describe('trim test suite', () => {
     assert.equal(trimPrefix(" aa", " "), "aa")
 
     assert.equal(trimPrefix("123456", "123"), "456")
-    assert.equal(trimPrefix("123456"), "123456")
 
 
   });
@@ -33,5 +32,15 @@ describe('trim test suite', () => {
 
   });
 
+
+  it('should support curry', () => {
+
+    // for curried function, parameters of function can not be optional
+    const tt = curry(trimPrefix)(curry.placeholder, "123")
+
+    assert.equal(tt("123456"), '456')
+    assert.equal(tt("23456"), '23456')
+
+  })
 
 });

@@ -8,6 +8,8 @@
     "moduleResolution": "node",
     "lib": [
       "ES6",
+      "ES2015.Symbol",
+      "ES2017",
       "DOM"
     ]
   },

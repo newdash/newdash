@@ -78,9 +78,8 @@ function createWrap(func, bitmask, thisArg, partials, holders, argPos, ary, arit
   if (!arity && bitmask & (WRAP_CURRY_FLAG | WRAP_CURRY_RIGHT_FLAG)) {
     bitmask &= ~(WRAP_CURRY_FLAG | WRAP_CURRY_RIGHT_FLAG);
   }
-  let result
   if (!bitmask || bitmask == WRAP_BIND_FLAG) {
-    result = createBind(func, bitmask, thisArg);
+    var result = createBind(func, bitmask, thisArg);
   } else if (bitmask == WRAP_CURRY_FLAG || bitmask == WRAP_CURRY_RIGHT_FLAG) {
     result = createCurry(func, bitmask, arity);
   } else if ((bitmask == WRAP_PARTIAL_FLAG || bitmask == (WRAP_BIND_FLAG | WRAP_PARTIAL_FLAG)) && !holders.length) {
