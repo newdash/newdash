@@ -18,8 +18,8 @@ export type Collection<T = any> = Array<T> | Record<string, T>
 export type PlainObject<T = any> = Record<string, T>
 
 interface Iteratee<T, R> {
-  (value?: T, key?: number): R;
-  (value?: T, key?: string): R;
+  (value?: T, key?: number, ref?: Array<T>): R;
+  (value?: T, key?: string, ref?: Record<string, T>): R;
 }
 
 /**

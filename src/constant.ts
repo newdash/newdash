@@ -3,12 +3,13 @@
    *
    *
    *
-   * @since 2.4.0
+   * @since 5.0.0
    * @category Util
-   * @param {*} value The value to return from the new function.
-   * @returns {Function} Returns the new constant function.
+   * @param value The value to return from the new function.
+   * @returns Returns the new constant function.
    * @example
    *
+   * ```js
    * var objects = times(2, constant({ 'a': 1 }));
    *
    * console.log(objects);
@@ -16,8 +17,9 @@
    *
    * console.log(objects[0] === objects[1]);
    * // => true
+   * ```
    */
-function constant(value) {
+export function constant<T>(value: T): () => T {
   return function() {
     return value;
   };

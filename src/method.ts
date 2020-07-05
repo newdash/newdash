@@ -11,6 +11,7 @@ import invoke from './invoke';
  * @returns {Function} Returns the new invoker function.
  * @example
  *
+ * ```js
  * const objects = [
  *   { 'a': { 'b': () => 2 } },
  *   { 'a': { 'b': () => 1 } }
@@ -21,6 +22,7 @@ import invoke from './invoke';
  *
  * map(objects, method(['a', 'b']))
  * // => [2, 1]
+ * ```
  */
 function method(path, args) {
   return (object) => invoke(object, path, args);

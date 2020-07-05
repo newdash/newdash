@@ -1,8 +1,11 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import mapValues from '../mapValues'
+import isEqual from '../isEqual'
+import constant from '../constant'
+import map from '../map'
 
 describe('mapValues', () => {
+  
   const array = [1, 2],
     object = { 'a': 1, 'b': 2 }
 
@@ -24,11 +27,11 @@ describe('mapValues', () => {
   it('should use `_.identity` when `iteratee` is nullish', () => {
     const object = { 'a': 1, 'b': 2 },
       values = [, null, undefined],
-      expected = lodashStable.map(values, lodashStable.constant([true, false]))
+      expected = map(values, constant([true, false]))
 
-    const actual = lodashStable.map(values, (value, index) => {
+    const actual = map(values, (value, index) => {
       const result = index ? mapValues(object, value) : mapValues(object)
-      return [lodashStable.isEqual(result, object), result === object]
+      return [isEqual(result, object), result === object]
     })
 
     assert.deepStrictEqual(actual, expected)

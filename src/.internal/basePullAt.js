@@ -11,22 +11,21 @@ import isIndex from './isIndex'
  * @returns {Array} Returns `array`.
  */
 function basePullAt(array, indexes) {
-  let length = array ? indexes.length : 0
-  const lastIndex = length - 1
+  var length = array ? indexes.length : 0,
+    lastIndex = length - 1;
 
   while (length--) {
-    let previous
-    const index = indexes[length]
-    if (length === lastIndex || index !== previous) {
-      previous = index
+    var index = indexes[length];
+    if (length == lastIndex || index !== previous) {
+      var previous = index;
       if (isIndex(index)) {
-        array.splice(index, 1)
+        Array.prototype.splice.call(array, index, 1);
       } else {
-        baseUnset(array, index)
+        baseUnset(array, index);
       }
     }
   }
-  return array
+  return array;
 }
 
 export default basePullAt
