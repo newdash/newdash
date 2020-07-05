@@ -1,4 +1,3 @@
-import slice from './slice';
 import toInteger from './toInteger';
 import baseSlice from './.internal/baseSlice';
 

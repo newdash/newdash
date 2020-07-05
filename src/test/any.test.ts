@@ -1,6 +1,7 @@
 
 import { any } from "../any";
 import assert from "assert";
+import { assertShouldThrowError } from "./helpers";
 
 
 async function asyncValue(value?: string | Error): Promise<string> {
@@ -14,24 +15,24 @@ async function asyncValue(value?: string | Error): Promise<string> {
 
 describe('any', () => {
 
-  it('should any errors', async () => {
+  it('should collect response when any errors', async () => {
 
     const e1 = new Error()
     const e2 = new Error()
 
     assert.strictEqual(
-      await any([
-        asyncValue(e1),
-        asyncValue("msg")
-      ]),
+      await any([asyncValue(e1), asyncValue("msg")]),
       "msg"
     )
 
-    try {
-      await any([asyncValue(e1), asyncValue(e2)])
-    } catch (errors) {
-      assert.deepStrictEqual(errors, [e1, e2])
-    }
+    await assertShouldThrowError(async () => {
+      try {
+        await any([asyncValue(e1), asyncValue(e2)])
+      } catch (error) {
+        assert.deepStrictEqual(error, [e1, e2])
+        throw new Error("")
+      }
+    })
 
   });
 
