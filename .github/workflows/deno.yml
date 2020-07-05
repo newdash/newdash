@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v2
@@ -22,9 +22,11 @@ jobs:
       with:
         node-version: 14.x
 
-    - name: install deno
-      run: curl -fsSL https://deno.land/x/install/install.sh | sh
-    - run: npm ci
-    - run: npm run build:deno
+    - name: setup Deno
+      uses: denolib/setup-deno@v2
+    - name: install nodejs deps
+      run: npm ci
+    - name: build for deno
+      run: npm run build:deno
     - name: run deno test
-      run: ~/.deno/bin/deno test ./dist/deno/test/
+      run: deno test ./dist/deno/test/

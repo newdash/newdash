@@ -1,7 +1,12 @@
-
+// @ts-nocheck
 
 export function platform(): string {
-  return "linux"
+  switch (Deno.build.os) {
+    case "windows":
+      return "win32"
+    default:
+      return Deno.build.os
+  }
 }
 
 
