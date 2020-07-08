@@ -5,6 +5,9 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  # daily check at 01:00 AM
+  schedule:
+    - cron: '0 1 * * *'
 
 jobs:
 
