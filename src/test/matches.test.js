@@ -1,17 +1,21 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import matches from '../matches'
+import { each } from "../each";
+import { cloneDeep } from "../cloneDeep";
+
 
 describe('matches', () => {
+
   it('should not change behavior if `source` is modified', () => {
+
     const sources = [
       { 'a': { 'b': 2, 'c': 3 } },
       { 'a': 1, 'b': 2 },
       { 'a': 1 }
     ]
 
-    lodashStable.each(sources, (source, index) => {
-      const object = lodashStable.cloneDeep(source),
+    each(sources, (source, index) => {
+      const object = cloneDeep(source),
         par = matches(source)
 
       assert.strictEqual(par(object), true)
@@ -28,5 +32,7 @@ describe('matches', () => {
       assert.strictEqual(par(object), true)
       assert.strictEqual(par(source), false)
     })
+
   })
+
 })

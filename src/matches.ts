@@ -16,10 +16,10 @@ const CLONE_DEEP_FLAG = 1;
  * values against any array or object value, respectively. See `isEqual`
  * for a list of supported value comparisons.
  *
- * @since 3.0.0
+ * @since 5.11.0
  * @category Util
- * @param {Object} source The object of property values to match.
- * @returns {Function} Returns the new spec function.
+ * @param source The object of property values to match.
+ * @returns Returns the new spec function.
  * @example
  *
  * const objects = [
@@ -30,7 +30,8 @@ const CLONE_DEEP_FLAG = 1;
  * filter(objects, matches({ 'a': 4, 'c': 6 }))
  * // => [{ 'a': 4, 'b': 5, 'c': 6 }]
  */
-function matches(source) {
+export function matches<T>(source: Array<T>): (obj: T) => boolean {
+  // @ts-ignore
   return baseMatches(baseClone(source, CLONE_DEEP_FLAG));
 }
 
