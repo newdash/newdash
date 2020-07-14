@@ -1,8 +1,11 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import sortBy from '../sortBy'
+import map from '../map'
+import constant from '../constant'
+
 
 describe('sortBy', () => {
+
   const objects = [
     { 'a': 'x', 'b': 3 },
     { 'a': 'y', 'b': 4 },
@@ -11,7 +14,7 @@ describe('sortBy', () => {
   ]
 
   it('should sort in ascending order by `iteratee`', () => {
-    const actual = lodashStable.map(sortBy(objects, (object) => object.b), 'b')
+    const actual = map(sortBy(objects, (object) => object.b), 'b')
 
     assert.deepStrictEqual(actual, [1, 2, 3, 4])
   })
@@ -19,15 +22,15 @@ describe('sortBy', () => {
   it('should use `_.identity` when `iteratee` is nullish', () => {
     const array = [3, 2, 1],
       values = [, null, undefined],
-      expected = lodashStable.map(values, lodashStable.constant([1, 2, 3]))
+      expected = map(values, constant([1, 2, 3]))
 
-    const actual = lodashStable.map(values, (value, index) => index ? sortBy(array, value) : sortBy(array))
+    const actual = map(values, (value, index) => index ? sortBy(array, value) : sortBy(array))
 
     assert.deepStrictEqual(actual, expected)
   })
 
   it('should work with `_.property` shorthands', () => {
-    const actual = lodashStable.map(sortBy(objects.concat(undefined), 'b'), 'b')
+    const actual = map(sortBy(objects.concat(undefined), 'b'), 'b')
     assert.deepStrictEqual(actual, [1, 2, 3, 4, undefined])
   })
 
@@ -65,7 +68,7 @@ describe('sortBy', () => {
   })
 
   it('should work as an iteratee for methods like `_.map`', () => {
-    const actual = lodashStable.map([[2, 1, 3], [3, 2, 1]], sortBy)
+    const actual = map([[2, 1, 3], [3, 2, 1]], sortBy)
     assert.deepStrictEqual(actual, [[1, 2, 3], [1, 2, 3]])
   })
 })

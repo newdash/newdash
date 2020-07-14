@@ -37,6 +37,11 @@ interface AccumulatorIteratee<T, R> {
  * @template R return type
  */
 export type CollectionIteratee<T = any, R = any> = Iteratee<T, R>
+
+export interface ArrayIteratee<T, R = any> {
+  (value?: T, key?: number, ref?: Array<T>): R;
+}
+
 /**
  * @ignore
  */
