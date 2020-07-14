@@ -1,14 +1,24 @@
-import map from './map';
+import arrayMap from './.internal/arrayMap';
+import { createOver } from './.internal/createOver';
+
+/**
+ * @ignore
+ */
+const internalOver = createOver(arrayMap);
+
+interface OverFunction {
+  <T>(...args: T[]): Array<T>
+  (...args: any[]): Array<any>
+}
 
 /**
  * Creates a function that invokes `iteratees` with the arguments it receives
  * and returns their results.
  *
- * @since 4.0.0
+ * @since 5.11.0
  * @category Util
- * @param {Function[]} [iteratees=[identity]]
- *  The iteratees to invoke.
- * @returns {Function} Returns the new function.
+ * @param iteratees The iteratees to invoke.
+ * @returns Returns the new function.
  * @example
  *
  * ```js
@@ -18,10 +28,8 @@ import map from './map';
  * // => [4, 1]
  * ```
  */
-function over(iteratees: Array<Function>) {
-  return function(...args) {
-    return map(iteratees, (iteratee) => iteratee.apply(this, args));
-  };
+export function over(...iteratees: Array<Function>): OverFunction {
+  return internalOver(...iteratees);
 }
 
 export default over;

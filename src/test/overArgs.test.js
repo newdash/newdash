@@ -3,6 +3,7 @@ import { slice, doubled, square, identity, noop } from './utils'
 import overArgs from '../overArgs'
 
 describe('overArgs', () => {
+
   function fn() {
     return slice.call(arguments)
   }

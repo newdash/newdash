@@ -1,16 +1,26 @@
-import some from './some';
+import { createOver } from './.internal/createOver';
+import { arraySome } from './.internal/arraySome';
+
+interface OverSomeFunction {
+  (...args: any[]): boolean
+}
+
+/**
+ * @ignore
+ */
+const internalOverSome = createOver(arraySome);
 
 /**
  * Creates a function that checks if **any** of the `predicates` return
  * truthy when invoked with the arguments it receives.
  *
- * @since 4.0.0
+ * @since 5.11.0
  * @category Util
- * @param {Function[]} [predicates=[identity]]
- *  The predicates to check.
- * @returns {Function} Returns the new function.
+ * @param predicates The predicates to check.
+ * @returns Returns the new function.
  * @example
  *
+ * ```js
  * const func = overSome([Boolean, isFinite])
  *
  * func('1')
@@ -21,11 +31,10 @@ import some from './some';
  *
  * func(NaN)
  * // => false
+ * ```
  */
-function overSome(iteratees) {
-  return function(...args) {
-    return some(iteratees, (iteratee) => iteratee.apply(this, args));
-  };
+export function overSome(...iteratees: Array<Function>): OverSomeFunction {
+  return internalOverSome(...iteratees);
 }
 
 export default overSome;
