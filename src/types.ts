@@ -45,6 +45,11 @@ export interface ArrayIteratee<T, R = any> {
   (value?: T, key?: number, ref?: Array<T>): R;
 }
 
+export interface RecordIteratee<T, R = any> {
+  (value?: T, key?: string, ref?: Record<string, T>): R;
+}
+
+
 /**
  * @ignore
  */
@@ -80,3 +85,11 @@ type ArrayPath = Array<StringPath>
  */
 export type Path = ArrayPath | StringPath
 
+
+/**
+ * comparator
+ * @ignore
+ */
+export interface Comparator<T = any> {
+  (v1?: T, v2?: T): boolean
+}

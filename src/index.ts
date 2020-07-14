@@ -105,6 +105,10 @@ import over from './over';
 import overArgs from './overArgs';
 import overEvery from './overEvery';
 import overSome from './overSome';
+import pull from './pull';
+import pullAll from './pullAll';
+import pullAllWith from './pullAllWith';
+import takeRight from './takeRight';
 
 
 export {
@@ -123,7 +127,8 @@ export {
   countBy, differenceBy, groupBy, curry, eq, constant,
   reject, ary, fromEntries, isEqualWith, everyValue,
   forOwn, forOwnRight, throttle, mapKeys, mapValues, remove,
-  over, overArgs, overEvery, overSome
+  over, overArgs, overEvery, overSome,
+  pull, pullAll, pullAllWith, takeRight
 };
 
 export default {
@@ -142,6 +147,7 @@ export default {
   countBy, differenceBy, groupBy, curry, eq, constant,
   reject, ary, fromEntries, isEqualWith, everyValue,
   forOwn, forOwnRight, throttle, mapKeys, mapValues, remove,
-  over, overArgs, overEvery, overSome
+  over, overArgs, overEvery, overSome,
+  pull, pullAll, pullAllWith, takeRight
 };
 

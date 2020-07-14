@@ -1,13 +1,15 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
-import { _ } from './utils'
+import { pull } from "../pull";
+import { pullAll } from "../pullAll";
+import { pullAllWith } from "../pullAllWith";
+import each from '../each';
 
 describe('pull methods', () => {
-  lodashStable.each(['pull', 'pullAll', 'pullAllWith'], (methodName) => {
-    const func = _[methodName],
-      isPull = methodName == 'pull'
 
-    function pull(array, values) {
+  each([['pull', pull], ['pullAll', pullAll], ['pullAllWith', pullAllWith]], ([methodName, func]) => {
+    const isPull = methodName == 'pull'
+
+    function testFunc(array, values) {
       return isPull
         ? func.apply(undefined, [array].concat(values))
         : func(array, values)
@@ -15,7 +17,7 @@ describe('pull methods', () => {
 
     it(`\`_.${methodName}\` should modify and return the array`, () => {
       const array = [1, 2, 3],
-        actual = pull(array, [1, 3])
+        actual = testFunc(array, [1, 3])
 
       assert.strictEqual(actual, array)
       assert.deepStrictEqual(array, [2])
@@ -26,7 +28,7 @@ describe('pull methods', () => {
       delete array[1]
       delete array[3]
 
-      pull(array, [1])
+      testFunc(array, [1])
       assert.ok(!('0' in array))
       assert.ok(!('2' in array))
     })
@@ -35,14 +37,14 @@ describe('pull methods', () => {
       const array = [1, 2, 3]
       delete array[1]
 
-      pull(array, [undefined])
+      testFunc(array, [undefined])
       assert.deepStrictEqual(array, [1, 3])
     })
 
     it(`\`_.${methodName}\` should match \`NaN\``, () => {
       const array = [1, NaN, 3, NaN]
 
-      pull(array, [NaN])
+      testFunc(array, [NaN])
       assert.deepStrictEqual(array, [1, 3])
     })
   })

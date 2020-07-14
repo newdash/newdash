@@ -1,8 +1,24 @@
 import baseAssignValue from './.internal/baseAssignValue';
-import reduce from './reduce';
+import createAggregator from './.internal/createAggregator';
+import { ArrayIteratee, RecordIteratee } from './types';
 
-/** Used to check objects for own properties. */
+/**
+ * @ignore
+ */
 const hasOwnProperty = Object.prototype.hasOwnProperty;
+
+
+/**
+ * @ignore
+ */
+const internalCountBy = createAggregator((result, value, key) => {
+  if (hasOwnProperty.call(result, key)) {
+    ++result[key];
+  } else {
+    baseAssignValue(result, key, 1);
+  }
+});
+
 
 /**
  * Creates an object composed of keys generated from the results of running
@@ -12,9 +28,9 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  *
  * @since 5.7.0
  * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} iteratee The iteratee to transform keys.
- * @returns {Object} Returns the composed aggregate object.
+ * @param collection The collection to iterate over.
+ * @param iteratee The iteratee to transform keys.
+ * @returns Returns the composed aggregate object.
  * @example
  *
  * ```js
@@ -28,18 +44,10 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * // => { 'true': 2, 'false': 1 }
  * ```
  */
-export function countBy<T>(collection: ArrayLike<T>, iteratee: any): Record<string, number>;
-export function countBy(collection: any, iteratee: any): Record<string, number>;
-export function countBy(collection: any, iteratee: any): any {
-  return reduce(collection, (result, value, key) => {
-    key = iteratee(value);
-    if (hasOwnProperty.call(result, key)) {
-      ++result[key];
-    } else {
-      baseAssignValue(result, key as any, 1);
-    }
-    return result;
-  }, {});
+export function countBy<T>(collection: ArrayLike<T>, iteratee: ArrayIteratee<T>): Record<string, number>;
+export function countBy<T>(collection: Record<string, T>, iteratee: RecordIteratee<T>): Record<string, number>;
+export function countBy(...args: any[]): any {
+  return internalCountBy(...args);
 }
 
 export default countBy;

@@ -1,7 +1,8 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { identity, stubTrue, stubFalse } from './utils'
 import partition from '../partition'
+import map from '../map'
+import constant from '../constant'
 
 describe('partition', () => {
   const array = [1, 0, 1]
@@ -14,9 +15,9 @@ describe('partition', () => {
 
   it('should use `_.identity` when `predicate` is nullish', () => {
     const values = [, null, undefined],
-      expected = lodashStable.map(values, lodashStable.constant([[1, 1], [0]]))
+      expected = map(values, constant([[1, 1], [0]]))
 
-    const actual = lodashStable.map(values, (value, index) => index ? partition(array, value) : partition(array))
+    const actual = map(values, (value, index) => index ? partition(array, value) : partition(array))
 
     assert.deepStrictEqual(actual, expected)
   })

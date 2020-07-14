@@ -8,21 +8,23 @@ import pullAll from './pullAll';
  * **Note:** Unlike `without`, this method mutates `array`. Use `remove`
  * to remove elements from an array by predicate.
  *
- * @since 2.0.0
+ * @since 5.11.0
  * @category Array
- * @param {Array} array The array to modify.
- * @param {...*} [values] The values to remove.
- * @returns {Array} Returns `array`.
- * @see pullAll, pullAllBy, pullAllWith, pullAt, remove, reject
+ * @param array The array to modify.
+ * @param values The values to remove.
+ * @returns Returns `array`.
+ * @see [[pullAll]], [[pullAllBy]], [[pullAllWith]], [[pullAt]], [[remove]], [[reject]]
  * @example
  *
+ * ```js
  * const array = ['a', 'b', 'c', 'a', 'b', 'c']
  *
  * pull(array, 'a', 'c')
  * console.log(array)
  * // => ['b', 'b']
+ * ```
  */
-function pull(array, ...values) {
+export function pull<T>(array: Array<T>, ...values: T[]): Array<T> {
   return pullAll(array, values);
 }
 

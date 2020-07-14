@@ -1,4 +1,5 @@
-import slice from './slice';
+import toInteger from './toInteger';
+import baseSlice from './.internal/baseSlice';
 
 /**
  * Creates a slice of `array` with `n` elements taken from the end.
@@ -25,13 +26,14 @@ import slice from './slice';
  * ```
  */
 export function takeRight<T>(array: ArrayLike<T>, n?: number): Array<T>;
-export function takeRight(array: any, n = 1): any {
+export function takeRight(array: any, n = 1, guard?: any): any {
   const length = array == null ? 0 : array.length;
   if (!length) {
     return [];
   }
+  n = (guard || n === undefined) ? 1 : toInteger(n);
   n = length - n;
-  return slice(array, n < 0 ? 0 : n, length);
+  return baseSlice(array, n < 0 ? 0 : n, length);
 }
 
 export default takeRight;

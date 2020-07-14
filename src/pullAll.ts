@@ -5,21 +5,23 @@ import basePullAll from './.internal/basePullAll';
  *
  * **Note:** Unlike `difference`, this method mutates `array`.
  *
- * @since 4.0.0
+ * @since 5.11.0
  * @category Array
- * @param {Array} array The array to modify.
- * @param {Array} values The values to remove.
- * @returns {Array} Returns `array`.
- * @see pull, pullAllBy, pullAllWith, pullAt, remove, reject
+ * @param array The array to modify.
+ * @param values The values to remove.
+ * @returns Returns `array`.
+ * @see [[pull]], [[pullAllBy]], [[pullAllWith]], [[pullAt]], [[remove]], [[reject]]
  * @example
  *
+ * ```js
  * const array = ['a', 'b', 'c', 'a', 'b', 'c']
  *
  * pullAll(array, ['a', 'c'])
  * console.log(array)
  * // => ['b', 'b']
+ * ```
  */
-function pullAll(array, values) {
+export function pullAll<T>(array: Array<T>, values: Array<T>): Array<T> {
   return (array != null && array.length && values != null && values.length)
     ? basePullAll(array, values)
     : array;

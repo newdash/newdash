@@ -1,7 +1,14 @@
-import map from '../map'
 import baseIndexOf from './baseIndexOf'
 import baseIndexOfWith from './baseIndexOfWith'
 import copyArray from './copyArray'
+import baseUnary from './baseUnary';
+import arrayMap from './arrayMap';
+
+
+/**
+ * @ignore
+ */
+const splice = Array.prototype.splice
 
 /**
  * The base implementation of `pullAllBy`.
@@ -9,36 +16,35 @@ import copyArray from './copyArray'
  * @private
  * @param {Array} array The array to modify.
  * @param {Array} values The values to remove.
- * @param {Function} [iteratee] The iteratee invoked per element.
+ * @param {any} [iteratee] The iteratee invoked per element.
  * @param {Function} [comparator] The comparator invoked per element.
  * @returns {Array} Returns `array`.
  */
 function basePullAll(array, values, iteratee, comparator) {
-  const indexOf = comparator ? baseIndexOfWith : baseIndexOf
-  const length = values.length
-
-  let index = -1
-  let seen = array
+  var indexOf = comparator ? baseIndexOfWith : baseIndexOf,
+    index = -1,
+    length = values.length,
+    seen = array;
 
   if (array === values) {
-    values = copyArray(values)
+    values = copyArray(values);
   }
   if (iteratee) {
-    seen = map(array, (value) => iteratee(value))
+    seen = arrayMap(array, baseUnary(iteratee));
   }
   while (++index < length) {
-    let fromIndex = 0
-    const value = values[index]
-    const computed = iteratee ? iteratee(value) : value
+    var fromIndex = 0,
+      value = values[index],
+      computed = iteratee ? iteratee(value) : value;
 
     while ((fromIndex = indexOf(seen, computed, fromIndex, comparator)) > -1) {
       if (seen !== array) {
-        seen.splice(fromIndex, 1)
+        splice.call(seen, fromIndex, 1);
       }
-      array.splice(fromIndex, 1)
+      splice.call(array, fromIndex, 1);
     }
   }
-  return array
+  return array;
 }
 
 export default basePullAll
