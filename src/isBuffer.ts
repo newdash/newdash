@@ -18,7 +18,8 @@
  * ```
  */
 export function isBuffer(value: any): value is Buffer {
-  if (typeof Buffer == 'object') {
+  // try to use nodejs native isBuffer
+  if (typeof Buffer == 'function') {
     const nativeIsBuffer = Buffer?.isBuffer;
     if (nativeIsBuffer) {
       return nativeIsBuffer(value);
