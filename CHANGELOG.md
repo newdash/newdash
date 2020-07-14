@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.11.0](https://github.com/newdash/newdash/compare/v5.10.0...v5.11.0) (2020-07-14)
+
+
+### Features
+
+* map functions, remove function ([ff17930](https://github.com/newdash/newdash/commit/ff17930dfe4dc5eb15a3ffe9cb2d66b539022aa1))
+* matches function ([65188d7](https://github.com/newdash/newdash/commit/65188d7382f4246d784d5828034f05ff661ca88a))
+* over functions ([cb614de](https://github.com/newdash/newdash/commit/cb614de6aba10a2ea0cc8cb6b95176f085e92d2b))
+* pull functions & take right test ([159f5dc](https://github.com/newdash/newdash/commit/159f5dc1ac3d001bf94c70c9481123c6c546bbb7))
+* pullAt function ([c4443d8](https://github.com/newdash/newdash/commit/c4443d8f5281fd348f78d335cd811532ec44dc9a))
+* sampleSize, shuffle and other functions ([9e46068](https://github.com/newdash/newdash/commit/9e460681d0ce8e98c983688b17898a90868458d6))
+* take function ([3bc4bb8](https://github.com/newdash/newdash/commit/3bc4bb800363509cfc3a94ce73d85407189b6c90))
+* throttle function ([7b06709](https://github.com/newdash/newdash/commit/7b067094125959b9742bb9ccb059dcfa5a33b2ca))
+
+
+### Bug Fixes
+
+* isBuffer function ([1d20ce6](https://github.com/newdash/newdash/commit/1d20ce6ab0e109551f69cdaa79825e73f0393a8c))
+* **ci:** use fixed deno std library ([92f0513](https://github.com/newdash/newdash/commit/92f05135f43addb9a61830b08a1de2986e86585c))
+* macos test error ([b51947f](https://github.com/newdash/newdash/commit/b51947f550619e8f57c6756617523db375375604))
+* **ci:** for throttle ([3158bf2](https://github.com/newdash/newdash/commit/3158bf2e45c72a809d810ebac1ce3786e9e62920))
+* **ci:** script ([3c207ee](https://github.com/newdash/newdash/commit/3c207ee08870d6261cec392bb1cb779e9fc609d7))
+
 ## [5.10.0](https://github.com/newdash/newdash/compare/v5.9.0...v5.10.0) (2020-07-02)
 
 
