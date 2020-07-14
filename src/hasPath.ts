@@ -8,12 +8,14 @@ import isArray from './isArray';
 /**
  * Checks if `path` is a direct property of `object`.
  *
+ * @internal
+ * @ignore
  * @since 5.0.0
  * @category Object
  * @param {Object} object The object to query.
  * @param {Array|string} path The path to check.
  * @returns {boolean} Returns `true` if `path` exists, else `false`.
- * @see has, hasIn, hasPathIn
+ * @see [[has]], [[hasIn]], [[hasPathIn]]
  * @example
  *
  * ```js

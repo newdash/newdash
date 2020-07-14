@@ -1,5 +1,6 @@
-/** Used to check objects for own properties. */
-const hasOwnProperty = Object.prototype.hasOwnProperty;
+import hasPath from './hasPath';
+import { Path } from './types';
+import { baseHas } from './.internal/baseHas';
 
 /**
  * Checks if `key` is a direct property of `object`.
@@ -7,7 +8,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * @since 5.3.0
  * @category Object
  * @param object The object to query.
- * @param key The key to check.
+ * @param path The key to check.
  * @returns Returns `true` if `key` exists, else `false`.
  * @see [[hasIn]],[[hasPath]],[[hasPathIn]]
  * @example
@@ -23,8 +24,8 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * // => false
  * ```
  */
-export function has(object: any, key: string): boolean {
-  return object != null && hasOwnProperty.call(object, key);
+export function has(object: any, path: Path): boolean {
+  return object != null && hasPath(object, path, baseHas);
 }
 
 export default has;

@@ -101,6 +101,11 @@ import throttle from './throttle';
 import remove from './remove';
 import mapValues from './mapValues';
 import mapKeys from './mapKeys';
+import over from './over';
+import overArgs from './overArgs';
+import overEvery from './overEvery';
+import overSome from './overSome';
+
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -117,7 +122,8 @@ export {
   max, min, maxBy, minBy, slice, replace, trim, keys,
   countBy, differenceBy, groupBy, curry, eq, constant,
   reject, ary, fromEntries, isEqualWith, everyValue,
-  forOwn, forOwnRight, throttle, mapKeys, mapValues, remove
+  forOwn, forOwnRight, throttle, mapKeys, mapValues, remove,
+  over, overArgs, overEvery, overSome
 };
 
 export default {
@@ -135,6 +141,7 @@ export default {
   max, min, maxBy, minBy, slice, replace, trim, keys,
   countBy, differenceBy, groupBy, curry, eq, constant,
   reject, ary, fromEntries, isEqualWith, everyValue,
-  forOwn, forOwnRight, throttle, mapKeys, mapValues, remove
+  forOwn, forOwnRight, throttle, mapKeys, mapValues, remove,
+  over, overArgs, overEvery, overSome
 };
 

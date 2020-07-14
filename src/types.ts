@@ -17,6 +17,9 @@ export type Collection<T = any> = Array<T> | Record<string, T>
  */
 export type PlainObject<T = any> = Record<string, T>
 
+/**
+ * @ignore
+ */
 interface Iteratee<T, R> {
   (value?: T, key?: number, ref?: Array<T>): R;
   (value?: T, key?: string, ref?: Record<string, T>): R;
@@ -59,3 +62,21 @@ export type Entry<T = any> = [string, T]
  * @ignore
  */
 export type ArrayAble<T> = T | Array<T>
+
+
+/**
+ * @ignore
+ */
+type StringPath = string
+/**
+ * @ignore
+ */
+type ArrayPath = Array<StringPath>
+
+/**
+ * path type
+ *
+ * @ignore
+ */
+export type Path = ArrayPath | StringPath
+
