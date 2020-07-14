@@ -5,13 +5,13 @@ import get from '../get'
  *
  * @private
  * @param {Object} object The object to iterate over.
- * @param {string[]} paths The property paths to pick.
+ * @param {(string|number)[]} paths The property paths to pick.
  * @returns {Array} Returns the picked elements.
  */
 function baseAt(object, paths) {
   let index = -1
   const length = paths.length
-  const result = new Array(length)
+  const result = Array(length)
   const skip = object == null
 
   while (++index < length) {

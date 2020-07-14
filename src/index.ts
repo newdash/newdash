@@ -108,6 +108,7 @@ import overSome from './overSome';
 import pull from './pull';
 import pullAll from './pullAll';
 import pullAllWith from './pullAllWith';
+import pullAt from './pullAt';
 import takeRight from './takeRight';
 
 
@@ -128,7 +129,7 @@ export {
   reject, ary, fromEntries, isEqualWith, everyValue,
   forOwn, forOwnRight, throttle, mapKeys, mapValues, remove,
   over, overArgs, overEvery, overSome,
-  pull, pullAll, pullAllWith, takeRight
+  pull, pullAll, pullAllWith, pullAt, takeRight
 };
 
 export default {
@@ -148,6 +149,6 @@ export default {
   reject, ary, fromEntries, isEqualWith, everyValue,
   forOwn, forOwnRight, throttle, mapKeys, mapValues, remove,
   over, overArgs, overEvery, overSome,
-  pull, pullAll, pullAllWith, takeRight
+  pull, pullAll, pullAllWith, pullAt, takeRight
 };
 

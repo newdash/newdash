@@ -1,7 +1,12 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { empties, stubOne, noop, falsey } from './utils'
 import pullAt from '../pullAt'
+import reject from '../reject'
+import transform from '../transform'
+import { isArray } from "../isArray";
+import map from '../map'
+import at from '../at'
+import constant from '../constant'
 
 describe('pullAt', () => {
   it('should modify the array and return removed elements', () => {
@@ -60,19 +65,19 @@ describe('pullAt', () => {
   })
 
   it('should work with non-index paths', () => {
-    const values = lodashStable.reject(empties, (value) => (value === 0) || lodashStable.isArray(value)).concat(-1, 1.1)
+    const values = reject(empties, (value) => (value === 0) || isArray(value)).concat(-1, 1.1)
 
-    const array = lodashStable.transform(values, (result, value) => {
+    const array = transform(values, (result, value) => {
       result[value] = 1
     }, [])
 
-    let expected = lodashStable.map(values, stubOne),
+    let expected = map(values, stubOne),
       actual = pullAt(array, values)
 
     assert.deepStrictEqual(actual, expected)
 
-    expected = lodashStable.map(values, noop)
-    actual = lodashStable.at(array, values)
+    expected = map(values, noop)
+    actual = at(array, values)
 
     assert.deepStrictEqual(actual, expected)
   })
@@ -80,7 +85,7 @@ describe('pullAt', () => {
   it('should preserve the sign of `0`', () => {
     const props = [-0, Object(-0), 0, Object(0)]
 
-    const actual = lodashStable.map(props, (key) => {
+    const actual = map(props, (key) => {
       const array = [-1]
       array['-0'] = -2
       return pullAt(array, key)
@@ -100,21 +105,23 @@ describe('pullAt', () => {
 
     try {
       actual = pullAt(array, 'a.b.c')
-    } catch (e) {}
+    } catch (e) { }
 
     assert.deepStrictEqual(actual, [undefined])
   })
 
   it('should work with a falsey `array` when keys are given', () => {
     const values = falsey.slice(),
-      expected = lodashStable.map(values, lodashStable.constant(Array(4)))
+      expected = map(values, constant(Array(4).fill(undefined)))
 
-    const actual = lodashStable.map(values, (array) => {
+    const actual = map(values, (array) => {
       try {
         return pullAt(array, 0, 1, 'pop', 'push')
-      } catch (e) {}
+      } catch (e) { }
     })
 
     assert.deepStrictEqual(actual, expected)
+
   })
+
 })

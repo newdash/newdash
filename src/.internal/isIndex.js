@@ -1,7 +1,13 @@
-/** Used as references for various `Number` constants. */
-const MAX_SAFE_INTEGER = 9007199254740991
+/**
+ * Used as references for various `Number` constants.
+ * @ignore
+ */
+const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || 9007199254740991
 
-/** Used to detect unsigned integer values. */
+/**
+ * Used to detect unsigned integer values.
+ * @ignore
+ */
 const reIsUint = /^(?:0|[1-9]\d*)$/
 
 /**
@@ -19,7 +25,7 @@ function isIndex(value, length) {
   return !!length &&
     (type === 'number' ||
       (type !== 'symbol' && reIsUint.test(value))) &&
-        (value > -1 && value % 1 == 0 && value < length)
+    (value > -1 && value % 1 == 0 && value < length)
 }
 
 export default isIndex
