@@ -46,7 +46,7 @@ export function multiply(multiplier: any, multiplicand: any): any {
   } else if (isArray(multiplier) || isArray(multiplicand)) {
     const arr = isArray(multiplier) ? multiplier : multiplicand;
     const value = isArray(multiplier) ? multiplicand : multiplier;
-    return map(arr, (v: any) => v * value);
+    return map(arr, (v: any) => internalMultiply(v, value));
   }
   return internalMultiply(multiplier, multiplicand);
 }
