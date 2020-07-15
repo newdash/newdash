@@ -126,7 +126,6 @@ import sortedLastIndexBy from './sortedLastIndexBy';
 import sortedLastIndexOf from './sortedLastIndexOf';
 import mean from './mean';
 import meanBy from './meanBy';
-import product from './product';
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -147,7 +146,7 @@ export {
   over, overArgs, overEvery, overSome, matchesProperty,
   pull, pullAll, pullAllWith, pullAt, takeRight,
   intersection, intersectionBy, intersectionWith,
-  someValues, invertBy, unionBy, method, mean, product,
+  someValues, invertBy, unionBy, method, mean,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf
 };
@@ -171,7 +170,7 @@ export default {
   over, overArgs, overEvery, overSome, matchesProperty,
   pull, pullAll, pullAllWith, pullAt, takeRight,
   intersection, intersectionBy, intersectionWith,
-  someValues, invertBy, unionBy, method, mean, product,
+  someValues, invertBy, unionBy, method, mean,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf
 

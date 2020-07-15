@@ -5,7 +5,7 @@ import map from './map';
 /**
  * Create product from given values.
  *
- * @since 5.11.0
+ * @since 5.12.0
  * @category Math
  * @param v1 value 1
  * @param v2 value 2
