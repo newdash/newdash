@@ -17,7 +17,7 @@ const HALF_MAX_ARRAY_LENGTH = MAX_ARRAY_LENGTH >>> 1
  * @returns {number} Returns the index at which `value` should be inserted
  *  into `array`.
  */
-function baseSortedIndex(array, value, retHighest) {
+export function baseSortedIndex(array, value, retHighest) {
   let low = 0
   let high = array == null ? low : array.length
 

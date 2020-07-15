@@ -1,19 +1,22 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { _ } from './utils'
 import sortBy from '../sortBy'
+import each from '../each'
+import map from '../map'
+import constant from '../constant'
+import { sortedIndex } from "../sortedIndex";
+import { sortedLastIndex } from "../sortedLastIndex";
 
 describe('sortedIndex methods', () => {
-  lodashStable.each(['sortedIndex', 'sortedLastIndex'], (methodName) => {
-    const func = _[methodName],
-      isSortedIndex = methodName == 'sortedIndex'
+  each([['sortedIndex', sortedIndex], ['sortedLastIndex', sortedLastIndex]], ([methodName, func]) => {
+    const isSortedIndex = methodName == 'sortedIndex'
 
     it(`\`_.${methodName}\` should return the insert index`, () => {
       const array = [30, 50],
         values = [30, 40, 50],
         expected = isSortedIndex ? [0, 1, 1] : [1, 1, 2]
 
-      const actual = lodashStable.map(values, (value) => func(array, value))
+      const actual = map(values, (value) => func(array, value))
 
       assert.deepStrictEqual(actual, expected)
     })
@@ -23,16 +26,16 @@ describe('sortedIndex methods', () => {
         values = ['a', 'b', 'c'],
         expected = isSortedIndex ? [0, 1, 1] : [1, 1, 2]
 
-      const actual = lodashStable.map(values, (value) => func(array, value))
+      const actual = map(values, (value) => func(array, value))
 
       assert.deepStrictEqual(actual, expected)
     })
 
     it(`\`_.${methodName}\` should accept a nullish \`array\` and a \`value\``, () => {
       const values = [null, undefined],
-        expected = lodashStable.map(values, lodashStable.constant([0, 0, 0]))
+        expected = map(values, constant([0, 0, 0]))
 
-      const actual = lodashStable.map(values, (array) => [func(array, 1), func(array, undefined), func(array, NaN)])
+      const actual = map(values, (array) => [func(array, 1), func(array, undefined), func(array, NaN)])
 
       assert.deepStrictEqual(actual, expected)
     })
@@ -43,7 +46,7 @@ describe('sortedIndex methods', () => {
         symbol3 = Symbol ? Symbol('c') : null,
         expected = [1, '2', {}, symbol1, symbol2, null, undefined, NaN, NaN]
 
-      lodashStable.each([
+      each([
         [NaN, symbol1, null, 1, '2', {}, symbol2, NaN, undefined],
         ['2', null, 1, symbol1, NaN, {}, NaN, symbol2, undefined]
       ], (array) => {

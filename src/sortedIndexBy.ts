@@ -1,26 +1,29 @@
 import baseSortedIndexBy from './.internal/baseSortedIndexBy';
+import { ArrayIteratee } from './types';
+import getIteratee from './.internal/getIteratee';
 
 /**
  * This method is like `sortedIndex` except that it accepts `iteratee`
  * which is invoked for `value` and each element of `array` to compute their
  * sort ranking. The iteratee is invoked with one argument: (value).
  *
- * @since 4.0.0
+ * @since 5.11.0
  * @category Array
- * @param {Array} array The sorted array to inspect.
- * @param {*} value The value to evaluate.
- * @param {Function} iteratee The iteratee invoked per element.
- * @returns {number} Returns the index at which `value` should be inserted
- *  into `array`.
+ * @param array The sorted array to inspect.
+ * @param value The value to evaluate.
+ * @param iteratee The iteratee invoked per element.
+ * @returns Returns the index at which `value` should be inserted into `array`.
  * @example
  *
+ * ```js
  * const objects = [{ 'n': 4 }, { 'n': 5 }]
  *
  * sortedIndexBy(objects, { 'n': 4 }, ({ n }) => n)
  * // => 0
+ * ```
  */
-function sortedIndexBy(array, value, iteratee) {
-  return baseSortedIndexBy(array, value, iteratee);
+export function sortedIndexBy<T = any>(array: Array<T>, value: T, iteratee: ArrayIteratee<T, number>): number {
+  return baseSortedIndexBy(array, value, getIteratee(iteratee, 2));
 }
 
 export default sortedIndexBy;

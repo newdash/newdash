@@ -5,18 +5,19 @@ import baseSortedIndex from './.internal/baseSortedIndex';
  * index at which `value` should be inserted into `array` in order to
  * maintain its sort order.
  *
- * @since 3.0.0
+ * @since 5.11.0
  * @category Array
- * @param {Array} array The sorted array to inspect.
- * @param {*} value The value to evaluate.
- * @returns {number} Returns the index at which `value` should be inserted
- *  into `array`.
+ * @param array The sorted array to inspect.
+ * @param value The value to evaluate.
+ * @returns Returns the index at which `value` should be inserted into `array`.
  * @example
  *
+ * ```js
  * sortedLastIndex([4, 5, 5, 5, 6], 5)
  * // => 4
+ * ```
  */
-function sortedLastIndex(array, value) {
+export function sortedLastIndex<T = any>(array: Array<T>, value: T): number {
   return baseSortedIndex(array, value, true);
 }
 

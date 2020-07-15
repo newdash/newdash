@@ -1,16 +1,19 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { _, slice, MAX_ARRAY_LENGTH, MAX_ARRAY_INDEX } from './utils'
+import each from '../each'
+import { sortedIndexBy } from "../sortedIndexBy";
+import { sortedLastIndexBy } from "../sortedLastIndexBy";
 
 describe('sortedIndexBy methods', () => {
-  lodashStable.each(['sortedIndexBy', 'sortedLastIndexBy'], (methodName) => {
-    const func = _[methodName],
-      isSortedIndexBy = methodName == 'sortedIndexBy'
+
+  each([['sortedIndexBy', sortedIndexBy], ['sortedLastIndexBy', sortedLastIndexBy]], ([methodName, func]) => {
+
+    const isSortedIndexBy = methodName == 'sortedIndexBy'
 
     it(`\`_.${methodName}\` should provide correct \`iteratee\` arguments`, () => {
       let args
 
-      func([30, 50], 40, function() {
+      func([30, 50], 40, function () {
         args || (args = slice.call(arguments))
       })
 
@@ -31,14 +34,18 @@ describe('sortedIndexBy methods', () => {
       assert.strictEqual(actual, 0)
     })
 
-    it(`\`_.${methodName}\` should support arrays larger than \`MAX_ARRAY_LENGTH / 2\``, () => {
-      lodashStable.each([Math.ceil(MAX_ARRAY_LENGTH / 2), MAX_ARRAY_LENGTH], (length) => {
-        const array = [],
-          values = [MAX_ARRAY_LENGTH, NaN, undefined]
+    each([Math.ceil(MAX_ARRAY_LENGTH / 2), MAX_ARRAY_LENGTH], (length) => {
 
-        array.length = length
 
-        lodashStable.each(values, (value) => {
+      const array = [],
+        values = [MAX_ARRAY_LENGTH, NaN]
+
+
+      array.length = length
+
+      each(values, (value) => {
+
+        it(`\`_.${methodName}\` should support arrays larger than \`MAX_ARRAY_LENGTH / 2\`, value length: ${length}, value: ${value}`, () => {
           let steps = 0
 
           const actual = func(array, value, (value) => {
@@ -46,14 +53,19 @@ describe('sortedIndexBy methods', () => {
             return value
           })
 
-          const expected = (isSortedIndexBy ? !lodashStable.isNaN(value) : lodashStable.isFinite(value))
+          const expected = (isSortedIndexBy ? !isNaN(value) : isFinite(value))
             ? 0
             : Math.min(length, MAX_ARRAY_INDEX)
 
           assert.ok(steps == 32 || steps == 33)
           assert.strictEqual(actual, expected)
+
         })
+
       })
+
+
     })
+
   })
 })

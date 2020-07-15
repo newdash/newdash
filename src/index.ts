@@ -118,6 +118,13 @@ import invertBy from './invertBy';
 import unionBy from './unionBy';
 import method from './method';
 import matchesProperty from './matchesProperty';
+import sortedIndex from './sortedIndex';
+import sortedIndexBy from './sortedIndexBy';
+import sortedIndexOf from './sortedIndexOf';
+import sortedLastIndex from './sortedLastIndex';
+import sortedLastIndexBy from './sortedLastIndexBy';
+import sortedLastIndexOf from './sortedLastIndexOf';
+
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -138,7 +145,9 @@ export {
   over, overArgs, overEvery, overSome, matchesProperty,
   pull, pullAll, pullAllWith, pullAt, takeRight,
   intersection, intersectionBy, intersectionWith,
-  someValues, invertBy, unionBy, method
+  someValues, invertBy, unionBy, method,
+  sortedIndex, sortedIndexBy, sortedIndexOf,
+  sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf
 };
 
 export default {
@@ -160,7 +169,9 @@ export default {
   over, overArgs, overEvery, overSome, matchesProperty,
   pull, pullAll, pullAllWith, pullAt, takeRight,
   intersection, intersectionBy, intersectionWith,
-  someValues, invertBy, unionBy, method
+  someValues, invertBy, unionBy, method,
+  sortedIndex, sortedIndexBy, sortedIndexOf,
+  sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf
 
 };
 
