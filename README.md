@@ -39,7 +39,7 @@ first("abc")
 // => "a"
 ```
 
-### Deno Language
+### Deno Runtime
 
 ```js
 // import { add } from "https://deno.land/x/newdash/index.ts"
