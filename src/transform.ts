@@ -8,7 +8,7 @@ import getIteratee from './.internal/getIteratee';
 import isFunction from './isFunction';
 import baseCreate from './.internal/baseCreate';
 import overArg from './.internal/overArg';
-import { RecordIteratee, AccCollectionIteratee, Collection } from './types';
+import { AccCollectionIteratee, Collection } from './types';
 
 /**
  * @ignore

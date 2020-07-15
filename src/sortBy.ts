@@ -2,8 +2,7 @@ import baseRest from './.internal/baseRest';
 import isIterateeCall from './.internal/isIterateeCall';
 import baseFlatten from './.internal/baseFlatten';
 import baseOrderBy from './.internal/baseOrderBy';
-import identity from './.internal/identity';
-import { Collection, KeyIteratee, ArrayAble, CollectionIteratee, ArrayIteratee } from './types';
+import { KeyIteratee, ArrayAble, ArrayIteratee } from './types';
 
 /**
  * @ignore
