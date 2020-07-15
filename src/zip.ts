@@ -23,10 +23,10 @@ const internalZip = baseRest(unzip);
  * // => [['a', 1, true], ['b', 2, false]]
  * ```
  */
-function zip<T1, T2>(a1: Array<T1>, a2: Array<T2>): [T1, T2][]
-function zip<T1, T2, T3>(a1: Array<T1>, a2: Array<T2>, a3: Array<T3>): [T1, T2, T3][]
-function zip<T1, T2, T3, T4>(a1: Array<T1>, a2: Array<T2>, a3: Array<T3>, a4: Array<T4>): [T1, T2, T3, T4][]
-function zip(...arrays: any[][]): any[][] {
+export function zip<T1, T2>(a1: Array<T1>, a2: Array<T2>): [T1, T2][]
+export function zip<T1, T2, T3>(a1: Array<T1>, a2: Array<T2>, a3: Array<T3>): [T1, T2, T3][]
+export function zip<T1, T2, T3, T4>(a1: Array<T1>, a2: Array<T2>, a3: Array<T3>, a4: Array<T4>): [T1, T2, T3, T4][]
+export function zip(...arrays: any[][]): any[][] {
   return internalZip(...arrays);
 }
 

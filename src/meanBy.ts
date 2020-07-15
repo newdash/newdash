@@ -1,5 +1,6 @@
 import baseSum from './.internal/baseSum';
 import getIteratee from './.internal/getIteratee';
+import { ArrayIteratee } from './types';
 
 /**
  * Used as references for various `Number` constants.
@@ -12,7 +13,7 @@ const NAN = Number.NaN;
  * invoked for each element in `array` to generate the value to be averaged.
  * The iteratee is invoked with one argument: (value).
  *
- * @since 4.7.0
+ * @since 5.11.0
  * @category Math
  * @param {Array} array The array to iterate over.
  * @param {Function} iteratee The iteratee invoked per element.
@@ -24,7 +25,7 @@ const NAN = Number.NaN;
  * meanBy(objects, ({ n }) => n)
  * // => 5
  */
-function meanBy(array, iteratee) {
+export function meanBy<T = any>(array: Array<T>, iteratee: ArrayIteratee<T, number>): number {
   const length = array == null ? 0 : array.length;
   return length ? (baseSum(array, getIteratee(iteratee, 2)) / length) : NAN;
 }
