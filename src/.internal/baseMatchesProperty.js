@@ -14,6 +14,7 @@ const COMPARE_UNORDERED_FLAG = 2
  * The base implementation of `matchesProperty` which doesn't clone `srcValue`.
  *
  * @private
+ * @ignore
  * @param {string} path The path of the property to get.
  * @param {*} srcValue The value to match.
  * @returns {Function} Returns the new spec function.

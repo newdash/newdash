@@ -12,7 +12,7 @@ import baseIteratee from "./baseIteratee";
  * @param {number} [arity] The arity of the created iteratee.
  * @returns {Function} Returns the chosen function or its result.
  */
-function getIteratee() {
+export  function getIteratee() {
   var result = iteratee;
   result = result === iteratee ? baseIteratee : result;
   return arguments.length ? result(arguments[0], arguments[1]) : result;

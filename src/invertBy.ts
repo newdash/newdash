@@ -1,5 +1,24 @@
-/** Used to check objects for own properties. */
+import { getIteratee } from './.internal/getIteratee';
+import { createInverter } from './.internal/createInverter';
+import { RecordIteratee } from './types';
+
+
 const hasOwnProperty = Object.prototype.hasOwnProperty;
+const nativeObjectToString = String.prototype.toString;
+
+const internalInvertBy = createInverter((result, value, key) => {
+  if (value != null &&
+    typeof value.toString != 'function') {
+    value = nativeObjectToString.call(value);
+  }
+
+  if (hasOwnProperty.call(result, value)) {
+    result[value].push(key);
+  } else {
+    result[value] = [key];
+  }
+}, getIteratee);
+
 
 /**
  * This method is like `invert` except that the inverted object is generated
@@ -8,29 +27,23 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * responsible for generating the inverted value. The iteratee is invoked
  * with one argument: (value).
  *
- * @since 4.1.0
+ * @since 5.11.0
  * @category Object
- * @param {Object} object The object to invert.
- * @param {Function} iteratee The iteratee invoked per element.
- * @returns {Object} Returns the new inverted object.
+ * @param object The object to invert.
+ * @param iteratee The iteratee invoked per element.
+ * @returns Returns the new inverted object.
  * @example
  *
+ * ```js
  * const object = { 'a': 1, 'b': 2, 'c': 1 }
  *
  * invertBy(object, value => `group${value}`)
  * // => { 'group1': ['a', 'c'], 'group2': ['b'] }
+ * ```
  */
-function invertBy(object, iteratee) {
-  const result = {};
-  Object.keys(object).forEach((key) => {
-    const value = iteratee(object[key]);
-    if (hasOwnProperty.call(result, value)) {
-      result[value].push(key);
-    } else {
-      result[value] = [key];
-    }
-  });
-  return result;
+export function invertBy<T = any>(object: Record<string, T>, iteratee: RecordIteratee<T, string>): Record<string, Array<string>>;
+export function invertBy(...args: any[]): any {
+  return internalInvertBy(...args);
 }
 
 export default invertBy;

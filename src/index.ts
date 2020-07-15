@@ -113,7 +113,11 @@ import takeRight from './takeRight';
 import intersection from './intersection';
 import intersectionBy from './intersectionBy';
 import intersectionWith from './intersectionWith';
-
+import someValues from './someValue';
+import invertBy from './invertBy';
+import unionBy from './unionBy';
+import method from './method';
+import matchesProperty from './matchesProperty';
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -131,9 +135,10 @@ export {
   countBy, differenceBy, groupBy, curry, eq, constant,
   reject, ary, fromEntries, isEqualWith, everyValue,
   forOwn, forOwnRight, throttle, mapKeys, mapValues, remove,
-  over, overArgs, overEvery, overSome,
+  over, overArgs, overEvery, overSome, matchesProperty,
   pull, pullAll, pullAllWith, pullAt, takeRight,
-  intersection, intersectionBy, intersectionWith
+  intersection, intersectionBy, intersectionWith,
+  someValues, invertBy, unionBy, method
 };
 
 export default {
@@ -152,8 +157,10 @@ export default {
   countBy, differenceBy, groupBy, curry, eq, constant,
   reject, ary, fromEntries, isEqualWith, everyValue,
   forOwn, forOwnRight, throttle, mapKeys, mapValues, remove,
-  over, overArgs, overEvery, overSome,
+  over, overArgs, overEvery, overSome, matchesProperty,
   pull, pullAll, pullAllWith, pullAt, takeRight,
-  intersection, intersectionBy, intersectionWith
+  intersection, intersectionBy, intersectionWith,
+  someValues, invertBy, unionBy, method
+
 };
 

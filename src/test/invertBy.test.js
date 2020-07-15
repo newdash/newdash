@@ -1,6 +1,8 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import invertBy from '../invertBy'
+import map from '../map'
+import constant from '../constant'
+import isEqual from '../isEqual'
 
 describe('invertBy', () => {
   const object = { 'a': 1, 'b': 2, 'c': 1 }
@@ -15,9 +17,9 @@ describe('invertBy', () => {
 
   it('should use `_.identity` when `iteratee` is nullish', () => {
     const values = [, null, undefined],
-      expected = lodashStable.map(values, lodashStable.constant({ '1': ['a', 'c'], '2': ['b'] }))
+      expected = map(values, constant({ '1': ['a', 'c'], '2': ['b'] }))
 
-    const actual = lodashStable.map(values, (value, index) => index ? invertBy(object, value) : invertBy(object))
+    const actual = map(values, (value, index) => index ? invertBy(object, value) : invertBy(object))
 
     assert.deepStrictEqual(actual, expected)
   })
@@ -26,13 +28,7 @@ describe('invertBy', () => {
     const object = { 'a': 'hasOwnProperty', 'b': 'constructor' },
       expected = { 'hasOwnProperty': ['a'], 'constructor': ['b'] }
 
-    assert.ok(lodashStable.isEqual(invertBy(object), expected))
+    assert.ok(isEqual(invertBy(object), expected))
   })
 
-  it('should return a wrapped value when chaining', () => {
-    const wrapped = _(object).invertBy()
-
-    assert.ok(wrapped instanceof _)
-    assert.deepEqual(wrapped.value(), { '1': ['a', 'c'], '2': ['b'] })
-  })
 })

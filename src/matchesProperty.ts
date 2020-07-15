@@ -1,5 +1,7 @@
+// @ts-nocheck
 import baseClone from './.internal/baseClone';
 import baseMatchesProperty from './.internal/baseMatchesProperty';
+import { Path, CollectionIteratee } from './types';
 
 /** Used to compose bitmasks for cloning. */
 const CLONE_DEEP_FLAG = 1;
@@ -13,13 +15,14 @@ const CLONE_DEEP_FLAG = 1;
  * `srcValue` values against any array or object value, respectively. See
  * `isEqual` for a list of supported value comparisons.
  *
- * @since 3.2.0
+ * @since 5.11.0
  * @category Util
- * @param {Array|string} path The path of the property to get.
- * @param {*} srcValue The value to match.
+ * @param path The path of the property to get.
+ * @param srcValue The value to match.
  * @returns {Function} Returns the new spec function.
  * @example
  *
+ * ```js
  * const objects = [
  *   { 'a': 1, 'b': 2, 'c': 3 },
  *   { 'a': 4, 'b': 5, 'c': 6 }
@@ -27,8 +30,9 @@ const CLONE_DEEP_FLAG = 1;
  *
  * find(objects, matchesProperty('a', 4))
  * // => { 'a': 4, 'b': 5, 'c': 6 }
+ * ```
  */
-function matchesProperty(path, srcValue) {
+export function matchesProperty(path: Path, srcValue: any): (object: any) => boolean {
   return baseMatchesProperty(path, baseClone(srcValue, CLONE_DEEP_FLAG));
 }
 
