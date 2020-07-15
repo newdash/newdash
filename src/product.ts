@@ -21,7 +21,9 @@ import map from './map';
 
 export function product<T1, T2>(v1: Array<T1>, v2: Array<T2>): Array<[T1, T2]>;
 export function product(v1: Array<number>, v2: number): Array<number>;
+export function product(v1: Array<number>, v2: any): Array<number>;
 export function product(v1: number, v2: Array<number>): Array<number>;
+export function product(v1: any, v2: Array<number>): Array<number>;
 export function product(v1: number, v2: number): number;
 export function product(v1: any, v2: any): number;
 export function product(v1: any, v2: any): any {

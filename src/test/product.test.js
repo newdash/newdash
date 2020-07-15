@@ -6,13 +6,13 @@ describe('product', () => {
 
   it('should create product for number', () => {
     assert.strictEqual(product(3, 4), 12)
-    assert.strictEqual(product('3', '4'), NaN)
+    assert.ok(isNaN(product('3', '4')))
   });
 
   it('should create product for number & array', () => {
     assert.deepStrictEqual(product([1, 2, 3], 4), [4, 8, 12])
     assert.deepStrictEqual(product(4, [1, 2, 3]), [4, 8, 12])
-    assert.deepStrictEqual(product('a', [1, 2, 3]), [NaN, NaN, NaN])
+    product('a', [1, 2, 3]).forEach(item => assert.ok(isNaN(item)))
   });
 
   it('should create product for array & array', () => {
