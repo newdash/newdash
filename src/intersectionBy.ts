@@ -1,7 +1,10 @@
-import map from './map';
+// @ts-nocheck
 import baseIntersection from './.internal/baseIntersection';
 import castArrayLikeObject from './.internal/castArrayLikeObject';
 import last from './last';
+import { ArrayIteratee } from './types';
+import getIteratee from './.internal/getIteratee';
+import arrayMap from './.internal/arrayMap';
 
 /**
  * This method is like `intersection` except that it accepts `iteratee`
@@ -10,19 +13,21 @@ import last from './last';
  * determined by the first array. The iteratee is invoked with one argument:
  * (value).
  *
- * @since 4.0.0
+ * @since 5.11.0
  * @category Array
- * @param {...Array} [arrays] The arrays to inspect.
- * @param {Function} iteratee The iteratee invoked per element.
- * @returns {Array} Returns the new array of intersecting values.
+ * @param arrays The arrays to inspect.
+ * @param iteratee The iteratee invoked per element.
+ * @returns Returns the new array of intersecting values.
  * @example
  *
+ * ```js
  * intersectionBy([2.1, 1.2], [2.3, 3.4], Math.floor)
  * // => [2.1]
+ * ```
  */
-function intersectionBy(...arrays) {
+export function intersectionBy<T>(...arrays: Array<any>): Array<T> {
   let iteratee = last(arrays);
-  const mapped = map(arrays, castArrayLikeObject);
+  const mapped = arrayMap(arrays, castArrayLikeObject);
 
   if (iteratee === last(mapped)) {
     iteratee = undefined;
@@ -30,7 +35,7 @@ function intersectionBy(...arrays) {
     mapped.pop();
   }
   return (mapped.length && mapped[0] === arrays[0])
-    ? baseIntersection(mapped, iteratee)
+    ? baseIntersection(mapped, getIteratee(iteratee, 2))
     : [];
 }
 

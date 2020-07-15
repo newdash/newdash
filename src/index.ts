@@ -110,6 +110,9 @@ import pullAll from './pullAll';
 import pullAllWith from './pullAllWith';
 import pullAt from './pullAt';
 import takeRight from './takeRight';
+import intersection from './intersection';
+import intersectionBy from './intersectionBy';
+import intersectionWith from './intersectionWith';
 
 
 export {
@@ -129,7 +132,8 @@ export {
   reject, ary, fromEntries, isEqualWith, everyValue,
   forOwn, forOwnRight, throttle, mapKeys, mapValues, remove,
   over, overArgs, overEvery, overSome,
-  pull, pullAll, pullAllWith, pullAt, takeRight
+  pull, pullAll, pullAllWith, pullAt, takeRight,
+  intersection, intersectionBy, intersectionWith
 };
 
 export default {
@@ -149,6 +153,7 @@ export default {
   reject, ary, fromEntries, isEqualWith, everyValue,
   forOwn, forOwnRight, throttle, mapKeys, mapValues, remove,
   over, overArgs, overEvery, overSome,
-  pull, pullAll, pullAllWith, pullAt, takeRight
+  pull, pullAll, pullAllWith, pullAt, takeRight,
+  intersection, intersectionBy, intersectionWith
 };
 

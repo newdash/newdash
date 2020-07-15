@@ -1,10 +1,19 @@
 import assert from 'assert'
 import lodashStable from 'lodash'
 import { _, args, LARGE_ARRAY_SIZE, stubNaN } from './utils'
+import each from '../each'
+import { intersection } from '../intersection'
+import { intersectionBy } from '../intersectionBy'
+import { intersectionWith } from '../intersectionWith'
+
 
 describe('intersection methods', () => {
-  lodashStable.each(['intersection', 'intersectionBy', 'intersectionWith'], (methodName) => {
-    const func = _[methodName]
+
+  each([
+    ['intersection', intersection],
+    ['intersectionBy', intersectionBy],
+    ['intersectionWith', intersectionWith],
+  ], ([methodName, func]) => {
 
     it(`\`_.${methodName}\` should return the intersection of two arrays`, () => {
       const actual = func([2, 1], [2, 3])
@@ -80,10 +89,5 @@ describe('intersection methods', () => {
       assert.deepStrictEqual(func(array, null, args, null), [])
     })
 
-    it(`\`_.${methodName}\` should return a wrapped value when chaining`, () => {
-      const wrapped = _([1, 3, 2])[methodName]([5, 2, 1, 4])
-      assert.ok(wrapped instanceof _)
-      assert.deepEqual(wrapped.value(), [1, 2])
-    })
   })
 })
