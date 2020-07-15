@@ -3,22 +3,26 @@ import isNumber from './isNumber';
 import map from './map';
 
 /**
- * Create product from given values
+ * Create product from given values.
  *
- * @param v1
- * @param v2
+ * @since 5.11.0
+ * @category Math
+ * @param v1 value 1
+ * @param v2 value 2
+ *
+ * @returns the product
  *
  * @example
  *
  * ```js
+ *
  * product(3, 2) // => 6
  * product([1, 2], 2) // => [2, 4]
  * product([1, 2], [2, 3]) // [[1, 2], [1, 3], [2, 2], [2, 3]]
  * product([1, 2], ['2', '3']) // [[1, '2'], [1, '3'], [2, '2'], [2, '3']]
+ *
  * ```
  */
-
-
 export function product<T1, T2>(v1: Array<T1>, v2: Array<T2>): Array<[T1, T2]>;
 export function product(v1: Array<number>, v2: number): Array<number>;
 export function product(v1: Array<number>, v2: any): Array<number>;
