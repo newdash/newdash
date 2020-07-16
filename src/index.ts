@@ -137,6 +137,9 @@ import padStart from './padStart';
 import padEnd from './padEnd';
 import invokeMap from './invokeMap';
 import invoke from './invoke';
+import conforms from './conforms';
+import conformsTo from './conformsTo';
+
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -161,7 +164,8 @@ export {
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
-  pad, padStart, padEnd, invoke, invokeMap
+  pad, padStart, padEnd, invoke, invokeMap,
+  conforms, conformsTo
 };
 
 export default {
@@ -187,7 +191,8 @@ export default {
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
-  pad, padStart, padEnd, invoke, invokeMap
+  pad, padStart, padEnd, invoke, invokeMap,
+  conforms, conformsTo
 
 };
 

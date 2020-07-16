@@ -1,14 +1,18 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { _, stubFalse, stubTrue, empties } from './utils'
-import conformsTo from '../conformsTo'
+import { conformsTo } from '../conformsTo'
+import { conforms as fConforms } from '../conforms'
+import each from '../each'
+import filter from '../filter'
+import map from '../map'
+
 
 describe('conforms methods', () => {
-  lodashStable.each(['conforms', 'conformsTo'], (methodName) => {
+  each(['conforms', 'conformsTo'], (methodName) => {
     const isConforms = methodName == 'conforms'
 
     function conforms(source) {
-      return isConforms ? _.conforms(source) : function(object) {
+      return isConforms ? fConforms(source) : function (object) {
         return conformsTo(object, source)
       }
     }
@@ -21,28 +25,28 @@ describe('conforms methods', () => {
       ]
 
       let par = conforms({
-        'b': function(value) { return value > 4 }
+        'b': function (value) { return value > 4 }
       })
 
-      let actual = lodashStable.filter(objects, par)
+      let actual = filter(objects, par)
       assert.deepStrictEqual(actual, [objects[0], objects[2]])
 
       par = conforms({
-        'b': function(value) { return value > 8 },
-        'a': function(value) { return value > 1 }
+        'b': function (value) { return value > 8 },
+        'a': function (value) { return value > 1 }
       })
 
-      actual = lodashStable.filter(objects, par)
+      actual = filter(objects, par)
       assert.deepStrictEqual(actual, [objects[2]])
     })
 
     it(`\`_.${methodName}\` should not match by inherited \`source\` properties`, () => {
       function Foo() {
-        this.a = function(value) {
+        this.a = function (value) {
           return value > 1
         }
       }
-      Foo.prototype.b = function(value) {
+      Foo.prototype.b = function (value) {
         return value > 8
       }
 
@@ -53,7 +57,7 @@ describe('conforms methods', () => {
       ]
 
       const par = conforms(new Foo),
-        actual = lodashStable.filter(objects, par)
+        actual = filter(objects, par)
 
       assert.deepStrictEqual(actual, [objects[1], objects[2]])
     })
@@ -62,7 +66,7 @@ describe('conforms methods', () => {
       let count = 0
 
       const par = conforms({
-        'a': function() { count++; return true }
+        'a': function () { count++; return true }
       })
 
       assert.strictEqual(par({}), false)
@@ -70,14 +74,14 @@ describe('conforms methods', () => {
     })
 
     it(`\`_.${methodName}\` should work with a function for \`object\``, () => {
-      function Foo() {}
+      function Foo() { }
       Foo.a = 1
 
-      function Bar() {}
+      function Bar() { }
       Bar.a = 2
 
       const par = conforms({
-        'a': function(value) { return value > 1 }
+        'a': function (value) { return value > 1 }
       })
 
       assert.strictEqual(par(Foo), false)
@@ -85,11 +89,11 @@ describe('conforms methods', () => {
     })
 
     it(`\`_.${methodName}\` should work with a function for \`source\``, () => {
-      function Foo() {}
-      Foo.a = function(value) { return value > 1 }
+      function Foo() { }
+      Foo.a = function (value) { return value > 1 }
 
       const objects = [{ 'a': 1 }, { 'a': 2 }],
-        actual = lodashStable.filter(objects, conforms(Foo))
+        actual = filter(objects, conforms(Foo))
 
       assert.deepStrictEqual(actual, [objects[1]])
     })
@@ -101,7 +105,7 @@ describe('conforms methods', () => {
       Foo.prototype.b = 2
 
       const par = conforms({
-        'b': function(value) { return value > 1 }
+        'b': function (value) { return value > 1 }
       })
 
       assert.strictEqual(par(new Foo), true)
@@ -109,16 +113,16 @@ describe('conforms methods', () => {
 
     it(`\`_.${methodName}\` should return \`false\` when \`object\` is nullish`, () => {
       const values = [, null, undefined],
-        expected = lodashStable.map(values, stubFalse)
+        expected = map(values, stubFalse)
 
       const par = conforms({
-        'a': function(value) { return value > 1 }
+        'a': function (value) { return value > 1 }
       })
 
-      const actual = lodashStable.map(values, (value, index) => {
+      const actual = map(values, (value, index) => {
         try {
           return index ? par(value) : par()
-        } catch (e) {}
+        } catch (e) { }
       })
 
       assert.deepStrictEqual(actual, expected)
@@ -126,13 +130,13 @@ describe('conforms methods', () => {
 
     it(`\`_.${methodName}\` should return \`true\` when comparing an empty \`source\` to a nullish \`object\``, () => {
       const values = [, null, undefined],
-        expected = lodashStable.map(values, stubTrue),
+        expected = map(values, stubTrue),
         par = conforms({})
 
-      const actual = lodashStable.map(values, (value, index) => {
+      const actual = map(values, (value, index) => {
         try {
           return index ? par(value) : par()
-        } catch (e) {}
+        } catch (e) { }
       })
 
       assert.deepStrictEqual(actual, expected)
@@ -140,9 +144,9 @@ describe('conforms methods', () => {
 
     it(`\`_.${methodName}\` should return \`true\` when comparing an empty \`source\``, () => {
       const object = { 'a': 1 },
-        expected = lodashStable.map(empties, stubTrue)
+        expected = map(empties, stubTrue)
 
-      const actual = lodashStable.map(empties, (value) => {
+      const actual = map(empties, (value) => {
         const par = conforms(value)
         return par(object)
       })

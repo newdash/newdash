@@ -8,13 +8,14 @@ import keys from './keys';
  * **Note:** This method is equivalent to `conforms` when `source` is
  * partially applied.
  *
- * @since 4.14.0
+ * @since 5.12.0
  * @category Lang
  * @param {Object} object The object to inspect.
  * @param {Object} source The object of property predicates to conform to.
  * @returns {boolean} Returns `true` if `object` conforms, else `false`.
  * @example
  *
+ * ```js
  * const object = { 'a': 1, 'b': 2 }
  *
  * conformsTo(object, { 'b': function(n) { return n > 1 } })
@@ -22,8 +23,9 @@ import keys from './keys';
  *
  * conformsTo(object, { 'b': function(n) { return n > 2 } })
  * // => false
+ * ```
  */
-function conformsTo(object, source) {
+export function conformsTo<T extends Record<string, any>>(object: T, source: { [key in keyof T]?: (value: any) => boolean }): boolean {
   return source == null || baseConformsTo(object, source, keys(source));
 }
 

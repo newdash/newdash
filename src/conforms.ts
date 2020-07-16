@@ -1,7 +1,11 @@
 import baseClone from './.internal/baseClone';
 import baseConforms from './.internal/baseConforms';
 
-/** Used to compose bitmasks for cloning. */
+/**
+ * @ignore
+ * @private
+ * @internal
+ */
 const CLONE_DEEP_FLAG = 1;
 
 /**
@@ -12,12 +16,13 @@ const CLONE_DEEP_FLAG = 1;
  * **Note:** The created function is equivalent to `conformsTo` with
  * `source` partially applied.
  *
- * @since 4.0.0
+ * @since 5.12.0
  * @category Util
  * @param {Object} source The object of property predicates to conform to.
  * @returns {Function} Returns the new spec function.
  * @example
  *
+ * ```js
  * const objects = [
  *   { 'a': 2, 'b': 1 },
  *   { 'a': 1, 'b': 2 }
@@ -25,8 +30,11 @@ const CLONE_DEEP_FLAG = 1;
  *
  * filter(objects, conforms({ 'b': function(n) { return n > 1 } }))
  * // => [{ 'a': 1, 'b': 2 }]
+ * ```
  */
-function conforms(source) {
+export function conforms<T extends Record<string, any>>(source: { [key in keyof T]?: (value: any) => boolean }): (obj: T) => boolean;
+export function conforms(source: any): any;
+export function conforms(source: any): any {
   return baseConforms(baseClone(source, CLONE_DEEP_FLAG));
 }
 
