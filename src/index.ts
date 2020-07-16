@@ -151,6 +151,7 @@ import toNumber from './toNumber';
 import toArray from './toArray';
 import uniqueId from './uniqueId';
 import words from './words';
+import escapeRegExp from './escapeRegExp';
 
 
 export {
@@ -178,7 +179,8 @@ export {
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
   pad, padStart, padEnd, invoke, invokeMap, includes,
   conforms, conformsTo, defaultTo, methodOf, functions,
-  divide, invert, mergeWith, toNumber, toArray, uniqueId, words
+  divide, invert, mergeWith, toNumber, toArray, uniqueId,
+  words, escapeRegExp
 };
 
 export default {
@@ -206,7 +208,7 @@ export default {
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
   pad, padStart, padEnd, invoke, invokeMap, includes,
   conforms, conformsTo, defaultTo, methodOf, functions,
-  divide, invert, mergeWith, toNumber, toArray, uniqueId, words
-
+  divide, invert, mergeWith, toNumber, toArray, uniqueId,
+  words, escapeRegExp
 };
 

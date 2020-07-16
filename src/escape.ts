@@ -38,17 +38,19 @@ const reHasUnescapedHtml = RegExp(reUnescapedHtml.source);
  * [quote attribute values](http://wonko.com/post/html-escaping) to reduce
  * XSS vectors.
  *
- * @since 0.1.0
+ * @since 5.12.0
  * @category String
- * @param {string} [string=''] The string to escape.
- * @returns {string} Returns the escaped string.
- * @see escapeRegExp, unescape
+ * @param string The string to escape.
+ * @returns Returns the escaped string.
+ * @see [[escapeRegExp]], [[unescape]]
  * @example
  *
+ * ```js
  * escape('fred, barney, & pebbles')
  * // => 'fred, barney, &amp; pebbles'
+ * ```
  */
-function escape(string) {
+export function escape(string: string): string {
   return (string && reHasUnescapedHtml.test(string))
     ? string.replace(reUnescapedHtml, (chr) => htmlEscapes[chr])
     : (string || '');

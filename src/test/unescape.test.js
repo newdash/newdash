@@ -1,7 +1,7 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import unescape from '../unescape'
 import escape from '../escape'
+import each from '../each'
 
 describe('unescape', () => {
   let escaped = '&amp;&lt;&gt;&quot;&#39;/',
@@ -32,7 +32,7 @@ describe('unescape', () => {
     assert.strictEqual(unescape('&#000039;'), "'")
   })
 
-  lodashStable.each(['&#96;', '&#x2F;'], (entity) => {
+  each(['&#96;', '&#x2F;'], (entity) => {
     it(`should not unescape the "${entity}" entity`, () => {
       assert.strictEqual(unescape(entity), entity)
     })

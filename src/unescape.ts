@@ -15,6 +15,7 @@ const htmlUnescapes = {
  * @ignore
  */
 const reEscapedHtml = /&(?:amp|lt|gt|quot|#(0+)?39);/g;
+
 /**
  * @ignore
  */
@@ -28,17 +29,19 @@ const reHasEscapedHtml = RegExp(reEscapedHtml.source);
  * **Note:** No other HTML entities are unescaped. To unescape additional
  * HTML entities use a third-party library like [_he_](https://mths.be/he).
  *
- * @since 0.6.0
+ * @since 5.12.0
  * @category String
- * @param {string} [string=''] The string to unescape.
- * @returns {string} Returns the unescaped string.
- * @see escape, escapeRegExp
+ * @param string The string to unescape.
+ * @returns string Returns the unescaped string.
+ * @see [[escape]], [[escapeRegExp]]
  * @example
  *
+ * ```js
  * unescape('fred, barney, &amp; pebbles')
  * // => 'fred, barney, & pebbles'
+ * ```
  */
-function unescape(string) {
+export function unescape(string: string): string {
   return (string && reHasEscapedHtml.test(string))
     ? string.replace(reEscapedHtml, (entity) => (htmlUnescapes[entity] || "'"))
     : (string || '');
