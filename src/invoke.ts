@@ -2,6 +2,16 @@ import castPath from './.internal/castPath';
 import last from './last';
 import parent from './.internal/parent';
 import toKey from './.internal/toKey';
+import baseRest from './.internal/baseRest';
+import baseInvoke from './.internal/baseInvoke';
+
+
+/**
+ * @ignore
+ * @internal
+ * @private
+ */
+const internalInvoke = baseRest(baseInvoke);
 
 /**
  * Invokes the method at `path` of `object`.
@@ -22,10 +32,7 @@ import toKey from './.internal/toKey';
  * ```
  */
 export function invoke(object: any, path: any, ...args: any[]): any {
-  path = castPath(path, object);
-  object = parent(object, path);
-  const func = object == null ? object : object[toKey(last(path))];
-  return func == null ? undefined : func.apply(object, args);
+  return internalInvoke(object, path, ...args);
 }
 
 export default invoke;

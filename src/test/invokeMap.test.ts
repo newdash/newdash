@@ -1,7 +1,8 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { slice, stubOne } from './utils'
 import invokeMap from '../invokeMap'
+import map from '../map'
+import each from '../each'
 
 describe('invokeMap', () => {
   it('should invoke a methods on each element of `collection`', () => {
@@ -12,7 +13,7 @@ describe('invokeMap', () => {
   })
 
   it('should support invoking with arguments', () => {
-    const array = [function() { return slice.call(arguments) }],
+    const array = [function () { return slice.call(arguments) }],
       actual = invokeMap(array, 'call', null, 'a', 'b', 'c')
 
     assert.deepStrictEqual(actual, [['a', 'b', 'c']])
@@ -21,7 +22,7 @@ describe('invokeMap', () => {
   it('should work with a function for `methodName`', () => {
     const array = ['a', 'b', 'c']
 
-    const actual = invokeMap(array, function(left, right) {
+    const actual = invokeMap(array, function (left, right): string {
       return left + this.toUpperCase() + right
     }, '(', ')')
 
@@ -44,56 +45,30 @@ describe('invokeMap', () => {
 
     try {
       var actual = invokeMap(array, 'toUpperCase')
-    } catch (e) {}
+    } catch (e) { }
 
     assert.deepStrictEqual(actual, ['A', undefined, undefined, 'D'])
   })
 
   it('should not error on elements with missing properties', () => {
-    const objects = lodashStable.map([null, undefined, stubOne], (value) => ({ 'a': value }))
+    const objects = map([null, undefined, stubOne], (value) => ({ 'a': value }))
 
-    const expected = lodashStable.map(objects, (object) => object.a ? object.a() : undefined)
+    const expected = map(objects, (object) => object.a ? object.a() : undefined)
 
     try {
       var actual = invokeMap(objects, 'a')
-    } catch (e) {}
+    } catch (e) { }
 
     assert.deepStrictEqual(actual, expected)
   })
 
   it('should invoke deep property methods with the correct `this` binding', () => {
-    const object = { 'a': { 'b': function() { return this.c }, 'c': 1 } }
+    const object = { 'a': { 'b': function () { return this.c }, 'c': 1 } }
 
-    lodashStable.each(['a.b', ['a', 'b']], (path) => {
+    each(['a.b', ['a', 'b']], (path) => {
       assert.deepStrictEqual(invokeMap([object], path), [1])
     })
   })
 
-  it('should return a wrapped value when chaining', () => {
-    let array = ['a', 'b', 'c'],
-      wrapped = _(array),
-      actual = wrapped.invokeMap('toUpperCase')
 
-    assert.ok(actual instanceof _)
-    assert.deepEqual(actual.valueOf(), ['A', 'B', 'C'])
-
-    actual = wrapped.invokeMap(function(left, right) {
-      return left + this.toUpperCase() + right
-    }, '(', ')')
-
-    assert.ok(actual instanceof _)
-    assert.deepEqual(actual.valueOf(), ['(A)', '(B)', '(C)'])
-  })
-
-  it('should support shortcut fusion', () => {
-    let count = 0,
-      method = function() { count++; return this.index }
-
-    const array = lodashStable.times(LARGE_ARRAY_SIZE, (index) => ({ 'index': index, 'method': method }))
-
-    const actual = _(array).invokeMap('method').take(1).value()
-
-    assert.strictEqual(count, 1)
-    assert.deepEqual(actual, [0])
-  })
 })

@@ -135,7 +135,8 @@ import cond from './cond';
 import pad from './pad';
 import padStart from './padStart';
 import padEnd from './padEnd';
-
+import invokeMap from './invokeMap';
+import invoke from './invoke';
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -160,7 +161,7 @@ export {
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
-  pad, padStart, padEnd
+  pad, padStart, padEnd, invoke, invokeMap
 };
 
 export default {
@@ -186,7 +187,7 @@ export default {
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
-  pad, padStart, padEnd
+  pad, padStart, padEnd, invoke, invokeMap
 
 };
 
