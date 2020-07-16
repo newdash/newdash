@@ -3,6 +3,7 @@ import { slice } from './utils'
 import flip from '../flip'
 
 describe('flip', () => {
+
   function fn() {
     return slice.call(arguments)
   }
@@ -11,4 +12,10 @@ describe('flip', () => {
     const flipped = flip(fn)
     assert.deepStrictEqual(flipped('a', 'b', 'c', 'd'), ['d', 'c', 'b', 'a'])
   })
+
+  it('should throw error when type not accept', () => {
+    assert.throws(() => { flip(1) })
+  });
+
+
 })

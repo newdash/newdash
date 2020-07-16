@@ -143,7 +143,7 @@ import defaultTo from './defaultTo';
 import methodOf from './methodOf';
 import includes from './includes';
 import functions from './functions';
-
+import flip from './flip';
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -162,7 +162,7 @@ export {
   reject, ary, fromEntries, isEqualWith, everyValue,
   forOwn, forOwnRight, throttle, mapKeys, mapValues, remove,
   over, overArgs, overEvery, overSome, matchesProperty,
-  pull, pullAll, pullAllWith, pullAt, takeRight,
+  pull, pullAll, pullAllWith, pullAt, takeRight, flip,
   intersection, intersectionBy, intersectionWith,
   someValues, invertBy, unionBy, method, mean, cond,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
@@ -189,7 +189,7 @@ export default {
   reject, ary, fromEntries, isEqualWith, everyValue,
   forOwn, forOwnRight, throttle, mapKeys, mapValues, remove,
   over, overArgs, overEvery, overSome, matchesProperty,
-  pull, pullAll, pullAllWith, pullAt, takeRight,
+  pull, pullAll, pullAllWith, pullAt, takeRight, flip,
   intersection, intersectionBy, intersectionWith,
   someValues, invertBy, unionBy, method, mean, cond,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,

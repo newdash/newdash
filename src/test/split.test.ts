@@ -28,4 +28,14 @@ describe('split', () => {
     assert.deepStrictEqual(actual, [['abc'], ['def'], ['ghi']])
   })
 
+  it('should split with limit', () => {
+    const actual = split('ababcad', 'b', 2)
+    assert.deepStrictEqual(actual, ['a', 'a'])
+  });
+
+  it('should split with limit 0', () => {
+    const actual = split('abcde', 'b', 0)
+    assert.deepStrictEqual(actual, [])
+  });
+
 })

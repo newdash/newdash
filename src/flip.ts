@@ -1,19 +1,22 @@
+
 /**
  * Creates a function that invokes `func` with arguments reversed.
  *
- * @since 4.0.0
+ * @since 5.12.0
  * @category Function
- * @param {Function} func The function to flip arguments for.
- * @returns {Function} Returns the new flipped function.
- * @see reverse
+ * @param func The function to flip arguments for.
+ * @returns Returns the new flipped function.
+ * @see [[reverse]]
  * @example
  *
+ * ```js
  * const flipped = flip((...args) => args)
  *
  * flipped('a', 'b', 'c', 'd')
  * // => ['d', 'c', 'b', 'a']
+ * ```
  */
-function flip(func) {
+export function flip<F extends(...args: any[]) => any>(func: F): (...args: any[]) => ReturnType<F> {
   if (typeof func !== 'function') {
     throw new TypeError('Expected a function');
   }
