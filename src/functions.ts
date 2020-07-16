@@ -1,14 +1,31 @@
+import keys from './keys';
+import arrayFilter from './.internal/arrayFilter';
+import isFunction from './isFunction';
+
+
+/**
+ * @ignore
+ * @private
+ * @internal
+ * @param object
+ * @param props
+ */
+function baseFunctions(object, props) {
+  return arrayFilter(props, (key) => isFunction(object[key]));
+}
+
 /**
  * Creates an array of function property names from own enumerable properties
  * of `object`.
  *
- * @since 0.1.0
+ * @since 5.12.0
  * @category Object
- * @param {Object} object The object to inspect.
- * @returns {Array} Returns the function names.
- * @see functionsIn
+ * @param object The object to inspect.
+ * @returns Returns the function names.
+ * @see [[functionsIn]]
  * @example
  *
+ * ```js
  * function Foo() {
  *   this.a = () => 'a'
  *   this.b = () => 'b'
@@ -18,12 +35,10 @@
  *
  * functions(new Foo)
  * // => ['a', 'b']
+ * ```
  */
-function functions(object) {
-  if (object == null) {
-    return [];
-  }
-  return Object.keys(object).filter((key) => typeof object[key] === 'function');
+export function functions(object: any): string[] {
+  return object == null ? [] : baseFunctions(object, keys(object));
 }
 
 export default functions;

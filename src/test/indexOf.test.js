@@ -51,4 +51,9 @@ describe('indexOf', () => {
   it('`_.indexOf` should coerce `fromIndex` to an integer', () => {
     assert.strictEqual(indexOf(array, 2, 1.2), 1)
   })
+
+
+  it('should support empty array', () => {
+    assert.strictEqual(indexOf([], 1), -1)
+  });
 })

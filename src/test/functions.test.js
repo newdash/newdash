@@ -19,4 +19,8 @@ describe('functions', () => {
 
     assert.deepStrictEqual(functions(new Foo), ['a'])
   })
+
+  it('should return empty function when give nothing', () => {
+    assert.deepStrictEqual(functions(null), [])
+  });
 })

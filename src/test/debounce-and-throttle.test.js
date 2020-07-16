@@ -8,13 +8,13 @@ import times from '../times'
 import constant from '../constant'
 import map from '../map'
 
-// let describe2 = describe
-// if (platform() == "darwin") {
-//   // setTimeout is Unstable on MacOS,
-//   // maybe caused by resource schedule,
-//   // so skip these tests
-//   describe2 = describe.skip
-// }
+let describe2 = describe
+if (platform() == "darwin") {
+  // setTimeout is Unstable on MacOS,
+  // maybe caused by resource schedule,
+  // so skip these tests
+  describe2 = describe.skip
+}
 
 describe('debounce and throttle', () => {
 

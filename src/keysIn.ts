@@ -65,7 +65,7 @@ function baseKeysIn(object: any): string[] {
  * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
  * ```
  */
-function keysIn(object: any): string[] {
+export function keysIn(object: any): string[] {
   return isArrayLike(object) ? arrayLikeKeys(object, true) : baseKeysIn(object);
 }
 
