@@ -1,14 +1,17 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { stubOne, _, stubTwo, stubThree, stubFour, noop, slice } from './utils'
 import constant from '../constant'
+import each from '../each'
+import times from '../times'
+import map from '../map'
+import { methodOf as fMethodOf } from "../methodOf";
 
 describe('methodOf', () => {
   it('should create a function that calls a method of a given key', () => {
     const object = { 'a': stubOne }
 
-    lodashStable.each(['a', ['a']], (path) => {
-      const methodOf = _.methodOf(object)
+    each(['a', ['a']], (path) => {
+      const methodOf = fMethodOf(object)
       assert.strictEqual(methodOf.length, 1)
       assert.strictEqual(methodOf(path), 1)
     })
@@ -17,32 +20,32 @@ describe('methodOf', () => {
   it('should work with deep property values', () => {
     const object = { 'a': { 'b': stubTwo } }
 
-    lodashStable.each(['a.b', ['a', 'b']], (path) => {
-      const methodOf = _.methodOf(object)
+    each(['a.b', ['a', 'b']], (path) => {
+      const methodOf = fMethodOf(object)
       assert.strictEqual(methodOf(path), 2)
     })
   })
 
   it('should work with a non-string `path`', () => {
-    const array = lodashStable.times(3, constant)
+    const array = times(3, constant)
 
-    lodashStable.each([1, [1]], (path) => {
-      const methodOf = _.methodOf(array)
+    each([1, [1]], (path) => {
+      const methodOf = fMethodOf(array)
       assert.strictEqual(methodOf(path), 1)
     })
   })
 
   it('should coerce `path` to a string', () => {
     function fn() {}
-    fn.toString = lodashStable.constant('fn')
+    fn.toString = constant('fn')
 
     const expected = [1, 2, 3, 4],
       object = { 'null': stubOne, 'undefined': stubTwo, 'fn': stubThree, '[object Object]': stubFour },
       paths = [null, undefined, fn, {}]
 
-    lodashStable.times(2, (index) => {
-      const actual = lodashStable.map(paths, (path) => {
-        const methodOf = _.methodOf(object)
+    times(2, (index) => {
+      const actual = map(paths, (path) => {
+        const methodOf = fMethodOf(object)
         return methodOf(index ? [path] : path)
       })
 
@@ -54,8 +57,8 @@ describe('methodOf', () => {
     function Foo() {}
     Foo.prototype.a = stubOne
 
-    lodashStable.each(['a', ['a']], (path) => {
-      const methodOf = _.methodOf(new Foo)
+    each(['a', ['a']], (path) => {
+      const methodOf = fMethodOf(new Foo)
       assert.strictEqual(methodOf(path), 1)
     })
   })
@@ -63,19 +66,19 @@ describe('methodOf', () => {
   it('should use a key over a path', () => {
     const object = { 'a.b': stubOne, 'a': { 'b': stubTwo } }
 
-    lodashStable.each(['a.b', ['a.b']], (path) => {
-      const methodOf = _.methodOf(object)
+    each(['a.b', ['a.b']], (path) => {
+      const methodOf = fMethodOf(object)
       assert.strictEqual(methodOf(path), 1)
     })
   })
 
   it('should return `undefined` when `object` is nullish', () => {
     const values = [, null, undefined],
-      expected = lodashStable.map(values, noop)
+      expected = map(values, noop)
 
-    lodashStable.each(['constructor', ['constructor']], (path) => {
-      const actual = lodashStable.map(values, (value, index) => {
-        const methodOf = index ? _.methodOf() : _.methodOf(value)
+    each(['constructor', ['constructor']], (path) => {
+      const actual = map(values, (value, index) => {
+        const methodOf = index ? fMethodOf() : fMethodOf(value)
         return methodOf(path)
       })
 
@@ -85,11 +88,11 @@ describe('methodOf', () => {
 
   it('should return `undefined` for deep paths when `object` is nullish', () => {
     const values = [, null, undefined],
-      expected = lodashStable.map(values, noop)
+      expected = map(values, noop)
 
-    lodashStable.each(['constructor.prototype.valueOf', ['constructor', 'prototype', 'valueOf']], (path) => {
-      const actual = lodashStable.map(values, (value, index) => {
-        const methodOf = index ? _.methodOf() : _.methodOf(value)
+    each(['constructor.prototype.valueOf', ['constructor', 'prototype', 'valueOf']], (path) => {
+      const actual = map(values, (value, index) => {
+        const methodOf = index ? fMethodOf() : fMethodOf(value)
         return methodOf(path)
       })
 
@@ -99,9 +102,9 @@ describe('methodOf', () => {
 
   it('should return `undefined` if parts of `path` are missing', () => {
     const object = {},
-      methodOf = _.methodOf(object)
+      methodOf = fMethodOf(object)
 
-    lodashStable.each(['a', 'a[1].b.c', ['a'], ['a', '1', 'b', 'c']], (path) => {
+    each(['a', 'a[1].b.c', ['a'], ['a', '1', 'b', 'c']], (path) => {
       assert.strictEqual(methodOf(path), undefined)
     })
   })
@@ -113,18 +116,18 @@ describe('methodOf', () => {
       }
     }
 
-    const methodOf = _.methodOf(object, 1, 2, 3)
+    const methodOf = fMethodOf(object, 1, 2, 3)
 
-    lodashStable.each(['fn', ['fn']], (path) => {
+    each(['fn', ['fn']], (path) => {
       assert.deepStrictEqual(methodOf(path), [1, 2, 3])
     })
   })
 
   it('should invoke deep property methods with the correct `this` binding', () => {
     const object = { 'a': { 'b': function() { return this.c }, 'c': 1 } },
-      methodOf = _.methodOf(object)
+      methodOf = fMethodOf(object)
 
-    lodashStable.each(['a.b', ['a', 'b']], (path) => {
+    each(['a.b', ['a', 'b']], (path) => {
       assert.strictEqual(methodOf(path), 1)
     })
   })

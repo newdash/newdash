@@ -3,20 +3,22 @@
  * its place. The `defaultValue` is returned if `value` is `NaN`, `null`,
  * or `undefined`.
  *
- * @since 4.14.0
+ * @since 5.12.0
  * @category Util
- * @param {*} value The value to check.
- * @param {*} defaultValue The default value.
- * @returns {*} Returns the resolved value.
+ * @param value The value to check.
+ * @param defaultValue The default value.
+ * @returns Returns the resolved value.
  * @example
  *
+ * ```
  * defaultTo(1, 10)
  * // => 1
  *
  * defaultTo(undefined, 10)
  * // => 10
+ * ```
  */
-function defaultTo(value, defaultValue) {
+export function defaultTo<T>(value: any, defaultValue: T): T {
   return (value == null || value !== value) ? defaultValue : value;
 }
 
