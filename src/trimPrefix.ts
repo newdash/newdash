@@ -1,6 +1,6 @@
 
 /**
- * trimPrefix
+ * remove prefix from string
  *
  * @since 5.5.0
  * @category String

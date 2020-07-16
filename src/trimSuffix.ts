@@ -1,6 +1,6 @@
 
 /**
- * trimSuffix
+ * remove suffix from string
  *
  * @since 5.5.0
  * @category String

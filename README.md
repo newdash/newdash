@@ -42,7 +42,7 @@ first("abc")
 ### Deno Runtime
 
 ```js
-// import { add } from "https://deno.land/x/newdash/index.ts"
+// import { add } from "https://unpkg.com/@newdash/newdash-deno/index.ts"
 import { add } from "https://unpkg.com/@newdash/newdash-deno/add.ts"
 
 add(1, 2)

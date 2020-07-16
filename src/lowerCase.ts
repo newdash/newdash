@@ -1,6 +1,9 @@
 import words from './words';
 import toString from './toString';
 
+/**
+ * @ignore
+ */
 const reQuotes = /['\u2019]/g;
 
 /**
