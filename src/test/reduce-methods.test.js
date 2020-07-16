@@ -1,12 +1,17 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { _, empties, noop, add } from './utils'
+import each from '../each'
+import map from '../map'
+import constant from '../constant'
+import { reduce } from '../reduce'
+import { reduceRight } from '../reduceRight'
+
+
 
 describe('reduce methods', () => {
-  lodashStable.each(['reduce', 'reduceRight'], (methodName) => {
-    const func = _[methodName],
-      array = [1, 2, 3],
-      isReduce = methodName == 'reduce'
+  each([['reduce', reduce], ['reduceRight', reduceRight]], ([methodName, func]) => {
+    let array = [1, 2, 3]
+    const isReduce = methodName == 'reduce'
 
     it(`\`_.${methodName}\` should reduce a collection to a single value`, () => {
       const actual = func(['a', 'b', 'c'], (accumulator, value) => accumulator + value, '')
@@ -16,24 +21,24 @@ describe('reduce methods', () => {
 
     it(`\`_.${methodName}\` should support empty collections without an initial \`accumulator\` value`, () => {
       const actual = [],
-        expected = lodashStable.map(empties, noop)
+        expected = map(empties, noop)
 
-      lodashStable.each(empties, (value) => {
+      each(empties, (value) => {
         try {
           actual.push(func(value, noop))
-        } catch (e) {}
+        } catch (e) { }
       })
 
       assert.deepStrictEqual(actual, expected)
     })
 
     it(`\`_.${methodName}\` should support empty collections with an initial \`accumulator\` value`, () => {
-      const expected = lodashStable.map(empties, lodashStable.constant('x'))
+      const expected = map(empties, constant('x'))
 
-      const actual = lodashStable.map(empties, (value) => {
+      const actual = map(empties, (value) => {
         try {
           return func(value, noop, 'x')
-        } catch (e) {}
+        } catch (e) { }
       })
 
       assert.deepStrictEqual(actual, expected)
@@ -55,12 +60,6 @@ describe('reduce methods', () => {
       assert.strictEqual(func(object, noop), undefined)
     })
 
-    it(`\`_.${methodName}\` should return an unwrapped value when implicitly chaining`, () => {
-      assert.strictEqual(_(array)[methodName](add), 6)
-    })
 
-    it(`\`_.${methodName}\` should return a wrapped value when explicitly chaining`, () => {
-      assert.ok(_(array).chain()[methodName](add) instanceof _)
-    })
   })
 })

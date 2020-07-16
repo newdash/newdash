@@ -1,14 +1,17 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { _, LARGE_ARRAY_SIZE, slice } from './utils'
 import sortBy from '../sortBy'
+import uniqBy from '../uniqBy'
+import sortedUniqBy from '../sortedUniqBy'
+import each from '../each'
+import times from '../times'
+
 
 describe('uniqBy methods', () => {
 
-  lodashStable.each(['uniqBy', 'sortedUniqBy'], (methodName) => {
-    let func = _[methodName],
-      isSorted = methodName == 'sortedUniqBy',
-      objects = [{ 'a': 2 }, { 'a': 3 }, { 'a': 1 }, { 'a': 2 }, { 'a': 3 }, { 'a': 1 }]
+  each([['uniqBy', uniqBy], ['sortedUniqBy', sortedUniqBy]], ([methodName, func]) => {
+    const isSorted = methodName == 'sortedUniqBy';
+    let objects = [{ 'a': 2 }, { 'a': 3 }, { 'a': 1 }, { 'a': 2 }, { 'a': 3 }, { 'a': 1 }]
 
     if (isSorted) {
       objects = sortBy(objects, 'a')
@@ -22,7 +25,7 @@ describe('uniqBy methods', () => {
     })
 
     it('should work with large arrays', () => {
-      const largeArray = lodashStable.times(LARGE_ARRAY_SIZE, () => [1, 2])
+      const largeArray = times(LARGE_ARRAY_SIZE, () => [1, 2])
 
       const actual = func(largeArray, String)
       assert.strictEqual(actual[0], largeArray[0])
@@ -32,7 +35,7 @@ describe('uniqBy methods', () => {
     it(`\`_.${methodName}\` should provide correct \`iteratee\` arguments`, () => {
       let args
 
-      func(objects, function() {
+      func(objects, function () {
         args || (args = slice.call(arguments))
       })
 
@@ -47,7 +50,7 @@ describe('uniqBy methods', () => {
 
       let arrays = [[2], [3], [1], [2], [3], [1]]
       if (isSorted) {
-        arrays = lodashStable.sortBy(arrays, 0)
+        arrays = sortBy(arrays, 0)
       }
       expected = isSorted ? [[1], [2], [3]] : arrays.slice(0, 3)
       actual = func(arrays, 0)
@@ -55,17 +58,17 @@ describe('uniqBy methods', () => {
       assert.deepStrictEqual(actual, expected)
     })
 
-    lodashStable.each({
+    each({
       'an array': [0, 'a'],
       'an object': { '0': 'a' },
       'a number': 0,
       'a string': '0'
     },
-    (iteratee, key) => {
-      it(`\`_.${methodName}\` should work with ${key} for \`iteratee\``, () => {
-        const actual = func([['a'], ['a'], ['b']], iteratee)
-        assert.deepStrictEqual(actual, [['a'], ['b']])
+      (iteratee, key) => {
+        it(`\`_.${methodName}\` should work with ${key} for \`iteratee\``, () => {
+          const actual = func([['a'], ['a'], ['b']], iteratee)
+          assert.deepStrictEqual(actual, [['a'], ['b']])
+        })
       })
-    })
   })
 })

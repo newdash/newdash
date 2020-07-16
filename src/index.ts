@@ -130,6 +130,8 @@ import uniqBy from './uniqBy';
 import uniqWith from './uniqWith';
 import sortedUniq from './sortedUniq';
 import sortedUniqBy from './sortedUniqBy';
+import toUpper from './toUpper';
+import cond from './cond';
 
 
 export {
@@ -151,10 +153,10 @@ export {
   over, overArgs, overEvery, overSome, matchesProperty,
   pull, pullAll, pullAllWith, pullAt, takeRight,
   intersection, intersectionBy, intersectionWith,
-  someValues, invertBy, unionBy, method, mean,
+  someValues, invertBy, unionBy, method, mean, cond,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
-  uniqBy, uniqWith, sortedUniq, sortedUniqBy
+  uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper
 };
 
 export default {
@@ -176,10 +178,10 @@ export default {
   over, overArgs, overEvery, overSome, matchesProperty,
   pull, pullAll, pullAllWith, pullAt, takeRight,
   intersection, intersectionBy, intersectionWith,
-  someValues, invertBy, unionBy, method, mean,
+  someValues, invertBy, unionBy, method, mean, cond,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
-  uniqBy, uniqWith, sortedUniq, sortedUniqBy
+  uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper
 
 };
 

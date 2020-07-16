@@ -2,6 +2,7 @@ import baseProperty from './.internal/baseProperty';
 import basePropertyDeep from './.internal/basePropertyDeep';
 import isKey from './.internal/isKey';
 import toKey from './.internal/toKey';
+import { Path } from './types';
 
 /**
  * @ignore
@@ -13,9 +14,9 @@ interface Accessor {
 /**
  * Creates a function that returns the value at `path` of a given object.
  *
- * @since 2.4.0
+ * @since 5.0.0
  * @category Util
- * @param {Array|string} path The path of the property to get.
+ * @param path The path of the property to get.
  * @example
  *
  * ```js
@@ -31,7 +32,7 @@ interface Accessor {
  * // => [1, 2]
  * ```
  */
-function property(path: Array<any> | string): Accessor {
+export function property(path: Path): Accessor {
   // @ts-ignore
   return isKey(path) ? baseProperty(toKey(path) as any) : basePropertyDeep(path);
 }

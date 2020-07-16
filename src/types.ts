@@ -72,18 +72,22 @@ export type ArrayAble<T> = T | Array<T>
 /**
  * @ignore
  */
+type NumPath = number;
+/**
+ * @ignore
+ */
 type StringPath = string
 /**
  * @ignore
  */
-type ArrayPath = Array<StringPath>
+type ArrayPath = ArrayAble<StringPath | NumPath>
 
 /**
  * path type
  *
  * @ignore
  */
-export type Path = ArrayPath | StringPath
+export type Path = ArrayPath
 
 
 /**
