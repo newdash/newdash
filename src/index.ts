@@ -141,6 +141,7 @@ import conforms from './conforms';
 import conformsTo from './conformsTo';
 import defaultTo from './defaultTo';
 import methodOf from './methodOf';
+import includes from './includes';
 
 
 export {
@@ -166,7 +167,7 @@ export {
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
-  pad, padStart, padEnd, invoke, invokeMap,
+  pad, padStart, padEnd, invoke, invokeMap, includes,
   conforms, conformsTo, defaultTo, methodOf
 };
 
@@ -193,7 +194,7 @@ export default {
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
-  pad, padStart, padEnd, invoke, invokeMap,
+  pad, padStart, padEnd, invoke, invokeMap, includes,
   conforms, conformsTo, defaultTo, methodOf
 
 };

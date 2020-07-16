@@ -2,6 +2,7 @@ import baseDifference from './.internal/baseDifference';
 import baseFlatten from './.internal/baseFlatten';
 import isArrayLikeObject from './isArrayLikeObject';
 import last from './last';
+import getIteratee from './.internal/getIteratee';
 
 /**
  * This method is like `difference` except that it accepts `iteratee` which
@@ -35,7 +36,7 @@ export function differenceBy(array: any, ...values: any[]): any {
     iteratee = undefined;
   }
   return isArrayLikeObject(array)
-    ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true), iteratee)
+    ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true), getIteratee(iteratee, 2))
     : [];
 }
 

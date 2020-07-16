@@ -1,12 +1,25 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { _, noop, push, isModularize } from './utils'
-import runInContext from '../runInContext'
+import each from '../each'
+import { platform } from "os";
+import debounce from '../debounce'
+import throttle from '../throttle'
+import times from '../times'
+import constant from '../constant'
+import map from '../map'
+
+// let describe2 = describe
+// if (platform() == "darwin") {
+//   // setTimeout is Unstable on MacOS,
+//   // maybe caused by resource schedule,
+//   // so skip these tests
+//   describe2 = describe.skip
+// }
 
 describe('debounce and throttle', () => {
-  lodashStable.each(['debounce', 'throttle'], (methodName) => {
-    const func = _[methodName],
-      isDebounce = methodName == 'debounce'
+
+  each([['debounce', debounce], ['throttle', throttle]], ([methodName, func]) => {
+    const isDebounce = methodName == 'debounce'
 
     it(`\`_.${methodName}\` should not error for non-object \`options\` values`, () => {
       func(noop, 32, 1)
@@ -28,8 +41,8 @@ describe('debounce and throttle', () => {
 
     it(`\`_.${methodName}\` should invoke \`func\` with the correct \`this\` binding`, (done) => {
       const actual = [],
-        object = { 'funced': func(function() { actual.push(this) }, 32) },
-        expected = lodashStable.times(isDebounce ? 1 : 2, lodashStable.constant(object))
+        object = { 'funced': func(function () { actual.push(this) }, 32) },
+        expected = times(isDebounce ? 1 : 2, constant(object))
 
       object.funced()
       if (!isDebounce) {
@@ -43,11 +56,11 @@ describe('debounce and throttle', () => {
 
     it(`\`_.${methodName}\` supports recursive calls`, (done) => {
       const actual = [],
-        args = lodashStable.map(['a', 'b', 'c'], (chr) => [{}, chr]),
+        args = map(['a', 'b', 'c'], (chr) => [{}, chr]),
         expected = args.slice(),
         queue = args.slice()
 
-      var funced = func(function() {
+      var funced = func(function () {
         const current = [this]
         push.apply(current, arguments)
         actual.push(current)
@@ -68,37 +81,6 @@ describe('debounce and throttle', () => {
       }, 256)
     })
 
-    it(`\`_.${methodName}\` should work if the system time is set backwards`, (done) => {
-      if (!isModularize) {
-        let callCount = 0,
-          dateCount = 0
-
-        const lodash = runInContext({
-          'Date': {
-            'now': function() {
-              return ++dateCount == 4
-                ? +new Date(2012, 3, 23, 23, 27, 18)
-                : +new Date
-            }
-          }
-        })
-
-        const funced = lodash[methodName](() => {
-          callCount++
-        }, 32)
-
-        funced()
-
-        setTimeout(() => {
-          funced()
-          assert.strictEqual(callCount, isDebounce ? 1 : 2)
-          done()
-        }, 64)
-      }
-      else {
-        done()
-      }
-    })
 
     it(`\`_.${methodName}\` should support cancelling delayed calls`, (done) => {
       let callCount = 0

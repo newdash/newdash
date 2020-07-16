@@ -11,7 +11,7 @@ import baseIndexOf from './.internal/baseIndexOf';
  * is used for equality comparisons. If `fromIndex` is negative, it's used as
  * the offset from the end of `collection`.
  *
- * @since 0.1.0
+ * @since 5.12.0
  * @category Collection
  * @param {Array|Object|string} collection The collection to inspect.
  * @param {*} value The value to search for.
@@ -20,6 +20,7 @@ import baseIndexOf from './.internal/baseIndexOf';
  * @returns {boolean} Returns `true` if `value` is found, else `false`.
  * @example
  *
+ * ```js
  * includes([1, 2, 3], 1);
  * // => true
  *
@@ -31,8 +32,10 @@ import baseIndexOf from './.internal/baseIndexOf';
  *
  * includes('abcd', 'bc');
  * // => true
+ * ```
  */
-export function includes(collection, value, fromIndex, guard) {
+export function includes<T = any>(collection: ArrayLike<T> | Record<string, T>, value: T, fromIndex?: number, guard?: any): boolean
+export function includes(collection: any, value: any, fromIndex: number, guard: any): boolean {
   collection = isArrayLike(collection) ? collection : values(collection);
   fromIndex = (fromIndex && !guard) ? toInteger(fromIndex) : 0;
 
