@@ -1,8 +1,8 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { noop, identity, isNpm, mapCaches } from './utils'
 import mergeWith from '../mergeWith'
 import last from '../last'
+import isArray from '../isArray'
 
 describe('mergeWith', () => {
   it('should handle merging when `customizer` returns `undefined`', () => {
@@ -22,7 +22,7 @@ describe('mergeWith', () => {
   })
 
   it('should defer to `customizer` for non `undefined` results', () => {
-    const actual = mergeWith({ 'a': { 'b': [0, 1] } }, { 'a': { 'b': [2] } }, (a, b) => lodashStable.isArray(a) ? a.concat(b) : undefined)
+    const actual = mergeWith({ 'a': { 'b': [0, 1] } }, { 'a': { 'b': [2] } }, (a, b) => isArray(a) ? a.concat(b) : undefined)
 
     assert.deepStrictEqual(actual, { 'a': { 'b': [0, 1, 2] } })
   })
@@ -41,7 +41,7 @@ describe('mergeWith', () => {
   })
 
   it('should overwrite primitives with source object clones', () => {
-    const actual = mergeWith({ 'a': 0 }, { 'a': { 'b': ['c'] } }, (a, b) => lodashStable.isArray(a) ? a.concat(b) : undefined)
+    const actual = mergeWith({ 'a': 0 }, { 'a': { 'b': ['c'] } }, (a, b) => isArray(a) ? a.concat(b) : undefined)
 
     assert.deepStrictEqual(actual, { 'a': { 'b': ['c'] } })
   })
@@ -51,7 +51,7 @@ describe('mergeWith', () => {
       object = { 'a': ['a'] },
       source = { 'a': array, 'b': array }
 
-    const actual = mergeWith(object, source, (a, b) => lodashStable.isArray(a) ? a.concat(b) : undefined)
+    const actual = mergeWith(object, source, (a, b) => isArray(a) ? a.concat(b) : undefined)
 
     assert.deepStrictEqual(actual, { 'a': ['a', 'b', 'c'], 'b': ['b', 'c'] })
   })

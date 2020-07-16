@@ -1,12 +1,13 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import uniqueId from '../uniqueId'
+import times from '../times'
+import uniq from '../uniq'
 
 describe('uniqueId', () => {
   it('should generate unique ids', () => {
-    const actual = lodashStable.times(1000, () => uniqueId())
+    const actual = times(1000, () => uniqueId())
 
-    assert.strictEqual(lodashStable.uniq(actual).length, actual.length)
+    assert.strictEqual(uniq(actual).length, actual.length)
   })
 
   it('should return a string value when not providing a `prefix`', () => {

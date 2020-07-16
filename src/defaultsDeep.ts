@@ -22,6 +22,7 @@ import mergeWith from './mergeWith';
  */
 export function defaultsDeep(...args: any[]): any {
   args.push(undefined, customDefaultsMerge);
+  // @ts-ignore
   return mergeWith(...args);
 }
 

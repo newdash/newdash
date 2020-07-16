@@ -2,6 +2,13 @@ import baseMerge from './.internal/baseMerge';
 import createAssigner from './.internal/createAssigner';
 
 /**
+ * @ignore
+ */
+const iMergeWith = createAssigner((object, source, srcIndex, customizer) => {
+  baseMerge(object, source, srcIndex, customizer);
+});
+
+/**
  * This method is like `merge` except that it accepts `customizer` which
  * is invoked to produce the merged values of the destination and source
  * properties. If `customizer` returns `undefined`, merging is handled by the
@@ -10,14 +17,14 @@ import createAssigner from './.internal/createAssigner';
  *
  * **Note:** This method mutates `object`.
  *
- * @since 4.0.0
+ * @since 5.12.0
  * @category Object
- * @param {Object} object The destination object.
- * @param {...Object} sources The source objects.
- * @param {Function} customizer The function to customize assigned values.
- * @returns {Object} Returns `object`.
+ * @param object The destination object.
+ * @param sourcesOrCustomizer The source objects. The function to customize assigned values.
+ * @returns Returns `object`.
  * @example
  *
+ * ```js
  * function customizer(objValue, srcValue) {
  *   if (Array.isArray(objValue)) {
  *     return objValue.concat(srcValue)
@@ -29,9 +36,11 @@ import createAssigner from './.internal/createAssigner';
  *
  * mergeWith(object, other, customizer)
  * // => { 'a': [1, 3], 'b': [2, 4] }
+ * ```
  */
-const mergeWith = createAssigner((object, source, srcIndex, customizer) => {
-  baseMerge(object, source, srcIndex, customizer);
-});
+export function mergeWith(object: any, ...sourcesOrCustomizer: any[]): any {
+  return iMergeWith(object, ...sourcesOrCustomizer);
+}
+
 
 export default mergeWith;

@@ -1,8 +1,10 @@
-import invoke from './invoke';
 import baseRest from './.internal/baseRest';
 import baseInvoke from './.internal/baseInvoke';
 
 
+/**
+ * @ignore
+ */
 const internalMethodOf = baseRest((object, args) => function(path) {
   return baseInvoke(object, path, args);
 });

@@ -144,6 +144,14 @@ import methodOf from './methodOf';
 import includes from './includes';
 import functions from './functions';
 import flip from './flip';
+import divide from './divide';
+import invert from './invert';
+import mergeWith from './mergeWith';
+import toNumber from './toNumber';
+import toArray from './toArray';
+import uniqueId from './uniqueId';
+import words from './words';
+
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -169,7 +177,8 @@ export {
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
   pad, padStart, padEnd, invoke, invokeMap, includes,
-  conforms, conformsTo, defaultTo, methodOf, functions
+  conforms, conformsTo, defaultTo, methodOf, functions,
+  divide, invert, mergeWith, toNumber, toArray, uniqueId, words
 };
 
 export default {
@@ -196,7 +205,8 @@ export default {
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
   pad, padStart, padEnd, invoke, invokeMap, includes,
-  conforms, conformsTo, defaultTo, methodOf, functions
+  conforms, conformsTo, defaultTo, methodOf, functions,
+  divide, invert, mergeWith, toNumber, toArray, uniqueId, words
 
 };
 

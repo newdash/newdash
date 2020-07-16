@@ -8,11 +8,19 @@ import setToArray from './.internal/setToArray';
 import stringToArray from './.internal/stringToArray';
 import values from './values';
 
-/** `Object#toString` result references. */
+/** `Object#toString` result references.
+ * @ignore
+ */
 const mapTag = '[object Map]';
+/**
+ * @ignore
+ */
 const setTag = '[object Set]';
 
-/** Built-in value references. */
+/**
+ * Built-in value references.
+ * @ignore
+ */
 const symIterator = Symbol.iterator;
 
 /**

@@ -1,18 +1,27 @@
 import createMathOperation from './.internal/createMathOperation';
 
 /**
+ * @ignore
+ */
+const iDivide = createMathOperation((dividend, divisor) => dividend / divisor, 1);
+
+/**
  * Divide two numbers.
  *
- * @since 4.7.0
+ * @since 5.12.0
  * @category Math
- * @param {number} dividend The first number in a division.
- * @param {number} divisor The second number in a division.
- * @returns {number} Returns the quotient.
+ * @param dividend The first number in a division.
+ * @param divisor The second number in a division.
+ * @returns Returns the quotient.
  * @example
  *
+ * ```js
  * divide(6, 4)
  * // => 1.5
+ * ```
  */
-const divide = createMathOperation((dividend, divisor) => dividend / divisor, 1);
+export function divide(dividend: number, divisor: number): number {
+  return iDivide(dividend, divisor);
+}
 
 export default divide;

@@ -27,7 +27,10 @@ const reIsBinary = /^0b[01]+$/i;
  */
 const reIsOctal = /^0o[0-7]+$/i;
 
-/** Built-in method references without a dependency on `root`. */
+/**
+ * Built-in method references without a dependency on `root`.
+ * @ignore
+  */
 const freeParseInt = parseInt;
 
 /**
@@ -54,7 +57,7 @@ const freeParseInt = parseInt;
  * // => 3.2
  * ```
  */
-function toNumber(value: any): number {
+export function toNumber(value: any): number {
   if (typeof value == 'number') {
     return value;
   }

@@ -3,9 +3,18 @@ import { createInverter } from './.internal/createInverter';
 import { RecordIteratee } from './types';
 
 
+/**
+ * @ignore
+ */
 const hasOwnProperty = Object.prototype.hasOwnProperty;
+/**
+ * @ignore
+ */
 const nativeObjectToString = String.prototype.toString;
 
+/**
+ * @ignore
+ */
 const internalInvertBy = createInverter((result, value, key) => {
   if (value != null &&
     typeof value.toString != 'function') {

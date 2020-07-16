@@ -1,8 +1,14 @@
 import { createOver } from './.internal/createOver';
 import arrayEvery from './.internal/arrayEvery';
 
+/**
+ * @ignore
+ */
 const internalOverEvery = createOver(arrayEvery);
 
+/**
+ * @ignore
+ */
 interface OverEveryFunction {
   (...args: any[]): boolean
 }
