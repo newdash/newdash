@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.12.0](https://github.com/newdash/newdash/compare/v5.11.0...v5.12.0) (2020-07-16)
+
+
+### Features
+
+* 'cond' function ([8304e94](https://github.com/newdash/newdash/commit/8304e944a90356b51a91cf7d0c391ee42e0ba933))
+* 'conforms' function ([952ebdb](https://github.com/newdash/newdash/commit/952ebdbb335a994bfec52f6b0ef90ffd57d15b98))
+* 'flip' function ([c16927b](https://github.com/newdash/newdash/commit/c16927b60f8ee77fefe38fa3ed32ccf3a9d9a9ee))
+* 'invoke' functions ([28b2da4](https://github.com/newdash/newdash/commit/28b2da40304553dacc927d36b6f38b84d8de85ff))
+* 'pad' functions ([7d30770](https://github.com/newdash/newdash/commit/7d30770867d66e4f5dd0298e3377b86bcbbd3b47))
+* add more functions ([d884917](https://github.com/newdash/newdash/commit/d884917798e764e0b99a93f3a1b4a1cba316dbe5))
+* coverage ([77387ac](https://github.com/newdash/newdash/commit/77387ac5a9fdbe56c720e5ab4032c1724917a32b))
+* defaultTo/methodOf functions ([7649fd5](https://github.com/newdash/newdash/commit/7649fd5a9de3dd0250034b4ea8a7a4efe581a521))
+* escape functions ([3b683d6](https://github.com/newdash/newdash/commit/3b683d6d08996f1581305afa718fcda7b1625007))
+* functions & tests ([c219167](https://github.com/newdash/newdash/commit/c2191677c19219ec6c9ecd8788a3e6aab87cd60d))
+* **coverage:** update ([241728c](https://github.com/newdash/newdash/commit/241728c02f0cd5805176487dba82eba022180804))
+* **type:** concat function ([11b97bc](https://github.com/newdash/newdash/commit/11b97bcabdb3bc361ffd5bd59424df844ac17d6e))
+* **types:** forEach function ([279ad65](https://github.com/newdash/newdash/commit/279ad65027e8f570d7a07df87a8f114b0f8a6b0a))
+* function 'product' ([55d5812](https://github.com/newdash/newdash/commit/55d58120bc7350bc559e1f542041362e1f8b3b1a))
+* intersection functions ([7d5e085](https://github.com/newdash/newdash/commit/7d5e08559fe7fba5cc89ac5384b019102950293d))
+* remove 'produce' & enhance 'multiply' ([8cc2035](https://github.com/newdash/newdash/commit/8cc203551a7b7ce2052b0fc7190fe5a42be252e2))
+* sorted functions ([6e8a97b](https://github.com/newdash/newdash/commit/6e8a97b09ee18d61f561d6731c7aff8b85210d04))
+* uniq functions ([f73c7e5](https://github.com/newdash/newdash/commit/f73c7e53a1a3d1d809395c4fdc6db1e3b79a2e47))
+
+
+### Bug Fixes
+
+* **build:** script ([09daed5](https://github.com/newdash/newdash/commit/09daed5b86beab233d506c4b46cda0acc5502f8a))
+* **lgtm:** alerts ([cdd8654](https://github.com/newdash/newdash/commit/cdd86541b913cd37a3e8f26ea376d2036842739d))
+* **product:** test for deno runtime ([8580cdb](https://github.com/newdash/newdash/commit/8580cdbe12866753b372d13529e2dc2d6bc5ec6b))
+
 ## [5.11.0](https://github.com/newdash/newdash/compare/v5.10.0...v5.11.0) (2020-07-14)
 
 
