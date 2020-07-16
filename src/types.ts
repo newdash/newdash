@@ -41,10 +41,16 @@ interface AccumulatorIteratee<T, R> {
  */
 export type CollectionIteratee<T = any, R = any> = Iteratee<T, R>
 
+/**
+ * @ignore
+ */
 export interface ArrayIteratee<T, R = any> {
   (value?: T, key?: number, ref?: Array<T>): R;
 }
 
+/**
+ * @ignore
+ */
 export interface RecordIteratee<T, R = any> {
   (value?: T, key?: string, ref?: Record<string, T>): R;
 }

@@ -6,6 +6,9 @@ import { createOver } from './.internal/createOver';
  */
 const internalOver = createOver(arrayMap);
 
+/**
+ * @ignore
+ */
 interface OverFunction {
   <T>(...args: T[]): Array<T>
   (...args: any[]): Array<any>
