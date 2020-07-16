@@ -1,20 +1,6 @@
 import arrayEach from './.internal/arrayEach';
 import baseEach from './.internal/baseEach';
-
-/**
- * @ignore
- */
-type ObjectIteratee<T> = (value?: T, key?: string) => void
-
-/**
- * @ignore
- */
-type Iteratee<T> = (value?: T, key?: any) => void
-
-/**
- * @ignore
- */
-type TypedObject<T> = { [key: string]: T }
+import { Collection, CollectionIteratee } from './types';
 
 /**
  *
@@ -45,8 +31,7 @@ type TypedObject<T> = { [key: string]: T }
  * ```
  *
  */
-export function forEach<T>(collection?: Array<T>, iteratee?: Iteratee<T>): void;
-export function forEach<T>(collection?: TypedObject<T>, iteratee?: ObjectIteratee<T>): void;
+export function forEach<T>(collection?: Collection<T>, iteratee?: CollectionIteratee<T, void>): void;
 export function forEach(collection?: any, iteratee?: any): any {
   const func = Array.isArray(collection) ? arrayEach : baseEach;
   return func(collection, iteratee);
