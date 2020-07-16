@@ -9,21 +9,21 @@ import eq from '../eq'
  * @returns {Array} Returns the new duplicate free array.
  */
 function baseSortedUniq(array, iteratee) {
-  let seen
-  let index = -1
-  let resIndex = 0
-
-  const { length } = array
-  const result = []
+  var index = -1,
+    length = array.length,
+    resIndex = 0,
+    result = [];
 
   while (++index < length) {
-    const value = array[index], computed = iteratee ? iteratee(value) : value
+    var value = array[index],
+      computed = iteratee ? iteratee(value) : value;
+
     if (!index || !eq(computed, seen)) {
-      seen = computed
-      result[resIndex++] = value === 0 ? 0 : value
+      var seen = computed;
+      result[resIndex++] = value === 0 ? 0 : value;
     }
   }
-  return result
+  return result;
 }
 
 export default baseSortedUniq

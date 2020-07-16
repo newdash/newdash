@@ -4,6 +4,7 @@ import { _, LARGE_ARRAY_SIZE, slice } from './utils'
 import sortBy from '../sortBy'
 
 describe('uniqBy methods', () => {
+
   lodashStable.each(['uniqBy', 'sortedUniqBy'], (methodName) => {
     let func = _[methodName],
       isSorted = methodName == 'sortedUniqBy',

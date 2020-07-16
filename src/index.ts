@@ -126,6 +126,11 @@ import sortedLastIndexBy from './sortedLastIndexBy';
 import sortedLastIndexOf from './sortedLastIndexOf';
 import mean from './mean';
 import meanBy from './meanBy';
+import uniqBy from './uniqBy';
+import uniqWith from './uniqWith';
+import sortedUniq from './sortedUniq';
+import sortedUniqBy from './sortedUniqBy';
+
 
 export {
   filter, get, reduce, map, each, every, concat, first,
@@ -148,7 +153,8 @@ export {
   intersection, intersectionBy, intersectionWith,
   someValues, invertBy, unionBy, method, mean,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
-  sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf
+  sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
+  uniqBy, uniqWith, sortedUniq, sortedUniqBy
 };
 
 export default {
@@ -172,7 +178,8 @@ export default {
   intersection, intersectionBy, intersectionWith,
   someValues, invertBy, unionBy, method, mean,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
-  sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf
+  sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
+  uniqBy, uniqWith, sortedUniq, sortedUniqBy
 
 };
 

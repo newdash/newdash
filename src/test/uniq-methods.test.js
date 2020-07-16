@@ -1,13 +1,21 @@
 import assert from 'assert'
-import lodashStable from 'lodash'
 import { _, LARGE_ARRAY_SIZE, isEven } from './utils'
 import sortBy from '../sortBy'
+import each from '../each'
+import map from '../map'
+import toString from '../toString'
+import times from '../times'
+import { uniq } from '../uniq'
+import { uniqWith } from '../uniqWith'
+import { uniqBy } from '../uniqBy'
+import { sortedUniq } from '../sortedUniq'
+import { sortedUniqBy } from '../sortedUniqBy'
+
 
 describe('uniq methods', () => {
-  lodashStable.each(['uniq', 'uniqBy', 'uniqWith', 'sortedUniq', 'sortedUniqBy'], (methodName) => {
-    let func = _[methodName],
-      isSorted = /^sorted/.test(methodName),
-      objects = [{ 'a': 2 }, { 'a': 3 }, { 'a': 1 }, { 'a': 2 }, { 'a': 3 }, { 'a': 1 }]
+  each([['uniq', uniq], ['uniqBy', uniqBy], ['uniqWith', uniqWith], ['sortedUniq', sortedUniq], ['sortedUniqBy', sortedUniqBy]], ([methodName, func]) => {
+    const isSorted = /^sorted/.test(methodName)
+    let objects = [{ 'a': 2 }, { 'a': 3 }, { 'a': 1 }, { 'a': 2 }, { 'a': 3 }, { 'a': 1 }]
 
     if (isSorted) {
       objects = sortBy(objects, 'a')
@@ -28,7 +36,7 @@ describe('uniq methods', () => {
     })
 
     it(`\`_.${methodName}\` should treat \`-0\` as \`0\``, () => {
-      const actual = lodashStable.map(func([-0, 0]), lodashStable.toString)
+      const actual = map(func([-0, 0]), toString)
       assert.deepStrictEqual(actual, ['0'])
     })
 
@@ -41,8 +49,8 @@ describe('uniq methods', () => {
         expected = [0, {}, 'a'],
         count = Math.ceil(LARGE_ARRAY_SIZE / expected.length)
 
-      lodashStable.each(expected, (value) => {
-        lodashStable.times(count, () => {
+      each(expected, (value) => {
+        times(count, () => {
           largeArray.push(value)
         })
       })
@@ -51,9 +59,9 @@ describe('uniq methods', () => {
     })
 
     it(`\`_.${methodName}\` should work with large arrays of \`-0\` as \`0\``, () => {
-      const largeArray = lodashStable.times(LARGE_ARRAY_SIZE, (index) => isEven(index) ? -0 : 0)
+      const largeArray = times(LARGE_ARRAY_SIZE, (index) => isEven(index) ? -0 : 0)
 
-      const actual = lodashStable.map(func(largeArray), lodashStable.toString)
+      const actual = map(func(largeArray), toString)
       assert.deepStrictEqual(actual, ['0'])
     })
 
@@ -62,8 +70,8 @@ describe('uniq methods', () => {
         expected = [null, undefined, false, true, NaN],
         count = Math.ceil(LARGE_ARRAY_SIZE / expected.length)
 
-      lodashStable.each(expected, (value) => {
-        lodashStable.times(count, () => {
+      each(expected, (value) => {
+        times(count, () => {
           largeArray.push(value)
         })
       })
@@ -73,7 +81,7 @@ describe('uniq methods', () => {
 
     it(`\`_.${methodName}\` should work with large arrays of symbols`, () => {
       if (Symbol) {
-        const largeArray = lodashStable.times(LARGE_ARRAY_SIZE, Symbol)
+        const largeArray = times(LARGE_ARRAY_SIZE, Symbol)
         assert.deepStrictEqual(func(largeArray), largeArray)
       }
     })
@@ -90,10 +98,10 @@ describe('uniq methods', () => {
         const largeArray = [],
           count = Math.ceil(LARGE_ARRAY_SIZE / expected.length)
 
-        expected = lodashStable.map(expected, (symbol) => symbol || {})
+        expected = map(expected, (symbol) => symbol || {})
 
-        lodashStable.each(expected, (value) => {
-          lodashStable.times(count, () => {
+        each(expected, (value) => {
+          times(count, () => {
             largeArray.push(value)
           })
         })
@@ -107,8 +115,8 @@ describe('uniq methods', () => {
         expected = ['2', 2, Object('2'), Object(2)],
         count = Math.ceil(LARGE_ARRAY_SIZE / expected.length)
 
-      lodashStable.each(expected, (value) => {
-        lodashStable.times(count, () => {
+      each(expected, (value) => {
+        times(count, () => {
           largeArray.push(value)
         })
       })

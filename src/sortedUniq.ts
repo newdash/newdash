@@ -6,17 +6,19 @@ import baseSortedUniq from './.internal/baseSortedUniq';
  * If the input array is known to be sorted `sortedUniq` is
  * faster than `uniq`.
  *
- * @since 4.0.0
+ * @since 5.12.0
  * @category Array
- * @param {Array} array The array to inspect.
- * @returns {Array} Returns the new duplicate free array.
+ * @param array The array to inspect.
+ * @returns Returns the new duplicate free array.
  * @example
  *
+ * ```js
  * sortedUniq([1, 1, 2])
  * // => [1, 2]
+ * ```
  */
-function sortedUniq(array) {
-  return (array != null && array.length)
+export function sortedUniq<T>(array: Array<T>): Array<T> {
+  return (array && array.length)
     ? baseSortedUniq(array)
     : [];
 }
