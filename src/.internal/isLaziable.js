@@ -1,5 +1,3 @@
-import getFuncName from "./getFuncName";
-
 /**
  * Checks if `func` has a lazy counterpart.
  *
