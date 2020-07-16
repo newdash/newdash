@@ -132,6 +132,9 @@ import sortedUniq from './sortedUniq';
 import sortedUniqBy from './sortedUniqBy';
 import toUpper from './toUpper';
 import cond from './cond';
+import pad from './pad';
+import padStart from './padStart';
+import padEnd from './padEnd';
 
 
 export {
@@ -156,7 +159,8 @@ export {
   someValues, invertBy, unionBy, method, mean, cond,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
-  uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper
+  uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
+  pad, padStart, padEnd
 };
 
 export default {
@@ -181,7 +185,8 @@ export default {
   someValues, invertBy, unionBy, method, mean, cond,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
-  uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper
+  uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
+  pad, padStart, padEnd
 
 };
 

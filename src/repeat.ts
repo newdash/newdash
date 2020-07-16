@@ -1,35 +1,8 @@
 import toInteger from './toInteger';
 import isIterateeCall from './.internal/isIterateeCall';
-import floor from './floor';
 import toString from './toString';
+import baseRepeat from './.internal/baseRepeat';
 
-
-/**
- * @private
- * @ignore
- * @internal
- * @param str
- * @param n
- */
-function baseRepeat(str: string, n?: number): string {
-  let result = '';
-  if (!str || n < 1 || n > Number.MAX_SAFE_INTEGER) {
-    return result;
-  }
-  // Leverage the exponentiation by squaring algorithm for a faster repeat.
-  // See https://en.wikipedia.org/wiki/Exponentiation_by_squaring for more details.
-  do {
-    if (n % 2) {
-      result += str;
-    }
-    n = floor(n / 2);
-    if (n) {
-      str += str;
-    }
-  } while (n);
-
-  return result;
-}
 /**
  * Repeats the given string `n` times.
  *
