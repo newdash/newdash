@@ -41,7 +41,7 @@
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.0",
     "@babel/plugin-syntax-typescript": "^7.10.4",
-    "@types/jest": "^26.0.7",
+    "@types/jest": "^26.0.8",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
     "eslint": "^7.5.0",
