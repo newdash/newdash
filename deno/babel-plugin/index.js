@@ -59,7 +59,9 @@ module.exports = function (babel) {
         const dir = p.dirname(filename)
         const prefix = "../../../deno/test"
         const mName = path.node.source.value
-        const mPath = p.join(`${dir}/`, mName)
+        let mPath = p.join(`${dir}/`, mName)
+
+
 
         if (mName == "assert") {
           path.node.source.value = `${prefix}/assert.ts`
@@ -91,7 +93,9 @@ module.exports = function (babel) {
         } else {
           console.info(`can not find module '${mName}' from ${filename}, no transform.`)
         }
-
+        if (path.node.source.value.startsWith("../src/")) {
+          path.node.source.value = `../${path.node.source.value.slice(7)}`
+        }
       },
 
       /**

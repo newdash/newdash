@@ -31,8 +31,11 @@ jobs:
     - name: install nodejs deps
       run: npm ci
 
-    - name: build for deno
+    - name: build source for deno
       run: npm run build:deno
+    
+    - name: build test cases for deno
+      run: npm run build:deno:test
 
     - name: run deno test
       run: deno test ./dist/deno/test/

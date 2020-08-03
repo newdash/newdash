@@ -1,3 +1,8 @@
+import baseClamp from './.internal/baseClamp';
+import baseToString from './.internal/baseToString';
+import toInteger from './toInteger';
+import toString from './toString';
+
 /**
  * Checks if `string` starts with the given target string.
  *
@@ -6,9 +11,9 @@
  * @param string The string to inspect.
  * @param target The string to search for.
  * @param position The position to search from.
- * @returns {boolean} Returns `true` if `string` starts with `target`,
+ * @returns Returns `true` if `string` starts with `target`,
  *  else `false`.
- * @see endsWith, includes
+ * @see [[endsWith]], [[includes]]
  * @example
  *
  * ```js
@@ -22,16 +27,13 @@
  * // => true
  * ```
  */
-function startsWith(string: string = '', target: string, position = 0) {
-  const { length } = string;
-  position = position == null ? 0 : position;
-  if (position < 0) {
-    position = 0;
-  }
-  else if (position > length) {
-    position = length;
-  }
-  target = `${target}`;
+export function startsWith(string: string = '', target: string, position = 0): boolean {
+  string = toString(string);
+  position = position == null
+    ? 0
+    : baseClamp(toInteger(position), 0, string.length);
+
+  target = baseToString(target);
   return string.slice(position, position + target.length) == target;
 }
 

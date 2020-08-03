@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "no-undef": "off",
+    "prefer-const": "off",
+    "no-var": "off",
+    "prefer-rest-params": "off",
+    "prefer-spread": "off"
+  }
+}

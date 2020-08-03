@@ -2,6 +2,15 @@ import getTag from './.internal/getTag';
 import isObjectLike from './isObjectLike';
 
 /**
+ * @ignore
+ */
+const objectTag = '[object Object]';
+/**
+ * @ignore
+ */
+const objectCtorString = Function.prototype.toString.call(Object);
+
+/**
  * Checks if `value` is a plain object, that is, an object created by the
  * `Object` constructor or one with a `[[Prototype]]` of `null`.
  *
@@ -30,17 +39,16 @@ import isObjectLike from './isObjectLike';
  * ```
  */
 export function isPlainObject(value: any): boolean {
-  if (!isObjectLike(value) || getTag(value) != '[object Object]') {
+  if (!isObjectLike(value) || getTag(value) != objectTag) {
     return false;
   }
-  if (Object.getPrototypeOf(value) === null) {
+  const proto = Object.getPrototypeOf(value);
+  if (proto === null) {
     return true;
   }
-  let proto = value;
-  while (Object.getPrototypeOf(proto) !== null) {
-    proto = Object.getPrototypeOf(proto);
-  }
-  return Object.getPrototypeOf(value) === proto;
+  const Ctor = Object.hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+  return typeof Ctor == 'function' && Ctor instanceof Ctor &&
+    Function.prototype.toString.call(Ctor) == objectCtorString;
 }
 
 export default isPlainObject;

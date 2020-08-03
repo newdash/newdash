@@ -119,8 +119,6 @@ module.exports = {
 
     'prefer-const': ['error'],
 
-    'prefer-rest-params': ['error'],
-
     'prefer-template': ['error'],
 
     'template-curly-spacing': ['error', 'never']

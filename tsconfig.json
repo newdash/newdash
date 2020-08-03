@@ -1,26 +1,10 @@
 {
-  "compilerOptions": {
-    "charset": "UTF-8",
-    "newLine": "lf",
-    "allowJs": true,
-    "target": "ES6",
-    "module": "CommonJS",
-    "outDir": "dist/node",
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "declaration": true,
-    "lib": [
-      "ES6",
-      "ES2015.Symbol",
-      "ES2017",
-      "DOM"
-    ]
-  },
+  "extends": "./tsconfig.base",
   "include": [
     "src"
   ],
   "exclude": [
-    "src/test",
+    "test",
     "lib",
     "dist",
     "deno"
