@@ -173,7 +173,7 @@ describe('set methods', () => {
           'configurable': true,
           'enumerable': true,
           'get': constant(value),
-          'set': function () { pass = false; }
+          'set': function() { pass = false; }
         });
 
         func(object, 'a', updater);

@@ -2,8 +2,8 @@
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
-    "source.fixAll": false,
-    "source.organizeImports": false
+    "source.fixAll": true,
+    "source.organizeImports": true
   },
   "cSpell.words": [
     "falsey",

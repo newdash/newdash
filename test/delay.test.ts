@@ -21,7 +21,7 @@ describe('delay', () => {
   it('should provide additional arguments to `func`', (done) => {
     let args;
 
-    delay(function (...args1) {
+    delay(function(...args1) {
       args = slice.call(arguments);
     }, 32, 1, 2);
 
