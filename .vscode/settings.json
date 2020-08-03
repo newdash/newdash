@@ -9,7 +9,7 @@
     "falsey",
     "newdash"
   ],
-  "eslint.enable": false,
+  "eslint.enable": true,
   "javascript.autoClosingTags": false,
   "typescript.autoClosingTags": false
 }

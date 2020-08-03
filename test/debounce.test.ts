@@ -5,7 +5,7 @@ import debounce from '../src/debounce';
 import { argv, isPhantom, push } from './utils';
 
 let describe2 = describe;
-if (platform() != "linux") {
+if (platform() != 'linux') {
   // setTimeout is Unstable on MacOS,
   // maybe caused by resource schedule,
   // so skip these tests
