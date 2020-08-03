@@ -1,15 +1,15 @@
 import * as assert from 'assert';
-import { _, noop, push, isModularize } from './utils';
-import each from '../src/each';
 import { platform } from 'os';
+import constant from '../src/constant';
 import debounce from '../src/debounce';
+import each from '../src/each';
+import map from '../src/map';
 import throttle from '../src/throttle';
 import times from '../src/times';
-import constant from '../src/constant';
-import map from '../src/map';
+import { noop, push } from './utils';
 
 let describe2 = describe;
-if (platform() == 'darwin') {
+if (platform() != 'linux') {
   // setTimeout is Unstable on MacOS,
   // maybe caused by resource schedule,
   // so skip these tests

@@ -1,11 +1,11 @@
 import * as assert from 'assert';
-import { argv, isPhantom, push } from './utils';
-import debounce from '../src/debounce';
-import identity from '../src/.internal/identity';
 import { platform } from 'os';
+import identity from '../src/.internal/identity';
+import debounce from '../src/debounce';
+import { argv, isPhantom, push } from './utils';
 
 let describe2 = describe;
-if (platform() == 'darwin') {
+if (platform() != "linux") {
   // setTimeout is Unstable on MacOS,
   // maybe caused by resource schedule,
   // so skip these tests

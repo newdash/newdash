@@ -1,56 +1,44 @@
 // @ts-nocheck
 import * as assert from 'assert';
-
-import {
-  realm,
-  body,
-  asyncFunc,
-  genFunc,
-  errors,
-  LARGE_ARRAY_SIZE,
-  isNpm,
-  mapCaches,
-  arrayBuffer,
-  stubTrue,
-  objectProto,
-  symbol,
-  defineProperty,
-  getSymbols,
-  document,
-  arrayViews,
-  slice,
-  noop
-} from './utils';
-
-import last from '../src/last';
-import each from '../src/each';
+import root from '../src/.internal/root';
+import camelCase from '../src/camelCase';
+import capitalize from '../src/capitalize';
 import clone from '../src/clone';
 import cloneDeep from '../src/cloneDeep';
-import cloneWith from '../src/cloneWith';
 import cloneDeepWith from '../src/cloneDeepWith';
-
-import times from '../src/times';
+import cloneWith from '../src/cloneWith';
+import each from '../src/each';
 import forOwn from '../src/forOwn';
-import isEqual from '../src/isEqual';
-import isObject from '../src/isObject';
-import map from '../src/map';
-import isPlainObject from '../src/isPlainObject';
-import transform from '../src/transform';
-import isElement from '../src/isElement';
 import isArguments from '../src/isArguments';
+import isElement from '../src/isElement';
+import isEqual from '../src/isEqual';
 import isFunction from '../src/isFunction';
-import capitalize from '../src/capitalize';
-import camelCase from '../src/camelCase';
+import isObject from '../src/isObject';
+import isPlainObject from '../src/isPlainObject';
+import last from '../src/last';
+import map from '../src/map';
 import startsWith from '../src/startsWith';
-import root from '../src/.internal/root';
+import times from '../src/times';
+import transform from '../src/transform';
+import {
+  arrayBuffer,
+  arrayViews, asyncFunc, body,
+  defineProperty,
+  document, errors, genFunc,
+  getSymbols, isNpm, LARGE_ARRAY_SIZE,
+  mapCaches,
+  noop, objectProto, realm,
+  slice, stubTrue,
+  symbol
+} from './utils';
 
 
-describe('clone methods', function() {
+describe('clone methods', function () {
   function Foo() {
     this.a = 1;
   }
   Foo.prototype.b = 1;
-  Foo.c = function() { };
+  Foo.c = function () { };
 
   if (Map) {
     var iMap = new Map;
@@ -135,7 +123,7 @@ describe('clone methods', function() {
   it('`cloneDeepWith` should provide `stack` to `customizer`', () => {
     let actual;
 
-    cloneDeepWith({ 'a': 1 }, function() {
+    cloneDeepWith({ 'a': 1 }, function () {
       actual = last(arguments);
     });
 
@@ -399,7 +387,7 @@ describe('clone methods', function() {
       const argsList = [],
         object = new Foo;
 
-      func(object, function() {
+      func(object, function () {
         const length = arguments.length,
           args = slice.call(arguments, 0, length - (length > 1 ? 1 : 0));
 
@@ -416,7 +404,7 @@ describe('clone methods', function() {
 
     forOwn(uncloneable, (value, key) => {
       it(`\`${methodName}\` should work with a \`customizer\` callback and ${key}`, () => {
-        const customizer = function(value) {
+        const customizer = function (value) {
           return isPlainObject(value) ? undefined : value;
         };
 

@@ -1,16 +1,16 @@
 /* eslint-disable no-undef */
 import path from 'path';
-import { Hash } from '../src//.internal/Hash';
-import identity from '../src//.internal/identity';
-import ListCache from '../src//.internal/ListCache';
-import root from '../src//.internal/root';
-import Stack from '../src//.internal/Stack';
-import attempt from '../src//attempt';
-import filter from '../src//filter';
-import forOwn from '../src//forOwn';
+import { Hash } from '../src/.internal/Hash';
+import identity from '../src/.internal/identity';
+import ListCache from '../src/.internal/ListCache';
+import root from '../src/.internal/root';
+import Stack from '../src/.internal/Stack';
+import attempt from '../src/attempt';
+import filter from '../src/filter';
+import forOwn from '../src/forOwn';
 /** Load stable Lodash. */
-import lodashStable from '../src//index';
-import memoize from '../src//memoize';
+import lodashStable from '../src/index';
+import memoize from '../src/memoize';
 
 
 /** Used to detect when a function becomes hot. */

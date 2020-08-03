@@ -33,7 +33,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.npm
-          key: node-v10-{{ checksum "package-lock.json" }}
+          key: node-v14-{{ checksum "package-lock.json" }}
 
 
   deploy:

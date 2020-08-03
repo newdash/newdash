@@ -5,7 +5,7 @@ import times from '../src/times';
 import { argv, identity, isPhantom } from './utils';
 
 let describe2 = describe;
-if (platform() == 'darwin') {
+if (platform() != 'linux') {
   // setTimeout is Unstable on MacOS,
   // maybe caused by resource schedule,
   // so skip these tests
