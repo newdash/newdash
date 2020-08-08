@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.12.2](https://github.com/newdash/newdash/compare/v5.12.1...v5.12.2) (2020-08-08)
+
+
+### Bug Fixes
+
+* types definition of map ([1720ad2](https://github.com/newdash/newdash/commit/1720ad2eeda51bdeb3bfb9eea44df9cd9166df64))
+
 ### [5.12.1](https://github.com/newdash/newdash/compare/v5.12.0...v5.12.1) (2020-08-03)
 
 
