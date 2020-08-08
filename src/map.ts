@@ -1,8 +1,8 @@
-import isArray from './isArray';
-import baseMap from './.internal/baseMap';
 import arrayMap from './.internal/arrayMap';
+import baseMap from './.internal/baseMap';
 import getIteratee from './.internal/getIteratee';
-import { Collection, CollectionIteratee, Tuple } from './types';
+import isArray from './isArray';
+import { ArrayIteratee, RecordIteratee, Tuple } from './types';
 
 
 /**
@@ -46,8 +46,8 @@ import { Collection, CollectionIteratee, Tuple } from './types';
  *
  */
 export function map<T extends any[] | []>(collection: T): Tuple<T>;
-export function map<T>(collection: Record<string, T>): T[];
-export function map<T, R>(collection: Collection<T>, iteratee: CollectionIteratee<T, R>): R[];
+export function map<T, R = any>(collection: ArrayLike<T>, iteratee?: ArrayIteratee<T, R>): R[];
+export function map<T, R = any>(collection: Record<string, T>, iteratee?: RecordIteratee<T, R>): R[];
 export function map(collection: any, iteratee?: any): [];
 export function map(collection: any, iteratee?: any) {
 
