@@ -98,3 +98,9 @@ export type Path = ArrayPath
 export interface Comparator<T = any> {
   (v1?: T, v2?: T): boolean
 }
+
+
+/**
+ * Unwrap Promise Generic Type
+ */
+export type UnwrapPromise<T> = T extends PromiseLike<infer U> ? U : T
