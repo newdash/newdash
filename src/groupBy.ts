@@ -1,6 +1,6 @@
 import baseAssignValue from './.internal/baseAssignValue';
 import createAggregator from './.internal/createAggregator';
-import { Collection, CollectionIteratee, KeyIteratee } from './types';
+import { ArrayIteratee, Collection, KeyIteratee, RecordIteratee } from './types';
 
 /**
  * Used to check objects for own properties.
@@ -44,8 +44,10 @@ const internalGroupBy = createAggregator((result: any, value: any, key: any) => 
  * ```
  */
 export function groupBy<T, K>(result: Collection<T>): Record<string, Array<T>>;
-export function groupBy<T, K>(result: Collection<T>, iteratee: KeyIteratee): Record<string, Array<T>>;
-export function groupBy<T, K>(result: Collection<T>, iteratee: CollectionIteratee<T, any>): Record<string, Array<T>>;
+export function groupBy<T, K>(result: ArrayLike<T>, iteratee: KeyIteratee): Record<string, Array<T>>;
+export function groupBy<T, K>(result: Record<string, T>, iteratee: KeyIteratee): Record<string, Array<T>>;
+export function groupBy<T, K>(result: ArrayLike<T>, iteratee: ArrayIteratee<T, any>): Record<string, Array<T>>;
+export function groupBy<T, K>(result: Record<string, T>, iteratee: RecordIteratee<T, any>): Record<string, Array<T>>;
 export function groupBy(result: any, iteratee?: any): any {
   return internalGroupBy(result, iteratee);
 }
