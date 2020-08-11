@@ -1,6 +1,6 @@
 import arrayEach from './.internal/arrayEach';
 import baseEach from './.internal/baseEach';
-import { Collection, CollectionIteratee } from './types';
+import { ArrayIteratee, PlainObject, RecordIteratee } from './types';
 
 /**
  *
@@ -31,7 +31,8 @@ import { Collection, CollectionIteratee } from './types';
  * ```
  *
  */
-export function forEach<T>(collection?: Collection<T>, iteratee?: CollectionIteratee<T, void>): void;
+export function forEach<T>(collection?: ArrayLike<T>, iteratee?: ArrayIteratee<T, void>): void;
+export function forEach<T>(collection?: PlainObject<T>, iteratee?: RecordIteratee<T, void>): void;
 export function forEach(collection?: any, iteratee?: any): any {
   const func = Array.isArray(collection) ? arrayEach : baseEach;
   return func(collection, iteratee);
