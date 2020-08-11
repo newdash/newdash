@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.13.0](https://github.com/newdash/newdash/compare/v5.12.2...v5.13.0) (2020-08-11)
+
+
+### Features
+
+* [#88](https://github.com/newdash/newdash/issues/88) add unwrapper for Promise ([018f624](https://github.com/newdash/newdash/commit/018f62446941f92530c10065be04e10c34757cc8))
+
+
+### Bug Fixes
+
+* **type:** group by ([fbdda57](https://github.com/newdash/newdash/commit/fbdda573bc423b0550ccc9edfe13976356c17b81))
+
 ### [5.12.2](https://github.com/newdash/newdash/compare/v5.12.1...v5.12.2) (2020-08-08)
 
 
