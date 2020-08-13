@@ -1,7 +1,9 @@
 import * as assert from 'assert';
+import { addPrefix } from '../src/addPrefix';
+import { addSuffix } from '../src/addSuffix';
+import { curry } from '../src/curry';
 import { trimPrefix } from '../src/trimPrefix';
 import { trimSuffix } from '../src/trimSuffix';
-import { curry } from '../src/curry';
 
 
 describe('trim test suite', () => {
@@ -32,6 +34,28 @@ describe('trim test suite', () => {
 
   });
 
+  it('should support add prefix', () => {
+
+    assert.strictEqual(addPrefix(), '');
+    assert.strictEqual(addPrefix('123'), '123');
+    assert.strictEqual(addPrefix(undefined, '123'), '123');
+    assert.strictEqual(addPrefix('123', '123'), '123');
+    assert.strictEqual(addPrefix('456', '123'), '123456');
+    assert.strictEqual(addPrefix('123456', '123'), '123456');
+
+  });
+
+
+  it('should support add suffix', () => {
+
+    assert.strictEqual(addSuffix(), '');
+    assert.strictEqual(addSuffix('123'), '123');
+    assert.strictEqual(addSuffix(undefined, '123'), '123');
+    assert.strictEqual(addSuffix('123', '123'), '123');
+    assert.strictEqual(addSuffix('456', '123'), '456123');
+    assert.strictEqual(addSuffix('123456', '456'), '123456');
+
+  });
 
   it('should support curry', () => {
 
