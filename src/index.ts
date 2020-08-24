@@ -150,6 +150,7 @@ import { update } from './update';
 import words from './words';
 
 
+export * from './types';
 export {
   filter, get, reduce, map, each, every, concat, first,
   attempt, forEach, merge, isEmpty, split, join, memoize,
@@ -178,6 +179,7 @@ export {
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
   words, escapeRegExp, addSuffix, addPrefix
 };
+
 
 export default {
   filter, get, reduce, map, each, every, concat, first,
