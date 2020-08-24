@@ -63,12 +63,10 @@ export type KeyIteratee = string | number
  * @ignore
  */
 export type Entry<T = any> = [string, T]
-
 /**
  * @ignore
  */
 export type ArrayAble<T> = T | Array<T>
-
 
 /**
  * @ignore
@@ -112,3 +110,20 @@ export type UnwrapPromise<T> = T extends PromiseLike<infer U> ? U : T
 export type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Array<infer U> ? Array<DeepPartial<U>> : T[P] extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : DeepPartial<T[P]>;
 };
+
+/**
+ * Partial Object
+ */
+export type Partial<T> = {
+  [P in keyof T]?: T[P]
+}
+
+/**
+ * optional version of Parameters
+ */
+export type OptionalParameters<T extends Function> = T extends (...args: infer P) => any ? { [K in keyof P]?: P[K] } : never;
+
+/**
+ * Class constructor
+ */
+export type Class<T = any> = new (...args: any[]) => T
