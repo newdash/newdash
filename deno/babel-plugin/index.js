@@ -29,6 +29,47 @@ module.exports = function (babel) {
 
   }
 
+  const importExportTransform = (path, { file: { opts: { filename } } }) => {
+    const dir = p.dirname(filename)
+    const prefix = "../../../deno/test"
+    const mName = path.node.source.value
+    let mPath = p.join(`${dir}/`, mName)
+
+    if (mName == "assert") {
+      path.node.source.value = `${prefix}/assert.ts`
+      return
+    }
+    if (mName == "os") {
+      path.node.source.value = `${prefix}/os.ts`
+      return
+    }
+
+    if (mName == "path") {
+      path.node.source.value = `${prefix}/path.ts`
+      return
+    }
+
+    if (mName == "lodash") {
+      path.node.source.value = "../index.ts"
+      return // no transform for npm modules
+    }
+
+    if (mName.endsWith(".ts") || mName.endsWith(".js")) {
+      return // no transform explicit module extension
+    }
+
+    if (fs.existsSync(mPath + ".js")) {
+      path.node.source.value = `${path.node.source.value}.js`;
+    } else if (fs.existsSync(mPath + ".ts")) {
+      path.node.source.value = `${path.node.source.value}.ts`;
+    } else {
+      console.info(`can not find module '${mName}' from ${filename}, no transform.`)
+    }
+    if (path.node.source.value.startsWith("../src/")) {
+      path.node.source.value = `../${path.node.source.value.slice(7)}`
+    }
+  }
+
   return {
     visitor: {
 
@@ -55,48 +96,8 @@ module.exports = function (babel) {
         }
       },
 
-      ImportDeclaration(path, { file: { opts: { filename } } }) {
-        const dir = p.dirname(filename)
-        const prefix = "../../../deno/test"
-        const mName = path.node.source.value
-        let mPath = p.join(`${dir}/`, mName)
-
-
-
-        if (mName == "assert") {
-          path.node.source.value = `${prefix}/assert.ts`
-          return
-        }
-        if (mName == "os") {
-          path.node.source.value = `${prefix}/os.ts`
-          return
-        }
-
-        if (mName == "path") {
-          path.node.source.value = `${prefix}/path.ts`
-          return
-        }
-
-        if (mName == "lodash") {
-          path.node.source.value = "../index.ts"
-          return // no transform for npm modules
-        }
-
-        if (mName.endsWith(".ts") || mName.endsWith(".js")) {
-          return // no transform explicit module extension
-        }
-
-        if (fs.existsSync(mPath + ".js")) {
-          path.node.source.value = `${path.node.source.value}.js`;
-        } else if (fs.existsSync(mPath + ".ts")) {
-          path.node.source.value = `${path.node.source.value}.ts`;
-        } else {
-          console.info(`can not find module '${mName}' from ${filename}, no transform.`)
-        }
-        if (path.node.source.value.startsWith("../src/")) {
-          path.node.source.value = `../${path.node.source.value.slice(7)}`
-        }
-      },
+      ImportDeclaration: importExportTransform,
+      ExportAllDeclaration: importExportTransform,
 
       /**
        * @param {import("@babel/core").NodePath} path
