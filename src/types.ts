@@ -129,3 +129,7 @@ export type OptionalParameters<T extends Function> = T extends (...args: infer P
  * Class constructor
  */
 export type Class<T = any> = new (...args: any[]) => T
+
+export type AsyncFunction = (...args: any[]) => Promise<any>
+
+export type ReturnType<T> = T extends (...args: any) => infer R ? R : any;
