@@ -1,5 +1,8 @@
 
+import assert from 'assert';
 import { series } from '../src/series';
+import { assertShouldThrowError } from './helpers';
+
 describe('series test suite', () => {
 
 
@@ -12,7 +15,8 @@ describe('series test suite', () => {
       () => Promise.resolve(3)
     );
 
-    expect(result).toStrictEqual([1, 2, 3]);
+    assert.deepStrictEqual(result, [1, 2, 3]);
+
 
   });
 
@@ -25,7 +29,7 @@ describe('series test suite', () => {
       () => new Promise((resolve) => { op.push(3); resolve(); })
     );
 
-    expect(op).toStrictEqual([1, 2, 3]);
+    assert.deepStrictEqual(op, [1, 2, 3]);
 
   });
 
@@ -33,13 +37,13 @@ describe('series test suite', () => {
 
     const err = new Error();
 
-    expect(async() => {
+    await assertShouldThrowError(async() => {
       await series(
         () => Promise.resolve(1),
         () => Promise.reject(err),
         () => Promise.resolve(3)
       );
-    }).rejects.toThrow(err);
+    });
 
   });
 

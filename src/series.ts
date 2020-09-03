@@ -1,7 +1,7 @@
 import { AsyncFunction, ReturnType, UnwrapPromise } from './types';
 
 
-type SeriesResult<T extends Array<AsyncFunction>> = Promise<{ [K in keyof T]: UnwrapPromise<ReturnType<T[K]>> }>
+type SeriesResult<T extends Array<AsyncFunction>> = { [K in keyof T]: UnwrapPromise<ReturnType<T[K]>> }
 
 /**
  * run async operations one by one, serially
@@ -25,7 +25,7 @@ type SeriesResult<T extends Array<AsyncFunction>> = Promise<{ [K in keyof T]: Un
  * )
  * ```
  */
-export async function series<T extends Array<AsyncFunction>>(...asyncOperations: T): SeriesResult<T> {
+export async function series<T extends Array<AsyncFunction>>(...asyncOperations: T): Promise<SeriesResult<T>> {
   const rt = [];
   for (const asyncOperation of asyncOperations) {
     rt.push(await asyncOperation());
