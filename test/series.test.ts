@@ -16,6 +16,19 @@ describe('series test suite', () => {
 
   });
 
+  it('should call operations one by one', async() => {
+    const op = [];
+
+    await series(
+      () => new Promise((resolve) => { op.push(1); resolve(); }),
+      () => new Promise((resolve) => { op.push(2); resolve(); }),
+      () => new Promise((resolve) => { op.push(3); resolve(); })
+    );
+
+    expect(op).toStrictEqual([1, 2, 3]);
+
+  });
+
   it('should support throw errors', async() => {
 
     const err = new Error();
