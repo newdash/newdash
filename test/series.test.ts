@@ -40,13 +40,13 @@ describe('series test suite', () => {
   it('should stop call next operations on error', async() => {
     const op = [];
 
-    await expect(async() => {
+    await assertShouldThrowError(async() => {
       await series(
         () => new Promise((resolve) => { op.push(1); resolve(); }),
         () => Promise.reject(new Error()),
         () => new Promise((resolve) => { op.push(3); resolve(); })
       );
-    }).rejects.toThrow();
+    });
 
     assert.deepStrictEqual(op, [1]);
 
