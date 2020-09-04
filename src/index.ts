@@ -111,6 +111,7 @@ import reject from './reject';
 import remove from './remove';
 import { repeat } from './repeat';
 import replace from './replace';
+import { series } from './series';
 import { set } from './set';
 import { size } from './size';
 import { sleep } from './sleep';
@@ -177,7 +178,7 @@ export {
   pad, padStart, padEnd, invoke, invokeMap, includes,
   conforms, conformsTo, defaultTo, methodOf, functions,
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
-  words, escapeRegExp, addSuffix, addPrefix
+  words, escapeRegExp, addSuffix, addPrefix, series
 };
 
 
@@ -207,6 +208,6 @@ export default {
   pad, padStart, padEnd, invoke, invokeMap, includes,
   conforms, conformsTo, defaultTo, methodOf, functions,
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
-  words, escapeRegExp, addSuffix, addPrefix
+  words, escapeRegExp, addSuffix, addPrefix, series
 };
 

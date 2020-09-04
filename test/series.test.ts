@@ -3,33 +3,52 @@ import assert from 'assert';
 import { series } from '../src/series';
 import { assertShouldThrowError } from './helpers';
 
+const asyncOperation = (value, onCall = () => { }, timeout = 100) => () => {
+  if (onCall) {
+    onCall();
+  }
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (value instanceof Error) {
+        reject(value);
+      } else {
+        resolve(value);
+      }
+    }, timeout);
+  });
+};
+
 describe('series test suite', () => {
 
 
   it('should support run async operations', async() => {
 
+    const callTrace = [];
 
     const result = await series(
-      () => Promise.resolve(1),
-      () => Promise.resolve(2),
-      () => Promise.resolve(3)
+      asyncOperation(1, () => callTrace.push('f1')),
+      asyncOperation(2, () => callTrace.push('f2')),
+      asyncOperation(3, () => callTrace.push('f3'))
     );
 
+    assert.deepStrictEqual(callTrace, ['f1', 'f2', 'f3']);
     assert.deepStrictEqual(result, [1, 2, 3]);
 
 
   });
 
-  it('should call operations one by one', async() => {
+  it('should stop call next operations on error', async() => {
     const op = [];
 
-    await series(
-      () => new Promise((resolve) => { op.push(1); resolve(); }),
-      () => new Promise((resolve) => { op.push(2); resolve(); }),
-      () => new Promise((resolve) => { op.push(3); resolve(); })
-    );
+    await expect(async() => {
+      await series(
+        () => new Promise((resolve) => { op.push(1); resolve(); }),
+        () => Promise.reject(new Error()),
+        () => new Promise((resolve) => { op.push(3); resolve(); })
+      );
+    }).rejects.toThrow();
 
-    assert.deepStrictEqual(op, [1, 2, 3]);
+    assert.deepStrictEqual(op, [1]);
 
   });
 
