@@ -1,9 +1,5 @@
-import castPath from './.internal/castPath';
-import last from './last';
-import parent from './.internal/parent';
-import toKey from './.internal/toKey';
-import baseRest from './.internal/baseRest';
 import baseInvoke from './.internal/baseInvoke';
+import baseRest from './.internal/baseRest';
 
 
 /**

@@ -32,3 +32,5 @@ export async function series<T extends Array<AsyncFunction>>(...asyncOperations:
   }
   return <unknown>rt as SeriesResult<T>;
 }
+
+export default series;

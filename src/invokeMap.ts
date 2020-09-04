@@ -1,11 +1,10 @@
-import baseEach from './.internal/baseEach';
-import invoke from './invoke';
-import isArrayLike from './isArrayLike';
-import baseRest from './.internal/baseRest';
-import { baseInvoke } from './.internal/baseInvoke';
-
 import apply from './.internal/apply';
-import { Collection, Path, ArrayAble } from './types';
+import baseEach from './.internal/baseEach';
+import { baseInvoke } from './.internal/baseInvoke';
+import baseRest from './.internal/baseRest';
+import isArrayLike from './isArrayLike';
+import { Collection, Path } from './types';
+
 
 /**
  * @ignore
@@ -31,11 +30,11 @@ const internalInvokeMap = baseRest((collection, path, args) => {
  *
  * @since 5.12.0
  * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Array|Function|string} path The path of the method to invoke or
+ * @param collection The collection to iterate over.
+ * @param path The path of the method to invoke or
  *  the function invoked per iteration.
- * @param {Array} [args] The arguments to invoke each method with.
- * @returns {Array} Returns the array of results.
+ * @param args The arguments to invoke each method with.
+ * @returns Returns the array of results.
  * @example
  *
  * ```js

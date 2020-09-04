@@ -1,10 +1,9 @@
 // @ts-nocheck
+import arrayMap from './.internal/arrayMap';
 import baseIntersection from './.internal/baseIntersection';
 import castArrayLikeObject from './.internal/castArrayLikeObject';
-import last from './last';
-import { ArrayIteratee } from './types';
 import getIteratee from './.internal/getIteratee';
-import arrayMap from './.internal/arrayMap';
+import last from './last';
 
 /**
  * This method is like `intersection` except that it accepts `iteratee`
