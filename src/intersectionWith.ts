@@ -1,9 +1,8 @@
 // @ts-nocheck
+import arrayMap from './.internal/arrayMap';
 import baseIntersection from './.internal/baseIntersection';
 import castArrayLikeObject from './.internal/castArrayLikeObject';
 import last from './last';
-import arrayMap from './.internal/arrayMap';
-import { Comparator } from './types';
 
 /**
  * This method is like `intersection` except that it accepts `comparator`
