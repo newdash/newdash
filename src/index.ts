@@ -132,6 +132,7 @@ import { sumBy } from './sumBy';
 import { take } from './take';
 import takeRight from './takeRight';
 import throttle from './throttle';
+import { createTimeoutPromise, TimeoutError } from './timeout';
 import times from './times';
 import toArray from './toArray';
 import toNumber from './toNumber';
@@ -147,8 +148,10 @@ import uniqBy from './uniqBy';
 import uniqueId from './uniqueId';
 import uniqWith from './uniqWith';
 import { unset } from './unset';
+import unWrap from './unWrap';
 import { update } from './update';
 import words from './words';
+import wrap from './wrap';
 
 
 export * from './types';
@@ -178,7 +181,8 @@ export {
   pad, padStart, padEnd, invoke, invokeMap, includes,
   conforms, conformsTo, defaultTo, methodOf, functions,
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
-  words, escapeRegExp, addSuffix, addPrefix, series
+  words, escapeRegExp, addSuffix, addPrefix, series,
+  wrap, unWrap, createTimeoutPromise, TimeoutError
 };
 
 
@@ -208,6 +212,8 @@ export default {
   pad, padStart, padEnd, invoke, invokeMap, includes,
   conforms, conformsTo, defaultTo, methodOf, functions,
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
-  words, escapeRegExp, addSuffix, addPrefix, series
+  words, escapeRegExp, addSuffix, addPrefix, series,
+  wrap, unWrap, createTimeoutPromise, TimeoutError
+
 };
 
