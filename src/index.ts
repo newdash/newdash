@@ -111,6 +111,7 @@ import reject from './reject';
 import remove from './remove';
 import { repeat } from './repeat';
 import replace from './replace';
+import retry from './retry';
 import { series } from './series';
 import { set } from './set';
 import { size } from './size';
@@ -182,7 +183,8 @@ export {
   conforms, conformsTo, defaultTo, methodOf, functions,
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
   words, escapeRegExp, addSuffix, addPrefix, series,
-  wrap, unWrap, createTimeoutPromise, TimeoutError
+  wrap, unWrap, createTimeoutPromise, TimeoutError,
+  retry
 };
 
 
@@ -213,7 +215,8 @@ export default {
   conforms, conformsTo, defaultTo, methodOf, functions,
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
   words, escapeRegExp, addSuffix, addPrefix, series,
-  wrap, unWrap, createTimeoutPromise, TimeoutError
+  wrap, unWrap, createTimeoutPromise, TimeoutError,
+  retry
 
 };
 

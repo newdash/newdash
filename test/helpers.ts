@@ -1,5 +1,4 @@
-
-export async function assertShouldThrowError(func: Function, eType: ErrorConstructor = Error): Promise<void> {
+export async function assertShouldThrowError(func: Function, eType: any = Error): Promise<void> {
   let errorExist = false;
   try {
     const rt = func();
@@ -8,12 +7,21 @@ export async function assertShouldThrowError(func: Function, eType: ErrorConstru
     }
   } catch (error) {
     errorExist = true;
-    // check error type
-    if (!(error instanceof eType)) {
-      throw TypeError(`require ${eType.name} but received ${error?.constructor?.name}`);
+    // provide error type
+    if (eType.prototype instanceof Error || eType === Error) {
+      // check error type
+      if (!(error instanceof eType)) {
+        throw new TypeError(`require ${eType.name} but received ${error?.constructor?.name}`);
+      }
+    } else {
+      // provide value
+      if (error != eType) {
+        throw new TypeError(`require ${eType.name} but received ${error?.constructor?.name}`);
+      }
     }
+
   }
   if (!errorExist) {
-    throw Error('require throw error');
+    throw new Error('require throw error');
   }
 }

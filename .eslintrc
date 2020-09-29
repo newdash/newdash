@@ -98,8 +98,7 @@
       "always"
     ],
     "space-before-function-paren": [
-      "error",
-      "never"
+      0
     ],
     "space-in-parens": [
       "error",

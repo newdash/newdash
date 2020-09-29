@@ -1,25 +1,32 @@
+// @ts-nocheck
+import assert from 'assert';
 import { createTimeoutPromise, TimeoutError } from '../src/timeout';
+import { assertShouldThrowError } from './helpers';
 
 describe('Timeout Test Suite', () => {
 
 
-  it('should support raise error on timeout', async() => {
+  it('should support raise error on timeout', async () => {
 
-    await expect(() => createTimeoutPromise((resolve) => { setTimeout(resolve, 1000); }, 500)).rejects.toThrow(TimeoutError);
+    await assertShouldThrowError(
+      () => createTimeoutPromise((resolve) => { setTimeout(resolve, 1000); }, 500),
+      TimeoutError
+    );
 
   });
 
-  it('should support raise original error when time is enough', async() => {
+  it('should support raise original error when time is enough', async () => {
 
-    await expect(
+    await assertShouldThrowError(
       () => createTimeoutPromise((resolve, reject) => {
         setTimeout(() => { reject(new TypeError); }, 500);
-      }, 1000)
-    ).rejects.toThrow(TypeError);
+      }, 1000),
+      TypeError
+    );
 
   });
 
-  it('should support process correct when time is enough', async() => {
+  it('should support process correct when time is enough', async () => {
 
     const testValue = 123456;
 
@@ -27,7 +34,7 @@ describe('Timeout Test Suite', () => {
       setTimeout(() => { resolve(testValue); }, 500);
     }, 1000);
 
-    expect(value).toBe(testValue);
+    assert.strictEqual(value, testValue);
 
 
   });

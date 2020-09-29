@@ -7,9 +7,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
       "args": [
-        "test",
-        "--runInBand",
-        "--no-cache"
+        "--runInBand"
       ],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
