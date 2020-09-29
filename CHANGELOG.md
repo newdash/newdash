@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.14.0](https://github.com/newdash/newdash/compare/v5.13.0...v5.14.0) (2020-09-29)
+
+
+### Features
+
+* [#124](https://github.com/newdash/newdash/issues/124) support function retry ([80341d3](https://github.com/newdash/newdash/commit/80341d32ecc05b057f01e0c6970f43d477bb76af))
+* [#128](https://github.com/newdash/newdash/issues/128) timeout promise support ([bfa48ce](https://github.com/newdash/newdash/commit/bfa48cead09016cfbec2de6ca75d190cf68703f9))
+* add prefix/suffix ([fe98bfe](https://github.com/newdash/newdash/commit/fe98bfeb5db8bc83d011bc43f9946272c5df117c))
+* function series ([d5b9df2](https://github.com/newdash/newdash/commit/d5b9df2fafb9b53a4fc00bbb0e1dcb61038eec19))
+* function unWrap ([fd09e5e](https://github.com/newdash/newdash/commit/fd09e5e78060d1db8f6c1a98583d4a109ea8b66f))
+* series ([ded9b6d](https://github.com/newdash/newdash/commit/ded9b6dd22ce299ed1d67e2c01f77cb8c2e9e9e6))
+* wrap function ([0370925](https://github.com/newdash/newdash/commit/0370925d3ac2e7161c7fb12fe92bc497b0c7e67b))
+
+
+### Bug Fixes
+
+* 'ExportAll' for deno ([a48828d](https://github.com/newdash/newdash/commit/a48828dcbddafe50b2283e6bd8e943ce8e8b10f7))
+* ci issue ([12448dd](https://github.com/newdash/newdash/commit/12448ddfe36a89073a44a93ff3e620587d48fa57))
+* lgtm ([e7fe5e1](https://github.com/newdash/newdash/commit/e7fe5e16b69e6785066e75cc692ea608c2ad1c56))
+* test for deno ([3b7128c](https://github.com/newdash/newdash/commit/3b7128cd1f0934cfbf965483743d36f8629f3633))
+
 ## [5.13.0](https://github.com/newdash/newdash/compare/v5.12.2...v5.13.0) (2020-08-11)
 
 
