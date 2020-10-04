@@ -1,3 +1,4 @@
+import assert from 'assert';
 import { isClass } from '../src/isClass';
 
 describe('isClass Test Suite', () => {
@@ -12,13 +13,13 @@ describe('isClass Test Suite', () => {
     const f1 = () => { };
     function f2() { }
 
-    expect(isClass(A)).toBeTruthy();
-    expect(isClass(B)).toBeTruthy();
-    expect(isClass(C123123$)).toBeTruthy();
-    expect(isClass(D1231248$)).toBeTruthy();
+    assert.strictEqual(isClass(A), true);
+    assert.strictEqual(isClass(B), true);
+    assert.strictEqual(isClass(C123123$), true);
+    assert.strictEqual(isClass(D1231248$), true);
 
-    expect(isClass(f1)).toBeFalsy();
-    expect(isClass(f2)).toBeFalsy();
+    assert.strictEqual(isClass(f1), false);
+    assert.strictEqual(isClass(f2), false);
 
   });
 
