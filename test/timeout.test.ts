@@ -12,7 +12,7 @@ if (platform() != 'linux') {
   describe2 = describe.skip;
 }
 
-describe('Timeout Test Suite', () => {
+describe('timeout', () => {
 
   it('should support raise error on timeout', async () => {
 

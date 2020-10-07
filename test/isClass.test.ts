@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { isClass } from '../src/isClass';
 
-describe('isClass Test Suite', () => {
+describe('isClass', () => {
 
   it('should support isClass check', () => {
 

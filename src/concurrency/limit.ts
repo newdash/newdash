@@ -24,8 +24,12 @@ export function limit<T extends AsyncFunction>(runner: T, concurrencyNumber: num
   const sem = new Semaphore(concurrencyNumber);
 
   return async (...args: any[]) => {
-    await sem.acquire();
-    return runner(...args);
+    const release = await sem.acquire();
+    try {
+      await runner(...args);
+    } finally {
+      release();
+    }
   };
 
 }
