@@ -10,10 +10,9 @@ describe('add', () => {
   });
 
   it('should not coerce arguments to numbers', () => {
-    // @ts-ignore
-    assert.strictEqual(add('6', '4'), '64');
-    // @ts-ignore
-    assert.strictEqual(add('x', 'y'), 'xy');
+
+    expect(add('6', '4')).toBe('64');
+    expect(add('x', 'y')).toBe('xy');
   });
 
 });

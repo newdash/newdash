@@ -18,8 +18,7 @@ const asyncOperation = (value, onCall = () => { }, timeout = 100) => () => {
   });
 };
 
-describe('series test suite', () => {
-
+describe('series', () => {
 
   it('should support run async operations', async() => {
 

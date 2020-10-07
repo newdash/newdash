@@ -56,11 +56,7 @@ export class Semaphore {
         });
       };
       this.tasks.push(task);
-      if (process && process.nextTick) {
-        process.nextTick(this.sched.bind(this));
-      } else {
-        setImmediate(this.sched.bind(this));
-      }
+      setTimeout(this.sched.bind(this), 0);
     });
   }
 

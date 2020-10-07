@@ -13,6 +13,7 @@ import { ceil } from './ceil';
 import { clone } from './clone';
 import { cloneDeep } from './cloneDeep';
 import { concat } from './concat';
+import { concurrency } from './concurrency';
 import cond from './cond';
 import conforms from './conforms';
 import conformsTo from './conformsTo';
@@ -184,7 +185,7 @@ export {
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
-  retry
+  retry, concurrency
 };
 
 
@@ -216,7 +217,7 @@ export default {
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
-  retry
+  retry, concurrency
 
 };
 

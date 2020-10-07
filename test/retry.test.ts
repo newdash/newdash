@@ -4,7 +4,7 @@ import { retry } from '../src/retry';
 import { assertShouldThrowError } from './helpers';
 
 
-describe('Retry Test Suite', () => {
+describe('retry', () => {
 
   it('should retry multi time', async () => {
 

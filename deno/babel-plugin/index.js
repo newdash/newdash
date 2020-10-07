@@ -62,7 +62,11 @@ module.exports = function (babel) {
       path.node.source.value = `${path.node.source.value}.js`;
     } else if (fs.existsSync(mPath + ".ts")) {
       path.node.source.value = `${path.node.source.value}.ts`;
-    } else {
+    } else if (fs.existsSync(mPath + "/index.js")) {
+      path.node.source.value = `${path.node.source.value}/index.js`;
+    } else if (fs.existsSync(mPath + "/index.ts")) {
+      path.node.source.value = `${path.node.source.value}/index.ts`;
+    }  else {
       console.info(`can not find module '${mName}' from ${filename}, no transform.`)
     }
     if (path.node.source.value.startsWith("../src/")) {

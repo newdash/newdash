@@ -1,10 +1,13 @@
 // @ts-nocheck
+import { expect } from "https://deno.land/x/expect@v0.2.1/mod.ts";
+
+window.expect = expect
 
 const describe = (suite: string, fn: (...args: any[]) => void) => {
 
   const it = (name: string, fn: (...args: any[]) => void) => {
     Deno.test({
-      name: `case '${suite}' - '${name}'`, fn,
+      name: `case '${suite}' - '${name}'`,
       fn,
       sanitizeResources: false,
       sanitizeOps: false,
@@ -13,7 +16,7 @@ const describe = (suite: string, fn: (...args: any[]) => void) => {
 
   it.skip = (name: string, fn: (...args: any[]) => void) => {
     Deno.test({
-      name: `case '${suite}' - '${name}'`, fn,
+      name: `case '${suite}' - '${name}'`,
       fn,
       ignore: true,
       sanitizeResources: false,
@@ -49,4 +52,5 @@ describe.skip = (suite: string, fn: (...args: any[]) => void) => {
   fn(it)
 }
 
-export { describe }
+export { describe };
+
