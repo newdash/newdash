@@ -31,7 +31,7 @@ export class Semaphore {
     this.count = count;
   }
 
-  private sched() {
+  private schedule() {
     if (this.count > 0 && this.tasks.length > 0) {
       this.count--;
       const next = this.tasks.shift();
@@ -51,16 +51,16 @@ export class Semaphore {
           if (!released) {
             released = true;
             this.count++;
-            this.sched();
+            this.schedule();
           }
         });
       };
       this.tasks.push(task);
-      setTimeout(this.sched.bind(this), 0);
+      setTimeout(this.schedule.bind(this), 0);
     });
   }
 
-  public use<T>(f: () => Promise<T>) {
+  public async use<T>(f: () => Promise<T>) {
     return this.acquire()
       .then((release) => f()
         .then((res) => {
