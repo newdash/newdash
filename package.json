@@ -24,7 +24,7 @@
   ],
   "scripts": {
     "test": "jest --bail -w 4",
-    "pretest:deno": "npm run build:deno:test",
+    "pretest:deno": "rimraf ./dist/deno && npm run build:deno:test",
     "test:deno": "deno test ./dist/deno/test/*.test.ts",
     "lint": "tsc --noEmit && eslint .",
     "coverage": "npm test -- --coverage --no-cache",
@@ -49,6 +49,7 @@
     "@typescript-eslint/parser": "^4.3.0",
     "eslint": "^7.10.0",
     "jest": "^26.4.2",
+    "rimraf": "^3.0.2",
     "standard-version": "^9.0.0",
     "terser-webpack-plugin": "^4.2.2",
     "ts-jest": "^26.4.0",

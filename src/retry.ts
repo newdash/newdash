@@ -1,3 +1,5 @@
+import sleep from './sleep';
+
 
 /**
  * make function retry-able
@@ -8,24 +10,30 @@
  * @category async
  * @param runner async function, return promise
  * @param maxRetryCount the maximum number of times a runner should retry, default is 3
+ * @param retryAfterMSecond the wait milliseconds before retry
  */
-export function retry<E, T extends(...args: any[]) => Promise<E>>(runner: T, maxRetryCount = 3): (...args: Parameters<T>) => Promise<E> {
+export function retry<E, T extends(...args: any[]) => Promise<E>>(runner: T, maxRetryCount = 3,retryAfterMSecond = 0): (...args: Parameters<T>) => Promise<E> {
+  if (typeof runner !=='function') {
+    throw new TypeError('must provide a function for "retry"');
+  }
 
-  return async function(...args: any[]) {
-    if (maxRetryCount >= 1) {
-
-      for (let idx = 0; idx < maxRetryCount; idx++) {
+  if (maxRetryCount > 1) {
+    return async function(...args: any[]) {
+      for (let idx = 0; idx < (maxRetryCount-1); idx++) {
         try {
           return await runner(...args);
         } catch (error) {
           // ignore error
         }
+        if (retryAfterMSecond > 0) {
+          await sleep(retryAfterMSecond);
+        }
       }
+      return await runner(...args);
+    };
+  }
 
-    }
-
-    return await runner(...args);
-  };
+  return runner;
 
 }
 

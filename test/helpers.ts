@@ -16,7 +16,7 @@ export async function assertShouldThrowError(func: Function, eType: any = Error)
     } else {
       // provide value
       if (error != eType) {
-        throw new TypeError(`require ${eType.name} but received ${error?.constructor?.name}`);
+        throw new TypeError(`require ${eType} but received ${error}`);
       }
     }
 
