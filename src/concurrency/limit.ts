@@ -5,7 +5,7 @@ import { Semaphore } from './semaphore';
 /**
  * limit concurrent for parallel operations
  *
- * @category async
+ * @category Async
  * @since 5.15.0
  * @param runner async operation function
  * @param concurrencyNumber max concurrency number

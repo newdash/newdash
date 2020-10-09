@@ -5,7 +5,7 @@ import { md5 } from '../md5';
  *
  * remember: the **SAME** structure object will return the **SAME** hash code
  *
- * @category functional
+ * @category Functional
  * @since 5.15.0
  * @param obj anything in js
  *

@@ -6,7 +6,7 @@ import { toHashCode } from '../functional/toHashCode';
  * fallback to cache
  *
  * @since 5.15.0
- * @category fallback
+ * @category Fallback
  *
  * @param runner
  */

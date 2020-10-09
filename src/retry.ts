@@ -7,7 +7,7 @@ import sleep from './sleep';
  * e.g. if `maxRetryCount` is 3, it will run 4 times most, and return the final error.
  *
  * @since 5.14.0
- * @category async
+ * @category Async
  * @param runner async function, return promise
  * @param maxRetryCount the maximum number of times a runner should retry, default is 3
  * @param retryAfterMSecond the wait milliseconds before retry
