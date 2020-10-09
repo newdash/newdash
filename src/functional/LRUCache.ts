@@ -16,13 +16,15 @@ export class LRUCache<K = any, V = any> extends Map<K, V> {
   }
 
   get(key: K) {
-    const item = super.get(key);
-    if (item) {
+
+    if (super.has(key)) {
+      const item = super.get(key);
       // refresh key
       super.delete(key);
       super.set(key, item);
     }
-    return item;
+
+    return super.get(key);
   }
 
   set(key: K, val: V): this {
