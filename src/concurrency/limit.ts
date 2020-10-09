@@ -26,7 +26,7 @@ export function limit<T extends AsyncFunction>(runner: T, concurrencyNumber: num
   return async (...args: any[]) => {
     const release = await sem.acquire();
     try {
-      await runner(...args);
+      return await runner(...args);
     } finally {
       release();
     }

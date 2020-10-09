@@ -9,21 +9,21 @@ describe('concurrency', () => {
     const currLimit = 5;
     let ctx = 0;
 
-    const runner = concurrency.limit(async () => {
-      ctx++;
-    }, currLimit);
+    const runner = concurrency.limit(async () => ctx++, currLimit);
 
     const allRunner = [];
 
     for (let idx = 0; idx < 15; idx++) {
-      allRunner.push(runner().then(() => {
+      allRunner.push(runner().then((v) => {
         expect(ctx).toBeLessThanOrEqual(currLimit);
         ctx--;
+        return v;
       }));
     }
 
-    await Promise.all(allRunner);
-
+    const values = await Promise.all(allRunner);
+    expect(values).toHaveLength(15);
+    expect(values).not.toBeUndefined();
   });
 
   it('should support concurrency.limit function on error', async () => {
