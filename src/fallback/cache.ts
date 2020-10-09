@@ -12,6 +12,10 @@ import { toHashCode } from '../functional/toHashCode';
  */
 export function fallbackCache<T>(runner: T): T {
 
+  if (typeof runner !== 'function') {
+    throw new TypeError('must provide a function for runner');
+  }
+
   const funcCache = new Map(); // replace as LRU cache later
 
   const func = async (...args: any[]) => {

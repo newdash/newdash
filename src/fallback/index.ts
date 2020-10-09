@@ -1,4 +1,5 @@
 import { fallbackCache } from './cache';
+import { circuit } from './circuit';
 import { fallbackRetry } from './retry';
 
 /**
@@ -8,7 +9,8 @@ import { fallbackRetry } from './retry';
  */
 export const fallback = {
   cache: fallbackCache,
-  retry: fallbackRetry
+  retry: fallbackRetry,
+  circuit
 };
 
 
