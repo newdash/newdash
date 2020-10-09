@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { mustProvide } from '../assert';
 import { retry } from '../retry';
 
 /**
@@ -11,8 +12,6 @@ import { retry } from '../retry';
  * @param retryAfterMSecond the wait milliseconds before retry
  */
 export function fallbackRetry<T>(runner: T, retryTime: number = 3, retryAfterSeconds?: number): T {
-  if (typeof runner !== 'function') {
-    throw new TypeError('must provide a function for runner');
-  }
+  mustProvide(runner, 'runner', 'function');
   return retry(runner, retryTime, retryAfterSeconds);
 }

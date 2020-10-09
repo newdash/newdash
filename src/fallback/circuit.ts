@@ -1,5 +1,6 @@
 // @ts-nocheck
-
+import { mustProvide } from '../assert';
+import { LRUCache } from '../functional/LRUCache';
 import { toHashCode } from '../functional/toHashCode';
 
 /**
@@ -8,6 +9,20 @@ import { toHashCode } from '../functional/toHashCode';
  * when the circuit breaker is open (failure happened latest), will direct throw this error
  */
 export class TemporaryUnAvailableError extends Error {
+
+  /**
+   * the error cause the function temporary not available
+   */
+  causeError: Error;
+
+  constructor(msg: string, causeError?: Error) {
+    if (causeError !== undefined) {
+      super(`${msg} cause error message(${causeError.message})`);
+    } else {
+      super(msg);
+    }
+    this.causeError = causeError;
+  }
 
 }
 
@@ -19,24 +34,19 @@ export class TemporaryUnAvailableError extends Error {
  * @category Fallback
  * @param runner
  * @param openDuration default is 10000 (10 seconds)
+ * @param cacheSize the timer & error cache size, default is 1024
  */
-export function circuit<T>(runner: T, openDuration: number = 10 * 1000): T {
+export function circuit<T>(runner: T, openDuration: number = 10 * 1000, cacheSize: number = 1024): T {
 
-  if (typeof runner !== 'function') {
-    throw new TypeError('must provide a function for runner');
-  }
+  mustProvide(runner, 'runner', 'function');
+  mustProvide(openDuration, 'openDuration', 'number');
 
-  if (typeof openDuration !== 'number') {
-    throw new TypeError('must provider a number for offDuration');
-  }
+  if (openDuration === 0) { return runner; }
 
-  if (openDuration === 0) {
-    return runner;
-  }
+  const breakerLatestFailedTimes = new LRUCache(cacheSize);
+  const breakerLatestError = new LRUCache(cacheSize);
 
-  const breakerLatestFailedTimes = new Map();
-
-  const funcName = runner.name;
+  const funcName = runner.name || 'Unknown';
 
   const func = async (...args: any[]) => {
     const paramKey = toHashCode(args);
@@ -49,6 +59,13 @@ export function circuit<T>(runner: T, openDuration: number = 10 * 1000): T {
       return await runner(...args);
     } catch (error) {
       breakerLatestFailedTimes.set(paramKey, new Date().getTime());
+      breakerLatestError.set(
+        paramKey,
+        new TemporaryUnAvailableError(
+          `function [${funcName}] is temporary un-available until ${availableTime}`,
+          error
+        )
+      );
       throw error;
     }
   };

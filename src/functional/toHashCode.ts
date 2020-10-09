@@ -34,7 +34,7 @@ export function toHashCode(obj: any): string {
   const objType = typeof obj;
   if (obj === undefined) { return md5('undefined'); }
   else if (obj === null) { return md5('null'); }
-  else if (obj instanceof Array) { return md5(obj.map(toHashCode).join()); }
+  else if (obj instanceof Array) { return md5(`array_${obj.map(toHashCode).join()}`); }
   else if (typeof obj === 'object') {
     return md5(`object_${JSON.stringify(obj)}`);
   }
@@ -45,3 +45,6 @@ export function toHashCode(obj: any): string {
   throw new TypeError(`invalid object type ${typeof obj}`);
 
 }
+
+
+export default toHashCode;

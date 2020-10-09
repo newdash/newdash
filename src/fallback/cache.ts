@@ -1,5 +1,6 @@
 // @ts-nocheck
-
+import { mustProvide } from '../assert';
+import { LRUCache } from '../functional/LRUCache';
 import { toHashCode } from '../functional/toHashCode';
 
 /**
@@ -9,14 +10,13 @@ import { toHashCode } from '../functional/toHashCode';
  * @category Fallback
  *
  * @param runner
+ * @param cacheSize the maximum number cache item (different parameters)
  */
-export function fallbackCache<T>(runner: T): T {
+export function fallbackCache<T>(runner: T, cacheSize: number = 1024): T {
 
-  if (typeof runner !== 'function') {
-    throw new TypeError('must provide a function for runner');
-  }
+  mustProvide(runner, 'runner', 'function');
 
-  const funcCache = new Map(); // replace as LRU cache later
+  const funcCache = new LRUCache(cacheSize); // replace as LRU cache later
 
   const func = async (...args: any[]) => {
     const argsKey = toHashCode(args);
