@@ -30,6 +30,7 @@ import eq from './eq';
 import escapeRegExp from './escapeRegExp';
 import { every } from './every';
 import everyValue from './everyValue';
+import { fallback } from './fallback';
 import { filter } from './filter';
 import { filterObject } from './filterObject';
 import { find } from './find';
@@ -185,7 +186,7 @@ export {
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
-  retry, concurrency
+  retry, concurrency, fallback
 };
 
 
@@ -217,7 +218,7 @@ export default {
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
-  retry, concurrency
+  retry, concurrency, fallback
 
 };
 

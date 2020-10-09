@@ -1,7 +1,9 @@
 {
   "extends": "./tsconfig.base",
   "compilerOptions": {
-    "target": "ES2020"
+    "target": "ES2018",
+    "module": "CommonJS",
+    "outDir": "dist/node"
   },
   "include": [
     "src"
