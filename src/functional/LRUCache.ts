@@ -29,7 +29,7 @@ export class LRUCache<K = any, V = any> extends Map<K, V> {
     // refresh key
     if (super.has(key)) { super.delete(key); }
     // evict oldest
-    else if (super.size >= this.maximumCacheItemNumber) { super.delete(this.first()); }
+    else if (this.size >= this.maximumCacheItemNumber) { super.delete(this.first()); }
     super.set(key, val);
     return this;
   }
