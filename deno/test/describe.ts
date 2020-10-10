@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { expect } from "https://deno.land/x/expect@v0.2.1/mod.ts";
+import { expect } from "https://cdn.jsdelivr.net/gh/Soontao/expect@0.3.0/mod.ts";
 
 window.expect = expect
 
