@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.15.0](https://github.com/newdash/newdash/compare/v5.14.0...v5.15.0) (2020-10-10)
+
+
+### Features
+
+* [#129](https://github.com/newdash/newdash/issues/129) circuit ([e729d46](https://github.com/newdash/newdash/commit/e729d46d861b55133ac734f17cef5f0e29fa8dde))
+* [#129](https://github.com/newdash/newdash/issues/129) concurrency limit ([d6257e8](https://github.com/newdash/newdash/commit/d6257e80bdb26816d2261280f1abeb4893aa36b4))
+* [#129](https://github.com/newdash/newdash/issues/129) provide recommend config for fallback ([37ef252](https://github.com/newdash/newdash/commit/37ef2527a6d1f7bd75214fdb72e70a4648b68943))
+* [#129](https://github.com/newdash/newdash/issues/129) support fallback & other related funcs ([b83bbea](https://github.com/newdash/newdash/commit/b83bbea61470b6a89af90edef819faa2b9c81729))
+* isClass function ([bfe0dac](https://github.com/newdash/newdash/commit/bfe0dac0a7480b5d5cf3bc452dffd56c11aa12c7))
+* isSubClass Function ([b3c43aa](https://github.com/newdash/newdash/commit/b3c43aaa9f49c890ed794efbd0cd64f18a899468))
+* logic related functions ([b87a764](https://github.com/newdash/newdash/commit/b87a764f4f91a743e898ccbaeb8b7f885195d0a1))
+* LRU Cache & others ([df24ab0](https://github.com/newdash/newdash/commit/df24ab0e6854fbe19bab4b4232084b674409c9b6))
+* timeout wrapper ([790ad85](https://github.com/newdash/newdash/commit/790ad85f963289c567c64e6dd5f01d3d56f223e3))
+
+
+### Bug Fixes
+
+* build issue ([ec7ddb6](https://github.com/newdash/newdash/commit/ec7ddb6a1b6fbd975f2811d5672e71e1cf6fbca9))
+* ci ([883df67](https://github.com/newdash/newdash/commit/883df6764a76c01011a46bf52a5e3dc312a95513))
+* concurrency.limit function ([576b9aa](https://github.com/newdash/newdash/commit/576b9aa3403b6c0b7921ac1ee03a1166c1bc7ce4))
+* limit not return result ([72ba46a](https://github.com/newdash/newdash/commit/72ba46af5675028a3328080e7658c542b3920561))
+* null/undefined of LRUCache ([a95bef0](https://github.com/newdash/newdash/commit/a95bef013072d8baa5fabc071e0145f95c17ac25))
+* remove timeout test for windows ([c6b1749](https://github.com/newdash/newdash/commit/c6b17497770184e166bab3d66e11a06d251f4ba3))
+* type issue ([e2e37ad](https://github.com/newdash/newdash/commit/e2e37ad423b3ce457d18e31d6437020424106778))
+
 ## [5.14.0](https://github.com/newdash/newdash/compare/v5.13.0...v5.14.0) (2020-09-29)
 
 
