@@ -38,7 +38,7 @@
     "build": "npm run build:node && npm run build:es5 && npm run build:es6 && npm run build:umd && npm run build:deno && npm run gen:package",
     "gen:package": "node scripts/copy-package-json.js",
     "prepublishOnly": "npm run build",
-    "release": "standard-version --no-verify && git push --follow-tags origin master"
+    "release": "standard-version --no-verify && git push --follow-tags origin main"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
