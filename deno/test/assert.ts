@@ -1,4 +1,4 @@
-import { assert, assertEquals, AssertionError, assertNotEquals, assertStrictEquals, assertThrows, equal } from "https://deno.land/std@0.61.0/testing/asserts.ts"
+import { assert, assertEquals, AssertionError, assertNotEquals, assertStrictEquals, assertThrows, equal } from "https://deno.land/std@0.69.0/testing/asserts.ts"
 import { isCyclic } from "./cycle.ts"
 
 export const strictEqual = assertStrictEquals
