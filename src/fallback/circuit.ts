@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { mustProvide } from '../assert';
-import { LRUCache } from '../functional/LRUCache';
+import defineFunctionName from '../functional/defineFunctionName';
+import { LRUMap } from '../functional/LRUMap';
 import { toHashCode } from '../functional/toHashCode';
 
 /**
@@ -43,8 +44,8 @@ export function circuit<T>(runner: T, openDuration: number = 10 * 1000, cacheSiz
 
   if (openDuration === 0) { return runner; }
 
-  const breakerLatestFailedTimes = new LRUCache(cacheSize);
-  const breakerLatestError = new LRUCache(cacheSize);
+  const breakerLatestFailedTimes = new LRUMap(cacheSize);
+  const breakerLatestError = new LRUMap(cacheSize);
 
   const funcName = runner.name || 'Unknown';
 
@@ -71,10 +72,6 @@ export function circuit<T>(runner: T, openDuration: number = 10 * 1000, cacheSiz
   };
 
   // overwrite proxy function name
-  Object.defineProperty(func, 'name', {
-    value: funcName
-  });
-
-  return func;
+  return defineFunctionName(func, funcName);
 
 }

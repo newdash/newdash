@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { mustProvide } from '../assert';
-import { LRUCache } from '../functional/LRUCache';
+import defineFunctionName from '../functional/defineFunctionName';
+import { LRUMap } from '../functional/LRUMap';
 import { toHashCode } from '../functional/toHashCode';
 
 /**
@@ -16,7 +17,7 @@ export function fallbackCache<T>(runner: T, cacheSize: number = 1024): T {
 
   mustProvide(runner, 'runner', 'function');
 
-  const funcCache = new LRUCache(cacheSize); // replace as LRU cache later
+  const funcCache = new LRUMap(cacheSize); // replace as LRU cache later
 
   const func = async (...args: any[]) => {
     const argsKey = toHashCode(args);
@@ -33,12 +34,7 @@ export function fallbackCache<T>(runner: T, cacheSize: number = 1024): T {
     }
   };
 
-
   // overwrite proxy function name
-  Object.defineProperty(func, 'name', {
-    value: runner.name
-  });
-
-  return func;
+  return defineFunctionName(func, runner.name);
 
 }

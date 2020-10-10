@@ -1,3 +1,4 @@
+import { any } from '../any';
 import { limit } from './limit';
 import { timeout } from './timeout';
 
@@ -6,5 +7,6 @@ import { timeout } from './timeout';
  */
 export const concurrency = {
   limit,
-  timeout
+  timeout,
+  any
 };

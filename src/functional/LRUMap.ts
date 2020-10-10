@@ -1,7 +1,7 @@
 // ref: https://stackoverflow.com/a/46432113/4380476
 // Author: odinho - Velmont
 
-export class LRUCache<K = any, V = any> extends Map<K, V> {
+export class LRUMap<K = any, V = any> extends Map<K, V> {
 
   private maximumCacheItemNumber: number;
 

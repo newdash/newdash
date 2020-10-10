@@ -1,9 +1,19 @@
+import defineFunctionName from '../src/functional/defineFunctionName';
 import { hashEqual } from '../src/functional/hashEqual';
-import { LRUCache } from '../src/functional/LRUCache';
+import { LRUMap } from '../src/functional/LRUMap';
 import { toHashCode } from '../src/functional/toHashCode';
 
 
 describe('functional', () => {
+
+  it('should support overwrite function name', () => {
+    const f1 = () => { };
+    const f2 = defineFunctionName(f1, 'f2');
+
+    expect(f1.name).toBe('f2');
+    expect(f2.name).toBe('f2');
+
+  });
 
   it('should support toHashCode', () => {
 
@@ -34,13 +44,13 @@ describe('functional', () => {
     const a1 = [1, 2, 3, 4];
     const a2 = [1, 2, 3, 4];
 
-    expect(hashEqual(a1,a2)).toBeTruthy();
+    expect(hashEqual(a1, a2)).toBeTruthy();
 
   });
 
   it('should support LRU cache', () => {
 
-    const cache = new LRUCache(3);
+    const cache = new LRUMap(3);
 
     [1, 2, 3, 4, 5].forEach((v) => cache.set(v, `v:${v}`));
 

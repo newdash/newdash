@@ -1,4 +1,5 @@
 
+import { any } from '../src';
 import { concurrency } from '../src/concurrency';
 import { assertShouldThrowError } from './helpers';
 describe('concurrency', () => {
@@ -53,6 +54,12 @@ describe('concurrency', () => {
     }
     await assertShouldThrowError(() => Promise.all(allRunner), E1);
 
+
+  });
+
+  it('should support alias of function "any"', () => {
+
+    expect(concurrency.any).toBe(any);
 
   });
 
