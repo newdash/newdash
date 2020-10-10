@@ -1,8 +1,9 @@
+// @ts-nocheck
 import * as assert from 'assert';
-import { falsey } from './utils';
-import orderBy from '../src/orderBy';
-import map from '../src/map';
 import constant from '../src/constant';
+import map from '../src/map';
+import orderBy from '../src/orderBy';
+import { falsey } from './utils';
 
 describe('orderBy', () => {
 

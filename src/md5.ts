@@ -270,30 +270,6 @@ function rstrMD5(s: string): string {
 }
 
 /**
-   * Calculates the HMAC-MD5 of a key and some data (raw strings)
-   *
-   * @param {string} key HMAC key
-   * @param {string} data Raw input string
-   * @returns {string} Raw MD5 string
-   */
-function rstrHMACMD5(key: string, data: string): string {
-  let i;
-  let bkey = rstr2binl(key);
-  const ipad = [];
-  const opad = [];
-  ipad[15] = opad[15] = undefined;
-  if (bkey.length > 16) {
-    bkey = binlMD5(bkey, key.length * 8);
-  }
-  for (i = 0; i < 16; i += 1) {
-    ipad[i] = bkey[i] ^ 0x36363636;
-    opad[i] = bkey[i] ^ 0x5c5c5c5c;
-  }
-  const hash = binlMD5(ipad.concat(rstr2binl(data)), 512 + data.length * 8);
-  return binl2rstr(binlMD5(opad.concat(hash), 512 + 128));
-}
-
-/**
    * Convert a raw string to a hex string
    *
    * @param {string} input Raw input string
@@ -346,7 +322,7 @@ function hexMD5(s: string): string {
  * Returns a Hex encoded string unless the raw argument is given.
  *
  * @since 5.15.0
- * @category string
+ * @category String
  * @param {string} input Input string
  * @param {string} [key] HMAC key
  * @param {boolean} [raw] Raw output switch
@@ -362,7 +338,7 @@ export function md5(input: string): string {
  * Returns a Hex encoded string unless the raw argument is given.
  *
  * @since 5.15.0
- * @category string
+ * @category String
  * @param input Input string
  * @param key HMAC key
  * @param raw Raw output switch

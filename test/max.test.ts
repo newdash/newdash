@@ -1,8 +1,9 @@
+// @ts-nocheck
 import * as assert from 'assert';
-import { falsey, noop } from './utils';
-import max from '../src/max';
 import map from '../src/map';
+import max from '../src/max';
 import maxBy from '../src/maxBy';
+import { falsey, noop } from './utils';
 
 describe('max', () => {
 

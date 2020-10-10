@@ -1,20 +1,21 @@
+// @ts-nocheck
 import * as assert from 'assert';
-import { LARGE_ARRAY_SIZE, isEven, create, stubFalse, objectProto, funcProto } from './utils';
-import difference from '../src/difference';
-import intersection from '../src/intersection';
-import uniq from '../src/uniq';
-import without from '../src/without';
-import groupBy from '../src/groupBy';
-import merge from '../src/merge';
-import times from '../src/times';
-import each from '../src/each';
-import map from '../src/map';
+import root from '../src/.internal/root';
 import assign from '../src/assign';
 import assignIn from '../src/assignIn';
 import defaults from '../src/defaults';
 import defaultsDeep from '../src/defaultsDeep';
+import difference from '../src/difference';
+import each from '../src/each';
+import groupBy from '../src/groupBy';
+import intersection from '../src/intersection';
+import map from '../src/map';
+import merge from '../src/merge';
+import times from '../src/times';
+import uniq from '../src/uniq';
+import without from '../src/without';
 import zipObjectDeep from '../src/zipObjectDeep';
-import root from '../src/.internal/root';
+import { create, funcProto, isEven, LARGE_ARRAY_SIZE, objectProto, stubFalse } from './utils';
 
 describe('`__proto__` property bugs', () => {
 

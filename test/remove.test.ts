@@ -1,6 +1,7 @@
+// @ts-nocheck
 import * as assert from 'assert';
-import { isEven, slice } from './utils';
 import remove from '../src/remove';
+import { isEven, slice } from './utils';
 
 describe('remove', () => {
   it('should modify the array and return removed elements', () => {

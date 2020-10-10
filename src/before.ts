@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 /**
  * Creates a function that invokes `func`, with the `this` binding and arguments
@@ -16,12 +17,12 @@
  * // => Allows adding up to 4 contacts to the list.
  * ```
  */
-export function before(n: number, func: Function): Function {
+export function before<T extends (...args: any[]) => any>(n: number, func: T): T {
   let result: any;
   if (typeof func !== 'function') {
     throw new TypeError('Expected a function');
   }
-  return function(...args) {
+  return function (...args) {
     if (--n > 0) {
       result = func.apply(this, args);
     }

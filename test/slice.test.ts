@@ -1,9 +1,10 @@
+// @ts-nocheck
 import * as assert from 'assert';
-import { falsey } from './utils';
-import slice from '../src/slice';
+import constant from '../src/constant';
 import each from '../src/each';
 import map from '../src/map';
-import constant from '../src/constant';
+import slice from '../src/slice';
+import { falsey } from './utils';
 
 describe('slice', () => {
   const array = [1, 2, 3];

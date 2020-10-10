@@ -1,8 +1,7 @@
+// @ts-nocheck
 import * as assert from 'assert';
-import { toArgs, identity } from './utils';
-import difference from '../src/difference';
-import union from '../src/union';
 import compact from '../src/compact';
+import difference from '../src/difference';
 import drop from '../src/drop';
 import dropRight from '../src/dropRight';
 import dropRightWhile from '../src/dropRightWhile';
@@ -25,10 +24,12 @@ import take from '../src/take';
 import takeRight from '../src/takeRight';
 import takeRightWhile from '../src/takeRightWhile';
 import takeWhile from '../src/takeWhile';
+import union from '../src/union';
 import uniq from '../src/uniq';
 import without from '../src/without';
-import zip from '../src/zip';
 import xor from '../src/xor';
+import zip from '../src/zip';
+import { identity, toArgs } from './utils';
 
 describe('"Arrays" category methods', () => {
   const args = toArgs([1, null, [3], null, 5]),

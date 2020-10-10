@@ -1,8 +1,9 @@
+// @ts-nocheck
 import * as assert from 'assert';
-import { falsey, stubZero, args, push, arrayProto, MAX_SAFE_INTEGER } from './utils';
-import size from '../src/size';
-import map from '../src/map';
 import each from '../src/each';
+import map from '../src/map';
+import size from '../src/size';
+import { args, arrayProto, falsey, MAX_SAFE_INTEGER, push, stubZero } from './utils';
 
 describe('size', () => {
 

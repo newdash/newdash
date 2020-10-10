@@ -1,7 +1,8 @@
+// @ts-nocheck
 import * as assert from 'assert';
 import lodashStable from 'lodash';
-import { falsey, stubFalse, args, slice, symbol, realm } from './utils';
 import isDate from '../src/isDate';
+import { args, falsey, realm, slice, stubFalse, symbol } from './utils';
 
 describe('isDate', () => {
   it('should return `true` for dates', () => {

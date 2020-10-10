@@ -1,11 +1,12 @@
+// @ts-nocheck
 import * as assert from 'assert';
-import { _, toArgs, stubTrue, args, symbol, defineProperty, stubFalse } from './utils';
+import constant from '../src/constant';
+import each from '../src/each';
 import has from '../src/has';
 import hasIn from '../src/hasIn';
-import each from '../src/each';
-import times from '../src/times';
-import constant from '../src/constant';
 import map from '../src/map';
+import times from '../src/times';
+import { args, defineProperty, stubFalse, stubTrue, symbol, toArgs } from './utils';
 
 describe('has methods', () => {
 

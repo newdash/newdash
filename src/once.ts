@@ -5,18 +5,20 @@ import before from './before';
  * to the function return the value of the first invocation. The `func` is
  * invoked with the `this` binding and arguments of the created function.
  *
- * @since 0.1.0
+ * @since 5.15.0
  * @category Function
  * @param {Function} func The function to restrict.
  * @returns {Function} Returns the new restricted function.
  * @example
  *
+ * ```ts
  * const initialize = once(createApplication)
  * initialize()
  * initialize()
  * // => `createApplication` is invoked once
+ * ```
  */
-function once(func) {
+export function once<T extends (...args: any[]) => any>(func: T): T {
   return before(2, func);
 }
 
