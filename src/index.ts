@@ -71,10 +71,12 @@ import { isNull } from './isNull';
 import { isNumber } from './isNumber';
 import { isObject } from './isObject';
 import { isString } from './isString';
+import { isSubClass } from './isSubClass';
 import { join } from './join';
 import keys from './keys';
 import { last } from './last';
 import { lastIndexOf } from './lastIndexOf';
+import { logic } from './logic';
 import { lowerCase } from './lowerCase';
 import { lt } from './lt';
 import { map } from './map';
@@ -186,7 +188,7 @@ export {
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
-  retry, concurrency, fallback
+  retry, concurrency, fallback, logic, isSubClass
 };
 
 
@@ -218,7 +220,7 @@ export default {
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
-  retry, concurrency, fallback
+  retry, concurrency, fallback, logic, isSubClass
 
 };
 
