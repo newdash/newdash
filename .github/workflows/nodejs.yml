@@ -2,9 +2,9 @@ name: Github CI
 
 on:
   push:
-    branches: [ master ]
+    branches: '*'
   pull_request:
-    branches: [ master ]
+    branches: '*'
   # daily check at 01:00 AM
   schedule:
     - cron: '0 1 * * *'
