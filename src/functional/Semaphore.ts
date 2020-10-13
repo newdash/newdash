@@ -23,9 +23,13 @@
 
 // copy for deno runtime
 
+/**
+ * Semaphore implementation for javascript
+ */
 export class Semaphore {
+
   private tasks: (() => void)[] = [];
-  count: number;
+  private count: number;
 
   constructor(count: number) {
     this.count = count;
@@ -36,7 +40,7 @@ export class Semaphore {
       this.count--;
       const next = this.tasks.shift();
       if (next === undefined) {
-        throw 'Unexpected undefined value in tasks list';
+        throw new TypeError('Unexpected undefined value in tasks list');
       }
 
       next();

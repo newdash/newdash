@@ -1,13 +1,15 @@
 import { add } from './add';
-import addPrefix from './addPrefix';
-import addSuffix from './addSuffix';
+import { addPrefix } from './addPrefix';
+import { addSuffix } from './addSuffix';
 import { any } from './any';
-import ary from './ary';
+import { ary } from './ary';
 import { assign } from './assign';
 import { assignIn } from './assignIn';
 import { at } from './at';
 import { attempt } from './attempt';
 import { bind } from './bind';
+import { cacheIt } from './cacheIt';
+import { cacheProvider } from './cacheProvider';
 import { capitalize } from './capitalize';
 import { ceil } from './ceil';
 import { clone } from './clone';
@@ -188,7 +190,8 @@ export {
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
-  retry, concurrency, fallback, logic, isSubClass
+  retry, concurrency, fallback, logic, isSubClass,
+  cacheIt, cacheProvider
 };
 
 
@@ -220,7 +223,8 @@ export default {
   divide, invert, mergeWith, toNumber, toArray, uniqueId,
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
-  retry, concurrency, fallback, logic, isSubClass
+  retry, concurrency, fallback, logic, isSubClass,
+  cacheIt, cacheProvider
 
 };
 

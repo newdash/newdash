@@ -1,6 +1,8 @@
 import { any } from '../any';
+import series from '../series';
 import { limit } from './limit';
 import { timeout } from './timeout';
+
 
 /**
  * concurrency functions
@@ -8,5 +10,6 @@ import { timeout } from './timeout';
 export const concurrency = {
   limit,
   timeout,
-  any
+  any,
+  series
 };

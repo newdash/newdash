@@ -174,3 +174,8 @@ export class TTLCacheProvider<K = any, V = any> extends LRUCacheProvider<K, V> {
 
 
 }
+
+export const cacheProvider= {
+  LRUCacheProvider,
+  TTLCacheProvider
+};

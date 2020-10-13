@@ -24,7 +24,7 @@ const WRAP_ARY_FLAG = 128;
  * // => [6, 8, 10]
  * ```
  */
-function ary(func: Function, n: any = func.length, guard?: any): Function {
+export function ary(func: Function, n: any = func.length, guard?: any): Function {
   n = guard ? undefined : n;
   n = (func && n == null) ? func.length : n;
   // @ts-ignore

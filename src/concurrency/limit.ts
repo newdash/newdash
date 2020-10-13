@@ -1,6 +1,6 @@
 // @ts-nocheck
+import { Semaphore } from '../functional/Semaphore';
 import { AsyncFunction } from '../types';
-import { Semaphore } from './semaphore';
 
 /**
  * limit concurrent for parallel operations
