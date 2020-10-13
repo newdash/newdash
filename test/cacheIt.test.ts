@@ -103,4 +103,31 @@ describe('cacheIt', () => {
 
   });
 
+  it('should support cache fibonacci', () => {
+    let callNumber = 0;
+    const f = cacheIt((n: number = 0): number => {
+      callNumber++;
+      return n > 1 ? f(n - 1) + f(n - 2) : n;
+    });
+    expect(f.__cache_storage.size).toBe(0);
+    expect(callNumber).toBe(0);
+    expect(f(0)).toBe(0);
+    expect(f.__cache_storage.size).toBe(1);
+    expect(callNumber).toBe(1);
+    expect(f(1)).toBe(1);
+    expect(f.__cache_storage.size).toBe(2);
+    expect(callNumber).toBe(2);
+    expect(f(5)).toBe(5);
+    expect(f.__cache_storage.size).toBe(6);
+    expect(callNumber).toBe(6);
+    expect(f(6)).toBe(8);
+    expect(f.__cache_storage.size).toBe(7);
+    expect(callNumber).toBe(7);
+
+    expect(f(4)).toBe(3);
+    expect(f.__cache_storage.size).toBe(7);
+    expect(callNumber).toBe(7);
+
+  });
+
 });
