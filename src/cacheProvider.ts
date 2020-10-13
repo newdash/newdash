@@ -94,8 +94,8 @@ export class TTLCacheProvider<K = any, V = any> extends LRUCacheProvider<K, V> {
    *
    * @param k
    */
-  private checkTimeout(k: K) {
-    const isTimeout = this.getTimeout(k) < this.timestamp();
+  private checkTimeout(k: K, currentTimeStamp = this.timestamp()) {
+    const isTimeout = this.getTimeout(k) < currentTimeStamp;
     if (isTimeout) {
       this.delete(k);
     }
@@ -123,12 +123,37 @@ export class TTLCacheProvider<K = any, V = any> extends LRUCacheProvider<K, V> {
     if (this.timer === undefined) {
       this.timer = setInterval(() => {
         try {
-          this.forEach((_, key) => { this.checkTimeout(key); });
+          this.checkTimeoutAll();
         } catch (error) {
           // do nothing
         }
       }, this.checkInterval);
     }
+  }
+
+  private checkTimeoutAll() {
+    const current = this.timestamp();
+    super.forEach((_, key) => { this.checkTimeout(key, current); });
+  }
+
+  entries() {
+    this.checkTimeoutAll();
+    return super.entries();
+  }
+
+  keys() {
+    this.checkTimeoutAll();
+    return super.keys();
+  }
+
+  values() {
+    this.checkTimeoutAll();
+    return super.values();
+  }
+
+  forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void {
+    this.checkTimeoutAll();
+    return super.forEach(callbackfn, thisArg);
   }
 
   clear() {
