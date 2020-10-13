@@ -104,6 +104,11 @@ export interface Comparator<T = any> {
  */
 export type UnwrapPromise<T> = T extends PromiseLike<infer U> ? U : T;
 
+/**
+ * general function in typescript
+ */
+export type GeneralFunction<Args extends any[] = any, ReturnType extends any = any> = (...args: Args) => ReturnType
+
 export type Keys<T> = keyof T;
 
 /**
