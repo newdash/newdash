@@ -1,5 +1,6 @@
 import { CacheProvider, LRUCacheProvider } from './cacheProvider';
 import { toHashCode } from './functional/toHashCode';
+import { isClass } from './isClass';
 import { Class, GeneralFunction } from './types';
 
 const KEY_CACHE_PROPERTY = '__cache_storage';
@@ -17,6 +18,8 @@ export type CachedFunction<T extends GeneralFunction> = T & {
 export type CachedObject<T = any> = {
   [K in keyof T]: T[K] extends (...args: any[]) => any ? CachedFunction<T[K]> : T[K]
 }
+
+export type CachedClass<T> = new (...args: any[]) => CachedObject<T>
 
 export interface CacheItOptions {
   /**
@@ -63,6 +66,13 @@ function cacheItFunction(obj: any, options?: CacheItOptions) {
 
 }
 
+function cacheItClass<T>(obj: Class<T>, options?: CacheItOptions) {
+
+  return new Proxy(obj, {
+    construct: (target, args) => cacheItObject(new target(...args), options)
+  });
+
+}
 
 function cacheItObject(obj: any, options?: CacheItOptions) {
 
@@ -92,6 +102,7 @@ function cacheItObject(obj: any, options?: CacheItOptions) {
  * @param options
  */
 export function cacheIt<T extends GeneralFunction>(obj: T, options?: CacheItOptions): CachedFunction<T>
+export function cacheIt<T>(obj: Class<T>, options?: CacheItOptions): CachedClass<T>
 /**
  * make function is cached
  * @since 5.16.0
@@ -109,6 +120,9 @@ export function cacheIt(obj: any, options?: CacheItOptions): any {
     case 'object':
       return cacheItObject(obj, options);
     case 'function':
+      if (isClass(obj)) {
+        return cacheItClass(obj, options);
+      }
       return cacheItFunction(obj, options);
     default:
       return obj;

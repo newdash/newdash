@@ -80,6 +80,25 @@ describe('cacheIt', () => {
 
   });
 
+  it('should support cache class', () => {
+
+    class A {
+      constructor(idx = 0) { this.idx = idx; }
+      private idx: number
+      public add(value: number) {
+        return (++this.idx) + value;
+      }
+    }
+    const CachedA = cacheIt(A);
+    const a = new CachedA(1);
+    expect(a.add(0)).toBe(2);
+    expect(a.add(0)).toBe(2);
+
+    expect(a.add(1)).toBe(4);
+    expect(a.add(1)).toBe(4);
+
+  });
+
 
   it('should support cache object with async methods', async () => {
 
