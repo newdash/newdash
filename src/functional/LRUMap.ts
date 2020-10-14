@@ -11,16 +11,19 @@
  */
 export class LRUMap<K = any, V = any> extends Map<K, V> {
 
-  private maximumCacheItemNumber: number;
+  /**
+   * the max number of total items
+   */
+  private maxSize: number;
 
   /**
    * LRU Cache
    *
-   * @param maximumCacheItemNumber maximum cache item number
+   * @param maxSize maximum cache item number
    */
-  constructor(max = 1024) {
+  constructor(maxSize = 1024) {
     super();
-    this.maximumCacheItemNumber = max;
+    this.maxSize = maxSize;
   }
 
   get(key: K) {
@@ -39,7 +42,7 @@ export class LRUMap<K = any, V = any> extends Map<K, V> {
     // refresh key
     if (super.has(key)) { super.delete(key); }
     // evict oldest
-    else if (this.size >= this.maximumCacheItemNumber) { super.delete(this.first()); }
+    else if (this.size >= this.maxSize) { super.delete(this.first()); }
     super.set(key, val);
     return this;
   }
