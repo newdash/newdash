@@ -27,6 +27,30 @@ describe('retry', () => {
 
   });
 
+  it('should support retry with normal sync function', () => {
+
+    let idx = 1;
+    function r() {
+      idx++;
+      if (idx <= 5) {
+        throw new TypeError();
+      }
+      return idx;
+    }
+
+    const rr = retry(r, 10);
+
+    expect(rr()).toBe(6);
+
+    let idx2 = 0;
+
+    const rr2 = retry(() => { idx2++; throw new TypeError(); }, 10);
+
+    expect(() => rr2()).toThrow(TypeError);
+    expect(idx2).toBe(10);
+
+  });
+
   it('should reject when retry number exceed', async () => {
 
     let count = 1;
@@ -63,6 +87,25 @@ describe('retry', () => {
     expect(() => retry(1)).toThrow(TypeError);
     expect(() => retry()).toThrow(TypeError);
     expect(() => retry('')).toThrow(TypeError);
+
+  });
+
+  it('should support retry with interval', async () => {
+
+    let idx = 0;
+    const interval = 100;
+    const f = retry(async () => {
+      idx++;
+      if (idx <= 3) {
+        throw new TypeError;
+      }
+      return idx;
+    }, 5, interval);
+    const d1 = new Date().getTime();
+    expect(await f()).toBe(4);
+    const diff = (new Date().getTime()) - d1;
+    expect(diff).toBeGreaterThanOrEqual(3 * interval);
+
 
   });
 
