@@ -68,6 +68,7 @@ import { isEqual } from './isEqual';
 import isEqualWith from './isEqualWith';
 import { isError } from './isError';
 import { isFunction } from './isFunction';
+import { isInstance } from './isInstance';
 import { isMap } from './isMap';
 import { isNull } from './isNull';
 import { isNumber } from './isNumber';
@@ -192,7 +193,7 @@ export {
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
-  cacheIt, cacheProvider, distance, closest
+  cacheIt, cacheProvider, distance, closest, isInstance
 };
 
 
@@ -225,7 +226,7 @@ export default {
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
-  cacheIt, cacheProvider, distance, closest
+  cacheIt, cacheProvider, distance, closest, isInstance
 
 };
 

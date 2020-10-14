@@ -23,11 +23,10 @@ const internalAdd = createMathOperation((augend: any, addend: any) => augend + a
  * ```
  *
  */
-function add<T>(augend: T, addend: T): T;
-function add(augend: any, addend: any): any {
+export function add<T>(augend: T, addend: T): T;
+export function add(augend: any, addend: any): any {
   return internalAdd(augend, addend);
 }
 
-export { add };
 
 export default add;

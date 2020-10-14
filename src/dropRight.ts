@@ -4,13 +4,14 @@ import toInteger from './toInteger';
 /**
  * Creates a slice of `array` with `n` elements dropped from the end.
  *
- * @since 3.0.0
+ * @since 5.16.0
  * @category Array
- * @param {Array} array The array to query.
- * @param {number} [n=1] The number of elements to drop.
- * @returns {Array} Returns the slice of `array`.
+ * @param array The array to query.
+ * @param n The number of elements to drop.
+ * @returns Returns the slice of `array`.
  * @example
  *
+ * ```js
  * dropRight([1, 2, 3])
  * // => [1, 2]
  *
@@ -22,8 +23,9 @@ import toInteger from './toInteger';
  *
  * dropRight([1, 2, 3], 0)
  * // => [1, 2, 3]
+ * ```
  */
-function dropRight(array, n=1) {
+export function dropRight<T>(array: Array<T>, n = 1): Array<T> {
   const length = array == null ? 0 : array.length;
   n = length - toInteger(n);
   return length ? slice(array, 0, n < 0 ? 0 : n) : [];

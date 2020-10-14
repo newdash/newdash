@@ -18,15 +18,14 @@ import baseFlatten from './.internal/baseFlatten';
  * // => [3, 4]
  * ```
  */
-function at(object: any, paths: number[]): any[];
-function at(object: any, paths: string[]): any[];
-function at(object: any, ...paths: number[]): any[];
-function at(object: any, ...paths: string[]): any[];
-function at(object: any, ...paths: any[]): any[];
-function at(object: any, ...paths: any[]): any[] {
+export function at(object: any, paths: number[]): any[];
+export function at(object: any, paths: string[]): any[];
+export function at(object: any, ...paths: number[]): any[];
+export function at(object: any, ...paths: string[]): any[];
+export function at(object: any, ...paths: any[]): any[];
+export function at(object: any, ...paths: any[]): any[] {
   return baseAt(object, baseFlatten(paths, 1));
 }
 
-export { at };
 
 export default at;
