@@ -20,7 +20,6 @@ function stringSort(a: any, b: any) {
  *
  * @returns the hash of the object
  *
- *
  * ```ts
     const a1 = [1, 2, 3, 4];
     const a2 = [1, 2, 3, 4];
@@ -48,14 +47,30 @@ export function toHashCode(obj: any): string {
     return md5(CONST_S_NULL);
   }
   else if (obj instanceof Array) {
-    return md5(`array_${obj.map(toHashCode).join()}`);
+    return md5(
+      obj.map(toHashCode).join()
+    );
   }
-  else if (typeof obj === CONST_S_OBJECT) {
-    const itemHashes = Object
-      .keys(obj)
-      .sort(stringSort) // order by keys
-      .map((key) => md5(`${String(key)}_${toHashCode(obj[key])}`));
-    return md5(`${objType}_${itemHashes.join()}`);
+  else if (obj instanceof Set) {
+    return toHashCode(
+      Array.from(obj.values()).sort(stringSort)
+    );
+  }
+  else if (obj instanceof Map) {
+    return toHashCode(
+      Array
+        .from(obj.keys())
+        .sort(stringSort)
+        .map((key) => `${String(key)}_${toHashCode(obj.get(key))}`)
+    );
+  }
+  else if (objType === CONST_S_OBJECT) {
+    return toHashCode(
+      Object
+        .keys(obj)
+        .sort(stringSort) // order by keys
+        .map((key) => `${String(key)}_${toHashCode(obj[key])}`)
+    );
   }
   else if (ARRAY_NOT_OBJECT_TYPES.includes(objType)) {
     return md5(`${objType}_${String(obj)}`);

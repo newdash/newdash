@@ -47,6 +47,38 @@ describe('functional', () => {
 
   });
 
+  it('should support toHashCode for Map, Set', () => {
+
+    const m1 = new Map();
+    const m2 = new Map();
+    const m3 = new Map();
+    m1.set('v', 'v2');
+    m1.set(1, 2);
+    m2.set(1, 2);
+    m2.set('v', 'v2');
+    m3.set('v', 'v2');
+    m3.set(1, 3);
+    expect(toHashCode(m1)).toBe(toHashCode(m2));
+    expect(toHashCode(m1)).not.toBe(toHashCode(m3));
+
+    const s1 = new Set();
+    const s2 = new Set();
+    const s3 = new Set();
+
+    s1.add(1);
+    s1.add('2');
+    s1.add({ a: 1 });
+    s2.add({ a: 1 });
+    s2.add(1);
+    s2.add('2');
+    s3.add(1);
+    s3.add('2');
+    s3.add({ a: 2 });
+
+    expect(toHashCode(s1)).toBe(toHashCode(s2));
+    expect(toHashCode(s1)).not.toBe(toHashCode(s3));
+  });
+
   it('should support hashEqual', () => {
 
     const a1 = [1, 2, 3, 4];
