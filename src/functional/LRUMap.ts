@@ -1,6 +1,14 @@
 // ref: https://stackoverflow.com/a/46432113/4380476
 // Author: odinho - Velmont
 
+/**
+ * LRU Map
+ *
+ * will remove the oldest item when reach the size limit
+ *
+ * @category Functional
+ * @since 5.15.0
+ */
 export class LRUMap<K = any, V = any> extends Map<K, V> {
 
   private maximumCacheItemNumber: number;

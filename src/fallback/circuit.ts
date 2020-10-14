@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { mustProvide } from '../assert';
+import { LRUCacheProvider } from '../cacheProvider';
 import defineFunctionName from '../functional/defineFunctionName';
-import { LRUMap } from '../functional/LRUMap';
 import { toHashCode } from '../functional/toHashCode';
 
 /**
@@ -28,6 +28,28 @@ export class TemporaryUnAvailableError extends Error {
 }
 
 /**
+ *
+ * @ignore
+ * @private
+ * @internal
+ * @param error
+ * @param key
+ * @param breakerOpenTimers
+ * @param breakerOpenReason
+ */
+function errorWithCircuit(error: Error, key: string, breakerOpenTimers, breakerOpenReason) {
+  breakerOpenTimers.set(
+    key,
+    new Date().getTime()
+  );
+  breakerOpenReason.set(
+    key,
+    error
+  );
+  throw error;
+}
+
+/**
  * fallback to circuit
  *
  * will directly raise error [[TemporaryUnAvailableError]] when some error happened before in duration
@@ -44,30 +66,31 @@ export function circuit<T>(runner: T, openDuration: number = 10 * 1000, cacheSiz
 
   if (openDuration === 0) { return runner; }
 
-  const breakerLatestFailedTimes = new LRUMap(cacheSize);
-  const breakerLatestError = new LRUMap(cacheSize);
+  const breakerOpenTimers = new LRUCacheProvider(cacheSize);
+  const breakerOpenReason = new LRUCacheProvider(cacheSize);
 
   const funcName = runner.name || 'Unknown';
 
   const func = async (...args: any[]) => {
+
     const paramKey = toHashCode(args);
-    const latestFailedTime = breakerLatestFailedTimes.get(paramKey) ?? 0;
+    const latestFailedTime = breakerOpenTimers.get(paramKey) ?? 0;
     const availableTime = latestFailedTime + openDuration;
     if (availableTime > new Date().getTime()) {
-      throw new TemporaryUnAvailableError(`function [${funcName}] is temporary un-available until ${availableTime}`);
-    }
-    try {
-      return await runner(...args);
-    } catch (error) {
-      breakerLatestFailedTimes.set(paramKey, new Date().getTime());
-      breakerLatestError.set(
-        paramKey,
-        new TemporaryUnAvailableError(
-          `function [${funcName}] is temporary un-available until ${availableTime}`,
-          error
-        )
+      throw new TemporaryUnAvailableError(
+        `function [${funcName}] is temporary un-available until ${availableTime}`,
+        breakerOpenReason.get(paramKey)
       );
-      throw error;
+    }
+
+    try {
+      const rt = runner(...args);
+      if (rt instanceof Promise) {
+        return rt.catch((error) => errorWithCircuit(error, paramKey, breakerOpenTimers, breakerOpenReason));
+      }
+      return rt;
+    } catch (error) {
+      errorWithCircuit(error, paramKey, breakerOpenTimers, breakerOpenReason);
     }
   };
 

@@ -50,6 +50,11 @@ describe('fallback', () => {
     // circuit breaker is open
     await expect(runner()).rejects.toThrow(TemporaryUnAvailableError);
     await expect(runner()).rejects.toThrow(TemporaryUnAvailableError);
+    try {
+      await runner();
+    } catch (error) {
+      expect(error.causeError).toBeInstanceOf(TypeError);
+    }
     // but for different parameter, the circuit breaker is standalone
     expect(await runner(1)).toBe(2);
 

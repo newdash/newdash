@@ -3,6 +3,7 @@ import { GeneralFunction } from './types';
 
 
 export interface CacheProvider<K, V> extends Map<K, V> {
+
   /**
    * get cache or create it on necessary
    *

@@ -1,8 +1,23 @@
 // @ts-nocheck
 import { mustProvide } from '../assert';
+import { LRUCacheProvider } from '../cacheProvider';
 import defineFunctionName from '../functional/defineFunctionName';
-import { LRUMap } from '../functional/LRUMap';
 import { toHashCode } from '../functional/toHashCode';
+
+/**
+ * @private
+ * @ignore
+ * @internal
+ * @param error
+ * @param cache
+ * @param key
+ */
+function errorWithCache(error, cache, key) {
+  if (cache.has(key)) {
+    return cache.get(key);
+  }
+  throw error;
+}
 
 /**
  * fallback to cache
@@ -17,20 +32,25 @@ export function fallbackCache<T>(runner: T, cacheSize: number = 1024): T {
 
   mustProvide(runner, 'runner', 'function');
 
-  const funcCache = new LRUMap(cacheSize); // replace as LRU cache later
+  const funcCache = new LRUCacheProvider(cacheSize); // replace as LRU cache later
 
-  const func = async (...args: any[]) => {
+
+  const func = (...args: any[]) => {
     const argsKey = toHashCode(args);
     try {
-      const rt = await runner(...args);
+      const rt = runner(...args);
+      if (rt instanceof Promise) {
+        return rt
+          .then((result) => {
+            funcCache.set(argsKey, result);
+            return result;
+          })
+          .catch((error) => errorWithCache(error,funcCache,argsKey));
+      }
       funcCache.set(argsKey, rt);
       return rt;
     } catch (error) {
-      if (funcCache.has(argsKey)) {
-        return funcCache.get(argsKey);
-      }
-      // not found cache, raise error
-      throw error;
+      return errorWithCache(error,funcCache,argsKey);
     }
   };
 

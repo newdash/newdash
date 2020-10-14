@@ -54,7 +54,7 @@ export function toHashCode(obj: any): string {
     const itemHashes = Object
       .keys(obj)
       .sort(stringSort) // order by keys
-      .map((key) => md5(`${key}_${toHashCode(obj[key])}`));
+      .map((key) => md5(`${String(key)}_${toHashCode(obj[key])}`));
     return md5(`${objType}_${itemHashes.join()}`);
   }
   else if (ARRAY_NOT_OBJECT_TYPES.includes(objType)) {
