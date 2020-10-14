@@ -134,6 +134,7 @@ import sortedLastIndexOf from './sortedLastIndexOf';
 import sortedUniq from './sortedUniq';
 import sortedUniqBy from './sortedUniqBy';
 import { split } from './split';
+import { closest, distance } from './string';
 import { sum } from './sum';
 import { sumBy } from './sumBy';
 import { take } from './take';
@@ -191,7 +192,7 @@ export {
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
-  cacheIt, cacheProvider
+  cacheIt, cacheProvider, distance, closest
 };
 
 
@@ -224,7 +225,7 @@ export default {
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
-  cacheIt, cacheProvider
+  cacheIt, cacheProvider, distance, closest
 
 };
 
