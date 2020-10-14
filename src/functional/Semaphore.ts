@@ -23,6 +23,8 @@
 
 // copy for deno runtime
 
+import { mustProvide } from '../assert';
+
 /**
  * Semaphore implementation for javascript
  */
@@ -39,10 +41,7 @@ export class Semaphore {
     if (this.count > 0 && this.tasks.length > 0) {
       this.count--;
       const next = this.tasks.shift();
-      if (next === undefined) {
-        throw new TypeError('Unexpected undefined value in tasks list');
-      }
-
+      mustProvide(next, 'task', 'function');
       next();
     }
   }

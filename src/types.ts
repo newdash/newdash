@@ -1,5 +1,10 @@
 
 /**
+ * possible values of `typeof object`
+ */
+export type JSType = 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'undefined' | 'object' | 'function'
+
+/**
  * Convert Array To Tuple (with order)
  *
  * @private
@@ -109,7 +114,15 @@ export type UnwrapPromise<T> = T extends PromiseLike<infer U> ? U : T;
  */
 export type GeneralFunction<Args extends any[] = any[], ReturnType extends any = any> = (...args: Args) => ReturnType
 
+/**
+ * keys of object
+ */
 export type Keys<T> = keyof T;
+
+/**
+ * values of object
+ */
+export type Values<T> = T[Keys<T>]
 
 /**
  * Same as Partial<T> but goes deeper and makes Partial<T> all its properties and sub-properties.
@@ -135,6 +148,12 @@ export type OptionalParameters<T extends Function> = T extends (...args: infer P
  */
 export type Class<T = any> = new (...args: any[]) => T
 
+/**
+ * async function
+ */
 export type AsyncFunction = (...args: any[]) => Promise<any>
 
+/**
+ * return type of function
+ */
 export type ReturnType<T> = T extends (...args: any) => infer R ? R : any;

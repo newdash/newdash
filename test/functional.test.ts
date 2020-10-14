@@ -29,6 +29,14 @@ describe('functional', () => {
     expect(toHashCode(o1)).toBe(toHashCode(o2));
     expect(toHashCode(o1)).not.toBe(toHashCode(o3));
 
+    const o4 = { a: 1, b: 2, c: { a: 1, b: 2 } };
+    const o5 = { b: 2, c: { b: 2, a: 1 }, a: 1 };
+    expect(toHashCode(o4)).toBe(toHashCode(o5));
+
+    const o6 = [{ a: 1, b: 2, c: { a: 1, b: 2 } }];
+    const o7 = [{ b: 2, c: { b: 2, a: 1 }, a: 1 }];
+    expect(toHashCode(o6)).toBe(toHashCode(o7));
+
     expect(toHashCode([])).not.toBe(toHashCode(''));
     expect(toHashCode([])).not.toBe(toHashCode([undefined]));
     expect(toHashCode([null, undefined])).not.toBe(toHashCode([undefined, null]));

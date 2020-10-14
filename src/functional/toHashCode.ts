@@ -1,5 +1,14 @@
 import { md5 } from '../md5';
 
+const ARRAY_NOT_OBJECT_TYPES = ['number', 'string', 'bigint', 'symbol', 'function'];
+const CONST_S_UNDEFINED = 'undefined';
+const CONST_S_NULL = 'null';
+const CONST_S_OBJECT = 'object';
+
+function stringSort(a: any, b: any) {
+  return String(a).localeCompare(String(b));
+}
+
 /**
  * Object.toHashCode
  *
@@ -32,17 +41,27 @@ import { md5 } from '../md5';
 export function toHashCode(obj: any): string {
 
   const objType = typeof obj;
-  if (obj === undefined) { return md5('undefined'); }
-  else if (obj === null) { return md5('null'); }
-  else if (obj instanceof Array) { return md5(`array_${obj.map(toHashCode).join()}`); }
-  else if (typeof obj === 'object') {
-    return md5(`object_${JSON.stringify(obj)}`);
+  if (obj === undefined) {
+    return md5(CONST_S_UNDEFINED);
   }
-  else if (['number', 'string', 'bigint', 'symbol', 'function'].includes(objType)) {
+  else if (obj === null) {
+    return md5(CONST_S_NULL);
+  }
+  else if (obj instanceof Array) {
+    return md5(`array_${obj.map(toHashCode).join()}`);
+  }
+  else if (typeof obj === CONST_S_OBJECT) {
+    const itemHashes = Object
+      .keys(obj)
+      .sort(stringSort) // order by keys
+      .map((key) => md5(`${key}_${toHashCode(obj[key])}`));
+    return md5(`${objType}_${itemHashes.join()}`);
+  }
+  else if (ARRAY_NOT_OBJECT_TYPES.includes(objType)) {
     return md5(`${objType}_${String(obj)}`);
   }
 
-  throw new TypeError(`invalid object type ${typeof obj}`);
+  throw new TypeError(`invalid object type ${objType}`);
 
 }
 
