@@ -32,6 +32,9 @@ module.exports = function (babel) {
   const importExportTransform = (path, { file: { opts: { filename } } }) => {
     const dir = p.dirname(filename)
     const prefix = "../../../deno/test"
+    if (path.node.source === null) {
+      return
+    }
     const mName = path.node.source.value
     let mPath = p.join(`${dir}/`, mName)
 
@@ -66,7 +69,7 @@ module.exports = function (babel) {
       path.node.source.value = `${path.node.source.value}/index.js`;
     } else if (fs.existsSync(mPath + "/index.ts")) {
       path.node.source.value = `${path.node.source.value}/index.ts`;
-    }  else {
+    } else {
       console.info(`can not find module '${mName}' from ${filename}, no transform.`)
     }
     if (path.node.source.value.startsWith("../src/")) {
@@ -102,6 +105,7 @@ module.exports = function (babel) {
 
       ImportDeclaration: importExportTransform,
       ExportAllDeclaration: importExportTransform,
+      ExportNamedDeclaration: importExportTransform,
 
       /**
        * @param {import("@babel/core").NodePath} path
