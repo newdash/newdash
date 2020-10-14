@@ -23,11 +23,11 @@
     }
   ],
   "scripts": {
-    "test": "jest --bail -w 4",
+    "test": "jest --bail",
     "pretest:deno": "rimraf ./dist/deno && npm run build:deno:test",
     "test:deno": "deno test ./dist/deno/test/*.test.ts",
     "lint": "tsc --noEmit && eslint .",
-    "coverage": "npm test -- --coverage --no-cache",
+    "coverage": "npm test -- --coverage --no-cache --runInBand",
     "build:deno": "babel --out-dir dist/deno --extensions .js,.ts --keep-file-extension src",
     "prebuild:deno:test": "npm run build:deno",
     "build:deno:test": "babel --out-dir dist/deno/test --extensions .js,.ts --keep-file-extension test",
