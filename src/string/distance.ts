@@ -22,14 +22,14 @@ export function distance(s1: string = '', s2: string = ''): number {
 
   if (s1Length && s2Length) {
 
-    let i1 = 0, i2 = 0, a, b, c, c2 = tmp;
+    let i1 = 0, i2 = 0, a, b, c = tmp;
     const tmp1 = tmp;
 
     while (i1 < s1Length) { tmp1[i1] = ++i1; }
 
     while (i2 < s2Length) {
       // @ts-ignore
-      c2 = s2.charCodeAt(i2);
+      const c2 = s2.charCodeAt(i2);
       a = i2;
       ++i2;
       b = i2;
@@ -60,14 +60,14 @@ export function distance(s1: string = '', s2: string = ''): number {
  *
  *
  * ```ts
-    const dict = ['hello', 'haha', 'mama', 'moment', 'world', 'latest'];
+  const dict = ['hello', 'haha', 'mama', 'moment', 'world', 'latest'];
 
-    expect(closest('h', dict)).toBe('haha');
-    expect(closest('he', dict)).toBe('hello');
-    expect(closest('m', dict)).toBe('mama');
-    expect(closest('mo', dict)).toBe('mama');
-    expect(closest('mome', dict)).toBe('mama');
-    expect(closest('latast', dict)).toBe('latest');
+  expect(closest('h', dict)).toBe('haha');
+  expect(closest('he', dict)).toBe('hello');
+  expect(closest('m', dict)).toBe('mama');
+  expect(closest('mo', dict)).toBe('mama');
+  expect(closest('mome', dict)).toBe('mama');
+  expect(closest('latast', dict)).toBe('latest');
   * ```
  */
 export function closest(input: string, dict: Array<string>): string {
