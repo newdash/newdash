@@ -32,7 +32,7 @@ export function fallbackCache<T>(runner: T, cacheSize: number = 1024): T {
 
   mustProvide(runner, 'runner', 'function');
 
-  const funcCache = new LRUCacheProvider(cacheSize); // replace as LRU cache later
+  const funcCache = new LRUCacheProvider(cacheSize);
 
 
   const func = (...args: any[]) => {

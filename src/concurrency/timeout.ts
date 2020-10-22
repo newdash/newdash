@@ -1,5 +1,6 @@
-// @ts-nocheck
+import { mustProvide } from '../assert';
 import { createTimeoutPromise } from '../timeout';
+import { AsyncFunction } from '../types';
 
 /**
  * wrap an async function with timeout
@@ -13,7 +14,10 @@ import { createTimeoutPromise } from '../timeout';
  * @throws {TimeoutError}
  *
  */
-export function timeout<T>(runner: T, timeout?: number): T {
+export function timeout<T extends AsyncFunction>(runner: T, timeout?: number): T {
+
+  mustProvide(runner, 'runner', 'function');
+  mustProvide(timeout, 'timeout', 'number');
 
   const func = (...args: any[]) => createTimeoutPromise(async (resolve, reject) => {
     try {
@@ -23,6 +27,7 @@ export function timeout<T>(runner: T, timeout?: number): T {
     }
   }, timeout);
 
+  // @ts-ignore
   return func;
 
 }

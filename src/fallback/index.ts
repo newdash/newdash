@@ -1,5 +1,4 @@
 import { AsyncFunction } from '../types';
-// @ts-nocheck
 import { fallbackCache } from './cache';
 import { circuit } from './circuit';
 import { fallbackRetry } from './retry';
@@ -32,7 +31,7 @@ interface RecommendFallbackCreatorOptions {
 /**
  * recommend fallback policy
  *
- * cache <- circuit <- retry <- runner
+ * `cache <- circuit <- retry <- runner`
  *
  * when error happened from `runner`, `retry` it firstly
  *

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { mustProvide } from '../assert';
 import { LRUCacheProvider } from '../cacheProvider';
 import defineFunctionName from '../functional/defineFunctionName';
@@ -69,7 +68,7 @@ export function circuit<T>(runner: T, openDuration: number = 10 * 1000, cacheSiz
   const breakerOpenTimers = new LRUCacheProvider(cacheSize);
   const breakerOpenReason = new LRUCacheProvider(cacheSize);
 
-  const funcName = runner.name || 'Unknown';
+  const funcName = runner['name'] || 'Unknown';
 
   const func = async (...args: any[]) => {
 
@@ -84,6 +83,7 @@ export function circuit<T>(runner: T, openDuration: number = 10 * 1000, cacheSiz
     }
 
     try {
+      // @ts-ignore
       const rt = runner(...args);
       if (rt instanceof Promise) {
         return rt.catch((error) => errorWithCircuit(error, paramKey, breakerOpenTimers, breakerOpenReason));
@@ -94,6 +94,7 @@ export function circuit<T>(runner: T, openDuration: number = 10 * 1000, cacheSiz
     }
   };
 
+  // @ts-ignore
   // overwrite proxy function name
   return defineFunctionName(func, funcName);
 

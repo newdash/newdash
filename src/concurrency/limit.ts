@@ -1,4 +1,4 @@
-// @ts-nocheck
+import { mustProvide } from '../assert';
 import { Semaphore } from '../functional/Semaphore';
 import { AsyncFunction } from '../types';
 
@@ -14,15 +14,13 @@ import { AsyncFunction } from '../types';
  *
  */
 export function limit<T extends AsyncFunction>(runner: T, concurrencyNumber: number): T {
-  if (runner === undefined) {
-    return undefined;
-  }
-  if (concurrencyNumber === undefined || concurrencyNumber < 1) {
-    return runner;
-  }
+
+  mustProvide(runner, 'runner', 'function');
+  mustProvide(concurrencyNumber, 'concurrencyNumber', 'number');
 
   const sem = new Semaphore(concurrencyNumber);
 
+  // @ts-ignore
   return async (...args: any[]) => {
     const release = await sem.acquire();
     try {
