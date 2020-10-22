@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.16.0](https://github.com/newdash/newdash/compare/v5.15.0...v5.16.0) (2020-10-22)
+
+
+### Features
+
+* [#139](https://github.com/newdash/newdash/issues/139) cacheIt function ([d149f83](https://github.com/newdash/newdash/commit/d149f83e38ffe9251a1a1bf56aab884843c51aa1))
+* [#139](https://github.com/newdash/newdash/issues/139) TTL Cache Provider ([f9119b9](https://github.com/newdash/newdash/commit/f9119b917b3d983a73a418764a46070a1d51d5ca))
+* cacheIt support class ([4c620a9](https://github.com/newdash/newdash/commit/4c620a9bf43714e9d9fdebe5a2ca132beb653984))
+* isInstance function ([0ffda72](https://github.com/newdash/newdash/commit/0ffda72525f760a388106b01a2c174de889c61c3))
+* string distance & closest ([29846b7](https://github.com/newdash/newdash/commit/29846b7471c90b98515a8b60581a6be0ee9618f0))
+
+
+### Bug Fixes
+
+* deno ci issue ([2edaf47](https://github.com/newdash/newdash/commit/2edaf4722af3cbae45fa1ea49a140ebc48a76479))
+* LGTM ([87ee868](https://github.com/newdash/newdash/commit/87ee868c3339b5a506b3efe9b699f16cbeeea162))
+
 ## [5.15.0](https://github.com/newdash/newdash/compare/v5.14.0...v5.15.0) (2020-10-10)
 
 
