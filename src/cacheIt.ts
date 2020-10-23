@@ -2,6 +2,7 @@ import { CacheProvider, LRUCacheProvider } from './cacheProvider';
 import { toHashCode } from './functional/toHashCode';
 import { isClass } from './isClass';
 import { Class, GeneralFunction } from './types';
+
 /**
  * @private
  * @ignore
@@ -16,6 +17,9 @@ const KEY_CACHE_PROPERTY = '__cache_storage';
 const KEY_CLEAR_CACHE_FUNCTION = '__cache_clear';
 
 export type CachedFunction<T extends GeneralFunction> = T & {
+  /**
+   * get the cache provider
+   */
   [KEY_CACHE_PROPERTY]: CacheProvider<string, ReturnType<T>>;
   /**
    * clear cache by parameters
@@ -37,7 +41,7 @@ export interface CacheItOptions {
   /**
    * provider constructor args
    */
-  providerArgs?: any[];
+  providerArgs?: Array<any>;
 }
 
 const defaultCacheItOptions: CacheItOptions = {
@@ -61,8 +65,8 @@ function cacheItFunction(obj: any, options?: CacheItOptions) {
 
   return new Proxy(obj, {
     apply: (target, ctx, args) => {
-      const key = toHashCode(args);
       const producer = () => target.apply(ctx, args);
+      const key = toHashCode(args);
       return cacheProvider.getOrCreate(key, producer);
     },
     get: (target, propertyName) => {
@@ -131,8 +135,13 @@ function cacheItObject(obj: any, options?: CacheItOptions) {
  * @param options
  */
 export function cacheIt<T extends GeneralFunction>(obj: T, options?: CacheItOptions): CachedFunction<T>
+/**
+ * create a class wrapper, the instance created by that wrapper will automatically apply `cacheIt`
+ * @since 5.16.0
+ * @param obj
+ * @param options
+ */
 export function cacheIt<T>(obj: Class<T>, options?: CacheItOptions): CachedClass<T>
-
 /**
  * make function is cached
  * @since 5.16.0

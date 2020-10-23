@@ -10,9 +10,14 @@ export interface CacheProvider<K, V> extends Map<K, V> {
    * @param key
    * @param producer
    */
-  getOrCreate<R>(key: K, producer: GeneralFunction<any[], R>): R
+  getOrCreate(key: K, producer: GeneralFunction<any[], V>): V
 
 }
+
+/**
+ * async cache provider
+ */
+export interface AsyncCacheProvider<K, V> extends CacheProvider<K, Promise<V>> { }
 
 /**
  * LRU Cache Provider
@@ -22,7 +27,7 @@ export interface CacheProvider<K, V> extends Map<K, V> {
  */
 export class LRUCacheProvider<K = any, V = any> extends LRUMap implements CacheProvider<K, V> {
 
-  public getOrCreate<R>(key: K, producer: GeneralFunction<[], R>): R {
+  public getOrCreate(key: K, producer: GeneralFunction<[], V>): V {
     if (!this.has(key)) {
       const value = producer();
       // work with async function
@@ -176,7 +181,7 @@ export class TTLCacheProvider<K = any, V = any> extends LRUCacheProvider<K, V> {
 
 }
 
-export const cacheProvider= {
+export const cacheProvider = {
   LRUCacheProvider,
   TTLCacheProvider
 };

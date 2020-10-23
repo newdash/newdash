@@ -18,7 +18,7 @@ function stringSort(a: any, b: any) {
  * @since 5.15.0
  * @param obj anything in js
  *
- * @returns the hash of the object
+ * @returns the hash of the object (string(32))
  *
  * ```ts
     const a1 = [1, 2, 3, 4];
