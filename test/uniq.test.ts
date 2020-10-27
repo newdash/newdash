@@ -1,6 +1,6 @@
 import * as assert from 'assert';
-import { uniq } from '../src/uniq';
 import { map } from '../src/map';
+import { uniq } from '../src/uniq';
 
 describe('uniq', () => {
 

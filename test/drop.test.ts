@@ -1,8 +1,8 @@
 import * as assert from 'assert';
-import map from '../src/map';
+import falsey from '../src/.internal/falsey';
 import drop from '../src/drop';
 import each from '../src/each';
-import falsey from '../src/.internal/falsey';
+import map from '../src/map';
 
 describe('drop', () => {
   const array = [1, 2, 3];
@@ -14,6 +14,7 @@ describe('drop', () => {
   it('should treat falsey `n` values, except `undefined`, as `0`', () => {
     const expected = map(falsey, (value) => value === undefined ? [2, 3] : array);
 
+    // @ts-ignore
     const actual = map(falsey, (n) => drop(array, n));
 
     assert.deepStrictEqual(actual, expected);
