@@ -4,7 +4,6 @@ import dropRight from '../src/dropRight';
 import each from '../src/each';
 import map from '../src/map';
 
-
 describe('dropRight', () => {
   const array = [1, 2, 3];
 

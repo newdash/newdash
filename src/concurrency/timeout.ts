@@ -1,4 +1,5 @@
 import { mustProvide } from '../assert';
+import defineFunctionName from '../functional/defineFunctionName';
 import { createTimeoutPromise } from '../timeout';
 import { AsyncFunction } from '../types';
 
@@ -28,6 +29,6 @@ export function timeout<T extends AsyncFunction>(runner: T, timeout?: number): T
   }, timeout);
 
   // @ts-ignore
-  return func;
+  return defineFunctionName(func, runner.name);
 
 }

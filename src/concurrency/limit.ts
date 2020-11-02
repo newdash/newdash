@@ -1,4 +1,5 @@
 import { mustProvide } from '../assert';
+import defineFunctionName from '../functional/defineFunctionName';
 import { Semaphore } from '../functional/Semaphore';
 import { AsyncFunction } from '../types';
 
@@ -21,14 +22,14 @@ export function limit<T extends AsyncFunction>(runner: T, concurrencyNumber: num
   const sem = new Semaphore(concurrencyNumber);
 
   // @ts-ignore
-  return async (...args: any[]) => {
+  return defineFunctionName(async (...args: any[]) => {
     const release = await sem.acquire();
     try {
       return await runner(...args);
     } finally {
       release();
     }
-  };
+  }, runner?.name);
 
 }
 
