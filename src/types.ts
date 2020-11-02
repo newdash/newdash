@@ -14,6 +14,11 @@ export type JSType = 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'un
 export type Tuple<T extends Array<any>> = { [K in keyof T]: T[K] };
 
 /**
+ * Convert values of object to array
+ */
+export type Values<T> = Array<T[keyof T]>
+
+/**
  * @ignore
  */
 export type Collection<T = any> = Array<T> | Record<string, T>
@@ -118,11 +123,6 @@ export type GeneralFunction<Args extends any[] = any[], ReturnType extends any =
  * keys of object
  */
 export type Keys<T> = keyof T;
-
-/**
- * values of object
- */
-export type Values<T> = T[Keys<T>]
 
 /**
  * Same as Partial<T> but goes deeper and makes Partial<T> all its properties and sub-properties.

@@ -5,7 +5,7 @@ import { createTimeoutPromise, TimeoutError } from '../src/timeout';
 import { assertShouldThrowError } from './helpers';
 
 let describe2 = describe;
-if (platform() != 'linux') {
+if (platform() !== 'linux') {
   // setTimeout is Unstable on MacOS/Windows,
   // maybe caused by resource schedule,
   // so skip these tests

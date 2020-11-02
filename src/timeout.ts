@@ -1,3 +1,4 @@
+import { mustProvide } from './assert';
 
 type Executor<T> = (resolve: (value?: T | PromiseLike<T>) => void, reject?: (reason?: any) => void) => void
 
@@ -21,22 +22,27 @@ export class TimeoutError extends Error { }
  */
 export function createTimeoutPromise<T>(executor: Executor<T>, timeout = 60 * 1000): Promise<T> {
 
+  mustProvide(executor, 'executor', 'function');
+
   return new Promise((resolve, reject) => {
+
     let hasTimeout = false;
-    let hasProcess = false;
-    setTimeout(() => {
-      if (!hasProcess) { hasTimeout = true; reject(new TimeoutError('Time is up.')); } }, timeout
-    );
+
+    const timer = setTimeout(() => {
+      hasTimeout = true;
+      reject(new TimeoutError('Time is up.'));
+    }, timeout);
+
     executor(
       (...args: any[]) => {
         if (!hasTimeout) {
-          hasProcess = true;
+          clearInterval(timer);
           resolve(...args);
         }
       },
       (...args: any[]) => {
         if (!hasTimeout) {
-          hasProcess = true;
+          clearInterval(timer);
           reject(...args);
         }
       });

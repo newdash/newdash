@@ -159,6 +159,7 @@ import uniqWith from './uniqWith';
 import { unset } from './unset';
 import unWrap from './unWrap';
 import { update } from './update';
+import { values } from './values';
 import words from './words';
 import wrap from './wrap';
 
@@ -193,7 +194,8 @@ export {
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
-  cacheIt, cacheProvider, distance, closest, isInstance
+  cacheIt, cacheProvider, distance, closest, isInstance,
+  values
 };
 
 
@@ -226,7 +228,8 @@ export default {
   words, escapeRegExp, addSuffix, addPrefix, series,
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
-  cacheIt, cacheProvider, distance, closest, isInstance
+  cacheIt, cacheProvider, distance, closest, isInstance,
+  values
 
 };
 

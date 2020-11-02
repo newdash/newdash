@@ -1,11 +1,17 @@
+// @ts-nocheck
 import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { _, args, strictArgs } from './utils';
+import { constant } from '../src/constant';
+import { each } from '../src/each';
+import { map } from '../src/map';
+import values from '../src/values';
+import { args, strictArgs } from './utils';
+
 
 describe('values methods', () => {
-  lodashStable.each(['values', 'valuesIn'], (methodName) => {
-    const func = _[methodName],
-      isValues = methodName == 'values';
+
+  each([['values', values]], ([methodName, func]) => {
+
+    const isValues = methodName == 'values';
 
     it(`\`_.${methodName}\` should get string keyed values of \`object\``, () => {
       const object = { 'a': 1, 'b': 2 },
@@ -35,11 +41,12 @@ describe('values methods', () => {
 
     it(`\`_.${methodName}\` should work with \`arguments\` objects`, () => {
       const values = [args, strictArgs],
-        expected = lodashStable.map(values, lodashStable.constant([1, 2, 3]));
+        expected = map(values, constant([1, 2, 3]));
 
-      const actual = lodashStable.map(values, (value) => func(value).sort());
+      const actual = map(values, (value) => func(value).sort());
 
       assert.deepStrictEqual(actual, expected);
     });
+
   });
 });
