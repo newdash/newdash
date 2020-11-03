@@ -51,7 +51,7 @@ const nativeClasses = [
  * ```
  */
 export function isClass(obj: any): obj is Class {
-  if (obj?.constructor === Function) {
+  if (typeof obj?.constructor === 'function') {
     if (/^class [\s\S]*?$/.test(obj.toString())) {
       return true;
     }
