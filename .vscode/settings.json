@@ -6,6 +6,7 @@
     "source.organizeImports": true
   },
   "cSpell.words": [
+    "Deno",
     "Mutex",
     "falsey",
     "newdash"

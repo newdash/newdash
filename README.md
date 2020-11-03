@@ -23,6 +23,8 @@
 
 ### NodeJS
 
+works as you want.
+
 ```js
 // const { first } = require("@newdash/newdash")
 const { first } = require("@newdash/newdash/first") // Compatible with es6 module
@@ -41,9 +43,11 @@ first("abc")
 
 ### Deno Runtime
 
+import from CDN, remember to add `.ts` suffix.
+
 ```js
-// import { add } from "https://unpkg.com/@newdash/newdash-deno/index.ts"
-import { add } from "https://unpkg.com/@newdash/newdash-deno/add.ts"
+// import { add } from "https://cdn.jsdelivr.net/npm/@newdash/newdash-deno/index.ts"
+import { add } from "https://cdn.jsdelivr.net/npm/@newdash/newdash-deno/add.ts"
 
 add(1, 2)
 // => 3
@@ -51,6 +55,14 @@ add('1', '2')
 // => '12'
 add('1', 2) // different types
 // throw error: TS2345 [ERROR]: Argument of type '2' is not assignable to parameter of type '"1"'.
+```
+
+### UMD Module (Browser Native)
+
+just introduce `script` with html.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@newdash/newdash-umd/newdash.min.js"></script>
 ```
 
 ## [API Document](https://newdash.netlify.fornever.org/)
