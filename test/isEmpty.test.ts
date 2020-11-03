@@ -1,14 +1,13 @@
 import * as assert from 'assert';
-
-import { empties, stubTrue, slice, symbol, args, push, arrayProto, realm, MAX_SAFE_INTEGER } from './utils';
-
-import map from '../src/map';
-import isEmpty from '../src/isEmpty';
 import each from '../src/each';
+import isEmpty from '../src/isEmpty';
+import map from '../src/map';
+import { args, arrayProto, empties, MAX_SAFE_INTEGER, push, slice, stubTrue, symbol } from './utils';
 
 
 describe('isEmpty', () => {
-  it('should return `true` for empty values', () => {
+
+  it('should return true for empty values', () => {
     const expected = map(empties, stubTrue),
       actual = map(empties, isEmpty);
 
@@ -18,6 +17,7 @@ describe('isEmpty', () => {
     assert.strictEqual(isEmpty(slice), true);
     assert.strictEqual(isEmpty(1), true);
     assert.strictEqual(isEmpty(NaN), true);
+    assert.strictEqual(isEmpty({}), true);
     assert.strictEqual(isEmpty(/x/), true);
     assert.strictEqual(isEmpty(symbol), true);
     assert.strictEqual(isEmpty(), true);

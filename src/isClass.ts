@@ -1,3 +1,4 @@
+import { isEmpty } from './isEmpty';
 import { Class } from './types';
 
 const nativeClasses = [
@@ -51,6 +52,9 @@ const nativeClasses = [
  * ```
  */
 export function isClass(obj: any): obj is Class {
+  if (obj === undefined || obj === null) {
+    return false;
+  }
   if (typeof obj?.constructor === 'function') {
     if (/^class [\s\S]*?$/.test(obj.toString())) {
       return true;
@@ -58,6 +62,9 @@ export function isClass(obj: any): obj is Class {
     if (nativeClasses.includes(obj)) {
       return true;
     }
+  }
+  if (typeof obj === 'function' && !isEmpty(obj.prototype)) {
+    return true;
   }
   return false;
 }
