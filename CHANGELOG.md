@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.17.0](https://github.com/newdash/newdash/compare/v5.16.0...v5.17.0) (2020-11-03)
+
+
+### Features
+
+* values ([f37ade9](https://github.com/newdash/newdash/commit/f37ade971ba5cf53045a48f870d5d081a1c829e6))
+
+
+### Bug Fixes
+
+* isClass unknown issue ([ee42027](https://github.com/newdash/newdash/commit/ee420274e1c7def7cdf6fb50bb0c0801cfef9633))
+
 ## [5.16.0](https://github.com/newdash/newdash/compare/v5.15.0...v5.16.0) (2020-10-22)
 
 
