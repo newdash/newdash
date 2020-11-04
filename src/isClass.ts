@@ -55,8 +55,8 @@ export function isClass(obj: any): obj is Class {
   if (obj === undefined || obj === null) {
     return false;
   }
-  if (typeof obj?.constructor === 'function') {
-    if (/^class [\s\S]*?$/.test(obj.toString())) {
+  if (typeof obj === 'function' && typeof obj?.constructor === 'function') {
+    if (/^class [\s\S]*?$/.test(Function.prototype.toString.call(obj))) {
       return true;
     }
     if (nativeClasses.includes(obj)) {
