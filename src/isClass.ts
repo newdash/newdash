@@ -59,7 +59,7 @@ export function isClass(obj: any): obj is Class {
     if (/^class [\s\S]*?$/.test(Function.prototype.toString.call(obj))) {
       return true;
     }
-    if (nativeClasses.includes(obj)) {
+    if (isNativeClass(obj)) {
       return true;
     }
   }
@@ -67,4 +67,14 @@ export function isClass(obj: any): obj is Class {
     return true;
   }
   return false;
+}
+
+/**
+ * check a class is native class or not
+ * @category Lang
+ * @since 5.18.0
+ * @param c class type
+ */
+export function isNativeClass(c: Class<any>): boolean {
+  return nativeClasses.includes(c);
 }

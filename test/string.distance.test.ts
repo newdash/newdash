@@ -1,7 +1,7 @@
 import { closest, distance } from '../src/string/distance';
 
 
-describe('Libraries Test Suite', () => {
+describe('string library', () => {
 
   it('should support calculate distance of strings', () => {
 
