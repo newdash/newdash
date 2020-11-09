@@ -30,7 +30,7 @@ import isArrayLike from './isArrayLike';
  * // => ['0', '1']
  * ```
  */
-function keys(object: any): string[] {
+export function keys(object: any): string[] {
   return isArrayLike(object)
     ? arrayLikeKeys(object)
     : Object.keys(Object(object));

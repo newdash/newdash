@@ -3,16 +3,18 @@ import slice from './slice';
 /**
  * Gets all but the last element of `array`.
  *
- * @since 0.1.0
+ * @since 5.18.0
  * @category Array
- * @param {Array} array The array to query.
- * @returns {Array} Returns the slice of `array`.
+ * @param array The array to query.
+ * @returns Returns the slice of `array`.
  * @example
  *
+ * ```ts
  * initial([1, 2, 3])
  * // => [1, 2]
+ * ```
  */
-function initial(array) {
+export function initial<T = any>(array: Array<T>): Array<T> {
   const length = array == null ? 0 : array.length;
   return length ? slice(array, 0, -1) : [];
 }
