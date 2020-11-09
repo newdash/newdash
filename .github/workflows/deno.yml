@@ -27,13 +27,15 @@ jobs:
 
     - name: setup deno
       uses: denolib/setup-deno@v2
+      with:
+        deno-version: v1.5.2
 
     - name: install nodejs deps
       run: npm ci
 
     - name: build source for deno
       run: npm run build:deno
-    
+
     - name: build test cases for deno
       run: npm run build:deno:test
 
