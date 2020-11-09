@@ -151,7 +151,7 @@ export type Class<T = any> = new (...args: any[]) => T
 /**
  * async function
  */
-export type AsyncFunction = (...args: any[]) => Promise<any>
+export type AsyncFunction<P extends any[] = any[], R = any> = (...args: P) => Promise<R>
 
 /**
  * return type of function

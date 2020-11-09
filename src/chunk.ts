@@ -6,20 +6,22 @@ import toInteger from './toInteger';
  * If `array` can't be split evenly, the final chunk will be the remaining
  * elements.
  *
- * @since 3.0.0
+ * @since 5.18.0
  * @category Array
- * @param {Array} array The array to process.
- * @param {number} [size=1] The length of each chunk
- * @returns {Array} Returns the new array of chunks.
+ * @param array The array to process.
+ * @param size The length of each chunk, default is 1
+ * @returns Returns the new array of chunks.
  * @example
  *
+ * ```js
  * chunk(['a', 'b', 'c', 'd'], 2)
  * // => [['a', 'b'], ['c', 'd']]
  *
  * chunk(['a', 'b', 'c', 'd'], 3)
  * // => [['a', 'b', 'c'], ['d']]
+ * ```
  */
-function chunk(array, size = 1) {
+export function chunk<T>(array: Array<T>, size = 1): Array<Array<T>> {
   size = Math.max(toInteger(size), 0);
   const length = array == null ? 0 : array.length;
   if (!length || size < 1) {

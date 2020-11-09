@@ -12,6 +12,7 @@ import { cacheIt } from './cacheIt';
 import { cacheProvider } from './cacheProvider';
 import { capitalize } from './capitalize';
 import { ceil } from './ceil';
+import { chunk } from './chunk';
 import { clone } from './clone';
 import { cloneDeep } from './cloneDeep';
 import { concat } from './concat';
@@ -151,7 +152,7 @@ import { trimEnd } from './trimEnd';
 import { trimPrefix } from './trimPrefix';
 import { trimStart } from './trimStart';
 import { trimSuffix } from './trimSuffix';
-import unionBy from './unionBy';
+import { unionBy } from './unionBy';
 import { uniq } from './uniq';
 import uniqBy from './uniqBy';
 import uniqueId from './uniqueId';
@@ -195,7 +196,7 @@ export {
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
-  values
+  values, chunk
 };
 
 
@@ -229,7 +230,7 @@ export default {
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
-  values
+  values, chunk
 
 };
 

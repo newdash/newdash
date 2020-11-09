@@ -9,8 +9,8 @@ import { AsyncFunction } from '../types';
  * @since 5.15.0
  * @category Async
  *
- * @param runner
- * @param timeout
+ * @param runner async runner please, otherwise the `timeout` is not meaningful
+ * @param timeout timeout threshold in milliseconds
  *
  * @throws {TimeoutError}
  *
