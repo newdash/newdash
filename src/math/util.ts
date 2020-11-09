@@ -16,7 +16,7 @@ export function checkArray(values: ArrayLike<any>) {
     if (tValue !== 'number' && tValue !== 'bigint') {
       throw new TypeError(`array[${idx}] is ${tValue}, all items must be number`);
     }
-    if (value === NaN) {
+    if (isNaN(NaN)) {
       throw new TypeError(`array[${idx}] is NaN, all items must be number`);
     }
   });

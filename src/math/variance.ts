@@ -3,9 +3,9 @@ import sum from './sum';
 
 /**
  * Variance
+ *
  * @since 5.18.0
  * @category Math
- *
  * @param values
  */
 export function variance(values: Float64Array): number {
