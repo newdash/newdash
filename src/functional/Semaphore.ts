@@ -34,6 +34,7 @@ export class Semaphore {
   private count: number;
 
   constructor(count: number) {
+    mustProvide(count, 'count', 'number');
     this.count = count;
   }
 

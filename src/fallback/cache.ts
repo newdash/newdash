@@ -34,7 +34,6 @@ export function fallbackCache<T>(runner: T, cacheSize: number = 1024): T {
 
   const funcCache = new LRUCacheProvider(cacheSize);
 
-
   const func = (...args: any[]) => {
     const argsKey = toHashCode(args);
     try {

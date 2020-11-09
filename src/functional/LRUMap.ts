@@ -1,6 +1,8 @@
 // ref: https://stackoverflow.com/a/46432113/4380476
 // Author: odinho - Velmont
 
+import { mustProvide } from '../assert';
+
 /**
  * LRU Map
  *
@@ -23,6 +25,7 @@ export class LRUMap<K = any, V = any> extends Map<K, V> {
    */
   constructor(maxSize = 1024) {
     super();
+    mustProvide(maxSize, 'maxSize', 'number');
     this.maxSize = maxSize;
   }
 

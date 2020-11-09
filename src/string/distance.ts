@@ -68,7 +68,7 @@ export function distance(s1: string = '', s2: string = ''): number {
   expect(closest('mo', dict)).toBe('mama');
   expect(closest('mome', dict)).toBe('mama');
   expect(closest('latast', dict)).toBe('latest');
-  * ```
+  ```
  */
 export function closest(input: string, dict: Array<string>): string {
   if (dict === undefined || dict.length === 0) {
