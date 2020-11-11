@@ -1,6 +1,5 @@
 import variance from './variance';
 
-
 /**
  * Standard Deviation
  * @since 5.18.0

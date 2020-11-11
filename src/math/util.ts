@@ -1,6 +1,5 @@
 import forEach from '../forEach';
 
-
 /**
  * check array all are numbers
  *

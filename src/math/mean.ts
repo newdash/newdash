@@ -1,6 +1,5 @@
 import { sum } from './sum';
 
-
 /**
  *
  * Mean (avg) values
