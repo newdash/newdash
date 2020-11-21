@@ -34,16 +34,16 @@ export function createTimeoutPromise<T>(executor: Executor<T>, timeout = 60 * 10
     }, timeout);
 
     executor(
-      (...args: any[]) => {
+      (value) => {
         if (!hasTimeout) {
           clearInterval(timer);
-          resolve(...args);
+          resolve(value);
         }
       },
-      (...args: any[]) => {
+      (error) => {
         if (!hasTimeout) {
           clearInterval(timer);
-          reject(...args);
+          reject(error);
         }
       });
   });
