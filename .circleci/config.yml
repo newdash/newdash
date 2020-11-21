@@ -23,7 +23,7 @@ jobs:
       # run tests!
       - run:
           name: Unit Tests
-          command: ./node_modules/.bin/jest -w 2 --coverage
+          command: npm run coverage
 
       # upload coverage
       - run:

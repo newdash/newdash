@@ -7,8 +7,7 @@
     "moduleResolution": "node",
     "declaration": true,
     "lib": [
-      "ES6",
-      "ES2015.Symbol",
+      "ES2015",
       "ES2017",
       "DOM"
     ]

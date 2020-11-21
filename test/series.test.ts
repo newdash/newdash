@@ -41,9 +41,9 @@ describe('series', () => {
 
     await assertShouldThrowError(async() => {
       await series(
-        () => new Promise((resolve) => { op.push(1); resolve(); }),
+        () => new Promise((resolve) => { op.push(1); resolve(null); }),
         () => Promise.reject(new Error()),
-        () => new Promise((resolve) => { op.push(3); resolve(); })
+        () => new Promise((resolve) => { op.push(3); resolve(null); })
       );
     });
 
