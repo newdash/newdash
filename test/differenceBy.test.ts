@@ -1,6 +1,6 @@
 import * as assert from 'assert';
-import { slice } from './utils';
 import differenceBy from '../src/differenceBy';
+import { slice } from './utils';
 
 describe('differenceBy', () => {
   it('should accept an `iteratee`', () => {
@@ -20,4 +20,5 @@ describe('differenceBy', () => {
 
     assert.deepStrictEqual(args, [2.3]);
   });
+  
 });
