@@ -14,11 +14,11 @@ describe('differenceBy', () => {
   it('should provide correct `iteratee` arguments', () => {
     let args;
 
-    differenceBy([2.1, 1.2], [2.3, 3.4], function() {
+    differenceBy([2.1, 1.2], [2.3, 3.4], function () {
       args || (args = slice.call(arguments));
     });
 
     assert.deepStrictEqual(args, [2.3]);
   });
-  
+
 });
