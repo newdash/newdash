@@ -38,4 +38,4 @@ jobs:
       run: npm run build:deno:test
 
     - name: run deno test
-      run: deno test ./dist/deno/test/
+      run: deno test --reload ./dist/deno/test/
