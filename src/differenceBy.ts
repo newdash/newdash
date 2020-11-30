@@ -1,8 +1,8 @@
 import baseDifference from './.internal/baseDifference';
 import baseFlatten from './.internal/baseFlatten';
+import getIteratee from './.internal/getIteratee';
 import isArrayLikeObject from './isArrayLikeObject';
 import last from './last';
-import getIteratee from './.internal/getIteratee';
 
 /**
  * This method is like `difference` except that it accepts `iteratee` which
@@ -17,7 +17,6 @@ import getIteratee from './.internal/getIteratee';
  * @category Array
  * @param array The array to inspect.
  * @param values The values to exclude.
- * @param iteratee The iteratee invoked per element.
  * @returns Returns the new array of filtered values.
  * @example
  *

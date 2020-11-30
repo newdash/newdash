@@ -15,7 +15,6 @@ import last from './last';
  * @category Array
  * @param array The array to inspect.
  * @param values The values to exclude.
- * @param comparator The comparator invoked per element.
  * @returns Returns the new array of filtered values.
  * @example
  *
