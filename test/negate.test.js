@@ -1,6 +1,6 @@
 import * as assert from 'assert';
-import negate, { negate as fNegate } from '../src//negate';
-import times from '../src//times';
+import negate, { negate as fNegate } from '../src/negate';
+import times from '../src/times';
 import { assertShouldThrowError } from './helpers';
 import { isEven, stubTrue } from './utils';
 

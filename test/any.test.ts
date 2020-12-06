@@ -1,6 +1,6 @@
 
 import * as assert from 'assert';
-import { any } from '../src//any';
+import { any } from '../src/any';
 import { assertShouldThrowError } from './helpers';
 
 

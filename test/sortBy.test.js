@@ -1,7 +1,7 @@
 import * as assert from 'assert';
-import constant from '../src//constant';
-import map from '../src//map';
-import sortBy from '../src//sortBy';
+import constant from '../src/constant';
+import map from '../src/map';
+import sortBy from '../src/sortBy';
 
 
 describe('sortBy', () => {

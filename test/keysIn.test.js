@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { keysIn } from '../src//keysIn';
+import { keysIn } from '../src/keysIn';
 
 
 describe('keysIn', () => {

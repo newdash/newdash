@@ -1,7 +1,7 @@
 import * as assert from 'assert';
-import each from '../src//each';
-import map from '../src//map';
-import startsWith from '../src//startsWith';
+import each from '../src/each';
+import map from '../src/map';
+import startsWith from '../src/startsWith';
 import { falsey, MAX_SAFE_INTEGER, stubTrue } from './utils';
 
 describe('startsWith', () => {

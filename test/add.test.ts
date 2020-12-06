@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import add from '../src//add';
+import add from '../src/add';
 
 describe('add', () => {
 

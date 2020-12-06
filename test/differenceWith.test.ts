@@ -1,11 +1,11 @@
 import * as assert from 'assert';
-import constant from '../src//constant';
-import differenceWith from '../src//differenceWith';
-import toString from '../src//toString';
+import constant from '../src/constant';
+import differenceWith from '../src/differenceWith';
 import eq from '../src/eq';
 import isEqual from '../src/isEqual';
 import map from '../src/map';
 import times from '../src/times';
+import toString from '../src/toString';
 import { LARGE_ARRAY_SIZE, stubOne } from './utils';
 
 describe('differenceWith', () => {

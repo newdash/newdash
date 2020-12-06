@@ -1,6 +1,6 @@
 import * as assert from 'assert';
-import isObject from '../src//isObject';
-import map from '../src//map';
+import isObject from '../src/isObject';
+import map from '../src/map';
 import { args, body, document, falsey, realm, slice, stubFalse, symbol } from './utils';
 
 describe('isObject', () => {

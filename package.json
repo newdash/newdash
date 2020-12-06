@@ -25,7 +25,7 @@
   "scripts": {
     "test": "jest --bail",
     "pretest:deno": "rimraf ./dist/deno && npm run build:deno:test",
-    "test:deno": "deno test ./dist/deno/test/*.test.ts",
+    "test:deno": "deno test -r ./dist/deno/test/",
     "lint": "tsc --noEmit && eslint .",
     "coverage": "npm test -- --coverage --no-cache --runInBand",
     "build:deno": "babel --out-dir dist/deno --extensions .js,.ts --keep-file-extension src",
