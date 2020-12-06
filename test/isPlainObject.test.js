@@ -3,11 +3,11 @@ import has from '../src/has';
 import isPlainObject from '../src/isPlainObject';
 import map from '../src/map';
 import {
-    create,
-    defineProperty, document,
-    falsey, objectProto,
-    realm, stubFalse,
-    symbol
+  create,
+  defineProperty, document,
+  falsey, objectProto,
+  realm, stubFalse,
+  symbol
 } from './utils';
 
 
