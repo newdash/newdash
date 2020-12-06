@@ -32,3 +32,5 @@ export function timeout<T extends AsyncFunction>(runner: T, timeout?: number): T
   return defineFunctionName(func, runner.name);
 
 }
+
+export default timeout;

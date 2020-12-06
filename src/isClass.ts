@@ -1,6 +1,11 @@
 import { isEmpty } from './isEmpty';
 import { Class } from './types';
 
+/**
+ * @ignore
+ * @internal
+ * @private
+ */
 const nativeClasses = [
   Array,
   Int8Array,

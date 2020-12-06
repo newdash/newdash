@@ -25,6 +25,11 @@ export function addSuffix(str: string = '', suffix: string = ''): string {
   return str;
 }
 
+/**
+ * @since 5.14.0
+ * @category String
+ * @ignore
+ */
 export const appendSuffix = addSuffix;
 
 export default addSuffix;

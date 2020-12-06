@@ -21,7 +21,7 @@ export class LRUMap<K = any, V = any> extends Map<K, V> {
   /**
    * LRU Cache
    *
-   * @param maxSize maximum cache item number
+   * @param maxSize maximum cache item number, default is 1024
    */
   constructor(maxSize = 1024) {
     super();

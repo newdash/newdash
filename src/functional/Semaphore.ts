@@ -26,7 +26,10 @@
 import { mustProvide } from '../assert';
 
 /**
- * Semaphore implementation for javascript
+ * Semaphore
+ *
+ * @since 5.15.0
+ * @category Concurrency
  */
 export class Semaphore {
 
@@ -78,8 +81,17 @@ export class Semaphore {
   }
 }
 
+
+/**
+ * Mutex
+ *
+ * @since 5.15.0
+ * @category Concurrency
+ */
 export class Mutex extends Semaphore {
   constructor() {
     super(1);
   }
 }
+
+export default Semaphore;
