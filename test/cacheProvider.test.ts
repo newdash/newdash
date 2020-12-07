@@ -7,7 +7,7 @@ if (platform() !== 'linux') {
   // setTimeout is Unstable on MacOS/Windows,
   // maybe caused by resource schedule,
   // so skip these tests
-  describe2 = describe.skip;
+  // describe2 = describe.skip;
 }
 
 describe2('CacheProviders', () => {
@@ -28,6 +28,20 @@ describe2('CacheProviders', () => {
     expect(ttlCache['timer']).toBeUndefined();
     expect(ttlCache.size).toBe(0);
 
+
+  });
+
+  it('should support raise error', async () => {
+    const ttlCache = new TTLCacheProvider(500, 1000);
+
+    await expect(() => ttlCache.getOrCreate('v1', async () => { throw new Error('e1'); }))
+      .rejects
+      .toThrowError('e1');
+
+    expect(ttlCache.has('v1')).toBe(false);
+
+    await ttlCache.getOrCreate('v1', async () => 'f1');
+    expect(ttlCache.get('v1')).toBe('f1');
 
   });
 
