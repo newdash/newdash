@@ -7,7 +7,7 @@ if (platform() !== 'linux') {
   // setTimeout is Unstable on MacOS/Windows,
   // maybe caused by resource schedule,
   // so skip these tests
-  // describe2 = describe.skip;
+  describe2 = describe.skip;
 }
 
 describe2('CacheProviders', () => {
