@@ -10,7 +10,7 @@ if (platform() !== 'linux') {
   describe2 = describe.skip;
 }
 
-describe2('CacheProviders', () => {
+describe2('cacheProviders', () => {
 
   it('should support TTL CacheProvider', async () => {
 
@@ -31,17 +31,17 @@ describe2('CacheProviders', () => {
 
   });
 
-  it('should support raise error', async () => {
+  it('should process cache corret on error', async () => {
     const ttlCache = new TTLCacheProvider(500, 1000);
 
-    await expect(() => ttlCache.getOrCreate('v1', async () => { throw new Error('e1'); }))
-      .rejects
-      .toThrowError('e1');
+    await expect(() => ttlCache.getOrCreate('v1', async () => { throw new Error('e1'); })).rejects.toThrowError('e1');
 
     expect(ttlCache.has('v1')).toBe(false);
 
     await ttlCache.getOrCreate('v1', async () => 'f1');
     expect(ttlCache.get('v1')).toBe('f1');
+
+    ttlCache.clear();
 
   });
 
