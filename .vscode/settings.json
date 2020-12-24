@@ -9,7 +9,8 @@
     "Deno",
     "Mutex",
     "falsey",
-    "newdash"
+    "newdash",
+    "nocheck"
   ],
   "javascript.autoClosingTags": false,
   "typescript.autoClosingTags": false,
