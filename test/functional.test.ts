@@ -1,4 +1,5 @@
 import defineFunctionName from '../src/functional/defineFunctionName';
+import { hash } from '../src/functional/hash';
 import { hashEqual } from '../src/functional/hashEqual';
 import { LRUMap } from '../src/functional/LRUMap';
 import { toHashCode } from '../src/functional/toHashCode';
@@ -7,6 +8,7 @@ import { toHashCode } from '../src/functional/toHashCode';
 describe('functional', () => {
 
   it('should support overwrite function name', () => {
+
     const f1 = () => { };
     const f2 = defineFunctionName(f1, 'f2');
 
@@ -44,6 +46,14 @@ describe('functional', () => {
     expect(toHashCode('simple')).toBe(toHashCode('simple'));
     expect(toHashCode('11')).not.toBe(toHashCode(11));
 
+
+  });
+
+  it('should support hash', () => {
+
+    expect(hash(123)).toBe(hash(123));
+    expect(hash(123, '23')).toBe(hash(123, '23'));
+    expect(hash(123, '23')).not.toBe(hash(123, '12'));
 
   });
 
