@@ -1,9 +1,11 @@
+// @ts-nocheck
 import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { args, toArgs, objectProto, stringProto } from './utils';
+import { each } from '../src';
 import omit from '../src/omit';
+import { objectProto, stringProto, toArgs } from './utils';
 
 describe('omit', () => {
+
   const args = toArgs(['a', 'c']),
     object = { 'a': 1, 'b': 2, 'c': 3, 'd': 4 },
     nested = { 'a': 1, 'b': { 'c': 2, 'd': 3 } };
@@ -14,7 +16,7 @@ describe('omit', () => {
   });
 
   it('should support deep paths', () => {
-    assert.deepStrictEqual(omit(nested, 'b.c'), { 'a': 1, 'b': { 'd': 3} });
+    assert.deepStrictEqual(omit(nested, 'b.c'), { 'a': 1, 'b': { 'd': 3 } });
   });
 
   it('should support path arrays', () => {
@@ -27,7 +29,7 @@ describe('omit', () => {
   it('should omit a key over a path', () => {
     const object = { 'a.b': 1, 'a': { 'b': 2 } };
 
-    lodashStable.each(['a.b', ['a.b']], (path) => {
+    each(['a.b', ['a.b']], (path) => {
       assert.deepStrictEqual(omit(object, path), { 'a': { 'b': 2 } });
     });
   });
@@ -37,7 +39,7 @@ describe('omit', () => {
   });
 
   it('should return an empty object when `object` is nullish', () => {
-    lodashStable.each([null, undefined], (value) => {
+    each([null, undefined], (value) => {
       objectProto.a = 1;
       const actual = omit(value, 'valueOf');
       delete objectProto.a;
@@ -60,7 +62,7 @@ describe('omit', () => {
   });
 
   it('should not mutate `object`', () => {
-    lodashStable.each(['a', ['a'], 'a.b', ['a.b']], (path) => {
+    each(['a', ['a'], 'a.b', ['a.b']], (path) => {
       const object = { 'a': { 'b': 2 } };
       omit(object, path);
       assert.deepStrictEqual(object, { 'a': { 'b': 2 } });

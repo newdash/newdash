@@ -12,9 +12,9 @@ type Path = string | number | Array<Path>
  *
  * @since 5.7.0
  * @category Object
- * @param {Object} object The source object.
- * @param {...(string|string[])} [paths] The property paths to pick.
- * @returns {Object} Returns the new object.
+ * @param object The source object.
+ * @param paths The property paths to pick.
+ * @returns Returns the new object.
  * @example
  *
  * ```js
