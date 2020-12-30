@@ -54,7 +54,7 @@ import { groupBy } from './groupBy';
 import { has } from './has';
 import { head } from './head';
 import { includes } from './includes';
-import initial from './initial';
+import { initial } from './initial';
 import { intersection } from './intersection';
 import { intersectionBy } from './intersectionBy';
 import { intersectionWith } from './intersectionWith';
@@ -100,6 +100,7 @@ import { method } from './method';
 import { methodOf } from './methodOf';
 import { min } from './min';
 import { minBy } from './minBy';
+import { omit } from './omit';
 import { over } from './over';
 import { overArgs } from './overArgs';
 import { overEvery } from './overEvery';
@@ -198,7 +199,7 @@ export {
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
-  values, chunk, cacheItTTL, initial
+  values, chunk, cacheItTTL, initial, omit
 };
 
 
@@ -232,7 +233,7 @@ export default {
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
-  values, chunk, cacheItTTL, initial
+  values, chunk, cacheItTTL, initial, omit
 
 };
 
