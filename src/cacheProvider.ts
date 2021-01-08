@@ -1,6 +1,29 @@
 import { LRUMap } from './functional/LRUMap';
 import { GeneralFunction } from './types';
 
+export interface CachePolicy {
+  cacheUndefined?: boolean;
+  cacheNull?: boolean;
+  cacheThrow?: boolean;
+}
+
+export interface CacheConfig<T> {
+  policy?: CachePolicy;
+  params?: T;
+}
+
+
+const DEFAULT_CACHE_POLICY: CachePolicy = {
+  cacheUndefined: false,
+  cacheNull: false,
+  cacheThrow: false
+};
+
+class CachedThrowError {
+  private readonly _error: Error;
+  constructor(error: Error) { this._error = error; }
+  getError() { return this._error; }
+}
 
 export interface CacheProvider<K, V> extends Map<K, V> {
 
@@ -10,7 +33,7 @@ export interface CacheProvider<K, V> extends Map<K, V> {
    * @param key
    * @param producer
    */
-  getOrCreate(key: K, producer: GeneralFunction<any[], V>): V
+  getOrCreate<R>(key: K, producer: GeneralFunction<any[], R>): R
 
 }
 
@@ -18,6 +41,10 @@ export interface CacheProvider<K, V> extends Map<K, V> {
  * async cache provider
  */
 export interface AsyncCacheProvider<K, V> extends CacheProvider<K, Promise<V>> { }
+
+interface LRUCacheProviderParam {
+  maxEntry: number;
+}
 
 /**
  * LRU Cache Provider
@@ -27,24 +54,82 @@ export interface AsyncCacheProvider<K, V> extends CacheProvider<K, Promise<V>> {
  */
 export class LRUCacheProvider<K = any, V = any> extends LRUMap implements CacheProvider<K, V> {
 
-  public getOrCreate(key: K, producer: GeneralFunction<[], V>): V {
-    if (!this.has(key)) {
-      const value = producer();
-      // work with async function
-      if (value instanceof Promise) {
-        // @ts-ignore
-        return value.then((result) => {
-          this.set(key, result);
-          return result;
-        });
-      }
-      this.set(key, value);
+  protected readonly _cachePolicy: CachePolicy = DEFAULT_CACHE_POLICY;
+
+  constructor(config: CacheConfig<LRUCacheProviderParam>)
+  constructor(maxEntry?: number)
+  constructor(param0: any) {
+    super(typeof param0 === 'number' ? param0 : (param0?.params?.maxEntry ?? 10240));
+    if (typeof param0 === 'object') {
+      this._cachePolicy = Object.assign(DEFAULT_CACHE_POLICY, param0.policy ?? {});
     }
-    return this.get(key);
+  }
+
+
+  public getOrCreate<R>(key: K, producer: GeneralFunction<any[], R>): R {
+    if (!this.has(key)) {
+      try {
+        const value = producer();
+        // work with async function
+        if (value instanceof Promise) {
+          // @ts-ignore
+          return value
+            .then((result) => {
+              if (
+                result === null && !Boolean(this._cachePolicy.cacheNull) ||
+                result === undefined && !Boolean(this._cachePolicy.cacheUndefined)
+              ) {
+                // do nothing
+              } else {
+                this.set(key, result);
+              }
+              return result;
+            })
+            .catch((error) => {
+              if (Boolean(this._cachePolicy.cacheThrow)) {
+                this.set(key, new CachedThrowError(error));
+              }
+              throw error;
+            });
+        }
+        if (
+          value === null && !Boolean(this._cachePolicy.cacheNull) ||
+          value === undefined && !Boolean(this._cachePolicy.cacheUndefined)
+        ) {
+          // do nothing
+        } else {
+          this.set(key, value);
+        }
+        return value;
+      } catch (error) {
+        if (Boolean(this._cachePolicy.cacheThrow)) {
+          this.set(key, new CachedThrowError(error));
+        }
+        throw error;
+      }
+
+    }
+    const cachedValue = this.get(key);
+    if (cachedValue instanceof CachedThrowError) {
+      throw cachedValue.getError();
+    }
+    return cachedValue;
   }
 
 
 }
+
+interface TTLCacheProviderParam {
+  ttl?: number;
+  checkInterval?: number;
+  maxEntry?: number;
+}
+
+const DEFAULT_CACHE_PROVIDER_PARAM: TTLCacheProviderParam = {
+  ttl: 30 * 1000,
+  checkInterval: 60 * 1000,
+  maxEntry: 10240
+};
 
 /**
  * TTL Cache Provider
@@ -55,11 +140,24 @@ export class LRUCacheProvider<K = any, V = any> extends LRUMap implements CacheP
  */
 export class TTLCacheProvider<K = any, V = any> extends LRUCacheProvider<K, V> {
 
-  constructor(ttl: number = 30 * 1000, checkInterval: number = 60 * 1000, maxEntry = 10240) {
-    super(maxEntry);
-    this.ttl = ttl;
-    this.checkInterval = checkInterval;
-    this.timeoutStorage = new LRUCacheProvider(maxEntry);
+  constructor(config: CacheConfig<TTLCacheProviderParam>)
+  constructor(ttl?: number, checkInterval?: number, maxEntry?: number)
+  constructor(...params: any[]) {
+    super(params[0]);
+    const config = {
+      policy: DEFAULT_CACHE_POLICY, params: DEFAULT_CACHE_PROVIDER_PARAM
+    };
+    if (typeof params[0] === 'number') {
+      config.params.ttl = params[0] || config.params.ttl;
+      config.params.checkInterval = params[1] || config.params.checkInterval;
+      config.params.maxEntry = params[2] || config.params.maxEntry;
+    } else {
+      config.policy = Object.assign(config.policy || {}, params[0].policy || {});
+      config.params = Object.assign(config.policy || {}, params[0].params || {});
+    }
+    this.ttl = config.params.ttl;
+    this.checkInterval = config.params.checkInterval;
+    this.timeoutStorage = new LRUCacheProvider(config.params.maxEntry);
   }
 
   private timestamp() {

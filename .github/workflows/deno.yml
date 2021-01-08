@@ -2,9 +2,11 @@ name: Deno CI
 
 on:
   push:
-    branches: '*'
+    branches:
+      - '*'
   pull_request:
-    branches: '*'
+    branches:
+      - '*'
   schedule:
     - cron: '0 2 * * *'
 
