@@ -48,6 +48,8 @@ import { forEach } from './forEach';
 import { forOwn } from './forOwn';
 import { forOwnRight } from './forOwnRight';
 import { fromEntries } from './fromEntries';
+import { Mutex } from './functional/Mutex';
+import { Semaphore } from './functional/Semaphore';
 import { functions } from './functions';
 import { get } from './get';
 import { groupBy } from './groupBy';
@@ -199,7 +201,7 @@ export {
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
-  values, chunk, cacheItTTL, initial, omit
+  values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore
 };
 
 
@@ -233,7 +235,7 @@ export default {
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
-  values, chunk, cacheItTTL, initial, omit
+  values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore
 
 };
 

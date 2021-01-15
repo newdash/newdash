@@ -74,34 +74,37 @@ export class TTLMap<K = any, V = any> extends Map<K, V> {
     return rt;
   }
 
-
-  private checkTimeoutAll() {
+  /**
+   * clean all timeout items
+   */
+  public cleanTimeoutItems() {
     const current = this.timestamp();
     super.forEach((_, key) => { this.checkTimeout(key, current); });
   }
 
   entries() {
-    this.checkTimeoutAll();
+    this.cleanTimeoutItems();
     return super.entries();
   }
 
   keys() {
-    this.checkTimeoutAll();
+    this.cleanTimeoutItems();
     return super.keys();
   }
 
   values() {
-    this.checkTimeoutAll();
+    this.cleanTimeoutItems();
     return super.values();
   }
 
   forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void {
-    this.checkTimeoutAll();
+    this.cleanTimeoutItems();
     return super.forEach(callbackfn, thisArg);
   }
 
-  clear() {
-    super.clear();
+  get size() {
+    this.cleanTimeoutItems();
+    return super.size;
   }
 
   private ttl: number;

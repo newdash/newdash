@@ -1,14 +1,7 @@
-import { platform } from 'os';
 import { sleep } from '../src';
 import { LRUCacheProvider, TTLCacheProvider } from '../src/cacheProvider';
 
 let describe2 = describe;
-if (platform() !== 'linux') {
-  // setTimeout is Unstable on MacOS/Windows,
-  // maybe caused by resource schedule,
-  // so skip these tests
-  describe2 = describe.skip;
-}
 
 describe2('cacheProviders', () => {
 
@@ -37,6 +30,10 @@ describe2('cacheProviders', () => {
 
     ttlCache.set('v', 1);
     expect(ttlCache.has('v')).toBeTruthy();
+    expect(Array.from(ttlCache.keys())).toEqual(['v']);
+    expect(Array.from(ttlCache.values())).toEqual([1]);
+    expect(Array.from(ttlCache.entries())).toEqual([['v', 1]]);
+
     await sleep(510);
     expect(ttlCache.has('v')).toBeFalsy();
     expect(ttlCache.set('v2', '123'));
@@ -48,6 +45,7 @@ describe2('cacheProviders', () => {
     expect(ttlCache['timer']).toBeUndefined();
     expect(ttlCache.size).toBe(0);
 
+    ttlCache.clear();
 
   });
 

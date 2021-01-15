@@ -1,7 +1,13 @@
+import { Semaphore } from './Semaphore';
 
-
-import { Mutex } from './Semaphore';
-
-export { Mutex };
+/**
+ * Mutex
+ *
+ * @since 5.15.0
+ * @category Concurrency
+ */
+export class Mutex extends Semaphore {
+  constructor() { super(1); }
+}
 
 export default Mutex;
