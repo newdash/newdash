@@ -104,6 +104,7 @@ export class TTLMap<K = any, V = any> extends Map<K, V> {
 
   get size() {
     this.cleanTimeoutItems();
+    // @ts-ignore
     return super.size;
   }
 
