@@ -1,4 +1,5 @@
 import { LRUMap } from './functional/LRUMap';
+import { TTLMap } from './functional/TTLMap';
 import { GeneralFunction } from './types';
 
 export interface CachePolicy {
@@ -46,6 +47,56 @@ interface LRUCacheProviderParam {
   maxEntry: number;
 }
 
+function defaultGetOrCreate(cache: Map<any, any>, policy: CachePolicy, key: any, producer: any) {
+  if (!cache.has(key)) {
+    try {
+      const value = producer();
+      // work with async function
+      if (value instanceof Promise) {
+        // @ts-ignore
+        return value
+          .then((result) => {
+            if (
+              result === null && !Boolean(policy.cacheNull) ||
+              result === undefined && !Boolean(policy.cacheUndefined)
+            ) {
+              // do nothing
+            } else {
+              cache.set(key, result);
+            }
+            return result;
+          })
+          .catch((error) => {
+            if (Boolean(policy.cacheThrow)) {
+              cache.set(key, new CachedThrowError(error));
+            }
+            throw error;
+          });
+      }
+      if (
+        value === null && !Boolean(policy.cacheNull) ||
+        value === undefined && !Boolean(policy.cacheUndefined)
+      ) {
+        // do nothing
+      } else {
+        cache.set(key, value);
+      }
+      return value;
+    } catch (error) {
+      if (Boolean(policy.cacheThrow)) {
+        cache.set(key, new CachedThrowError(error));
+      }
+      throw error;
+    }
+
+  }
+  const cachedValue = cache.get(key);
+  if (cachedValue instanceof CachedThrowError) {
+    throw cachedValue.getError();
+  }
+  return cachedValue;
+}
+
 /**
  * LRU Cache Provider
  *
@@ -65,57 +116,9 @@ export class LRUCacheProvider<K = any, V = any> extends LRUMap implements CacheP
     }
   }
 
-
   public getOrCreate<R>(key: K, producer: GeneralFunction<any[], R>): R {
-    if (!this.has(key)) {
-      try {
-        const value = producer();
-        // work with async function
-        if (value instanceof Promise) {
-          // @ts-ignore
-          return value
-            .then((result) => {
-              if (
-                result === null && !Boolean(this._cachePolicy.cacheNull) ||
-                result === undefined && !Boolean(this._cachePolicy.cacheUndefined)
-              ) {
-                // do nothing
-              } else {
-                this.set(key, result);
-              }
-              return result;
-            })
-            .catch((error) => {
-              if (Boolean(this._cachePolicy.cacheThrow)) {
-                this.set(key, new CachedThrowError(error));
-              }
-              throw error;
-            });
-        }
-        if (
-          value === null && !Boolean(this._cachePolicy.cacheNull) ||
-          value === undefined && !Boolean(this._cachePolicy.cacheUndefined)
-        ) {
-          // do nothing
-        } else {
-          this.set(key, value);
-        }
-        return value;
-      } catch (error) {
-        if (Boolean(this._cachePolicy.cacheThrow)) {
-          this.set(key, new CachedThrowError(error));
-        }
-        throw error;
-      }
-
-    }
-    const cachedValue = this.get(key);
-    if (cachedValue instanceof CachedThrowError) {
-      throw cachedValue.getError();
-    }
-    return cachedValue;
+    return defaultGetOrCreate(this, this._cachePolicy, key, producer);
   }
-
 
 }
 
@@ -138,12 +141,13 @@ const DEFAULT_CACHE_PROVIDER_PARAM: TTLCacheProviderParam = {
  * @category Cache
  *
  */
-export class TTLCacheProvider<K = any, V = any> extends LRUCacheProvider<K, V> {
+export class TTLCacheProvider<K = any, V = any> extends TTLMap<K, V> implements CacheProvider<K, V> {
+
+  protected readonly _cachePolicy: CachePolicy;
 
   constructor(config: CacheConfig<TTLCacheProviderParam>)
   constructor(ttl?: number, checkInterval?: number, maxEntry?: number)
   constructor(...params: any[]) {
-    super(params[0]);
     const config = {
       policy: DEFAULT_CACHE_POLICY, params: DEFAULT_CACHE_PROVIDER_PARAM
     };
@@ -153,129 +157,15 @@ export class TTLCacheProvider<K = any, V = any> extends LRUCacheProvider<K, V> {
       config.params.maxEntry = params[2] || config.params.maxEntry;
     } else {
       config.policy = Object.assign(config.policy || {}, params[0].policy || {});
-      config.params = Object.assign(config.policy || {}, params[0].params || {});
+      config.params = Object.assign(config.params || {}, params[0].params || {});
     }
-    this.ttl = config.params.ttl;
-    this.checkInterval = config.params.checkInterval;
-    this.timeoutStorage = new LRUCacheProvider(config.params.maxEntry);
+    super(config.params.ttl);
+    this._cachePolicy = config.policy;
   }
 
-  private timestamp() {
-    return new Date().getTime();
+  public getOrCreate<R>(key: K, producer: GeneralFunction<any[], R>): R {
+    return defaultGetOrCreate(this, this._cachePolicy, key, producer);
   }
-
-  set(k: K, v: V) {
-    this.schedule();
-    super.set(k, v);
-    this.timeoutStorage.set(k, this.timestamp() + this.ttl);
-    return this;
-  }
-
-  has(k: K) {
-    if (super.has(k)) {
-      const isTimeout = this.checkTimeout(k);
-      if (isTimeout) {
-        return false;
-      }
-      return true;
-    }
-    return false;
-  }
-
-  get(k: K) {
-    if (super.has(k)) {
-      const isTimeout = this.checkTimeout(k);
-      if (isTimeout) {
-        return undefined;
-      }
-      return super.get(k);
-    }
-    return undefined;
-  }
-
-  /**
-   * return true if timeout
-   *
-   * @param k
-   */
-  private checkTimeout(k: K, currentTimeStamp = this.timestamp()) {
-    const isTimeout = this.getTimeout(k) < currentTimeStamp;
-    if (isTimeout) {
-      this.delete(k);
-    }
-    return isTimeout;
-  }
-
-  private getTimeout(k: K) {
-    if (this.timeoutStorage.has(k)) {
-      return this.timeoutStorage.get(k);
-    }
-    return 0;
-  }
-
-  delete(k: K) {
-    this.schedule();
-    const rt = super.delete(k);
-    this.timeoutStorage.delete(k);
-    return rt;
-  }
-
-  /**
-   * schedule job to clear all timeout items
-   */
-  private schedule() {
-    if (this.timer === undefined) {
-      this.timer = setInterval(() => {
-        try {
-          this.checkTimeoutAll();
-        } catch (error) {
-          // do nothing
-        }
-      }, this.checkInterval);
-    }
-  }
-
-  private checkTimeoutAll() {
-    const current = this.timestamp();
-    super.forEach((_, key) => { this.checkTimeout(key, current); });
-  }
-
-  entries() {
-    this.checkTimeoutAll();
-    return super.entries();
-  }
-
-  keys() {
-    this.checkTimeoutAll();
-    return super.keys();
-  }
-
-  values() {
-    this.checkTimeoutAll();
-    return super.values();
-  }
-
-  forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void {
-    this.checkTimeoutAll();
-    return super.forEach(callbackfn, thisArg);
-  }
-
-  clear() {
-    super.clear();
-    if (this.timer !== undefined) {
-      clearInterval(this.timer);
-      delete this.timer;
-    }
-  }
-
-  private ttl: number;
-
-  private checkInterval: number;
-
-  private timer: any;
-
-  private timeoutStorage: LRUCacheProvider;
-
 
 }
 
