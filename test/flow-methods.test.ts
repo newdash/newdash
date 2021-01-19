@@ -1,11 +1,13 @@
 import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { add, square, noop, identity } from './utils';
-import head from '../src/head';
-import map from '../src/map';
-import uniq from '../src/uniq';
-import flow from '../src/flow';
-import flowRight from '../src/flowRight';
+import { ary } from '../src/ary';
+import { curry } from '../src/curry';
+import { each } from '../src/each';
+import { flow } from '../src/flow';
+import { flowRight } from '../src/flowRight';
+import { head } from '../src/head';
+import { map } from '../src/map';
+import { uniq } from '../src/uniq';
+import { add, identity, noop, square } from './utils';
 
 const methods = {
   flow,
@@ -13,12 +15,12 @@ const methods = {
 };
 
 describe('flow methods', () => {
-  lodashStable.each(['flow', 'flowRight'], (methodName) => {
+  each(['flow', 'flowRight'], (methodName) => {
     const func = methods[methodName],
       isFlow = methodName == 'flow';
 
     it(`\`_.${methodName}\` should supply each function with the return value of the previous`, () => {
-      const fixed = function(n) { return n.toFixed(1); },
+      const fixed = function (n) { return n.toFixed(1); },
         combined = isFlow ? func(add, square, fixed) : func(fixed, square, add);
 
       assert.strictEqual(combined(1, 2), '9.0');
@@ -29,7 +31,7 @@ describe('flow methods', () => {
     });
 
     it(`\`_.${methodName}\` should work with a curried function and \`_.head\``, () => {
-      const curried = lodashStable.curry(identity);
+      const curried = curry(identity);
 
       const combined = isFlow
         ? func(head, curried)
@@ -39,7 +41,8 @@ describe('flow methods', () => {
     });
 
     it(`\`_.${methodName}\` should work with curried functions with placeholders`, () => {
-      const curried = lodashStable.curry(lodashStable.ary(map, 2), 2),
+      const curried = curry(ary(map, 2), 2),
+        // @ts-ignore
         getProp = curried(curried.placeholder, (value) => value.a),
         objects = [{ 'a': 1 }, { 'a': 2 }, { 'a': 1 }];
 
@@ -48,6 +51,7 @@ describe('flow methods', () => {
         : func(uniq, getProp);
 
       assert.deepStrictEqual(combined(objects), [1, 2]);
+
     });
   });
 });

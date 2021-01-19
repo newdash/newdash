@@ -4,15 +4,14 @@ import flow from './flow';
  * This method is like `flow` except that it composes a function that
  * invokes the given functions from right to left.
  *
- * @since 3.0.0
+ * @since 5.18.0
  * @category Util
- * @param {Function[]} [funcs] The functions to invoke.
- * @returns {Function} Returns the new composite function.
+ * @param funcs The functions to invoke.
+ * @returns Returns the new composite function.
  * @see flow
  * @example
  *
- * import add from 'lodash/add'
- *
+ * ```ts
  * function square(n) {
  *   return n * n
  * }
@@ -20,8 +19,9 @@ import flow from './flow';
  * const addSquare = flowRight(square, add)
  * addSquare(1, 2)
  * // => 9
+ * ```
  */
-function flowRight(...funcs) {
+export function flowRight(...funcs: Array<Function>): Function {
   return flow(...funcs.reverse());
 }
 
