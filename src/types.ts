@@ -115,6 +115,11 @@ export interface Comparator<T = any> {
 export type UnwrapPromise<T> = T extends PromiseLike<infer U> ? U : T;
 
 /**
+ * first element type of array types
+ */
+export type FirstElement<T extends ArrayLike<any>> = T extends [infer U, ...any[]] ? U : any;
+
+/**
  * general function in typescript
  */
 export type GeneralFunction<Args extends any[] = any[], ReturnType extends any = any> = (...args: Args) => ReturnType
@@ -157,3 +162,5 @@ export type AsyncFunction<P extends any[] = any[], R = any> = (...args: P) => Pr
  * return type of function
  */
 export type ReturnType<T> = T extends (...args: any) => infer R ? R : any;
+
+

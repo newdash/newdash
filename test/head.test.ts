@@ -1,6 +1,6 @@
 import * as assert from 'assert';
-import head from '../src/head';
 import first from '../src/first';
+import head from '../src/head';
 import map from '../src/map';
 
 describe('head', () => {
