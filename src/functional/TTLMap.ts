@@ -12,42 +12,72 @@
  */
 export class TTLMap<K = any, V = any> extends Map<K, V> {
 
-  constructor(ttl?: number) {
+  /**
+   *
+   * @param ttl time to live
+   * @param cleanAfterOperation execute full clean after operations
+   */
+  constructor(ttl?: number, cleanAfterOperation?: number) {
     super();
     this.ttl = ttl;
     this.timeoutStorage = new Map();
+    if (cleanAfterOperation > 1) {
+      this.cleanAfterOperation = cleanAfterOperation;
+    }
+    this.cleanCount = 0;
   }
+
+  private ttl: number;
+
+  private cleanAfterOperation: number = 1024;
+
+  private cleanCount: number = 0;
+
+  private timeoutStorage: Map<K, V>;
 
   private timestamp() {
     return new Date().getTime();
   }
 
+  private _checkAndClean() {
+    if (this.cleanCount++ > this.cleanAfterOperation) {
+      this.cleanCount = 0;
+      this.cleanTimeoutItems();
+    }
+  }
+
   set(k: K, v: V) {
     super.set(k, v);
     this.timeoutStorage.set(k, (this.timestamp() + this.ttl) as any); // refresh timeout
+    this._checkAndClean();
     return this;
   }
 
   has(k: K) {
+    let rt = false;
     if (super.has(k)) {
       const isTimeout = this.checkTimeout(k);
       if (isTimeout) {
-        return false;
+        rt = false;
+      } else {
+        rt = true;
       }
-      return true;
     }
-    return false;
+    this._checkAndClean();
+    return rt;
   }
 
   get(k: K) {
+    let rt = undefined;
     if (super.has(k)) {
       const isTimeout = this.checkTimeout(k);
       if (isTimeout) {
-        return undefined;
+        rt = undefined;
       }
-      return super.get(k);
+      rt = super.get(k);
     }
-    return undefined;
+    this._checkAndClean();
+    return rt;
   }
 
   /**
@@ -71,6 +101,7 @@ export class TTLMap<K = any, V = any> extends Map<K, V> {
   delete(k: K) {
     const rt = super.delete(k);
     this.timeoutStorage.delete(k);
+    this._checkAndClean();
     return rt;
   }
 
@@ -108,9 +139,6 @@ export class TTLMap<K = any, V = any> extends Map<K, V> {
     return super.size;
   }
 
-  private ttl: number;
-
-  private timeoutStorage: Map<K, V>;
 
 }
 

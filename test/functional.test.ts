@@ -96,6 +96,8 @@ describe('functional', () => {
 
     expect(hashEqual(a1, a2)).toBeTruthy();
 
+    expect(hashEqual(new Date(1), new Date(1))).toBeTruthy();
+
   });
 
   it('should support LRU cache', () => {
