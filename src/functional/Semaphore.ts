@@ -26,14 +26,20 @@
 import { mustProvide } from '../assert';
 
 /**
+ * @private
+ * @internal
+ */
+type ReleaseFunction = () => void
+
+/**
  * Semaphore
  *
  * @since 5.15.0
- * @category Concurrency
+ * @category Functional
  */
 export class Semaphore {
 
-  private tasks: (() => void)[] = [];
+  private tasks: Array<Function> = [];
   private count: number;
 
   constructor(count: number) {
@@ -51,7 +57,7 @@ export class Semaphore {
   }
 
   public acquire() {
-    return new Promise<() => void>((res, rej) => {
+    return new Promise<ReleaseFunction>((res, rej) => {
       const task = () => {
         let released = false;
         res(() => {

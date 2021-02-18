@@ -4,7 +4,7 @@ import { Semaphore } from './Semaphore';
  * Mutex
  *
  * @since 5.15.0
- * @category Concurrency
+ * @category Functional
  */
 export class Mutex extends Semaphore {
   constructor() { super(1); }
