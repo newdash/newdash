@@ -17,7 +17,7 @@ import baseZipObject from './.internal/baseZipObject';
  * // => { 'a': { 'b': [{ 'c': 1 }, { 'd': 2 }] } }
  * ```
  */
-function zipObjectDeep(props, values) {
+export function zipObjectDeep(props, values) {
   return baseZipObject(props || [], values || [], baseSet);
 }
 

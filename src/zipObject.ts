@@ -10,7 +10,7 @@ import baseZipObject from './.internal/baseZipObject';
  * @param props The property identifiers.
  * @param values The property values.
  * @returns Returns the new object.
- * @see unzip,unzipWith,zip,zipObjectDeep,zipWith
+ * @see [[unzip]],[[unzipWith]],[[zip]],[[zipObjectDeep]],[[zipWith]]
  * @example
  *
  * ```js
@@ -18,8 +18,7 @@ import baseZipObject from './.internal/baseZipObject';
  * // => { 'a': 1, 'b': 2 }
  * ```
  */
-
-function zipObject(props: Array<string>, values: Array<any>): any {
+export function zipObject(props: Array<string>, values: Array<any>): any {
   return baseZipObject(props || [], values || [], assignValue);
 }
 
