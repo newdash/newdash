@@ -2,7 +2,7 @@ require('colors');
 const p = require('path');
 const fs = require('fs');
 
-const POLYFILL_VERSION = '0.1.1';
+const POLYFILL_VERSION = '0.1.2';
 
 const POLYFILL_PREFIX = `https://cdn.jsdelivr.net/gh/newdash/deno-polyfill@${POLYFILL_VERSION}/test`;
 
