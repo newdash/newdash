@@ -1,3 +1,4 @@
+import assert from 'assert';
 import { sleep } from '../src';
 import { AsyncUtils } from '../src/async';
 
@@ -10,7 +11,8 @@ describe('AsyncUtils Test Suite', () => {
       return (value % 2) === 0;
     });
 
-    expect(values).toStrictEqual([2, 4]);
+
+    assert.deepStrictEqual(values, [2, 4]);
 
   });
 
