@@ -4,6 +4,10 @@
  */
 export type JSType = 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'undefined' | 'object' | 'function'
 
+
+export type Predicate<T> = (value?: T, index?: any, collection?: any) => boolean
+
+
 /**
  * Convert Array To Tuple (with order)
  *

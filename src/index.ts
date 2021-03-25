@@ -5,6 +5,7 @@ import { any } from './any';
 import { ary } from './ary';
 import { assign } from './assign';
 import { assignIn } from './assignIn';
+import { AsyncUtils } from './async';
 import { at } from './at';
 import { attempt } from './attempt';
 import { bind } from './bind';
@@ -201,7 +202,8 @@ export {
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
-  values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore
+  values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
+  AsyncUtils
 };
 
 
@@ -235,7 +237,8 @@ export default {
   wrap, unWrap, createTimeoutPromise, TimeoutError,
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
-  values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore
+  values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
+  AsyncUtils
 
 };
 

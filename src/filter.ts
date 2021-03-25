@@ -1,12 +1,9 @@
-import isArray from './isArray';
-import getIteratee from './.internal/getIteratee';
 import arrayFilter from './.internal/arrayFilter';
 import baseFilter from './.internal/baseFilter';
+import getIteratee from './.internal/getIteratee';
+import isArray from './isArray';
+import type { Predicate } from './types';
 
-/**
- * @ignore
- */
-type Predicate<T> = (value?: T) => boolean
 
 /**
  * Iterates over elements of `collection`, returning an array of all elements
