@@ -1,22 +1,8 @@
 {
+  "extends": "./tsconfig.base",
   "compilerOptions": {
-    "charset": "UTF-8",
-    "newLine": "lf",
-    "allowJs": true,
-    "target": "ES6",
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "lib": [
-      "ES6",
-      "ES2015.Symbol",
-      "ES2017",
-      "DOM"
-    ]
-  },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "src/test"
-  ]
+    "target": "ES2015",
+    "outDir": "dist/umd",
+    "declaration": false,
+  }
 }

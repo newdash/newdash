@@ -1,27 +1,9 @@
 {
+  "extends": "./tsconfig.base",
   "compilerOptions": {
-    "charset": "UTF-8",
-    "newLine": "lf",
-    "allowJs": true,
-    "target": "ES6",
-    "module": "ES6",
+    "target": "ES2015",
+    "module": "CommonJS",
     "outDir": "dist/es6",
-    "esModuleInterop": false,
-    "moduleResolution": "node",
     "declaration": true,
-    "lib": [
-      "ES6",
-      "ES2015.Symbol",
-      "ES2017",
-      "DOM"
-    ]
-  },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "src/test",
-    "lib",
-    "dist"
-  ]
+  }
 }
