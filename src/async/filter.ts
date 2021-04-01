@@ -5,6 +5,7 @@ import type { AsyncFunction } from '../types';
 /**
  * AsyncUtils.filter, filter values by async predicate function
  *
+ * @author Theo Sun
  * @since 5.18.0
  * @category Async
  * @param collection

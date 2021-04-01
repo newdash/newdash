@@ -7,6 +7,7 @@ import { allSettled } from './allSettled';
  *
  * AsyncUtils.map, mapping values with async iteratee functions
  *
+ * @author Theo Sun
  * @since 5.18.0
  * @category Async
  * @param collection

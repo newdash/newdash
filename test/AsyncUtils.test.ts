@@ -1,6 +1,7 @@
 import assert from 'assert';
 import { sleep } from '../src';
 import { AsyncUtils } from '../src/async';
+import { LazyPromise } from '../src/async/LazyPromise';
 
 describe('AsyncUtils Test Suite', () => {
 
@@ -23,6 +24,31 @@ describe('AsyncUtils Test Suite', () => {
   it('should support async map function', async () => {
     const values = await AsyncUtils.map([1, 2, 3], async (value) => value * value);
     assert.deepStrictEqual(values, [1, 4, 9]);
+  });
+
+  it('should support lazy promise', async () => {
+
+    let v = 0;
+
+    const p = new LazyPromise<number>((resolve) => {
+      v = 1;
+      resolve(1);
+    });
+
+    await sleep(50);
+    expect(v).toBe(0);
+    await p;
+    expect(v).toBe(1);
+
+    const p2 = new LazyPromise((resolve, reject) => {
+      v = 2;
+      reject(new Error);
+    });
+
+    await sleep(50);
+    expect(v).toBe(1);
+    expect(p2).rejects.toThrow();
+    expect(v).toBe(2);
   });
 
 });

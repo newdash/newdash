@@ -8,6 +8,7 @@ interface SettleResult<T = any> {
 /**
  * Promise.allSettled() implementation
  *
+ * @author Theo Sun
  * @since 5.18.0
  * @category Async
  * @param collection
