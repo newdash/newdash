@@ -4,6 +4,11 @@
  */
 export type JSType = 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'undefined' | 'object' | 'function'
 
+/**
+ * @internal
+ */
+export type PromiseExecutor<T = any> = (resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void
+
 
 export type Predicate<T> = (value?: T, index?: any, collection?: any) => boolean
 

@@ -1,4 +1,4 @@
-import { JSType } from '../types';
+import type { JSType } from '../types';
 
 /**
  * must provide value with type

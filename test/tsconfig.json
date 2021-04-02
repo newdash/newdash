@@ -2,6 +2,7 @@
   "extends": "../tsconfig.base",
   "compilerOptions": {
     "checkJs": false,
+    "allowJs": true,
     "noStrictGenericChecks": true,
     "declaration": false
   }

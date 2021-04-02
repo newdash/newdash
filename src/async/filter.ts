@@ -1,6 +1,6 @@
-import { filter as commonFilter } from '../filter';
-import map from '../map';
+import { filter as syncFilter } from '../filter';
 import type { AsyncFunction } from '../types';
+import map from './map';
 
 /**
  * AsyncUtils.filter, filter values by async predicate function
@@ -13,6 +13,6 @@ import type { AsyncFunction } from '../types';
  * @returns
  */
 export async function filter<T extends any>(collection: Array<T>, predicate: AsyncFunction<[T, any, any], boolean>) {
-  const filterValues = await Promise.all(map(collection, predicate));
-  return commonFilter(collection, (item, index) => filterValues[index]);
+  const filterValues = await map(collection, predicate);
+  return syncFilter(collection, (item, index) => filterValues[index]);
 }

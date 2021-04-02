@@ -1,6 +1,5 @@
 import { mustProvide } from './assert';
-
-type Executor<T> = (resolve: (value?: T | PromiseLike<T>) => void, reject?: (reason?: any) => void) => void
+import type { PromiseExecutor } from './types';
 
 /**
  * TimeoutError
@@ -20,7 +19,7 @@ export class TimeoutError extends Error { }
  *
  * @throws {TimeoutError}
  */
-export function createTimeoutPromise<T>(executor: Executor<T>, timeout = 60 * 1000): Promise<T> {
+export function createTimeoutPromise<T>(executor: PromiseExecutor<T>, timeout = 60 * 1000): Promise<T> {
 
   mustProvide(executor, 'executor', 'function');
 
@@ -49,3 +48,8 @@ export function createTimeoutPromise<T>(executor: Executor<T>, timeout = 60 * 10
   });
 
 }
+
+export const timeout = createTimeoutPromise;
+
+
+export default timeout;

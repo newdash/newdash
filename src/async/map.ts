@@ -1,6 +1,5 @@
 import { map as syncMap } from '../map';
 import type { ArrayIteratee, RecordIteratee, Tuple } from '../types';
-import { allSettled } from './allSettled';
 
 
 /**
@@ -20,8 +19,8 @@ export async function map(collection: any, iteratee?: any) {
   if (iteratee === undefined) {
     return syncMap(collection);
   }
-  const results = await allSettled(syncMap(collection, iteratee));
-  return syncMap(results, (result) => result.value ?? undefined);
+  const results = await Promise.all(syncMap(collection, iteratee));
+  return syncMap(results, (result) => result ?? undefined);
 }
 
 

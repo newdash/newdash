@@ -26,6 +26,21 @@ describe('AsyncUtils Test Suite', () => {
     assert.deepStrictEqual(values, [1, 4, 9]);
   });
 
+  it('should support async map downgrade to sync.map when not provide iteratee', async () => {
+    const result = await AsyncUtils.map([1, 2, 3]);
+    assert.deepStrictEqual(result, [1, 2, 3]);
+  });
+
+  it('should throw error when async map prediction throw error', async () => {
+    const p = AsyncUtils.map([1, 2, 3], async (value) => { throw new Error(); });
+    await expect(p).rejects.toThrow();
+  });
+
+  it('should throw error when async filter prediction throw error', async () => {
+    const p = AsyncUtils.filter([1, 2, 3], async (value) => { throw new Error(); });
+    await expect(p).rejects.toThrow();
+  });
+
   it('should support lazy promise', async () => {
 
     let v = 0;

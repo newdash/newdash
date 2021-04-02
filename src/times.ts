@@ -1,6 +1,6 @@
-import toInteger from './toInteger';
-import getIteratee from './.internal/getIteratee';
 import baseTimes from './.internal/baseTimes';
+import getIteratee from './.internal/getIteratee';
+import toInteger from './toInteger';
 
 /**
  * @ignore
@@ -23,7 +23,7 @@ const nativeMin = Math.min;
  * Invokes the iteratee `n` times, returning an array of the results of
  * each invocation. The iteratee is invoked with one argument: (index).
  *
- * @since 0.1.0
+ * @since 5.0.0
  * @category Util
  * @param n The number of times to invoke `iteratee`.
  * @param iteratee The function invoked per iteration.

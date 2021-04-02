@@ -1,9 +1,5 @@
+import type { PromiseExecutor } from '../types';
 
-
-/**
- * @internal
- */
-type Executor<T = any> = (resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void
 
 /**
  * @internal
@@ -20,7 +16,7 @@ const GlobalPromise = Promise;
  */
 export class LazyPromise<T = any> implements Promise<T> {
 
-  private _executor: Executor<T>
+  private _executor: PromiseExecutor<T>
   private _promise: Promise<T>
 
   /**
@@ -28,7 +24,7 @@ export class LazyPromise<T = any> implements Promise<T> {
    *
    * @param executor Promise executor
    */
-  constructor(executor: Executor<T>) {
+  constructor(executor: PromiseExecutor<T>) {
     this._executor = executor;
   }
 
