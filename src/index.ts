@@ -68,6 +68,7 @@ import { invokeMap } from './invokeMap';
 import { isArguments } from './isArguments';
 import { isArray } from './isArray';
 import { isArrayLike } from './isArrayLike';
+import isCircular from './isCircular';
 import { isDate } from './isDate';
 import { isEmpty } from './isEmpty';
 import { isEqual } from './isEqual';
@@ -203,7 +204,7 @@ export {
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
-  AsyncUtils
+  AsyncUtils, isCircular
 };
 
 
@@ -238,7 +239,7 @@ export default {
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
-  AsyncUtils
+  AsyncUtils, isCircular
 
 };
 

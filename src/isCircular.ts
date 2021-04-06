@@ -1,4 +1,5 @@
 /*
+
 Heavily inspired by SOW Article
 
 ref link: https://stackoverflow.com/a/47941092/4380476
@@ -14,6 +15,7 @@ const S_ROOT_OBJECT = 'ROOT';
 
 /**
  * get all circular reference
+ *
  * @since 5.18.0
  * @category Object
  * @param object
@@ -25,17 +27,19 @@ export function getObjectCycles(object: any): Array<Entry<string>> {
     return [];
   }
 
-  // Save traversed references here
-  const traversedProps = new Map();
+  /**
+   * key: object
+   * value: path
+   */
+  const traversedProps = new Map<any, string>();
   const cycles: Array<Entry<string>> = [];
 
-  // Recursive function to go over objects/arrays
   const traverse = function (currentObj: any, currentPath: string = S_ROOT_OBJECT) {
+
     if (currentObj === null || currentObj === undefined) {
       return;
     }
 
-    // If we saw a node it's a cycle, no need to travers it's entries
     if (traversedProps.has(currentObj)) {
       cycles.push([currentPath, traversedProps.get(currentObj)]);
       return;
@@ -43,37 +47,14 @@ export function getObjectCycles(object: any): Array<Entry<string>> {
 
     traversedProps.set(currentObj, currentPath);
 
-    // Traversing the entries
     for (const key in currentObj) {
-
       const value = currentObj[key];
-
-      // We don't want to care about the falsy values
-      // Only objects and arrays can produce the cycles and they are truthy
+      const valuePath = `${currentPath}['${key}']`;
       if (currentObj.hasOwnProperty(key) && value) {
-
-        const valuePath = `${currentPath}['${key}']`;
-
-        if (traversedProps.has(value)) {
-          cycles.push([currentPath, valuePath]);
-          return;
-        }
-
-        if (value.constructor === Object) {
-          traverse(value, valuePath);
-        }
-
-        if (value.constructor === Array && value.length > 0) {
-
-          for (let i = 0; i < value.length; i += 1) {
-            traverse(value[i], `${valuePath}[${i}]`);
-          }
-
-        }
-
-        // We don't care of any other values except Arrays and objects.
+        traverse(value, valuePath);
       }
     }
+
   };
 
   traverse(object);

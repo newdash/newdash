@@ -143,7 +143,8 @@ export function cacheIt<T extends GeneralFunction>(obj: T, options?: CacheItOpti
  */
 export function cacheIt<T>(obj: Class<T>, options?: CacheItOptions): CachedClass<T>
 /**
- * make function is cached
+ * make function is cached, default with LRU container
+ *
  * @since 5.16.0
  * @category Util
  * @param obj
