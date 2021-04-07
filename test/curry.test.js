@@ -1,13 +1,14 @@
 import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { slice, stubArray } from './utils';
-import curry from '../src/curry';
-import placeholder from '../src/placeholder';
 import bind from '../src/bind';
+import curry from '../src/curry';
+import map from '../src/map';
 import partial from '../src/partial';
 import partialRight from '../src/partialRight';
+import times from '../src/times';
+import { slice, stubArray } from './utils';
 
 describe('curry', () => {
+
   function fn(a, b, c, d) {
     return slice.call(arguments);
   }
@@ -30,14 +31,14 @@ describe('curry', () => {
     assert.deepStrictEqual(curried(1, 2, 3), expected);
   });
 
-  it('should coerce `arity` to an integer', () => {
-    const values = ['0', 0.6, 'xyz'],
-      expected = lodashStable.map(values, stubArray);
+  it('should coerce "arity" to an integer', () => {
+    expect(() => curry(fn, '0')).toThrow();
+    const values = [0.6];
+    const expected = map(values, stubArray);
 
-    const actual = lodashStable.map(values, (arity) => curry(fn, arity)());
+    const actual = map(values, (arity) => curry(fn, arity)());
+    expect(actual).toStrictEqual(expected);
 
-    assert.deepStrictEqual(actual, expected);
-    assert.deepStrictEqual(curry(fn, '2')(1)(2), [1, 2]);
   });
 
   it('should support placeholders', () => {
@@ -58,14 +59,6 @@ describe('curry', () => {
     assert.deepStrictEqual(actual, ['a', 'b', 'c', 'd']);
   });
 
-  it('should use `_.placeholder` when set', () => {
-    const curried = curry(fn),
-      _ph = placeholder = {},
-      ph = curried.placeholder;
-
-    assert.deepEqual(curried(1)(_ph, 3)(ph, 4), [1, ph, 3, 4]);
-  });
-
   it('should provide additional arguments after reaching the target arity', () => {
     const curried = curry(fn, 3);
     assert.deepStrictEqual(curried(1)(2, 3, 4), [1, 2, 3, 4]);
@@ -74,7 +67,7 @@ describe('curry', () => {
   });
 
   it('should create a function with a `length` of `0`', () => {
-    lodashStable.times(2, (index) => {
+    times(2, (index) => {
       const curried = index ? curry(fn, 4) : curry(fn);
       assert.strictEqual(curried.length, 0);
       assert.strictEqual(curried(1).length, 0);
@@ -94,8 +87,8 @@ describe('curry', () => {
     assert.strictEqual(new curried(true), object);
   });
 
-  it('should use `this` binding of function', () => {
-    const fn = function(a, b, c) {
+  it('should use "this" binding of function', () => {
+    const fn = function (a, b, c) {
       const value = this || {};
       return [value[a], value[b], value[c]];
     };
@@ -107,17 +100,17 @@ describe('curry', () => {
     assert.deepStrictEqual(curry(bind(fn, object), 3)('a', 'b')('c'), expected);
     assert.deepStrictEqual(curry(bind(fn, object), 3)('a', 'b', 'c'), expected);
 
-    assert.deepStrictEqual(bind(curry(fn), object)('a')('b')('c'), Array(3));
-    assert.deepStrictEqual(bind(curry(fn), object)('a', 'b')('c'), Array(3));
+    assert.deepStrictEqual(bind(curry(fn), object)('a')('b')('c'), Array(3).fill(undefined));
+    assert.deepStrictEqual(bind(curry(fn), object)('a', 'b')('c'), Array(3).fill(undefined));
     assert.deepStrictEqual(bind(curry(fn), object)('a', 'b', 'c'), expected);
 
     object.curried = curry(fn);
-    assert.deepStrictEqual(object.curried('a')('b')('c'), Array(3));
-    assert.deepStrictEqual(object.curried('a', 'b')('c'), Array(3));
+    assert.deepStrictEqual(object.curried('a')('b')('c'), Array(3).fill(undefined));
+    assert.deepStrictEqual(object.curried('a', 'b')('c'), Array(3).fill(undefined));
     assert.deepStrictEqual(object.curried('a', 'b', 'c'), expected);
   });
 
-  it('should work with partialed methods', () => {
+  it('should work with partial methods', () => {
     const curried = curry(fn),
       expected = [1, 2, 3, 4];
 

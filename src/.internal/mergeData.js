@@ -1,6 +1,6 @@
-import { WRAP_BIND_FLAG, WRAP_BIND_KEY_FLAG, WRAP_ARY_FLAG, WRAP_CURRY_FLAG, WRAP_REARG_FLAG, PLACEHOLDER } from "./CONSTANTS";
 import composeArgs from "./composeArgs";
 import composeArgsRight from "./composeArgsRight";
+import { PLACEHOLDER, WRAP_ARY_FLAG, WRAP_BIND_FLAG, WRAP_BIND_KEY_FLAG, WRAP_CURRY_BOUND_FLAG, WRAP_CURRY_FLAG, WRAP_REARG_FLAG } from "./CONSTANTS";
 import replaceHolders from "./replaceHolders";
 
 /**

@@ -1,13 +1,15 @@
-import createRecurry from "./createRecurry";
-import getHolder from "./getHolder";
+import apply from "./apply";
 import createCtor from "./createCtor";
 import createHybrid from "./createHybrid";
+import createRecurry from "./createRecurry";
+import getHolder from "./getHolder";
 import replaceHolders from "./replaceHolders";
-import apply from "./apply";
+import root from "./root";
 
 /**
  * Creates a function that wraps `func` to enable currying.
  *
+ * @internal
  * @private
  * @param func The function to wrap.
  * @param bitmask The bitmask flags. See `createWrap` for more details.

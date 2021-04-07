@@ -1,5 +1,11 @@
 import { WRAP_CURRY_FLAG } from './.internal/CONSTANTS';
 import createCurry from './.internal/createCurry';
+import { mustProvide } from './assert';
+import toInteger from './toInteger';
+
+type CurriedFunction = Function & {
+  placeholder: any
+}
 
 /**
  * Creates a function that accepts arguments of `func` and either invokes
@@ -39,11 +45,16 @@ import createCurry from './.internal/createCurry';
  * // => [1, 2, 3]
  * ```
  */
-export function curry(func: Function, arity: number = func?.length, guard?: any): Function {
+export function curry<T extends Function = any>(func: T, arity: number = func?.length, guard?: any): CurriedFunction {
+  mustProvide(arity, 'arity', 'number');
+
+  arity = toInteger(arity);
   arity = guard ? undefined : arity;
+
   const result = createCurry(func, WRAP_CURRY_FLAG, arity);
   // default placeholder
   result['placeholder'] = curry.placeholder;
+  // @ts-ignore
   return result;
 }
 

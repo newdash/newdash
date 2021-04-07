@@ -22,7 +22,7 @@ export function distance(s1: string = '', s2: string = ''): number {
 
   if (s1Length && s2Length) {
 
-    let i1 = 0, i2 = 0, a, b, c = tmp;
+    let i1 = 0, i2 = 0, a, b, c;
     const tmp1 = tmp;
 
     while (i1 < s1Length) { tmp1[i1] = ++i1; }
