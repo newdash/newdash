@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.18.0](https://github.com/newdash/newdash/compare/v5.17.1...v5.18.0) (2021-04-07)
+
+
+### Features
+
+* [#155](https://github.com/newdash/newdash/issues/155) math related functions ([e5a4469](https://github.com/newdash/newdash/commit/e5a44697129e8f0bf37cfe1a16b6109344171972))
+* [#164](https://github.com/newdash/newdash/issues/164) toTry function ([de2b4ef](https://github.com/newdash/newdash/commit/de2b4ef61920aa7d3a7594dfa949d742a4883fc5))
+* [#200](https://github.com/newdash/newdash/issues/200) circular object check ([315f29b](https://github.com/newdash/newdash/commit/315f29b17f5353cf1dd121751124296d55f1fa0a))
+* [#241](https://github.com/newdash/newdash/issues/241) async filter ([2b99229](https://github.com/newdash/newdash/commit/2b99229247a73c7b6860bf29b99ec6fcdf374743))
+* async map ([3a40868](https://github.com/newdash/newdash/commit/3a408686a5724525311f6a395fbb07a6f03f022c))
+* cache valid policy [#189](https://github.com/newdash/newdash/issues/189) ([5b824e1](https://github.com/newdash/newdash/commit/5b824e1cdb4e497e0a042281e40c22cba32cb3f0))
+* cacheItTTL & initial ([4d764d0](https://github.com/newdash/newdash/commit/4d764d0abe713ff986ea240b0b5bb1ff9b9c0a7e))
+* chunk function ([8c6ceb7](https://github.com/newdash/newdash/commit/8c6ceb7c80d2823f7d27a9161ef67f1fb79e0b54))
+* flow ([1f060c2](https://github.com/newdash/newdash/commit/1f060c2aab5a054dd3e4d2c7fc790546640b658d))
+* functional ([e626103](https://github.com/newdash/newdash/commit/e6261034a7e843dfaa0c337a527bc2158d437420))
+* isCircular function ([f7c11b1](https://github.com/newdash/newdash/commit/f7c11b187013ed54e442c3fe4d349f7b2e54e11b))
+* LazyPromise ([0f2b34b](https://github.com/newdash/newdash/commit/0f2b34b7c065a9553bf211e443c2e46869af5f5c))
+* omit function ([89f9b0f](https://github.com/newdash/newdash/commit/89f9b0f7d5a0e5f8f483f5ce6b44a489120798af))
+* TTL map & concurrency.debounce ([af63e31](https://github.com/newdash/newdash/commit/af63e31be65d1a34cb46411e3d9855992492cf5b))
+* type ([673fd09](https://github.com/newdash/newdash/commit/673fd0937e11b4ccb281015264a79167960f1340))
+
+
+### Bug Fixes
+
+* ci ([ac910c1](https://github.com/newdash/newdash/commit/ac910c14296cc0b98d073701176b4ec27fe7cf0b))
+* deno ci ([8b11c0b](https://github.com/newdash/newdash/commit/8b11c0b91dc40f046b45f79d5a6dd8db4147b65b))
+* lint ([dd17042](https://github.com/newdash/newdash/commit/dd17042ff7976610350d943516a2ab0efd96096c))
+* lint issue ([42d354b](https://github.com/newdash/newdash/commit/42d354b6147d2145b4c915562c596815710c1df8))
+* sonar issue ([7a79132](https://github.com/newdash/newdash/commit/7a79132b6cfaa2bd057b2432b1ec965bd32b8ada))
+* timeout type ([21cb8c9](https://github.com/newdash/newdash/commit/21cb8c9d0ddbd466b44b5eb4c584a51571709fbb))
+* type ([ac8e71e](https://github.com/newdash/newdash/commit/ac8e71eef7c247f80d3c58441776f79b8fec6b1b))
+* ut ([07afc22](https://github.com/newdash/newdash/commit/07afc22df16c9146d0abe0793bb182f460a1d537))
+* ut error ([3bcc413](https://github.com/newdash/newdash/commit/3bcc4138761c32ae9e4f75fde8f7f3d1f2ebc9e0))
+* zipObject export ([e0567a7](https://github.com/newdash/newdash/commit/e0567a7c63f0195dd5a711a291f7e5bad185f79a))
+
 ### [5.17.1](https://github.com/newdash/newdash/compare/v5.17.0...v5.17.1) (2020-11-04)
 
 
