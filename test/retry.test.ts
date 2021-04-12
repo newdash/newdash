@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { retry } from '../src/retry';
+import sleep from '../src/sleep';
 
 
 describe('retry', () => {
@@ -95,6 +96,7 @@ describe('retry', () => {
     let idx = 0;
     const interval = 100;
     const f = retry(async () => {
+      await sleep(1);
       idx++;
       if (idx <= 3) {
         throw new TypeError;
