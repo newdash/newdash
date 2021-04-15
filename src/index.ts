@@ -152,6 +152,7 @@ import { throttle } from './throttle';
 import { createTimeoutPromise, TimeoutError } from './timeout';
 import { times } from './times';
 import { toArray } from './toArray';
+import { toLower } from './toLower';
 import { toNumber } from './toNumber';
 import { toUpper } from './toUpper';
 import { trim } from './trim';
@@ -204,7 +205,7 @@ export {
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
-  AsyncUtils, isCircular
+  AsyncUtils, isCircular, toLower
 };
 
 
@@ -239,7 +240,6 @@ export default {
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
-  AsyncUtils, isCircular
-
+  AsyncUtils, isCircular, toLower
 };
 

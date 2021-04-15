@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import toLower from '../src/toLower';
+import { toLower } from '../src/toLower';
 
 describe('toLower', () => {
   it('should convert whole string to lower case', () => {
