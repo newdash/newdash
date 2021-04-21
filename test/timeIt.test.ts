@@ -7,6 +7,9 @@ describe('timeIt', () => {
 
     const t = await timeIt(async () => {
       await sleep(100);
+      for (let idx = 1; idx < 10000; idx++) {
+        expect(idx).toBeGreaterThan(0);
+      }
     });
     expect(t).toBeGreaterThan(100);
 
