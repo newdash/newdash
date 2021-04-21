@@ -1,3 +1,4 @@
+import { BlockedQueue } from '../src/functional/BlockedQueue';
 import defineFunctionName from '../src/functional/defineFunctionName';
 import { hash } from '../src/functional/hash';
 import { hashEqual } from '../src/functional/hashEqual';
@@ -112,6 +113,45 @@ describe('functional', () => {
     expect(cache.get(4)).toBeUndefined();
     expect(cache.get(3)).toBe('v:3');
     expect(cache.get(6)).toBe('v:6');
+
+  });
+
+  it('should support blocked queue', async () => {
+
+    const q = new BlockedQueue(3);
+    const seq = [];
+
+    const enQ = (v: any) => q.enQueue(v).then(() => seq.push(`p${v}`));
+    const deQ = () => q.deQueue().then((value) => { seq.push(`d${value}`); return value; });
+    const p1 = Promise.all([
+      enQ(1),
+      enQ(2),
+      enQ(3),
+      enQ(4)
+    ]);
+
+    const p2 = Promise.all([
+      deQ(),
+      deQ(),
+      deQ(),
+      deQ(),
+      deQ()
+    ]);
+
+    await Promise.all([p1, p2]);
+
+    expect(seq).toStrictEqual([
+      'p1',
+      'p2',
+      'p3',
+      'd1',
+      'd2',
+      'd3',
+      'd4',
+      'dundefined',
+      'p4'
+    ]);
+
 
   });
 
