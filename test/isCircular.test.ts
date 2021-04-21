@@ -12,6 +12,14 @@ describe('isCircular', () => {
     expect(isCircular(1)).toBeFalsy();
     expect(isCircular(NaN)).toBeFalsy();
 
+    expect(isCircular([undefined])).toBeFalsy();
+    expect(isCircular([null])).toBeFalsy();
+    expect(isCircular([[]])).toBeFalsy();
+    expect(isCircular([{}])).toBeFalsy();
+    expect(isCircular([Symbol('')])).toBeFalsy();
+    expect(isCircular([1])).toBeFalsy();
+    expect(isCircular([NaN])).toBeFalsy();
+
   });
 
   it('should support getCycle for objects', () => {

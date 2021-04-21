@@ -51,6 +51,7 @@ import { forOwnRight } from './forOwnRight';
 import { fromEntries } from './fromEntries';
 import { Mutex } from './functional/Mutex';
 import { Semaphore } from './functional/Semaphore';
+import { timeIt } from './functional/timeIt';
 import { functions } from './functions';
 import { get } from './get';
 import { groupBy } from './groupBy';
@@ -68,7 +69,7 @@ import { invokeMap } from './invokeMap';
 import { isArguments } from './isArguments';
 import { isArray } from './isArray';
 import { isArrayLike } from './isArrayLike';
-import isCircular from './isCircular';
+import { isCircular } from './isCircular';
 import { isDate } from './isDate';
 import { isEmpty } from './isEmpty';
 import { isEqual } from './isEqual';
@@ -205,7 +206,7 @@ export {
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
-  AsyncUtils, isCircular, toLower
+  AsyncUtils, isCircular, toLower, timeIt
 };
 
 
@@ -240,6 +241,6 @@ export default {
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
-  AsyncUtils, isCircular, toLower
+  AsyncUtils, isCircular, toLower, timeIt
 };
 

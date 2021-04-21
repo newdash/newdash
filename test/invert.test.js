@@ -2,6 +2,7 @@ import * as assert from 'assert';
 import invert from '../src/invert';
 
 describe('invert', () => {
+
   it('should invert an object', () => {
     const object = { 'a': 1, 'b': 2 },
       actual = invert(object);
