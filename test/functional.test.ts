@@ -1,9 +1,11 @@
+// @ts-nocheck
 import { BlockedQueue } from '../src/functional/BlockedQueue';
 import defineFunctionName from '../src/functional/defineFunctionName';
 import { hash } from '../src/functional/hash';
 import { hashEqual } from '../src/functional/hashEqual';
 import { LRUMap } from '../src/functional/LRUMap';
 import { toHashCode } from '../src/functional/toHashCode';
+import { sleep } from '../src/sleep';
 
 
 describe('functional', () => {
@@ -130,6 +132,12 @@ describe('functional', () => {
       enQ(4)
     ]);
 
+    await sleep(100);
+
+    expect(q._container.length).toBe(3);
+    expect(q._container).toStrictEqual([1, 2, 3]);
+    expect(q._notifyQueue.length).toBe(1);
+
     const p2 = Promise.all([
       deQ(),
       deQ(),
@@ -140,18 +148,24 @@ describe('functional', () => {
 
     await Promise.all([p1, p2]);
 
-    expect(seq).toStrictEqual([
-      'p1',
-      'p2',
-      'p3',
-      'd1',
-      'd2',
-      'd3',
-      'd4',
-      'dundefined',
-      'p4'
-    ]);
+    expect(q._container.length).toBe(0);
+    expect(q._notifyQueue.length).toBe(0);
 
+
+  });
+
+  it('should throw error when pending items too much', async () => {
+    const q = new BlockedQueue(3, 5);
+    await q.enQueue(1);
+    await q.enQueue(2);
+    await q.enQueue(3);
+    q.enQueue(4);
+    q.enQueue(5);
+    q.enQueue(6);
+    q.enQueue(7);
+    q.enQueue(8);
+    await sleep(100);
+    expect(() => q.enQueue(9)).rejects.toThrowError();
 
   });
 

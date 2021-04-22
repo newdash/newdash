@@ -49,6 +49,7 @@ import { forEach } from './forEach';
 import { forOwn } from './forOwn';
 import { forOwnRight } from './forOwnRight';
 import { fromEntries } from './fromEntries';
+import { BlockedQueue } from './functional/BlockedQueue';
 import { Mutex } from './functional/Mutex';
 import { Semaphore } from './functional/Semaphore';
 import { timeIt } from './functional/timeIt';
@@ -206,7 +207,7 @@ export {
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
-  AsyncUtils, isCircular, toLower, timeIt
+  AsyncUtils, isCircular, toLower, timeIt, BlockedQueue
 };
 
 
@@ -241,6 +242,6 @@ export default {
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
-  AsyncUtils, isCircular, toLower, timeIt
+  AsyncUtils, isCircular, toLower, timeIt, BlockedQueue
 };
 

@@ -10,7 +10,7 @@ import type { JSType } from '../types';
 export function mustProvide(value: any, fieldName: string, type: JSType) {
 
   if (value === undefined || value === null || typeof value !== type) {
-    throw new TypeError(`must provide ${type} for ${fieldName} with type ${type}`);
+    throw new TypeError(`must provide '${fieldName}' value with type '${type}', given: '${value}'/'${type}'`);
   }
 
 }
