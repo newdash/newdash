@@ -1,3 +1,4 @@
+import { LRUMap } from './functional/LRUMap';
 
 /**
  * @ignore
@@ -92,7 +93,7 @@ export function memoize<T extends(...args: any[]) => any, K>(func: T, resolver?:
     return result;
   };
 
-  memoized.cache = new (memoize.Cache || Map);
+  memoized.cache = new (memoize.Cache || LRUMap);
   return memoized;
 }
 
