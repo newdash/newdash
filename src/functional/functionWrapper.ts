@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow-callback */
 import { defineFunctionName } from './defineFunctionName';
 
 /**
@@ -17,6 +18,7 @@ interface WrapperContext<T extends Func, G = any> {
   args: Parameters<T>;
   runner: T;
   state: any;
+  thisContext?: any;
 }
 
 /**
@@ -32,16 +34,38 @@ interface WrapperOptions<T extends Func, G = any> {
   /**
    * before runner call, return a value to skip execute runner
    */
-  before?: (ctx: WrapperContext<T, G>) => ReturnType<T> | void,
+  before?: (ctx: WrapperContext<T, G>) => any,
+
+  /**
+   * overwrite function execution
+   *
+   * @since 5.19.0
+   */
+  execute?: (ctx: WrapperContext<T, G>) => ReturnType<T>,
+
   /**
    * after runner call, change result
    */
-  after?: (ctx: WrapperContext<T, G>, result: ReturnType<T>) => ReturnType<T>,
+  after?: (ctx: WrapperContext<T, G>, result: ReturnType<T>) => any,
   /**
    * error raised, return the customized value or raise error
    */
-  error?: (ctx: WrapperContext<T, G>, error: Error) => ReturnType<T> | void,
+  error?: (ctx: WrapperContext<T, G>, error: Error) => any,
+  /**
+   * force binding 'this' context to target
+   * @since 5.19.0
+   */
+  thisContext?: any,
 }
+
+/**
+ * @internal
+ * @private
+ * @ignore
+ * @param ctx
+ * @returns
+ */
+const defaultExecute = (ctx: WrapperContext<any, any>) => ctx.runner(...ctx.args);
 
 /**
  * @internal
@@ -77,37 +101,49 @@ const throwError = (ctx: any, err: Error) => { throw err; };
  */
 export function createFunctionWrapper<T extends Func, G extends any>(runner: T, options: WrapperOptions<T, G>): T {
 
+  // return runner direct if no logic
+  if (
+    options.before === undefined
+    && options.error === undefined
+    && options.execute === undefined
+    && options.after === undefined
+  ) {
+    return runner;
+  }
+
   options.after = options?.after ?? returnSame;
   options.before = options?.before ?? returnUndefined;
+  options.execute = options?.execute ?? defaultExecute;
   // @ts-ignore
   options.global = options?.global ?? {};
   options.error = options?.error ?? throwError;
 
+  const thisContext = options.thisContext ?? this;
 
   // @ts-ignore
-  return defineFunctionName((...args: Parameters<T>) => {
-
+  return defineFunctionName(function (...args: Parameters<T>) {
     const ctx: WrapperContext<T> = {
-      args, global: options?.global ?? {}, runner, state: {}
+      args, global: options?.global ?? {}, runner, state: {}, thisContext
     };
 
     try {
-      const earlyValue = options.before(ctx);
+      const earlyValue = options.before.call(thisContext, ctx);
       if (earlyValue !== undefined) {
         return earlyValue;
       }
-      const rt = runner(...args);
+      const rt = options.execute.call(thisContext, ctx);
       // if is async
+      // @ts-ignore
       if (rt instanceof Promise) {
         return rt
-          .then((result) => options.after(ctx, result)) // async result
-          .catch((error) => options.error(ctx, error)); // async error
+          .then((result) => options.after.call(thisContext, ctx, result)) // async result
+          .catch((error) => options.error.call(thisContext, ctx, error)); // async error
       }
       // if is sync
-      return options.after(ctx, rt);
+      return options.after.call(thisContext, ctx, rt);
     } catch (error) {
       // sync error
-      return options.error(ctx, error);
+      return options.error.call(thisContext, ctx, error);
     }
   }, runner?.name);
 }
