@@ -50,7 +50,7 @@ export function getObjectCycles(object: any): Array<Entry<string>> {
     for (const key in currentObj) {
       const value = currentObj[key];
       const valuePath = `${currentPath}['${key}']`;
-      if (Object.prototype.hasOwnProperty.call(currentObj, key) && value) {
+      if (Object?.prototype?.hasOwnProperty?.call(currentObj, key) && value) {
         traverse(value, valuePath);
       }
     }
