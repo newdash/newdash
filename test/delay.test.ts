@@ -1,6 +1,6 @@
 import * as assert from 'assert';
-import { slice } from './utils';
 import delay from '../src/delay';
+import { slice } from './utils';
 
 describe('delay', () => {
 

@@ -2,6 +2,7 @@ module.exports = {
   'transform': {
     '.(js|ts|tsx)': 'ts-jest'
   },
+  'testEnvironment': 'jsdom',
   'testTimeout': 30 * 1000,
   'collectCoverageFrom': [
     'src/**/*',
