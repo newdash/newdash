@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.19.0](https://github.com/newdash/newdash/compare/v5.18.0...v5.19.0) (2021-06-17)
+
+
+### Features
+
+* blocked queue ([827f005](https://github.com/newdash/newdash/commit/827f00525119093f2875ed1551f7bc8640e79010))
+* BlockedQueue ([413b1a7](https://github.com/newdash/newdash/commit/413b1a7d2abed290d308f12fc40855620a4628c3))
+* enhance function wrapper ([270b489](https://github.com/newdash/newdash/commit/270b489e7ca73bbc88ca8338add4d8da833ca599))
+* timeIt ([ce25eb4](https://github.com/newdash/newdash/commit/ce25eb4362aba9c3ab06f272ca03529c411a9d55))
+* tolower function ([77735a8](https://github.com/newdash/newdash/commit/77735a844280ffb7a4a03d5f3454916cae13e72f))
+
+
+### Bug Fixes
+
+* ut issue ([d843470](https://github.com/newdash/newdash/commit/d84347042c930d6bb23cd2e1f782034f89907ff7))
+
 ## [5.18.0](https://github.com/newdash/newdash/compare/v5.17.1...v5.18.0) (2021-04-07)
 
 
