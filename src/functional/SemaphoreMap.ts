@@ -15,8 +15,8 @@ const DEFAULT_EXTRACTOR = (args: any[]) => args;
  */
 export class SemaphoreMap {
 
-  constructor(maxSemaphoreNum = 100 * 10000, defaultSemCount = 10) {
-    this._container = new LRUMap<any, Semaphore>(maxSemaphoreNum);
+  constructor(maximumSemObjects = 1000 * 1000, defaultSemCount = 10) {
+    this._container = new LRUMap<any, Semaphore>(maximumSemObjects);
     this._defaultSemCount = defaultSemCount;
   }
 
@@ -42,15 +42,19 @@ export class SemaphoreMap {
   /**
    * execute function with specify semaphore instance
    *
-   * @param semaphoreKey
-   * @param f
+   * @param key the key of semaphore
+   * @param runner async runner
    */
-  public execute<T>(semaphoreKey: any = KEY_DEFAULT, f: AsyncFunction<any[], T>) {
-    return this.getOrCreate(semaphoreKey).use(f);
+  public execute<T>(key: any = KEY_DEFAULT, runner: AsyncFunction<any[], T>) {
+    return this.getOrCreate(key).use(runner);
   }
 
   /**
    * wrap a function with semaphore, the different parameter will use different semaphore instance
+   *
+   * simply, it could be used as a deeply 'limit' function,
+   * after wrapping,
+   * the function will be limited by parameter values (by specific semaphore total count)
    *
    * @param runner
    * @param runner params extractor, the return value will be used to determine the semaphore
@@ -62,6 +66,13 @@ export class SemaphoreMap {
     return (...args: P) => this.execute(extractor(args), runner);
   }
 
+  /**
+   * static 'wrap' creator for function
+   * @param maxSemNum
+   * @param defaultSemCount
+   * @param runner
+   * @returns
+   */
   public static wrap<P extends any[], T>(
     maxSemNum: number,
     defaultSemCount: number,

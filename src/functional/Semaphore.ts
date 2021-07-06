@@ -28,8 +28,16 @@ import { mustProvide } from '../assert';
 /**
  * @private
  * @internal
+ * @ignore
  */
 type ReleaseFunction = () => void
+
+/**
+ * @private
+ * @internal
+ * @ignore
+ */
+type Task = Function & { hasTimeout: boolean }
 
 /**
  * Semaphore
@@ -39,12 +47,14 @@ type ReleaseFunction = () => void
  */
 export class Semaphore {
 
-  private tasks: Array<Function> = [];
+  private tasks: Array<Task> = [];
   private count: number;
+  private defaultAcquireTimeout = -1;
 
-  constructor(count: number) {
+  constructor(count: number, defaultAcquireTimeout: number = -1) {
     mustProvide(count, 'count', 'number');
     this.count = count;
+    this.defaultAcquireTimeout = defaultAcquireTimeout;
   }
 
   private schedule() {
@@ -56,25 +66,47 @@ export class Semaphore {
     }
   }
 
-  public acquire() {
-    return new Promise<ReleaseFunction>((res, rej) => {
+  public acquire(timeout: number = this.defaultAcquireTimeout) {
+    return new Promise<ReleaseFunction>((resolve, reject) => {
+      // delay tasks
       const task = () => {
-        let released = false;
-        res(() => {
-          if (!released) {
-            released = true;
-            this.count++;
-            this.schedule();
-          }
-        });
+        if (task.hasTimeout) {
+          // has timeout
+          // resume semaphore
+          this.count++;
+          // re-schedule next one
+          this.schedule();
+        }
+        else {
+          // call by schedule
+          let released = false;
+          // return acquire
+          resolve(() => {
+            // call by release
+            if (!released) {
+              released = true;
+              this.count++;
+              this.schedule();
+            }
+          });
+        }
+
       };
+      task.hasTimeout = false;
+      // queue task
       this.tasks.push(task);
       setTimeout(this.schedule.bind(this), 0);
+      if (typeof timeout === 'number' && timeout > 0 && timeout !== NaN && timeout !== Infinity) {
+        setTimeout(() => {
+          task.hasTimeout = true;
+          reject(new Error(`semaphore acquire timeout: ${timeout}`));
+        }, timeout);
+      }
     });
   }
 
-  public async use<T>(f: () => Promise<T>) {
-    return this.acquire()
+  public async use<T>(f: () => Promise<T>, timeout: number = this.defaultAcquireTimeout) {
+    return this.acquire(timeout)
       .then((release) => f()
         .then((res) => {
           release();

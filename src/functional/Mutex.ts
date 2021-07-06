@@ -7,7 +7,7 @@ import { Semaphore } from './Semaphore';
  * @category Functional
  */
 export class Mutex extends Semaphore {
-  constructor() { super(1); }
+  constructor(defaultAcquireTimeout: number = -1) { super(1, defaultAcquireTimeout); }
 }
 
 export default Mutex;
