@@ -37,7 +37,7 @@ type ReleaseFunction = () => void
  * @internal
  * @ignore
  */
-type Task = Function & { hasTimeout: boolean }
+type Task = Function & { hasTimeout: boolean, hasReleased: boolean, hasAcquired: boolean }
 
 /**
  * Semaphore
@@ -78,13 +78,12 @@ export class Semaphore {
           this.schedule();
         }
         else {
-          // call by schedule
-          let released = false;
+          task.hasAcquired = true;
           // return acquire
           resolve(() => {
             // call by release
-            if (!released) {
-              released = true;
+            if (!task.hasReleased) {
+              task.hasReleased = true;
               this.count++;
               this.schedule();
             }
@@ -93,13 +92,17 @@ export class Semaphore {
 
       };
       task.hasTimeout = false;
+      task.hasReleased = false;
+      task.hasAcquired = false;
       // queue task
       this.tasks.push(task);
       setTimeout(this.schedule.bind(this), 0);
-      if (typeof timeout === 'number' && timeout > 0 && timeout !== NaN && timeout !== Infinity) {
+      if (typeof timeout === 'number' && timeout > 0 && !isNaN(timeout) && isFinite(timeout)) {
         setTimeout(() => {
-          task.hasTimeout = true;
-          reject(new Error(`semaphore acquire timeout: ${timeout}`));
+          if (!task.hasAcquired) {
+            task.hasTimeout = true;
+            reject(new Error(`semaphore acquire timeout: ${timeout}`));
+          }
         }, timeout);
       }
     });
