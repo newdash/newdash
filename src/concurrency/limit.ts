@@ -33,4 +33,16 @@ export function limit<T extends AsyncFunction>(runner: T, concurrencyNumber: num
 
 }
 
+/**
+ * let async function only invoke at once in same time
+ *
+ * @category Async
+ * @since 5.20.0
+ * @param func the function to be processed
+ * @returns the wrapped function instance
+ */
+export function synchronized<T extends AsyncFunction>(func: T): T {
+  return limit(func, 1);
+}
+
 export default limit;
