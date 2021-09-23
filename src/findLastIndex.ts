@@ -1,6 +1,6 @@
 import baseFindIndex from './.internal/baseFindIndex';
-import toInteger from './toInteger';
 import getIteratee from './.internal/getIteratee';
+import toInteger from './toInteger';
 
 /**
  * This method is like `findIndex` except that it iterates over elements
@@ -39,7 +39,7 @@ import getIteratee from './.internal/getIteratee';
  *
  * ```
  */
-function findLastIndex(array, predicate?, fromIndex?: number): number {
+export function findLastIndex(array, predicate?, fromIndex?: number): number {
   const length = array == null ? 0 : array.length;
   if (!length) {
     return -1;

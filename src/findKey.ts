@@ -1,6 +1,7 @@
 import baseFindKey from './.internal/baseFindKey';
-import getIteratee from './.internal/getIteratee';
 import baseForOwn from './.internal/baseForOwn';
+import getIteratee from './.internal/getIteratee';
+import { Predicate } from './types';
 
 /**
  * This method is like `find` except that it returns the key of the first
@@ -26,7 +27,10 @@ import baseForOwn from './.internal/baseForOwn';
  * // => 'barney' (iteration order is not guaranteed)
  * ```
  */
-export function findKey(object: any, predicate?: Function): string | undefined {
+export function findKey<V>(object: Record<string, V>, predicate?: Predicate<V>): string
+export function findKey(object: any, predicate?: Array<any>): string
+export function findKey(object: any, predicate?: string): string
+export function findKey(object: any, predicate?: any): string {
   return baseFindKey(object, getIteratee(predicate, 3), baseForOwn);
 }
 

@@ -1,7 +1,7 @@
 // @ts-nocheck
 import baseFindIndex from './.internal/baseFindIndex';
-import toInteger from './toInteger';
 import getIteratee from './.internal/getIteratee';
+import toInteger from './toInteger';
 
 /**
  * This method is like `find` except that it returns the index of the first
@@ -38,7 +38,7 @@ import getIteratee from './.internal/getIteratee';
  * // => 2
  * ```
  */
-function findIndex(array, predicate?, fromIndex?: number): number {
+export function findIndex(array, predicate?, fromIndex?: number): number {
   const length = array == null ? 0 : array.length;
   if (!length) {
     return -1;

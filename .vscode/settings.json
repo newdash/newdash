@@ -16,6 +16,9 @@
   "javascript.autoClosingTags": false,
   "typescript.autoClosingTags": false,
   "editor.defaultFormatter": "vscode.typescript-language-features",
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
   "deno.enable": false,
   "jest.autoRun": "off"
 }
