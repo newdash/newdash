@@ -162,6 +162,7 @@ import { trimEnd } from './trimEnd';
 import { trimPrefix } from './trimPrefix';
 import { trimStart } from './trimStart';
 import { trimSuffix } from './trimSuffix';
+import { union } from './union';
 import { unionBy } from './unionBy';
 import { uniq } from './uniq';
 import { uniqBy } from './uniqBy';
@@ -195,7 +196,7 @@ export {
   over, overArgs, overEvery, overSome, matchesProperty,
   pull, pullAll, pullAllWith, pullAt, takeRight, flip,
   intersection, intersectionBy, intersectionWith,
-  someValues, invertBy, unionBy, method, mean, cond,
+  someValues, invertBy, union, unionBy, method, mean, cond,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
@@ -230,7 +231,7 @@ export default {
   over, overArgs, overEvery, overSome, matchesProperty,
   pull, pullAll, pullAllWith, pullAt, takeRight, flip,
   intersection, intersectionBy, intersectionWith,
-  someValues, invertBy, unionBy, method, mean, cond,
+  someValues, invertBy, union, unionBy, method, mean, cond,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
