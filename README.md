@@ -1,6 +1,5 @@
 # NewDash
 
-[![CircleCI](https://img.shields.io/circleci/build/github/newdash/newdash?label=circleci)](https://app.circleci.com/pipelines/github/newdash/newdash)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/newdash/newdash/Github%20CI?label=nodejs%20test)](https://github.com/newdash/newdash/actions?query=workflow%3A%22Github+CI%22)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/newdash/newdash/Deno%20CI?label=deno%20test)](https://github.com/newdash/newdash/actions?query=workflow%3A%22Deno+CI%22)
 
