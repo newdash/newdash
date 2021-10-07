@@ -59,6 +59,7 @@ import { groupBy } from './groupBy';
 import { has } from './has';
 import { head } from './head';
 import { includes } from './includes';
+import { indexOf } from './indexOf';
 import { initial } from './initial';
 import { intersection } from './intersection';
 import { intersectionBy } from './intersectionBy';
@@ -136,6 +137,7 @@ import { sleep } from './sleep';
 import { slice } from './slice';
 import { some } from './some';
 import { someValues } from './someValue';
+import { sortBy } from './sortBy';
 import { sortedIndex } from './sortedIndex';
 import { sortedIndexBy } from './sortedIndexBy';
 import { sortedIndexOf } from './sortedIndexOf';
@@ -183,9 +185,9 @@ export {
   some, find, debounce, add, head, has, clone, cloneDeep,
   set, update, unset, capitalize, flatten, flattenDeep,
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
-  bind, filterObject, random, trimPrefix, trimSuffix,
+  bind, filterObject, random, trimPrefix, trimSuffix, indexOf,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
-  isEqual, isError, sum, sumBy, pick, pickBy, delay,
+  isEqual, isError, sum, sumBy, sortBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber, times,
@@ -218,9 +220,9 @@ export default {
   some, find, debounce, add, head, has, clone, cloneDeep,
   set, update, unset, capitalize, flatten, flattenDeep,
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
-  bind, filterObject, random, trimPrefix, trimSuffix,
+  bind, filterObject, random, trimPrefix, trimSuffix, indexOf,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
-  isEqual, isError, sum, sumBy, pick, pickBy, delay,
+  isEqual, isError, sum, sumBy, sortBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber, times,
