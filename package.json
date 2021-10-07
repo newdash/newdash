@@ -51,7 +51,7 @@
     "eslint": "^7.32.0",
     "jest": "~27",
     "rimraf": "^3.0.2",
-    "standard-version": "^7.0.1",
+    "standard-version": "^8.0.1",
     "terser-webpack-plugin": "^5.2.4",
     "ts-jest": "~27",
     "ts-loader": "^9.2.6",
