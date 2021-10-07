@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.20.0](https://github.com/newdash/newdash/compare/v5.19.0...v5.20.0) (2021-10-07)
+
+
+### Features
+
+* [#292](https://github.com/newdash/newdash/issues/292) timeout for acquire ([3ba0df2](https://github.com/newdash/newdash/commit/3ba0df2ce68bcaebdae65e2b8e321b060612d130))
+* add fill ([fc95a50](https://github.com/newdash/newdash/commit/fc95a50f61d6318deac664f5213169f48580bfc6))
+* functino union ([49c36ca](https://github.com/newdash/newdash/commit/49c36ca04540921a10917f4b7dbda7b6cb7b65ad))
+
+
+### Bug Fixes
+
+* **sonar:** bug ([87a25f7](https://github.com/newdash/newdash/commit/87a25f7a65227772e940f7d143382626e855b8b6))
+* sortBy/indexOf not exported ([35dcaa5](https://github.com/newdash/newdash/commit/35dcaa5c7b297f82ebd2b1d2d5e8224b51db2006))
+
 ## [5.19.0](https://github.com/newdash/newdash/compare/v5.18.0...v5.19.0) (2021-06-17)
 
 
