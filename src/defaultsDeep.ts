@@ -7,12 +7,12 @@ import mergeWith from './mergeWith';
  *
  * **Note:** This method mutates `object`.
  *
- * @since 3.10.0
+ * @since 5.21.0
  * @category Object
- * @param {Object} object The destination object.
- * @param {...Object} [sources] The source objects.
- * @returns {Object} Returns `object`.
- * @see defaults
+ * @param object The destination object.
+ * @param sources The source objects.
+ * @returns  Returns `object`.
+ * @see [[defaults]]
  * @example
  *
  * ```js
@@ -20,6 +20,7 @@ import mergeWith from './mergeWith';
  * // => { 'a': { 'b': 2, 'c': 3 } }
  * ```
  */
+export function defaultsDeep(object: any, ...args: any[]): any
 export function defaultsDeep(...args: any[]): any {
   args.push(undefined, customDefaultsMerge);
   // @ts-ignore

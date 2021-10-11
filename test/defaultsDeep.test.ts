@@ -1,7 +1,8 @@
+// @ts-nocheck
 import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { noop } from './utils';
+import cloneDeep from '../src/cloneDeep';
 import defaultsDeep from '../src/defaultsDeep';
+import { noop } from './utils';
 
 describe('defaultsDeep', () => {
   it('should deep assign source properties if missing on `object`', () => {
@@ -57,7 +58,7 @@ describe('defaultsDeep', () => {
 
   it('should assign `undefined` values', () => {
     const source = { 'a': undefined, 'b': { 'c': undefined, 'd': 1 } },
-      expected = lodashStable.cloneDeep(source),
+      expected = cloneDeep(source),
       actual = defaultsDeep({}, source);
 
     assert.deepStrictEqual(actual, expected);

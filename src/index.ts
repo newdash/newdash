@@ -26,6 +26,7 @@ import { constant } from './constant';
 import { countBy } from './countBy';
 import { curry } from './curry';
 import { debounce } from './debounce';
+import { defaultsDeep } from './defaultsDeep';
 import { defaultTo } from './defaultTo';
 import { delay } from './delay';
 import { differenceBy } from './differenceBy';
@@ -207,9 +208,9 @@ export {
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
-  AsyncUtils, isCircular, toLower, timeIt, BlockedQueue
+  AsyncUtils, isCircular, toLower, timeIt, BlockedQueue,
+  defaultsDeep
 };
-
 
 export default {
   filter, get, reduce, map, each, every, concat, first,
@@ -242,6 +243,7 @@ export default {
   retry, concurrency, fallback, logic, isSubClass,
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
-  AsyncUtils, isCircular, toLower, timeIt, BlockedQueue
+  AsyncUtils, isCircular, toLower, timeIt, BlockedQueue,
+  defaultsDeep
 };
 
