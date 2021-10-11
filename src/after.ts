@@ -17,7 +17,7 @@
  * // => Logs 'done saving!' after the two async saves have completed.
  * ```
  */
-function after<T extends(...args: any[]) => any>(n: number, func: T): T {
+export function after<T extends(...args: any[]) => any>(n: number, func: T): T {
   if (typeof func !== 'function') {
     throw new TypeError('Expected a function');
   }

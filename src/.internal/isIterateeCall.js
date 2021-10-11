@@ -1,7 +1,7 @@
-import isArrayLike from '../isArrayLike'
-import isIndex from './isIndex'
-import isObject from '../isObject'
 import eq from '../eq'
+import isArrayLike from '../isArrayLike'
+import isObject from '../isObject'
+import isIndex from './isIndex'
 
 /**
  * Checks if the given arguments are from an iteratee call.
@@ -13,8 +13,7 @@ import eq from '../eq'
  * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
  *  else `false`.
  */
-
-function isIterateeCall(value, index, object) {
+export function isIterateeCall(value, index, object) {
   if (!isObject(object)) {
     return false
   }

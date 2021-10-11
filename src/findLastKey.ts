@@ -1,6 +1,7 @@
 import baseFindKey from './.internal/baseFindKey';
 import baseForOwnRight from './.internal/baseForOwnRight';
 import getIteratee from './.internal/getIteratee';
+import { Predicate } from './types';
 
 /**
  * This method is like `findKey` except that it iterates over elements of
@@ -37,7 +38,10 @@ import getIteratee from './.internal/getIteratee';
  * // => 'pebbles'
  * ```
  */
-function findLastKey(object, predicate?) {
+export function findLastKey<V>(object: Record<string, V>, predicate?: Predicate<V>): string
+export function findLastKey(object: any, predicate?: Array<any>): string
+export function findLastKey(object: any, predicate?: string): string
+export function findLastKey(object: any, predicate?: any): string {
   return baseFindKey(object, getIteratee(predicate, 3), baseForOwnRight);
 }
 

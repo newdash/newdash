@@ -60,6 +60,7 @@ import { groupBy } from './groupBy';
 import { has } from './has';
 import { head } from './head';
 import { includes } from './includes';
+import { indexOf } from './indexOf';
 import { initial } from './initial';
 import { intersection } from './intersection';
 import { intersectionBy } from './intersectionBy';
@@ -137,6 +138,7 @@ import { sleep } from './sleep';
 import { slice } from './slice';
 import { some } from './some';
 import { someValues } from './someValue';
+import { sortBy } from './sortBy';
 import { sortedIndex } from './sortedIndex';
 import { sortedIndexBy } from './sortedIndexBy';
 import { sortedIndexOf } from './sortedIndexOf';
@@ -163,6 +165,7 @@ import { trimEnd } from './trimEnd';
 import { trimPrefix } from './trimPrefix';
 import { trimStart } from './trimStart';
 import { trimSuffix } from './trimSuffix';
+import { union } from './union';
 import { unionBy } from './unionBy';
 import { uniq } from './uniq';
 import { uniqBy } from './uniqBy';
@@ -183,9 +186,9 @@ export {
   some, find, debounce, add, head, has, clone, cloneDeep,
   set, update, unset, capitalize, flatten, flattenDeep,
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
-  bind, filterObject, random, trimPrefix, trimSuffix,
+  bind, filterObject, random, trimPrefix, trimSuffix, indexOf,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
-  isEqual, isError, sum, sumBy, pick, pickBy, delay,
+  isEqual, isError, sum, sumBy, sortBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber, times,
@@ -196,7 +199,7 @@ export {
   over, overArgs, overEvery, overSome, matchesProperty,
   pull, pullAll, pullAllWith, pullAt, takeRight, flip,
   intersection, intersectionBy, intersectionWith,
-  someValues, invertBy, unionBy, method, mean, cond,
+  someValues, invertBy, union, unionBy, method, mean, cond,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,
@@ -218,9 +221,9 @@ export default {
   some, find, debounce, add, head, has, clone, cloneDeep,
   set, update, unset, capitalize, flatten, flattenDeep,
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
-  bind, filterObject, random, trimPrefix, trimSuffix,
+  bind, filterObject, random, trimPrefix, trimSuffix, indexOf,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
-  isEqual, isError, sum, sumBy, pick, pickBy, delay,
+  isEqual, isError, sum, sumBy, sortBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber, times,
@@ -231,7 +234,7 @@ export default {
   over, overArgs, overEvery, overSome, matchesProperty,
   pull, pullAll, pullAllWith, pullAt, takeRight, flip,
   intersection, intersectionBy, intersectionWith,
-  someValues, invertBy, unionBy, method, mean, cond,
+  someValues, invertBy, union, unionBy, method, mean, cond,
   sortedIndex, sortedIndexBy, sortedIndexOf, meanBy,
   sortedLastIndex, sortedLastIndexBy, sortedLastIndexOf,
   uniqBy, uniqWith, sortedUniq, sortedUniqBy, toUpper,

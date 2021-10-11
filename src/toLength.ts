@@ -30,7 +30,9 @@ const MAX_ARRAY_LENGTH = 4294967295;
  * // => 3
  * ```
  */
-export function toLength(value) {
+export function toLength(value: number): number
+export function toLength(value: string): number
+export function toLength(value: any): number {
   if (!value) {
     return 0;
   }

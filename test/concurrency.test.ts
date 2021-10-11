@@ -4,7 +4,6 @@ import { concurrency } from '../src/concurrency';
 import { assertShouldThrowError } from './helpers';
 describe('concurrency', () => {
 
-
   it('should support concurrency.limit function', async () => {
 
     const currLimit = 5;

@@ -7,17 +7,21 @@ import isArrayLikeObject from './isArrayLikeObject';
  * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
  * for equality comparisons.
  *
- * @since 0.1.0
+ * @since 5.20.0
  * @category Array
- * @param {...Array} [arrays] The arrays to inspect.
- * @returns {Array} Returns the new array of combined values.
- * @see difference, unionBy, unionWith, without, xor, xorBy
+ * @param arrays The arrays to inspect.
+ * @returns Returns the new array of combined values.
+ * @see [[difference]], [[unionBy]], [[unionWith]], [[without]], [[xor]], [[xorBy]]
  * @example
  *
+ * ```js
  * union([2, 3], [1, 2])
  * // => [2, 3, 1]
+ * ```
  */
-function union(...arrays) {
+export function union<T>(...arrays: Array<Array<T>>): Array<T>;
+export function union(...arrays: Array<Array<any>>): Array<any>;
+export function union(...arrays: Array<Array<any>>): Array<any> {
   return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true));
 }
 
