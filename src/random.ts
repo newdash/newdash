@@ -1,5 +1,5 @@
-import toFinite from './toFinite';
 import isIterateeCall from './.internal/isIterateeCall';
+import toFinite from './toFinite';
 
 /**
  * Built-in method references without a dependency on `root`.
@@ -10,7 +10,7 @@ import isIterateeCall from './.internal/isIterateeCall';
 const freeParseFloat = parseFloat;
 
 /**
- * The base implementation of `_.random` without support for returning
+ * The base implementation of `random` without support for returning
  * floating-point numbers.
  *
  * @private
