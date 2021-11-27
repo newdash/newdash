@@ -96,7 +96,7 @@ export class Semaphore {
       task.hasAcquired = false;
       // queue task
       this.tasks.push(task);
-      setTimeout(this.schedule.bind(this), 0);
+      setTimeout(() => this.schedule(), 0);
       if (typeof timeout === 'number' && timeout > 0 && !isNaN(timeout) && isFinite(timeout)) {
         setTimeout(() => {
           if (!task.hasAcquired) {
