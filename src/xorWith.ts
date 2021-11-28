@@ -1,5 +1,5 @@
-import baseXor from './.internal/baseXor';
-import isArrayLikeObject from './isArrayLikeObject';
+import baseXor from "./.internal/baseXor";
+import isArrayLikeObject from "./isArrayLikeObject";
 
 /**
  * This method is like `xor` except that it accepts `comparator` which is
@@ -24,7 +24,7 @@ import isArrayLikeObject from './isArrayLikeObject';
  * ```
  */
 export function xorWith<T>(comparator: Function, ...arrays: Array<Array<T>>): Array<T> {
-  comparator = typeof comparator === 'function' ? comparator : undefined;
+  comparator = typeof comparator === "function" ? comparator : undefined;
   return baseXor(arrays.filter(isArrayLikeObject), undefined, comparator);
 }
 

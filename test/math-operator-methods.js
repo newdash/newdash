@@ -1,11 +1,11 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { _, symbol } from './utils';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { _, symbol } from "./utils";
 
-describe('math operator methods', () => {
-  lodashStable.each(['add', 'divide', 'multiply', 'subtract'], (methodName) => {
+describe("math operator methods", () => {
+  lodashStable.each(["add", "divide", "multiply", "subtract"], (methodName) => {
     const func = _[methodName],
-      isAddSub = methodName == 'add' || methodName == 'subtract';
+      isAddSub = methodName == "add" || methodName == "subtract";
 
     it(`\`_.${methodName}\` should return \`${isAddSub ? 0 : 1}\` when no arguments are given`, () => {
       assert.strictEqual(func(), isAddSub ? 0 : 1);
@@ -18,8 +18,8 @@ describe('math operator methods', () => {
     });
 
     it(`\`_.${methodName}\` should preserve the sign of \`0\``, () => {
-      const values = [0, '0', -0, '-0'],
-        expected = [[0, Infinity], ['0', Infinity], [-0, -Infinity], ['-0', -Infinity]];
+      const values = [0, "0", -0, "-0"],
+        expected = [[0, Infinity], ["0", Infinity], [-0, -Infinity], ["-0", -Infinity]];
 
       lodashStable.times(2, (index) => {
         const actual = lodashStable.map(values, (value) => {

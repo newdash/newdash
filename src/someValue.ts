@@ -1,4 +1,4 @@
-import { RecordIteratee } from './types';
+import { RecordIteratee } from "./types";
 
 /**
  * Checks if `predicate` returns truthy for **any** element of `object`.

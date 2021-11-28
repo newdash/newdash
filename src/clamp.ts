@@ -1,5 +1,5 @@
-import toNumber from './toNumber';
-import { baseClamp } from './.internal/baseClamp';
+import toNumber from "./toNumber";
+import { baseClamp } from "./.internal/baseClamp";
 
 /**
  * Clamps `number` within the inclusive `lower` and `upper` bounds.

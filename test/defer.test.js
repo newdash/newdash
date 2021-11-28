@@ -1,11 +1,11 @@
-import * as assert from 'assert';
-import { slice } from './utils';
-import defer from '../src/defer';
-import { assertShouldThrowError } from './helpers';
+import * as assert from "assert";
+import { slice } from "./utils";
+import defer from "../src/defer";
+import { assertShouldThrowError } from "./helpers";
 
-describe('defer', () => {
+describe("defer", () => {
 
-  it('should defer `func` execution', (done) => {
+  it("should defer `func` execution", (done) => {
     let pass = false;
     defer(() => { pass = true; });
 
@@ -15,7 +15,7 @@ describe('defer', () => {
     }, 32);
   });
 
-  it('should provide additional arguments to `func`', (done) => {
+  it("should provide additional arguments to `func`", (done) => {
     let args;
 
     defer(function() {
@@ -29,7 +29,7 @@ describe('defer', () => {
     }, 32);
   });
 
-  it('should be cancelable', (done) => {
+  it("should be cancelable", (done) => {
     let pass = true,
       timerId = defer(() => { pass = false; });
 
@@ -41,7 +41,7 @@ describe('defer', () => {
     }, 32);
   });
 
-  it('should throw error when type error', async() => {
+  it("should throw error when type error", async() => {
 
     await assertShouldThrowError(() => {
       defer(1);

@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
+import * as assert from "assert";
+import lodashStable from "lodash";
 
 import {
   _,
@@ -10,14 +10,14 @@ import {
   MAX_ARRAY_LENGTH,
   symbol,
   falsey
-} from './utils';
+} from "./utils";
 
-describe('number coercion methods', () => {
-  lodashStable.each(['toFinite', 'toInteger', 'toNumber', 'toSafeInteger'], (methodName) => {
+describe("number coercion methods", () => {
+  lodashStable.each(["toFinite", "toInteger", "toNumber", "toSafeInteger"], (methodName) => {
     const func = _[methodName];
 
     it(`\`_.${methodName}\` should preserve the sign of \`0\``, () => {
-      const values = [0, '0', -0, '-0'],
+      const values = [0, "0", -0, "-0"],
         expected = [[0, Infinity], [0, Infinity], [-0, -Infinity], [-0, -Infinity]];
 
       lodashStable.times(2, (index) => {
@@ -33,12 +33,12 @@ describe('number coercion methods', () => {
     });
   });
 
-  lodashStable.each(['toFinite', 'toInteger', 'toLength', 'toNumber', 'toSafeInteger'], (methodName) => {
+  lodashStable.each(["toFinite", "toInteger", "toLength", "toNumber", "toSafeInteger"], (methodName) => {
     const func = _[methodName],
-      isToFinite = methodName == 'toFinite',
-      isToLength = methodName == 'toLength',
-      isToNumber = methodName == 'toNumber',
-      isToSafeInteger = methodName == 'toSafeInteger';
+      isToFinite = methodName == "toFinite",
+      isToLength = methodName == "toLength",
+      isToNumber = methodName == "toNumber",
+      isToSafeInteger = methodName == "toSafeInteger";
 
     function negative(string) {
       return `-${string}`;
@@ -93,10 +93,10 @@ describe('number coercion methods', () => {
       const transforms = [identity, pad, positive, negative];
 
       const values = [
-        '10', '1.234567890', (`${MAX_SAFE_INTEGER}`),
-        '1e+308', '1e308', '1E+308', '1E308',
-        '5e-324', '5E-324',
-        'Infinity', 'NaN'
+        "10", "1.234567890", (`${MAX_SAFE_INTEGER}`),
+        "1e+308", "1e308", "1E+308", "1E308",
+        "5e-324", "5E-324",
+        "Infinity", "NaN"
       ];
 
       const expected = lodashStable.map(values, (value) => {
@@ -127,7 +127,7 @@ describe('number coercion methods', () => {
     it(`\`_.${methodName}\` should convert binary/octal strings to numbers`, () => {
       const numbers = [42, 5349, 1715004],
         transforms = [identity, pad],
-        values = ['0b101010', '0o12345', '0x1a2b3c'];
+        values = ["0b101010", "0o12345", "0x1a2b3c"];
 
       const expected = lodashStable.map(numbers, (n) => lodashStable.times(8, lodashStable.constant(n)));
 
@@ -139,9 +139,9 @@ describe('number coercion methods', () => {
       assert.deepStrictEqual(actual, expected);
     });
 
-    it(`\`_.${methodName}\` should convert invalid binary/octal strings to \`${isToNumber ? 'NaN' : '0'}\``, () => {
+    it(`\`_.${methodName}\` should convert invalid binary/octal strings to \`${isToNumber ? "NaN" : "0"}\``, () => {
       const transforms = [identity, pad, positive, negative],
-        values = ['0b', '0o', '0x', '0b1010102', '0o123458', '0x1a2b3x'];
+        values = ["0b", "0o", "0x", "0b1010102", "0o123458", "0x1a2b3x"];
 
       const expected = lodashStable.map(values, (n) => lodashStable.times(8, lodashStable.constant(isToNumber ? NaN : 0)));
 
@@ -150,7 +150,7 @@ describe('number coercion methods', () => {
       assert.deepStrictEqual(actual, expected);
     });
 
-    it(`\`_.${methodName}\` should convert symbols to \`${isToNumber ? 'NaN' : '0'}\``, () => {
+    it(`\`_.${methodName}\` should convert symbols to \`${isToNumber ? "NaN" : "0"}\``, () => {
       if (Symbol) {
         const object1 = Object(symbol),
           object2 = Object(symbol),
@@ -180,16 +180,16 @@ describe('number coercion methods', () => {
         [],
         [1],
         [1, 2],
-        { 'valueOf': '1.1' },
-        { 'valueOf': '1.1', 'toString': lodashStable.constant('2.2') },
-        { 'valueOf': lodashStable.constant('1.1'), 'toString': '2.2' },
-        { 'valueOf': lodashStable.constant('1.1'), 'toString': lodashStable.constant('2.2') },
-        { 'valueOf': lodashStable.constant('-0x1a2b3c') },
-        { 'toString': lodashStable.constant('-0x1a2b3c') },
-        { 'valueOf': lodashStable.constant('0o12345') },
-        { 'toString': lodashStable.constant('0o12345') },
-        { 'valueOf': lodashStable.constant('0b101010') },
-        { 'toString': lodashStable.constant('0b101010') }
+        { "valueOf": "1.1" },
+        { "valueOf": "1.1", "toString": lodashStable.constant("2.2") },
+        { "valueOf": lodashStable.constant("1.1"), "toString": "2.2" },
+        { "valueOf": lodashStable.constant("1.1"), "toString": lodashStable.constant("2.2") },
+        { "valueOf": lodashStable.constant("-0x1a2b3c") },
+        { "toString": lodashStable.constant("-0x1a2b3c") },
+        { "valueOf": lodashStable.constant("0o12345") },
+        { "toString": lodashStable.constant("0o12345") },
+        { "valueOf": lodashStable.constant("0b101010") },
+        { "toString": lodashStable.constant("0b101010") }
       ];
 
       let expected = [

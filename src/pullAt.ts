@@ -1,9 +1,9 @@
-import baseAt from './.internal/baseAt';
-import basePullAt from './.internal/basePullAt';
-import compareAscending from './.internal/compareAscending';
-import isIndex from './.internal/isIndex';
-import arrayMap from './.internal/arrayMap';
-import flatRest from './.internal/flatRest';
+import baseAt from "./.internal/baseAt";
+import basePullAt from "./.internal/basePullAt";
+import compareAscending from "./.internal/compareAscending";
+import isIndex from "./.internal/isIndex";
+import arrayMap from "./.internal/arrayMap";
+import flatRest from "./.internal/flatRest";
 
 /**
  * @ignore

@@ -1,4 +1,4 @@
-import createMathOperation from './.internal/createMathOperation';
+import createMathOperation from "./.internal/createMathOperation";
 
 /**
  * @ignore

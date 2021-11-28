@@ -1,5 +1,5 @@
-import baseExtremum from './.internal/baseExtremum';
-import getIteratee from './.internal/getIteratee';
+import baseExtremum from "./.internal/baseExtremum";
+import getIteratee from "./.internal/getIteratee";
 
 /**
  * @ignore

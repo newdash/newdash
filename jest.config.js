@@ -1,23 +1,23 @@
 module.exports = {
-  'transform': {
-    '.(js|ts|tsx)': 'ts-jest'
+  "transform": {
+    ".(js|ts|tsx)": "ts-jest"
   },
-  'testEnvironment': 'jsdom',
-  'testTimeout': 30 * 1000,
-  'collectCoverageFrom': [
-    'src/**/*',
-    '!**/node_modules/**'
+  "testEnvironment": "jsdom",
+  "testTimeout": 30 * 1000,
+  "collectCoverageFrom": [
+    "src/**/*",
+    "!**/node_modules/**"
   ],
-  'coveragePathIgnorePatterns': [
-    'node_modules/',
-    'src/test'
+  "coveragePathIgnorePatterns": [
+    "node_modules/",
+    "src/test"
   ],
-  'testPathIgnorePatterns': [
-    '/node_modules/',
-    '/deno/',
-    '/dist/'
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "/deno/",
+    "/dist/"
   ],
-  'modulePathIgnorePatterns': [
-    '<rootDir>/dist'
+  "modulePathIgnorePatterns": [
+    "<rootDir>/dist"
   ]
 };

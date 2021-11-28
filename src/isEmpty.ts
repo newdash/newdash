@@ -1,10 +1,10 @@
-import getTag from './.internal/getTag';
-import isArguments from './isArguments';
-import isArrayLike from './isArrayLike';
-import isBuffer from './isBuffer';
-import isPrototype from './.internal/isPrototype';
-import isTypedArray from './isTypedArray';
-import baseKeys from './.internal/baseKeys';
+import getTag from "./.internal/getTag";
+import isArguments from "./isArguments";
+import isArrayLike from "./isArrayLike";
+import isBuffer from "./isBuffer";
+import isPrototype from "./.internal/isPrototype";
+import isTypedArray from "./isTypedArray";
+import baseKeys from "./.internal/baseKeys";
 
 /**
  * Used to check objects for own properties.
@@ -14,11 +14,11 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
 /**
  * @ignore
  */
-const mapTag = '[object Map]';
+const mapTag = "[object Map]";
 /**
  * @ignore
  */
-const setTag = '[object Set]';
+const setTag = "[object Set]";
 /**
  * @ignore
  * @internal
@@ -69,7 +69,7 @@ export function isEmpty(value?: any): boolean {
     return true;
   }
   if (isArrayLike(value) &&
-    (isArray(value) || typeof value == 'string' || typeof value.splice == 'function' ||
+    (isArray(value) || typeof value == "string" || typeof value.splice == "function" ||
       isBuffer(value) || isTypedArray(value) || isArguments(value))) {
     return !value.length;
   }

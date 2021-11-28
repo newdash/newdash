@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prefer-arrow-callback */
-import { defineFunctionName } from './defineFunctionName';
+import { defineFunctionName } from "./defineFunctionName";
 
 /**
  * @internal

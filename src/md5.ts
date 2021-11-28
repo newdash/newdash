@@ -230,7 +230,7 @@ function binlMD5(x: Array<any>, len: number): Array<number> {
    */
 function binl2rstr(input: Array<number>): string {
   let i;
-  let output = '';
+  let output = "";
   const length32 = input.length * 32;
   for (i = 0; i < length32; i += 8) {
     output += String.fromCharCode((input[i >> 5] >>> i % 32) & 0xff);
@@ -276,8 +276,8 @@ function rstrMD5(s: string): string {
    * @returns {string} Hex encoded string
    */
 function rstr2hex(input: string): string {
-  const hexTab = '0123456789abcdef';
-  let output = '';
+  const hexTab = "0123456789abcdef";
+  let output = "";
   let x;
   let i;
   for (i = 0; i < input.length; i += 1) {

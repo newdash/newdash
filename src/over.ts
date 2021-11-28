@@ -1,5 +1,5 @@
-import arrayMap from './.internal/arrayMap';
-import { createOver } from './.internal/createOver';
+import arrayMap from "./.internal/arrayMap";
+import { createOver } from "./.internal/createOver";
 
 /**
  * @ignore

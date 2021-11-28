@@ -1,16 +1,16 @@
-import * as assert from 'assert';
-import identity from '../src/.internal/identity';
-import find from '../src/find';
-import isFunction from '../src/isFunction';
-import map from '../src/map';
-import memoize from '../src/memoize';
-import some from '../src/some';
-import times from '../src/times';
-import { stubTrue } from './stubs';
-import { noop } from './utils';
+import * as assert from "assert";
+import identity from "../src/.internal/identity";
+import find from "../src/find";
+import isFunction from "../src/isFunction";
+import map from "../src/map";
+import memoize from "../src/memoize";
+import some from "../src/some";
+import times from "../src/times";
+import { stubTrue } from "./stubs";
+import { noop } from "./utils";
 
 
-describe('memoize', () => {
+describe("memoize", () => {
 
   class CustomCache {
 
@@ -35,16 +35,16 @@ describe('memoize', () => {
 
     get(key) {
       // @ts-ignore
-      const entry = find(this.__data__, ['key', key]);
+      const entry = find(this.__data__, ["key", key]);
       return entry && entry.value;
     }
 
     has(key) {
-      return some(this.__data__, ['key', key]);
+      return some(this.__data__, ["key", key]);
     }
 
     set(key, value) {
-      this.__data__.push({ 'key': key, 'value': value });
+      this.__data__.push({ "key": key, "value": value });
       return this;
     }
 
@@ -62,18 +62,18 @@ describe('memoize', () => {
     // @ts-ignore
     set(key, value) {
       const result = new ImmutableCache;
-      result.__data__ = this.__data__.concat({ 'key': key, 'value': value });
+      result.__data__ = this.__data__.concat({ "key": key, "value": value });
       return result;
     }
   }
 
-  it('should memoize results based on the first argument given', () => {
+  it("should memoize results based on the first argument given", () => {
     const memoized = memoize((a: number, b: number, c: number): number => a + b + c);
     assert.strictEqual(memoized(1, 2, 3), 6);
     assert.strictEqual(memoized(1, 3, 5), 6);
   });
 
-  it('should support a `resolver`', () => {
+  it("should support a `resolver`", () => {
     const fn = function(a, b, c) { return a + b + c; },
       memoized = memoize(fn, fn);
 
@@ -81,11 +81,11 @@ describe('memoize', () => {
     assert.strictEqual(memoized(1, 3, 5), 9);
   });
 
-  it('should use `this` binding of function for `resolver`', () => {
+  it("should use `this` binding of function for `resolver`", () => {
     const fn = function(a, b, c) { return a + this.b + this.c; },
       memoized = memoize(fn, fn);
 
-    const object = { 'memoized': memoized, 'b': 2, 'c': 3 };
+    const object = { "memoized": memoized, "b": 2, "c": 3 };
     // @ts-ignore
     assert.strictEqual(object.memoized(1), 6);
 
@@ -95,12 +95,12 @@ describe('memoize', () => {
     assert.strictEqual(object.memoized(1), 9);
   });
 
-  it('should throw a TypeError if `resolve` is truthy and not a function', () => {
+  it("should throw a TypeError if `resolve` is truthy and not a function", () => {
     // @ts-ignore
     assert.throws(() => { memoize(noop, true); }, TypeError);
   });
 
-  it('should not error if `resolver` is nullish', () => {
+  it("should not error if `resolver` is nullish", () => {
     const values = [, null, undefined],
       expected = map(values, stubTrue);
 
@@ -113,15 +113,15 @@ describe('memoize', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should check cache for own properties', () => {
+  it("should check cache for own properties", () => {
     const props = [
-      'constructor',
-      'hasOwnProperty',
-      'isPrototypeOf',
-      'propertyIsEnumerable',
-      'toLocaleString',
-      'toString',
-      'valueOf'
+      "constructor",
+      "hasOwnProperty",
+      "isPrototypeOf",
+      "propertyIsEnumerable",
+      "toLocaleString",
+      "toString",
+      "valueOf"
     ];
 
     const memoized = memoize(identity);
@@ -131,9 +131,9 @@ describe('memoize', () => {
     assert.deepStrictEqual(actual, props);
   });
 
-  it('should cache the `__proto__` key', () => {
+  it("should cache the `__proto__` key", () => {
     const array = [],
-      key = '__proto__';
+      key = "__proto__";
 
     times(2, (index) => {
       let count = 0,
@@ -157,34 +157,34 @@ describe('memoize', () => {
     });
   });
 
-  it('should allow `_.memoize.Cache` to be customized', () => {
+  it("should allow `_.memoize.Cache` to be customized", () => {
     const oldCache = memoize.Cache;
     memoize.Cache = CustomCache;
 
     const memoized = memoize((object) => object.id);
 
     const cache = memoized.cache,
-      key1 = { 'id': 'a' },
-      key2 = { 'id': 'b' };
+      key1 = { "id": "a" },
+      key2 = { "id": "b" };
 
-    assert.strictEqual(memoized(key1), 'a');
+    assert.strictEqual(memoized(key1), "a");
     assert.strictEqual(cache.has(key1), true);
 
-    assert.strictEqual(memoized(key2), 'b');
+    assert.strictEqual(memoized(key2), "b");
     assert.strictEqual(cache.has(key2), true);
 
     memoize.Cache = oldCache;
   });
 
-  it('should works with an immutable `_.memoize.Cache` ', () => {
+  it("should works with an immutable `_.memoize.Cache` ", () => {
     const oldCache = memoize.Cache;
     // @ts-ignore
     memoize.Cache = ImmutableCache;
 
     const memoized = memoize((object) => object.id);
 
-    const key1 = { 'id': 'a' },
-      key2 = { 'id': 'b' };
+    const key1 = { "id": "a" },
+      key2 = { "id": "b" };
 
     memoized(key1);
     memoized(key2);

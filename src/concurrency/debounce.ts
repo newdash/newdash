@@ -1,7 +1,7 @@
-import { mustProvide } from '../assert';
-import { debounce as nativeDebounce } from '../debounce';
-import { defineFunctionName } from '../functional/defineFunctionName';
-import { AsyncFunction } from '../types';
+import { mustProvide } from "../assert";
+import { debounce as nativeDebounce } from "../debounce";
+import { defineFunctionName } from "../functional/defineFunctionName";
+import { AsyncFunction } from "../types";
 
 
 /**
@@ -15,8 +15,8 @@ import { AsyncFunction } from '../types';
  * @param wait wait milliseconds before last time invocation
  */
 export function debounce<T extends AsyncFunction>(runner: T, wait: number): T {
-  mustProvide(runner, 'runner', 'function');
-  mustProvide(wait, 'wait', 'number');
+  mustProvide(runner, "runner", "function");
+  mustProvide(wait, "wait", "number");
   // @ts-ignore
   return defineFunctionName(nativeDebounce(runner, wait), runner?.name);
 }

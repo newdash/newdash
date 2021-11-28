@@ -1,5 +1,5 @@
-import baseIndexOf from './.internal/baseIndexOf';
-import toInteger from './toInteger';
+import baseIndexOf from "./.internal/baseIndexOf";
+import toInteger from "./toInteger";
 
 /**
  * Gets the index at which the first occurrence of `value` is found in `array`

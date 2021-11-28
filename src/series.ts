@@ -1,4 +1,4 @@
-import { AsyncFunction, ReturnType, UnwrapPromise } from './types';
+import { AsyncFunction, ReturnType, UnwrapPromise } from "./types";
 
 
 type SeriesResult<T extends Array<AsyncFunction>> = { [K in keyof T]: UnwrapPromise<ReturnType<T[K]>> }

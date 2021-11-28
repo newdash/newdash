@@ -1,28 +1,28 @@
-import * as assert from 'assert';
-import { identity, slice } from './utils';
-import curry from '../src/curry';
-import each from '../src/each';
-import { partial } from '../src/partial';
-import { partialRight } from '../src/partialRight';
+import * as assert from "assert";
+import { identity, slice } from "./utils";
+import curry from "../src/curry";
+import each from "../src/each";
+import { partial } from "../src/partial";
+import { partialRight } from "../src/partialRight";
 
-describe('partial methods', () => {
+describe("partial methods", () => {
 
-  each([['partial', partial], ['partialRight', partialRight]], ([methodName, func]) => {
+  each([["partial", partial], ["partialRight", partialRight]], ([methodName, func]) => {
 
-    const isPartial = methodName == 'partial';
+    const isPartial = methodName == "partial";
     const ph = func.placeholder;
 
     it(`\`_.${methodName}\` partially applies arguments`, () => {
-      const par = func(identity, 'a');
-      assert.strictEqual(par(), 'a');
+      const par = func(identity, "a");
+      assert.strictEqual(par(), "a");
     });
 
     it(`\`_.${methodName}\` creates a function that can be invoked with additional arguments`, () => {
       const fn = function(a, b) { return [a, b]; },
-        par = func(fn, 'a'),
-        expected = isPartial ? ['a', 'b'] : ['b', 'a'];
+        par = func(fn, "a"),
+        expected = isPartial ? ["a", "b"] : ["b", "a"];
 
-      assert.deepStrictEqual(par('b'), expected);
+      assert.deepStrictEqual(par("b"), expected);
     });
 
     it(`\`_.${methodName}\` works when there are no partially applied arguments and the created function is invoked without additional arguments`, () => {
@@ -34,28 +34,28 @@ describe('partial methods', () => {
 
     it(`\`_.${methodName}\` works when there are no partially applied arguments and the created function is invoked with additional arguments`, () => {
       const par = func(identity);
-      assert.strictEqual(par('a'), 'a');
+      assert.strictEqual(par("a"), "a");
     });
 
     it(`\`_.${methodName}\` should support placeholders`, () => {
       let fn = function() { return slice.call(arguments); },
-        par = func(fn, ph, 'b', ph);
+        par = func(fn, ph, "b", ph);
 
-      assert.deepStrictEqual(par('a', 'c'), ['a', 'b', 'c']);
-      assert.deepStrictEqual(par('a'), ['a', 'b', undefined]);
-      assert.deepStrictEqual(par(), [undefined, 'b', undefined]);
+      assert.deepStrictEqual(par("a", "c"), ["a", "b", "c"]);
+      assert.deepStrictEqual(par("a"), ["a", "b", undefined]);
+      assert.deepStrictEqual(par(), [undefined, "b", undefined]);
 
       if (isPartial) {
-        assert.deepStrictEqual(par('a', 'c', 'd'), ['a', 'b', 'c', 'd']);
+        assert.deepStrictEqual(par("a", "c", "d"), ["a", "b", "c", "d"]);
       } else {
-        par = func(fn, ph, 'c', ph);
-        assert.deepStrictEqual(par('a', 'b', 'd'), ['a', 'b', 'c', 'd']);
+        par = func(fn, ph, "c", ph);
+        assert.deepStrictEqual(par("a", "b", "d"), ["a", "b", "c", "d"]);
       }
     });
 
     it(`\`_.${methodName}\` creates a function with a \`length\` of \`0\``, () => {
       const fn = function(a, b, c) { },
-        par = func(fn, 'a');
+        par = func(fn, "a");
 
       assert.strictEqual(par.length, 0);
     });
@@ -77,13 +77,13 @@ describe('partial methods', () => {
         return `${greeting} ${name}`;
       }
 
-      const par1 = func(greet, 'hi'),
-        par2 = func(par1, 'barney'),
-        par3 = func(par1, 'pebbles');
+      const par1 = func(greet, "hi"),
+        par2 = func(par1, "barney"),
+        par3 = func(par1, "pebbles");
 
-      assert.strictEqual(par1('fred'), isPartial ? 'hi fred' : 'fred hi');
-      assert.strictEqual(par2(), isPartial ? 'hi barney' : 'barney hi');
-      assert.strictEqual(par3(), isPartial ? 'hi pebbles' : 'pebbles hi');
+      assert.strictEqual(par1("fred"), isPartial ? "hi fred" : "fred hi");
+      assert.strictEqual(par2(), isPartial ? "hi barney" : "barney hi");
+      assert.strictEqual(par3(), isPartial ? "hi pebbles" : "pebbles hi");
     });
 
     it(`\`_.${methodName}\` should work with curried functions`, () => {
@@ -94,12 +94,12 @@ describe('partial methods', () => {
       assert.strictEqual(curried(2)(3), 6);
     });
 
-    it('should work with placeholders and curried functions', () => {
+    it("should work with placeholders and curried functions", () => {
       const fn = function() { return slice.call(arguments); },
         curried = curry(fn),
-        par = func(curried, ph, 'b', ph, 'd');
+        par = func(curried, ph, "b", ph, "d");
 
-      assert.deepStrictEqual(par('a', 'c'), ['a', 'b', 'c', 'd']);
+      assert.deepStrictEqual(par("a", "c"), ["a", "b", "c", "d"]);
     });
   });
 

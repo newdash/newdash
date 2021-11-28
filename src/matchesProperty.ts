@@ -1,7 +1,7 @@
 // @ts-nocheck
-import baseClone from './.internal/baseClone';
-import baseMatchesProperty from './.internal/baseMatchesProperty';
-import { Path } from './types';
+import baseClone from "./.internal/baseClone";
+import baseMatchesProperty from "./.internal/baseMatchesProperty";
+import { Path } from "./types";
 
 /** Used to compose bitmasks for cloning. */
 const CLONE_DEEP_FLAG = 1;

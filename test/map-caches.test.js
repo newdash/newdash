@@ -1,15 +1,15 @@
-import * as assert from 'assert';
-import { symbol, noop, mapCaches, LARGE_ARRAY_SIZE } from './utils';
-import map from '../src/map';
-import times from '../src/times';
-import forOwn from '../src/forOwn';
-import each from '../src/each';
-import { every } from '../src/every';
+import * as assert from "assert";
+import { symbol, noop, mapCaches, LARGE_ARRAY_SIZE } from "./utils";
+import map from "../src/map";
+import times from "../src/times";
+import forOwn from "../src/forOwn";
+import each from "../src/each";
+import { every } from "../src/every";
 
 
-describe('map caches', () => {
+describe("map caches", () => {
 
-  const keys = [null, undefined, false, true, 1, -Infinity, NaN, {}, 'a', symbol || noop];
+  const keys = [null, undefined, false, true, 1, -Infinity, NaN, {}, "a", symbol || noop];
 
   const pairs = map(keys, (key, index) => {
     const lastIndex = keys.length - 1;
@@ -25,11 +25,11 @@ describe('map caches', () => {
     });
 
     return {
-      'hashes': new mapCaches.Hash(pairs),
-      'list caches': new mapCaches.ListCache(pairs),
-      'map caches': new mapCaches.MapCache(pairs),
-      'stack caches': new mapCaches.Stack(pairs),
-      'large stacks': largeStack
+      "hashes": new mapCaches.Hash(pairs),
+      "list caches": new mapCaches.ListCache(pairs),
+      "map caches": new mapCaches.MapCache(pairs),
+      "stack caches": new mapCaches.Stack(pairs),
+      "large stacks": largeStack
     };
   }
 

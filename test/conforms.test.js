@@ -1,10 +1,10 @@
-import * as assert from 'assert';
-import conforms from '../src/conforms';
+import * as assert from "assert";
+import conforms from "../src/conforms";
 
-describe('conforms', () => {
-  it('should not change behavior if `source` is modified', () => {
-    const object = { 'a': 2 },
-      source = { 'a': function(value) { return value > 1; } },
+describe("conforms", () => {
+  it("should not change behavior if `source` is modified", () => {
+    const object = { "a": 2 },
+      source = { "a": function(value) { return value > 1; } },
       par = conforms(source);
 
     assert.strictEqual(par(object), true);

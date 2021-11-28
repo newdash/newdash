@@ -1,9 +1,9 @@
 // @ts-nocheck
-import map from './map';
-import copyArray from './.internal/copyArray';
-import isSymbol from './isSymbol';
-import stringToPath from './.internal/stringToPath';
-import toKey from './.internal/toKey';
+import map from "./map";
+import copyArray from "./.internal/copyArray";
+import isSymbol from "./isSymbol";
+import stringToPath from "./.internal/stringToPath";
+import toKey from "./.internal/toKey";
 
 /**
  * Converts `value` to a property path array.

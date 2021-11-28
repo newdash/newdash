@@ -1,4 +1,4 @@
-import baseFlatten from './.internal/baseFlatten';
+import baseFlatten from "./.internal/baseFlatten";
 
 /** Used as references for various `Number` constants. */
 const INFINITY = Infinity;

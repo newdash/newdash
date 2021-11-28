@@ -1,5 +1,5 @@
-import castPath from './.internal/castPath';
-import toKey from './.internal/toKey';
+import castPath from "./.internal/castPath";
+import toKey from "./.internal/toKey";
 
 /**
  * This method is like `get` except that if the resolved value is a
@@ -45,7 +45,7 @@ function result(object, path, defaultValue) {
       index = length;
       value = defaultValue;
     }
-    object = typeof value === 'function' ? value.call(object) : value;
+    object = typeof value === "function" ? value.call(object) : value;
   }
   return object;
 }

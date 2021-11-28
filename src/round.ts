@@ -1,11 +1,11 @@
-import createRound from './.internal/createRound';
+import createRound from "./.internal/createRound";
 
 /**
  * @internal
  * @private
  * @ignore
  */
-const internal = createRound('round');
+const internal = createRound("round");
 
 /**
  * Computes `number` rounded to `precision`.

@@ -1,6 +1,6 @@
 
 interface SettleResult<T = any> {
-  status: 'fulfilled' | 'rejected'
+  status: "fulfilled" | "rejected"
   value?: T
   reason?: any
 }
@@ -20,8 +20,8 @@ export async function allSettled<T = any>(collection: Array<Promise<T>>): Promis
     collection
       .map(
         (item) => item
-          .then((value) => ({ status: 'fulfilled', value }))
-          .catch((reason) => ({ status: 'rejected', reason }))
+          .then((value) => ({ status: "fulfilled", value }))
+          .catch((reason) => ({ status: "rejected", reason }))
       )
   );
 }

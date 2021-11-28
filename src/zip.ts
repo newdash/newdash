@@ -1,5 +1,5 @@
-import unzip from './unzip';
-import baseRest from './.internal/baseRest';
+import unzip from "./unzip";
+import baseRest from "./.internal/baseRest";
 
 /**
  * @ignore

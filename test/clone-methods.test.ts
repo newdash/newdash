@@ -1,25 +1,25 @@
 // @ts-nocheck
-import * as assert from 'assert';
-import root from '../src/.internal/root';
-import camelCase from '../src/camelCase';
-import capitalize from '../src/capitalize';
-import clone from '../src/clone';
-import cloneDeep from '../src/cloneDeep';
-import cloneDeepWith from '../src/cloneDeepWith';
-import cloneWith from '../src/cloneWith';
-import each from '../src/each';
-import forOwn from '../src/forOwn';
-import isArguments from '../src/isArguments';
-import isElement from '../src/isElement';
-import isEqual from '../src/isEqual';
-import isFunction from '../src/isFunction';
-import isObject from '../src/isObject';
-import isPlainObject from '../src/isPlainObject';
-import last from '../src/last';
-import map from '../src/map';
-import startsWith from '../src/startsWith';
-import times from '../src/times';
-import transform from '../src/transform';
+import * as assert from "assert";
+import root from "../src/.internal/root";
+import camelCase from "../src/camelCase";
+import capitalize from "../src/capitalize";
+import clone from "../src/clone";
+import cloneDeep from "../src/cloneDeep";
+import cloneDeepWith from "../src/cloneDeepWith";
+import cloneWith from "../src/cloneWith";
+import each from "../src/each";
+import forOwn from "../src/forOwn";
+import isArguments from "../src/isArguments";
+import isElement from "../src/isElement";
+import isEqual from "../src/isEqual";
+import isFunction from "../src/isFunction";
+import isObject from "../src/isObject";
+import isPlainObject from "../src/isPlainObject";
+import last from "../src/last";
+import map from "../src/map";
+import startsWith from "../src/startsWith";
+import times from "../src/times";
+import transform from "../src/transform";
 import {
   arrayBuffer,
   arrayViews, asyncFunc, body,
@@ -30,10 +30,10 @@ import {
   noop, objectProto, realm,
   slice, stubTrue,
   symbol
-} from './utils';
+} from "./utils";
 
 
-describe('clone methods', function() {
+describe("clone methods", function() {
   function Foo() {
     this.a = 1;
   }
@@ -42,8 +42,8 @@ describe('clone methods', function() {
 
   if (Map) {
     var iMap = new Map;
-    iMap.set('a', 1);
-    iMap.set('b', 2);
+    iMap.set("a", 1);
+    iMap.set("b", 2);
   }
   if (Set) {
     var set = new Set;
@@ -51,53 +51,53 @@ describe('clone methods', function() {
     set.add(2);
   }
   const objects = {
-    '`arguments` objects': arguments,
-    'arrays': ['a', ''],
-    'array-like objects': { '0': 'a', 'length': 1 },
-    'booleans': false,
-    'boolean objects': Object(false),
-    'date objects': new Date,
-    'Foo instances': new Foo,
-    'objects': { 'a': 0, 'b': 1, 'c': 2 },
-    'objects with object values': { 'a': /a/, 'b': ['B'], 'c': { 'C': 1 } },
-    'objects from another document': realm.object || {},
-    'maps': iMap,
-    'null values': null,
-    'numbers': 0,
-    'number objects': Object(0),
-    'regexes': /a/gim,
-    'sets': set,
-    'strings': 'a',
-    'string objects': Object('a'),
-    'undefined values': undefined
+    "`arguments` objects": arguments,
+    "arrays": ["a", ""],
+    "array-like objects": { "0": "a", "length": 1 },
+    "booleans": false,
+    "boolean objects": Object(false),
+    "date objects": new Date,
+    "Foo instances": new Foo,
+    "objects": { "a": 0, "b": 1, "c": 2 },
+    "objects with object values": { "a": /a/, "b": ["B"], "c": { "C": 1 } },
+    "objects from another document": realm.object || {},
+    "maps": iMap,
+    "null values": null,
+    "numbers": 0,
+    "number objects": Object(0),
+    "regexes": /a/gim,
+    "sets": set,
+    "strings": "a",
+    "string objects": Object("a"),
+    "undefined values": undefined
   };
 
   objects.arrays.length = 3;
 
   const uncloneable = {
-    'DOM elements': body,
-    'functions': Foo,
-    'async functions': asyncFunc,
-    'generator functions': genFunc,
-    'the `Proxy` constructor': Proxy
+    "DOM elements": body,
+    "functions": Foo,
+    "async functions": asyncFunc,
+    "generator functions": genFunc,
+    "the `Proxy` constructor": Proxy
   };
 
   each(errors, (error) => {
     uncloneable[`${error.name}s`] = error;
   });
 
-  it('`clone` should perform a shallow clone', () => {
-    const array = [{ 'a': 0 }, { 'b': 1 }],
+  it("`clone` should perform a shallow clone", () => {
+    const array = [{ "a": 0 }, { "b": 1 }],
       actual = clone(array);
 
     assert.deepStrictEqual(actual, array);
     assert.ok(actual !== array && actual[0] === array[0]);
   });
 
-  it('`cloneDeep` should deep clone objects with circular references', () => {
+  it("`cloneDeep` should deep clone objects with circular references", () => {
     const object = {
-      'foo': { 'b': { 'c': { 'd': {} } } },
-      'bar': {}
+      "foo": { "b": { "c": { "d": {} } } },
+      "bar": {}
     };
 
     object.foo.b.c.d = object;
@@ -107,7 +107,7 @@ describe('clone methods', function() {
     assert.ok(actual.bar.b === actual.foo.b && actual === actual.foo.b.c.d && actual !== object);
   });
 
-  it('`cloneDeep` should deep clone objects with lots of circular references', () => {
+  it("`cloneDeep` should deep clone objects with lots of circular references", () => {
     const cyclical = {};
     times(LARGE_ARRAY_SIZE + 1, (index) => {
       cyclical[`v${index}`] = [index ? cyclical[`v${index - 1}`] : cyclical];
@@ -120,21 +120,21 @@ describe('clone methods', function() {
     assert.notStrictEqual(actual, cyclical[`v${LARGE_ARRAY_SIZE - 1}`]);
   });
 
-  it('`cloneDeepWith` should provide `stack` to `customizer`', () => {
+  it("`cloneDeepWith` should provide `stack` to `customizer`", () => {
     let actual;
 
-    cloneDeepWith({ 'a': 1 }, function() {
+    cloneDeepWith({ "a": 1 }, function() {
       actual = last(arguments);
     });
 
     assert.ok(isNpm
-      ? actual.constructor.name == 'Stack'
+      ? actual.constructor.name == "Stack"
       : actual instanceof mapCaches.Stack
     );
   });
 
-  each([[clone, 'clone'], [cloneDeep, 'cloneDeep']], ([func, methodName]) => {
-    const isDeep = methodName == 'cloneDeep';
+  each([[clone, "clone"], [cloneDeep, "cloneDeep"]], ([func, methodName]) => {
+    const isDeep = methodName == "cloneDeep";
 
     forOwn(objects, (object, kind) => {
       it(`\`${methodName}\` should clone ${kind}`, () => {
@@ -150,7 +150,7 @@ describe('clone methods', function() {
     });
 
     it(`\`${methodName}\` should clone array buffers`, () => {
-      if (typeof ArrayBuffer == 'object') {
+      if (typeof ArrayBuffer == "object") {
         const actual = func(arrayBuffer);
         assert.strictEqual(actual.byteLength, arrayBuffer.byteLength);
         assert.notStrictEqual(actual, arrayBuffer);
@@ -158,7 +158,7 @@ describe('clone methods', function() {
     });
 
     it(`\`${methodName}\` should clone buffers`, () => {
-      if (typeof Buffer == 'object') {
+      if (typeof Buffer == "object") {
         const buffer = Buffer.from([1, 2]),
           actual = func(buffer);
 
@@ -172,22 +172,22 @@ describe('clone methods', function() {
     });
 
     it(`\`${methodName}\` should clone \`index\` and \`input\` array properties`, () => {
-      const array = /c/.exec('abcde'),
+      const array = /c/.exec("abcde"),
         actual = func(array);
 
       assert.strictEqual(actual.index, 2);
-      assert.strictEqual(actual.input, 'abcde');
+      assert.strictEqual(actual.input, "abcde");
     });
 
     it(`\`${methodName}\` should clone \`lastIndex\` regexp property`, () => {
       const regexp = /c/g;
-      regexp.exec('abcde');
+      regexp.exec("abcde");
 
       assert.strictEqual(func(regexp).lastIndex, 3);
     });
 
     it(`\`${methodName}\` should clone expando properties`, () => {
-      const values = map([false, true, 1, 'a'], (value) => {
+      const values = map([false, true, 1, "a"], (value) => {
         const object = Object(value);
         object.a = 1;
         return object;
@@ -204,7 +204,7 @@ describe('clone methods', function() {
       const actual = func(Foo.prototype);
 
       assert.ok(!(actual instanceof Foo));
-      assert.deepStrictEqual(actual, { 'b': 1 });
+      assert.deepStrictEqual(actual, { "b": 1 });
     });
 
     it(`\`${methodName}\` should set the \`[[Prototype]]\` of a clone`, () => {
@@ -225,13 +225,13 @@ describe('clone methods', function() {
 
     it(`\`${methodName}\` should clone properties that shadow those on \`Object.prototype\``, () => {
       const object = {
-        'constructor': objectProto.constructor,
-        'hasOwnProperty': objectProto.hasOwnProperty,
-        'isPrototypeOf': objectProto.isPrototypeOf,
-        'propertyIsEnumerable': objectProto.propertyIsEnumerable,
-        'toLocaleString': objectProto.toLocaleString,
-        'toString': objectProto.toString,
-        'valueOf': objectProto.valueOf
+        "constructor": objectProto.constructor,
+        "hasOwnProperty": objectProto.hasOwnProperty,
+        "isPrototypeOf": objectProto.isPrototypeOf,
+        "propertyIsEnumerable": objectProto.propertyIsEnumerable,
+        "toLocaleString": objectProto.toLocaleString,
+        "toString": objectProto.toString,
+        "valueOf": objectProto.valueOf
       };
 
       const actual = func(object);
@@ -242,23 +242,23 @@ describe('clone methods', function() {
 
     it(`\`${methodName}\` should clone symbol properties`, () => {
       function Foo() {
-        this[symbol] = { 'c': 1 };
+        this[symbol] = { "c": 1 };
       }
 
       if (Symbol) {
-        const symbol2 = Symbol('b');
+        const symbol2 = Symbol("b");
         Foo.prototype[symbol2] = 2;
 
-        const symbol3 = Symbol('c');
+        const symbol3 = Symbol("c");
         defineProperty(Foo.prototype, symbol3, {
-          'configurable': true,
-          'enumerable': false,
-          'writable': true,
-          'value': 3
+          "configurable": true,
+          "enumerable": false,
+          "writable": true,
+          "value": 3
         });
 
-        const object = { 'a': { 'b': new Foo } };
-        object[symbol] = { 'b': 1 };
+        const object = { "a": { "b": new Foo } };
+        object[symbol] = { "b": 1 };
 
         const actual = func(object);
         if (isDeep) {
@@ -283,8 +283,8 @@ describe('clone methods', function() {
         const object = Object(symbol),
           actual = func(object);
 
-        assert.strictEqual(typeof actual, 'object');
-        assert.strictEqual(typeof actual.valueOf(), 'symbol');
+        assert.strictEqual(typeof actual, "object");
+        assert.strictEqual(typeof actual.valueOf(), "symbol");
         assert.notStrictEqual(actual, object);
       }
     });
@@ -297,7 +297,7 @@ describe('clone methods', function() {
 
     it(`\`${methodName}\` should not error on DOM elements`, () => {
       if (document) {
-        const element = document.createElement('div');
+        const element = document.createElement("div");
 
         try {
           assert.deepStrictEqual(func(element), {});
@@ -311,7 +311,7 @@ describe('clone methods', function() {
       const props = [];
 
       const objects = transform(_, (result, value, key) => {
-        if (startsWith(key, '_') && isObject(value) &&
+        if (startsWith(key, "_") && isObject(value) &&
           !isArguments(value) && !isElement(value) &&
           !isFunction(value)) {
           props.push(capitalize(camelCase(key)));
@@ -328,11 +328,11 @@ describe('clone methods', function() {
         return result !== object && ((result instanceof Ctor) || !(new Ctor instanceof Ctor));
       });
 
-      assert.deepStrictEqual(actual, expected, props.join(', '));
+      assert.deepStrictEqual(actual, expected, props.join(", "));
     });
 
-    it(`\`${methodName}\` should perform a ${isDeep ? 'deep' : 'shallow'} clone when used as an iteratee for methods like \`map\``, () => {
-      const expected = [{ 'a': [0] }, { 'b': [1] }],
+    it(`\`${methodName}\` should perform a ${isDeep ? "deep" : "shallow"} clone when used as an iteratee for methods like \`map\``, () => {
+      const expected = [{ "a": [0] }, { "b": [1] }],
         actual = map(expected, func);
 
       assert.deepStrictEqual(actual, expected);
@@ -368,9 +368,9 @@ describe('clone methods', function() {
     forOwn(uncloneable, (value, key) => {
       it(`\`${methodName}\` should not clone ${key}`, () => {
         if (value) {
-          const object = { 'a': value, 'b': { 'c': value } },
+          const object = { "a": value, "b": { "c": value } },
             actual = func(object),
-            expected = value === Foo ? { 'c': Foo.c } : {};
+            expected = value === Foo ? { "c": Foo.c } : {};
 
           assert.deepStrictEqual(actual, object);
           assert.notStrictEqual(actual, object);
@@ -380,8 +380,8 @@ describe('clone methods', function() {
     });
   });
 
-  each([[cloneWith, 'cloneWith'], [cloneDeepWith, 'cloneDeepWith']], ([func, methodName]) => {
-    const isDeep = methodName == 'cloneDeepWith';
+  each([[cloneWith, "cloneWith"], [cloneDeepWith, "cloneDeepWith"]], ([func, methodName]) => {
+    const isDeep = methodName == "cloneDeepWith";
 
     it(`\`${methodName}\` should provide correct \`customizer\` arguments`, () => {
       const argsList = [],
@@ -394,12 +394,12 @@ describe('clone methods', function() {
         argsList.push(args);
       });
 
-      assert.deepStrictEqual(argsList, isDeep ? [[object], [1, 'a', object]] : [[object]]);
+      assert.deepStrictEqual(argsList, isDeep ? [[object], [1, "a", object]] : [[object]]);
     });
 
     it(`\`${methodName}\` should handle cloning when \`customizer\` returns \`undefined\``, () => {
-      const actual = func({ 'a': { 'b': 'c' } }, noop);
-      assert.deepStrictEqual(actual, { 'a': { 'b': 'c' } });
+      const actual = func({ "a": { "b": "c" } }, noop);
+      assert.deepStrictEqual(actual, { "a": { "b": "c" } });
     });
 
     forOwn(uncloneable, (value, key) => {
@@ -411,7 +411,7 @@ describe('clone methods', function() {
         let actual = func(value, customizer);
         assert.strictEqual(actual, value);
 
-        const object = { 'a': value, 'b': { 'c': value } };
+        const object = { "a": value, "b": { "c": value } };
         actual = func(object, customizer);
 
         assert.deepStrictEqual(actual, object);

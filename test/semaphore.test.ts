@@ -1,12 +1,12 @@
-import { Mutex, range, sleep } from '../src';
-import { MutexMap } from '../src/functional/MutexMap';
-import { Semaphore } from '../src/functional/Semaphore';
-import { SemaphoreMap } from '../src/functional/SemaphoreMap';
+import { Mutex, range, sleep } from "../src";
+import { MutexMap } from "../src/functional/MutexMap";
+import { Semaphore } from "../src/functional/Semaphore";
+import { SemaphoreMap } from "../src/functional/SemaphoreMap";
 
 
-describe('Semaphore', () => {
+describe("Semaphore", () => {
 
-  it('should execute semaphore correctly', async () => {
+  it("should execute semaphore correctly", async () => {
 
     let count = 0;
     const sem = new Semaphore(5);
@@ -20,7 +20,7 @@ describe('Semaphore', () => {
 
   });
 
-  it('should execute semaphore correctly with exception', async () => {
+  it("should execute semaphore correctly with exception", async () => {
     let count = 0;
     const sem = new Semaphore(5);
     const f = () => new Promise(async (resolve, reject) => {
@@ -36,7 +36,7 @@ describe('Semaphore', () => {
     expect(count).toBe(10);
   });
 
-  it('should execute SemaphoreMap correctly with exception', async () => {
+  it("should execute SemaphoreMap correctly with exception", async () => {
     let count = 0;
     const f = SemaphoreMap.wrap(5, 5, () => new Promise(async (resolve, reject) => {
       count++;
@@ -51,7 +51,7 @@ describe('Semaphore', () => {
     expect(count).toBe(10);
   });
 
-  it('should support mutex', async () => {
+  it("should support mutex", async () => {
 
     const m = new Mutex();
     const rs = {};
@@ -59,15 +59,15 @@ describe('Semaphore', () => {
       rs[k] = await m.acquire();
     };
 
-    const p1 = ac('1').then(() => {
-      expect(rs['2']).toBeUndefined();
+    const p1 = ac("1").then(() => {
+      expect(rs["2"]).toBeUndefined();
       setTimeout(() => {
-        rs['1']();
+        rs["1"]();
       }, 100);
     });
-    const p2 = ac('2').then(() => {
-      expect(rs['1']).not.toBeUndefined();
-      rs['2']();
+    const p2 = ac("2").then(() => {
+      expect(rs["1"]).not.toBeUndefined();
+      rs["2"]();
     });
 
     await Promise.all([p1, p2]);
@@ -80,31 +80,31 @@ describe('Semaphore', () => {
 
   });
 
-  it('should support MutexMap', async () => {
+  it("should support MutexMap", async () => {
     const mm = new MutexMap();
     const values = [];
 
     await Promise.all([
-      mm.execute('v1', async () => {
+      mm.execute("v1", async () => {
         await sleep(300);
-        values.push('1');
+        values.push("1");
       }),
-      mm.execute('v1', async () => {
+      mm.execute("v1", async () => {
         await sleep(100);
-        values.push('2');
+        values.push("2");
       })
     ]);
 
-    expect(values).toStrictEqual(['1', '2']);
+    expect(values).toStrictEqual(["1", "2"]);
 
 
   });
 
-  it('should support timeout', async () => {
+  it("should support timeout", async () => {
 
     const m = new Mutex();
     const r1 = await m.acquire(500);
-    await expect(() => m.acquire(100)).rejects.toThrow('timeout');
+    await expect(() => m.acquire(100)).rejects.toThrow("timeout");
     // @ts-ignore
     expect(m.tasks.length).toBe(1);
     r1();

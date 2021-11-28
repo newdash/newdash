@@ -1,7 +1,7 @@
-import baseFlatten from './.internal/baseFlatten';
-import copyArray from './.internal/copyArray';
-import arrayPush from './.internal/arrayPush';
-import isArray from './isArray';
+import baseFlatten from "./.internal/baseFlatten";
+import copyArray from "./.internal/copyArray";
+import arrayPush from "./.internal/arrayPush";
+import isArray from "./isArray";
 
 /**
  * Creates a new array concatenating `array` with any additional arrays

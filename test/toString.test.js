@@ -1,11 +1,11 @@
-import * as assert from 'assert';
-import { stubString, symbol } from './utils';
-import map from '../src/map';
-import toString from '../src/toString';
+import * as assert from "assert";
+import { stubString, symbol } from "./utils";
+import map from "../src/map";
+import toString from "../src/toString";
 
 
-describe('toString', () => {
-  it('should treat nullish values as empty strings', () => {
+describe("toString", () => {
+  it("should treat nullish values as empty strings", () => {
     const values = [, null, undefined],
       expected = map(values, stubString);
 
@@ -14,25 +14,25 @@ describe('toString', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should preserve the sign of `0`', () => {
+  it("should preserve the sign of `0`", () => {
     const values = [-0, Object(-0), 0, Object(0)],
-      expected = ['-0', '-0', '0', '0'],
+      expected = ["-0", "-0", "0", "0"],
       actual = map(values, toString);
 
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should preserve the sign of `0` in an array', () => {
+  it("should preserve the sign of `0` in an array", () => {
     const values = [-0, Object(-0), 0, Object(0)];
-    assert.deepStrictEqual(toString(values), '-0,-0,0,0');
+    assert.deepStrictEqual(toString(values), "-0,-0,0,0");
   });
 
-  it('should handle symbols', () => {
-    assert.strictEqual(toString(symbol), 'Symbol(a)');
+  it("should handle symbols", () => {
+    assert.strictEqual(toString(symbol), "Symbol(a)");
   });
 
-  it('should handle an array of symbols', () => {
-    assert.strictEqual(toString([symbol]), 'Symbol(a)');
+  it("should handle an array of symbols", () => {
+    assert.strictEqual(toString([symbol]), "Symbol(a)");
   });
 
 });

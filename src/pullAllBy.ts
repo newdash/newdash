@@ -1,5 +1,5 @@
-import basePullAll from './.internal/basePullAll';
-import { ArrayIteratee, KeyIteratee } from './types';
+import basePullAll from "./.internal/basePullAll";
+import { ArrayIteratee, KeyIteratee } from "./types";
 
 /**
  * This method is like `pullAll` except that it accepts `iteratee` which is

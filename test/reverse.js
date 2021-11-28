@@ -1,15 +1,15 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { LARGE_ARRAY_SIZE, identity } from './utils';
-import reverse from '../src/reverse';
-import compact from '../src/compact';
-import head from '../src/head';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { LARGE_ARRAY_SIZE, identity } from "./utils";
+import reverse from "../src/reverse";
+import compact from "../src/compact";
+import head from "../src/head";
 
-describe('reverse', () => {
+describe("reverse", () => {
   const largeArray = lodashStable.range(LARGE_ARRAY_SIZE).concat(null),
     smallArray = [0, 1, 2, null];
 
-  it('should reverse `array`', () => {
+  it("should reverse `array`", () => {
     const array = [1, 2, 3],
       actual = reverse(array);
 
@@ -17,7 +17,7 @@ describe('reverse', () => {
     assert.deepStrictEqual(array, [3, 2, 1]);
   });
 
-  it('should return the wrapped reversed `array`', () => {
+  it("should return the wrapped reversed `array`", () => {
     lodashStable.times(2, (index) => {
       const array = (index ? largeArray : smallArray).slice(),
         clone = array.slice(),
@@ -30,7 +30,7 @@ describe('reverse', () => {
     });
   });
 
-  it('should work in a lazy sequence', () => {
+  it("should work in a lazy sequence", () => {
     lodashStable.times(2, (index) => {
       const array = (index ? largeArray : smallArray).slice(),
         expected = array.slice(),
@@ -41,10 +41,10 @@ describe('reverse', () => {
     });
   });
 
-  it('should be lazy when in a lazy sequence', () => {
+  it("should be lazy when in a lazy sequence", () => {
     const spy = {
-      'toString': function() {
-        throw new Error('spy was revealed');
+      "toString": function() {
+        throw new Error("spy was revealed");
       }
     };
 
@@ -57,15 +57,15 @@ describe('reverse', () => {
     } catch (e) {}
 
     assert.ok(wrapped instanceof _);
-    assert.strictEqual(actual, '1');
+    assert.strictEqual(actual, "1");
     assert.deepEqual(array, expected);
   });
 
-  it('should work in a hybrid sequence', () => {
+  it("should work in a hybrid sequence", () => {
     lodashStable.times(2, (index) => {
       const clone = (index ? largeArray : smallArray).slice();
 
-      lodashStable.each(['map', 'filter'], (methodName) => {
+      lodashStable.each(["map", "filter"], (methodName) => {
         let array = clone.slice(),
           expected = clone.slice(1, -1).reverse(),
           actual = _(array)[methodName](identity).thru(compact).reverse().value();
@@ -80,7 +80,7 @@ describe('reverse', () => {
     });
   });
 
-  it('should track the `__chain__` value of a wrapper', () => {
+  it("should track the `__chain__` value of a wrapper", () => {
     lodashStable.times(2, (index) => {
       const array = (index ? largeArray : smallArray).slice(),
         expected = array.slice().reverse(),

@@ -1,7 +1,7 @@
-import { PlainObject, CollectionIteratee, KeyIteratee } from './types';
-import getIteratee from './.internal/getIteratee';
-import baseForOwn from './.internal/baseForOwn';
-import baseAssignValue from './.internal/baseAssignValue';
+import { PlainObject, CollectionIteratee, KeyIteratee } from "./types";
+import getIteratee from "./.internal/getIteratee";
+import baseForOwn from "./.internal/baseForOwn";
+import baseAssignValue from "./.internal/baseAssignValue";
 
 
 /**

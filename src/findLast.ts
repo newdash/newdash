@@ -1,5 +1,5 @@
-import findLastIndex from './findLastIndex';
-import createFind from './.internal/createFind';
+import createFind from "./.internal/createFind";
+import findLastIndex from "./findLastIndex";
 
 /**
  * @ignore
@@ -27,7 +27,11 @@ const internalFind = createFind(findLastIndex);
  *
  */
 export function findLast<T>(collection: ArrayLike<T>, predicate?: string, fromIndex?: number): T | undefined;
-export function findLast<T>(collection: ArrayLike<T>, predicate?: (item: T) => boolean, fromIndex?: number): T | undefined;
+export function findLast<T>(
+  collection: ArrayLike<T>,
+  predicate?: (item: T) => boolean,
+  fromIndex?: number
+): T | undefined;
 export function findLast<T>(collection: ArrayLike<T>, predicate?: Partial<T>, fromIndex?: number): T | undefined;
 export function findLast<T>(collection: ArrayLike<T>, predicate?: any, fromIndex?: number): T | undefined;
 export function findLast(collection: any, predicate?: any, fromIndex?: any): any {

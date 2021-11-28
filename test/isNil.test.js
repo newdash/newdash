@@ -1,17 +1,17 @@
-import * as assert from 'assert';
-import { falsey, args, slice, symbol, realm } from './utils';
-import isNil from '../src/isNil';
-import map from '../src/map';
+import * as assert from "assert";
+import { falsey, args, slice, symbol, realm } from "./utils";
+import isNil from "../src/isNil";
+import map from "../src/map";
 
-describe('isNil', () => {
+describe("isNil", () => {
 
-  it('should return `true` for nullish values', () => {
+  it("should return `true` for nullish values", () => {
     assert.strictEqual(isNil(null), true);
     assert.strictEqual(isNil(), true);
     assert.strictEqual(isNil(undefined), true);
   });
 
-  it('should return `false` for non-nullish values', () => {
+  it("should return `false` for non-nullish values", () => {
     const expected = map(falsey, (value) => value == null);
 
     const actual = map(falsey, (value, index) => index ? isNil(value) : isNil());
@@ -25,17 +25,17 @@ describe('isNil', () => {
     assert.strictEqual(isNil(new Error), false);
     assert.strictEqual(isNil(_), false);
     assert.strictEqual(isNil(slice), false);
-    assert.strictEqual(isNil({ 'a': 1 }), false);
+    assert.strictEqual(isNil({ "a": 1 }), false);
     assert.strictEqual(isNil(1), false);
     assert.strictEqual(isNil(/x/), false);
-    assert.strictEqual(isNil('a'), false);
+    assert.strictEqual(isNil("a"), false);
 
     if (Symbol) {
       assert.strictEqual(isNil(symbol), false);
     }
   });
 
-  it('should work with nils from another realm', () => {
+  it("should work with nils from another realm", () => {
     if (realm.object) {
       assert.strictEqual(isNil(realm.null), true);
       assert.strictEqual(isNil(realm.undefined), true);

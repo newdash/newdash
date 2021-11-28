@@ -1,13 +1,13 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { _, LARGE_ARRAY_SIZE, isEven, square } from './utils';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { _, LARGE_ARRAY_SIZE, isEven, square } from "./utils";
 
-describe('filter methods', () => {
-  lodashStable.each(['filter', 'reject'], (methodName) => {
+describe("filter methods", () => {
+  lodashStable.each(["filter", "reject"], (methodName) => {
     const array = [1, 2, 3, 4],
       func = _[methodName],
-      isFilter = methodName == 'filter',
-      objects = [{ 'a': 0 }, { 'a': 1 }];
+      isFilter = methodName == "filter",
+      objects = [{ "a": 0 }, { "a": 1 }];
 
     it(`\`_.${methodName}\` should not modify the resulting value from within \`predicate\``, () => {
       const actual = func([0], (value, index, array) => {
@@ -19,7 +19,7 @@ describe('filter methods', () => {
     });
 
     it(`\`_.${methodName}\` should work with \`_.property\` shorthands`, () => {
-      assert.deepStrictEqual(func(objects, 'a'), [objects[isFilter ? 1 : 0]]);
+      assert.deepStrictEqual(func(objects, "a"), [objects[isFilter ? 1 : 0]]);
     });
 
     it(`\`_.${methodName}\` should work with \`_.matches\` shorthands`, () => {

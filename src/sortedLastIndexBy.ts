@@ -1,6 +1,6 @@
-import baseSortedIndexBy from './.internal/baseSortedIndexBy';
-import { ArrayIteratee } from './types';
-import getIteratee from './.internal/getIteratee';
+import baseSortedIndexBy from "./.internal/baseSortedIndexBy";
+import { ArrayIteratee } from "./types";
+import getIteratee from "./.internal/getIteratee";
 
 /**
  * This method is like `sortedLastIndex` except that it accepts `iteratee`

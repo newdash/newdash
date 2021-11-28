@@ -1,17 +1,17 @@
-import getTag from './.internal/getTag';
-import isArrayLike from './isArrayLike';
-import isString from './isString';
-import stringSize from './.internal/stringSize';
+import getTag from "./.internal/getTag";
+import isArrayLike from "./isArrayLike";
+import isString from "./isString";
+import stringSize from "./.internal/stringSize";
 
 /**
  * `Object#toString` result references.
  * @ignore
  */
-const mapTag = '[object Map]';
+const mapTag = "[object Map]";
 /**
  * @ignore
  */
-const setTag = '[object Set]';
+const setTag = "[object Set]";
 
 /**
  * Gets the size of `collection` by returning its length for array-like

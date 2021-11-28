@@ -1,5 +1,5 @@
-import getTag from './.internal/getTag';
-import isObjectLike from './isObjectLike';
+import getTag from "./.internal/getTag";
+import isObjectLike from "./isObjectLike";
 
 /**
  * Checks if `value` is classified as a `RegExp` object.
@@ -19,7 +19,7 @@ import isObjectLike from './isObjectLike';
  * ```
  */
 export function isRegExp(value: any): value is RegExp {
-  return isObjectLike(value) && getTag(value) == '[object RegExp]';
+  return isObjectLike(value) && getTag(value) == "[object RegExp]";
 }
 
 export default isRegExp;

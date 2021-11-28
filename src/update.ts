@@ -1,4 +1,4 @@
-import baseUpdate from './.internal/baseUpdate';
+import baseUpdate from "./.internal/baseUpdate";
 
 /**
  * This method is like `set` except that it accepts `updater` to produce the
@@ -27,7 +27,11 @@ import baseUpdate from './.internal/baseUpdate';
  * // => 0
  * ```
  */
-export function update<U extends(...args: any[]) => any>(object: any, path: Array<string> | string, updater?: U): ReturnType<U> {
+export function update<U extends(...args: any[]) => any>(
+  object: any,
+  path: Array<string> | string,
+  updater?: U
+): ReturnType<U> {
   return object == null ? object : baseUpdate(object, path, updater);
 }
 

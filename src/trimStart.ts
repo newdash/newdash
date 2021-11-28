@@ -1,8 +1,8 @@
-import castSlice from './.internal/castSlice';
-import charsStartIndex from './.internal/charsStartIndex';
-import stringToArray from './.internal/stringToArray';
-import toString from './toString';
-import baseToString from './.internal/baseToString';
+import castSlice from "./.internal/castSlice";
+import charsStartIndex from "./.internal/charsStartIndex";
+import stringToArray from "./.internal/stringToArray";
+import toString from "./toString";
+import baseToString from "./.internal/baseToString";
 
 /**
  * @ignore
@@ -31,7 +31,7 @@ const reTrimStart = /^\s+/;
 export function trimStart(str: string, chars: string, guard?: any): string {
   const string = toString(str);
   if (string && (guard || chars === undefined)) {
-    return string.replace(reTrimStart, '');
+    return string.replace(reTrimStart, "");
   }
   if (!string || !(chars = baseToString(chars))) {
     return string;
@@ -39,7 +39,7 @@ export function trimStart(str: string, chars: string, guard?: any): string {
   const strSymbols = stringToArray(string),
     start = charsStartIndex(strSymbols, stringToArray(chars));
 
-  return castSlice(strSymbols, start).join('');
+  return castSlice(strSymbols, start).join("");
 }
 
 export default trimStart;

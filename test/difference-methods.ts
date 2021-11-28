@@ -1,24 +1,24 @@
 // @ts-nocheck
-import * as assert from 'assert';
-import constant from '../src/constant';
-import { difference } from '../src/difference';
-import { differenceBy } from '../src/differenceBy';
-import { differenceWith } from '../src/differenceWith';
-import each from '../src/each';
-import map from '../src/map';
-import range from '../src/range';
-import { times } from '../src/times';
-import toString from '../src/toString';
-import { args, LARGE_ARRAY_SIZE, stubNaN, stubOne } from './utils';
+import * as assert from "assert";
+import constant from "../src/constant";
+import { difference } from "../src/difference";
+import { differenceBy } from "../src/differenceBy";
+import { differenceWith } from "../src/differenceWith";
+import each from "../src/each";
+import map from "../src/map";
+import range from "../src/range";
+import { times } from "../src/times";
+import toString from "../src/toString";
+import { args, LARGE_ARRAY_SIZE, stubNaN, stubOne } from "./utils";
 
 
-describe('difference methods', () => {
+describe("difference methods", () => {
 
   each(
     [
-      ['difference', difference],
-      ['differenceBy', differenceBy],
-      ['differenceWith', differenceWith]
+      ["difference", difference],
+      ["differenceBy", differenceBy],
+      ["differenceWith", differenceWith]
     ], ([methodName, func]) => {
 
       it(`\`_.${methodName}\` should return the difference of two arrays`, () => {
@@ -39,7 +39,7 @@ describe('difference methods', () => {
         assert.deepStrictEqual(actual, [[], []]);
 
         actual = map(func([-0, 1], [1]), toString);
-        assert.deepStrictEqual(actual, ['0']);
+        assert.deepStrictEqual(actual, ["0"]);
       });
 
       it(`\`_.${methodName}\` should match \`NaN\``, () => {
@@ -71,7 +71,7 @@ describe('difference methods', () => {
 
         const largeArray = times(LARGE_ARRAY_SIZE, stubOne);
         actual = map(func([-0, 1], largeArray), toString);
-        assert.deepStrictEqual(actual, ['0']);
+        assert.deepStrictEqual(actual, ["0"]);
       });
 
       it(`\`_.${methodName}\` should work with large arrays of \`NaN\``, () => {
@@ -90,7 +90,7 @@ describe('difference methods', () => {
       it(`\`_.${methodName}\` should ignore values that are not array-like`, () => {
         const array = [1, null, 3];
 
-        assert.deepStrictEqual(func(args, 3, { '0': 1 }), [1, 2, 3]);
+        assert.deepStrictEqual(func(args, 3, { "0": 1 }), [1, 2, 3]);
         assert.deepStrictEqual(func(null, array, 1), []);
         assert.deepStrictEqual(func(array, args, null), [null]);
       });

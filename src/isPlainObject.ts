@@ -1,10 +1,10 @@
-import getTag from './.internal/getTag';
-import isObjectLike from './isObjectLike';
+import getTag from "./.internal/getTag";
+import isObjectLike from "./isObjectLike";
 
 /**
  * @ignore
  */
-const objectTag = '[object Object]';
+const objectTag = "[object Object]";
 /**
  * @ignore
  */
@@ -46,8 +46,8 @@ export function isPlainObject(value: any): boolean {
   if (proto === null) {
     return true;
   }
-  const Ctor = Object.hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-  return typeof Ctor == 'function' && Ctor instanceof Ctor &&
+  const Ctor = Object.hasOwnProperty.call(proto, "constructor") && proto.constructor;
+  return typeof Ctor == "function" && Ctor instanceof Ctor &&
     Function.prototype.toString.call(Ctor) == objectCtorString;
 }
 

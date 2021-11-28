@@ -1,15 +1,15 @@
-import * as assert from 'assert';
-import { push, falsey, stubTrue } from './utils';
-import bind from '../src/bind';
-import reject from '../src/reject';
-import map from '../src/map';
-import every from '../src/every';
-import isEqual from '../src/eqDeep';
-import times from '../src/times';
-import constant from '../src/constant';
-import attempt from '../src/attempt';
+import * as assert from "assert";
+import { push, falsey, stubTrue } from "./utils";
+import bind from "../src/bind";
+import reject from "../src/reject";
+import map from "../src/map";
+import every from "../src/every";
+import isEqual from "../src/eqDeep";
+import times from "../src/times";
+import constant from "../src/constant";
+import attempt from "../src/attempt";
 
-describe('bind', () => {
+describe("bind", () => {
 
   function fn(...args: any[]) {
     const result = [this];
@@ -17,14 +17,14 @@ describe('bind', () => {
     return result;
   }
 
-  it('should bind a function to an object', () => {
+  it("should bind a function to an object", () => {
     const object = {},
       bound = bind(fn, object);
 
-    assert.deepStrictEqual(bound('a'), [object, 'a']);
+    assert.deepStrictEqual(bound("a"), [object, "a"]);
   });
 
-  it('should accept a falsey `thisArg`', () => {
+  it("should accept a falsey `thisArg`", () => {
     const values = reject(falsey.slice(1), (value) => value == null),
       expected = map(values, (value) => [value]);
 
@@ -38,48 +38,48 @@ describe('bind', () => {
     assert.ok(every(actual, (value, index) => isEqual(value, expected[index])));
   });
 
-  it('should bind a function to nullish values', () => {
+  it("should bind a function to nullish values", () => {
     let bound = bind(fn, null),
-      actual = bound('a');
+      actual = bound("a");
 
     assert.ok((actual[0] === null) || (actual[0] && actual[0].Array));
-    assert.strictEqual(actual[1], 'a');
+    assert.strictEqual(actual[1], "a");
 
     times(2, (index) => {
       bound = index ? bind(fn, undefined) : bind(fn);
-      actual = bound('b');
+      actual = bound("b");
 
       assert.ok((actual[0] === undefined) || (actual[0] && actual[0].Array));
-      assert.strictEqual(actual[1], 'b');
+      assert.strictEqual(actual[1], "b");
     });
   });
 
-  it('should partially apply arguments ', () => {
+  it("should partially apply arguments ", () => {
     let object = {},
-      bound = bind(fn, object, 'a');
+      bound = bind(fn, object, "a");
 
-    assert.deepStrictEqual(bound(), [object, 'a']);
+    assert.deepStrictEqual(bound(), [object, "a"]);
 
-    bound = bind(fn, object, 'a');
-    assert.deepStrictEqual(bound('b'), [object, 'a', 'b']);
+    bound = bind(fn, object, "a");
+    assert.deepStrictEqual(bound("b"), [object, "a", "b"]);
 
-    bound = bind(fn, object, 'a', 'b');
-    assert.deepStrictEqual(bound(), [object, 'a', 'b']);
-    assert.deepStrictEqual(bound('c', 'd'), [object, 'a', 'b', 'c', 'd']);
+    bound = bind(fn, object, "a", "b");
+    assert.deepStrictEqual(bound(), [object, "a", "b"]);
+    assert.deepStrictEqual(bound("c", "d"), [object, "a", "b", "c", "d"]);
   });
 
-  it('should support placeholders', () => {
+  it("should support placeholders", () => {
     const object = {};
-    const bound = bind(fn, object, bind.placeholder, 'b', bind.placeholder);
+    const bound = bind(fn, object, bind.placeholder, "b", bind.placeholder);
 
-    assert.deepStrictEqual(bound('a', 'c'), [object, 'a', 'b', 'c']);
-    assert.deepStrictEqual(bound('a'), [object, 'a', 'b', undefined]);
-    assert.deepStrictEqual(bound('a', 'c', 'd'), [object, 'a', 'b', 'c', 'd']);
-    assert.deepStrictEqual(bound(), [object, undefined, 'b', undefined]);
+    assert.deepStrictEqual(bound("a", "c"), [object, "a", "b", "c"]);
+    assert.deepStrictEqual(bound("a"), [object, "a", "b", undefined]);
+    assert.deepStrictEqual(bound("a", "c", "d"), [object, "a", "b", "c", "d"]);
+    assert.deepStrictEqual(bound(), [object, undefined, "b", undefined]);
   });
 
 
-  it('should create a function with a `length` of `0`', () => {
+  it("should create a function with a `length` of `0`", () => {
     let fn = function(a, b, c) { },
       bound = bind(fn, {});
 
@@ -89,12 +89,12 @@ describe('bind', () => {
     assert.strictEqual(bound.length, 0);
   });
 
-  it('should ignore binding when called with the `new` operator', () => {
+  it("should ignore binding when called with the `new` operator", () => {
     function Foo() {
       return this;
     }
 
-    const bound = bind(Foo, { 'a': 1 });
+    const bound = bind(Foo, { "a": 1 });
     // @ts-ignore
     const newBound = new bound;
 
@@ -103,14 +103,14 @@ describe('bind', () => {
     assert.ok(newBound instanceof Foo);
   });
 
-  it('should handle a number of arguments when called with the `new` operator', () => {
+  it("should handle a number of arguments when called with the `new` operator", () => {
     function Foo(...args: any[]) {
 
     }
 
     function Bar(...args: any[]) { }
 
-    const thisArg = { 'a': 1 },
+    const thisArg = { "a": 1 },
       boundFoo = bind(Foo, thisArg),
       boundBar = bind(Bar, thisArg),
       count = 9,
@@ -135,7 +135,7 @@ describe('bind', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should ensure `new bound` is an instance of `func`', () => {
+  it("should ensure `new bound` is an instance of `func`", () => {
     function Foo(value) {
       return value && object;
     }
@@ -149,28 +149,28 @@ describe('bind', () => {
     assert.strictEqual(new bound(true), object);
   });
 
-  it('should append array arguments to partially applied arguments', () => {
+  it("should append array arguments to partially applied arguments", () => {
     const object = {},
-      bound = bind(fn, object, 'a');
+      bound = bind(fn, object, "a");
 
-    assert.deepStrictEqual(bound(['b'], 'c'), [object, 'a', ['b'], 'c']);
+    assert.deepStrictEqual(bound(["b"], "c"), [object, "a", ["b"], "c"]);
   });
 
-  it('should not rebind functions', () => {
+  it("should not rebind functions", () => {
     const object1 = {},
       object2 = {},
       object3 = {};
 
     const bound1 = bind(fn, object1),
-      bound2 = bind(bound1, object2, 'a'),
-      bound3 = bind(bound1, object3, 'b');
+      bound2 = bind(bound1, object2, "a"),
+      bound3 = bind(bound1, object3, "b");
 
     assert.deepStrictEqual(bound1(), [object1]);
-    assert.deepStrictEqual(bound2(), [object1, 'a']);
-    assert.deepStrictEqual(bound3(), [object1, 'b']);
+    assert.deepStrictEqual(bound2(), [object1, "a"]);
+    assert.deepStrictEqual(bound3(), [object1, "b"]);
   });
 
-  it('should not error when instantiating bound built-ins', () => {
+  it("should not error when instantiating bound built-ins", () => {
     let Ctor = bind(Date, null),
       expected = new Date(2012, 4, 23, 0, 0, 0, 0);
 
@@ -189,10 +189,10 @@ describe('bind', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should not error when calling bound class constructors with the `new` operator', () => {
+  it("should not error when calling bound class constructors with the `new` operator", () => {
     const createCtor = attempt(Function, '"use strict";return class A{}');
 
-    if (typeof createCtor === 'function') {
+    if (typeof createCtor === "function") {
       const bound = bind(createCtor()),
         count = 8,
         expected = times(count, stubTrue);

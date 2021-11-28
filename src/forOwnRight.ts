@@ -1,6 +1,6 @@
-import { PlainObject, CollectionIteratee } from './types';
-import baseForOwnRight from './.internal/baseForOwnRight';
-import getIteratee from './.internal/getIteratee';
+import { PlainObject, CollectionIteratee } from "./types";
+import baseForOwnRight from "./.internal/baseForOwnRight";
+import getIteratee from "./.internal/getIteratee";
 
 /**
  * This method is like `forOwn` except that it iterates over properties of

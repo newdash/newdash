@@ -1,8 +1,8 @@
-import baseProperty from './.internal/baseProperty';
-import isArrayLikeObject from './isArrayLikeObject';
-import arrayFilter from './.internal/arrayFilter';
-import baseTimes from './.internal/baseTimes';
-import arrayMap from './.internal/arrayMap';
+import baseProperty from "./.internal/baseProperty";
+import isArrayLikeObject from "./isArrayLikeObject";
+import arrayFilter from "./.internal/arrayFilter";
+import baseTimes from "./.internal/baseTimes";
+import arrayMap from "./.internal/arrayMap";
 
 /**
  * This method is like `zip` except that it accepts an array of grouped

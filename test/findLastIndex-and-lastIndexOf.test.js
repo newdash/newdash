@@ -1,19 +1,19 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { identity, stubZero, falsey } from './utils';
-import findLastIndex from '../src/findLastIndex';
-import lastIndexOf from '../src/lastIndexOf';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { identity, stubZero, falsey } from "./utils";
+import findLastIndex from "../src/findLastIndex";
+import lastIndexOf from "../src/lastIndexOf";
 
 const methods = {
   findLastIndex,
   lastIndexOf
 };
 
-describe('findLastIndex and lastIndexOf', () => {
-  lodashStable.each(['findLastIndex', 'lastIndexOf'], (methodName) => {
+describe("findLastIndex and lastIndexOf", () => {
+  lodashStable.each(["findLastIndex", "lastIndexOf"], (methodName) => {
     const array = [1, 2, 3, 1, 2, 3],
       func = methods[methodName],
-      resolve = methodName == 'findLastIndex' ? lodashStable.curry(lodashStable.eq) : identity;
+      resolve = methodName == "findLastIndex" ? lodashStable.curry(lodashStable.eq) : identity;
 
     it(`\`_.${methodName}\` should return the index of the last matched value`, () => {
       assert.strictEqual(func(array, resolve(3)), 5);
@@ -30,7 +30,7 @@ describe('findLastIndex and lastIndexOf', () => {
       const actual = lodashStable.map(values, (fromIndex) => [
         func(array, resolve(undefined), fromIndex),
         func(array, resolve(1), fromIndex),
-        func(array, resolve(''), fromIndex)
+        func(array, resolve(""), fromIndex)
       ]);
 
       assert.deepStrictEqual(actual, expected);

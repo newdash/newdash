@@ -1,25 +1,25 @@
-import * as assert from 'assert';
-import negate, { negate as fNegate } from '../src/negate';
-import times from '../src/times';
-import { assertShouldThrowError } from './helpers';
-import { isEven, stubTrue } from './utils';
+import * as assert from "assert";
+import negate, { negate as fNegate } from "../src/negate";
+import times from "../src/times";
+import { assertShouldThrowError } from "./helpers";
+import { isEven, stubTrue } from "./utils";
 
-describe('negate', () => {
-  it('should create a function that negates the result of `func`', () => {
+describe("negate", () => {
+  it("should create a function that negates the result of `func`", () => {
     const negate = fNegate(isEven);
 
     assert.strictEqual(negate(1), true);
     assert.strictEqual(negate(2), false);
   });
 
-  it('should create a function that negates the result of `func`', () => {
+  it("should create a function that negates the result of `func`", () => {
     const negate = fNegate(isEven);
 
     assert.strictEqual(negate(1), true);
     assert.strictEqual(negate(2), false);
   });
 
-  it('should create a function that accepts multiple arguments', () => {
+  it("should create a function that accepts multiple arguments", () => {
     let argCount,
       count = 5,
       negate = fNegate(function() { argCount = arguments.length; }),
@@ -39,7 +39,7 @@ describe('negate', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should raise type error when input wrong', () => {
+  it("should raise type error when input wrong", () => {
     assertShouldThrowError(() => { negate(undefined); }, TypeError);
   });
 });

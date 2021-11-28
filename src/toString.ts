@@ -1,6 +1,6 @@
-import isSymbol from './isSymbol';
-import isArray from './isArray';
-import arrayMap from './.internal/arrayMap';
+import isSymbol from "./isSymbol";
+import isArray from "./isArray";
+import arrayMap from "./.internal/arrayMap";
 
 /**
  * @ignore
@@ -37,10 +37,10 @@ const INFINITY = Infinity;
  */
 export function toString(value: any): string {
   if (value == null) {
-    return '';
+    return "";
   }
   // Exit early for strings to avoid a performance hit in some environments.
-  if (typeof value == 'string') {
+  if (typeof value == "string") {
     return value;
   }
   if (isArray(value)) {
@@ -48,10 +48,10 @@ export function toString(value: any): string {
     return `${arrayMap(value, toString)}`;
   }
   if (isSymbol(value)) {
-    return symbolToString ? symbolToString.call(value) : '';
+    return symbolToString ? symbolToString.call(value) : "";
   }
   const result = (`${value}`);
-  return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
+  return (result == "0" && (1 / value) == -INFINITY) ? "-0" : result;
 }
 
 export default toString;

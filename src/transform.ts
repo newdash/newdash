@@ -1,14 +1,14 @@
-import arrayEach from './.internal/arrayEach';
-import baseForOwn from './.internal/baseForOwn';
-import isBuffer from './isBuffer';
-import isObject from './isObject';
-import isTypedArray from './isTypedArray';
-import isArray from './isArray';
-import getIteratee from './.internal/getIteratee';
-import isFunction from './isFunction';
-import baseCreate from './.internal/baseCreate';
-import overArg from './.internal/overArg';
-import { AccCollectionIteratee, Collection } from './types';
+import arrayEach from "./.internal/arrayEach";
+import baseForOwn from "./.internal/baseForOwn";
+import isBuffer from "./isBuffer";
+import isObject from "./isObject";
+import isTypedArray from "./isTypedArray";
+import isArray from "./isArray";
+import getIteratee from "./.internal/getIteratee";
+import isFunction from "./isFunction";
+import baseCreate from "./.internal/baseCreate";
+import overArg from "./.internal/overArg";
+import { AccCollectionIteratee, Collection } from "./types";
 
 /**
  * @ignore

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { GeneralFunction } from '../types';
+import { GeneralFunction } from "../types";
 
 
 /**

@@ -1,6 +1,6 @@
-import { filter as syncFilter } from '../filter';
-import type { AsyncFunction } from '../types';
-import map from './map';
+import { filter as syncFilter } from "../filter";
+import type { AsyncFunction } from "../types";
+import map from "./map";
 
 /**
  * AsyncUtils.filter, filter values by async predicate function

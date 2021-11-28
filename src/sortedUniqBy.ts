@@ -1,6 +1,6 @@
-import baseSortedUniq from './.internal/baseSortedUniq';
-import getIteratee from './.internal/getIteratee';
-import { ArrayIteratee } from './types';
+import baseSortedUniq from "./.internal/baseSortedUniq";
+import getIteratee from "./.internal/getIteratee";
+import { ArrayIteratee } from "./types";
 
 /**
  * This method is like `uniqBy` except that it's designed and optimized

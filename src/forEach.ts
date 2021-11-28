@@ -1,6 +1,6 @@
-import arrayEach from './.internal/arrayEach';
-import baseEach from './.internal/baseEach';
-import { ArrayIteratee, PlainObject, RecordIteratee } from './types';
+import arrayEach from "./.internal/arrayEach";
+import baseEach from "./.internal/baseEach";
+import { ArrayIteratee, PlainObject, RecordIteratee } from "./types";
 
 /**
  *

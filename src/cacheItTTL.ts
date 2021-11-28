@@ -1,6 +1,6 @@
-import cacheIt, { CachedClass, CachedFunction, CachedObject, CacheItOptions } from './cacheIt';
-import { TTLCacheProvider } from './cacheProvider';
-import { Class, GeneralFunction } from './types';
+import cacheIt, { CachedClass, CachedFunction, CachedObject, CacheItOptions } from "./cacheIt";
+import { TTLCacheProvider } from "./cacheProvider";
+import { Class, GeneralFunction } from "./types";
 
 export function cacheItTTL<T extends GeneralFunction>(obj: T, options?: CacheItOptions): CachedFunction<T>
 export function cacheItTTL<T>(obj: Class<T>, options?: CacheItOptions): CachedClass<T>

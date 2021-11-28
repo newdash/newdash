@@ -8,9 +8,9 @@
  * @param func
  * @param name
  */
-export function defineFunctionName<T>(func: T, name: string = 'Unknown'): T {
-  if (func !== undefined && typeof func === 'function') {
-    Object.defineProperty(func, 'name', { value: name });
+export function defineFunctionName<T>(func: T, name: string = "Unknown"): T {
+  if (func !== undefined && typeof func === "function") {
+    Object.defineProperty(func, "name", { value: name });
   }
   return func;
 }

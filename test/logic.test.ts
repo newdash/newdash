@@ -1,6 +1,6 @@
-import { logic } from '../src/logic';
+import { logic } from "../src/logic";
 
-describe('logic', () => {
+describe("logic", () => {
 
   function returnTrue() {
     return true;
@@ -14,7 +14,7 @@ describe('logic', () => {
   async function aReturnFalse() {
     return false;
   }
-  it('should sync allTrue/anyTrue', () => {
+  it("should sync allTrue/anyTrue", () => {
 
     expect(logic.allTrue(true, true, true)).toBeTruthy();
     expect(logic.anyTrue(true, true, true)).toBeTruthy();
@@ -33,7 +33,7 @@ describe('logic', () => {
 
   });
 
-  it('should support async allTrue/anyTrue', async () => {
+  it("should support async allTrue/anyTrue", async () => {
 
 
     expect(await logic.asyncAllTrue(true, true, true)).toBeTruthy();

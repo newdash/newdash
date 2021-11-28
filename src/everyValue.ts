@@ -1,4 +1,4 @@
-import { PlainObject, CollectionIteratee } from './types';
+import { PlainObject, CollectionIteratee } from "./types";
 
 /**
  * Checks if `predicate` returns truthy for **all** properties of `object`.

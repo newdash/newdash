@@ -1,5 +1,5 @@
-import baseRest from './.internal/baseRest';
-import baseInvoke from './.internal/baseInvoke';
+import baseRest from "./.internal/baseRest";
+import baseInvoke from "./.internal/baseInvoke";
 
 
 /**

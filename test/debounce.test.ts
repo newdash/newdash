@@ -1,20 +1,20 @@
-import * as assert from 'assert';
-import { platform } from 'os';
-import identity from '../src/.internal/identity';
-import debounce from '../src/debounce';
-import { argv, isPhantom, push } from './utils';
+import * as assert from "assert";
+import { platform } from "os";
+import identity from "../src/.internal/identity";
+import debounce from "../src/debounce";
+import { argv, isPhantom, push } from "./utils";
 
 let describe2 = describe;
-if (platform() != 'linux') {
+if (platform() != "linux") {
   // setTimeout is Unstable on MacOS/Windows,
   // maybe caused by resource schedule,
   // so skip these tests
   describe2 = describe.skip;
 }
 
-describe2('debounce', () => {
+describe2("debounce", () => {
 
-  it('should debounce a function', (done) => {
+  it("should debounce a function", (done) => {
     let callCount = 0;
 
     const debounced = debounce((value) => {
@@ -22,7 +22,7 @@ describe2('debounce', () => {
       return value;
     }, 32);
 
-    const results = [debounced('a'), debounced('b'), debounced('c')];
+    const results = [debounced("a"), debounced("b"), debounced("c")];
     assert.deepStrictEqual(results, [undefined, undefined, undefined]);
     assert.strictEqual(callCount, 0);
 
@@ -30,8 +30,8 @@ describe2('debounce', () => {
 
       assert.strictEqual(callCount, 1);
 
-      const results = [debounced('d'), debounced('e'), debounced('f')];
-      assert.deepStrictEqual(results, ['c', 'c', 'c']);
+      const results = [debounced("d"), debounced("e"), debounced("f")];
+      assert.deepStrictEqual(results, ["c", "c", "c"]);
       assert.strictEqual(callCount, 1);
     }, 128);
 
@@ -41,21 +41,21 @@ describe2('debounce', () => {
     }, 256);
   });
 
-  it('subsequent debounced calls return the last `func` result', (done) => {
+  it("subsequent debounced calls return the last `func` result", (done) => {
     const debounced = debounce(identity, 32);
-    debounced('a');
+    debounced("a");
 
     setTimeout(() => {
-      assert.notStrictEqual(debounced('b'), 'b');
+      assert.notStrictEqual(debounced("b"), "b");
     }, 64);
 
     setTimeout(() => {
-      assert.notStrictEqual(debounced('c'), 'c');
+      assert.notStrictEqual(debounced("c"), "c");
       done();
     }, 128);
   });
 
-  it('should not immediately call `func` when `wait` is `0`', (done) => {
+  it("should not immediately call `func` when `wait` is `0`", (done) => {
     let callCount = 0;
     const debounced = debounce(() => { ++callCount; }, 0);
 
@@ -69,7 +69,7 @@ describe2('debounce', () => {
     }, 5);
   });
 
-  it('should apply default options', (done) => {
+  it("should apply default options", (done) => {
     let callCount = 0;
     const debounced = debounce(() => { callCount++; }, 32, {});
 
@@ -82,16 +82,16 @@ describe2('debounce', () => {
     }, 64);
   });
 
-  it('should support a `leading` option', (done) => {
+  it("should support a `leading` option", (done) => {
     const callCounts = [0, 0];
 
     const withLeading = debounce(() => {
       callCounts[0]++;
-    }, 32, { 'leading': true });
+    }, 32, { "leading": true });
 
     const withLeadingAndTrailing = debounce(() => {
       callCounts[1]++;
-    }, 32, { 'leading': true });
+    }, 32, { "leading": true });
 
     withLeading();
     assert.strictEqual(callCounts[0], 1);
@@ -111,30 +111,30 @@ describe2('debounce', () => {
     }, 64);
   });
 
-  it('subsequent leading debounced calls return the last `func` result', (done) => {
-    const debounced = debounce(identity, 32, { 'leading': true, 'trailing': false }),
-      results = [debounced('a'), debounced('b')];
+  it("subsequent leading debounced calls return the last `func` result", (done) => {
+    const debounced = debounce(identity, 32, { "leading": true, "trailing": false }),
+      results = [debounced("a"), debounced("b")];
 
-    assert.deepStrictEqual(results, ['a', 'a']);
+    assert.deepStrictEqual(results, ["a", "a"]);
 
     setTimeout(() => {
-      const results = [debounced('c'), debounced('d')];
-      assert.deepStrictEqual(results, ['c', 'c']);
+      const results = [debounced("c"), debounced("d")];
+      assert.deepStrictEqual(results, ["c", "c"]);
       done();
     }, 64);
   });
 
-  it('should support a `trailing` option', (done) => {
+  it("should support a `trailing` option", (done) => {
     let withCount = 0,
       withoutCount = 0;
 
     const withTrailing = debounce(() => {
       withCount++;
-    }, 32, { 'trailing': true });
+    }, 32, { "trailing": true });
 
     const withoutTrailing = debounce(() => {
       withoutCount++;
-    }, 32, { 'trailing': false });
+    }, 32, { "trailing": false });
 
     withTrailing();
     assert.strictEqual(withCount, 0);
@@ -149,13 +149,13 @@ describe2('debounce', () => {
     }, 64);
   });
 
-  it('should support a `maxWait` option', (done) => {
+  it("should support a `maxWait` option", (done) => {
     let callCount = 0;
 
     const debounced = debounce((value?) => {
       ++callCount;
       return value;
-    }, 32, { 'maxWait': 64 });
+    }, 32, { "maxWait": 64 });
 
     debounced();
     debounced();
@@ -174,14 +174,14 @@ describe2('debounce', () => {
     }, 256);
   });
 
-  it('should support `maxWait` in a tight loop', (done) => {
+  it("should support `maxWait` in a tight loop", (done) => {
     const limit = (argv || isPhantom) ? 1000 : 320;
     let withCount = 0,
       withoutCount = 0;
 
     const withMaxWait = debounce(() => {
       withCount++;
-    }, 64, { 'maxWait': 128 });
+    }, 64, { "maxWait": 128 });
 
     const withoutMaxWait = debounce(() => {
       withoutCount++;
@@ -201,12 +201,12 @@ describe2('debounce', () => {
     }, 1);
   });
 
-  it('should queue a trailing call for subsequent debounced calls after `maxWait`', (done) => {
+  it("should queue a trailing call for subsequent debounced calls after `maxWait`", (done) => {
     let callCount = 0;
 
     const debounced = debounce(() => {
       ++callCount;
-    }, 200, { 'maxWait': 200 });
+    }, 200, { "maxWait": 200 });
 
     debounced();
 
@@ -220,12 +220,12 @@ describe2('debounce', () => {
     }, 500);
   });
 
-  it('should cancel `maxDelayed` when `delayed` is invoked', (done) => {
+  it("should cancel `maxDelayed` when `delayed` is invoked", (done) => {
     let callCount = 0;
 
     const debounced = debounce(() => {
       callCount++;
-    }, 32, { 'maxWait': 64 });
+    }, 32, { "maxWait": 64 });
 
     debounced();
 
@@ -240,7 +240,7 @@ describe2('debounce', () => {
     }, 192);
   });
 
-  it('should invoke the trailing call with the correct arguments and `this` binding', (done) => {
+  it("should invoke the trailing call with the correct arguments and `this` binding", (done) => {
     let actual, callCount = 0;
     const object = {};
 
@@ -249,16 +249,16 @@ describe2('debounce', () => {
       // eslint-disable-next-line prefer-rest-params
       push.apply(actual, arguments);
       return ++callCount != 2;
-    }, 32, { 'leading': true, 'maxWait': 64 });
+    }, 32, { "leading": true, "maxWait": 64 });
 
     while (true) {
-      if (!debounced.call(object, 'a')) {
+      if (!debounced.call(object, "a")) {
         break;
       }
     }
     setTimeout(() => {
       assert.strictEqual(callCount, 2);
-      assert.deepStrictEqual(actual, [object, 'a']);
+      assert.deepStrictEqual(actual, [object, "a"]);
       done();
     }, 64);
   });

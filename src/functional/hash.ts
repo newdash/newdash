@@ -1,4 +1,4 @@
-import toHashCode from './toHashCode';
+import toHashCode from "./toHashCode";
 
 /**
  * get hash value from params

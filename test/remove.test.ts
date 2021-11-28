@@ -1,10 +1,10 @@
 // @ts-nocheck
-import * as assert from 'assert';
-import remove from '../src/remove';
-import { isEven, slice } from './utils';
+import * as assert from "assert";
+import remove from "../src/remove";
+import { isEven, slice } from "./utils";
 
-describe('remove', () => {
-  it('should modify the array and return removed elements', () => {
+describe("remove", () => {
+  it("should modify the array and return removed elements", () => {
     const array = [1, 2, 3, 4],
       actual = remove(array, isEven);
 
@@ -12,7 +12,7 @@ describe('remove', () => {
     assert.deepStrictEqual(actual, [2, 4]);
   });
 
-  it('should provide correct `predicate` arguments', () => {
+  it("should provide correct `predicate` arguments", () => {
     const argsList = [],
       array = [1, 2, 3],
       clone = array.slice();
@@ -27,36 +27,36 @@ describe('remove', () => {
     assert.deepStrictEqual(argsList, [[1, 0, clone], [2, 1, clone], [3, 2, clone]]);
   });
 
-  it('should work with `_.matches` shorthands', () => {
-    const objects = [{ 'a': 0, 'b': 1 }, { 'a': 1, 'b': 2 }];
-    remove(objects, { 'a': 1 });
-    assert.deepStrictEqual(objects, [{ 'a': 0, 'b': 1 }]);
+  it("should work with `_.matches` shorthands", () => {
+    const objects = [{ "a": 0, "b": 1 }, { "a": 1, "b": 2 }];
+    remove(objects, { "a": 1 });
+    assert.deepStrictEqual(objects, [{ "a": 0, "b": 1 }]);
   });
 
-  it('should work with `_.matchesProperty` shorthands', () => {
-    const objects = [{ 'a': 0, 'b': 1 }, { 'a': 1, 'b': 2 }];
-    remove(objects, ['a', 1]);
-    assert.deepStrictEqual(objects, [{ 'a': 0, 'b': 1 }]);
+  it("should work with `_.matchesProperty` shorthands", () => {
+    const objects = [{ "a": 0, "b": 1 }, { "a": 1, "b": 2 }];
+    remove(objects, ["a", 1]);
+    assert.deepStrictEqual(objects, [{ "a": 0, "b": 1 }]);
   });
 
-  it('should work with `_.property` shorthands', () => {
-    const objects = [{ 'a': 0 }, { 'a': 1 }];
-    remove(objects, 'a');
-    assert.deepStrictEqual(objects, [{ 'a': 0 }]);
+  it("should work with `_.property` shorthands", () => {
+    const objects = [{ "a": 0 }, { "a": 1 }];
+    remove(objects, "a");
+    assert.deepStrictEqual(objects, [{ "a": 0 }]);
   });
 
-  it('should preserve holes in arrays', () => {
+  it("should preserve holes in arrays", () => {
     const array = [1, 2, 3, 4];
     delete array[1];
     delete array[3];
 
     remove(array, (n) => n === 1);
 
-    assert.ok(!('0' in array));
-    assert.ok(!('2' in array));
+    assert.ok(!("0" in array));
+    assert.ok(!("2" in array));
   });
 
-  it('should treat holes as `undefined`', () => {
+  it("should treat holes as `undefined`", () => {
     const array = [1, 2, 3];
     delete array[1];
 
@@ -65,7 +65,7 @@ describe('remove', () => {
     assert.deepStrictEqual(array, [1, 3]);
   });
 
-  it('should not mutate the array until all elements to remove are determined', () => {
+  it("should not mutate the array until all elements to remove are determined", () => {
     const array = [1, 2, 3];
 
     remove(array, (n, index) => isEven(index));

@@ -1,8 +1,8 @@
-import arrayMap from './.internal/arrayMap';
-import baseMap from './.internal/baseMap';
-import getIteratee from './.internal/getIteratee';
-import isArray from './isArray';
-import { ArrayIteratee, RecordIteratee, Tuple } from './types';
+import arrayMap from "./.internal/arrayMap";
+import baseMap from "./.internal/baseMap";
+import getIteratee from "./.internal/getIteratee";
+import isArray from "./isArray";
+import { ArrayIteratee, RecordIteratee, Tuple } from "./types";
 
 
 /**

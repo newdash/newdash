@@ -1,10 +1,10 @@
 
-import { any } from '../src';
-import { concurrency } from '../src/concurrency';
-import { assertShouldThrowError } from './helpers';
-describe('concurrency', () => {
+import { any } from "../src";
+import { concurrency } from "../src/concurrency";
+import { assertShouldThrowError } from "./helpers";
+describe("concurrency", () => {
 
-  it('should support concurrency.limit function', async () => {
+  it("should support concurrency.limit function", async () => {
 
     const currLimit = 5;
     let ctx = 0;
@@ -26,7 +26,7 @@ describe('concurrency', () => {
     expect(values).not.toBeUndefined();
   });
 
-  it('should support concurrency.limit function on error', async () => {
+  it("should support concurrency.limit function on error", async () => {
 
     class E1 extends Error { }
 

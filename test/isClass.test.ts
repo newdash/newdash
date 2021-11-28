@@ -1,9 +1,9 @@
-import assert from 'assert';
-import { isClass } from '../src/isClass';
+import assert from "assert";
+import { isClass } from "../src/isClass";
 
-describe('isClass', () => {
+describe("isClass", () => {
 
-  it('should support isClass check', () => {
+  it("should support isClass check", () => {
 
     class A { }
     class B extends A { }
@@ -32,7 +32,7 @@ describe('isClass', () => {
     assert.strictEqual(isClass(undefined), false);
     assert.strictEqual(isClass(Symbol(1)), false);
     assert.strictEqual(isClass(1), false);
-    assert.strictEqual(isClass(''), false);
+    assert.strictEqual(isClass(""), false);
     assert.strictEqual(isClass(true), false);
 
     assert.strictEqual(isClass({ constructor() { } }), false);

@@ -1,8 +1,8 @@
 // @ts-nocheck
-import arrayMap from './.internal/arrayMap';
-import baseIntersection from './.internal/baseIntersection';
-import castArrayLikeObject from './.internal/castArrayLikeObject';
-import last from './last';
+import arrayMap from "./.internal/arrayMap";
+import baseIntersection from "./.internal/baseIntersection";
+import castArrayLikeObject from "./.internal/castArrayLikeObject";
+import last from "./last";
 
 /**
  * This method is like `intersection` except that it accepts `comparator`
@@ -29,7 +29,7 @@ export function intersectionWith<T>(...arrays: Array<any>): Array<T> {
   let comparator = last(arrays);
   const mapped = arrayMap(arrays, castArrayLikeObject);
 
-  comparator = typeof comparator === 'function' ? comparator : undefined;
+  comparator = typeof comparator === "function" ? comparator : undefined;
   if (comparator) {
     mapped.pop();
   }

@@ -1,6 +1,6 @@
 // @ts-nocheck
-import unzip from './unzip';
-import arrayMap from './.internal/arrayMap';
+import unzip from "./unzip";
+import arrayMap from "./.internal/arrayMap";
 
 /**
  * This method is like `unzip` except that it accepts `iteratee` to specify

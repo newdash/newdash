@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import { map } from '../src/map';
+import * as assert from "assert";
+import { map } from "../src/map";
 import {
   slice,
   asyncFunc,
@@ -13,31 +13,31 @@ import {
   symbol,
   document,
   realm
-} from './utils';
+} from "./utils";
 
-import isFunction from '../src/isFunction';
+import isFunction from "../src/isFunction";
 
-describe('isFunction', () => {
-  it('should return `true` for functions', () => {
+describe("isFunction", () => {
+  it("should return `true` for functions", () => {
     assert.strictEqual(isFunction(slice), true);
   });
 
-  it('should return `true` for async functions', () => {
-    assert.strictEqual(isFunction(asyncFunc), typeof asyncFunc === 'function');
+  it("should return `true` for async functions", () => {
+    assert.strictEqual(isFunction(asyncFunc), typeof asyncFunc === "function");
   });
 
-  it('should return `true` for generator functions', () => {
-    assert.strictEqual(isFunction(genFunc), typeof genFunc === 'function');
+  it("should return `true` for generator functions", () => {
+    assert.strictEqual(isFunction(genFunc), typeof genFunc === "function");
   });
 
-  it('should return `true` for the `Proxy` constructor', () => {
+  it("should return `true` for the `Proxy` constructor", () => {
     if (Proxy) {
       assert.strictEqual(isFunction(Proxy), true);
     }
   });
 
-  it('should return `true` for array view constructors', () => {
-    if (typeof global == 'object') {
+  it("should return `true` for array view constructors", () => {
+    if (typeof global == "object") {
       const expected = map(arrayViews, (type) => objToString.call(global[type]) == funcTag);
 
       const actual = map(arrayViews, (type) => isFunction(global[type]));
@@ -46,7 +46,7 @@ describe('isFunction', () => {
     }
   });
 
-  it('should return `false` for non-functions', () => {
+  it("should return `false` for non-functions", () => {
     const expected = map(falsey, stubFalse);
 
     const actual = map(falsey, (value, index) => index ? isFunction(value) : isFunction());
@@ -58,18 +58,18 @@ describe('isFunction', () => {
     assert.strictEqual(isFunction(true), false);
     assert.strictEqual(isFunction(new Date), false);
     assert.strictEqual(isFunction(new Error), false);
-    assert.strictEqual(isFunction({ 'a': 1 }), false);
+    assert.strictEqual(isFunction({ "a": 1 }), false);
     assert.strictEqual(isFunction(1), false);
     assert.strictEqual(isFunction(/x/), false);
-    assert.strictEqual(isFunction('a'), false);
+    assert.strictEqual(isFunction("a"), false);
     assert.strictEqual(isFunction(symbol), false);
 
     if (document) {
-      assert.strictEqual(isFunction(document.getElementsByTagName('body')), false);
+      assert.strictEqual(isFunction(document.getElementsByTagName("body")), false);
     }
   });
 
-  it('should work with a function from another realm', () => {
+  it("should work with a function from another realm", () => {
     if (realm.function) {
       assert.strictEqual(isFunction(realm.function), true);
     }

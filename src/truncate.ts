@@ -1,11 +1,11 @@
-import baseToString from './.internal/baseToString';
-import castSlice from './.internal/castSlice';
-import hasUnicode from './.internal/hasUnicode';
-import isObject from './isObject';
-import isRegExp from './isRegExp';
-import stringSize from './.internal/stringSize';
-import stringToArray from './.internal/stringToArray';
-import toString from './toString';
+import baseToString from "./.internal/baseToString";
+import castSlice from "./.internal/castSlice";
+import hasUnicode from "./.internal/hasUnicode";
+import isObject from "./isObject";
+import isRegExp from "./isRegExp";
+import stringSize from "./.internal/stringSize";
+import stringToArray from "./.internal/stringToArray";
+import toString from "./toString";
 
 /**
  * @ignore
@@ -19,7 +19,7 @@ const DEFAULT_TRUNC_LENGTH = 30;
  * @private
  * @internal
  */
-const DEFAULT_TRUNC_OMISSION = '...';
+const DEFAULT_TRUNC_OMISSION = "...";
 
 /**
  * @ignore
@@ -87,9 +87,9 @@ export function truncate(str: any, options?: any): any {
   let omission = DEFAULT_TRUNC_OMISSION;
 
   if (isObject(options)) {
-    separator = 'separator' in options ? options.separator : separator;
-    length = 'length' in options ? options.length : length;
-    omission = 'omission' in options ? baseToString(options.omission) : omission;
+    separator = "separator" in options ? options.separator : separator;
+    length = "length" in options ? options.length : length;
+    omission = "omission" in options ? baseToString(options.omission) : omission;
   }
 
   str = toString(str);
@@ -108,7 +108,7 @@ export function truncate(str: any, options?: any): any {
     return omission;
   }
   let result = strSymbols
-    ? castSlice(strSymbols, 0, end).join('')
+    ? castSlice(strSymbols, 0, end).join("")
     : str.slice(0, end);
 
   if (separator === undefined) {
@@ -125,7 +125,7 @@ export function truncate(str: any, options?: any): any {
 
       if (!separator.global) {
         // @ts-ignore
-        separator = RegExp(separator.source, `${reFlags.exec(separator) || ''}g`);
+        separator = RegExp(separator.source, `${reFlags.exec(separator) || ""}g`);
       }
       separator.lastIndex = 0;
       while ((match = separator.exec(substring))) {

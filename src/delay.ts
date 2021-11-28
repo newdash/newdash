@@ -1,13 +1,13 @@
 // @ts-nocheck
 
-import isFunction from './isFunction';
+import isFunction from "./isFunction";
 
 /**
  * @ignore
  * @private
  * @internal
  */
-const FUNC_ERROR_TEXT = 'Expected a function';
+const FUNC_ERROR_TEXT = "Expected a function";
 
 /**
  * Invokes `func` after `wait` milliseconds. Any additional arguments are

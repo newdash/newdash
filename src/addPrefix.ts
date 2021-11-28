@@ -18,7 +18,7 @@
  * ```
  *
  */
-export function addPrefix(str: string = '', prefix: string = ''): string {
+export function addPrefix(str: string = "", prefix: string = ""): string {
   if (!str.startsWith(prefix)) {
     return prefix + str;
   }

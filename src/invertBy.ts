@@ -1,6 +1,6 @@
-import { getIteratee } from './.internal/getIteratee';
-import { createInverter } from './.internal/createInverter';
-import { RecordIteratee } from './types';
+import { createInverter } from "./.internal/createInverter";
+import { getIteratee } from "./.internal/getIteratee";
+import { RecordIteratee } from "./types";
 
 
 /**
@@ -17,7 +17,7 @@ const nativeObjectToString = String.prototype.toString;
  */
 const internalInvertBy = createInverter((result, value, key) => {
   if (value != null &&
-    typeof value.toString != 'function') {
+    typeof value.toString != "function") {
     value = nativeObjectToString.call(value);
   }
 
@@ -50,7 +50,10 @@ const internalInvertBy = createInverter((result, value, key) => {
  * // => { 'group1': ['a', 'c'], 'group2': ['b'] }
  * ```
  */
-export function invertBy<T = any>(object: Record<string, T>, iteratee: RecordIteratee<T, string>): Record<string, Array<string>>;
+export function invertBy<T = any>(
+  object: Record<string, T>,
+  iteratee: RecordIteratee<T, string>
+): Record<string, Array<string>>;
 export function invertBy(...args: any[]): any {
   return internalInvertBy(...args);
 }

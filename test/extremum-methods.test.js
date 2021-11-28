@@ -1,17 +1,17 @@
-import * as assert from 'assert';
-import each from '../src/each';
-import range from '../src/range';
+import * as assert from "assert";
+import each from "../src/each";
+import range from "../src/range";
 
 
-import { maxBy } from '../src/maxBy';
-import { max } from '../src/max';
-import { minBy } from '../src/minBy';
-import { min } from '../src/min';
+import { maxBy } from "../src/maxBy";
+import { max } from "../src/max";
+import { minBy } from "../src/minBy";
+import { min } from "../src/min";
 
 
-describe('extremum methods', () => {
+describe("extremum methods", () => {
 
-  each([['max', max], ['maxBy', maxBy], ['min', min], ['minBy', minBy]], ([methodName, func]) => {
+  each([["max", max], ["maxBy", maxBy], ["min", min], ["minBy", minBy]], ([methodName, func]) => {
 
     const isMax = /^max/.test(methodName);
 
@@ -29,9 +29,9 @@ describe('extremum methods', () => {
 
   });
 
-  each([['maxBy', maxBy], ['minBy', minBy]], ([methodName, func]) => {
+  each([["maxBy", maxBy], ["minBy", minBy]], ([methodName, func]) => {
     const array = [1, 2, 3],
-      isMax = methodName == 'maxBy';
+      isMax = methodName == "maxBy";
 
     it(`\`_.${methodName}\` should work with an \`iteratee\``, () => {
       const actual = func(array, (n) => -n);
@@ -39,9 +39,9 @@ describe('extremum methods', () => {
       assert.strictEqual(actual, isMax ? 1 : 3);
     });
 
-    it('should work with `_.property` shorthands', () => {
-      let objects = [{ 'a': 2 }, { 'a': 3 }, { 'a': 1 }],
-        actual = func(objects, 'a');
+    it("should work with `_.property` shorthands", () => {
+      let objects = [{ "a": 2 }, { "a": 3 }, { "a": 1 }],
+        actual = func(objects, "a");
 
       assert.deepStrictEqual(actual, objects[isMax ? 1 : 2]);
 
@@ -53,9 +53,9 @@ describe('extremum methods', () => {
 
     it(`\`_.${methodName}\` should work when \`iteratee\` returns +/-Infinity`, () => {
       const value = isMax ? -Infinity : Infinity,
-        object = { 'a': value };
+        object = { "a": value };
 
-      const actual = func([object, { 'a': value }], (object) => object.a);
+      const actual = func([object, { "a": value }], (object) => object.a);
 
       assert.strictEqual(actual, object);
     });

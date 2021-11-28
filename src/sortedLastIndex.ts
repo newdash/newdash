@@ -1,4 +1,4 @@
-import baseSortedIndex from './.internal/baseSortedIndex';
+import baseSortedIndex from "./.internal/baseSortedIndex";
 
 /**
  * This method is like `sortedIndex` except that it returns the highest

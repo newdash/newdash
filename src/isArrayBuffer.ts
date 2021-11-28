@@ -1,5 +1,5 @@
-import getTag from './.internal/getTag';
-import isObjectLike from './isObjectLike';
+import getTag from "./.internal/getTag";
+import isObjectLike from "./isObjectLike";
 
 /**
  * Checks if `value` is classified as an `ArrayBuffer` object.
@@ -19,7 +19,7 @@ import isObjectLike from './isObjectLike';
  * ```
  */
 export function isArrayBuffer(value: any): boolean {
-  return isObjectLike(value) && getTag(value) == '[object ArrayBuffer]';
+  return isObjectLike(value) && getTag(value) == "[object ArrayBuffer]";
 }
 
 export default isArrayBuffer;

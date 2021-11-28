@@ -1,7 +1,7 @@
-import filter from './filter';
-import filterObject from './filterObject';
-import negate from './negate';
-import { Collection, CollectionIteratee } from './types';
+import filter from "./filter";
+import filterObject from "./filterObject";
+import negate from "./negate";
+import { Collection, CollectionIteratee } from "./types";
 
 /**
  * The opposite of `filter` this method returns the elements of `collection`

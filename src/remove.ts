@@ -1,6 +1,6 @@
-import basePullAt from './.internal/basePullAt';
-import { CollectionIteratee } from './types';
-import getIteratee from './.internal/getIteratee';
+import basePullAt from "./.internal/basePullAt";
+import { CollectionIteratee } from "./types";
+import getIteratee from "./.internal/getIteratee";
 
 /**
  * Removes all elements from `array` that `predicate` returns truthy for

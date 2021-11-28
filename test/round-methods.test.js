@@ -1,16 +1,16 @@
-import * as assert from 'assert';
-import { MAX_SAFE_INTEGER, stubFalse } from './utils';
-import { ceil } from '../src/ceil';
-import { floor } from '../src/floor';
-import { round } from '../src/round';
-import each from '../src/each';
-import map from '../src/map';
+import * as assert from "assert";
+import { MAX_SAFE_INTEGER, stubFalse } from "./utils";
+import { ceil } from "../src/ceil";
+import { floor } from "../src/floor";
+import { round } from "../src/round";
+import each from "../src/each";
+import map from "../src/map";
 
-describe('round methods', () => {
+describe("round methods", () => {
 
-  each([['ceil', ceil], ['floor', floor], ['round', round]], ([methodName, func]) => {
-    const isCeil = methodName == 'ceil';
-    const isFloor = methodName == 'floor';
+  each([["ceil", ceil], ["floor", floor], ["round", round]], ([methodName, func]) => {
+    const isCeil = methodName == "ceil";
+    const isFloor = methodName == "floor";
 
     it(`\`_.${methodName}\` should return a rounded number without a precision`, () => {
       const actual = func(4.006);
@@ -44,7 +44,7 @@ describe('round methods', () => {
       actual = func(4.016, 2.6);
       assert.strictEqual(actual, expected);
 
-      actual = func(4.016, '+2');
+      actual = func(4.016, "+2");
       assert.strictEqual(actual, expected);
     });
 
@@ -52,15 +52,15 @@ describe('round methods', () => {
       let actual = func(5e1, 2);
       assert.deepStrictEqual(actual, 50);
 
-      actual = func('5e', 1);
+      actual = func("5e", 1);
       assert.deepStrictEqual(actual, NaN);
 
-      actual = func('5e1e1', 1);
+      actual = func("5e1e1", 1);
       assert.deepStrictEqual(actual, NaN);
     });
 
     it(`\`_.${methodName}\` should preserve the sign of \`0\``, () => {
-      const values = [[0], [-0], ['0'], ['-0'], [0, 1], [-0, 1], ['0', 1], ['-0', 1]],
+      const values = [[0], [-0], ["0"], ["-0"], [0, 1], [-0, 1], ["0", 1], ["-0", 1]],
         expected = [Infinity, -Infinity, Infinity, -Infinity, Infinity, -Infinity, Infinity, -Infinity];
 
       const actual = map(values, (args) => 1 / func.apply(undefined, args));

@@ -1,13 +1,13 @@
-import * as assert from 'assert';
-import constant from '../src/constant';
-import map from '../src/map';
-import zip from '../src/zip';
-import zipWith from '../src/zipWith';
-import { slice } from './utils';
+import * as assert from "assert";
+import constant from "../src/constant";
+import map from "../src/map";
+import zip from "../src/zip";
+import zipWith from "../src/zipWith";
+import { slice } from "./utils";
 
-describe('zipWith', () => {
+describe("zipWith", () => {
 
-  it('should zip arrays combining grouped elements with `iteratee`', () => {
+  it("should zip arrays combining grouped elements with `iteratee`", () => {
     const array1 = [1, 2, 3],
       array2 = [4, 5, 6],
       array3 = [7, 8, 9];
@@ -21,7 +21,7 @@ describe('zipWith', () => {
     assert.deepStrictEqual(actual, [1, 2, 3]);
   });
 
-  it('should provide correct `iteratee` arguments', () => {
+  it("should provide correct `iteratee` arguments", () => {
     let args;
 
     zipWith([[1, 2], [3, 4], [5, 6]], function() {
@@ -31,7 +31,7 @@ describe('zipWith', () => {
     assert.deepStrictEqual(args, [1, 3, 5]);
   });
 
-  it('should perform a basic zip when `iteratee` is nullish', () => {
+  it("should perform a basic zip when `iteratee` is nullish", () => {
     const array1 = [1, 2],
       array2 = [3, 4],
       values = [, null, undefined],

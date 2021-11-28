@@ -1,9 +1,9 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { _ } from './utils';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { _ } from "./utils";
 
-describe('forIn methods', () => {
-  lodashStable.each(['forIn', 'forInRight'], (methodName) => {
+describe("forIn methods", () => {
+  lodashStable.each(["forIn", "forInRight"], (methodName) => {
     const func = _[methodName];
 
     it(`\`_.${methodName}\` iterates over inherited string keyed properties`, () => {
@@ -14,7 +14,7 @@ describe('forIn methods', () => {
 
       const keys = [];
       func(new Foo, (value, key) => { keys.push(key); });
-      assert.deepStrictEqual(keys.sort(), ['a', 'b']);
+      assert.deepStrictEqual(keys.sort(), ["a", "b"]);
     });
   });
 });

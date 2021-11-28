@@ -1,6 +1,6 @@
-import getTag from './.internal/getTag';
-import isObjectLike from './isObjectLike';
-import isPlainObject from './isPlainObject';
+import getTag from "./.internal/getTag";
+import isObjectLike from "./isObjectLike";
+import isPlainObject from "./isPlainObject";
 
 /**
  * Checks if `value` is an `Error`, `EvalError`, `RangeError`, `ReferenceError`,
@@ -31,8 +31,8 @@ export function isError(value: any): value is Error {
     return true;
   }
   const tag = getTag(value);
-  return tag == '[object Error]' || tag == '[object DOMException]' ||
-    (typeof value.message === 'string' && typeof value.name === 'string' && !isPlainObject(value));
+  return tag == "[object Error]" || tag == "[object DOMException]" ||
+    (typeof value.message === "string" && typeof value.name === "string" && !isPlainObject(value));
 }
 
 export default isError;

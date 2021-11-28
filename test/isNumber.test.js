@@ -1,17 +1,17 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { falsey, args, slice, symbol, realm } from './utils';
-import isNumber from '../src/isNumber';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { falsey, args, slice, symbol, realm } from "./utils";
+import isNumber from "../src/isNumber";
 
-describe('isNumber', () => {
-  it('should return `true` for numbers', () => {
+describe("isNumber", () => {
+  it("should return `true` for numbers", () => {
     assert.strictEqual(isNumber(0), true);
     assert.strictEqual(isNumber(Object(0)), true);
     assert.strictEqual(isNumber(NaN), true);
   });
 
-  it('should return `false` for non-numbers', () => {
-    const expected = lodashStable.map(falsey, (value) => typeof value === 'number');
+  it("should return `false` for non-numbers", () => {
+    const expected = lodashStable.map(falsey, (value) => typeof value === "number");
 
     const actual = lodashStable.map(falsey, (value, index) => index ? isNumber(value) : isNumber());
 
@@ -24,13 +24,13 @@ describe('isNumber', () => {
     assert.strictEqual(isNumber(new Error), false);
     assert.strictEqual(isNumber(_), false);
     assert.strictEqual(isNumber(slice), false);
-    assert.strictEqual(isNumber({ 'a': 1 }), false);
+    assert.strictEqual(isNumber({ "a": 1 }), false);
     assert.strictEqual(isNumber(/x/), false);
-    assert.strictEqual(isNumber('a'), false);
+    assert.strictEqual(isNumber("a"), false);
     assert.strictEqual(isNumber(symbol), false);
   });
 
-  it('should work with numbers from another realm', () => {
+  it("should work with numbers from another realm", () => {
     if (realm.number) {
       assert.strictEqual(isNumber(realm.number), true);
     }

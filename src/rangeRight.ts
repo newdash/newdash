@@ -1,4 +1,4 @@
-import createRange from './.internal/createRange';
+import createRange from "./.internal/createRange";
 
 /**
  * @ignore

@@ -1,5 +1,5 @@
-import baseDifference from './.internal/baseDifference';
-import isArrayLikeObject from './isArrayLikeObject';
+import baseDifference from "./.internal/baseDifference";
+import isArrayLikeObject from "./isArrayLikeObject";
 
 /**
  * Creates an array excluding all given values using

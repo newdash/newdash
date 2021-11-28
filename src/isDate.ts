@@ -1,5 +1,5 @@
-import getTag from './.internal/getTag';
-import isObjectLike from './isObjectLike';
+import getTag from "./.internal/getTag";
+import isObjectLike from "./isObjectLike";
 
 /**
  * Checks if `value` is classified as a `Date` object.
@@ -19,6 +19,6 @@ import isObjectLike from './isObjectLike';
  * ```
  */
 export function isDate(value: any): value is Date {
-  return isObjectLike(value) && getTag(value) == '[object Date]';
+  return isObjectLike(value) && getTag(value) == "[object Date]";
 }
 export default isDate;

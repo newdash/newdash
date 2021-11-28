@@ -1,5 +1,5 @@
-import getTag from './.internal/getTag';
-import isObjectLike from './isObjectLike';
+import getTag from "./.internal/getTag";
+import isObjectLike from "./isObjectLike";
 
 /**
  * Checks if `value` is classified as a `Map` object.
@@ -19,7 +19,7 @@ import isObjectLike from './isObjectLike';
  * ```
  */
 export function isMap(value: any): value is Map<any, any> {
-  return isObjectLike(value) && getTag(value) == '[object Map]';
+  return isObjectLike(value) && getTag(value) == "[object Map]";
 }
 
 export default isMap;

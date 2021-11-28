@@ -1,6 +1,6 @@
-import baseUniq from './.internal/baseUniq';
-import { ArrayIteratee, KeyIteratee } from './types';
-import getIteratee from './.internal/getIteratee';
+import baseUniq from "./.internal/baseUniq";
+import { ArrayIteratee, KeyIteratee } from "./types";
+import getIteratee from "./.internal/getIteratee";
 
 /**
  * This method is like `uniq` except that it accepts `iteratee` which is

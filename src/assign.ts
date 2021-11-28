@@ -1,9 +1,9 @@
-import assignValue from './.internal/assignValue';
-import copyObject from './.internal/copyObject';
-import createAssigner from './.internal/createAssigner';
-import isPrototype from './.internal/isPrototype';
-import isArrayLike from './isArrayLike';
-import keys from './keys';
+import assignValue from "./.internal/assignValue";
+import copyObject from "./.internal/copyObject";
+import createAssigner from "./.internal/createAssigner";
+import isPrototype from "./.internal/isPrototype";
+import isArrayLike from "./isArrayLike";
+import keys from "./keys";
 
 /**
  * @internal

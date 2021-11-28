@@ -1,6 +1,6 @@
-import isIterateeCall from './.internal/isIterateeCall';
-import baseSlice from './.internal/baseSlice';
-import toInteger from './toInteger';
+import isIterateeCall from "./.internal/isIterateeCall";
+import baseSlice from "./.internal/baseSlice";
+import toInteger from "./toInteger";
 
 /**
  * Creates a slice of `array` from `start` up to, but not including, `end`.
@@ -30,7 +30,7 @@ export function slice(array: any, start: any, end: any) {
   if (!length) {
     return [];
   }
-  if (end && typeof end != 'number' && isIterateeCall(array, start, end)) {
+  if (end && typeof end != "number" && isIterateeCall(array, start, end)) {
     start = 0;
     end = length;
   }

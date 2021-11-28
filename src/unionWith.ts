@@ -1,7 +1,7 @@
-import baseFlatten from './.internal/baseFlatten';
-import baseUniq from './.internal/baseUniq';
-import isArrayLikeObject from './isArrayLikeObject';
-import last from './last';
+import baseFlatten from "./.internal/baseFlatten";
+import baseUniq from "./.internal/baseUniq";
+import isArrayLikeObject from "./isArrayLikeObject";
+import last from "./last";
 
 /**
  * This method is like `union` except that it accepts `comparator` which
@@ -27,7 +27,7 @@ import last from './last';
  */
 export function unionWith(...arrays) {
   let comparator = last(arrays);
-  comparator = typeof comparator === 'function' ? comparator : undefined;
+  comparator = typeof comparator === "function" ? comparator : undefined;
   return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true), undefined, comparator);
 }
 

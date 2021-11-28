@@ -1,5 +1,5 @@
-import baseConformsTo from './.internal/baseConformsTo';
-import keys from './keys';
+import baseConformsTo from "./.internal/baseConformsTo";
+import keys from "./keys";
 
 /**
  * Checks if `object` conforms to `source` by invoking the predicate
@@ -25,7 +25,10 @@ import keys from './keys';
  * // => false
  * ```
  */
-export function conformsTo<T extends Record<string, any>>(object: T, source: { [key in keyof T]?: (value: any) => boolean }): boolean {
+export function conformsTo<T extends Record<string, any>>(
+  object: T,
+  source: { [key in keyof T]?: (value: any) => boolean }
+): boolean {
   return source == null || baseConformsTo(object, source, keys(source));
 }
 

@@ -1,11 +1,11 @@
-import copyArray from './.internal/copyArray';
-import shuffleSelf from './.internal/shuffleSelf';
-import baseClamp from './.internal/baseClamp';
-import toInteger from './toInteger';
-import isArray from './isArray';
-import { Collection } from './types';
-import values from './values';
-import isIterateeCall from './.internal/isIterateeCall';
+import copyArray from "./.internal/copyArray";
+import shuffleSelf from "./.internal/shuffleSelf";
+import baseClamp from "./.internal/baseClamp";
+import toInteger from "./toInteger";
+import isArray from "./isArray";
+import { Collection } from "./types";
+import values from "./values";
+import isIterateeCall from "./.internal/isIterateeCall";
 
 
 /**

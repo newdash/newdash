@@ -1,9 +1,9 @@
-import { AsyncFunction } from '../types';
-import { LRUMap } from './LRUMap';
-import Semaphore from './Semaphore';
-import toHashCode from './toHashCode';
+import { AsyncFunction } from "../types";
+import { LRUMap } from "./LRUMap";
+import Semaphore from "./Semaphore";
+import toHashCode from "./toHashCode";
 
-const KEY_DEFAULT = 'default';
+const KEY_DEFAULT = "default";
 
 const DEFAULT_EXTRACTOR = (args: any[]) => args;
 

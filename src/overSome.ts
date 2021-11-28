@@ -1,5 +1,5 @@
-import { createOver } from './.internal/createOver';
-import { arraySome } from './.internal/arraySome';
+import { createOver } from "./.internal/createOver";
+import { arraySome } from "./.internal/arraySome";
 
 /**
  * @ignore

@@ -1,7 +1,7 @@
-import createPadding from './.internal/createPadding';
-import stringSize from './.internal/stringSize';
-import toInteger from './toInteger';
-import toString from './toString';
+import createPadding from "./.internal/createPadding";
+import stringSize from "./.internal/stringSize";
+import toInteger from "./toInteger";
+import toString from "./toString";
 
 /**
  * Pads `string` on the right side if it's shorter than `length`. Padding
@@ -26,7 +26,7 @@ import toString from './toString';
  * // => 'abc'
  * ```
  */
-export function padEnd(string = '', length = 0, chars = ' '): string {
+export function padEnd(string = "", length = 0, chars = " "): string {
   string = toString(string);
   length = toInteger(length);
 

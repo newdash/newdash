@@ -1,4 +1,4 @@
-import baseFlatten from './.internal/baseFlatten';
+import baseFlatten from "./.internal/baseFlatten";
 
 /**
  * Recursively flatten `array` up to `depth` times.

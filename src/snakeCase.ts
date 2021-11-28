@@ -1,5 +1,5 @@
-import words from './words';
-import toString from './toString';
+import words from "./words";
+import toString from "./toString";
 
 /**
  * Converts `string` to
@@ -25,9 +25,9 @@ import toString from './toString';
  * // => 'foo_2_bar'
  */
 const snakeCase = (string) => (
-  words(toString(string).replace(/['\u2019]/g, '')).reduce((result, word, index) => (
-    result + (index ? '_' : '') + word.toLowerCase()
-  ), '')
+  words(toString(string).replace(/['\u2019]/g, "")).reduce((result, word, index) => (
+    result + (index ? "_" : "") + word.toLowerCase()
+  ), "")
 );
 
 export default snakeCase;

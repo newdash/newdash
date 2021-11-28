@@ -1,15 +1,15 @@
-import * as assert from 'assert';
-import { eachRight } from '../src/eachRight';
-import { forEachRight } from '../src/forEachRight';
+import * as assert from "assert";
+import { eachRight } from "../src/eachRight";
+import { forEachRight } from "../src/forEachRight";
 
-describe('forEachRight', () => {
+describe("forEachRight", () => {
 
-  it('should be aliased', () => {
+  it("should be aliased", () => {
     assert.strictEqual(eachRight, forEachRight);
   });
 
 
-  it('should sum', () => {
+  it("should sum", () => {
     const arr = [1, 2, 3];
     let sum = 0;
 
@@ -18,10 +18,10 @@ describe('forEachRight', () => {
 
   });
 
-  it('should sum object', () => {
+  it("should sum object", () => {
     const obj = { a: 1, b: 2, c: 3 };
     let sum = 0;
-    let label = '';
+    let label = "";
 
     forEachRight(obj, (value, key) => {
       sum += value;
@@ -29,7 +29,7 @@ describe('forEachRight', () => {
     });
 
     assert.strictEqual(sum, 6);
-    assert.strictEqual(label, 'cba');
+    assert.strictEqual(label, "cba");
 
   });
 

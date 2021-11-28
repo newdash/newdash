@@ -1,5 +1,5 @@
-import baseClone from './.internal/baseClone';
-import baseConforms from './.internal/baseConforms';
+import baseClone from "./.internal/baseClone";
+import baseConforms from "./.internal/baseConforms";
 
 /**
  * @ignore
@@ -32,7 +32,9 @@ const CLONE_DEEP_FLAG = 1;
  * // => [{ 'a': 1, 'b': 2 }]
  * ```
  */
-export function conforms<T extends Record<string, any>>(source: { [key in keyof T]?: (value: any) => boolean }): (obj: T) => boolean;
+export function conforms<T extends Record<string, any>>(
+  source: { [key in keyof T]?: (value: any) => boolean }
+): (obj: T) => boolean;
 export function conforms(source: any): any;
 export function conforms(source: any): any {
   return baseConforms(baseClone(source, CLONE_DEEP_FLAG));

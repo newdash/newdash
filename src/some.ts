@@ -1,8 +1,8 @@
 // @ts-nocheck
-import isArray from './isArray';
-import isIterateeCall from './.internal/isIterateeCall';
-import getIteratee from './.internal/getIteratee';
-import baseEach from './.internal/baseEach';
+import isArray from "./isArray";
+import isIterateeCall from "./.internal/isIterateeCall";
+import getIteratee from "./.internal/getIteratee";
+import baseEach from "./.internal/baseEach";
 
 /**
  * A specialized version of `some` for arrays without support for iteratee

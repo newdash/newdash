@@ -3,11 +3,11 @@
  * @ignore
  */
 const htmlEscapes = {
-  '&': '&amp;',
-  '<': '&lt;',
-  '>': '&gt;',
-  '"': '&quot;',
-  "'": '&#39;'
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;"
 };
 
 /**
@@ -53,7 +53,7 @@ const reHasUnescapedHtml = RegExp(reUnescapedHtml.source);
 export function escape(string: string): string {
   return (string && reHasUnescapedHtml.test(string))
     ? string.replace(reUnescapedHtml, (chr) => htmlEscapes[chr])
-    : (string || '');
+    : (string || "");
 }
 
 export default escape;

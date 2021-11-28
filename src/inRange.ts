@@ -1,6 +1,6 @@
-import baseInRange from './.internal/baseInRange';
-import toFinite from './toFinite';
-import toNumber from './toNumber';
+import baseInRange from "./.internal/baseInRange";
+import toFinite from "./toFinite";
+import toNumber from "./toNumber";
 
 /**
  * Checks if `number` is between `start` and up to, but not including, `end`. If

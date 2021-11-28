@@ -1,7 +1,7 @@
-import { WRAP_CURRY_FLAG } from './.internal/CONSTANTS';
-import createCurry from './.internal/createCurry';
-import { mustProvide } from './assert';
-import toInteger from './toInteger';
+import { WRAP_CURRY_FLAG } from "./.internal/CONSTANTS";
+import createCurry from "./.internal/createCurry";
+import { mustProvide } from "./assert";
+import toInteger from "./toInteger";
 
 type CurriedFunction = Function & {
   placeholder: any
@@ -46,31 +46,31 @@ type CurriedFunction = Function & {
  * ```
  */
 export function curry<T extends Function = any>(func: T, arity: number = func?.length, guard?: any): CurriedFunction {
-  mustProvide(arity, 'arity', 'number');
+  mustProvide(arity, "arity", "number");
 
   arity = toInteger(arity);
   arity = guard ? undefined : arity;
 
   const result = createCurry(func, WRAP_CURRY_FLAG, arity);
   // default placeholder
-  result['placeholder'] = curry.placeholder;
+  result["placeholder"] = curry.placeholder;
   // @ts-ignore
   return result;
 }
 
-if (typeof Symbol == 'function') {
+if (typeof Symbol == "function") {
 
   /**
    * placeholder of curry function
    */
-  curry['placeholder'] = Symbol('__curry__placeholder__');
+  curry["placeholder"] = Symbol("__curry__placeholder__");
 
 } else {
 
   /**
    * placeholder of curry function
    */
-  curry['placeholder'] = '__curry__placeholder__';
+  curry["placeholder"] = "__curry__placeholder__";
 
 }
 

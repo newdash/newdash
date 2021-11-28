@@ -1,5 +1,5 @@
-import baseIsMatch from './.internal/baseIsMatch';
-import getMatchData from './.internal/getMatchData';
+import baseIsMatch from "./.internal/baseIsMatch";
+import getMatchData from "./.internal/getMatchData";
 
 /**
  * This method is like `isMatch` except that it accepts `customizer` which
@@ -35,7 +35,7 @@ import getMatchData from './.internal/getMatchData';
  */
 export function isMatchWith<V1, V2>(object: V1, source: V2, customizer: (v1?: V1, v2?: V2) => boolean): boolean;
 export function isMatchWith(object: any, source: any, customizer: any): any {
-  customizer = typeof customizer === 'function' ? customizer : undefined;
+  customizer = typeof customizer === "function" ? customizer : undefined;
   return baseIsMatch(object, source, getMatchData(source), customizer);
 }
 

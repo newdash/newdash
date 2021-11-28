@@ -1,4 +1,4 @@
-import baseMean from './meanBy';
+import baseMean from "./meanBy";
 
 /**
  * Computes the mean of the values in `array`.

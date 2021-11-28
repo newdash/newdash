@@ -1,7 +1,7 @@
-import baseDifference from './.internal/baseDifference';
-import baseFlatten from './.internal/baseFlatten';
-import isArrayLikeObject from './isArrayLikeObject';
-import last from './last';
+import baseDifference from "./.internal/baseDifference";
+import baseFlatten from "./.internal/baseFlatten";
+import isArrayLikeObject from "./isArrayLikeObject";
+import last from "./last";
 
 /**
  * This method is like `difference` except that it accepts `comparator`

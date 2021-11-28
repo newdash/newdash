@@ -23,7 +23,7 @@
  */
 export function lt<T>(value: T, other: T): boolean;
 export function lt(value: any, other: any): any {
-  if (!(typeof value === 'string' && typeof other === 'string')) {
+  if (!(typeof value === "string" && typeof other === "string")) {
     value = +value;
     other = +other;
   }

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import hasPath from './hasPath';
+import hasPath from "./hasPath";
 
 /**
  * @ignore

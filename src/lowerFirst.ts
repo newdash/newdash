@@ -1,4 +1,4 @@
-import createCaseFirst from './.internal/createCaseFirst';
+import createCaseFirst from "./.internal/createCaseFirst";
 
 
 /**
@@ -6,7 +6,7 @@ import createCaseFirst from './.internal/createCaseFirst';
  * @private
  * @internal
  */
-const internal = createCaseFirst('toLowerCase');
+const internal = createCaseFirst("toLowerCase");
 /**
  * Converts the first character of `string` to lower case.
  *
@@ -24,7 +24,7 @@ const internal = createCaseFirst('toLowerCase');
  * // => 'fRED'
  * ```
  */
-export function lowerFirst(str: string = ''): string {
+export function lowerFirst(str: string = ""): string {
   return internal(str);
 }
 

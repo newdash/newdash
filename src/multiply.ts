@@ -1,6 +1,6 @@
-import createMathOperation from './.internal/createMathOperation';
-import map from './map';
-import isArray from './isArray';
+import createMathOperation from "./.internal/createMathOperation";
+import map from "./map";
+import isArray from "./isArray";
 
 /**
  * @ignore

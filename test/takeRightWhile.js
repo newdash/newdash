@@ -1,24 +1,24 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { slice, LARGE_ARRAY_SIZE } from './utils';
-import takeRightWhile from '../src/takeRightWhile';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { slice, LARGE_ARRAY_SIZE } from "./utils";
+import takeRightWhile from "../src/takeRightWhile";
 
-describe('takeRightWhile', () => {
+describe("takeRightWhile", () => {
   const array = [1, 2, 3, 4];
 
   const objects = [
-    { 'a': 0, 'b': 0 },
-    { 'a': 1, 'b': 1 },
-    { 'a': 2, 'b': 2 }
+    { "a": 0, "b": 0 },
+    { "a": 1, "b": 1 },
+    { "a": 2, "b": 2 }
   ];
 
-  it('should take elements while `predicate` returns truthy', () => {
+  it("should take elements while `predicate` returns truthy", () => {
     const actual = takeRightWhile(array, (n) => n > 2);
 
     assert.deepStrictEqual(actual, [3, 4]);
   });
 
-  it('should provide correct `predicate` arguments', () => {
+  it("should provide correct `predicate` arguments", () => {
     let args;
 
     takeRightWhile(array, function() {
@@ -28,19 +28,19 @@ describe('takeRightWhile', () => {
     assert.deepStrictEqual(args, [4, 3, array]);
   });
 
-  it('should work with `_.matches` shorthands', () => {
-    assert.deepStrictEqual(takeRightWhile(objects, { 'b': 2 }), objects.slice(2));
+  it("should work with `_.matches` shorthands", () => {
+    assert.deepStrictEqual(takeRightWhile(objects, { "b": 2 }), objects.slice(2));
   });
 
-  it('should work with `_.matchesProperty` shorthands', () => {
-    assert.deepStrictEqual(takeRightWhile(objects, ['b', 2]), objects.slice(2));
+  it("should work with `_.matchesProperty` shorthands", () => {
+    assert.deepStrictEqual(takeRightWhile(objects, ["b", 2]), objects.slice(2));
   });
 
-  it('should work with `_.property` shorthands', () => {
-    assert.deepStrictEqual(takeRightWhile(objects, 'b'), objects.slice(1));
+  it("should work with `_.property` shorthands", () => {
+    assert.deepStrictEqual(takeRightWhile(objects, "b"), objects.slice(1));
   });
 
-  it('should work in a lazy sequence', () => {
+  it("should work in a lazy sequence", () => {
     const array = lodashStable.range(LARGE_ARRAY_SIZE),
       predicate = function(n) { return n > 2; },
       expected = takeRightWhile(array, predicate),
@@ -51,7 +51,7 @@ describe('takeRightWhile', () => {
     assert.strictEqual(wrapped.last(), _.last(expected));
   });
 
-  it('should provide correct `predicate` arguments in a lazy sequence', () => {
+  it("should provide correct `predicate` arguments in a lazy sequence", () => {
     let args,
       array = lodashStable.range(LARGE_ARRAY_SIZE + 1);
 

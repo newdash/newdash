@@ -1,16 +1,16 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { weakSet, falsey, stubFalse, args, slice, set, symbol, realm } from './utils';
-import isWeakSet from '../src/isWeakSet';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { weakSet, falsey, stubFalse, args, slice, set, symbol, realm } from "./utils";
+import isWeakSet from "../src/isWeakSet";
 
-describe('isWeakSet', () => {
-  it('should return `true` for weak sets', () => {
+describe("isWeakSet", () => {
+  it("should return `true` for weak sets", () => {
     if (WeakSet) {
       assert.strictEqual(isWeakSet(weakSet), true);
     }
   });
 
-  it('should return `false` for non weak sets', () => {
+  it("should return `false` for non weak sets", () => {
     const expected = lodashStable.map(falsey, stubFalse);
 
     const actual = lodashStable.map(falsey, (value, index) => index ? isWeakSet(value) : isWeakSet());
@@ -24,15 +24,15 @@ describe('isWeakSet', () => {
     assert.strictEqual(isWeakSet(new Error), false);
     assert.strictEqual(isWeakSet(_), false);
     assert.strictEqual(isWeakSet(slice), false);
-    assert.strictEqual(isWeakSet({ 'a': 1 }), false);
+    assert.strictEqual(isWeakSet({ "a": 1 }), false);
     assert.strictEqual(isWeakSet(1), false);
     assert.strictEqual(isWeakSet(/x/), false);
-    assert.strictEqual(isWeakSet('a'), false);
+    assert.strictEqual(isWeakSet("a"), false);
     assert.strictEqual(isWeakSet(set), false);
     assert.strictEqual(isWeakSet(symbol), false);
   });
 
-  it('should work with weak sets from another realm', () => {
+  it("should work with weak sets from another realm", () => {
     if (realm.weakSet) {
       assert.strictEqual(isWeakSet(realm.weakSet), true);
     }

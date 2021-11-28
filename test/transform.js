@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
+import * as assert from "assert";
+import lodashStable from "lodash";
 
 import {
   stubTrue,
@@ -11,18 +11,18 @@ import {
   falsey,
   slice,
   realm
-} from './utils';
+} from "./utils";
 
-import transform from '../src/transform';
+import transform from "../src/transform";
 
-describe('transform', () => {
+describe("transform", () => {
   function Foo() {
     this.a = 1;
     this.b = 2;
     this.c = 3;
   }
 
-  it('should create an object with the same `[[Prototype]]` as `object` when `accumulator` is nullish', () => {
+  it("should create an object with the same `[[Prototype]]` as `object` when `accumulator` is nullish", () => {
     let accumulators = [, null, undefined],
       object = new Foo,
       expected = lodashStable.map(accumulators, stubTrue);
@@ -41,12 +41,12 @@ describe('transform', () => {
 
     assert.deepStrictEqual(actual, expected);
 
-    expected = lodashStable.map(accumulators, lodashStable.constant({ 'a': 1, 'b': 4, 'c': 9 }));
+    expected = lodashStable.map(accumulators, lodashStable.constant({ "a": 1, "b": 4, "c": 9 }));
     actual = lodashStable.map(results, lodashStable.toPlainObject);
 
     assert.deepStrictEqual(actual, expected);
 
-    object = { 'a': 1, 'b': 2, 'c': 3 };
+    object = { "a": 1, "b": 2, "c": 3 };
     actual = lodashStable.map(accumulators, mapper);
 
     assert.deepStrictEqual(actual, expected);
@@ -58,7 +58,7 @@ describe('transform', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should create regular arrays from typed arrays', () => {
+  it("should create regular arrays from typed arrays", () => {
     const expected = lodashStable.map(typedArrays, stubTrue);
 
     const actual = lodashStable.map(typedArrays, (type) => {
@@ -71,8 +71,8 @@ describe('transform', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should support an `accumulator` value', () => {
-    var values = [new Foo, [1, 2, 3], { 'a': 1, 'b': 2, 'c': 3 }],
+  it("should support an `accumulator` value", () => {
+    var values = [new Foo, [1, 2, 3], { "a": 1, "b": 2, "c": 3 }],
       expected = lodashStable.map(values, lodashStable.constant([1, 4, 9]));
 
     let actual = lodashStable.map(values, (value) => transform(value, (result, value) => {
@@ -81,8 +81,8 @@ describe('transform', () => {
 
     assert.deepStrictEqual(actual, expected);
 
-    var object = { 'a': 1, 'b': 4, 'c': 9 },
-      expected = [object, { '0': 1, '1': 4, '2': 9 }, object];
+    var object = { "a": 1, "b": 4, "c": 9 },
+      expected = [object, { "0": 1, "1": 4, "2": 9 }, object];
 
     actual = lodashStable.map(values, (value) => transform(value, (result, value, key) => {
       result[key] = square(value);
@@ -99,21 +99,21 @@ describe('transform', () => {
     });
   });
 
-  it('should treat sparse arrays as dense', () => {
+  it("should treat sparse arrays as dense", () => {
     const actual = transform(Array(1), (result, value, index) => {
       result[index] = String(value);
     });
 
-    assert.deepStrictEqual(actual, ['undefined']);
+    assert.deepStrictEqual(actual, ["undefined"]);
   });
 
-  it('should work without an `iteratee`', () => {
+  it("should work without an `iteratee`", () => {
     assert.ok(transform(new Foo) instanceof Foo);
   });
 
-  it('should ensure `object` is an object before using its `[[Prototype]]`', () => {
+  it("should ensure `object` is an object before using its `[[Prototype]]`", () => {
     let Ctors = [Boolean, Boolean, Number, Number, Number, String, String],
-      values = [false, true, 0, 1, NaN, '', 'a'],
+      values = [false, true, 0, 1, NaN, "", "a"],
       expected = lodashStable.map(values, stubObject);
 
     const results = lodashStable.map(values, (value) => transform(value));
@@ -127,13 +127,13 @@ describe('transform', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should ensure `object` constructor is a function before using its `[[Prototype]]`', () => {
+  it("should ensure `object` constructor is a function before using its `[[Prototype]]`", () => {
     Foo.prototype.constructor = null;
     assert.ok(!(transform(new Foo) instanceof Foo));
     Foo.prototype.constructor = Foo;
   });
 
-  it('should create an empty object when given a falsey `object`', () => {
+  it("should create an empty object when given a falsey `object`", () => {
     const expected = lodashStable.map(falsey, stubObject);
 
     const actual = lodashStable.map(falsey, (object, index) => index ? transform(object) : transform());
@@ -142,8 +142,8 @@ describe('transform', () => {
   });
 
   lodashStable.each({
-    'array': [1, 2, 3],
-    'object': { 'a': 1, 'b': 2, 'c': 3 }
+    "array": [1, 2, 3],
+    "object": { "a": 1, "b": 2, "c": 3 }
   },
   (object, key) => {
     it(`should provide correct \`iteratee\` arguments when transforming an ${key}`, () => {
@@ -154,17 +154,17 @@ describe('transform', () => {
       });
 
       const first = args[0];
-      if (key == 'array') {
+      if (key == "array") {
         assert.ok(first !== object && lodashStable.isArray(first));
         assert.deepStrictEqual(args, [first, 1, 0, object]);
       } else {
         assert.ok(first !== object && lodashStable.isPlainObject(first));
-        assert.deepStrictEqual(args, [first, 1, 'a', object]);
+        assert.deepStrictEqual(args, [first, 1, "a", object]);
       }
     });
   });
 
-  it('should create an object from the same realm as `object`', () => {
+  it("should create an object from the same realm as `object`", () => {
     const objects = lodashStable.filter(realm, (value) => lodashStable.isObject(value) && !lodashStable.isElement(value));
 
     const expected = lodashStable.map(objects, stubTrue);

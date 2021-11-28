@@ -1,5 +1,5 @@
-import isObject from './isObject';
-import toNumber from './toNumber';
+import isObject from "./isObject";
+import toNumber from "./toNumber";
 
 /**
  * @ignore
@@ -86,7 +86,11 @@ type DebouncedFunction<F extends (...args: any[]) => any> = {
  *
  * ```
  */
-export function debounce<F extends(...args: any[]) => any>(func: F, wait?: number, options?: Options): DebouncedFunction<F> {
+export function debounce<F extends(...args: any[]) => any>(
+  func: F,
+  wait?: number,
+  options?: Options
+): DebouncedFunction<F> {
   let lastArgs: any,
     lastThis: any,
     maxWait: any,
@@ -99,15 +103,15 @@ export function debounce<F extends(...args: any[]) => any>(func: F, wait?: numbe
   let maxing = false;
   let trailing = true;
 
-  if (typeof func !== 'function') {
-    throw new TypeError('Expected a function');
+  if (typeof func !== "function") {
+    throw new TypeError("Expected a function");
   }
   wait = toNumber(wait) || 0;
   if (isObject(options)) {
     leading = !!options.leading;
-    maxing = 'maxWait' in options;
+    maxing = "maxWait" in options;
     maxWait = maxing ? Math.max(+options.maxWait || 0, wait) : maxWait;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
+    trailing = "trailing" in options ? !!options.trailing : trailing;
   }
 
   function invokeFunc(time) {

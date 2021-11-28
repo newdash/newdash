@@ -1,5 +1,5 @@
-import isArrayLike from './isArrayLike';
-import isObjectLike from './isObjectLike';
+import isArrayLike from "./isArrayLike";
+import isObjectLike from "./isObjectLike";
 
 /**
  * This method is like `isArrayLike` except that it also checks if `value`

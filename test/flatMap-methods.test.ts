@@ -1,18 +1,18 @@
 // @ts-nocheck
-import * as assert from 'assert';
-import constant from '../src/constant';
-import each from '../src/each';
-import flatMap from '../src/flatMap';
-import flatMapDeep from '../src/flatMapDeep';
-import flatMapDepth from '../src/flatMapDepth';
-import flatten from '../src/flatten';
-import map from '../src/map';
-import { falsey, stubArray } from './utils';
-import identity from '../src/.internal/identity';
+import * as assert from "assert";
+import constant from "../src/constant";
+import each from "../src/each";
+import flatMap from "../src/flatMap";
+import flatMapDeep from "../src/flatMapDeep";
+import flatMapDepth from "../src/flatMapDepth";
+import flatten from "../src/flatten";
+import map from "../src/map";
+import { falsey, stubArray } from "./utils";
+import identity from "../src/.internal/identity";
 
-describe('flatMap methods', () => {
+describe("flatMap methods", () => {
 
-  each([[flatMap, 'flatMap'], [flatMapDeep, 'flatMapDeep'], [flatMapDepth, 'flatMapDepth']], ([func, methodName]) => {
+  each([[flatMap, "flatMap"], [flatMapDeep, "flatMapDeep"], [flatMapDepth, "flatMapDepth"]], ([func, methodName]) => {
     const array = [1, 2, 3, 4];
 
     function duplicate(n) {
@@ -27,8 +27,8 @@ describe('flatMap methods', () => {
     });
 
     it(`\`_.${methodName}\` should work with \`_.property\` shorthands`, () => {
-      const objects = [{ 'a': [1, 2] }, { 'a': [3, 4] }];
-      assert.deepStrictEqual(func(objects, 'a'), array);
+      const objects = [{ "a": [1, 2] }, { "a": [3, 4] }];
+      assert.deepStrictEqual(func(objects, "a"), array);
     });
 
     it(`\`_.${methodName}\` should iterate over own string keyed properties of objects`, () => {
@@ -43,7 +43,7 @@ describe('flatMap methods', () => {
 
     it(`\`_.${methodName}\` should use \`_.identity\` when \`iteratee\` is nullish`, () => {
       const array = [[1, 2], [3, 4]],
-        object = { 'a': [1, 2], 'b': [3, 4] },
+        object = { "a": [1, 2], "b": [3, 4] },
         values = [, null, undefined],
         expected = map(values, constant([1, 2, 3, 4]));
 
@@ -71,7 +71,7 @@ describe('flatMap methods', () => {
     });
 
     it(`\`_.${methodName}\` should work with objects with non-number length properties`, () => {
-      const object = { 'length': [1, 2] };
+      const object = { "length": [1, 2] };
       assert.deepStrictEqual(func(object, identity), [1, 2]);
     });
   });

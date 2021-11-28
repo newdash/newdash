@@ -1,4 +1,4 @@
-import { forEachRight } from './forEachRight';
+import { forEachRight } from "./forEachRight";
 
 /**
  * @ignore

@@ -1,7 +1,7 @@
-import baseClamp from './.internal/baseClamp';
-import baseToString from './.internal/baseToString';
-import toInteger from './toInteger';
-import toString from './toString';
+import baseClamp from "./.internal/baseClamp";
+import baseToString from "./.internal/baseToString";
+import toInteger from "./toInteger";
+import toString from "./toString";
 
 /**
  * Checks if `string` ends with the given target string.

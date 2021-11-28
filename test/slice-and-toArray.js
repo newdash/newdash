@@ -1,9 +1,9 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { _, args, document, body } from './utils';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { _, args, document, body } from "./utils";
 
-describe('slice and toArray', () => {
-  lodashStable.each(['slice', 'toArray'], (methodName) => {
+describe("slice and toArray", () => {
+  lodashStable.each(["slice", "toArray"], (methodName) => {
     const array = [1, 2, 3],
       func = _[methodName];
 
@@ -13,14 +13,14 @@ describe('slice and toArray', () => {
 
       const actual = func(sparse);
 
-      assert.ok('0' in actual);
-      assert.ok('2' in actual);
+      assert.ok("0" in actual);
+      assert.ok("2" in actual);
       assert.deepStrictEqual(actual, sparse);
     });
 
     it(`\`_.${methodName}\` should treat array-like objects like arrays`, () => {
-      const object = { '0': 'a', 'length': 1 };
-      assert.deepStrictEqual(func(object), ['a']);
+      const object = { "0": "a", "length": 1 };
+      assert.deepStrictEqual(func(object), ["a"]);
       assert.deepStrictEqual(func(args), array);
     });
 
@@ -33,7 +33,7 @@ describe('slice and toArray', () => {
     it(`\`_.${methodName}\` should work with a node list for \`collection\``, () => {
       if (document) {
         try {
-          var actual = func(document.getElementsByTagName('body'));
+          var actual = func(document.getElementsByTagName("body"));
         } catch (e) {}
 
         assert.deepStrictEqual(actual, [body]);

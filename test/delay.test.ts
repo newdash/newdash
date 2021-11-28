@@ -1,10 +1,10 @@
-import * as assert from 'assert';
-import delay from '../src/delay';
-import { slice } from './utils';
+import * as assert from "assert";
+import delay from "../src/delay";
+import { slice } from "./utils";
 
-describe('delay', () => {
+describe("delay", () => {
 
-  it('should delay `func` execution', (done) => {
+  it("should delay `func` execution", (done) => {
     let pass = false;
     delay(() => { pass = true; }, 32);
 
@@ -18,7 +18,7 @@ describe('delay', () => {
     }, 64);
   });
 
-  it('should provide additional arguments to `func`', (done) => {
+  it("should provide additional arguments to `func`", (done) => {
     let args;
 
     delay(function(...args1) {
@@ -31,7 +31,7 @@ describe('delay', () => {
     }, 64);
   });
 
-  it('should use a default `wait` of `0`', (done) => {
+  it("should use a default `wait` of `0`", (done) => {
     let pass = false;
     delay(() => { pass = true; });
 
@@ -43,10 +43,10 @@ describe('delay', () => {
     }, 0);
   });
 
-  it('should be cancelable', (done) => {
+  it("should be cancelable", (done) => {
     let pass = true;
     const timerId = delay(() => { pass = false; }, 32);
-    assert.strictEqual(typeof timerId, 'number');
+    assert.strictEqual(typeof timerId, "number");
 
     clearTimeout(timerId);
 
@@ -56,14 +56,14 @@ describe('delay', () => {
     }, 64);
   });
 
-  it('should works with parameter type', (done) => {
+  it("should works with parameter type", (done) => {
     let value: any;
     const f1 = (v1: number, v2: string, v3: boolean = false) => { value = v3 ? v1 : v2; };
 
-    delay(f1, 32, 1, '2'); // with typescript type check
+    delay(f1, 32, 1, "2"); // with typescript type check
 
     setTimeout(() => {
-      assert.strictEqual(value, '2');
+      assert.strictEqual(value, "2");
       done();
     }, 64);
 

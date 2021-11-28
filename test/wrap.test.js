@@ -1,21 +1,21 @@
-import assert from 'assert';
-import { unWrap } from '../src/unWrap';
-import { wrap } from '../src/wrap';
+import assert from "assert";
+import { unWrap } from "../src/unWrap";
+import { wrap } from "../src/wrap";
 
 
-describe('wrap', () => {
+describe("wrap", () => {
 
-  it('should support wrap', () => {
+  it("should support wrap", () => {
 
-    assert.strictEqual(wrap('aaaaabbcc','e'),'eaaaaabbcce');
-    assert.strictEqual(wrap('aaaaabbcc','a'),'aaaaabbcca');
+    assert.strictEqual(wrap("aaaaabbcc", "e"), "eaaaaabbcce");
+    assert.strictEqual(wrap("aaaaabbcc", "a"), "aaaaabbcca");
 
   });
 
-  it('should support unWrap', () => {
+  it("should support unWrap", () => {
 
-    assert.strictEqual(unWrap('aaaaabbcc','e'),'aaaaabbcc');
-    assert.strictEqual(unWrap('aaaaabbcc','a'),'aaaabbcc');
+    assert.strictEqual(unWrap("aaaaabbcc", "e"), "aaaaabbcc");
+    assert.strictEqual(unWrap("aaaaabbcc", "a"), "aaaabbcc");
 
   });
 

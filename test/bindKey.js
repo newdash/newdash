@@ -1,64 +1,64 @@
-import * as assert from 'assert';
-import { slice } from './utils';
-import bindKey from '../src/bindKey';
+import * as assert from "assert";
+import { slice } from "./utils";
+import bindKey from "../src/bindKey";
 
-describe('bindKey', () => {
-  it('should work when the target function is overwritten', () => {
+describe("bindKey", () => {
+  it("should work when the target function is overwritten", () => {
     const object = {
-      'user': 'fred',
-      'greet': function(greeting) {
+      "user": "fred",
+      "greet": function(greeting) {
         return `${this.user} says: ${greeting}`;
       }
     };
 
-    const bound = bindKey(object, 'greet', 'hi');
-    assert.strictEqual(bound(), 'fred says: hi');
+    const bound = bindKey(object, "greet", "hi");
+    assert.strictEqual(bound(), "fred says: hi");
 
     object.greet = function(greeting) {
       return `${this.user} says: ${greeting}!`;
     };
 
-    assert.strictEqual(bound(), 'fred says: hi!');
+    assert.strictEqual(bound(), "fred says: hi!");
   });
 
-  it('should support placeholders', () => {
+  it("should support placeholders", () => {
     const object = {
-      'fn': function() {
+      "fn": function() {
         return slice.call(arguments);
       }
     };
 
     const ph = bindKey.placeholder,
-      bound = bindKey(object, 'fn', ph, 'b', ph);
+      bound = bindKey(object, "fn", ph, "b", ph);
 
-    assert.deepStrictEqual(bound('a', 'c'), ['a', 'b', 'c']);
-    assert.deepStrictEqual(bound('a'), ['a', 'b', undefined]);
-    assert.deepStrictEqual(bound('a', 'c', 'd'), ['a', 'b', 'c', 'd']);
-    assert.deepStrictEqual(bound(), [undefined, 'b', undefined]);
+    assert.deepStrictEqual(bound("a", "c"), ["a", "b", "c"]);
+    assert.deepStrictEqual(bound("a"), ["a", "b", undefined]);
+    assert.deepStrictEqual(bound("a", "c", "d"), ["a", "b", "c", "d"]);
+    assert.deepStrictEqual(bound(), [undefined, "b", undefined]);
   });
 
-  it('should use `_.placeholder` when set', () => {
+  it("should use `_.placeholder` when set", () => {
     const object = {
-      'fn': function() {
+      "fn": function() {
         return slice.call(arguments);
       }
     };
 
     const _ph = _.placeholder = {},
       ph = bindKey.placeholder,
-      bound = bindKey(object, 'fn', _ph, 'b', ph);
+      bound = bindKey(object, "fn", _ph, "b", ph);
 
-    assert.deepEqual(bound('a', 'c'), ['a', 'b', ph, 'c']);
+    assert.deepEqual(bound("a", "c"), ["a", "b", ph, "c"]);
     delete _.placeholder;
   });
 
-  it('should ensure `new bound` is an instance of `object[key]`', () => {
+  it("should ensure `new bound` is an instance of `object[key]`", () => {
     function Foo(value) {
       return value && object;
     }
 
-    var object = { 'Foo': Foo },
-      bound = bindKey(object, 'Foo');
+    var object = { "Foo": Foo },
+      bound = bindKey(object, "Foo");
 
     assert.ok(new bound instanceof Foo);
     assert.strictEqual(new bound(true), object);

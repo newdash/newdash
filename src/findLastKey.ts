@@ -1,7 +1,7 @@
-import baseFindKey from './.internal/baseFindKey';
-import baseForOwnRight from './.internal/baseForOwnRight';
-import getIteratee from './.internal/getIteratee';
-import { Predicate } from './types';
+import baseFindKey from "./.internal/baseFindKey";
+import baseForOwnRight from "./.internal/baseForOwnRight";
+import getIteratee from "./.internal/getIteratee";
+import { Predicate } from "./types";
 
 /**
  * This method is like `findKey` except that it iterates over elements of

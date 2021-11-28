@@ -1,5 +1,5 @@
-import { invoke } from './invoke';
-import { Path } from './types';
+import { invoke } from "./invoke";
+import { Path } from "./types";
 
 /**
  * Creates a function that invokes the method at `path` of a given object.

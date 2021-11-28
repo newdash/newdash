@@ -1,5 +1,5 @@
-import baseAt from './.internal/baseAt';
-import baseFlatten from './.internal/baseFlatten';
+import baseAt from "./.internal/baseAt";
+import baseFlatten from "./.internal/baseFlatten";
 
 /**
  * Creates an array of values corresponding to `paths` of `object`.

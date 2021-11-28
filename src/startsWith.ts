@@ -1,7 +1,7 @@
-import baseClamp from './.internal/baseClamp';
-import baseToString from './.internal/baseToString';
-import toInteger from './toInteger';
-import toString from './toString';
+import baseClamp from "./.internal/baseClamp";
+import baseToString from "./.internal/baseToString";
+import toInteger from "./toInteger";
+import toString from "./toString";
 
 /**
  * Checks if `string` starts with the given target string.
@@ -27,7 +27,7 @@ import toString from './toString';
  * // => true
  * ```
  */
-export function startsWith(string: string = '', target: string, position = 0): boolean {
+export function startsWith(string: string = "", target: string, position = 0): boolean {
   string = toString(string);
   position = position == null
     ? 0

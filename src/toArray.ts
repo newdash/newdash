@@ -1,21 +1,21 @@
-import copyArray from './.internal/copyArray';
-import getTag from './.internal/getTag';
-import isArrayLike from './isArrayLike';
-import isString from './isString';
-import iteratorToArray from './.internal/iteratorToArray';
-import mapToArray from './.internal/mapToArray';
-import setToArray from './.internal/setToArray';
-import stringToArray from './.internal/stringToArray';
-import values from './values';
+import copyArray from "./.internal/copyArray";
+import getTag from "./.internal/getTag";
+import isArrayLike from "./isArrayLike";
+import isString from "./isString";
+import iteratorToArray from "./.internal/iteratorToArray";
+import mapToArray from "./.internal/mapToArray";
+import setToArray from "./.internal/setToArray";
+import stringToArray from "./.internal/stringToArray";
+import values from "./values";
 
 /** `Object#toString` result references.
  * @ignore
  */
-const mapTag = '[object Map]';
+const mapTag = "[object Map]";
 /**
  * @ignore
  */
-const setTag = '[object Set]';
+const setTag = "[object Set]";
 
 /**
  * Built-in value references.

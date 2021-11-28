@@ -1,8 +1,8 @@
-import isArrayLike from './isArrayLike';
-import values from './values';
-import toInteger from './toInteger';
-import isString from './isString';
-import baseIndexOf from './.internal/baseIndexOf';
+import baseIndexOf from "./.internal/baseIndexOf";
+import isArrayLike from "./isArrayLike";
+import isString from "./isString";
+import toInteger from "./toInteger";
+import values from "./values";
 
 /**
  * Checks if `value` is in `collection`. If `collection` is a string, it's
@@ -34,7 +34,12 @@ import baseIndexOf from './.internal/baseIndexOf';
  * // => true
  * ```
  */
-export function includes<T = any>(collection: ArrayLike<T> | Record<string, T>, value: T, fromIndex?: number, guard?: any): boolean
+export function includes<T = any>(
+  collection: ArrayLike<T> | Record<string, T>,
+  value: T,
+  fromIndex?: number,
+  guard?: any
+): boolean
 export function includes(collection: any, value: any, fromIndex: number, guard: any): boolean {
   collection = isArrayLike(collection) ? collection : values(collection);
   fromIndex = (fromIndex && !guard) ? toInteger(fromIndex) : 0;

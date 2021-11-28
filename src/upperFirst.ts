@@ -1,9 +1,9 @@
-import createCaseFirst from './.internal/createCaseFirst';
+import createCaseFirst from "./.internal/createCaseFirst";
 
 /**
  * @ignore
  */
-const internalUpperFirst = createCaseFirst('toUpperCase');
+const internalUpperFirst = createCaseFirst("toUpperCase");
 
 /**
  * Converts the first character of `string` to upper case.
@@ -24,7 +24,7 @@ const internalUpperFirst = createCaseFirst('toUpperCase');
  * ```
  */
 
-export function upperFirst(str = ''): string {
+export function upperFirst(str = ""): string {
   return internalUpperFirst(str);
 }
 

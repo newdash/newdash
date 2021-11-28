@@ -1,5 +1,5 @@
-import { baseFill } from './.internal/baseFill';
-import { isIterateeCall } from './.internal/isIterateeCall';
+import { baseFill } from "./.internal/baseFill";
+import { isIterateeCall } from "./.internal/isIterateeCall";
 
 /**
    * Fills elements of `array` with `value` from `start` up to, but not
@@ -38,7 +38,7 @@ export function fill(array: Array<any>, value?: any, start: number = 0, end: num
   if (!length) {
     return [];
   }
-  if (start && typeof start != 'number' && isIterateeCall(array, value, start)) {
+  if (start && typeof start != "number" && isIterateeCall(array, value, start)) {
     start = 0;
     end = length;
   }

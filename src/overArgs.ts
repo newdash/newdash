@@ -1,10 +1,10 @@
-import baseRest from './.internal/baseRest';
-import isArray from './isArray';
-import getIteratee from './.internal/getIteratee';
-import baseUnary from './.internal/baseUnary';
-import arrayMap from './.internal/arrayMap';
-import baseFlatten from './.internal/baseFlatten';
-import apply from './.internal/apply';
+import baseRest from "./.internal/baseRest";
+import isArray from "./isArray";
+import getIteratee from "./.internal/getIteratee";
+import baseUnary from "./.internal/baseUnary";
+import arrayMap from "./.internal/arrayMap";
+import baseFlatten from "./.internal/baseFlatten";
+import apply from "./.internal/apply";
 
 /**
  * @ignore

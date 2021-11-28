@@ -1,6 +1,6 @@
-import baseFindIndex from './.internal/baseFindIndex';
-import getIteratee from './.internal/getIteratee';
-import toInteger from './toInteger';
+import baseFindIndex from "./.internal/baseFindIndex";
+import getIteratee from "./.internal/getIteratee";
+import toInteger from "./toInteger";
 
 /**
  * This method is like `findIndex` except that it iterates over elements

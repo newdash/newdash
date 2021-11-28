@@ -1,24 +1,24 @@
-import * as assert from 'assert';
-import { _, LARGE_ARRAY_SIZE, isEven } from './utils';
-import sortBy from '../src/sortBy';
-import each from '../src/each';
-import map from '../src/map';
-import toString from '../src/toString';
-import times from '../src/times';
-import { uniq } from '../src/uniq';
-import { uniqWith } from '../src/uniqWith';
-import { uniqBy } from '../src/uniqBy';
-import { sortedUniq } from '../src/sortedUniq';
-import { sortedUniqBy } from '../src/sortedUniqBy';
+import * as assert from "assert";
+import { _, LARGE_ARRAY_SIZE, isEven } from "./utils";
+import sortBy from "../src/sortBy";
+import each from "../src/each";
+import map from "../src/map";
+import toString from "../src/toString";
+import times from "../src/times";
+import { uniq } from "../src/uniq";
+import { uniqWith } from "../src/uniqWith";
+import { uniqBy } from "../src/uniqBy";
+import { sortedUniq } from "../src/sortedUniq";
+import { sortedUniqBy } from "../src/sortedUniqBy";
 
 
-describe('uniq methods', () => {
-  each([['uniq', uniq], ['uniqBy', uniqBy], ['uniqWith', uniqWith], ['sortedUniq', sortedUniq], ['sortedUniqBy', sortedUniqBy]], ([methodName, func]) => {
+describe("uniq methods", () => {
+  each([["uniq", uniq], ["uniqBy", uniqBy], ["uniqWith", uniqWith], ["sortedUniq", sortedUniq], ["sortedUniqBy", sortedUniqBy]], ([methodName, func]) => {
     const isSorted = /^sorted/.test(methodName);
-    let objects = [{ 'a': 2 }, { 'a': 3 }, { 'a': 1 }, { 'a': 2 }, { 'a': 3 }, { 'a': 1 }];
+    let objects = [{ "a": 2 }, { "a": 3 }, { "a": 1 }, { "a": 2 }, { "a": 3 }, { "a": 1 }];
 
     if (isSorted) {
-      objects = sortBy(objects, 'a');
+      objects = sortBy(objects, "a");
     }
     else {
       it(`\`_.${methodName}\` should return unique values of an unsorted array`, () => {
@@ -37,7 +37,7 @@ describe('uniq methods', () => {
 
     it(`\`_.${methodName}\` should treat \`-0\` as \`0\``, () => {
       const actual = map(func([-0, 0]), toString);
-      assert.deepStrictEqual(actual, ['0']);
+      assert.deepStrictEqual(actual, ["0"]);
     });
 
     it(`\`_.${methodName}\` should match \`NaN\``, () => {
@@ -46,7 +46,7 @@ describe('uniq methods', () => {
 
     it(`\`_.${methodName}\` should work with large arrays`, () => {
       const largeArray = [],
-        expected = [0, {}, 'a'],
+        expected = [0, {}, "a"],
         count = Math.ceil(LARGE_ARRAY_SIZE / expected.length);
 
       each(expected, (value) => {
@@ -62,7 +62,7 @@ describe('uniq methods', () => {
       const largeArray = times(LARGE_ARRAY_SIZE, (index) => isEven(index) ? -0 : 0);
 
       const actual = map(func(largeArray), toString);
-      assert.deepStrictEqual(actual, ['0']);
+      assert.deepStrictEqual(actual, ["0"]);
     });
 
     it(`\`_.${methodName}\` should work with large arrays of boolean, \`NaN\`, and nullish values`, () => {
@@ -112,7 +112,7 @@ describe('uniq methods', () => {
 
     it(`\`_.${methodName}\` should distinguish between numbers and numeric strings`, () => {
       const largeArray = [],
-        expected = ['2', 2, Object('2'), Object(2)],
+        expected = ["2", 2, Object("2"), Object(2)],
         count = Math.ceil(LARGE_ARRAY_SIZE / expected.length);
 
       each(expected, (value) => {

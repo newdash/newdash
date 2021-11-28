@@ -1,5 +1,5 @@
-import arrayLikeKeys from './.internal/arrayLikeKeys';
-import isArrayLike from './isArrayLike';
+import arrayLikeKeys from "./.internal/arrayLikeKeys";
+import isArrayLike from "./isArrayLike";
 
 /**
  * Creates an array of the own enumerable property names of `object`.

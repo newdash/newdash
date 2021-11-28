@@ -1,4 +1,4 @@
-import pullAll from './pullAll';
+import pullAll from "./pullAll";
 
 /**
  * Removes all given values from `array` using

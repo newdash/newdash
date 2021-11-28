@@ -1,15 +1,15 @@
-import * as assert from 'assert';
-import { constant as srcConstant } from '../src/constant';
-import { every } from '../src/every';
-import { map } from '../src/map';
-import { empties, falsey, stubTrue } from './utils';
+import * as assert from "assert";
+import { constant as srcConstant } from "../src/constant";
+import { every } from "../src/every";
+import { map } from "../src/map";
+import { empties, falsey, stubTrue } from "./utils";
 
 
-describe('constant', () => {
+describe("constant", () => {
 
-  it('should create a function that returns `value`', () => {
-    const object = { 'a': 1 },
-      values = Array(2).concat(empties, true, 1, 'a'),
+  it("should create a function that returns `value`", () => {
+    const object = { "a": 1 },
+      values = Array(2).concat(empties, true, 1, "a"),
       constant = srcConstant(object);
 
     const results = map(values, (value, index) => {
@@ -23,7 +23,7 @@ describe('constant', () => {
     assert.ok(every(results, (result) => result === object));
   });
 
-  it('should work with falsey values', () => {
+  it("should work with falsey values", () => {
     const expected = map(falsey, stubTrue);
 
     const actual = map(falsey, (value, index) => {

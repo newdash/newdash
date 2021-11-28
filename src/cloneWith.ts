@@ -1,4 +1,4 @@
-import baseClone from './.internal/baseClone';
+import baseClone from "./.internal/baseClone";
 
 /** Used to compose bitmasks for cloning. */
 const CLONE_SYMBOLS_FLAG = 4;
@@ -35,7 +35,7 @@ const CLONE_SYMBOLS_FLAG = 4;
  * ```
  */
 function cloneWith(value: any, customizer: (...any) => any): any {
-  customizer = typeof customizer === 'function' ? customizer : undefined;
+  customizer = typeof customizer === "function" ? customizer : undefined;
   return baseClone(value, CLONE_SYMBOLS_FLAG, customizer);
 }
 

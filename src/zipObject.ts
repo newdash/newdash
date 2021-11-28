@@ -1,5 +1,5 @@
-import assignValue from './.internal/assignValue';
-import baseZipObject from './.internal/baseZipObject';
+import assignValue from "./.internal/assignValue";
+import baseZipObject from "./.internal/baseZipObject";
 
 /**
  * This method is like `fromPairs` except that it accepts two arrays,

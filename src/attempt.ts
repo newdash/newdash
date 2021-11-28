@@ -1,4 +1,4 @@
-import isError from './isError';
+import isError from "./isError";
 
 /**
  * Attempts to invoke `func`, returning either the result or the caught error

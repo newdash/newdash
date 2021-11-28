@@ -1,7 +1,7 @@
 // @ts-nocheck
-import map from './map';
-import basePickBy from './.internal/basePickBy';
-import getAllKeysIn from './.internal/getAllKeysIn';
+import map from "./map";
+import basePickBy from "./.internal/basePickBy";
+import getAllKeysIn from "./.internal/getAllKeysIn";
 
 /**
  * Creates an object composed of the `object` properties `predicate` returns

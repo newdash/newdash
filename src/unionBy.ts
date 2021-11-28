@@ -1,8 +1,8 @@
-import baseFlatten from './.internal/baseFlatten';
-import baseUniq from './.internal/baseUniq';
-import isArrayLikeObject from './isArrayLikeObject';
-import last from './last';
-import getIteratee from './.internal/getIteratee';
+import baseFlatten from "./.internal/baseFlatten";
+import baseUniq from "./.internal/baseUniq";
+import isArrayLikeObject from "./isArrayLikeObject";
+import last from "./last";
+import getIteratee from "./.internal/getIteratee";
 
 /**
  * This method is like `union` except that it accepts `iteratee` which is

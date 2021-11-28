@@ -1,5 +1,5 @@
-import isObject from './isObject';
-import isSymbol from './isSymbol';
+import isObject from "./isObject";
+import isSymbol from "./isSymbol";
 
 
 /**
@@ -58,20 +58,20 @@ const freeParseInt = parseInt;
  * ```
  */
 export function toNumber(value: any): number {
-  if (typeof value == 'number') {
+  if (typeof value == "number") {
     return value;
   }
   if (isSymbol(value)) {
     return Number.NaN;
   }
   if (isObject(value)) {
-    const other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    const other = typeof value.valueOf == "function" ? value.valueOf() : value;
     value = isObject(other) ? (`${other}`) : other;
   }
-  if (typeof value != 'string') {
+  if (typeof value != "string") {
     return value === 0 ? value : +value;
   }
-  value = value.replace(reTrim, '');
+  value = value.replace(reTrim, "");
   const isBinary = reIsBinary.test(value);
   return (isBinary || reIsOctal.test(value))
     ? freeParseInt(value.slice(2), isBinary ? 2 : 8)

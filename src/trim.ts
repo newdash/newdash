@@ -1,9 +1,9 @@
-import castSlice from './.internal/castSlice';
-import charsEndIndex from './.internal/charsEndIndex';
-import charsStartIndex from './.internal/charsStartIndex';
-import stringToArray from './.internal/stringToArray';
-import toString from './toString';
-import baseToString from './.internal/baseToString';
+import castSlice from "./.internal/castSlice";
+import charsEndIndex from "./.internal/charsEndIndex";
+import charsStartIndex from "./.internal/charsStartIndex";
+import stringToArray from "./.internal/stringToArray";
+import toString from "./toString";
+import baseToString from "./.internal/baseToString";
 
 
 /**
@@ -33,7 +33,7 @@ const reTrim = /^\s+|\s+$/g;
 export function trim(str: string, chars: string, guard?: any): string {
   const string = toString(str);
   if (string && (guard || chars === undefined)) {
-    return string.replace(reTrim, '');
+    return string.replace(reTrim, "");
   }
   if (!string || !(chars = baseToString(chars))) {
     return string;
@@ -43,7 +43,7 @@ export function trim(str: string, chars: string, guard?: any): string {
     start = charsStartIndex(strSymbols, chrSymbols),
     end = charsEndIndex(strSymbols, chrSymbols) + 1;
 
-  return castSlice(strSymbols, start, end).join('');
+  return castSlice(strSymbols, start, end).join("");
 }
 
 export default trim;

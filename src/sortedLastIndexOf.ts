@@ -1,5 +1,5 @@
-import baseSortedIndex from './.internal/baseSortedIndex';
-import eq from './eq';
+import baseSortedIndex from "./.internal/baseSortedIndex";
+import eq from "./eq";
 
 /**
  * This method is like `lastIndexOf` except that it performs a binary

@@ -1,6 +1,6 @@
-import hasPath from './hasPath';
-import { Path } from './types';
-import { baseHas } from './.internal/baseHas';
+import hasPath from "./hasPath";
+import { Path } from "./types";
+import { baseHas } from "./.internal/baseHas";
 
 /**
  * Checks if `key` is a direct property of `object`.

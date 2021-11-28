@@ -1,13 +1,13 @@
-import * as assert from 'assert';
-import { pull } from '../src/pull';
-import { pullAll } from '../src/pullAll';
-import { pullAllWith } from '../src/pullAllWith';
-import each from '../src/each';
+import * as assert from "assert";
+import { pull } from "../src/pull";
+import { pullAll } from "../src/pullAll";
+import { pullAllWith } from "../src/pullAllWith";
+import each from "../src/each";
 
-describe('pull methods', () => {
+describe("pull methods", () => {
 
-  each([['pull', pull], ['pullAll', pullAll], ['pullAllWith', pullAllWith]], ([methodName, func]) => {
-    const isPull = methodName == 'pull';
+  each([["pull", pull], ["pullAll", pullAll], ["pullAllWith", pullAllWith]], ([methodName, func]) => {
+    const isPull = methodName == "pull";
 
     function testFunc(array, values) {
       return isPull
@@ -29,8 +29,8 @@ describe('pull methods', () => {
       delete array[3];
 
       testFunc(array, [1]);
-      assert.ok(!('0' in array));
-      assert.ok(!('2' in array));
+      assert.ok(!("0" in array));
+      assert.ok(!("2" in array));
     });
 
     it(`\`_.${methodName}\` should treat holes as \`undefined\``, () => {

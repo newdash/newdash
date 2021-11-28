@@ -1,4 +1,4 @@
-import createRound from './.internal/createRound';
+import createRound from "./.internal/createRound";
 
 
 /**
@@ -6,7 +6,7 @@ import createRound from './.internal/createRound';
  * @private
  * @ignore
  */
-const internal = createRound('floor');
+const internal = createRound("floor");
 
 /**
  * Computes `number` rounded down to `precision`.

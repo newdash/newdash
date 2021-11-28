@@ -1,4 +1,4 @@
-import { LRUMap } from './functional/LRUMap';
+import { LRUMap } from "./functional/LRUMap";
 
 /**
  * @ignore
@@ -75,9 +75,12 @@ export type MemorizedFunction<T extends (...any) => any, K = any, V = any> = {
  * memoize.Cache = WeakMap
  * ```
  */
-export function memoize<T extends(...args: any[]) => any, K>(func: T, resolver?: (...args: Parameters<T>) => K): MemorizedFunction<T, K, ReturnType<T>> {
-  if (typeof func !== 'function' || (resolver != null && typeof resolver !== 'function')) {
-    throw new TypeError('Expected a function');
+export function memoize<T extends(...args: any[]) => any, K>(
+  func: T,
+  resolver?: (...args: Parameters<T>) => K
+): MemorizedFunction<T, K, ReturnType<T>> {
+  if (typeof func !== "function" || (resolver != null && typeof resolver !== "function")) {
+    throw new TypeError("Expected a function");
   }
 
   const memoized = function(...args: any[]) {
@@ -100,6 +103,6 @@ export function memoize<T extends(...args: any[]) => any, K>(func: T, resolver?:
 /**
  * Cache constructor of memorize function
  */
-memoize['Cache'] = Map as MapLikeConstructor;
+memoize["Cache"] = Map as MapLikeConstructor;
 
 export default memoize;

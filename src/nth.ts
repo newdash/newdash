@@ -1,5 +1,5 @@
-import isIndex from './.internal/isIndex';
-import toInteger from './toInteger';
+import isIndex from "./.internal/isIndex";
+import toInteger from "./toInteger";
 
 /**
  * @ignore

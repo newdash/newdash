@@ -1,6 +1,6 @@
-import baseFlatten from './.internal/baseFlatten';
-import map from './map';
-import { ArrayIteratee, RecordIteratee } from './types';
+import baseFlatten from "./.internal/baseFlatten";
+import map from "./map";
+import { ArrayIteratee, RecordIteratee } from "./types";
 
 /**
  * Creates a flattened array of values by running each element in `collection`
@@ -25,7 +25,10 @@ import { ArrayIteratee, RecordIteratee } from './types';
  * ```
  */
 export function flatMap<T, R = any>(collection: Array<T>, iteratee?: ArrayIteratee<T, Array<T>>): Array<R>;
-export function flatMap<T, R = any>(collection: Record<string, T>, iteratee?: RecordIteratee<T, Record<string, T>>): Array<R>;
+export function flatMap<T, R = any>(
+  collection: Record<string, T>,
+  iteratee?: RecordIteratee<T, Record<string, T>>
+): Array<R>;
 export function flatMap(collection, iteratee?) {
   return baseFlatten(map(collection, iteratee), 1);
 }

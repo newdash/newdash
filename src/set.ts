@@ -1,4 +1,4 @@
-import baseSet from './.internal/baseSet';
+import baseSet from "./.internal/baseSet";
 
 /**
  * Sets the value at `path` of `object`. If a portion of `path` doesn't exist,

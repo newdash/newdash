@@ -24,8 +24,8 @@ export function flow(...funcs: Array<Function>): Function {
   const length = funcs.length;
   let index = length;
   while (index--) {
-    if (typeof funcs[index] !== 'function') {
-      throw new TypeError('Expected a function');
+    if (typeof funcs[index] !== "function") {
+      throw new TypeError("Expected a function");
     }
   }
   return function (...args) {

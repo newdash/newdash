@@ -1,13 +1,13 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { _, slice } from './utils';
-import curry from '../src/curry';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { _, slice } from "./utils";
+import curry from "../src/curry";
 
-describe('curry methods', () => {
-  lodashStable.each(['curry', 'curryRight'], (methodName) => {
+describe("curry methods", () => {
+  lodashStable.each(["curry", "curryRight"], (methodName) => {
     const func = _[methodName],
       fn = function(a, b) { return slice.call(arguments); },
-      isCurry = methodName == 'curry';
+      isCurry = methodName == "curry";
 
     it(`\`_.${methodName}\` should not error on functions with the same name as lodash methods`, () => {
       function run(a, b) {
@@ -33,13 +33,13 @@ describe('curry methods', () => {
 
     it(`\`_.${methodName}\` should work as an iteratee for methods like \`_.map\``, () => {
       const array = [fn, fn, fn],
-        object = { 'a': fn, 'b': fn, 'c': fn };
+        object = { "a": fn, "b": fn, "c": fn };
 
       lodashStable.each([array, object], (collection) => {
         const curries = lodashStable.map(collection, func),
-          expected = lodashStable.map(collection, lodashStable.constant(isCurry ? ['a', 'b'] : ['b', 'a']));
+          expected = lodashStable.map(collection, lodashStable.constant(isCurry ? ["a", "b"] : ["b", "a"]));
 
-        const actual = lodashStable.map(curries, (curried) => curried('a')('b'));
+        const actual = lodashStable.map(curries, (curried) => curried("a")("b"));
 
         assert.deepStrictEqual(actual, expected);
       });

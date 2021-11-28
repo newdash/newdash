@@ -1,17 +1,17 @@
-import * as assert from 'assert';
-import falsey from '../src/.internal/falsey';
-import dropRight from '../src/dropRight';
-import each from '../src/each';
-import map from '../src/map';
+import * as assert from "assert";
+import falsey from "../src/.internal/falsey";
+import dropRight from "../src/dropRight";
+import each from "../src/each";
+import map from "../src/map";
 
-describe('dropRight', () => {
+describe("dropRight", () => {
   const array = [1, 2, 3];
 
-  it('should drop the last two elements', () => {
+  it("should drop the last two elements", () => {
     assert.deepStrictEqual(dropRight(array, 2), [1]);
   });
 
-  it('should treat falsey `n` values, except `undefined`, as `0`', () => {
+  it("should treat falsey `n` values, except `undefined`, as `0`", () => {
     const expected = map(falsey, (value) => value === undefined ? [1, 2] : array);
 
     // @ts-ignore
@@ -20,19 +20,19 @@ describe('dropRight', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should return all elements when `n` < `1`', () => {
+  it("should return all elements when `n` < `1`", () => {
     each([0, -1, -Infinity], (n) => {
       assert.deepStrictEqual(dropRight(array, n), array);
     });
   });
 
-  it('should return an empty array when `n` >= `length`', () => {
+  it("should return an empty array when `n` >= `length`", () => {
     each([3, 4, Math.pow(2, 32), Infinity], (n) => {
       assert.deepStrictEqual(dropRight(array, n), []);
     });
   });
 
-  it('should coerce `n` to an integer', () => {
+  it("should coerce `n` to an integer", () => {
     assert.deepStrictEqual(dropRight(array, 1.6), [1, 2]);
   });
 

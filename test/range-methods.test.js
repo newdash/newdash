@@ -1,14 +1,14 @@
-import * as assert from 'assert';
-import { falsey } from './utils';
-import { range } from '../src/range';
-import { rangeRight } from '../src/rangeRight';
-import each from '../src/each';
-import map from '../src/map';
+import * as assert from "assert";
+import { falsey } from "./utils";
+import { range } from "../src/range";
+import { rangeRight } from "../src/rangeRight";
+import each from "../src/each";
+import map from "../src/map";
 
-describe('range methods', () => {
+describe("range methods", () => {
 
-  each([['range', range], ['rangeRight', rangeRight]], ([methodName, func]) => {
-    const isRange = methodName == 'range';
+  each([["range", range], ["rangeRight", rangeRight]], ([methodName, func]) => {
+    const isRange = methodName == "range";
 
     function resolve(range) {
       return isRange ? range : range.reverse();
@@ -61,9 +61,9 @@ describe('range methods', () => {
 
     it(`\`_.${methodName}\` should coerce arguments to finite numbers`, () => {
       const actual = [
-        func('1'),
-        func('0', 1),
-        func(0, 1, '1'),
+        func("1"),
+        func("0", 1),
+        func(0, 1, "1"),
         func(NaN),
         func(NaN, NaN)
       ];
@@ -73,7 +73,7 @@ describe('range methods', () => {
 
     it(`\`_.${methodName}\` should work as an iteratee for methods like \`_.map\``, () => {
       const array = [1, 2, 3],
-        object = { 'a': 1, 'b': 2, 'c': 3 },
+        object = { "a": 1, "b": 2, "c": 3 },
         expected = map([[0], [0, 1], [0, 1, 2]], resolve);
 
       each([array, object], (collection) => {

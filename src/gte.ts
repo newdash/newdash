@@ -23,7 +23,7 @@
  */
 export function gte<T>(value: T, other: T): boolean;
 export function gte(value: any, other: any): any {
-  if (!(typeof value === 'string' && typeof other === 'string')) {
+  if (!(typeof value === "string" && typeof other === "string")) {
     value = +value;
     other = +other;
   }

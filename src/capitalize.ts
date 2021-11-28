@@ -1,5 +1,5 @@
-import upperFirst from './upperFirst';
-import toString from './toString';
+import upperFirst from "./upperFirst";
+import toString from "./toString";
 
 /**
  * Converts the first character of `string` to upper case and the remaining

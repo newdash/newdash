@@ -1,4 +1,4 @@
-import baseUpdate from './.internal/baseUpdate';
+import baseUpdate from "./.internal/baseUpdate";
 
 /**
  * This method is like `update` except that it accepts `customizer` which is
@@ -24,8 +24,13 @@ import baseUpdate from './.internal/baseUpdate';
  * // => { '0': { '1': 'a' } }
  * ```
  */
-function updateWith<T>(object: T, path: Array<string> | string, updater?: (...any) => any, customizer?: (...any) => any): T {
-  customizer = typeof customizer === 'function' ? customizer : undefined;
+export function updateWith<T>(
+  object: T,
+  path: Array<string> | string,
+  updater?: (...any) => any,
+  customizer?: (...any) => any
+): T {
+  customizer = typeof customizer === "function" ? customizer : undefined;
   return object == null ? object : baseUpdate(object, path, updater, customizer);
 }
 

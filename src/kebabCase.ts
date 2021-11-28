@@ -1,5 +1,5 @@
-import words from './words';
-import toString from './toString';
+import words from "./words";
+import toString from "./toString";
 
 /**
  * Converts `string` to
@@ -24,9 +24,9 @@ import toString from './toString';
  * ```
  */
 export function kebabCase(string: string): string {
-  return words(toString(string).replace(/['\u2019]/g, '')).reduce((result, word, index) => (
-    result + (index ? '-' : '') + word.toLowerCase()
-  ), '');
+  return words(toString(string).replace(/['\u2019]/g, "")).reduce((result, word, index) => (
+    result + (index ? "-" : "") + word.toLowerCase()
+  ), "");
 }
 
 export default kebabCase;

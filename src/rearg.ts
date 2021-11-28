@@ -1,6 +1,6 @@
-import createWrap from './.internal/createWrap';
-import { WRAP_REARG_FLAG } from './.internal/CONSTANTS';
-import flatRest from './.internal/flatRest';
+import createWrap from "./.internal/createWrap";
+import { WRAP_REARG_FLAG } from "./.internal/CONSTANTS";
+import flatRest from "./.internal/flatRest";
 
 /**
  * @ignore

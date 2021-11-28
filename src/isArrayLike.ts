@@ -1,5 +1,5 @@
-import isLength from './isLength';
-import isFunction from './isFunction';
+import isLength from "./isLength";
+import isFunction from "./isFunction";
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's

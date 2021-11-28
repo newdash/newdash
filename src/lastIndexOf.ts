@@ -1,7 +1,7 @@
-import baseFindIndex from './.internal/baseFindIndex';
-import baseIsNaN from './.internal/baseIsNaN';
-import strictLastIndexOf from './.internal/strictLastIndexOf';
-import toInteger from './toInteger';
+import baseFindIndex from "./.internal/baseFindIndex";
+import baseIsNaN from "./.internal/baseIsNaN";
+import strictLastIndexOf from "./.internal/strictLastIndexOf";
+import toInteger from "./toInteger";
 
 /**
  * This method is like `indexOf` except that it iterates over elements of

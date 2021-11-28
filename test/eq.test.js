@@ -1,8 +1,8 @@
-import * as assert from 'assert';
-import eq from '../src/eq';
+import * as assert from "assert";
+import eq from "../src/eq";
 
-describe('eq', () => {
-  it('should perform a `SameValueZero` comparison of two values', () => {
+describe("eq", () => {
+  it("should perform a `SameValueZero` comparison of two values", () => {
     assert.strictEqual(eq(), true);
     assert.strictEqual(eq(undefined), true);
     assert.strictEqual(eq(0, -0), true);
@@ -11,11 +11,11 @@ describe('eq', () => {
 
     assert.strictEqual(eq(null, undefined), false);
     assert.strictEqual(eq(1, Object(1)), false);
-    assert.strictEqual(eq(1, '1'), false);
-    assert.strictEqual(eq(1, '1'), false);
+    assert.strictEqual(eq(1, "1"), false);
+    assert.strictEqual(eq(1, "1"), false);
 
-    const object = { 'a': 1 };
+    const object = { "a": 1 };
     assert.strictEqual(eq(object, object), true);
-    assert.strictEqual(eq(object, { 'a': 1 }), false);
+    assert.strictEqual(eq(object, { "a": 1 }), false);
   });
 });

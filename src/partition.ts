@@ -1,5 +1,5 @@
-import createAggregator from './.internal/createAggregator';
-import { RecordIteratee, ArrayIteratee, KeyIteratee } from './types';
+import createAggregator from "./.internal/createAggregator";
+import { RecordIteratee, ArrayIteratee, KeyIteratee } from "./types";
 
 /**
  * @ignore

@@ -4,7 +4,7 @@ export async function assertShouldThrowError(actual: Function | Promise<any>, ex
   let errorExist = false;
   try {
     let rt = undefined;
-    if (typeof actual === 'function') {
+    if (typeof actual === "function") {
       rt = actual();
     }
     if (rt instanceof Promise) {
@@ -18,7 +18,7 @@ export async function assertShouldThrowError(actual: Function | Promise<any>, ex
       if (!(error instanceof expected)) {
         throw new TypeError(`expect ${expected.name} but received ${error?.constructor?.name}`);
       }
-    } else if (typeof expected === 'string') {
+    } else if (typeof expected === "string") {
       if (error.message.search(expected) < 0) {
         throw new TypeError(`expect message ${expected} but received ${error.message}`);
       }
@@ -31,6 +31,6 @@ export async function assertShouldThrowError(actual: Function | Promise<any>, ex
 
   }
   if (!errorExist) {
-    throw new Error('require throw error');
+    throw new Error("require throw error");
   }
 }

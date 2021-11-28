@@ -1,34 +1,34 @@
-import * as assert from 'assert';
-import { arrayProto } from './utils';
-import toArray from '../src/toArray';
+import * as assert from "assert";
+import { arrayProto } from "./utils";
+import toArray from "../src/toArray";
 
-describe('toArray', () => {
-  it('should convert objects to arrays', () => {
-    assert.deepStrictEqual(toArray({ 'a': 1, 'b': 2 }), [1, 2]);
+describe("toArray", () => {
+  it("should convert objects to arrays", () => {
+    assert.deepStrictEqual(toArray({ "a": 1, "b": 2 }), [1, 2]);
   });
 
-  it('should convert iterables to arrays', () => {
+  it("should convert iterables to arrays", () => {
     if (Symbol && Symbol.iterator) {
-      const object = { '0': 'a', 'length': 1 };
+      const object = { "0": "a", "length": 1 };
       object[Symbol.iterator] = arrayProto[Symbol.iterator];
 
-      assert.deepStrictEqual(toArray(object), ['a']);
+      assert.deepStrictEqual(toArray(object), ["a"]);
     }
   });
 
-  it('should convert maps to arrays', () => {
+  it("should convert maps to arrays", () => {
     if (Map) {
       const map = new Map;
-      map.set('a', 1);
-      map.set('b', 2);
-      assert.deepStrictEqual(toArray(map), [['a', 1], ['b', 2]]);
+      map.set("a", 1);
+      map.set("b", 2);
+      assert.deepStrictEqual(toArray(map), [["a", 1], ["b", 2]]);
     }
   });
 
-  it('should convert strings to arrays', () => {
-    assert.deepStrictEqual(toArray(''), []);
-    assert.deepStrictEqual(toArray('ab'), ['a', 'b']);
-    assert.deepStrictEqual(toArray(Object('ab')), ['a', 'b']);
+  it("should convert strings to arrays", () => {
+    assert.deepStrictEqual(toArray(""), []);
+    assert.deepStrictEqual(toArray("ab"), ["a", "b"]);
+    assert.deepStrictEqual(toArray(Object("ab")), ["a", "b"]);
   });
 
 });

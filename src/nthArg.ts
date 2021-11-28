@@ -1,5 +1,5 @@
 // @ts-nocheck
-import nth from './nth';
+import nth from "./nth";
 
 /**
  * Creates a function that gets the argument at index `n`. If `n` is negative,

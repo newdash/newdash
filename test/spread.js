@@ -1,13 +1,13 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { slice, _, stubTrue, falsey } from './utils';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { slice, _, stubTrue, falsey } from "./utils";
 
-describe('spread', () => {
+describe("spread", () => {
   function fn(a, b, c) {
     return slice.call(arguments);
   }
 
-  it('should spread arguments to `func`', () => {
+  it("should spread arguments to `func`", () => {
     const spread = _.spread(fn),
       expected = [1, 2];
 
@@ -15,7 +15,7 @@ describe('spread', () => {
     assert.deepStrictEqual(spread([1, 2], 3), expected);
   });
 
-  it('should accept a falsey `array`', () => {
+  it("should accept a falsey `array`", () => {
     const spread = _.spread(stubTrue),
       expected = lodashStable.map(falsey, stubTrue);
 
@@ -28,7 +28,7 @@ describe('spread', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should work with `start`', () => {
+  it("should work with `start`", () => {
     const spread = _.spread(fn, 1),
       expected = [1, 2, 3];
 
@@ -36,8 +36,8 @@ describe('spread', () => {
     assert.deepStrictEqual(spread(1, [2, 3], 4), expected);
   });
 
-  it('should treat `start` as `0` for negative or `NaN` values', () => {
-    const values = [-1, NaN, 'a'],
+  it("should treat `start` as `0` for negative or `NaN` values", () => {
+    const values = [-1, NaN, "a"],
       expected = lodashStable.map(values, lodashStable.constant([1, 2]));
 
     const actual = lodashStable.map(values, (value) => {
@@ -48,7 +48,7 @@ describe('spread', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should coerce `start` to an integer', () => {
+  it("should coerce `start` to an integer", () => {
     const spread = _.spread(fn, 1.6),
       expected = [1, 2, 3];
 

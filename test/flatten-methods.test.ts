@@ -1,23 +1,23 @@
-import * as assert from 'assert';
-import { args } from './utils';
-import flatten from '../src/flatten';
-import flattenDeep from '../src/flattenDeep';
-import flattenDepth from '../src/flattenDepth';
-import each from '../src/each';
-import map from '../src/map';
-import constant from '../src/constant';
-import keys from '../src/keys';
+import * as assert from "assert";
+import { args } from "./utils";
+import flatten from "../src/flatten";
+import flattenDeep from "../src/flattenDeep";
+import flattenDepth from "../src/flattenDepth";
+import each from "../src/each";
+import map from "../src/map";
+import constant from "../src/constant";
+import keys from "../src/keys";
 
 
-describe('flatten methods', () => {
+describe("flatten methods", () => {
   const array = [1, [2, [3, [4]], 5]],
     methods = [
-      [flatten, 'flatten'],
-      [flattenDeep, 'flattenDeep'],
-      [flattenDepth, 'flattenDepth']
+      [flatten, "flatten"],
+      [flattenDeep, "flattenDeep"],
+      [flattenDepth, "flattenDepth"]
     ];
 
-  it('should flatten `arguments` objects', () => {
+  it("should flatten `arguments` objects", () => {
     const array = [args, [args]];
 
     assert.deepStrictEqual(flatten(array), [1, 2, 3, args]);
@@ -25,7 +25,7 @@ describe('flatten methods', () => {
     assert.deepStrictEqual(flattenDepth(array, 2), [1, 2, 3, 1, 2, 3]);
   });
 
-  it('should treat sparse arrays as dense', () => {
+  it("should treat sparse arrays as dense", () => {
     const array = [[1, 2, 3], Array(3)],
       expected = [1, 2, 3];
 
@@ -35,15 +35,15 @@ describe('flatten methods', () => {
       // @ts-ignore
       const actual = func(array);
       assert.deepStrictEqual(actual, expected);
-      assert.ok('4' in actual);
+      assert.ok("4" in actual);
     });
   });
 
-  it('should flatten objects with a truthy `Symbol.isConcatSpreadable` value', () => {
+  it("should flatten objects with a truthy `Symbol.isConcatSpreadable` value", () => {
     if (Symbol && Symbol.isConcatSpreadable) {
-      const object = { '0': 'a', 'length': 1 },
+      const object = { "0": "a", "length": 1 },
         array = [object],
-        expected = map(methods, constant(['a']));
+        expected = map(methods, constant(["a"]));
 
       object[Symbol.isConcatSpreadable] = true;
 
@@ -74,7 +74,7 @@ describe('flatten methods', () => {
   });
 
 
-  it('should work with empty arrays', () => {
+  it("should work with empty arrays", () => {
     const array = [[], [[]], [[], [[[]]]]];
 
     assert.deepStrictEqual(flatten(array), [[], [], [[[]]]]);
@@ -82,15 +82,15 @@ describe('flatten methods', () => {
     assert.deepStrictEqual(flattenDepth(array, 2), [[[]]]);
   });
 
-  it('should support flattening of nested arrays', () => {
+  it("should support flattening of nested arrays", () => {
     assert.deepStrictEqual(flatten(array), [1, 2, [3, [4]], 5]);
     assert.deepStrictEqual(flattenDeep(array), [1, 2, 3, 4, 5]);
     assert.deepStrictEqual(flattenDepth(array, 2), [1, 2, 3, [4], 5]);
   });
 
-  it('should return an empty array for non array-like objects', () => {
+  it("should return an empty array for non array-like objects", () => {
     const expected = [],
-      nonArray = { '0': 'a' };
+      nonArray = { "0": "a" };
 
     // @ts-ignore
     assert.deepStrictEqual(flatten(nonArray), expected);

@@ -1,6 +1,6 @@
-import baseXor from './.internal/baseXor';
-import isArrayLikeObject from './isArrayLikeObject';
-import getIteratee from './.internal/getIteratee';
+import baseXor from "./.internal/baseXor";
+import isArrayLikeObject from "./isArrayLikeObject";
+import getIteratee from "./.internal/getIteratee";
 
 /**
  * This method is like `xor` except that it accepts `iteratee` which is

@@ -1,20 +1,20 @@
-import { CacheProvider, LRUCacheProvider } from './cacheProvider';
-import { toHashCode } from './functional/toHashCode';
-import { isClass } from './isClass';
-import { Class, GeneralFunction } from './types';
+import { CacheProvider, LRUCacheProvider } from "./cacheProvider";
+import { toHashCode } from "./functional/toHashCode";
+import { isClass } from "./isClass";
+import { Class, GeneralFunction } from "./types";
 
 /**
  * @private
  * @ignore
  * @internal
  */
-const KEY_CACHE_PROPERTY = '__cache_storage';
+const KEY_CACHE_PROPERTY = "__cache_storage";
 /**
  * @private
  * @ignore
  * @internal
  */
-const KEY_CLEAR_CACHE_FUNCTION = '__cache_clear';
+const KEY_CLEAR_CACHE_FUNCTION = "__cache_clear";
 
 export type CachedFunction<T extends GeneralFunction> = T & {
   /**
@@ -115,7 +115,7 @@ function cacheItObject(obj: any, options?: CacheItOptions) {
     get: ((target, propertyName) => {
       if (propertyName in target) {
         const propertyValue = target[propertyName];
-        if (typeof propertyValue === 'function') {
+        if (typeof propertyValue === "function") {
           const producer = () => cacheItFunction(propertyValue, options);
           return methodsCacheProvider.getOrCreate(propertyName, producer);
         }
@@ -157,9 +157,9 @@ export function cacheIt(obj: any, options?: CacheItOptions): any {
   options = Object.assign({}, defaultCacheItOptions, options);
 
   switch (typeof obj) {
-    case 'object':
+    case "object":
       return cacheItObject(obj, options);
-    case 'function':
+    case "function":
       if (isClass(obj)) {
         return cacheItClass(obj, options);
       }

@@ -1,15 +1,15 @@
-import * as assert from 'assert';
-import { _ } from './utils';
-import sortBy from '../src/sortBy';
-import each from '../src/each';
-import map from '../src/map';
-import constant from '../src/constant';
-import { sortedIndex } from '../src/sortedIndex';
-import { sortedLastIndex } from '../src/sortedLastIndex';
+import * as assert from "assert";
+import { _ } from "./utils";
+import sortBy from "../src/sortBy";
+import each from "../src/each";
+import map from "../src/map";
+import constant from "../src/constant";
+import { sortedIndex } from "../src/sortedIndex";
+import { sortedLastIndex } from "../src/sortedLastIndex";
 
-describe('sortedIndex methods', () => {
-  each([['sortedIndex', sortedIndex], ['sortedLastIndex', sortedLastIndex]], ([methodName, func]) => {
-    const isSortedIndex = methodName == 'sortedIndex';
+describe("sortedIndex methods", () => {
+  each([["sortedIndex", sortedIndex], ["sortedLastIndex", sortedLastIndex]], ([methodName, func]) => {
+    const isSortedIndex = methodName == "sortedIndex";
 
     it(`\`_.${methodName}\` should return the insert index`, () => {
       const array = [30, 50],
@@ -22,8 +22,8 @@ describe('sortedIndex methods', () => {
     });
 
     it(`\`_.${methodName}\` should work with an array of strings`, () => {
-      const array = ['a', 'c'],
-        values = ['a', 'b', 'c'],
+      const array = ["a", "c"],
+        values = ["a", "b", "c"],
         expected = isSortedIndex ? [0, 1, 1] : [1, 1, 2];
 
       const actual = map(values, (value) => func(array, value));
@@ -41,14 +41,14 @@ describe('sortedIndex methods', () => {
     });
 
     it(`\`_.${methodName}\` should align with \`_.sortBy\``, () => {
-      const symbol1 = Symbol ? Symbol('a') : null,
-        symbol2 = Symbol ? Symbol('b') : null,
-        symbol3 = Symbol ? Symbol('c') : null,
-        expected = [1, '2', {}, symbol1, symbol2, null, undefined, NaN, NaN];
+      const symbol1 = Symbol ? Symbol("a") : null,
+        symbol2 = Symbol ? Symbol("b") : null,
+        symbol3 = Symbol ? Symbol("c") : null,
+        expected = [1, "2", {}, symbol1, symbol2, null, undefined, NaN, NaN];
 
       each([
-        [NaN, symbol1, null, 1, '2', {}, symbol2, NaN, undefined],
-        ['2', null, 1, symbol1, NaN, {}, NaN, symbol2, undefined]
+        [NaN, symbol1, null, 1, "2", {}, symbol2, NaN, undefined],
+        ["2", null, 1, symbol1, NaN, {}, NaN, symbol2, undefined]
       ], (array) => {
         assert.deepStrictEqual(sortBy(array), expected);
         assert.strictEqual(func(expected, 3), 2);
@@ -64,18 +64,18 @@ describe('sortedIndex methods', () => {
 
       assert.strictEqual(func(array, null), isSortedIndex ? 0 : 2);
       assert.strictEqual(func(array, 1), 0);
-      assert.strictEqual(func(array, 'a'), 0);
+      assert.strictEqual(func(array, "a"), 0);
     });
 
     it(`\`_.${methodName}\` should align with \`_.sortBy\` for symbols`, () => {
-      const symbol1 = Symbol ? Symbol('a') : null,
-        symbol2 = Symbol ? Symbol('b') : null,
-        symbol3 = Symbol ? Symbol('c') : null,
+      const symbol1 = Symbol ? Symbol("a") : null,
+        symbol2 = Symbol ? Symbol("b") : null,
+        symbol3 = Symbol ? Symbol("c") : null,
         array = [symbol1, symbol2];
 
       assert.strictEqual(func(array, symbol3), isSortedIndex ? 0 : 2);
       assert.strictEqual(func(array, 1), 0);
-      assert.strictEqual(func(array, 'a'), 0);
+      assert.strictEqual(func(array, "a"), 0);
     });
   });
 });

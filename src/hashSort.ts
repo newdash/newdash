@@ -1,6 +1,7 @@
-import { identity } from './.internal/identity';
-import { isEmpty } from './isEmpty';
-import { toString } from './toString';
+/* eslint-disable max-len */
+import { identity } from "./.internal/identity";
+import { isEmpty } from "./isEmpty";
+import { toString } from "./toString";
 
 type Indexer<T = any> = (v: T) => number
 
@@ -47,7 +48,7 @@ export function hashSort<T>(
 
   for (const item of collection) {
     const index = indexer(item);
-    if (typeof index !== 'number') {
+    if (typeof index !== "number") {
       throw new TypeError(`for the value ${toString(item)}, the indexer function return the ${typeof indexer} value, expected: number`);
     }
     if (index < 0) {

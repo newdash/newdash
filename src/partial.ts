@@ -1,7 +1,7 @@
-import createWrap from './.internal/createWrap';
-import baseRest from './.internal/baseRest';
-import replaceHolders from './.internal/replaceHolders';
-import getHolder from './.internal/getHolder';
+import baseRest from "./.internal/baseRest";
+import createWrap from "./.internal/createWrap";
+import getHolder from "./.internal/getHolder";
+import replaceHolders from "./.internal/replaceHolders";
 
 /**
  * @ignore
@@ -49,7 +49,9 @@ const internalPartial = baseRest((func, partials) => {
  * // => 'hi fred'
  * ```
  */
-export function partial<F extends (...args: any[]) => any>(func: F, ...partials: any[]): (...args: any[]) => ReturnType<F>;
+export function partial<F extends (...args: any[]) => any>(
+  func: F, ...partials: any[]): (...args: any[]
+) => ReturnType<F>;
 export function partial(...args: any[]): any {
   return internalPartial(...args);
 }
@@ -57,6 +59,6 @@ export function partial(...args: any[]): any {
 /**
  * placeholder of partial function
  */
-partial['placeholder'] = '__partial__placeholder__';
+partial["placeholder"] = "__partial__placeholder__";
 
 export default partial;

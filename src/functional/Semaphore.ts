@@ -23,7 +23,7 @@
 
 // copy for deno runtime
 
-import { mustProvide } from '../assert';
+import { mustProvide } from "../assert";
 
 /**
  * @private
@@ -52,7 +52,7 @@ export class Semaphore {
   private defaultAcquireTimeout = -1;
 
   constructor(count: number, defaultAcquireTimeout: number = -1) {
-    mustProvide(count, 'count', 'number');
+    mustProvide(count, "count", "number");
     this.count = count;
     this.defaultAcquireTimeout = defaultAcquireTimeout;
   }
@@ -61,7 +61,7 @@ export class Semaphore {
     if (this.count > 0 && this.tasks.length > 0) {
       this.count--;
       const next = this.tasks.shift();
-      mustProvide(next, 'task', 'function');
+      mustProvide(next, "task", "function");
       next();
     }
   }
@@ -97,7 +97,7 @@ export class Semaphore {
       // queue task
       this.tasks.push(task);
       setTimeout(() => this.schedule(), 0);
-      if (typeof timeout === 'number' && timeout > 0 && !isNaN(timeout) && isFinite(timeout)) {
+      if (typeof timeout === "number" && timeout > 0 && !isNaN(timeout) && isFinite(timeout)) {
         setTimeout(() => {
           if (!task.hasAcquired) {
             task.hasTimeout = true;

@@ -1,13 +1,13 @@
-import * as assert from 'assert';
-import { empties, stubZero } from './utils';
-import each from '../src/each';
-import map from '../src/map';
-import { sum } from '../src/sum';
-import { sumBy } from '../src/sumBy';
+import * as assert from "assert";
+import { empties, stubZero } from "./utils";
+import each from "../src/each";
+import map from "../src/map";
+import { sum } from "../src/sum";
+import { sumBy } from "../src/sumBy";
 
-describe('sum methods', () => {
+describe("sum methods", () => {
 
-  each([['sum', sum], ['sumBy', sumBy]], ([methodName,func]) => {
+  each([["sum", sum], ["sumBy", sumBy]], ([methodName, func]) => {
 
     const array = [6, 4, 2];
 
@@ -32,7 +32,7 @@ describe('sum methods', () => {
     });
 
     it(`\`_.${methodName}\` should not coerce values to numbers`, () => {
-      assert.strictEqual(func(['1', '2']), '12');
+      assert.strictEqual(func(["1", "2"]), "12");
     });
   });
 

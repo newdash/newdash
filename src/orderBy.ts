@@ -1,6 +1,6 @@
-import baseOrderBy from './.internal/baseOrderBy';
-import { Collection, CollectionIteratee, KeyIteratee, ArrayAble } from './types';
-import isArray from './isArray';
+import baseOrderBy from "./.internal/baseOrderBy";
+import isArray from "./isArray";
+import { ArrayAble, Collection, CollectionIteratee, KeyIteratee } from "./types";
 
 /**
  * @ignore
@@ -9,7 +9,7 @@ type FunctionOrder<T = any> = (v1: T, v2: T) => any
 /**
  * @ignore
  */
-type StringOrder = 'asc' | 'desc'
+type StringOrder = "asc" | "desc"
 /**
  * @ignore
  */
@@ -52,7 +52,12 @@ type Order<T = any> = FunctionOrder<T> | StringOrder
  * ```
  *
  */
-export function orderBy<T, T2>(collection: Collection<T>, iteratees: ArrayAble<CollectionIteratee<T, T2> | KeyIteratee>, orders: ArrayAble<Order<T2>>, guard?: any): Array<T>;
+export function orderBy<T, T2>(
+  collection: Collection<T>,
+  iteratees: ArrayAble<CollectionIteratee<T, T2> | KeyIteratee>,
+  orders: ArrayAble<Order<T2>>,
+  guard?: any
+): Array<T>;
 export function orderBy(collection: any, iteratees: any, orders: any, guard: any): any {
   if (collection == null) {
     return [];

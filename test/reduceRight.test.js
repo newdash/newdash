@@ -1,16 +1,16 @@
-import * as assert from 'assert';
-import { slice } from './utils';
-import reduceRight from '../src/reduceRight';
-import keys from '../src/keys';
+import * as assert from "assert";
+import { slice } from "./utils";
+import reduceRight from "../src/reduceRight";
+import keys from "../src/keys";
 
-describe('reduceRight', () => {
+describe("reduceRight", () => {
   const array = [1, 2, 3];
 
-  it('should use the last element of a collection as the default `accumulator`', () => {
+  it("should use the last element of a collection as the default `accumulator`", () => {
     assert.strictEqual(reduceRight(array), 3);
   });
 
-  it('should provide correct `iteratee` arguments when iterating an array', () => {
+  it("should provide correct `iteratee` arguments when iterating an array", () => {
     let args;
 
     reduceRight(array, function() {
@@ -27,14 +27,14 @@ describe('reduceRight', () => {
     assert.deepStrictEqual(args, [3, 2, 1, array]);
   });
 
-  it('should provide correct `iteratee` arguments when iterating an object', () => {
+  it("should provide correct `iteratee` arguments when iterating an object", () => {
     let args,
-      object = { 'a': 1, 'b': 2 },
-      isFIFO = keys(object)[0] == 'a';
+      object = { "a": 1, "b": 2 },
+      isFIFO = keys(object)[0] == "a";
 
     let expected = isFIFO
-      ? [0, 2, 'b', object]
-      : [0, 1, 'a', object];
+      ? [0, 2, "b", object]
+      : [0, 1, "a", object];
 
     reduceRight(object, function() {
       args || (args = slice.call(arguments));
@@ -44,8 +44,8 @@ describe('reduceRight', () => {
 
     args = undefined;
     expected = isFIFO
-      ? [2, 1, 'a', object]
-      : [1, 2, 'b', object];
+      ? [2, 1, "a", object]
+      : [1, 2, "b", object];
 
     reduceRight(object, function() {
       args || (args = slice.call(arguments));

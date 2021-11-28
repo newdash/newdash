@@ -1,12 +1,12 @@
-import { sleep } from '../src';
-import { fallback } from '../src/fallback';
-import { TemporaryUnAvailableError } from '../src/fallback/circuit';
-import { toTry } from '../src/fallback/toTry';
+import { sleep } from "../src";
+import { fallback } from "../src/fallback";
+import { TemporaryUnAvailableError } from "../src/fallback/circuit";
+import { toTry } from "../src/fallback/toTry";
 
 
-describe('fallback', () => {
+describe("fallback", () => {
 
-  it('should support fallback.cache', async () => {
+  it("should support fallback.cache", async () => {
 
     let idx = 0;
     const runner = fallback.cache(async (param) => {
@@ -15,16 +15,16 @@ describe('fallback', () => {
       return idx;
     });
 
-    expect(await runner('p1')).toBe(1);
-    expect(await runner('p1')).toBe(1); // get value from cache
+    expect(await runner("p1")).toBe(1);
+    expect(await runner("p1")).toBe(1); // get value from cache
     expect(idx).toBe(2);
 
     // param with 'p2' is not have cache
-    await expect(runner('p2')).rejects.toThrow(TypeError);
+    await expect(runner("p2")).rejects.toThrow(TypeError);
 
   });
 
-  it('should support fallback.retry', async () => {
+  it("should support fallback.retry", async () => {
 
     let idx = 0;
     const runner = fallback.retry(async () => {
@@ -37,7 +37,7 @@ describe('fallback', () => {
 
   });
 
-  it('should support fallback.circuit', async () => {
+  it("should support fallback.circuit", async () => {
     const openDuration = 300;
     let idx = 0;
     const runner = fallback.circuit(async (value?: any) => {
@@ -65,7 +65,7 @@ describe('fallback', () => {
 
   });
 
-  it('should support toTry multi functions', async () => {
+  it("should support toTry multi functions", async () => {
 
     const f1 = () => 1;
     const f2 = () => 2;

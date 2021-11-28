@@ -1,15 +1,15 @@
-import * as assert from 'assert';
-import { _ } from './utils';
-import each from '../src/each';
+import * as assert from "assert";
+import { _ } from "./utils";
+import each from "../src/each";
 
-import { sortedIndexOf } from '../src/sortedIndexOf';
-import { sortedLastIndexOf } from '../src/sortedLastIndexOf';
+import { sortedIndexOf } from "../src/sortedIndexOf";
+import { sortedLastIndexOf } from "../src/sortedLastIndexOf";
 
-describe('sortedIndexOf methods', () => {
+describe("sortedIndexOf methods", () => {
 
-  each([['sortedIndexOf', sortedIndexOf], ['sortedLastIndexOf', sortedLastIndexOf]], ([methodName, func]) => {
+  each([["sortedIndexOf", sortedIndexOf], ["sortedLastIndexOf", sortedLastIndexOf]], ([methodName, func]) => {
 
-    const isSortedIndexOf = methodName == 'sortedIndexOf';
+    const isSortedIndexOf = methodName == "sortedIndexOf";
 
     it(`\`_.${methodName}\` should perform a binary search`, () => {
       const sorted = [4, 4, 5, 5, 6, 6];

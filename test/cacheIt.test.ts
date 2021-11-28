@@ -1,8 +1,8 @@
-import { cacheIt } from '../src/cacheIt';
+import { cacheIt } from "../src/cacheIt";
 
-describe('cacheIt', () => {
+describe("cacheIt", () => {
 
-  it('should support cache function', () => {
+  it("should support cache function", () => {
 
     let idx = 0;
     const f = cacheIt((value: number) => (++idx) + value);
@@ -16,7 +16,7 @@ describe('cacheIt', () => {
 
   });
 
-  it('should support operate with cache', () => {
+  it("should support operate with cache", () => {
 
     let idx = 0;
     const f = cacheIt((value: number) => (++idx) + value);
@@ -32,12 +32,12 @@ describe('cacheIt', () => {
 
   });
 
-  it('should support create cache provider with parameter', () => {
+  it("should support create cache provider with parameter", () => {
     let idx = 0;
 
     // set max cache size
     const f = cacheIt((value: number) => (++idx) + value, { providerArgs: [2] });
-    expect(f.__cache_storage['maxSize']).toBe(2);
+    expect(f.__cache_storage["maxSize"]).toBe(2);
 
     expect(f(0)).toBe(1);
     expect(f(0)).toBe(1);
@@ -51,7 +51,7 @@ describe('cacheIt', () => {
   });
 
 
-  it('should support cache async function', async () => {
+  it("should support cache async function", async () => {
     let idx = 0;
     const f = cacheIt(async (value: number) => (++idx) + value);
 
@@ -62,7 +62,7 @@ describe('cacheIt', () => {
     expect(await f(1)).toBe(3);
   });
 
-  it('should support cache object', () => {
+  it("should support cache object", () => {
 
     class A {
       constructor() { this.idx = 0; }
@@ -80,7 +80,7 @@ describe('cacheIt', () => {
 
   });
 
-  it('should support cache class', () => {
+  it("should support cache class", () => {
 
     class A {
       constructor(idx = 0) { this.idx = idx; }
@@ -100,7 +100,7 @@ describe('cacheIt', () => {
   });
 
 
-  it('should support cache object with async methods', async () => {
+  it("should support cache object with async methods", async () => {
 
     class A {
       constructor() { this.idx = 0; }
@@ -122,7 +122,7 @@ describe('cacheIt', () => {
 
   });
 
-  it('should support cache fibonacci', () => {
+  it("should support cache fibonacci", () => {
     let callNumber = 0;
     const f = cacheIt((n: number = 0): number => {
       callNumber++;

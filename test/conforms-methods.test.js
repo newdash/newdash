@@ -1,15 +1,15 @@
-import * as assert from 'assert';
-import { _, stubFalse, stubTrue, empties } from './utils';
-import { conformsTo } from '../src/conformsTo';
-import { conforms as fConforms } from '../src/conforms';
-import each from '../src/each';
-import filter from '../src/filter';
-import map from '../src/map';
+import * as assert from "assert";
+import { _, stubFalse, stubTrue, empties } from "./utils";
+import { conformsTo } from "../src/conformsTo";
+import { conforms as fConforms } from "../src/conforms";
+import each from "../src/each";
+import filter from "../src/filter";
+import map from "../src/map";
 
 
-describe('conforms methods', () => {
-  each(['conforms', 'conformsTo'], (methodName) => {
-    const isConforms = methodName == 'conforms';
+describe("conforms methods", () => {
+  each(["conforms", "conformsTo"], (methodName) => {
+    const isConforms = methodName == "conforms";
 
     function conforms(source) {
       return isConforms ? fConforms(source) : function(object) {
@@ -19,21 +19,21 @@ describe('conforms methods', () => {
 
     it(`\`_.${methodName}\` should check if \`object\` conforms to \`source\``, () => {
       const objects = [
-        { 'a': 1, 'b': 8 },
-        { 'a': 2, 'b': 4 },
-        { 'a': 3, 'b': 16 }
+        { "a": 1, "b": 8 },
+        { "a": 2, "b": 4 },
+        { "a": 3, "b": 16 }
       ];
 
       let par = conforms({
-        'b': function(value) { return value > 4; }
+        "b": function(value) { return value > 4; }
       });
 
       let actual = filter(objects, par);
       assert.deepStrictEqual(actual, [objects[0], objects[2]]);
 
       par = conforms({
-        'b': function(value) { return value > 8; },
-        'a': function(value) { return value > 1; }
+        "b": function(value) { return value > 8; },
+        "a": function(value) { return value > 1; }
       });
 
       actual = filter(objects, par);
@@ -51,9 +51,9 @@ describe('conforms methods', () => {
       };
 
       const objects = [
-        { 'a': 1, 'b': 8 },
-        { 'a': 2, 'b': 4 },
-        { 'a': 3, 'b': 16 }
+        { "a": 1, "b": 8 },
+        { "a": 2, "b": 4 },
+        { "a": 3, "b": 16 }
       ];
 
       const par = conforms(new Foo),
@@ -66,7 +66,7 @@ describe('conforms methods', () => {
       let count = 0;
 
       const par = conforms({
-        'a': function() { count++; return true; }
+        "a": function() { count++; return true; }
       });
 
       assert.strictEqual(par({}), false);
@@ -81,7 +81,7 @@ describe('conforms methods', () => {
       Bar.a = 2;
 
       const par = conforms({
-        'a': function(value) { return value > 1; }
+        "a": function(value) { return value > 1; }
       });
 
       assert.strictEqual(par(Foo), false);
@@ -92,7 +92,7 @@ describe('conforms methods', () => {
       function Foo() { }
       Foo.a = function(value) { return value > 1; };
 
-      const objects = [{ 'a': 1 }, { 'a': 2 }],
+      const objects = [{ "a": 1 }, { "a": 2 }],
         actual = filter(objects, conforms(Foo));
 
       assert.deepStrictEqual(actual, [objects[1]]);
@@ -105,7 +105,7 @@ describe('conforms methods', () => {
       Foo.prototype.b = 2;
 
       const par = conforms({
-        'b': function(value) { return value > 1; }
+        "b": function(value) { return value > 1; }
       });
 
       assert.strictEqual(par(new Foo), true);
@@ -116,7 +116,7 @@ describe('conforms methods', () => {
         expected = map(values, stubFalse);
 
       const par = conforms({
-        'a': function(value) { return value > 1; }
+        "a": function(value) { return value > 1; }
       });
 
       const actual = map(values, (value, index) => {
@@ -143,7 +143,7 @@ describe('conforms methods', () => {
     });
 
     it(`\`_.${methodName}\` should return \`true\` when comparing an empty \`source\``, () => {
-      const object = { 'a': 1 },
+      const object = { "a": 1 },
         expected = map(empties, stubTrue);
 
       const actual = map(empties, (value) => {

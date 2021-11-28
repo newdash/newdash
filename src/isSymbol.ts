@@ -1,10 +1,10 @@
-import getTag from './.internal/getTag';
-import isObjectLike from './isObjectLike';
+import getTag from "./.internal/getTag";
+import isObjectLike from "./isObjectLike";
 
 /**
  * @ignore
  */
-const symbolTag = '[object Symbol]';
+const symbolTag = "[object Symbol]";
 
 
 /**
@@ -25,7 +25,7 @@ const symbolTag = '[object Symbol]';
  * ```
  */
 export function isSymbol(value: any): value is Symbol {
-  return typeof value == 'symbol' || (isObjectLike(value) && getTag(value) == symbolTag);
+  return typeof value == "symbol" || (isObjectLike(value) && getTag(value) == symbolTag);
 }
 
 export default isSymbol;

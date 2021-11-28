@@ -1,5 +1,5 @@
-import mean from './mean';
-import sum from './sum';
+import mean from "./mean";
+import sum from "./sum";
 
 /**
  * Variance

@@ -19,14 +19,14 @@
  */
 export function isBuffer(value: any): value is Buffer {
   // try to use nodejs native isBuffer
-  if (typeof Buffer == 'function') {
+  if (typeof Buffer == "function") {
     const nativeIsBuffer = Buffer?.isBuffer;
     if (nativeIsBuffer) {
       return nativeIsBuffer(value);
     }
   }
   const className = value?.constructor?.name;
-  return className == 'Buffer';
+  return className == "Buffer";
 }
 
 export default isBuffer;

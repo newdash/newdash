@@ -1,9 +1,9 @@
-import castPath from './.internal/castPath';
-import isArguments from './isArguments';
-import isIndex from './.internal/isIndex';
-import isLength from './isLength';
-import toKey from './.internal/toKey';
-import isArray from './isArray';
+import castPath from "./.internal/castPath";
+import isArguments from "./isArguments";
+import isIndex from "./.internal/isIndex";
+import isLength from "./isLength";
+import toKey from "./.internal/toKey";
+import isArray from "./isArray";
 
 /**
  * Checks if `path` is a direct property of `object`.

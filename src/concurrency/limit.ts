@@ -1,7 +1,7 @@
-import { mustProvide } from '../assert';
-import defineFunctionName from '../functional/defineFunctionName';
-import { Semaphore } from '../functional/Semaphore';
-import { AsyncFunction } from '../types';
+import { mustProvide } from "../assert";
+import defineFunctionName from "../functional/defineFunctionName";
+import { Semaphore } from "../functional/Semaphore";
+import { AsyncFunction } from "../types";
 
 /**
  * limit concurrent for parallel operations
@@ -16,8 +16,8 @@ import { AsyncFunction } from '../types';
  */
 export function limit<T extends AsyncFunction>(runner: T, concurrencyNumber: number): T {
 
-  mustProvide(runner, 'runner', 'function');
-  mustProvide(concurrencyNumber, 'concurrencyNumber', 'number');
+  mustProvide(runner, "runner", "function");
+  mustProvide(concurrencyNumber, "concurrencyNumber", "number");
 
   const sem = new Semaphore(concurrencyNumber);
 

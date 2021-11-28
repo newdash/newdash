@@ -2,12 +2,15 @@
 /**
  * possible values of `typeof object`
  */
-export type JSType = 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'undefined' | 'object' | 'function'
+export type JSType = "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function"
 
 /**
  * @internal
  */
-export type PromiseExecutor<T = any> = (resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void
+export type PromiseExecutor<T = any> = (
+  resolve: (value: T | PromiseLike<T>) => void,
+  reject: (reason?: any) => void
+) => void
 
 
 export type Predicate<T> = (value?: T, index?: any, collection?: any) => boolean
@@ -142,7 +145,11 @@ export type Keys<T> = keyof T;
  * Same as Partial<T> but goes deeper and makes Partial<T> all its properties and sub-properties.
  */
 export type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends Array<infer U> ? Array<DeepPartial<U>> : T[P] extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : DeepPartial<T[P]>;
+  [P in keyof T]?: T[P] extends Array<infer U> ?
+    Array<DeepPartial<U>> :
+    T[P] extends ReadonlyArray<infer U> ?
+      ReadonlyArray<DeepPartial<U>> :
+      DeepPartial<T[P]>;
 };
 
 /**
@@ -155,7 +162,9 @@ export type Partial<T> = {
 /**
  * optional version of Parameters
  */
-export type OptionalParameters<T extends Function> = T extends (...args: infer P) => any ? { [K in keyof P]?: P[K] } : never;
+export type OptionalParameters<T extends Function> = T extends (...args: infer P) => any ?
+  { [K in keyof P]?: P[K] } :
+  never;
 
 /**
  * Class constructor

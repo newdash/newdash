@@ -1,4 +1,4 @@
-import { uniq } from '../uniq';
+import { uniq } from "../uniq";
 
 /**
  * calculate distance of two string
@@ -9,7 +9,7 @@ import { uniq } from '../uniq';
  * @param s1
  * @param s2
  */
-export function distance(s1: string = '', s2: string = ''): number {
+export function distance(s1: string = "", s2: string = ""): number {
 
   const s1Length = s1.length || 0;
   const s2Length = s2.length || 0;

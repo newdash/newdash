@@ -1,5 +1,5 @@
-import type { AsyncFunction, GeneralFunction } from '../types';
-import { createFunctionWrapper } from './functionWrapper';
+import type { AsyncFunction, GeneralFunction } from "../types";
+import { createFunctionWrapper } from "./functionWrapper";
 
 /**
  * time the executing time for sync/async function

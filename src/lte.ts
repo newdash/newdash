@@ -22,8 +22,8 @@
  * ```
  */
 export function lte<T>(value: T, other: T): boolean;
-export function lte(value:any, other:any):any {
-  if (!(typeof value === 'string' && typeof other === 'string')) {
+export function lte(value: any, other: any): any {
+  if (!(typeof value === "string" && typeof other === "string")) {
     value = +value;
     other = +other;
   }

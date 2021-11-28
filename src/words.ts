@@ -1,4 +1,4 @@
-import unicodeWords from './.internal/unicodeWords';
+import unicodeWords from "./.internal/unicodeWords";
 
 /**
  * @ignore

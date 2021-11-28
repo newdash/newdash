@@ -1,6 +1,6 @@
-import baseTimes from './.internal/baseTimes';
-import getIteratee from './.internal/getIteratee';
-import toInteger from './toInteger';
+import baseTimes from "./.internal/baseTimes";
+import getIteratee from "./.internal/getIteratee";
+import toInteger from "./toInteger";
 
 /**
  * @ignore

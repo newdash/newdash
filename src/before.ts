@@ -19,8 +19,8 @@
  */
 export function before<T extends (...args: any[]) => any>(n: number, func: T): T {
   let result: any;
-  if (typeof func !== 'function') {
-    throw new TypeError('Expected a function');
+  if (typeof func !== "function") {
+    throw new TypeError("Expected a function");
   }
   return function (...args) {
     if (--n > 0) {

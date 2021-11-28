@@ -1,4 +1,4 @@
-import baseWhile from './.internal/baseWhile';
+import baseWhile from "./.internal/baseWhile";
 
 /**
  * Creates a slice of `array` excluding elements dropped from the beginning.

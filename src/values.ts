@@ -1,6 +1,6 @@
-import baseValues from './.internal/baseValues';
-import keys from './keys';
-import { Values } from './types';
+import baseValues from "./.internal/baseValues";
+import keys from "./keys";
+import { Values } from "./types";
 
 /**
  * Creates an array of the own enumerable string keyed property values of `object`.

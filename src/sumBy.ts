@@ -1,5 +1,5 @@
-import baseSum from './.internal/baseSum';
-import getIteratee from './.internal/getIteratee';
+import baseSum from "./.internal/baseSum";
+import getIteratee from "./.internal/getIteratee";
 
 /**
  * This method is like `sum` except that it accepts `iteratee` which is

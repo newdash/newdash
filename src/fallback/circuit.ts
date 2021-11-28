@@ -1,7 +1,7 @@
-import { mustProvide } from '../assert';
-import { LRUCacheProvider } from '../cacheProvider';
-import defineFunctionName from '../functional/defineFunctionName';
-import { toHashCode } from '../functional/toHashCode';
+import { mustProvide } from "../assert";
+import { LRUCacheProvider } from "../cacheProvider";
+import defineFunctionName from "../functional/defineFunctionName";
+import { toHashCode } from "../functional/toHashCode";
 
 /**
  * TemporaryUnAvailableError
@@ -60,15 +60,15 @@ function errorWithCircuit(error: Error, key: string, breakerOpenTimers, breakerO
  */
 export function circuit<T>(runner: T, openDuration: number = 10 * 1000, cacheSize: number = 1024): T {
 
-  mustProvide(runner, 'runner', 'function');
-  mustProvide(openDuration, 'openDuration', 'number');
+  mustProvide(runner, "runner", "function");
+  mustProvide(openDuration, "openDuration", "number");
 
   if (openDuration === 0) { return runner; }
 
   const breakerOpenTimers = new LRUCacheProvider(cacheSize);
   const breakerOpenReason = new LRUCacheProvider(cacheSize);
 
-  const funcName = runner['name'] || 'Unknown';
+  const funcName = runner["name"] || "Unknown";
 
   const func = async (...args: any[]) => {
 

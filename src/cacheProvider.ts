@@ -1,6 +1,6 @@
-import { LRUMap } from './functional/LRUMap';
-import { TTLMap } from './functional/TTLMap';
-import { GeneralFunction } from './types';
+import { LRUMap } from "./functional/LRUMap";
+import { TTLMap } from "./functional/TTLMap";
+import { GeneralFunction } from "./types";
 
 export interface CachePolicy {
   cacheUndefined?: boolean;
@@ -110,8 +110,8 @@ export class LRUCacheProvider<K = any, V = any> extends LRUMap implements CacheP
   constructor(config: CacheConfig<LRUCacheProviderParam>)
   constructor(maxEntry?: number)
   constructor(param0: any) {
-    super(typeof param0 === 'number' ? param0 : (param0?.params?.maxEntry ?? 10240));
-    if (typeof param0 === 'object') {
+    super(typeof param0 === "number" ? param0 : (param0?.params?.maxEntry ?? 10240));
+    if (typeof param0 === "object") {
       this._cachePolicy = Object.assign(DEFAULT_CACHE_POLICY, param0.policy ?? {});
     }
   }
@@ -151,7 +151,7 @@ export class TTLCacheProvider<K = any, V = any> extends TTLMap<K, V> implements 
     const config = {
       policy: DEFAULT_CACHE_POLICY, params: DEFAULT_CACHE_PROVIDER_PARAM
     };
-    if (typeof params[0] === 'number') {
+    if (typeof params[0] === "number") {
       config.params.ttl = params[0] || config.params.ttl;
       config.params.checkInterval = params[1] || config.params.checkInterval;
       config.params.maxEntry = params[2] || config.params.maxEntry;

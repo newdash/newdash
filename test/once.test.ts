@@ -1,8 +1,8 @@
-import * as assert from 'assert';
-import fOnce from '../src/once';
+import * as assert from "assert";
+import fOnce from "../src/once";
 
-describe('once', () => {
-  it('should invoke `func` once', () => {
+describe("once", () => {
+  it("should invoke `func` once", () => {
     let count = 0,
       once = fOnce(() => ++count);
 
@@ -11,7 +11,7 @@ describe('once', () => {
     assert.strictEqual(count, 1);
   });
 
-  it('should ignore recursive calls', () => {
+  it("should ignore recursive calls", () => {
     let count = 0;
 
     var once = fOnce(() => {
@@ -23,7 +23,7 @@ describe('once', () => {
     assert.strictEqual(count, 1);
   });
 
-  it('should not throw more than once', () => {
+  it("should not throw more than once", () => {
     const once = fOnce(() => {
       throw new Error;
     });

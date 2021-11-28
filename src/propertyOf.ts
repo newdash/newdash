@@ -1,4 +1,4 @@
-import baseGet from './.internal/baseGet';
+import baseGet from "./.internal/baseGet";
 
 /**
  * The opposite of `property`s method creates a function that returns

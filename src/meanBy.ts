@@ -1,6 +1,6 @@
-import baseSum from './.internal/baseSum';
-import getIteratee from './.internal/getIteratee';
-import { ArrayIteratee } from './types';
+import baseSum from "./.internal/baseSum";
+import getIteratee from "./.internal/getIteratee";
+import { ArrayIteratee } from "./types";
 
 /**
  * Used as references for various `Number` constants.

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Entry } from './types';
+import { Entry } from "./types";
 
 /**
  * The inverse of `entries`is method returns an object composed

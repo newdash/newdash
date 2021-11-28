@@ -1,5 +1,5 @@
-import words from './words';
-import toString from './toString';
+import words from "./words";
+import toString from "./toString";
 
 /**
  * @ignore
@@ -28,9 +28,9 @@ const reQuotes = /['\u2019]/g;
  * ```
  */
 export function lowerCase(str: string): string {
-  return words(toString(str).replace(reQuotes, '')).reduce((result, word, index) => (
-    result + (index ? ' ' : '') + word.toLowerCase()
-  ), '');
+  return words(toString(str).replace(reQuotes, "")).reduce((result, word, index) => (
+    result + (index ? " " : "") + word.toLowerCase()
+  ), "");
 }
 
 export default lowerCase;

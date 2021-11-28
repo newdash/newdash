@@ -1,5 +1,5 @@
-import { isClass } from './isClass';
-import { Class } from './types';
+import { isClass } from "./isClass";
+import { Class } from "./types";
 
 
 /**

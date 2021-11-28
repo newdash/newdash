@@ -1,5 +1,5 @@
-import trimPrefix from './trimPrefix';
-import trimSuffix from './trimSuffix';
+import trimPrefix from "./trimPrefix";
+import trimSuffix from "./trimSuffix";
 
 /**
  *

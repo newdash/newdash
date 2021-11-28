@@ -1,25 +1,25 @@
-import * as assert from 'assert';
-import { platform } from 'os';
-import constant from '../src/constant';
-import debounce from '../src/debounce';
-import each from '../src/each';
-import map from '../src/map';
-import throttle from '../src/throttle';
-import times from '../src/times';
-import { noop, push } from './utils';
+import * as assert from "assert";
+import { platform } from "os";
+import constant from "../src/constant";
+import debounce from "../src/debounce";
+import each from "../src/each";
+import map from "../src/map";
+import throttle from "../src/throttle";
+import times from "../src/times";
+import { noop, push } from "./utils";
 
 let describe2 = describe;
-if (platform() != 'linux') {
+if (platform() != "linux") {
   // setTimeout is Unstable on MacOS,
   // maybe caused by resource schedule,
   // so skip these tests
   describe2 = describe.skip;
 }
 
-describe('debounce and throttle', () => {
+describe("debounce and throttle", () => {
 
-  each([['debounce', debounce], ['throttle', throttle]], ([methodName, func]) => {
-    const isDebounce = methodName == 'debounce';
+  each([["debounce", debounce], ["throttle", throttle]], ([methodName, func]) => {
+    const isDebounce = methodName == "debounce";
 
     it(`\`_.${methodName}\` should not error for non-object \`options\` values`, () => {
       func(noop, 32, 1);
@@ -41,7 +41,7 @@ describe('debounce and throttle', () => {
 
     it(`\`_.${methodName}\` should invoke \`func\` with the correct \`this\` binding`, (done) => {
       const actual = [],
-        object = { 'funced': func(function() { actual.push(this); }, 32) },
+        object = { "funced": func(function() { actual.push(this); }, 32) },
         expected = times(isDebounce ? 1 : 2, constant(object));
 
       object.funced();
@@ -56,7 +56,7 @@ describe('debounce and throttle', () => {
 
     it(`\`_.${methodName}\` supports recursive calls`, (done) => {
       const actual = [],
-        args = map(['a', 'b', 'c'], (chr) => [{}, chr]),
+        args = map(["a", "b", "c"], (chr) => [{}, chr]),
         expected = args.slice(),
         queue = args.slice();
 
@@ -87,7 +87,7 @@ describe('debounce and throttle', () => {
 
       const funced = func(() => {
         callCount++;
-      }, 32, { 'leading': false });
+      }, 32, { "leading": false });
 
       funced();
       funced.cancel();
@@ -101,7 +101,7 @@ describe('debounce and throttle', () => {
     it(`\`_.${methodName}\` should reset \`lastCalled\` after cancelling`, (done) => {
       let callCount = 0;
 
-      const funced = func(() => ++callCount, 32, { 'leading': true });
+      const funced = func(() => ++callCount, 32, { "leading": true });
 
       assert.strictEqual(funced(), 1);
       funced.cancel();
@@ -118,7 +118,7 @@ describe('debounce and throttle', () => {
     it(`\`_.${methodName}\` should support flushing delayed calls`, (done) => {
       let callCount = 0;
 
-      const funced = func(() => ++callCount, 32, { 'leading': false });
+      const funced = func(() => ++callCount, 32, { "leading": false });
 
       funced();
       assert.strictEqual(funced.flush(), 1);

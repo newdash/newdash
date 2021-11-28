@@ -1,9 +1,9 @@
-import * as assert from 'assert';
-import concat from '../src/concat';
-import map from '../src/map';
+import * as assert from "assert";
+import concat from "../src/concat";
+import map from "../src/map";
 
-describe('concat', () => {
-  it('should shallow clone `array`', () => {
+describe("concat", () => {
+  it("should shallow clone `array`", () => {
     const array = [1, 2, 3],
       actual = concat(array);
 
@@ -11,7 +11,7 @@ describe('concat', () => {
     assert.notStrictEqual(actual, array);
   });
 
-  it('should concat arrays and values', () => {
+  it("should concat arrays and values", () => {
     const array = [1],
       actual = concat(array, 2, [3], [[4]]);
 
@@ -19,8 +19,8 @@ describe('concat', () => {
     assert.deepStrictEqual(array, [1]);
   });
 
-  it('should cast non-array `array` values to arrays', () => {
-    const values = [, null, undefined, false, true, 1, NaN, 'a'];
+  it("should cast non-array `array` values to arrays", () => {
+    const values = [, null, undefined, false, true, 1, NaN, "a"];
 
     let expected = map(values, (value, index) => index ? [value] : []);
 
@@ -35,14 +35,14 @@ describe('concat', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should treat sparse arrays as dense', () => {
+  it("should treat sparse arrays as dense", () => {
     const expected = [],
       actual = concat(Array(1), Array(1));
 
     expected.push(undefined, undefined);
 
-    assert.ok('0'in actual);
-    assert.ok('1' in actual);
+    assert.ok("0" in actual);
+    assert.ok("1" in actual);
     assert.deepStrictEqual(actual, expected);
   });
 

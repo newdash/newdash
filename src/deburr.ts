@@ -1,5 +1,5 @@
 // @ts-nocheck
-import deburrLetter from './.internal/deburrLetter';
+import deburrLetter from "./.internal/deburrLetter";
 
 /**
  * Used to match Latin Unicode letters (excluding mathematical operators).
@@ -7,12 +7,16 @@ import deburrLetter from './.internal/deburrLetter';
  */
 const reLatin = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g;
 
-/** @ignore */ const rsComboMarksRange = '\\u0300-\\u036f';
-/** @ignore */ const reComboHalfMarksRange = '\\ufe20-\\ufe2f';
-/** @ignore */ const rsComboSymbolsRange = '\\u20d0-\\u20ff';
-/** @ignore */ const rsComboMarksExtendedRange = '\\u1ab0-\\u1aff';
-/** @ignore */ const rsComboMarksSupplementRange = '\\u1dc0-\\u1dff';
-/** @ignore */ const rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange + rsComboMarksExtendedRange + rsComboMarksSupplementRange;
+/** @ignore */ const rsComboMarksRange = "\\u0300-\\u036f";
+/** @ignore */ const reComboHalfMarksRange = "\\ufe20-\\ufe2f";
+/** @ignore */ const rsComboSymbolsRange = "\\u20d0-\\u20ff";
+/** @ignore */ const rsComboMarksExtendedRange = "\\u1ab0-\\u1aff";
+/** @ignore */ const rsComboMarksSupplementRange = "\\u1dc0-\\u1dff";
+/** @ignore */ const rsComboRange = rsComboMarksRange +
+ reComboHalfMarksRange +
+ rsComboSymbolsRange +
+ rsComboMarksExtendedRange +
+ rsComboMarksSupplementRange;
 
 /**
  * Used to compose unicode capture groups.
@@ -25,7 +29,7 @@ const rsCombo = `[${rsComboRange}]`;
  * [combining diacritical marks for symbols](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks_for_Symbols).
  * @ignore
  */
-const reComboMark = RegExp(rsCombo, 'g');
+const reComboMark = RegExp(rsCombo, "g");
 
 /**
  * Deburrs `string` by converting
@@ -46,7 +50,7 @@ const reComboMark = RegExp(rsCombo, 'g');
  * ```
  */
 export function deburr(str: string): string {
-  return str && str.replace(reLatin, deburrLetter).replace(reComboMark, '');
+  return str && str.replace(reLatin, deburrLetter).replace(reComboMark, "");
 }
 
 export default deburr;

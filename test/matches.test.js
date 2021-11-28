@@ -1,17 +1,17 @@
-import * as assert from 'assert';
-import matches from '../src/matches';
-import { each } from '../src/each';
-import { cloneDeep } from '../src/cloneDeep';
+import * as assert from "assert";
+import matches from "../src/matches";
+import { each } from "../src/each";
+import { cloneDeep } from "../src/cloneDeep";
 
 
-describe('matches', () => {
+describe("matches", () => {
 
-  it('should not change behavior if `source` is modified', () => {
+  it("should not change behavior if `source` is modified", () => {
 
     const sources = [
-      { 'a': { 'b': 2, 'c': 3 } },
-      { 'a': 1, 'b': 2 },
-      { 'a': 1 }
+      { "a": { "b": 2, "c": 3 } },
+      { "a": 1, "b": 2 },
+      { "a": 1 }
     ];
 
     each(sources, (source, index) => {

@@ -1,4 +1,4 @@
-import baseClone from './.internal/baseClone';
+import baseClone from "./.internal/baseClone";
 
 /**
  * Used to compose bitmasks for cloning.

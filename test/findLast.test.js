@@ -1,19 +1,19 @@
-import * as assert from 'assert';
-import { args, falsey } from './utils';
-import findLast from '../src/findLast';
-import curry from '../src/curry';
-import eq from '../src/eq';
-import each from '../src/each';
-import { toArray } from '../src/toArray';
-import map from '../src/map';
-import constant from '../src/constant';
+import * as assert from "assert";
+import { args, falsey } from "./utils";
+import findLast from "../src/findLast";
+import curry from "../src/curry";
+import eq from "../src/eq";
+import each from "../src/each";
+import { toArray } from "../src/toArray";
+import map from "../src/map";
+import constant from "../src/constant";
 
-describe('findLast', () => {
+describe("findLast", () => {
   const resolve = curry(eq);
 
   each({
-    'an `arguments` object': args,
-    'an array': [1, 2, 3]
+    "an `arguments` object": args,
+    "an array": [1, 2, 3]
   },
   (collection, key) => {
     const values = toArray(collection);
@@ -40,7 +40,7 @@ describe('findLast', () => {
       const actual = map(indexes, (fromIndex) => [
         findLast(collection, resolve(1), fromIndex),
         findLast(collection, resolve(undefined), fromIndex),
-        findLast(collection, resolve(''), fromIndex)
+        findLast(collection, resolve(""), fromIndex)
       ]);
 
       assert.deepStrictEqual(actual, expected);
@@ -64,7 +64,7 @@ describe('findLast', () => {
       const actual = [
         findLast(collection, resolve(values[0]), 0.1),
         findLast(collection, resolve(values[0]), NaN),
-        findLast(collection, resolve(values[2]), '1')
+        findLast(collection, resolve(values[2]), "1")
       ];
 
       assert.deepStrictEqual(actual, expected);

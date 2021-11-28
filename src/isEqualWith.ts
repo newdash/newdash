@@ -1,4 +1,4 @@
-import baseIsEqual from './.internal/baseIsEqual';
+import baseIsEqual from "./.internal/baseIsEqual";
 
 /**
  * This method is like `isEqual` except that it accepts `customizer` which
@@ -34,7 +34,7 @@ import baseIsEqual from './.internal/baseIsEqual';
  */
 export function isEqualWith<V1, V2>(value: V1, other: V2, customizer?: (v1?: V1, v2?: V2) => boolean): boolean;
 export function isEqualWith(value: any, other: any, customizer: any): any {
-  customizer = typeof customizer === 'function' ? customizer : undefined;
+  customizer = typeof customizer === "function" ? customizer : undefined;
   const result = customizer ? customizer(value, other) : undefined;
   return result === undefined ? baseIsEqual(value, other, undefined, customizer) : !!result;
 }

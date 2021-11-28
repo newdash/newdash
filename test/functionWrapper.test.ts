@@ -1,8 +1,8 @@
-import { createFunctionWrapper } from '../src/functional/functionWrapper';
+import { createFunctionWrapper } from "../src/functional/functionWrapper";
 
-describe('functionWrapper', () => {
+describe("functionWrapper", () => {
 
-  it('should return original function without processors', () => {
+  it("should return original function without processors", () => {
 
     const f = () => { };
 
@@ -28,7 +28,7 @@ describe('functionWrapper', () => {
   });
 
 
-  it('should support overwrite error', async () => {
+  it("should support overwrite error", async () => {
 
     const f = () => { throw new TypeError(); };
     const f2 = async () => { throw new TypeError(); };

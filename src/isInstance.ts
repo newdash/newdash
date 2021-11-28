@@ -1,5 +1,5 @@
 
-import { Class } from './types';
+import { Class } from "./types";
 
 
 /**

@@ -1,5 +1,5 @@
-import minBy from './minBy';
-import identity from './.internal/identity';
+import minBy from "./minBy";
+import identity from "./.internal/identity";
 
 /**
  * Computes the minimum value of `array`. If `array` is empty or falsey,

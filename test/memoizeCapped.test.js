@@ -1,12 +1,12 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { identity, MAX_MEMOIZE_SIZE } from './utils';
-import _memoizeCapped from '../src/.internal/memoizeCapped';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { identity, MAX_MEMOIZE_SIZE } from "./utils";
+import _memoizeCapped from "../src/.internal/memoizeCapped";
 
-describe('memoizeCapped', () => {
+describe("memoizeCapped", () => {
   const func = _memoizeCapped;
 
-  it('should enforce a max cache size of `MAX_MEMOIZE_SIZE`', () => {
+  it("should enforce a max cache size of `MAX_MEMOIZE_SIZE`", () => {
     if (func) {
       const memoized = func(identity),
         cache = memoized.cache;

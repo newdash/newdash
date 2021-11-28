@@ -1,26 +1,26 @@
-import * as assert from 'assert';
-import { identity, noop } from './utils';
-import functions from '../src/functions';
+import * as assert from "assert";
+import { identity, noop } from "./utils";
+import functions from "../src/functions";
 
-describe('functions', () => {
-  it('should return the function names of an object', () => {
-    const object = { 'a': 'a', 'b': identity, 'c': /x/, 'd': noop },
+describe("functions", () => {
+  it("should return the function names of an object", () => {
+    const object = { "a": "a", "b": identity, "c": /x/, "d": noop },
       actual = functions(object).sort();
 
-    assert.deepStrictEqual(actual, ['b', 'd']);
+    assert.deepStrictEqual(actual, ["b", "d"]);
   });
 
-  it('should not include inherited functions', () => {
+  it("should not include inherited functions", () => {
     function Foo() {
       this.a = identity;
-      this.b = 'b';
+      this.b = "b";
     }
     Foo.prototype.c = noop;
 
-    assert.deepStrictEqual(functions(new Foo), ['a']);
+    assert.deepStrictEqual(functions(new Foo), ["a"]);
   });
 
-  it('should return empty function when give nothing', () => {
+  it("should return empty function when give nothing", () => {
     assert.deepStrictEqual(functions(null), []);
   });
 });

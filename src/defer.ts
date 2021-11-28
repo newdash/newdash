@@ -17,8 +17,8 @@
  * ```
  */
 export function defer<F extends (...args: any[]) => any>(func: F, ...args: Parameters<F>): number {
-  if (typeof func !== 'function') {
-    throw new TypeError('Expected a function');
+  if (typeof func !== "function") {
+    throw new TypeError("Expected a function");
   }
   return setTimeout(func, 1, ...args);
 }

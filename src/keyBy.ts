@@ -1,5 +1,5 @@
-import baseAssignValue from './.internal/baseAssignValue';
-import createAggregator from './.internal/createAggregator';
+import baseAssignValue from "./.internal/baseAssignValue";
+import createAggregator from "./.internal/createAggregator";
 
 
 /**

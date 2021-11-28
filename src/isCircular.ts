@@ -8,9 +8,9 @@ LICENSE: CC BY-SA 3.0
 
 */
 
-import { Entry } from './types';
+import { Entry } from "./types";
 
-const S_ROOT_OBJECT = 'ROOT';
+const S_ROOT_OBJECT = "ROOT";
 
 
 /**

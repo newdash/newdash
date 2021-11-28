@@ -1,19 +1,19 @@
-import { timeIt } from '../src/functional/timeIt';
-import { hashSort } from '../src/hashSort';
+import { timeIt } from "../src/functional/timeIt";
+import { hashSort } from "../src/hashSort";
 
-describe('hashSort method', () => {
+describe("hashSort method", () => {
 
-  it('should support pure numeric array', () => {
+  it("should support pure numeric array", () => {
     expect(hashSort([2, 999, 3, 113, 3, 32, 3, 4]))
       .toStrictEqual([2, 3, 3, 3, 4, 32, 113, 999]);
   });
 
-  it('should support pure numeric array', () => {
+  it("should support pure numeric array", () => {
     expect(() => hashSort([2, -1, 3, 113, 3, 32, 3, 4]))
       .toThrowError();
   });
 
-  it.skip('should faster than native sort', () => {
+  it.skip("should faster than native sort", () => {
     const a1 = new Array();
     const a2 = new Array();
     for (let idx = 0; idx < Math.pow(2, 12); idx++) {
@@ -27,7 +27,7 @@ describe('hashSort method', () => {
     expect(hashSortConsumption).toBeLessThanOrEqual(nativeSortConsumption);
   });
 
-  it('should support object array', () => {
+  it("should support object array", () => {
     expect(
       hashSort(
         [

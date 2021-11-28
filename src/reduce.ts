@@ -1,8 +1,8 @@
-import arrayReduce from './.internal/arrayReduce';
-import baseEach from './.internal/baseEach';
-import baseReduce from './.internal/baseReduce';
-import getIteratee from './.internal/getIteratee';
-import { AccCollectionIteratee } from './types';
+import arrayReduce from "./.internal/arrayReduce";
+import baseEach from "./.internal/baseEach";
+import baseReduce from "./.internal/baseReduce";
+import getIteratee from "./.internal/getIteratee";
+import { AccCollectionIteratee } from "./types";
 
 /**
  * Reduces `collection` to a value which is the accumulated result of running
@@ -39,7 +39,11 @@ import { AccCollectionIteratee } from './types';
  * // => { '1': ['a', 'c'], '2': ['b'] } (iteration order is not guaranteed)
  * ```
  */
-export function reduce<T, R>(collection?: Record<string, T>, iteratee?: AccCollectionIteratee<T, R>, accumulator?: R): R;
+export function reduce<T, R>(
+  collection?: Record<string, T>,
+  iteratee?: AccCollectionIteratee<T, R>,
+  accumulator?: R
+): R;
 export function reduce<T, R>(collection?: ArrayLike<T>, iteratee?: AccCollectionIteratee<T, R>, accumulator?: R): R;
 export function reduce(collection?: any, iteratee?: any, accumulator?: any): any {
   const func = Array.isArray(collection) ? arrayReduce : baseReduce;

@@ -1,7 +1,7 @@
 // @ts-nocheck
-import baseFindIndex from './.internal/baseFindIndex';
-import getIteratee from './.internal/getIteratee';
-import toInteger from './toInteger';
+import baseFindIndex from "./.internal/baseFindIndex";
+import getIteratee from "./.internal/getIteratee";
+import toInteger from "./toInteger";
 
 /**
  * This method is like `find` except that it returns the index of the first

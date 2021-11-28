@@ -1,6 +1,6 @@
-import baseAssignValue from './.internal/baseAssignValue';
-import createAggregator from './.internal/createAggregator';
-import { ArrayIteratee, RecordIteratee } from './types';
+import baseAssignValue from "./.internal/baseAssignValue";
+import createAggregator from "./.internal/createAggregator";
+import { ArrayIteratee, RecordIteratee } from "./types";
 
 /**
  * @ignore

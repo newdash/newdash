@@ -1,4 +1,4 @@
-import isFunction from './isFunction';
+import isFunction from "./isFunction";
 
 type BoolFunction = (...args: any[]) => boolean
 type AsyncBoolFunction = (...args: any[]) => Promise<boolean>

@@ -1,11 +1,11 @@
 // @ts-nocheck
-import { retry } from '../src/retry';
-import sleep from '../src/sleep';
+import { retry } from "../src/retry";
+import sleep from "../src/sleep";
 
 
-describe('retry', () => {
+describe("retry", () => {
 
-  it('should retry multi time', async () => {
+  it("should retry multi time", async () => {
 
     let count = 1;
     let runCount = 0;
@@ -28,7 +28,7 @@ describe('retry', () => {
 
   });
 
-  it('should support retry with normal sync function', () => {
+  it("should support retry with normal sync function", () => {
 
     let idx = 1;
     function r() {
@@ -52,7 +52,7 @@ describe('retry', () => {
 
   });
 
-  it('should reject when retry number exceed', async () => {
+  it("should reject when retry number exceed", async () => {
 
     let count = 1;
     let runCount = 0;
@@ -74,7 +74,7 @@ describe('retry', () => {
 
   });
 
-  it('should return original function when maxNumber <= 1', () => {
+  it("should return original function when maxNumber <= 1", () => {
 
     const f = async () => { };
     expect(retry(f, 1)).toBe(f);
@@ -83,15 +83,15 @@ describe('retry', () => {
 
   });
 
-  it('should raise error when not give function', () => {
+  it("should raise error when not give function", () => {
 
     expect(() => retry(1)).toThrow(TypeError);
     expect(() => retry()).toThrow(TypeError);
-    expect(() => retry('')).toThrow(TypeError);
+    expect(() => retry("")).toThrow(TypeError);
 
   });
 
-  it('should support retry with interval', async () => {
+  it("should support retry with interval", async () => {
 
     let idx = 0;
     const interval = 100;

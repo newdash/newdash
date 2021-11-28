@@ -22,13 +22,13 @@ const idCounter = {};
  * // => '105'
  * ```
  */
-export function uniqueId(prefix = '$lodash$') {
+export function uniqueId(prefix = "$lodash$") {
   if (!idCounter[prefix]) {
     idCounter[prefix] = 0;
   }
 
   const id = ++idCounter[prefix];
-  if (prefix === '$lodash$') {
+  if (prefix === "$lodash$") {
     return `${id}`;
   }
 

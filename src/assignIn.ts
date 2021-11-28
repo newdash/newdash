@@ -1,6 +1,6 @@
-import createAssigner from './.internal/createAssigner';
-import copyObject from './.internal/copyObject';
-import keysIn from './keysIn';
+import createAssigner from "./.internal/createAssigner";
+import copyObject from "./.internal/copyObject";
+import keysIn from "./keysIn";
 
 /**
  * @private

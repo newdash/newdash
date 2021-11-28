@@ -1,4 +1,5 @@
-import { mustProvide } from '../assert';
+/* eslint-disable max-len */
+import { mustProvide } from "../assert";
 
 /**
  *
@@ -32,8 +33,8 @@ export class BlockedQueue<I = any> {
    * @param maxPending default 10 * capacity, the max allowed number of pending items
    */
   constructor(capacity = 1000, maxPending = 10 * capacity) {
-    mustProvide(capacity, 'capacity', 'number');
-    mustProvide(maxPending, 'maxPending', 'number');
+    mustProvide(capacity, "capacity", "number");
+    mustProvide(maxPending, "maxPending", "number");
     this._capacity = capacity;
     this._container = new Array(0);
     this._notifyQueue = new Array(0);

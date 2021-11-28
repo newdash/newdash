@@ -1,5 +1,5 @@
-import { isEmpty } from './isEmpty';
-import { Class } from './types';
+import { isEmpty } from "./isEmpty";
+import { Class } from "./types";
 
 /**
  * @ignore
@@ -60,7 +60,7 @@ export function isClass(obj: any): obj is Class {
   if (obj === undefined || obj === null) {
     return false;
   }
-  if (typeof obj === 'function' && typeof obj?.constructor === 'function') {
+  if (typeof obj === "function" && typeof obj?.constructor === "function") {
     if (/^class [\s\S]*?$/.test(Function.prototype.toString.call(obj))) {
       return true;
     }
@@ -68,7 +68,7 @@ export function isClass(obj: any): obj is Class {
       return true;
     }
   }
-  if (typeof obj === 'function' && !isEmpty(obj.prototype)) {
+  if (typeof obj === "function" && !isEmpty(obj.prototype)) {
     return true;
   }
   return false;

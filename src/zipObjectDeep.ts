@@ -1,5 +1,5 @@
-import baseSet from './.internal/baseSet';
-import baseZipObject from './.internal/baseZipObject';
+import baseSet from "./.internal/baseSet";
+import baseZipObject from "./.internal/baseZipObject";
 
 /**
  * This method is like `zipObject` except that it supports property paths.

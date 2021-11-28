@@ -1,4 +1,4 @@
-import slice from './slice';
+import slice from "./slice";
 
 /**
  * Gets all but the last element of `array`.

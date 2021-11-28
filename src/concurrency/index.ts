@@ -1,8 +1,8 @@
-import { any } from '../any';
-import { series } from '../series';
-import { debounce } from './debounce';
-import { limit, synchronized } from './limit';
-import { timeout } from './timeout';
+import { any } from "../any";
+import { series } from "../series";
+import { debounce } from "./debounce";
+import { limit, synchronized } from "./limit";
+import { timeout } from "./timeout";
 
 
 /**

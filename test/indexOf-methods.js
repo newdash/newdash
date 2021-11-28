@@ -1,9 +1,9 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { _, falsey } from './utils';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { _, falsey } from "./utils";
 
-describe('indexOf methods', () => {
-  lodashStable.each(['indexOf', 'lastIndexOf', 'sortedIndexOf', 'sortedLastIndexOf'], (methodName) => {
+describe("indexOf methods", () => {
+  lodashStable.each(["indexOf", "lastIndexOf", "sortedIndexOf", "sortedLastIndexOf"], (methodName) => {
     const func = _[methodName],
       isIndexOf = !/last/i.test(methodName),
       isSorted = /^sorted/.test(methodName);

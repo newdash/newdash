@@ -1,5 +1,5 @@
-import getTag from './.internal/getTag';
-import isObjectLike from './isObjectLike';
+import getTag from "./.internal/getTag";
+import isObjectLike from "./isObjectLike";
 
 
 /**
@@ -20,7 +20,7 @@ import isObjectLike from './isObjectLike';
  * ```
  */
 export function isSet(value: any): value is Set<any> {
-  return isObjectLike(value) && getTag(value) == '[object Set]';
+  return isObjectLike(value) && getTag(value) == "[object Set]";
 };
 
 export default isSet;

@@ -1,7 +1,7 @@
-import { mustProvide } from '../assert';
-import defineFunctionName from '../functional/defineFunctionName';
-import { createTimeoutPromise } from '../timeout';
-import { AsyncFunction } from '../types';
+import { mustProvide } from "../assert";
+import defineFunctionName from "../functional/defineFunctionName";
+import { createTimeoutPromise } from "../timeout";
+import { AsyncFunction } from "../types";
 
 /**
  * wrap an async function with timeout
@@ -17,8 +17,8 @@ import { AsyncFunction } from '../types';
  */
 export function timeout<T extends AsyncFunction>(runner: T, timeout?: number): T {
 
-  mustProvide(runner, 'runner', 'function');
-  mustProvide(timeout, 'timeout', 'number');
+  mustProvide(runner, "runner", "function");
+  mustProvide(timeout, "timeout", "number");
 
   const func = (...args: any[]) => createTimeoutPromise(async (resolve, reject) => {
     try {

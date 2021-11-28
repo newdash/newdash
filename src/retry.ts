@@ -1,6 +1,6 @@
-import { mustProvide } from './assert';
-import defineFunctionName from './functional/defineFunctionName';
-import sleep from './sleep';
+import { mustProvide } from "./assert";
+import defineFunctionName from "./functional/defineFunctionName";
+import sleep from "./sleep";
 
 
 /**
@@ -74,7 +74,7 @@ function runWithRetryLimit(ctx: RContext) {
  * @param retryAfterMSecond (async function required, for sync function, this parameter will not be applied) the wait milliseconds before retry, default is zero
  */
 export function retry<T>(runner: T, maxRetryCount = 3, retryAfterMSecond = 0): T {
-  mustProvide(runner, 'runner', 'function');
+  mustProvide(runner, "runner", "function");
 
   if (maxRetryCount > 1) {
     const func = function (...args: any[]) {

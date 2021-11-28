@@ -1,7 +1,7 @@
-import isArrayLike from './isArrayLike';
-import arrayLikeKeys from './.internal/arrayLikeKeys';
-import isObject from './isObject';
-import isPrototype from './.internal/isPrototype';
+import isArrayLike from "./isArrayLike";
+import arrayLikeKeys from "./.internal/arrayLikeKeys";
+import isObject from "./isObject";
+import isPrototype from "./.internal/isPrototype";
 
 /**
  * @ignore
@@ -36,7 +36,7 @@ function baseKeysIn(object: any): string[] {
   const isProto = isPrototype(object);
   const result = [];
   for (const key in object) {
-    if (!(key == 'constructor' && (isProto || !hasOwnProperty.call(object, key)))) {
+    if (!(key == "constructor" && (isProto || !hasOwnProperty.call(object, key)))) {
       result.push(key);
     }
   }

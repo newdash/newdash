@@ -1,4 +1,4 @@
-import baseUniq from './.internal/baseUniq';
+import baseUniq from "./.internal/baseUniq";
 
 /**
  * Creates a duplicate-free version of an array, using

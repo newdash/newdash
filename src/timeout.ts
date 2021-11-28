@@ -1,5 +1,5 @@
-import { mustProvide } from './assert';
-import type { PromiseExecutor } from './types';
+import { mustProvide } from "./assert";
+import type { PromiseExecutor } from "./types";
 
 /**
  * TimeoutError
@@ -21,7 +21,7 @@ export class TimeoutError extends Error { }
  */
 export function createTimeoutPromise<T>(executor: PromiseExecutor<T>, timeout = 60 * 1000): Promise<T> {
 
-  mustProvide(executor, 'executor', 'function');
+  mustProvide(executor, "executor", "function");
 
   return new Promise((resolve, reject) => {
 
@@ -29,7 +29,7 @@ export function createTimeoutPromise<T>(executor: PromiseExecutor<T>, timeout = 
 
     const timer = setTimeout(() => {
       hasTimeout = true;
-      reject(new TimeoutError('Time is up.'));
+      reject(new TimeoutError("Time is up."));
     }, timeout);
 
     executor(

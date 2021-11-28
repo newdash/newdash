@@ -1,29 +1,29 @@
-const { join } = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
+const { join } = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.ts',
-  mode: 'production',
-  devtool: 'source-map',
+  entry: "./src/index.ts",
+  mode: "production",
+  devtool: "source-map",
   output: {
-    library: '_',
-    path: join(__dirname, './dist/umd'),
-    filename: 'newdash.js',
-    libraryTarget: 'umd'
+    library: "_",
+    path: join(__dirname, "./dist/umd"),
+    filename: "newdash.js",
+    libraryTarget: "umd"
   },
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: [".ts", ".tsx", ".js"]
   },
   module: {
     rules: [
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
+        loader: "ts-loader",
         exclude: /node_modules/,
         options: {
-          configFile: 'tsconfig.umd.json'
+          configFile: "tsconfig.umd.json"
         }
       }
     ]

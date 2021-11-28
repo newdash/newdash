@@ -1,4 +1,4 @@
-import variance from './variance';
+import variance from "./variance";
 
 /**
  * Standard Deviation

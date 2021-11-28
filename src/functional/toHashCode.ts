@@ -1,9 +1,9 @@
-import { md5 } from '../md5';
+import { md5 } from "../md5";
 
-const ARRAY_NOT_OBJECT_TYPES = ['number', 'string', 'bigint', 'symbol', 'function'];
-const CONST_S_UNDEFINED = 'undefined';
-const CONST_S_NULL = 'null';
-const CONST_S_OBJECT = 'object';
+const ARRAY_NOT_OBJECT_TYPES = ["number", "string", "bigint", "symbol", "function"];
+const CONST_S_UNDEFINED = "undefined";
+const CONST_S_NULL = "null";
+const CONST_S_OBJECT = "object";
 
 function stringSort(a: any, b: any) {
   return String(a).localeCompare(String(b));

@@ -1,4 +1,4 @@
-import unzipWith from './unzipWith';
+import unzipWith from "./unzipWith";
 
 /**
  * This method is like `zip` except that it accepts `iteratee` to specify

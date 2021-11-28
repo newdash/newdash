@@ -1,3 +1,3 @@
 
-export { closest, distance } from './distance';
+export { closest, distance } from "./distance";
 

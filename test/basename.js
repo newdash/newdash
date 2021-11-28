@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
+import * as assert from "assert";
+import lodashStable from "lodash";
 
 import {
   basename,
@@ -11,27 +11,27 @@ import {
   LARGE_ARRAY_SIZE,
   symbol,
   setProperty
-} from './utils';
+} from "./utils";
 
-import _VERSION from '../src/.internal/VERSION';
-import VERSION from '../src/VERSION';
+import _VERSION from "../src/.internal/VERSION";
+import VERSION from "../src/VERSION";
 
 describe(basename, () => {
   it(`should support loading ${basename} as the "lodash" module`, () => {
     if (amd) {
-      assert.strictEqual((lodashModule || {}).moduleName, 'lodash');
+      assert.strictEqual((lodashModule || {}).moduleName, "lodash");
     }
   });
 
   it(`should support loading ${basename} with the Require "shim" configuration option`, () => {
-    if (amd && lodashStable.includes(ui.loaderPath, 'requirejs')) {
-      assert.strictEqual((shimmedModule || {}).moduleName, 'shimmed');
+    if (amd && lodashStable.includes(ui.loaderPath, "requirejs")) {
+      assert.strictEqual((shimmedModule || {}).moduleName, "shimmed");
     }
   });
 
   it(`should support loading ${basename} as the "underscore" module`, () => {
     if (amd) {
-      assert.strictEqual((underscoreModule || {}).moduleName, 'underscore');
+      assert.strictEqual((underscoreModule || {}).moduleName, "underscore");
     }
   });
 
@@ -42,7 +42,7 @@ describe(basename, () => {
 
       var attempt = function() {
         const actual = _VERSION;
-        if ((new Date - start) < limit && typeof actual !== 'string') {
+        if ((new Date - start) < limit && typeof actual !== "string") {
           setTimeout(attempt, 16);
           return;
         }
@@ -57,13 +57,13 @@ describe(basename, () => {
     }
   });
 
-  it('should not add `Function.prototype` extensions to lodash', () => {
+  it("should not add `Function.prototype` extensions to lodash", () => {
     if (lodashBizarro) {
-      assert.ok(!('_method' in lodashBizarro));
+      assert.ok(!("_method" in lodashBizarro));
     }
   });
 
-  it('should avoid non-native built-ins', () => {
+  it("should avoid non-native built-ins", () => {
     function message(lodashMethod, nativeMethod) {
       return `\`${lodashMethod}\` should avoid overwritten native \`${nativeMethod}\``;
     }
@@ -73,8 +73,8 @@ describe(basename, () => {
     }
     Foo.prototype.b = 2;
 
-    const object = { 'a': 1 },
-      otherObject = { 'b': 2 },
+    const object = { "a": 1 },
+      otherObject = { "b": 2 },
       largeArray = lodashStable.times(LARGE_ARRAY_SIZE, lodashStable.constant(object));
 
     if (lodashBizarro) {
@@ -83,7 +83,7 @@ describe(basename, () => {
       } catch (e) {
         actual = null;
       }
-      let label = message('_.create', 'Object.create');
+      let label = message("_.create", "Object.create");
       assert.ok(actual instanceof Foo, label);
 
       try {
@@ -95,7 +95,7 @@ describe(basename, () => {
       } catch (e) {
         actual = null;
       }
-      label = message('_.difference`, `_.intersection`, and `_.uniq', 'Map');
+      label = message("_.difference`, `_.intersection`, and `_.uniq", "Map");
       assert.deepStrictEqual(actual, [[otherObject], [object], [object]], label);
 
       try {
@@ -109,30 +109,30 @@ describe(basename, () => {
       } catch (e) {
         actual = null;
       }
-      label = message('_.clone` and `_.cloneDeep', 'Object.getOwnPropertySymbols');
+      label = message("_.clone` and `_.cloneDeep", "Object.getOwnPropertySymbols");
       assert.deepStrictEqual(actual, [object, object], label);
 
       try {
         // Avoid buggy symbol detection in Babel's `_typeof` helper.
-        const symObject = setProperty(Object(symbol), 'constructor', Object);
+        const symObject = setProperty(Object(symbol), "constructor", Object);
         actual = [
           Symbol ? lodashBizarro.clone(symObject) : {},
           Symbol ? lodashBizarro.isEqual(symObject, Object(symbol)) : false,
-          Symbol ? lodashBizarro.toString(symObject) : ''
+          Symbol ? lodashBizarro.toString(symObject) : ""
         ];
       } catch (e) {
         actual = null;
       }
-      label = message('_.clone`, `_.isEqual`, and `_.toString', 'Symbol');
-      assert.deepStrictEqual(actual, [{}, false, ''], label);
+      label = message("_.clone`, `_.isEqual`, and `_.toString", "Symbol");
+      assert.deepStrictEqual(actual, [{}, false, ""], label);
 
       try {
         var map = new lodashBizarro.memoize.Cache;
-        actual = map.set('a', 1).get('a');
+        actual = map.set("a", 1).get("a");
       } catch (e) {
         actual = null;
       }
-      label = message('_.memoize.Cache', 'Map');
+      label = message("_.memoize.Cache", "Map");
       assert.deepStrictEqual(actual, 1, label);
 
       try {
@@ -144,7 +144,7 @@ describe(basename, () => {
       } catch (e) {
         actual = null;
       }
-      label = message('_.toArray', 'Map');
+      label = message("_.toArray", "Map");
       assert.deepStrictEqual(actual, [], label);
     }
   });

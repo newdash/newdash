@@ -1,10 +1,10 @@
-import castSlice from './.internal/castSlice';
-import hasUnicode from './.internal/hasUnicode';
-import isRegExp from './isRegExp';
-import stringToArray from './.internal/stringToArray';
-import isIterateeCall from './.internal/isIterateeCall';
-import toString from './toString';
-import baseToString from './.internal/baseToString';
+import castSlice from "./.internal/castSlice";
+import hasUnicode from "./.internal/hasUnicode";
+import isRegExp from "./isRegExp";
+import stringToArray from "./.internal/stringToArray";
+import isIterateeCall from "./.internal/isIterateeCall";
+import toString from "./toString";
+import baseToString from "./.internal/baseToString";
 
 /**
  * Used as references for the maximum length and index of an array.
@@ -34,7 +34,7 @@ const MAX_ARRAY_LENGTH = 4294967295;
  * ```
  */
 export function split(str?: string, separator?: RegExp | string, limit?: number): Array<string> {
-  if (limit && typeof limit != 'number' && isIterateeCall(str, separator, limit)) {
+  if (limit && typeof limit != "number" && isIterateeCall(str, separator, limit)) {
     separator = limit = undefined;
   }
   limit = limit === undefined ? MAX_ARRAY_LENGTH : limit >>> 0;
@@ -43,7 +43,7 @@ export function split(str?: string, separator?: RegExp | string, limit?: number)
   }
   str = toString(str);
   if (str && (
-    typeof separator == 'string' ||
+    typeof separator == "string" ||
     (separator != null && !isRegExp(separator))
   )) {
     separator = baseToString(separator);

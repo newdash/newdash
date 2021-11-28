@@ -18,7 +18,7 @@
  * ```
  *
  */
-export function addSuffix(str: string = '', suffix: string = ''): string {
+export function addSuffix(str: string = "", suffix: string = ""): string {
   if (!str.endsWith(suffix)) {
     return str + suffix;
   }

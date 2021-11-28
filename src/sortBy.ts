@@ -1,8 +1,8 @@
-import baseFlatten from './.internal/baseFlatten';
-import baseOrderBy from './.internal/baseOrderBy';
-import baseRest from './.internal/baseRest';
-import isIterateeCall from './.internal/isIterateeCall';
-import { ArrayAble, ArrayIteratee, KeyIteratee } from './types';
+import baseFlatten from "./.internal/baseFlatten";
+import baseOrderBy from "./.internal/baseOrderBy";
+import baseRest from "./.internal/baseRest";
+import isIterateeCall from "./.internal/isIterateeCall";
+import { ArrayAble, ArrayIteratee, KeyIteratee } from "./types";
 
 /**
  * @ignore

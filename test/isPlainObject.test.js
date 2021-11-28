@@ -1,33 +1,33 @@
-import * as assert from 'assert';
-import has from '../src/has';
-import isPlainObject from '../src/isPlainObject';
-import map from '../src/map';
+import * as assert from "assert";
+import has from "../src/has";
+import isPlainObject from "../src/isPlainObject";
+import map from "../src/map";
 import {
   create,
   defineProperty, document,
   falsey, objectProto,
   realm, stubFalse,
   symbol
-} from './utils';
+} from "./utils";
 
 
-describe('isPlainObject', () => {
+describe("isPlainObject", () => {
 
-  const element = document && document.createElement('div');
+  const element = document && document.createElement("div");
 
-  it('should detect plain objects', () => {
+  it("should detect plain objects", () => {
     function Foo(a) {
       this.a = 1;
     }
 
     assert.strictEqual(isPlainObject({}), true);
-    assert.strictEqual(isPlainObject({ 'a': 1 }), true);
-    assert.strictEqual(isPlainObject({ 'constructor': Foo }), true);
+    assert.strictEqual(isPlainObject({ "a": 1 }), true);
+    assert.strictEqual(isPlainObject({ "constructor": Foo }), true);
     assert.strictEqual(isPlainObject([1, 2, 3]), false);
     assert.strictEqual(isPlainObject(new Foo(1)), false);
   });
 
-  it('should return `true` for objects with a `[[Prototype]]` of `null`', () => {
+  it("should return `true` for objects with a `[[Prototype]]` of `null`", () => {
     const object = create(null);
     assert.strictEqual(isPlainObject(object), true);
 
@@ -35,37 +35,37 @@ describe('isPlainObject', () => {
     assert.strictEqual(isPlainObject(object), true);
   });
 
-  it('should return `true` for objects with a `valueOf` property', () => {
-    assert.strictEqual(isPlainObject({ 'valueOf': 0 }), true);
+  it("should return `true` for objects with a `valueOf` property", () => {
+    assert.strictEqual(isPlainObject({ "valueOf": 0 }), true);
   });
 
-  it('should return `true` for objects with a writable `Symbol.toStringTag` property', () => {
+  it("should return `true` for objects with a writable `Symbol.toStringTag` property", () => {
     if (Symbol && Symbol.toStringTag) {
       const object = {};
-      object[Symbol.toStringTag] = 'X';
+      object[Symbol.toStringTag] = "X";
 
       assert.deepStrictEqual(isPlainObject(object), true);
     }
   });
 
-  it('should return `false` for objects with a custom `[[Prototype]]`', () => {
-    const object = create({ 'a': 1 });
+  it("should return `false` for objects with a custom `[[Prototype]]`", () => {
+    const object = create({ "a": 1 });
     assert.strictEqual(isPlainObject(object), false);
   });
 
-  it('should return `false` for DOM elements', () => {
+  it("should return `false` for DOM elements", () => {
     if (element) {
       assert.strictEqual(isPlainObject(element), false);
     }
   });
 
-  it('should return `false` for non-Object objects', function() {
+  it("should return `false` for non-Object objects", function() {
     assert.strictEqual(isPlainObject(arguments), false);
     assert.strictEqual(isPlainObject(Error), false);
     assert.strictEqual(isPlainObject(Math), false);
   });
 
-  it('should return `false` for non-objects', () => {
+  it("should return `false` for non-objects", () => {
     const expected = map(falsey, stubFalse);
 
     const actual = map(falsey, (value, index) => index ? isPlainObject(value) : isPlainObject());
@@ -73,25 +73,25 @@ describe('isPlainObject', () => {
     assert.deepStrictEqual(actual, expected);
 
     assert.strictEqual(isPlainObject(true), false);
-    assert.strictEqual(isPlainObject('a'), false);
+    assert.strictEqual(isPlainObject("a"), false);
     assert.strictEqual(isPlainObject(symbol), false);
   });
 
-  it('should return `false` for objects with a read-only `Symbol.toStringTag` property', () => {
+  it("should return `false` for objects with a read-only `Symbol.toStringTag` property", () => {
     if (Symbol && Symbol.toStringTag) {
       const object = {};
       defineProperty(object, Symbol.toStringTag, {
-        'configurable': true,
-        'enumerable': false,
-        'writable': false,
-        'value': 'X'
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": "X"
       });
 
       assert.deepStrictEqual(isPlainObject(object), false);
     }
   });
 
-  it('should not mutate `value`', () => {
+  it("should not mutate `value`", () => {
     if (Symbol && Symbol.toStringTag) {
       const proto = {};
       proto[Symbol.toStringTag] = undefined;
@@ -102,7 +102,7 @@ describe('isPlainObject', () => {
     }
   });
 
-  it('should work with objects from another realm', () => {
+  it("should work with objects from another realm", () => {
     if (realm.object) {
       assert.strictEqual(isPlainObject(realm.object), true);
     }

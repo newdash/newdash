@@ -1,14 +1,14 @@
-import * as assert from 'assert';
-import each from '../src/each';
-import forEach from '../src/forEach';
+import * as assert from "assert";
+import each from "../src/each";
+import forEach from "../src/forEach";
 
-describe('forEach', () => {
+describe("forEach", () => {
 
-  it('should be aliased', () => {
+  it("should be aliased", () => {
     assert.strictEqual(each, forEach);
   });
 
-  it('should sum', () => {
+  it("should sum", () => {
     const arr = [1, 2, 3];
     let sum = 0;
 
@@ -17,10 +17,10 @@ describe('forEach', () => {
 
   });
 
-  it('should sum object', () => {
+  it("should sum object", () => {
     const obj = { a: 1, b: 2, c: 3 };
     let sum = 0;
-    let label = '';
+    let label = "";
 
     forEach(obj, (value, key) => {
       sum += value;
@@ -28,7 +28,7 @@ describe('forEach', () => {
     });
 
     assert.strictEqual(sum, 6);
-    assert.strictEqual(label, 'abc');
+    assert.strictEqual(label, "abc");
 
   });
 

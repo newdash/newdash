@@ -1,5 +1,5 @@
-import baseUniq from './.internal/baseUniq';
-import { Comparator } from './types';
+import baseUniq from "./.internal/baseUniq";
+import { Comparator } from "./types";
 
 /**
  * This method is like `uniq` except that it accepts `comparator` which
@@ -24,7 +24,7 @@ import { Comparator } from './types';
  */
 export function uniqWith<T = any>(array: Array<T>, comparator: Comparator<T>): Array<T>
 export function uniqWith(array: any, comparator: any): any {
-  comparator = typeof comparator == 'function' ? comparator : undefined;
+  comparator = typeof comparator == "function" ? comparator : undefined;
   return (array && array.length) ? baseUniq(array, undefined, comparator) : [];
 }
 

@@ -1,5 +1,5 @@
-import findIndex from './findIndex';
-import createFind from './.internal/createFind';
+import findIndex from "./findIndex";
+import createFind from "./.internal/createFind";
 
 /**
  * @ignore

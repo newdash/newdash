@@ -1,9 +1,9 @@
-import { any } from '../any';
-import { timeout } from '../timeout';
-import { allSettled } from './allSettled';
-import { filter } from './filter';
-import { LazyPromise } from './LazyPromise';
-import { map } from './map';
+import { any } from "../any";
+import { timeout } from "../timeout";
+import { allSettled } from "./allSettled";
+import { filter } from "./filter";
+import { LazyPromise } from "./LazyPromise";
+import { map } from "./map";
 
 /**
  * AsyncUtils

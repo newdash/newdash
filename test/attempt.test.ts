@@ -1,22 +1,22 @@
-import * as assert from 'assert';
-import { errors, stubTrue, CustomError, realm } from './utils';
-import constant from '../src/constant';
-import attempt from '../src/attempt';
-import map from '../src/map';
-import isEqual from '../src/eqDeep';
+import * as assert from "assert";
+import { errors, stubTrue, CustomError, realm } from "./utils";
+import constant from "../src/constant";
+import attempt from "../src/attempt";
+import map from "../src/map";
+import isEqual from "../src/eqDeep";
 
-describe('attempt', () => {
+describe("attempt", () => {
 
-  it('should return the result of `func`', () => {
-    assert.strictEqual(attempt(constant('x')), 'x');
+  it("should return the result of `func`", () => {
+    assert.strictEqual(attempt(constant("x")), "x");
   });
 
-  it('should provide additional arguments to `func`', () => {
+  it("should provide additional arguments to `func`", () => {
     const actual = attempt(function() { return Array.prototype.slice.call(arguments); }, 1, 2);
     assert.deepStrictEqual(actual, [1, 2]);
   });
 
-  it('should return the caught error', () => {
+  it("should return the caught error", () => {
     const expected = map(errors, stubTrue);
 
     const actual = map(errors, (error) => attempt(() => { throw error; }) === error);
@@ -24,17 +24,17 @@ describe('attempt', () => {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should coerce errors to error objects', () => {
-    const actual = attempt(() => { throw 'x'; });
-    assert.ok(isEqual(actual, Error('x')));
+  it("should coerce errors to error objects", () => {
+    const actual = attempt(() => { throw "x"; });
+    assert.ok(isEqual(actual, Error("x")));
   });
 
-  it('should preserve custom errors', () => {
-    const actual = attempt(() => { throw new CustomError('x'); });
+  it("should preserve custom errors", () => {
+    const actual = attempt(() => { throw new CustomError("x"); });
     assert.ok(actual instanceof CustomError);
   });
 
-  it('should work with an error object from another realm', () => {
+  it("should work with an error object from another realm", () => {
     if (realm.errors) {
       const expected = map(realm.errors, stubTrue);
 

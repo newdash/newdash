@@ -1,5 +1,5 @@
-import basePullAll from './.internal/basePullAll';
-import { Comparator } from './types';
+import basePullAll from "./.internal/basePullAll";
+import { Comparator } from "./types";
 
 /**
  * This method is like `pullAll` except that it accepts `comparator` which

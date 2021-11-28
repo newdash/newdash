@@ -1,9 +1,9 @@
-import apply from './.internal/apply';
-import baseEach from './.internal/baseEach';
-import { baseInvoke } from './.internal/baseInvoke';
-import baseRest from './.internal/baseRest';
-import isArrayLike from './isArrayLike';
-import { Collection, Path } from './types';
+import apply from "./.internal/apply";
+import baseEach from "./.internal/baseEach";
+import { baseInvoke } from "./.internal/baseInvoke";
+import baseRest from "./.internal/baseRest";
+import isArrayLike from "./isArrayLike";
+import { Collection, Path } from "./types";
 
 
 /**
@@ -13,7 +13,7 @@ import { Collection, Path } from './types';
  */
 const internalInvokeMap = baseRest((collection, path, args) => {
   let index = -1;
-  const isFunc = typeof path == 'function';
+  const isFunc = typeof path == "function";
   const result = isArrayLike(collection) ? Array(collection.length) : [];
 
   baseEach(collection, (value: any) => {
@@ -46,7 +46,10 @@ const internalInvokeMap = baseRest((collection, path, args) => {
  * ```
  */
 export function invokeMap(collection: Collection, path: Path, ...args: any[]): Array<any>;
-export function invokeMap<T, F extends (...args: any[]) => any>(collection: Collection<T>, path: F, ...args: Parameters<F>): Array<ReturnType<F>>;
+export function invokeMap<T, F extends (...args: any[]) => any>(
+  collection: Collection<T>,
+  path: F, ...args: Parameters<F>
+): Array<ReturnType<F>>;
 export function invokeMap(collection: any, path?: any, ...args: any[]): any;
 export function invokeMap(collection: any, path: any, ...args: any[]): any {
   return internalInvokeMap(collection, path, ...args);

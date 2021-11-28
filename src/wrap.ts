@@ -1,5 +1,5 @@
-import addPrefix from './addPrefix';
-import addSuffix from './addSuffix';
+import addPrefix from "./addPrefix";
+import addSuffix from "./addSuffix";
 
 /**
  *

@@ -1,6 +1,6 @@
-import arrayEachRight from './.internal/arrayEachRight';
-import baseEachRight from './.internal/baseEachRight';
-import { ArrayIteratee, PlainObject, RecordIteratee } from './types';
+import arrayEachRight from "./.internal/arrayEachRight";
+import baseEachRight from "./.internal/baseEachRight";
+import { ArrayIteratee, PlainObject, RecordIteratee } from "./types";
 
 /**
  * This method is like `forEach` except that it iterates over elements of

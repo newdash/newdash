@@ -1,20 +1,20 @@
-import * as assert from 'assert';
-import { platform } from 'os';
-import throttle from '../src/throttle';
-import times from '../src/times';
-import { argv, identity, isPhantom } from './utils';
+import * as assert from "assert";
+import { platform } from "os";
+import throttle from "../src/throttle";
+import times from "../src/times";
+import { argv, identity, isPhantom } from "./utils";
 
 let describe2 = describe;
-if (platform() != 'linux') {
+if (platform() != "linux") {
   // setTimeout is Unstable on MacOS/Windows,
   // maybe caused by resource schedule,
   // so skip these tests
   describe2 = describe.skip;
 }
 
-describe2('throttle', () => {
+describe2("throttle", () => {
 
-  it('should throttle a function', (done) => {
+  it("should throttle a function", (done) => {
     let callCount = 0;
     const throttled = throttle(() => { callCount++; }, 32);
 
@@ -31,18 +31,18 @@ describe2('throttle', () => {
     }, 64);
   });
 
-  it('subsequent calls should return the result of the first call', (done) => {
+  it("subsequent calls should return the result of the first call", (done) => {
     const throttled = throttle(identity, 32),
-      results = [throttled('a'), throttled('b')];
+      results = [throttled("a"), throttled("b")];
 
-    assert.deepStrictEqual(results, ['a', 'a']);
+    assert.deepStrictEqual(results, ["a", "a"]);
 
     setTimeout(() => {
-      const results = [throttled('c'), throttled('d')];
-      assert.notStrictEqual(results[0], 'a');
+      const results = [throttled("c"), throttled("d")];
+      assert.notStrictEqual(results[0], "a");
       assert.notStrictEqual(results[0], undefined);
 
-      assert.notStrictEqual(results[1], 'd');
+      assert.notStrictEqual(results[1], "d");
       assert.notStrictEqual(results[1], undefined);
       done();
     }, 64);
@@ -76,7 +76,7 @@ describe2('throttle', () => {
   //   }
   // })
 
-  it('should not trigger a trailing call when invoked once', (done) => {
+  it("should not trigger a trailing call when invoked once", (done) => {
     let callCount = 0;
     const throttled = throttle(() => { callCount++; }, 32);
 
@@ -90,10 +90,10 @@ describe2('throttle', () => {
   });
 
   times(2, (index) => {
-    it(`should trigger a call when invoked repeatedly${index ? ' and `leading` is `false`' : ''}`, (done) => {
+    it(`should trigger a call when invoked repeatedly${index ? " and `leading` is `false`" : ""}`, (done) => {
       let callCount = 0;
       const limit = (argv || isPhantom) ? 1000 : 320;
-      const options = index ? { 'leading': false } : {};
+      const options = index ? { "leading": false } : {};
       const throttled = throttle(() => { callCount++; }, 32, options);
 
       const start = +new Date;
@@ -108,12 +108,12 @@ describe2('throttle', () => {
     });
   });
 
-  it('should trigger a second throttled call as soon as possible', (done) => {
+  it("should trigger a second throttled call as soon as possible", (done) => {
     let callCount = 0;
 
     const throttled = throttle(() => {
       callCount++;
-    }, 128, { 'leading': false });
+    }, 128, { "leading": false });
 
     throttled();
 
@@ -132,7 +132,7 @@ describe2('throttle', () => {
     }, 384);
   });
 
-  it('should apply default options', (done) => {
+  it("should apply default options", (done) => {
     let callCount = 0;
     const throttled = throttle(() => { callCount++; }, 32, {});
 
@@ -146,33 +146,33 @@ describe2('throttle', () => {
     }, 128);
   });
 
-  it('should support a `leading` option', () => {
-    const withLeading = throttle(identity, 32, { 'leading': true });
-    assert.strictEqual(withLeading('a'), 'a');
+  it("should support a `leading` option", () => {
+    const withLeading = throttle(identity, 32, { "leading": true });
+    assert.strictEqual(withLeading("a"), "a");
 
-    const withoutLeading = throttle(identity, 32, { 'leading': false });
-    assert.strictEqual(withoutLeading('a'), undefined);
+    const withoutLeading = throttle(identity, 32, { "leading": false });
+    assert.strictEqual(withoutLeading("a"), undefined);
   });
 
-  it('should support a `trailing` option', (done) => {
+  it("should support a `trailing` option", (done) => {
     let withCount = 0,
       withoutCount = 0;
 
     const withTrailing = throttle((value) => {
       withCount++;
       return value;
-    }, 64, { 'trailing': true });
+    }, 64, { "trailing": true });
 
     const withoutTrailing = throttle((value) => {
       withoutCount++;
       return value;
-    }, 64, { 'trailing': false });
+    }, 64, { "trailing": false });
 
-    assert.strictEqual(withTrailing('a'), 'a');
-    assert.strictEqual(withTrailing('b'), 'a');
+    assert.strictEqual(withTrailing("a"), "a");
+    assert.strictEqual(withTrailing("b"), "a");
 
-    assert.strictEqual(withoutTrailing('a'), 'a');
-    assert.strictEqual(withoutTrailing('b'), 'a');
+    assert.strictEqual(withoutTrailing("a"), "a");
+    assert.strictEqual(withoutTrailing("b"), "a");
 
     setTimeout(() => {
       assert.strictEqual(withCount, 2);
@@ -181,12 +181,12 @@ describe2('throttle', () => {
     }, 256);
   });
 
-  it('should not update `lastCalled`, at the end of the timeout, when `trailing` is `false`', (done) => {
+  it("should not update `lastCalled`, at the end of the timeout, when `trailing` is `false`", (done) => {
     let callCount = 0;
 
     const throttled = throttle(() => {
       callCount++;
-    }, 64, { 'trailing': false });
+    }, 64, { "trailing": false });
 
     throttled();
     throttled();

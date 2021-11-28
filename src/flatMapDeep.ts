@@ -1,5 +1,5 @@
-import baseFlatten from './.internal/baseFlatten';
-import map from './map';
+import baseFlatten from "./.internal/baseFlatten";
+import map from "./map";
 /**
  * @ignore
  */
@@ -32,7 +32,10 @@ const INFINITY = Infinity;
  * ```
  */
 export function flatMapDeep<T, R = any>(collection: Array<T>, iteratee?: Iteratee<number, T, Array<T>>): Array<R>;
-export function flatMapDeep<T, R = any>(collection: Record<string, T>, iteratee?: Iteratee<string, T, Record<string, T>>): Array<R>;
+export function flatMapDeep<T, R = any>(
+  collection: Record<string, T>,
+  iteratee?: Iteratee<string, T, Record<string, T>>
+): Array<R>;
 export function flatMapDeep(collection, iteratee) {
   return baseFlatten(map(collection, iteratee), INFINITY);
 }

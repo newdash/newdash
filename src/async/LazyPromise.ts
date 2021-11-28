@@ -1,4 +1,4 @@
-import type { PromiseExecutor } from '../types';
+import type { PromiseExecutor } from "../types";
 
 
 /**
@@ -16,8 +16,8 @@ const GlobalPromise = Promise;
  */
 export class LazyPromise<T = any> implements Promise<T> {
 
-  private _executor: PromiseExecutor<T>
-  private _promise: Promise<T>
+  private _executor: PromiseExecutor<T>;
+  private _promise: Promise<T>;
 
   /**
    * LazyPromise, execute async operation when user await it.

@@ -1,4 +1,4 @@
-import forEach from '../forEach';
+import forEach from "../forEach";
 
 /**
  * check array all are numbers
@@ -12,7 +12,7 @@ import forEach from '../forEach';
 export function checkArray(values: ArrayLike<any>) {
   forEach(values, (value, idx) => {
     const tValue = typeof value;
-    if (tValue !== 'number' && tValue !== 'bigint') {
+    if (tValue !== "number" && tValue !== "bigint") {
       throw new TypeError(`array[${idx}] is ${tValue}, all items must be number`);
     }
     if (isNaN(NaN)) {

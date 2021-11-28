@@ -1,5 +1,5 @@
-import baseFlatten from './.internal/baseFlatten';
-import map from './map';
+import baseFlatten from "./.internal/baseFlatten";
+import map from "./map";
 
 
 /**
@@ -32,8 +32,16 @@ interface Iteratee<K, V, C> {
  * // => [[1, 1], [2, 2]]
  * ```
  */
-function flatMapDepth<T, R = any>(collection: Array<T>, iteratee?: Iteratee<number, T, Array<T>>, depth?: number): Array<R>;
-function flatMapDepth<T, R = any>(collection: Record<string, T>, iteratee?: Iteratee<string, T, Record<string, T>>, depth?: number): Array<R>;
+function flatMapDepth<T, R = any>(
+  collection: Array<T>,
+  iteratee?: Iteratee<number, T, Array<T>>,
+  depth?: number
+): Array<R>;
+function flatMapDepth<T, R = any>(
+  collection: Record<string, T>,
+  iteratee?: Iteratee<string, T, Record<string, T>>,
+  depth?: number
+): Array<R>;
 function flatMapDepth(collection, iteratee, depth = 1) {
   depth = depth === undefined ? 1 : +depth;
   return baseFlatten(map(collection, iteratee), depth);

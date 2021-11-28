@@ -1,6 +1,6 @@
-import { isSubClass } from '../src/isSubClass';
+import { isSubClass } from "../src/isSubClass";
 
-describe('isSubClass', () => {
+describe("isSubClass", () => {
 
 
   it('should "isSubClass" function', () => {

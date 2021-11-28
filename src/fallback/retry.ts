@@ -1,5 +1,5 @@
-import { mustProvide } from '../assert';
-import { retry } from '../retry';
+import { mustProvide } from "../assert";
+import { retry } from "../retry";
 
 /**
  * fallback to retry
@@ -11,6 +11,6 @@ import { retry } from '../retry';
  * @param retryAfterMSecond the wait milliseconds before retry
  */
 export function fallbackRetry<T>(runner: T, maxRetryNumber: number = 3, retryAfterSeconds?: number): T {
-  mustProvide(runner, 'runner', 'function');
+  mustProvide(runner, "runner", "function");
   return retry(runner, maxRetryNumber, retryAfterSeconds);
 }

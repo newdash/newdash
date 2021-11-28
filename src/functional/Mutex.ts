@@ -1,4 +1,4 @@
-import { Semaphore } from './Semaphore';
+import { Semaphore } from "./Semaphore";
 
 /**
  * Mutex

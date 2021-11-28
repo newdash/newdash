@@ -1,14 +1,14 @@
-import getIteratee from './.internal/getIteratee';
-import arrayMap from './.internal/arrayMap';
-import baseRest from './.internal/baseRest';
-import apply from './.internal/apply';
+import getIteratee from "./.internal/getIteratee";
+import arrayMap from "./.internal/arrayMap";
+import baseRest from "./.internal/baseRest";
+import apply from "./.internal/apply";
 
 
 /**
  * @ignore
  * @private
  */
-const FUNC_ERROR_TEXT = 'Expected a function';
+const FUNC_ERROR_TEXT = "Expected a function";
 
 /**
  * Creates a function that iterates over `pairs` and invokes the corresponding
@@ -45,7 +45,7 @@ export function cond(pairs: any): any {
     toIteratee = getIteratee();
 
   pairs = !length ? [] : arrayMap(pairs, (pair) => {
-    if (typeof pair[1] != 'function') {
+    if (typeof pair[1] != "function") {
       throw new TypeError(FUNC_ERROR_TEXT);
     }
     return [toIteratee(pair[0]), pair[1]];

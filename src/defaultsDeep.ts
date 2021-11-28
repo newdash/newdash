@@ -1,5 +1,5 @@
-import customDefaultsMerge from './.internal/customDefaultsMerge';
-import mergeWith from './mergeWith';
+import customDefaultsMerge from "./.internal/customDefaultsMerge";
+import mergeWith from "./mergeWith";
 
 /**
  * This method is like `defaults` except that it recursively assigns

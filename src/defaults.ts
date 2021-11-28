@@ -1,4 +1,4 @@
-import eq from './eq';
+import eq from "./eq";
 
 /**
  * @ignore

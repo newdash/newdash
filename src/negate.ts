@@ -4,7 +4,7 @@
  * @private
  * @internal
  */
-const FUNC_ERROR_TEXT = 'Expected a function';
+const FUNC_ERROR_TEXT = "Expected a function";
 
 /**
  * Creates a function that negates the result of the predicate `func`. The
@@ -27,7 +27,7 @@ const FUNC_ERROR_TEXT = 'Expected a function';
  * ```
  */
 export function negate(predicate) {
-  if (typeof predicate != 'function') {
+  if (typeof predicate != "function") {
     throw new TypeError(FUNC_ERROR_TEXT);
   }
   return function(...args: any[]) {

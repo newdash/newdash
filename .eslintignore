@@ -6,3 +6,5 @@ es6
 scripts
 node
 deno
+test
+deno-babel-plugin.js

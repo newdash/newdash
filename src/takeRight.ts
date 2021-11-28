@@ -1,5 +1,5 @@
-import toInteger from './toInteger';
-import baseSlice from './.internal/baseSlice';
+import toInteger from "./toInteger";
+import baseSlice from "./.internal/baseSlice";
 
 /**
  * Creates a slice of `array` with `n` elements taken from the end.

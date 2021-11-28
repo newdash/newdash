@@ -1,12 +1,12 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { objToString, objectTag, _, xml } from './utils';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { objToString, objectTag, _, xml } from "./utils";
 
-describe('isType checks', () => {
-  it('should return `false` for subclassed values', () => {
+describe("isType checks", () => {
+  it("should return `false` for subclassed values", () => {
     const funcs = [
-      'isArray', 'isBoolean', 'isDate', 'isFunction',
-      'isNumber', 'isRegExp', 'isString'
+      "isArray", "isBoolean", "isDate", "isFunction",
+      "isNumber", "isRegExp", "isString"
     ];
 
     lodashStable.each(funcs, (methodName) => {
@@ -20,13 +20,13 @@ describe('isType checks', () => {
     });
   });
 
-  it('should not error on host objects (test in IE)', () => {
+  it("should not error on host objects (test in IE)", () => {
     const funcs = [
-      'isArguments', 'isArray', 'isArrayBuffer', 'isArrayLike', 'isBoolean',
-      'isBuffer', 'isDate', 'isElement', 'isError', 'isFinite', 'isFunction',
-      'isInteger', 'isMap', 'isNaN', 'isNil', 'isNull', 'isNumber', 'isObject',
-      'isObjectLike', 'isRegExp', 'isSet', 'isSafeInteger', 'isString',
-      'isUndefined', 'isWeakMap', 'isWeakSet'
+      "isArguments", "isArray", "isArrayBuffer", "isArrayLike", "isBoolean",
+      "isBuffer", "isDate", "isElement", "isError", "isFinite", "isFunction",
+      "isInteger", "isMap", "isNaN", "isNil", "isNull", "isNumber", "isObject",
+      "isObjectLike", "isRegExp", "isSet", "isSafeInteger", "isString",
+      "isUndefined", "isWeakMap", "isWeakSet"
     ];
 
     lodashStable.each(funcs, (methodName) => {

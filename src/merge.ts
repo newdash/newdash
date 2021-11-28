@@ -1,5 +1,5 @@
-import baseMerge from './.internal/baseMerge';
-import createAssigner from './.internal/createAssigner';
+import baseMerge from "./.internal/baseMerge";
+import createAssigner from "./.internal/createAssigner";
 
 /**
  * @ignore

@@ -1,5 +1,5 @@
-import isIterateeCall from './.internal/isIterateeCall';
-import toFinite from './toFinite';
+import isIterateeCall from "./.internal/isIterateeCall";
+import toFinite from "./toFinite";
 
 /**
  * Built-in method references without a dependency on `root`.
@@ -60,15 +60,15 @@ function random(floating?: boolean): number;
 function random(upper?: number | string, floating?: boolean): number;
 function random(lower?: number | string, upper?: number | string, floating?: boolean): number;
 function random(lower: any = 0, upper: any = 1, floating?: boolean): number {
-  if (floating && typeof floating != 'boolean' && isIterateeCall(lower, upper, floating)) {
+  if (floating && typeof floating != "boolean" && isIterateeCall(lower, upper, floating)) {
     upper = floating = undefined;
   }
   if (floating === undefined) {
-    if (typeof upper == 'boolean') {
+    if (typeof upper == "boolean") {
       floating = upper;
       upper = undefined;
     }
-    else if (typeof lower == 'boolean') {
+    else if (typeof lower == "boolean") {
       floating = lower;
       lower = undefined;
     }

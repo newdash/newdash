@@ -1,8 +1,8 @@
-import copyArray from './.internal/copyArray';
-import { shuffleSelf } from './.internal/shuffleSelf';
-import isArray from './isArray';
-import values from './values';
-import { Collection } from './types';
+import copyArray from "./.internal/copyArray";
+import { shuffleSelf } from "./.internal/shuffleSelf";
+import isArray from "./isArray";
+import values from "./values";
+import { Collection } from "./types";
 
 
 /**

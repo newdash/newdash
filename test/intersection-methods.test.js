@@ -1,18 +1,18 @@
-import * as assert from 'assert';
-import lodashStable from 'lodash';
-import { _, args, LARGE_ARRAY_SIZE, stubNaN } from './utils';
-import each from '../src/each';
-import { intersection } from '../src/intersection';
-import { intersectionBy } from '../src/intersectionBy';
-import { intersectionWith } from '../src/intersectionWith';
+import * as assert from "assert";
+import lodashStable from "lodash";
+import { _, args, LARGE_ARRAY_SIZE, stubNaN } from "./utils";
+import each from "../src/each";
+import { intersection } from "../src/intersection";
+import { intersectionBy } from "../src/intersectionBy";
+import { intersectionWith } from "../src/intersectionWith";
 
 
-describe('intersection methods', () => {
+describe("intersection methods", () => {
 
   each([
-    ['intersection', intersection],
-    ['intersectionBy', intersectionBy],
-    ['intersectionWith', intersectionWith]
+    ["intersection", intersection],
+    ["intersectionBy", intersectionBy],
+    ["intersectionWith", intersectionWith]
   ], ([methodName, func]) => {
 
     it(`\`_.${methodName}\` should return the intersection of two arrays`, () => {
@@ -45,7 +45,7 @@ describe('intersection methods', () => {
 
     it(`\`_.${methodName}\` should treat \`-0\` as \`0\``, () => {
       const values = [-0, 0],
-        expected = lodashStable.map(values, lodashStable.constant(['0']));
+        expected = lodashStable.map(values, lodashStable.constant(["0"]));
 
       const actual = lodashStable.map(values, (value) => lodashStable.map(func(values, [value]), lodashStable.toString));
 
@@ -59,7 +59,7 @@ describe('intersection methods', () => {
 
     it(`\`_.${methodName}\` should work with large arrays of \`-0\` as \`0\``, () => {
       const values = [-0, 0],
-        expected = lodashStable.map(values, lodashStable.constant(['0']));
+        expected = lodashStable.map(values, lodashStable.constant(["0"]));
 
       const actual = lodashStable.map(values, (value) => {
         const largeArray = lodashStable.times(LARGE_ARRAY_SIZE, lodashStable.constant(value));
@@ -84,7 +84,7 @@ describe('intersection methods', () => {
 
     it(`\`_.${methodName}\` should treat values that are not arrays or \`arguments\` objects as empty`, () => {
       const array = [0, 1, null, 3];
-      assert.deepStrictEqual(func(array, 3, { '0': 1 }, null), []);
+      assert.deepStrictEqual(func(array, 3, { "0": 1 }, null), []);
       assert.deepStrictEqual(func(null, array, null, [2, 3]), []);
       assert.deepStrictEqual(func(array, null, args, null), []);
     });

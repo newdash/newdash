@@ -1,5 +1,5 @@
-import identity from './.internal/identity';
-import maxBy from './maxBy';
+import identity from "./.internal/identity";
+import maxBy from "./maxBy";
 
 
 /**

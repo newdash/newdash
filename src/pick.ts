@@ -1,4 +1,4 @@
-import basePick from './.internal/basePick';
+import basePick from "./.internal/basePick";
 
 /**
  * @ignore

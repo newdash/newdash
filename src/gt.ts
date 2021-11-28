@@ -23,7 +23,7 @@
  */
 export function gt<T>(value: T, other: T): boolean;
 export function gt(value: any, other: any): any {
-  if (!(typeof value === 'string' && typeof other === 'string')) {
+  if (!(typeof value === "string" && typeof other === "string")) {
     value = +value;
     other = +other;
   }

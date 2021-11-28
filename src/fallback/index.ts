@@ -1,7 +1,7 @@
-import { AsyncFunction } from '../types';
-import { fallbackCache } from './cache';
-import { circuit } from './circuit';
-import { fallbackRetry } from './retry';
+import { AsyncFunction } from "../types";
+import { fallbackCache } from "./cache";
+import { circuit } from "./circuit";
+import { fallbackRetry } from "./retry";
 
 
 interface RecommendFallbackCreatorOptions {

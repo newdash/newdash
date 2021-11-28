@@ -1,6 +1,6 @@
-import baseFlatten from './.internal/baseFlatten';
-import baseUniq from './.internal/baseUniq';
-import isArrayLikeObject from './isArrayLikeObject';
+import baseFlatten from "./.internal/baseFlatten";
+import baseUniq from "./.internal/baseUniq";
+import isArrayLikeObject from "./isArrayLikeObject";
 
 /**
  * Creates an array of unique values, in order, from all given arrays using

@@ -1,7 +1,7 @@
 
-import assert from 'assert';
-import { series } from '../src/series';
-import { assertShouldThrowError } from './helpers';
+import assert from "assert";
+import { series } from "../src/series";
+import { assertShouldThrowError } from "./helpers";
 
 const asyncOperation = (value, onCall = () => { }, timeout = 100) => () => {
   if (onCall) {
@@ -18,25 +18,25 @@ const asyncOperation = (value, onCall = () => { }, timeout = 100) => () => {
   });
 };
 
-describe('series', () => {
+describe("series", () => {
 
-  it('should support run async operations', async() => {
+  it("should support run async operations", async() => {
 
     const callTrace = [];
 
     const result = await series(
-      asyncOperation(1, () => callTrace.push('f1')),
-      asyncOperation(2, () => callTrace.push('f2')),
-      asyncOperation(3, () => callTrace.push('f3'))
+      asyncOperation(1, () => callTrace.push("f1")),
+      asyncOperation(2, () => callTrace.push("f2")),
+      asyncOperation(3, () => callTrace.push("f3"))
     );
 
-    assert.deepStrictEqual(callTrace, ['f1', 'f2', 'f3']);
+    assert.deepStrictEqual(callTrace, ["f1", "f2", "f3"]);
     assert.deepStrictEqual(result, [1, 2, 3]);
 
 
   });
 
-  it('should stop call next operations on error', async() => {
+  it("should stop call next operations on error", async() => {
     const op = [];
 
     await assertShouldThrowError(async() => {
@@ -51,7 +51,7 @@ describe('series', () => {
 
   });
 
-  it('should support throw errors', async() => {
+  it("should support throw errors", async() => {
 
     const err = new Error();
 

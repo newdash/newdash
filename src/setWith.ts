@@ -1,4 +1,4 @@
-import baseSet from './.internal/baseSet';
+import baseSet from "./.internal/baseSet";
 
 /**
  * This method is like `set` except that it accepts `customizer` which is
@@ -25,7 +25,7 @@ import baseSet from './.internal/baseSet';
  * ```
  */
 function setWith<T>(object: T, path: Array<string> | string, value?: any, customizer?: (...any) => any): T {
-  customizer = typeof customizer === 'function' ? customizer : undefined;
+  customizer = typeof customizer === "function" ? customizer : undefined;
   return object == null ? object : baseSet(object, path, value, customizer);
 }
 

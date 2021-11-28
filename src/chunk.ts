@@ -1,5 +1,5 @@
-import slice from './slice';
-import toInteger from './toInteger';
+import slice from "./slice";
+import toInteger from "./toInteger";
 
 /**
  * Creates an array of elements split into groups the length of `size`.

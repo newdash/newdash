@@ -1,4 +1,4 @@
-import forEach from './forEach';
+import forEach from "./forEach";
 
 
 /**

@@ -1,7 +1,7 @@
-import toInteger from './toInteger';
-import isIterateeCall from './.internal/isIterateeCall';
-import toString from './toString';
-import baseRepeat from './.internal/baseRepeat';
+import toInteger from "./toInteger";
+import isIterateeCall from "./.internal/isIterateeCall";
+import toString from "./toString";
+import baseRepeat from "./.internal/baseRepeat";
 
 /**
  * Repeats the given string `n` times.

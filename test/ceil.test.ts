@@ -1,9 +1,9 @@
-import * as assert from 'assert';
-import { ceil } from '../src/ceil';
+import * as assert from "assert";
+import { ceil } from "../src/ceil";
 
-describe('ceil', () => {
+describe("ceil", () => {
 
-  it('should match definition', () => {
+  it("should match definition", () => {
 
     assert.strictEqual(ceil(4.006), 5);
     assert.strictEqual(ceil(6.004, 2), 6.01);

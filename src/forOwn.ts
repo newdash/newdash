@@ -1,4 +1,4 @@
-import { CollectionIteratee, PlainObject } from './types';
+import { CollectionIteratee, PlainObject } from "./types";
 
 /**
  * Iterates over own enumerable string keyed properties of an object and
