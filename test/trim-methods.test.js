@@ -1,11 +1,11 @@
 import * as assert from "assert";
-import { whitespace } from "./utils";
-import each from "../src/each";
 import constant from "../src/constant";
+import each from "../src/each";
 import { map } from "../src/map";
 import { trim } from "../src/trim";
-import { trimStart } from "../src/trimStart";
 import { trimEnd } from "../src/trimEnd";
+import { trimStart } from "../src/trimStart";
+import { whitespace } from "./utils";
 
 describe("trim methods", () => {
 

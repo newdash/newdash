@@ -6,7 +6,7 @@ import isSymbol from "./isSymbol";
  * Used to match leading and trailing whitespace.
  * @ignore
  */
-const reTrim = /^\s+|\s+$/g;
+const reTrim = /(^\s+)|(\s+$)/g;
 
 /**
  * Used to detect bad signed hexadecimal string values.

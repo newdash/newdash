@@ -1,15 +1,16 @@
+import baseToString from "./.internal/baseToString";
 import castSlice from "./.internal/castSlice";
 import charsEndIndex from "./.internal/charsEndIndex";
 import charsStartIndex from "./.internal/charsStartIndex";
 import stringToArray from "./.internal/stringToArray";
 import toString from "./toString";
-import baseToString from "./.internal/baseToString";
 
 
 /**
+ * Used to match leading and trailing whitespace.
  * @ignore
  */
-const reTrim = /^\s+|\s+$/g;
+const reTrim = /(^\s+)|(\s+$)/g;
 
 /**
  * Removes leading and trailing whitespace or specified characters from `string`.
