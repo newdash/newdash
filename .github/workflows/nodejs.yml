@@ -11,7 +11,7 @@ on:
     - cron: "32 4 * * *"
 
 jobs:
-  build-quick:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +27,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: 16.x
 
       - name: Cache node modules
         uses: actions/cache@v1
@@ -54,7 +54,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  build-all-platform:
+  test-all-platform:
     runs-on: ${{ matrix.os }}
 
     strategy:
