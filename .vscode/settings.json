@@ -6,12 +6,13 @@
     "source.organizeImports": true
   },
   "cSpell.words": [
+    "autocrlf",
     "Deno",
-    "Mutex",
-    "Theo",
     "falsey",
+    "Mutex",
     "newdash",
-    "nocheck"
+    "nocheck",
+    "Theo"
   ],
   "javascript.autoClosingTags": false,
   "typescript.autoClosingTags": false,

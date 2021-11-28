@@ -7,15 +7,19 @@ on:
   pull_request:
     branches:
       - "*"
-  # daily check at 01:00 AM
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "32 4 * * *"
 
 jobs:
   build-quick:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set git to use LF to checkout
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
