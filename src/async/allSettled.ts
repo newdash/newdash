@@ -5,6 +5,7 @@ interface SettleResult<T = any> {
   reason?: any
 }
 
+
 /**
  * Promise.allSettled() implementation
  *
@@ -14,7 +15,9 @@ interface SettleResult<T = any> {
  * @param collection
  * @returns
  */
-export async function allSettled<T = any>(collection: Array<Promise<T>>): Promise<Array<SettleResult<T>>> {
+export async function allSettled<A extends readonly unknown[] | []>(collection: A): Promise<{
+  -readonly[K in keyof A]: SettleResult<Awaited<A[K]>>
+}> {
   // @ts-ignore
   return Promise.all(
     collection
