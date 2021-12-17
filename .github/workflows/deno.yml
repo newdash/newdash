@@ -22,20 +22,26 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: 16.x
 
-      - name: Setup Deno
+      - name: cache deno
+        uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-deno-${{ hashFiles('**/package.json') }}
+          path: /home/runner/.cache/deno/deps/
+
+      - name: setup Deno
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
 
-      - name: Show deno version
+      - name: show deno version
         run: deno --version
 
-      - name: Install latest npm
+      - name: install latest npm
         run: npm i -g npm
 
-      - name: Install nodejs dependencies
+      - name: install nodejs dependencies
         run: npm ci
 
       - name: Run deno test
