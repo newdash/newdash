@@ -76,7 +76,7 @@ export function toHashCode(obj: any): string {
     return md5(`${objType}_${String(obj)}`);
   }
 
-  throw new TypeError(`invalid object type ${objType}`);
+  throw new TypeError(`un-expected object type ${objType}, please consider report this issue to 'newdash' team`);
 
 }
 

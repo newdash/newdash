@@ -66,6 +66,13 @@ just introduce `script` with html.
 
 ## [API Document](https://newdash.netlify.fornever.org/)
 
+### Highlight
+
+* `concurrency.limit` - concurrency limit
+* `Mutex` - exclusive executing
+* `hash` - hash js object to stable string (MD5 based)
+* `LRUMap` and `TTLMap` - Map implementations which concern about eviction
+
 ## Different Release
 
 In most cases, just use the `@newdash/newdash` package is enough.

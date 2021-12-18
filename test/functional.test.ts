@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { InValidParameterError } from "../src/assert/errors";
 import { BlockedQueue } from "../src/functional/BlockedQueue";
 import defineFunctionName from "../src/functional/defineFunctionName";
 import { hash } from "../src/functional/hash";
@@ -115,6 +116,9 @@ describe("functional", () => {
     expect(cache.get(4)).toBeUndefined();
     expect(cache.get(3)).toBe("v:3");
     expect(cache.get(6)).toBe("v:6");
+
+
+    expect(() =>new LRUMap(0)).toThrow(InValidParameterError)
 
   });
 

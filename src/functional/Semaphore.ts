@@ -39,25 +39,41 @@ type ReleaseFunction = () => void
  */
 type Task = Function & { hasTimeout: boolean, hasReleased: boolean, hasAcquired: boolean }
 
-/**
- * Semaphore
- *
- * @since 5.15.0
- * @category Functional
- */
+
 export class Semaphore {
 
   private tasks: Array<Task> = [];
   private count: number;
   private defaultAcquireTimeout = -1;
 
+
+  /**
+   * Semaphore implementation for async js operations, used for resource limit or pool implementation
+   *
+   * @since 5.15.0
+   * @category Functional
+   *
+   * @example
+   *
+   * ```ts
+   * const sem = new Semaphore(10)
+   *
+   * async call_api(payload: any) {
+   *   const release = await sem.acquire()
+   *   // ...
+   *   // this block, will be execute with 10 concurrency limit
+   *   release()
+   * }
+   *
+   * ```
+   */
   constructor(count: number, defaultAcquireTimeout: number = -1) {
     mustProvide(count, "count", "number");
     this.count = count;
     this.defaultAcquireTimeout = defaultAcquireTimeout;
   }
 
-  private schedule() {
+  private _schedule() {
     if (this.count > 0 && this.tasks.length > 0) {
       this.count--;
       const next = this.tasks.shift();
@@ -66,7 +82,15 @@ export class Semaphore {
     }
   }
 
+
+  /**
+   * acquire a permit from sem
+   *
+   * @param timeout wait before timeout, if not set, will wait forever
+   * @returns release function, which used for release a permit to sem
+   */
   public acquire(timeout: number = this.defaultAcquireTimeout) {
+    mustProvide(timeout, "timeout", "number");
     return new Promise<ReleaseFunction>((resolve, reject) => {
       // delay tasks
       const task = () => {
@@ -75,7 +99,7 @@ export class Semaphore {
           // resume semaphore
           this.count++;
           // re-schedule next one
-          this.schedule();
+          this._schedule();
         }
         else {
           task.hasAcquired = true;
@@ -85,7 +109,7 @@ export class Semaphore {
             if (!task.hasReleased) {
               task.hasReleased = true;
               this.count++;
-              this.schedule();
+              this._schedule();
             }
           });
         }
@@ -96,7 +120,7 @@ export class Semaphore {
       task.hasAcquired = false;
       // queue task
       this.tasks.push(task);
-      setTimeout(() => this.schedule(), 0);
+      setTimeout(() => this._schedule(), 0);
       if (typeof timeout === "number" && timeout > 0 && !isNaN(timeout) && isFinite(timeout)) {
         setTimeout(() => {
           if (!task.hasAcquired) {
@@ -108,17 +132,26 @@ export class Semaphore {
     });
   }
 
+  /**
+   * run an async function with sem limit
+   *
+   * @param f async runner function
+   * @param timeout wait timeout before wait
+   * @returns
+   */
   public async use<T>(f: () => Promise<T>, timeout: number = this.defaultAcquireTimeout) {
-    return this.acquire(timeout)
-      .then((release) => f()
-        .then((res) => {
-          release();
-          return res;
-        })
-        .catch((err) => {
-          release();
-          throw err;
-        }));
+    mustProvide(f, "f", "function");
+    mustProvide(timeout, "timeout", "number");
+    return this
+      .acquire(timeout)
+      .then((release) => {
+        const fResult = f();
+        if (fResult?.then !== undefined && typeof fResult?.then === "function") {
+          return fResult.finally(release);
+        }
+        release();
+        return fResult;
+      });
   }
 }
 

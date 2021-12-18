@@ -1,11 +1,11 @@
 
 
 /**
- * LRU Map
+ * TTL (Time to life) Map
  *
  * will remove the oldest item when reach the time, also will remove the not access recently
  *
- * lazy remove instance
+ * it will schedule job, lazy remove instance
  *
  * @category Functional
  * @since 5.18.0
@@ -13,47 +13,54 @@
 export class TTLMap<K = any, V = any> extends Map<K, V> {
 
   /**
+   * TTLMap
    *
-   * @param ttl time to live
-   * @param cleanAfterOperation execute full clean after operations
+   * @param ttl time to live, in milliseconds, default value is 60 seconds
+   * @param cleanAfterOperation execute full clean after operations. default value is 100, it means, at least 100 operations performed, the TTL evict logic will be executed
    */
-  constructor(ttl?: number, cleanAfterOperation?: number) {
+  constructor(ttl: number = 60 * 1000, cleanAfterOperation: number = 100) {
     super();
     this.ttl = ttl;
     this.timeoutStorage = new Map();
     if (cleanAfterOperation > 1) {
       this.cleanAfterOperation = cleanAfterOperation;
     }
-    this.cleanCount = 0;
+    this.operationCount = 0;
   }
 
   private ttl: number;
 
-  private cleanAfterOperation: number = 1024;
+  private cleanAfterOperation: number;
 
-  private cleanCount: number = 0;
+  private operationCount: number;
 
   private timeoutStorage: Map<K, V>;
 
   private timestamp() {
-    return new Date().getTime();
+    return Date.now();
   }
 
+  /**
+   * _checkAndClean
+   *
+   * for the simple operations (set/get/delete/has), the clean operation will not execute every time
+   */
   private _checkAndClean() {
-    if (this.cleanCount++ > this.cleanAfterOperation) {
-      this.cleanCount = 0;
+    if (this.operationCount++ > this.cleanAfterOperation) {
+      this.operationCount = 0;
       this.cleanTimeoutItems();
     }
   }
 
-  set(k: K, v: V) {
+  public set(k: K, v: V) {
+    this._checkAndClean();
     super.set(k, v);
     this.timeoutStorage.set(k, (this.timestamp() + this.ttl) as any); // refresh timeout
-    this._checkAndClean();
     return this;
   }
 
-  has(k: K) {
+  public has(k: K) {
+    this._checkAndClean();
     let rt = false;
     if (super.has(k)) {
       const isTimeout = this.checkTimeout(k);
@@ -63,21 +70,34 @@ export class TTLMap<K = any, V = any> extends Map<K, V> {
         rt = true;
       }
     }
-    this._checkAndClean();
     return rt;
   }
 
-  get(k: K) {
+  public get(k: K): V | undefined {
+    this._checkAndClean();
     let rt = undefined;
     if (super.has(k)) {
       const isTimeout = this.checkTimeout(k);
       if (isTimeout) {
         rt = undefined;
+      } else {
+        rt = super.get(k);
       }
-      rt = super.get(k);
     }
-    this._checkAndClean();
     return rt;
+  }
+
+  public delete(k: K) {
+    this._checkAndClean();
+    const rt = super.delete(k);
+    this.timeoutStorage.delete(k);
+    return rt;
+  }
+
+  public clear(): void {
+    super.clear();
+    this.timeoutStorage.clear();
+    this.operationCount = 0;
   }
 
   /**
@@ -87,7 +107,10 @@ export class TTLMap<K = any, V = any> extends Map<K, V> {
    */
   private checkTimeout(k: K, currentTimeStamp = this.timestamp()) {
     const isTimeout = this.getTimeout(k) < currentTimeStamp;
-    if (isTimeout) { this.delete(k); }
+    if (isTimeout) {
+      super.delete(k);
+      this.timeoutStorage.delete(k);
+    }
     return isTimeout;
   }
 
@@ -98,42 +121,35 @@ export class TTLMap<K = any, V = any> extends Map<K, V> {
     return 0;
   }
 
-  delete(k: K) {
-    const rt = super.delete(k);
-    this.timeoutStorage.delete(k);
-    this._checkAndClean();
-    return rt;
-  }
-
   /**
-   * clean all timeout items
+   * manually directly clean all timeout items
    */
   public cleanTimeoutItems() {
     const current = this.timestamp();
     super.forEach((_, key) => { this.checkTimeout(key, current); });
   }
 
-  entries() {
+  public entries() {
     this.cleanTimeoutItems();
     return super.entries();
   }
 
-  keys() {
+  public keys() {
     this.cleanTimeoutItems();
     return super.keys();
   }
 
-  values() {
+  public values() {
     this.cleanTimeoutItems();
     return super.values();
   }
 
-  forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void {
+  public forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void {
     this.cleanTimeoutItems();
     return super.forEach(callbackfn, thisArg);
   }
 
-  get size() {
+  public get size() {
     this.cleanTimeoutItems();
     // @ts-ignore
     return super.size;

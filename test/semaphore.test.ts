@@ -118,4 +118,36 @@ describe("Semaphore", () => {
 
   });
 
+  it("should support timeout use", async () => {
+
+    const m = new Mutex();
+    m.acquire()
+    await expect(() => m.use(() => sleep(500), 100)).rejects.toThrow("timeout");
+
+  });
+
+  it('should support sem.use with raw function', async () => {
+
+    const sem = new Semaphore(1)
+
+    let v = 0
+    // @ts-ignore
+    const rt = await sem.use(function () {
+      v = 1
+    })
+
+    expect(rt).toBeUndefined()
+    expect(v).toBe(1)
+
+    // @ts-ignore
+    const rt2 = await sem.use(function () {
+      v = 2
+      return v
+    })
+
+    expect(rt2).toBe(2)
+    expect(v).toBe(2)
+
+  });
+
 });
