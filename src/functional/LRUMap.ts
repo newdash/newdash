@@ -73,3 +73,5 @@ export class LRUMap<K = any, V = any> extends Map<K, V> {
   }
 
 }
+
+export default LRUMap;

@@ -51,9 +51,12 @@ import { forOwn } from "./forOwn";
 import { forOwnRight } from "./forOwnRight";
 import { fromEntries } from "./fromEntries";
 import { BlockedQueue } from "./functional/BlockedQueue";
+import { hash } from "./functional/hash";
+import { LRUMap } from "./functional/LRUMap";
 import { Mutex } from "./functional/Mutex";
 import { Semaphore } from "./functional/Semaphore";
 import { timeIt } from "./functional/timeIt";
+import { TTLMap } from "./functional/TTLMap";
 import { functions } from "./functions";
 import { get } from "./get";
 import { groupBy } from "./groupBy";
@@ -212,9 +215,12 @@ export {
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
   AsyncUtils, isCircular, toLower, timeIt, BlockedQueue,
-  defaultsDeep
+  defaultsDeep, LRUMap, TTLMap, hash
 };
 
+/**
+ * @ignore
+ */
 export default {
   filter, get, reduce, map, each, every, concat, first,
   attempt, forEach, merge, isEmpty, split, join, memoize,
@@ -247,6 +253,6 @@ export default {
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
   AsyncUtils, isCircular, toLower, timeIt, BlockedQueue,
-  defaultsDeep
+  defaultsDeep, LRUMap, TTLMap, hash
 };
 
