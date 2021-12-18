@@ -59,6 +59,6 @@ export function partial(...args: any[]): any {
 /**
  * placeholder of partial function
  */
-partial["placeholder"] = "__partial__placeholder__";
+partial.placeholder = "__partial__placeholder__";
 
 export default partial;

@@ -103,6 +103,6 @@ export function memoize<T extends(...args: any[]) => any, K>(
 /**
  * Cache constructor of memorize function
  */
-memoize["Cache"] = Map as MapLikeConstructor;
+memoize.Cache = Map as MapLikeConstructor;
 
 export default memoize;

@@ -38,7 +38,7 @@
     "build": "npm run build:node && npm run build:es5 && npm run build:es6 && npm run build:umd && npm run build:deno && npm run gen:package",
     "gen:package": "node scripts/copy-package-json.js",
     "prepublishOnly": "npm run build",
-    "release": "standard-version --no-verify && git push --follow-tags origin main"
+    "release": "npx standard-version --no-verify && git push --follow-tags origin main"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
@@ -51,7 +51,6 @@
     "eslint": "^8.4.1",
     "jest": "~27.4.5",
     "rimraf": "^3.0.2",
-    "standard-version": "^9.3.2",
     "terser-webpack-plugin": "^5.3.0",
     "ts-jest": "~27.1.2",
     "ts-loader": "^9.2.6",

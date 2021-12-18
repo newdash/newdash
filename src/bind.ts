@@ -1,9 +1,9 @@
 // @ts-nocheck
 import baseRest from "./.internal/baseRest";
 import { WRAP_BIND_FLAG, WRAP_PARTIAL_FLAG } from "./.internal/CONSTANTS";
-import replaceHolders from "./.internal/replaceHolders";
-import getHolder from "./.internal/getHolder";
 import createWrap from "./.internal/createWrap";
+import getHolder from "./.internal/getHolder";
+import replaceHolders from "./.internal/replaceHolders";
 
 /**
  * @ignore
@@ -61,6 +61,6 @@ export function bind<T>(func: T, thisArg?: any, ...partials: any[]): T {
 /**
  * placeholder of bind function
  */
-bind["placeholder"] = "__bind__placeholder__";
+bind.placeholder = "__bind__placeholder__";
 
 export default bind;
