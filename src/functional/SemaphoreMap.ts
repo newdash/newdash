@@ -15,14 +15,21 @@ const DEFAULT_EXTRACTOR = (args: any[]) => args;
  */
 export class SemaphoreMap {
 
-  constructor(maximumSemObjects = 1000 * 1000, defaultSemCount = 10) {
-    this._container = new LRUMap<any, Semaphore>(maximumSemObjects);
-    this._defaultSemCount = defaultSemCount;
-  }
 
   private _container: Map<any, Semaphore>;
 
   private _defaultSemCount: number;
+
+  /**
+   * SemaphoreMap, provision semaphore with giving key
+   *
+   * @param maximumSemObjects maximumSemObjects to avoid OOM, the default value is 1000000
+   * @param defaultSemCount default sem permit number, the default value is 10
+   */
+  constructor(maximumSemObjects = 1000 * 1000, defaultSemCount = 10) {
+    this._container = new LRUMap<any, Semaphore>(maximumSemObjects);
+    this._defaultSemCount = defaultSemCount;
+  }
 
   /**
    * get semaphore or create a new one

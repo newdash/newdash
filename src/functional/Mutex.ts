@@ -1,6 +1,8 @@
 import { Semaphore } from "./Semaphore";
 
-
+/**
+ * Mutex, the mutex implementation for async operations
+ */
 export class Mutex extends Semaphore {
   /**
    * Mutex, the mutex implementation for async operations
@@ -10,13 +12,16 @@ export class Mutex extends Semaphore {
    * @example
    *
    * ```ts
-   * const mut = new Mutex()
+   *  const mut = new Mutex()
    *
-   * async call_api(payload: any) {
-   *   const release = await mut.acquire()
-   *   // ...
-   *   // this block, will be execute exclusively
-   *   release()
+   *  async call_api(payload: any) {
+   *  const release = await mut.acquire()
+   *    try {
+   *      // ...
+   *      // this block, will be executed exclusively
+   *    } finally {
+   *      release() // release the mutex
+   *    }
    * }
    *
    * ```

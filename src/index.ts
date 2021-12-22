@@ -3,6 +3,7 @@ import { addPrefix } from "./addPrefix";
 import { addSuffix } from "./addSuffix";
 import { any } from "./any";
 import { ary } from "./ary";
+import { NewDashBaseError, TimeoutError } from "./assert/errors";
 import { assign } from "./assign";
 import { assignIn } from "./assignIn";
 import { AsyncUtils } from "./async";
@@ -157,7 +158,7 @@ import { sumBy } from "./sumBy";
 import { take } from "./take";
 import { takeRight } from "./takeRight";
 import { throttle } from "./throttle";
-import { createTimeoutPromise, TimeoutError } from "./timeout";
+import { createTimeoutPromise } from "./timeout";
 import { times } from "./times";
 import { toArray } from "./toArray";
 import { toLower } from "./toLower";
@@ -215,7 +216,7 @@ export {
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
   AsyncUtils, isCircular, toLower, timeIt, BlockedQueue,
-  defaultsDeep, LRUMap, TTLMap, hash
+  defaultsDeep, LRUMap, TTLMap, hash, NewDashBaseError,
 };
 
 /**
@@ -253,6 +254,6 @@ export default {
   cacheIt, cacheProvider, distance, closest, isInstance,
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
   AsyncUtils, isCircular, toLower, timeIt, BlockedQueue,
-  defaultsDeep, LRUMap, TTLMap, hash
+  defaultsDeep, LRUMap, TTLMap, hash, NewDashBaseError,
 };
 

@@ -1,12 +1,7 @@
 import { mustProvide } from "./assert";
+import { TimeoutError } from "./assert/errors";
 import type { PromiseExecutor } from "./types";
 
-/**
- * TimeoutError
- *
- * raised when the function is not processed finished in a limit period
- */
-export class TimeoutError extends Error { }
 
 /**
  * create a promise with timeout, if time is up but no result/error resolved by promise, will throw an error

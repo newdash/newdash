@@ -9,6 +9,8 @@ import toHashCode from "./toHashCode";
  * @returns the hash of the object (string(32))
  *
  *
+ * @example
+ *
  * ```ts
  * hash() // => 'd41d8cd98f00b204e9800998ecf8427e'
  * hash(1) // => '0ebf66ef421c088eaba5e3b47176d2b3'

@@ -1,7 +1,8 @@
 // @ts-nocheck
 import assert from "assert";
 import { platform } from "os";
-import { createTimeoutPromise, TimeoutError } from "../src/timeout";
+import { TimeoutError } from "../src/assert/errors";
+import { createTimeoutPromise } from "../src/timeout";
 import { assertShouldThrowError } from "./helpers";
 
 let describe2 = describe;
