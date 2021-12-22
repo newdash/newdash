@@ -140,6 +140,7 @@ describe("functional", () => {
     c.set("K2", Math.random(), 100)
     await sleep(100)
     expect(c.get("K2")).toBeUndefined()
+    c.forEach(() => { throw new Error("there must no item so this error should not be thrown") })
   });
 
   it("should support blocked queue", async () => {
