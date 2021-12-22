@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.21.0](https://github.com/newdash/newdash/compare/v5.20.0...v5.21.0) (2021-12-22)
+
+
+### Features
+
+* enhance TTLMap ([5a1bd7f](https://github.com/newdash/newdash/commit/5a1bd7f6e3a52b630a3d1f267bf980313f03409e))
+* hashSort ([db944dc](https://github.com/newdash/newdash/commit/db944dc2d4eac348b0d919dd810fabc6c8afed2c))
+* improve allSettled type ([b5bd448](https://github.com/newdash/newdash/commit/b5bd4489a7d2fb36a6c9063e1eab445f07e61975))
+* ut for defaultsDeep ([c8b3061](https://github.com/newdash/newdash/commit/c8b3061ae8373881d22476988afa339e54c7e542))
+
+
+### Bug Fixes
+
+* ut ([cd76a69](https://github.com/newdash/newdash/commit/cd76a6988e44db8bc7891e7ca8913bcc395080d0))
+
 ## [5.20.0](https://github.com/newdash/newdash/compare/v5.19.0...v5.20.0) (2021-10-07)
 
 
