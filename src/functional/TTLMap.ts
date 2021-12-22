@@ -3,9 +3,7 @@
 /**
  * TTL (Time to Life) Map
  *
- * will remove the oldest item when reach the time, also will remove the not access recently
- *
- * it will schedule job, lazy remove instance
+ * it will lazy remove values when perform operations
  *
  * @category Functional
  * @since 5.18.0
@@ -15,7 +13,7 @@ export class TTLMap<K = any, V = any> extends Map<K, V> {
   /**
    * TTLMap (Time to Life) Map
    *
-   * will remove the oldest item when reach the time, also will remove the not access recently
+   * it will lazy remove values when perform operations
    *
    * @param defaultTTL time to live, in milliseconds, default value is 60 seconds
    * @param cleanAfterOperation execute full clean after operations. default value is 100, it means, at least 100 operations performed, the TTL evict logic will be executed
