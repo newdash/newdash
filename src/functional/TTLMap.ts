@@ -1,7 +1,7 @@
 
 
 /**
- * TTL (Time to life) Map
+ * TTL (Time to Life) Map
  *
  * will remove the oldest item when reach the time, also will remove the not access recently
  *
@@ -13,14 +13,16 @@
 export class TTLMap<K = any, V = any> extends Map<K, V> {
 
   /**
-   * TTLMap
+   * TTLMap (Time to Life) Map
    *
-   * @param ttl time to live, in milliseconds, default value is 60 seconds
+   * will remove the oldest item when reach the time, also will remove the not access recently
+   *
+   * @param defaultTTL time to live, in milliseconds, default value is 60 seconds
    * @param cleanAfterOperation execute full clean after operations. default value is 100, it means, at least 100 operations performed, the TTL evict logic will be executed
    */
-  constructor(ttl: number = 60 * 1000, cleanAfterOperation: number = 100) {
+  constructor(defaultTTL: number = 60 * 1000, cleanAfterOperation: number = 100) {
     super();
-    this.ttl = ttl;
+    this.defaultTTL = defaultTTL;
     this.timeoutStorage = new Map();
     if (cleanAfterOperation > 1) {
       this.cleanAfterOperation = cleanAfterOperation;
@@ -28,7 +30,10 @@ export class TTLMap<K = any, V = any> extends Map<K, V> {
     this.operationCount = 0;
   }
 
-  private ttl: number;
+  /**
+   * default TTL value in milliseconds
+   */
+  private defaultTTL: number;
 
   private cleanAfterOperation: number;
 
@@ -52,10 +57,18 @@ export class TTLMap<K = any, V = any> extends Map<K, V> {
     }
   }
 
-  public set(k: K, v: V) {
+  /**
+   * set value
+   *
+   * @param k key
+   * @param v value
+   * @param ttl time to live, in milliseconds, if undefined, will use instance level defaultTTL
+   * @returns
+   */
+  public set(k: K, v: V, ttl: number = this.defaultTTL) {
     this._checkAndClean();
     super.set(k, v);
-    this.timeoutStorage.set(k, (this.timestamp() + this.ttl) as any); // refresh timeout
+    this.timeoutStorage.set(k, (this.timestamp() + ttl) as any); // refresh timeout
     return this;
   }
 

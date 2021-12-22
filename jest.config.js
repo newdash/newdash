@@ -3,7 +3,7 @@ module.exports = {
     ".(js|ts|tsx)": "ts-jest"
   },
   "testEnvironment": "jsdom",
-  "testTimeout": 30 * 1000,
+  "testTimeout": 60 * 1000,
   "collectCoverageFrom": [
     "src/**/*",
     "!**/node_modules/**"

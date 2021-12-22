@@ -4,6 +4,9 @@
 import { mustProvide } from "../assert";
 import { InValidParameterError } from "../assert/errors";
 
+/**
+ * LRU (Least Recently Used) Map implementation
+ */
 export class LRUMap<K = any, V = any> extends Map<K, V> {
 
   /**

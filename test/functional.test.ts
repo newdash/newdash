@@ -6,6 +6,7 @@ import { hash } from "../src/functional/hash";
 import { hashEqual } from "../src/functional/hashEqual";
 import { LRUMap } from "../src/functional/LRUMap";
 import { toHashCode } from "../src/functional/toHashCode";
+import { TTLMap } from "../src/functional/TTLMap";
 import { sleep } from "../src/sleep";
 
 
@@ -118,8 +119,27 @@ describe("functional", () => {
     expect(cache.get(6)).toBe("v:6");
 
 
-    expect(() =>new LRUMap(0)).toThrow(InValidParameterError)
+    expect(() => new LRUMap(0)).toThrow(InValidParameterError)
 
+  });
+
+  it('should support TTL Map', async () => {
+    const c = new TTLMap<string, number>(500)
+    const randomValue = Math.random()
+    c.set("k", randomValue)
+    expect(c.get("k")).toBe(randomValue)
+    await sleep(500)
+    expect(c.get("k")).toBeUndefined()
+    const randomValue2 = Math.random()
+    c.set("K", randomValue2, 600)
+    await sleep(500)
+    expect(c.get("K")).toBe(randomValue2)
+    await sleep(100)
+    expect(c.get("K")).toBeUndefined()
+
+    c.set("K2", Math.random(), 100)
+    await sleep(100)
+    expect(c.get("K2")).toBeUndefined()
   });
 
   it("should support blocked queue", async () => {
