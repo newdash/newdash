@@ -39,7 +39,7 @@ export class TTLMap<K = any, V = any> extends Map<K, V> {
 
   private operationCount: number;
 
-  private timeoutStorage: Map<K, V>;
+  private timeoutStorage: Map<K, number>;
 
   private timestamp() {
     return Date.now();
@@ -66,9 +66,10 @@ export class TTLMap<K = any, V = any> extends Map<K, V> {
    * @returns
    */
   public set(k: K, v: V, ttl: number = this.defaultTTL) {
+    const expireTime = this.timestamp() + ttl - 1; // sub 1 to fix very accurate wait
     this._checkAndClean();
     super.set(k, v);
-    this.timeoutStorage.set(k, (this.timestamp() + ttl) as any); // refresh timeout
+    this.timeoutStorage.set(k,  expireTime); // refresh timeout
     return this;
   }
 
