@@ -1,15 +1,15 @@
 import * as assert from "assert";
-
-import merge from "../src/merge";
-import map from "../src/map";
-import isArray from "../src/isArray";
-import range from "../src/range";
-import isBuffer from "../src/isBuffer";
-import isEqual from "../src/isEqual";
 import assign from "../src/assign";
 import isArguments from "../src/isArguments";
+import isArray from "../src/isArray";
+import isBuffer from "../src/isBuffer";
+import isEqual from "../src/isEqual";
+import map from "../src/map";
+import merge from "../src/merge";
+import range from "../src/range";
+import { args, defineProperty, document, root, stubTrue, typedArrays } from "./utils";
 
-import { args, typedArrays, stubTrue, defineProperty, document, root } from "./utils";
+
 
 describe("merge", () => {
   it("should merge `source` into `object`", () => {
@@ -222,7 +222,8 @@ describe("merge", () => {
   });
 
   it("should clone buffer source values", () => {
-    if (typeof Buffer == "object") {
+    if (typeof Buffer === "object") {
+      // @ts-ignore
       const buffer = Buffer.from([1]),
         actual = merge({}, { "value": buffer }).value;
 

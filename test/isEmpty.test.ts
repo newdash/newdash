@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as assert from "assert";
 import each from "../src/each";
 import isEmpty from "../src/isEmpty";
