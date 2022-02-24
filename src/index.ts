@@ -88,6 +88,7 @@ import { isMap } from "./isMap";
 import { isNull } from "./isNull";
 import { isNumber } from "./isNumber";
 import { isObject } from "./isObject";
+import { isPlainObject } from "./isPlainObject";
 import { isString } from "./isString";
 import { isSubClass } from "./isSubClass";
 import { join } from "./join";
@@ -192,7 +193,7 @@ export {
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
   bind, filterObject, random, trimPrefix, trimSuffix, indexOf,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
-  isEqual, isError, sum, sumBy, sortBy, pick, pickBy, delay,
+  isEqual, isError, isPlainObject, sum, sumBy, sortBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber, times,
@@ -230,7 +231,7 @@ export default {
   flatMap, flatMapDeep, ceil, assign, assignIn, at,
   bind, filterObject, random, trimPrefix, trimSuffix, indexOf,
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
-  isEqual, isError, sum, sumBy, sortBy, pick, pickBy, delay,
+  isEqual, isError, isPlainObject, sum, sumBy, sortBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
   size, isFunction, isArguments, isArrayLike, isDate,
   isNull, isMap, isString, isObject, isNumber, times,
