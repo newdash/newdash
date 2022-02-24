@@ -19,7 +19,7 @@ const nativeClasses = [
   Float64Array,
   BigInt64Array,
   BigUint64Array,
-  SharedArrayBuffer,
+  globalThis.SharedArrayBuffer,
   DataView,
   Date,
   BigInt,
