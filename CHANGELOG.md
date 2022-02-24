@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.21.1](https://github.com/newdash/newdash/compare/v5.21.0...v5.21.1) (2022-02-24)
+
+
+### Bug Fixes
+
+* SharedArrayBuffer not existed in browser ([a86f4fb](https://github.com/newdash/newdash/commit/a86f4fb6fc022445680e8ef38deb8ebe21c63307))
+* ut ([49cff4a](https://github.com/newdash/newdash/commit/49cff4a9c3f8206b7541d45108843bcedeb38bb7))
+
 ## [5.21.0](https://github.com/newdash/newdash/compare/v5.20.0...v5.21.0) (2021-12-22)
 
 
