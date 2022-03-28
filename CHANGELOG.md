@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.21.2](https://github.com/newdash/newdash/compare/v5.21.1...v5.21.2) (2022-03-28)
+
 ### [5.21.1](https://github.com/newdash/newdash/compare/v5.21.0...v5.21.1) (2022-02-24)
 
 
