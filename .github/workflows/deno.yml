@@ -33,7 +33,7 @@ jobs:
       - name: setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.16.x
+          deno-version: v1.x
 
       - name: show deno version
         run: deno --version
