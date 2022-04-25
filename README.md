@@ -14,7 +14,6 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash-es5?label=es5)](https://www.npmjs.com/package/@newdash/newdash-es5)
 [![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash-es6?label=es6)](https://www.npmjs.com/package/@newdash/newdash-es6)
 [![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash-umd?label=umd)](https://www.npmjs.com/package/@newdash/newdash-umd)
-[![](https://data.jsdelivr.com/v1/package/npm/@newdash/newdash-umd/badge)](https://www.jsdelivr.com/package/npm/@newdash/newdash-umd)
 
 **NewDash** is a hard fork of the [lodash](https://github.com/lodash/lodash) utility project, and re-build it with `typescript`.
 
