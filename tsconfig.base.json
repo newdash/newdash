@@ -8,11 +8,7 @@
     "module": "CommonJS",
     "declaration": true,
     "lib": [
-      "ES2015",
-      "ES2016",
-      "ES2017",
       "ES2020",
-      "ES2020.Promise",
       "DOM"
     ]
   },
