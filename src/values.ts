@@ -30,7 +30,7 @@ import { Values } from "./types";
  * // => ['h', 'i']
  * ```
  */
-export function values<T>(object: T): Values<T> {
+export function values<T extends object>(object: T): Values<T> {
   return object == null ? [] : baseValues(object, keys(object));
 }
 
