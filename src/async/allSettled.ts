@@ -18,6 +18,7 @@ interface SettleResult<T = any> {
 export async function allSettled<A extends readonly unknown[] | []>(collection: A): Promise<{
   -readonly[K in keyof A]: SettleResult<Awaited<A[K]>>
 }> {
+  // TODO: native Promise.allSettled()
   // @ts-ignore
   return Promise.all(
     collection
