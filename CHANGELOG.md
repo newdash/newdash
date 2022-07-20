@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.21.3](https://github.com/newdash/newdash/compare/v5.21.2...v5.21.3) (2022-07-20)
+
+
+### Bug Fixes
+
+* [#534](https://github.com/newdash/newdash/issues/534) improve type def of find ([96f1dea](https://github.com/newdash/newdash/commit/96f1dea184c69d5715944a4850adfe8ecb1a3810))
+* [#534](https://github.com/newdash/newdash/issues/534) type of find function ([31748e8](https://github.com/newdash/newdash/commit/31748e8bf135a8558bc7dbf6a9b08c97f53df215))
+
 ### [5.21.2](https://github.com/newdash/newdash/compare/v5.21.1...v5.21.2) (2022-03-28)
 
 ### [5.21.1](https://github.com/newdash/newdash/compare/v5.21.0...v5.21.1) (2022-02-24)
