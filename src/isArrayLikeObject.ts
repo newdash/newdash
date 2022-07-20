@@ -26,7 +26,7 @@ import isObjectLike from "./isObjectLike";
  * // => false
  * ```
  */
-function isArrayLikeObject(value: any): boolean {
+function isArrayLikeObject(value: any): value is ArrayLike<object> {
   return isObjectLike(value) && isArrayLike(value);
 }
 

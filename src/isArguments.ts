@@ -18,7 +18,7 @@ import isObjectLike from "./isObjectLike";
  * // => false
  * ```
  */
-export function isArguments(value: any): boolean {
+export function isArguments(value: any): value is IArguments {
   return isObjectLike(value) && getTag(value) == "[object Arguments]";
 }
 

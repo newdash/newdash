@@ -18,7 +18,7 @@ import isObjectLike from "./isObjectLike";
  * // => false
  * ```
  */
-export function isArrayBuffer(value: any): boolean {
+export function isArrayBuffer(value: any): value is ArrayBuffer {
   return isObjectLike(value) && getTag(value) == "[object ArrayBuffer]";
 }
 

@@ -1,5 +1,5 @@
-import isLength from "./isLength";
 import isFunction from "./isFunction";
+import isLength from "./isLength";
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -26,7 +26,7 @@ import isFunction from "./isFunction";
  * // => false
  * ```
  */
-export function isArrayLike(value: any): boolean {
+export function isArrayLike(value: any): value is ArrayLike<any> {
   return value != null && isLength(value.length) && !isFunction(value);
 }
 
