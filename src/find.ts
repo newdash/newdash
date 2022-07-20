@@ -1,5 +1,6 @@
-import findIndex from "./findIndex";
+/* eslint-disable max-len */
 import createFind from "./.internal/createFind";
+import findIndex from "./findIndex";
 
 /**
  * @ignore
@@ -45,7 +46,8 @@ const internalFind = createFind(findIndex);
 export function find<T>(collection: ArrayLike<T>, predicate?: string, fromIndex?: number): T | undefined;
 export function find<T>(collection: ArrayLike<T>, predicate?: (item: T) => boolean, fromIndex?: number): T | undefined;
 export function find<T>(collection: ArrayLike<T>, predicate?: Partial<T>, fromIndex?: number): T | undefined;
-export function find<T>(collection: ArrayLike<T>, predicate?, fromIndex?: number): T | undefined;
+export function find<T>(collection: ArrayLike<T>, predicate?: Array<keyof T | boolean>, fromIndex?: number): T | undefined;
+export function find<T>(collection: ArrayLike<T>, predicate?: keyof T, fromIndex?: number): T | undefined;
 export function find(collection: any, predicate?: any, fromIndex?: number) {
   return internalFind(collection, predicate, fromIndex);
 }
