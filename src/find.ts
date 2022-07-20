@@ -17,7 +17,7 @@ const internalFind = createFind(findIndex);
  * @param collection The collection to inspect.
  * @param predicate function invoked per iteration.
  * @param fromIndex The index to search from.
- * @returns Returns the matched element, else `undefined`.
+ * @returns Returns the first matched element, else `undefined`.
  * @example
  *
  * ```js
@@ -43,11 +43,10 @@ const internalFind = createFind(findIndex);
  * // => object for 'barney'
  * ```
  */
-export function find<T>(collection: ArrayLike<T>, predicate?: string, fromIndex?: number): T | undefined;
-export function find<T>(collection: ArrayLike<T>, predicate?: (item: T) => boolean, fromIndex?: number): T | undefined;
-export function find<T>(collection: ArrayLike<T>, predicate?: Partial<T>, fromIndex?: number): T | undefined;
-export function find<T>(collection: ArrayLike<T>, predicate?: Array<keyof T | boolean>, fromIndex?: number): T | undefined;
-export function find<T>(collection: ArrayLike<T>, predicate?: keyof T, fromIndex?: number): T | undefined;
+export function find<T>(collection: ArrayLike<T>, predicate: (item: T) => boolean, fromIndex?: number): T | undefined;
+export function find<T>(collection: ArrayLike<T>, predicate: Partial<T>, fromIndex?: number): T | undefined;
+export function find<T>(collection: ArrayLike<T>, predicate: Array<keyof T | boolean>, fromIndex?: number): T | undefined;
+export function find<T>(collection: ArrayLike<T>, predicate: keyof T, fromIndex?: number): T | undefined;
 export function find(collection: any, predicate?: any, fromIndex?: number) {
   return internalFind(collection, predicate, fromIndex);
 }
