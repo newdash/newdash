@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.21.4](https://github.com/newdash/newdash/compare/v5.21.3...v5.21.4) (2022-08-12)
+
+
+### Bug Fixes
+
+* type for toArray ([d54b6ba](https://github.com/newdash/newdash/commit/d54b6ba17a6975d53d78e447e895fe3d3662c873))
+* types ([139baa7](https://github.com/newdash/newdash/commit/139baa78a4547affe60ba5908cb0ccb87132ae82))
+
 ### [5.21.3](https://github.com/newdash/newdash/compare/v5.21.2...v5.21.3) (2022-07-20)
 
 
