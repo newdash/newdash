@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { stubThree, stubFour, noop } from "./utils";
+import lodashStable from "../src";
 import updateWith from "../src/updateWith";
+import { noop, stubFour, stubThree } from "./utils";
 
 describe("updateWith", () => {
   it("should work with a `customizer` callback", () => {

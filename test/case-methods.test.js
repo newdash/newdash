@@ -1,12 +1,12 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { stubTrue, burredLetters, deburredLetters } from "./utils";
+import lodashStable from "../src";
 import camelCase from "../src/camelCase";
 import kebabCase from "../src/kebabCase";
 import lowerCase from "../src/lowerCase";
 import snakeCase from "../src/snakeCase";
 import startCase from "../src/startCase";
 import upperCase from "../src/upperCase";
+import { stubTrue } from "./utils";
 
 const caseMethods = {
   camelCase,

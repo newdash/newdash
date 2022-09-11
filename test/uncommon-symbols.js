@@ -1,20 +1,20 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { emojiVar, comboMarks, fitzModifiers } from "./utils";
-import repeat from "../src/repeat";
+import lodashStable from "../src";
 import camelCase from "../src/camelCase";
 import capitalize from "../src/capitalize";
 import pad from "../src/pad";
-import padStart from "../src/padStart";
 import padEnd from "../src/padEnd";
+import padStart from "../src/padStart";
+import repeat from "../src/repeat";
 import size from "../src/size";
 import split from "../src/split";
 import toArray from "../src/toArray";
 import trim from "../src/trim";
-import trimStart from "../src/trimStart";
 import trimEnd from "../src/trimEnd";
+import trimStart from "../src/trimStart";
 import truncate from "../src/truncate";
 import words from "../src/words";
+import { comboMarks, emojiVar, fitzModifiers } from "./utils";
 
 describe("uncommon symbols", () => {
   const flag = "\ud83c\uddfa\ud83c\uddf8",

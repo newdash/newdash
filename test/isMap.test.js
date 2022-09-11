@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { map, falsey, stubFalse, args, slice, symbol, weakMap, realm } from "./utils";
+import lodashStable from "../src";
 import isMap from "../src/isMap";
+import { args, falsey, map, realm, slice, stubFalse, symbol, weakMap } from "./utils";
 
 describe("isMap", () => {
   it("should return `true` for maps", () => {

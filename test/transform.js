@@ -1,16 +1,8 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
+import lodashStable from "../src";
 
 import {
-  stubTrue,
-  square,
-  typedArrays,
-  noop,
-  stubObject,
-  stubFalse,
-  falsey,
-  slice,
-  realm
+    falsey, noop, realm, slice, square, stubFalse, stubObject, stubTrue, typedArrays
 } from "./utils";
 
 import transform from "../src/transform";

@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { objectProto } from "./utils";
+import lodashStable from "../src";
 import defaults from "../src/defaults";
+import { objectProto } from "./utils";
 
 describe("defaults", () => {
   it("should assign source properties if missing on `object`", () => {

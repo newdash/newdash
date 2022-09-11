@@ -1,6 +1,6 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { _, args } from "./utils";
+import lodashStable from "../src";
+import { args, _ } from "./utils";
 
 describe("union methods", () => {
   lodashStable.each(["union", "unionBy", "unionWith"], (methodName) => {

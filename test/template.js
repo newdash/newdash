@@ -1,8 +1,8 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { numberTag, stubString, stubTrue, stubFalse } from "./utils";
+import lodashStable from "../src";
 import template from "../src/template";
 import templateSettings from "../src/templateSettings";
+import { numberTag, stubFalse, stubString, stubTrue } from "./utils";
 
 describe("template", () => {
   it('should escape values in "escape" delimiters', () => {

@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { arrayBuffer, falsey, stubFalse, args, slice, symbol, realm } from "./utils";
+import lodashStable from "../src";
 import isArrayBuffer from "../src/isArrayBuffer";
+import { args, arrayBuffer, falsey, realm, slice, stubFalse, symbol } from "./utils";
 
 describe("isArrayBuffer", () => {
   it("should return `true` for array buffers", () => {

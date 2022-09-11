@@ -1,10 +1,10 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { _, args, LARGE_ARRAY_SIZE, stubNaN } from "./utils";
+import lodashStable from "../src";
 import each from "../src/each";
 import { intersection } from "../src/intersection";
 import { intersectionBy } from "../src/intersectionBy";
 import { intersectionWith } from "../src/intersectionWith";
+import { args, LARGE_ARRAY_SIZE, stubNaN } from "./utils";
 
 
 describe("intersection methods", () => {

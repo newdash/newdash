@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { MAX_SAFE_INTEGER, stubTrue, stubFalse } from "./utils";
+import lodashStable from "../src";
 import _isIndex from "../src/.internal/isIndex";
+import { MAX_SAFE_INTEGER, stubFalse, stubTrue } from "./utils";
 
 describe("isIndex", () => {
   const func = _isIndex;

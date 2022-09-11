@@ -1,6 +1,6 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { _, MAX_SAFE_INTEGER, MAX_INTEGER } from "./utils";
+import lodashStable from "../src";
+import { MAX_INTEGER, MAX_SAFE_INTEGER, _ } from "./utils";
 
 describe("toInteger methods", () => {
   lodashStable.each(["toInteger", "toSafeInteger"], (methodName) => {

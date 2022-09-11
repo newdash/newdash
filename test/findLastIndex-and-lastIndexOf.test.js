@@ -1,8 +1,8 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { identity, stubZero, falsey } from "./utils";
+import lodashStable from "../src";
 import findLastIndex from "../src/findLastIndex";
 import lastIndexOf from "../src/lastIndexOf";
+import { falsey, identity, stubZero } from "./utils";
 
 const methods = {
   findLastIndex,

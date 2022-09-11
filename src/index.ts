@@ -164,6 +164,7 @@ import { times } from "./times";
 import { toArray } from "./toArray";
 import { toLower } from "./toLower";
 import { toNumber } from "./toNumber";
+import { toString } from "./toString";
 import { toUpper } from "./toUpper";
 import { trim } from "./trim";
 import { trimEnd } from "./trimEnd";
@@ -218,6 +219,7 @@ export {
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
   AsyncUtils, isCircular, toLower, timeIt, BlockedQueue,
   defaultsDeep, LRUMap, TTLMap, hash, NewDashBaseError,
+  toString,
 };
 
 /**
@@ -256,5 +258,5 @@ export default {
   values, chunk, cacheItTTL, initial, omit, Mutex, Semaphore,
   AsyncUtils, isCircular, toLower, timeIt, BlockedQueue,
   defaultsDeep, LRUMap, TTLMap, hash, NewDashBaseError,
+  toString,
 };
-

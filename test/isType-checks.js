@@ -1,6 +1,6 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { objToString, objectTag, _, xml } from "./utils";
+import lodashStable from "../src";
+import { objectTag, objToString, xml, _ } from "./utils";
 
 describe("isType checks", () => {
   it("should return `false` for subclassed values", () => {

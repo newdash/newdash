@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { falsey, args, slice, symbol, realm } from "./utils";
+import lodashStable from "../src";
 import isNull from "../src/isNull";
+import { args, falsey, realm, slice, symbol } from "./utils";
 
 describe("isNull", () => {
   it("should return `true` for `null` values", () => {

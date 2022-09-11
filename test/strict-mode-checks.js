@@ -1,6 +1,6 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { _, isStrict, freeze } from "./utils";
+import lodashStable from "../src";
+import { freeze, isStrict, _ } from "./utils";
 
 describe("strict mode checks", () => {
   lodashStable.each(["assign", "assignIn", "bindAll", "defaults", "defaultsDeep", "merge"], (methodName) => {

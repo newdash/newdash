@@ -1,6 +1,6 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { _, empties } from "./utils";
+import lodashStable from "../src";
+import { empties, _ } from "./utils";
 
 lodashStable.each(["find", "findIndex", "findKey", "findLast", "findLastIndex", "findLastKey"], (methodName) => {
   describe(`lodash.${methodName}`);

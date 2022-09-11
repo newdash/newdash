@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { set, falsey, stubFalse, args, slice, symbol, weakSet, realm } from "./utils";
+import lodashStable from "../src";
 import isSet from "../src/isSet";
+import { args, falsey, realm, set, slice, stubFalse, symbol, weakSet } from "./utils";
 
 describe("isSet", () => {
   it("should return `true` for sets", () => {

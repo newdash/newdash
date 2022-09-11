@@ -1,16 +1,8 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
+import lodashStable from "../src";
 
 import {
-  _,
-  arrayProto,
-  args,
-  strictArgs,
-  objectProto,
-  stringProto,
-  primitives,
-  numberProto,
-  stubArray
+    args, arrayProto, numberProto, objectProto, primitives, strictArgs, stringProto, stubArray, _
 } from "./utils";
 
 describe("keys methods", () => {

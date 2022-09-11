@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { falsey } from "./utils";
+import lodashStable from "../src";
 import defaultTo from "../src/defaultTo";
+import { falsey } from "./utils";
 
 describe("defaultTo", () => {
   it("should return a default value if `value` is `NaN` or nullish", () => {

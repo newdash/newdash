@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
+import lodashStable from "../src";
 import takeWhile from "../src/takeWhile";
 import { LARGE_ARRAY_SIZE, slice, square } from "./utils";
 

@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { MAX_SAFE_INTEGER, stubTrue, stubFalse } from "./utils";
+import lodashStable from "../src";
 import isLength from "../src/isLength";
+import { MAX_SAFE_INTEGER, stubFalse, stubTrue } from "./utils";
 
 describe("isLength", () => {
   it("should return `true` for lengths", () => {

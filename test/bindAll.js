@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { args, toArgs, arrayProto } from "./utils";
+import lodashStable from "../src";
 import bindAll from "../src/bindAll";
+import { arrayProto, toArgs } from "./utils";
 
 describe("bindAll", () => {
   const args = toArgs(["a"]);

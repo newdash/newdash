@@ -1,11 +1,11 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { slice, _, push, HOT_COUNT } from "./utils";
+import lodashStable from "../src";
 import bind from "../src/bind";
 import bindKey from "../src/bindKey";
+import last from "../src/last";
 import partial from "../src/partial";
 import partialRight from "../src/partialRight";
-import last from "../src/last";
+import { HOT_COUNT, push, slice, _ } from "./utils";
 
 describe("methods using `createWrapper`", () => {
   function fn() {

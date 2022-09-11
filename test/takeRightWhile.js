@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { slice, LARGE_ARRAY_SIZE } from "./utils";
+import lodashStable from "../src";
 import takeRightWhile from "../src/takeRightWhile";
+import { LARGE_ARRAY_SIZE, slice } from "./utils";
 
 describe("takeRightWhile", () => {
   const array = [1, 2, 3, 4];

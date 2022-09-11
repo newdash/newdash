@@ -1,8 +1,8 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { falsey, primitives, stubTrue } from "./utils";
+import lodashStable from "../src";
 import create from "../src/create";
 import keys from "../src/keys";
+import { falsey, primitives, stubTrue } from "./utils";
 
 describe("create", () => {
   function Shape() {

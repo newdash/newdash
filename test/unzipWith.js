@@ -1,8 +1,8 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { slice } from "./utils";
-import unzipWith from "../src/unzipWith";
+import lodashStable from "../src";
 import unzip from "../src/unzip";
+import unzipWith from "../src/unzipWith";
+import { slice } from "./utils";
 
 describe("unzipWith", () => {
   it("should unzip arrays combining regrouped elements with `iteratee`", () => {

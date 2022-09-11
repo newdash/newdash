@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
+import lodashStable from "../src";
 import { stubString } from "./utils";
 
 import camelCase from "../src/camelCase";
@@ -14,8 +14,8 @@ import padStart from "../src/padStart";
 import repeat from "../src/repeat";
 import snakeCase from "../src/snakeCase";
 import trim from "../src/trim";
-import trimStart from "../src/trimStart";
 import trimEnd from "../src/trimEnd";
+import trimStart from "../src/trimStart";
 import truncate from "../src/truncate";
 import unescape from "../src/unescape";
 import upperCase from "../src/upperCase";

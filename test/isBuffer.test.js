@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { falsey, stubFalse, args, slice, symbol, isStrict, lodashBizarro } from "./utils";
+import lodashStable from "../src";
 import isBuffer from "../src/isBuffer";
+import { args, falsey, isStrict, lodashBizarro, slice, stubFalse, symbol } from "./utils";
 
 describe("isBuffer", () => {
 

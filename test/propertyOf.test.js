@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { noop } from "./utils";
+import lodashStable from "../src";
 import propertyOf from "../src/propertyOf";
+import { noop } from "./utils";
 
 describe("propertyOf", () => {
   it("should create a function that plucks a property value of a given key", () => {

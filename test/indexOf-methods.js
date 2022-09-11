@@ -1,6 +1,6 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { _, falsey } from "./utils";
+import lodashStable from "../src";
+import { falsey, _ } from "./utils";
 
 describe("indexOf methods", () => {
   lodashStable.each(["indexOf", "lastIndexOf", "sortedIndexOf", "sortedLastIndexOf"], (methodName) => {

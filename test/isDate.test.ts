@@ -1,7 +1,7 @@
 // @ts-nocheck
 import * as assert from "assert";
-import lodashStable from "lodash";
 import isDate from "../src/isDate";
+import { map } from "../src/map";
 import { args, falsey, realm, slice, stubFalse, symbol } from "./utils";
 
 describe("isDate", () => {
@@ -10,9 +10,9 @@ describe("isDate", () => {
   });
 
   it("should return `false` for non-dates", () => {
-    const expected = lodashStable.map(falsey, stubFalse);
+    const expected = map(falsey, stubFalse);
 
-    const actual = lodashStable.map(falsey, (value, index) => index ? isDate(value) : isDate());
+    const actual = map(falsey, (value, index) => index ? isDate(value) : isDate());
 
     assert.deepStrictEqual(actual, expected);
 

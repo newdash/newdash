@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { stubString } from "./utils";
+import lodashStable from "../src";
 import escapeRegExp from "../src/escapeRegExp";
+import { stubString } from "./utils";
 
 describe("escapeRegExp", () => {
   const escaped = "\\^\\$\\.\\*\\+\\?\\(\\)\\[\\]\\{\\}\\|\\\\",

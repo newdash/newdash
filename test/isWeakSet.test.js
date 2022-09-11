@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { weakSet, falsey, stubFalse, args, slice, set, symbol, realm } from "./utils";
 import isWeakSet from "../src/isWeakSet";
+import { map } from "../src/map";
+import { args, falsey, realm, set, slice, stubFalse, symbol, weakSet } from "./utils";
 
 describe("isWeakSet", () => {
   it("should return `true` for weak sets", () => {
@@ -11,9 +11,9 @@ describe("isWeakSet", () => {
   });
 
   it("should return `false` for non weak sets", () => {
-    const expected = lodashStable.map(falsey, stubFalse);
+    const expected = map(falsey, stubFalse);
 
-    const actual = lodashStable.map(falsey, (value, index) => index ? isWeakSet(value) : isWeakSet());
+    const actual = map(falsey, (value, index) => index ? isWeakSet(value) : isWeakSet());
 
     assert.deepStrictEqual(actual, expected);
 

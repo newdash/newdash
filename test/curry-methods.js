@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { _, slice } from "./utils";
+import lodashStable from "../src";
 import curry from "../src/curry";
+import { slice, _ } from "./utils";
 
 describe("curry methods", () => {
   lodashStable.each(["curry", "curryRight"], (methodName) => {

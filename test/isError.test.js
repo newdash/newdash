@@ -1,16 +1,8 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
+import lodashStable from "../src";
 
 import {
-  errors,
-  stubTrue,
-  CustomError,
-  falsey,
-  stubFalse,
-  args,
-  slice,
-  symbol,
-  realm
+    args, CustomError, errors, falsey, realm, slice, stubFalse, stubTrue, symbol
 } from "./utils";
 
 import isError from "../src/isError";

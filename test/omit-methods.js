@@ -1,6 +1,6 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { _, symbol, defineProperty } from "./utils";
+import lodashStable from "../src";
+import { defineProperty, symbol, _ } from "./utils";
 
 describe("omit methods", () => {
   lodashStable.each(["omit", "omitBy"], (methodName) => {

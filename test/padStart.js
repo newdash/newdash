@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { stubTrue } from "./utils";
+import lodashStable from "../src";
 import padStart from "../src/padStart";
+import { stubTrue } from "./utils";
 
 describe("padStart", () => {
   const string = "abc";

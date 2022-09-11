@@ -1,6 +1,6 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { empties, stubTrue, isNpm, lodashBizarro } from "./utils";
+import lodashStable from "../src";
+import { empties, isNpm, lodashBizarro, stubTrue } from "./utils";
 
 describe("lodash constructor", () => {
   const values = empties.concat(true, 1, "a"),

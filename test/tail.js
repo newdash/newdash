@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
+import lodashStable from "../src";
 import tail from "../src/tail";
 import { falsey, stubArray } from "./utils";
 

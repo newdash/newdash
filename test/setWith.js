@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { noop } from "./utils";
+import lodashStable from "../src";
 import setWith from "../src/setWith";
+import { noop } from "./utils";
 
 describe("setWith", () => {
   it("should work with a `customizer` callback", () => {

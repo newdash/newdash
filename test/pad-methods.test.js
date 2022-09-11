@@ -1,12 +1,10 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { _ } from "./utils";
+import constant from "../src/constant";
+import each from "../src/each";
+import map from "../src/map";
 import pad from "../src/pad";
 import { padEnd } from "../src/padEnd";
 import { padStart } from "../src/padStart";
-import each from "../src/each";
-import map from "../src/map";
-import constant from "../src/constant";
 
 
 describe("pad methods", () => {

@@ -1,15 +1,8 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
+import lodashStable from "../src";
 
 import {
-  _,
-  identity,
-  whitespace,
-  MAX_SAFE_INTEGER,
-  MAX_INTEGER,
-  MAX_ARRAY_LENGTH,
-  symbol,
-  falsey
+    falsey, identity, MAX_ARRAY_LENGTH, MAX_INTEGER, MAX_SAFE_INTEGER, symbol, whitespace, _
 } from "./utils";
 
 describe("number coercion methods", () => {

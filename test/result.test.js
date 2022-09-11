@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { stubB } from "./utils";
+import lodashStable from "../src";
 import result from "../src/result";
+import { stubB } from "./utils";
 
 describe("result", () => {
   const object = { "a": 1, "b": stubB };

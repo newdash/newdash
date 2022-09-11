@@ -1,6 +1,6 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { _, noop } from "./utils";
+import lodashStable from "../src";
+import { noop, _ } from "./utils";
 
 describe("assignWith and assignInWith", () => {
   lodashStable.each(["assignWith", "assignInWith"], (methodName) => {

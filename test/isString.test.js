@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { falsey, args, slice, symbol, realm } from "./utils";
+import lodashStable from "../src";
 import isString from "../src/isString";
+import { args, falsey, realm, slice, symbol } from "./utils";
 
 describe("isString", () => {
   it("should return `true` for strings", () => {

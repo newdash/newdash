@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { args } from "./utils";
+import lodashStable from "../src";
 import toPlainObject from "../src/toPlainObject";
+import { args } from "./utils";
 
 describe("toPlainObject", () => {
   it("should flatten inherited string keyed properties", () => {

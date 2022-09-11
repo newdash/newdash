@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { falsey } from "./utils";
+import lodashStable from "../src";
 import castArray from "../src/castArray";
+import { falsey } from "./utils";
 
 describe("castArray", () => {
   it("should wrap non-array items in an array", () => {

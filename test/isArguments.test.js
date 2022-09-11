@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { args, strictArgs, falsey, stubFalse, slice, noop, symbol, realm } from "./utils";
+import lodashStable from "../src";
 import isArguments from "../src/isArguments";
+import { args, falsey, noop, realm, slice, strictArgs, stubFalse, symbol } from "./utils";
 
 describe("isArguments", () => {
   it("should return `true` for `arguments` objects", () => {

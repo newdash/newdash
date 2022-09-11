@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { args, stubTrue, falsey, asyncFunc, genFunc, slice, symbol, realm } from "./utils";
+import lodashStable from "../src";
 import isArrayLike from "../src/isArrayLike";
+import { args, asyncFunc, falsey, genFunc, realm, slice, stubTrue, symbol } from "./utils";
 
 describe("isArrayLike", () => {
   it("should return `true` for array-like values", () => {

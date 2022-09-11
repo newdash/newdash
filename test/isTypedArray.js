@@ -1,7 +1,7 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { typedArrays, falsey, stubFalse, args, slice, symbol, realm } from "./utils";
+import lodashStable from "../src";
 import isTypedArray from "../src/isTypedArray";
+import { args, falsey, realm, slice, stubFalse, symbol, typedArrays } from "./utils";
 
 describe("isTypedArray", () => {
   it("should return `true` for typed arrays", () => {

@@ -1,16 +1,9 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
+import lodashStable from "../src";
 
 import {
-  basename,
-  amd,
-  ui,
-  Worker,
-  QUnit,
-  lodashBizarro,
-  LARGE_ARRAY_SIZE,
-  symbol,
-  setProperty
+    amd, basename, LARGE_ARRAY_SIZE, lodashBizarro, QUnit, setProperty, symbol, ui,
+    Worker
 } from "./utils";
 
 import _VERSION from "../src/.internal/VERSION";

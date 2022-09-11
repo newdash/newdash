@@ -1,8 +1,8 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
-import { falsey, stubObject, LARGE_ARRAY_SIZE } from "./utils";
+import lodashStable from "../src";
 import fromPairs from "../src/fromPairs";
 import toPairs from "../src/toPairs";
+import { falsey, LARGE_ARRAY_SIZE, stubObject } from "./utils";
 
 describe("fromPairs", () => {
   it("should accept a two dimensional array", () => {

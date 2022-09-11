@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import lodashStable from "lodash";
+import lodashStable from "../src";
 import pullAllWith from "../src/pullAllWith";
 
 describe("pullAllWith", () => {
