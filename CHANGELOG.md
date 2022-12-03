@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.22.0-0](https://github.com/newdash/newdash/compare/v5.21.4...v5.22.0-0) (2022-12-03)
+
+
+### Features
+
+* isAsyncFunction ([0ab35df](https://github.com/newdash/newdash/commit/0ab35df19c80e7a7bc7d5bf4e6bba08db3f3a6fe))
+
+
+### Bug Fixes
+
+* doc ([62b58ac](https://github.com/newdash/newdash/commit/62b58acf9a08b0473fe713cb9cc9761fd2702f44))
+* function warper behavior ([ebe6c16](https://github.com/newdash/newdash/commit/ebe6c16dbee8b73e3a07d031f1dc1242a878cb67))
+
 ### [5.21.4](https://github.com/newdash/newdash/compare/v5.21.3...v5.21.4) (2022-08-12)
 
 
