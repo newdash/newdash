@@ -3,12 +3,6 @@ import isSymbol from "./isSymbol";
 
 
 /**
- * Used to match leading and trailing whitespace.
- * @ignore
- */
-const reTrim = /(^\s+)|(\s+$)/g;
-
-/**
  * Used to detect bad signed hexadecimal string values.
  * @ignore
  */
@@ -71,7 +65,7 @@ export function toNumber(value: any): number {
   if (typeof value != "string") {
     return value === 0 ? value : +value;
   }
-  value = value.replace(reTrim, "");
+  value = value.trim();
   const isBinary = reIsBinary.test(value);
   return (isBinary || reIsOctal.test(value))
     ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
