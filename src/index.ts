@@ -76,6 +76,7 @@ import { invokeMap } from "./invokeMap";
 import { isArguments } from "./isArguments";
 import { isArray } from "./isArray";
 import { isArrayLike } from "./isArrayLike";
+import { isAsyncFunction } from "./isAsyncFunction";
 import { isCircular } from "./isCircular";
 import { isDate } from "./isDate";
 import { isEmpty } from "./isEmpty";
@@ -196,7 +197,7 @@ export {
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
   isEqual, isError, isPlainObject, sum, sumBy, sortBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
-  size, isFunction, isArguments, isArrayLike, isDate,
+  size, isFunction, isArguments, isArrayLike, isAsyncFunction, isDate,
   isNull, isMap, isString, isObject, isNumber, times,
   max, min, maxBy, minBy, slice, replace, trim, keys,
   countBy, differenceBy, groupBy, curry, eq, constant,
@@ -235,7 +236,7 @@ export default {
   last, lastIndexOf, lowerCase, lt, trimStart, trimEnd,
   isEqual, isError, isPlainObject, sum, sumBy, sortBy, pick, pickBy, delay,
   repeat, sleep, partial, range, any, uniq, isArray, take,
-  size, isFunction, isArguments, isArrayLike, isDate,
+  size, isFunction, isArguments, isArrayLike, isAsyncFunction, isDate,
   isNull, isMap, isString, isObject, isNumber, times,
   max, min, maxBy, minBy, slice, replace, trim, keys,
   countBy, differenceBy, groupBy, curry, eq, constant,
