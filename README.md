@@ -70,6 +70,7 @@ just introduce `script` with html.
 - [`concurrency/limit`](https://newdash.netlify.fornever.org/modules/concurrency_limit.html#limit) - limit concurrency of async operations
 - [`Mutex`](https://newdash.netlify.fornever.org/classes/functional_mutex.mutex#constructor) - exclusive executing
 - [`hash`](https://newdash.netlify.fornever.org/modules/functional_hash.html#hash) - hash js object to stable string (MD5 based)
+- [ˋfallbackˋ](https://newdash.netlify.fornever.org/variables/fallback.fallback.html) - fallback functions for resilience
 - [`LRUMap`](https://newdash.netlify.fornever.org/classes/functional_lrumap.lrumap#constructor) and [`TTLMap`](https://newdash.netlify.fornever.org/classes/functional_ttlmap.ttlmap#constructor) - Map implementations which concern about eviction
 
 ## Different Release
