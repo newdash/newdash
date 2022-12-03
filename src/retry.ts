@@ -2,6 +2,7 @@ import { mustProvide } from "./assert";
 import defineFunctionName from "./functional/defineFunctionName";
 import isAsyncFunction from "./isAsyncFunction";
 import sleep from "./sleep";
+import { GeneralFunction } from "./types";
 
 
 /**
@@ -72,13 +73,13 @@ function runWithRetryLimit(ctx: RContext) {
  * @param maxRetryCount the maximum number of times a runner should retry, default is 3
  * @param retryAfterMSecond (async function required, for sync function, this parameter will not be applied) the wait milliseconds before retry, default is zero
  */
-export function retry<T extends () => any>(runner: T, maxRetryCount = 3, retryAfterMSecond = 0): T {
+export function retry<T extends GeneralFunction>(runner: T, maxRetryCount = 3, retryAfterMSecond = 0): T {
   mustProvide(runner, "runner", "function");
 
   if (maxRetryCount > 1) {
     const isAsync = isAsyncFunction(runner);
 
-    function warpRunner(...args: any[]) {
+    const warpRunner = function (...args: any[]) {
       return runWithRetryLimit({
         runner,
         retryCount: 1,
@@ -87,11 +88,11 @@ export function retry<T extends () => any>(runner: T, maxRetryCount = 3, retryAf
         maxRetryCount,
         isAsync
       });
-    }
+    };
 
     if (isAsync) {
       return defineFunctionName(
-        async function asyncWarpRunner(...args: any[]) {
+        async function (...args: any[]) {
           return warpRunner(...args);
         },
         runner.name

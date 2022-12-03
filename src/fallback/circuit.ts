@@ -1,7 +1,9 @@
+/* eslint-disable max-len */
 import { mustProvide } from "../assert";
 import { LRUCacheProvider } from "../cacheProvider";
 import { createFunctionWrapper } from "../functional/functionWrapper";
 import { toHashCode } from "../functional/toHashCode";
+import { GeneralFunction } from "../types";
 
 /**
  * TemporaryUnAvailableError
@@ -62,7 +64,7 @@ function errorWithCircuit(error: Error, key: string, breakerOpenTimers, breakerO
  * @param openDuration default is 10000 (10 seconds)
  * @param cacheSize the timer & error cache size, default is 1024
  */
-export function circuit<T extends () => any>(runner: T, openDuration: number = 10 * 1000, cacheSize: number = 1024): T {
+export function circuit<T extends GeneralFunction>(runner: T, openDuration: number = 10 * 1000, cacheSize: number = 1024): T {
 
   mustProvide(runner, "runner", "function");
   mustProvide(openDuration, "openDuration", "number");

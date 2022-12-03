@@ -129,7 +129,7 @@ export function createFunctionWrapper<T extends Func, G extends any>(runner: T, 
 
   const thisContext = options.thisContext ?? this;
 
-  function warpRunner(...args: Parameters<T>) {
+  const warpRunner = function (...args: Parameters<T>) {
     const ctx: WrapperContext<T> = {
       args,
       global: { ...(options?.global ?? {}) },
@@ -157,14 +157,14 @@ export function createFunctionWrapper<T extends Func, G extends any>(runner: T, 
       // sync error
       return options.error.call(thisContext, ctx, error);
     }
-  }
+  };
 
 
   if (isAsync) {
     // if runner is async function, keep the warped function still an 'AsyncFunction'
-    async function asyncWarpRunner(...args: Parameters<T>) {
+    const asyncWarpRunner = async function (...args: Parameters<T>) {
       return warpRunner(...args);
-    }
+    };
 
     Object.assign(asyncWarpRunner, { __wrap_global__: options.global });
     return defineFunctionName(asyncWarpRunner, runner?.name) as any;
