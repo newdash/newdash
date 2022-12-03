@@ -1,13 +1,8 @@
+import baseToString from "./.internal/baseToString";
 import castSlice from "./.internal/castSlice";
 import charsStartIndex from "./.internal/charsStartIndex";
 import stringToArray from "./.internal/stringToArray";
 import toString from "./toString";
-import baseToString from "./.internal/baseToString";
-
-/**
- * @ignore
- */
-const reTrimStart = /^\s+/;
 
 /**
  * Removes leading whitespace or specified characters from `string`.
@@ -31,7 +26,7 @@ const reTrimStart = /^\s+/;
 export function trimStart(str: string, chars: string, guard?: any): string {
   const string = toString(str);
   if (string && (guard || chars === undefined)) {
-    return string.replace(reTrimStart, "");
+    return string.trimStart();
   }
   if (!string || !(chars = baseToString(chars))) {
     return string;

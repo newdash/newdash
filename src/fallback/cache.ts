@@ -3,6 +3,7 @@ import { mustProvide } from "../assert";
 import { LRUCacheProvider } from "../cacheProvider";
 import { createFunctionWrapper } from "../functional/functionWrapper";
 import { toHashCode } from "../functional/toHashCode";
+import { GeneralFunction } from "../types";
 
 /**
  * fallback to cache, if runner throw error, will try to return the latest cached value
@@ -13,7 +14,7 @@ import { toHashCode } from "../functional/toHashCode";
  * @param runner
  * @param cacheSize the maximum number cache item (different parameters)
  */
-export function fallbackCache<T>(runner: T, cacheSize: number = 1024): T {
+export function fallbackCache<T extends GeneralFunction>(runner: T, cacheSize: number = 1024): T {
 
   mustProvide(runner, "runner", "function");
 

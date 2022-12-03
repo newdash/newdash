@@ -1,13 +1,9 @@
+import baseToString from "./.internal/baseToString";
 import castSlice from "./.internal/castSlice";
 import charsEndIndex from "./.internal/charsEndIndex";
 import stringToArray from "./.internal/stringToArray";
 import toString from "./toString";
-import baseToString from "./.internal/baseToString";
 
-/**
- * @ignore
- */
-const reTrimEnd = /\s+$/;
 
 /**
  * Removes trailing whitespace or specified characters from `string`.
@@ -31,7 +27,7 @@ const reTrimEnd = /\s+$/;
 export function trimEnd(str: string, chars: string, guard?: any): string {
   const string = toString(str);
   if (string && (guard || chars === undefined)) {
-    return string.replace(reTrimEnd, "");
+    return string.trimEnd();
   }
   if (!string || !(chars = baseToString(chars))) {
     return string;

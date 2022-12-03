@@ -19,7 +19,8 @@ export function toTry<R>(...runners: Array<GeneralFunction<any[], R>>): (...args
       const rt = runners[0](...args);
       if (rt instanceof Promise) {
         return new Promise((resolve, reject) => {
-          rt.then(resolve)
+          rt
+            .then(resolve)
             .catch((error) => {
               if (runners.length === 1) {
                 reject(error);

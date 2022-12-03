@@ -1,6 +1,8 @@
 import { mustProvide } from "./assert";
 import defineFunctionName from "./functional/defineFunctionName";
+import isAsyncFunction from "./isAsyncFunction";
 import sleep from "./sleep";
+import { GeneralFunction } from "./types";
 
 
 /**
@@ -12,7 +14,7 @@ interface RContext {
   runner: any;
   args: any[];
   retryCount: number;
-  maxTimeRetry: number;
+  maxRetryCount: number;
   retryAfterMSecond: number;
   isAsync: boolean;
 }
@@ -25,7 +27,7 @@ interface RContext {
  * @param ctx
  */
 function errorWithRetry(error: Error, ctx: RContext) {
-  if (ctx.retryCount < ctx.maxTimeRetry) {
+  if (ctx.retryCount < ctx.maxRetryCount) {
     ctx.retryCount++;
     if (ctx.isAsync && ctx.retryAfterMSecond > 0) {
       return sleep(ctx.retryAfterMSecond).then(() => runWithRetryLimit(ctx));
@@ -49,9 +51,7 @@ function runWithRetryLimit(ctx: RContext) {
     const rt = runner(...args);
     if (rt instanceof Promise) {
       ctx.isAsync = true;
-      return rt.catch(
-        (error) => errorWithRetry(error, ctx)
-      );
+      return rt.catch((error) => errorWithRetry(error, ctx));
     }
     return rt;
 
@@ -73,27 +73,36 @@ function runWithRetryLimit(ctx: RContext) {
  * @param maxRetryCount the maximum number of times a runner should retry, default is 3
  * @param retryAfterMSecond (async function required, for sync function, this parameter will not be applied) the wait milliseconds before retry, default is zero
  */
-export function retry<T>(runner: T, maxRetryCount = 3, retryAfterMSecond = 0): T {
+export function retry<T extends GeneralFunction>(runner: T, maxRetryCount = 3, retryAfterMSecond = 0): T {
   mustProvide(runner, "runner", "function");
 
   if (maxRetryCount > 1) {
-    const func = function (...args: any[]) {
-      const ctx: RContext = {
+    const isAsync = isAsyncFunction(runner);
+
+    const warpRunner = function (...args: any[]) {
+      return runWithRetryLimit({
         runner,
         retryCount: 1,
         args,
         retryAfterMSecond,
-        maxTimeRetry: maxRetryCount,
-        isAsync: false
-      };
-      return runWithRetryLimit(ctx);
+        maxRetryCount,
+        isAsync
+      });
     };
-    // copy original function name
-    // @ts-ignore
-    return defineFunctionName(func, runner.name);
+
+    if (isAsync) {
+      return defineFunctionName(
+        async function (...args: any[]) {
+          return warpRunner(...args);
+        },
+        runner.name
+      ) as any;
+    }
+    else {
+      return defineFunctionName(warpRunner, runner.name) as any;
+    }
   }
 
-  // @ts-ignore
   return runner;
 
 }

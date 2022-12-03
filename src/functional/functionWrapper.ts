@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prefer-arrow-callback */
+import { isAsyncFunction } from "../isAsyncFunction";
 import { defineFunctionName } from "./defineFunctionName";
 
 /**
@@ -99,8 +101,14 @@ const throwError = (ctx: any, err: Error) => { throw err; };
  * @since 5.18.0
  * @param runner
  * @param options
+ *
  */
-export function createFunctionWrapper<T extends Func, G extends any>(runner: T, options: WrapperOptions<T, G>): T {
+export function createFunctionWrapper<T extends Func, G extends any>(runner: T, options: WrapperOptions<T, G>): T & { __wrap_global__: G } {
+
+  /**
+   * runner is async function or not
+   */
+  const isAsync = isAsyncFunction(runner);
 
   // return runner direct if no logic
   if (
@@ -109,7 +117,7 @@ export function createFunctionWrapper<T extends Func, G extends any>(runner: T, 
     && options.execute === undefined
     && options.after === undefined
   ) {
-    return runner;
+    return runner as any;
   }
 
   options.after = options?.after ?? returnSame;
@@ -121,10 +129,13 @@ export function createFunctionWrapper<T extends Func, G extends any>(runner: T, 
 
   const thisContext = options.thisContext ?? this;
 
-  // @ts-ignore
-  return defineFunctionName(function (...args: Parameters<T>) {
+  const warpRunner = function (...args: Parameters<T>) {
     const ctx: WrapperContext<T> = {
-      args, global: options?.global ?? {}, runner, state: {}, thisContext
+      args,
+      global: { ...(options?.global ?? {}) },
+      runner,
+      state: {},
+      thisContext,
     };
 
     try {
@@ -133,18 +144,32 @@ export function createFunctionWrapper<T extends Func, G extends any>(runner: T, 
         return earlyValue;
       }
       const rt = options.execute.call(thisContext, ctx);
-      // if is async
+      // if return promise
       // @ts-ignore
       if (rt instanceof Promise) {
         return rt
           .then((result) => options.after.call(thisContext, ctx, result)) // async result
           .catch((error) => options.error.call(thisContext, ctx, error)); // async error
       }
-      // if is sync
+      // else
       return options.after.call(thisContext, ctx, rt);
     } catch (error) {
       // sync error
       return options.error.call(thisContext, ctx, error);
     }
-  }, runner?.name);
+  };
+
+
+  if (isAsync) {
+    // if runner is async function, keep the warped function still an 'AsyncFunction'
+    const asyncWarpRunner = async function (...args: Parameters<T>) {
+      return warpRunner(...args);
+    };
+
+    Object.assign(asyncWarpRunner, { __wrap_global__: options.global });
+    return defineFunctionName(asyncWarpRunner, runner?.name) as any;
+  }
+
+  Object.assign(warpRunner, { __wrap_global__: options.global });
+  return defineFunctionName(warpRunner, runner?.name) as any;
 }

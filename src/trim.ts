@@ -5,13 +5,6 @@ import charsStartIndex from "./.internal/charsStartIndex";
 import stringToArray from "./.internal/stringToArray";
 import toString from "./toString";
 
-
-/**
- * Used to match leading and trailing whitespace.
- * @ignore
- */
-const reTrim = /(^\s+)|(\s+$)/g;
-
 /**
  * Removes leading and trailing whitespace or specified characters from `string`.
  *
@@ -34,7 +27,7 @@ const reTrim = /(^\s+)|(\s+$)/g;
 export function trim(str: string, chars: string, guard?: any): string {
   const string = toString(str);
   if (string && (guard || chars === undefined)) {
-    return string.replace(reTrim, "");
+    return string.trim();
   }
   if (!string || !(chars = baseToString(chars))) {
     return string;

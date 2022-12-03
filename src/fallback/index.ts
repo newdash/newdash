@@ -1,4 +1,4 @@
-import { AsyncFunction } from "../types";
+import { GeneralFunction } from "../types";
 import { fallbackCache } from "./cache";
 import { circuit } from "./circuit";
 import { fallbackRetry } from "./retry";
@@ -46,7 +46,7 @@ interface RecommendFallbackCreatorOptions {
  * @category Fallback
  * @param runner
  */
-export function recommend<T extends AsyncFunction>(runner: T, options: RecommendFallbackCreatorOptions = {}): T {
+export function recommend<T extends GeneralFunction>(runner: T, options: RecommendFallbackCreatorOptions = {}): T {
   return fallbackCache(
     circuit(
       fallbackRetry(

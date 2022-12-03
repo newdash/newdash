@@ -1,3 +1,4 @@
+import { isAsyncFunction } from "../src";
 import { createFunctionWrapper } from "../src/functional/functionWrapper";
 
 describe("functionWrapper", () => {
@@ -10,7 +11,7 @@ describe("functionWrapper", () => {
     expect(createFunctionWrapper(f, { global: {} })).toBe(f);
     expect(createFunctionWrapper(f, { global: {}, execute: () => null })).not.toBe(f);
 
-  });
+  })
 
   it('should support bind "this" context', () => {
     const f = function () { return this.a; };
@@ -27,6 +28,12 @@ describe("functionWrapper", () => {
 
   });
 
+  it("should support access global value", () => {
+    async function r() { }
+    const r2 = createFunctionWrapper(r, { global: { v: 123 }, error: (_, e) => { throw e } })
+    expect(r2.__wrap_global__.v).toBe(123)
+  })
+
 
   it("should support overwrite error", async () => {
 
@@ -36,5 +43,13 @@ describe("functionWrapper", () => {
     expect(await createFunctionWrapper(f2, { error: (ctx, error) => error })()).toBeInstanceOf(TypeError);
 
   });
+
+
+  it("should return async function if runner is async", () => {
+    const r = createFunctionWrapper(async function r() { }, { error: (_, e) => { throw e } })
+    expect(r.name).toBe("r")
+    expect(isAsyncFunction(r)).toBeTruthy()
+  })
+
 
 });
