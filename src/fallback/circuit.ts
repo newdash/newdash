@@ -1,12 +1,14 @@
 import { mustProvide } from "../assert";
 import { LRUCacheProvider } from "../cacheProvider";
-import defineFunctionName from "../functional/defineFunctionName";
+import { createFunctionWrapper } from "../functional/functionWrapper";
 import { toHashCode } from "../functional/toHashCode";
 
 /**
  * TemporaryUnAvailableError
  *
  * when the circuit breaker is open (failure happened latest), will direct throw this error
+ *
+ * @internal please do not throw this error outside of newdash inner functions
  */
 export class TemporaryUnAvailableError extends Error {
 
@@ -37,14 +39,16 @@ export class TemporaryUnAvailableError extends Error {
  * @param breakerOpenReason
  */
 function errorWithCircuit(error: Error, key: string, breakerOpenTimers, breakerOpenReason) {
-  breakerOpenTimers.set(
-    key,
-    new Date().getTime()
-  );
-  breakerOpenReason.set(
-    key,
-    error
-  );
+  if (!(error instanceof TemporaryUnAvailableError)) {
+    breakerOpenTimers.set(
+      key,
+      Date.now()
+    );
+    breakerOpenReason.set(
+      key,
+      error
+    );
+  }
   throw error;
 }
 
@@ -58,44 +62,37 @@ function errorWithCircuit(error: Error, key: string, breakerOpenTimers, breakerO
  * @param openDuration default is 10000 (10 seconds)
  * @param cacheSize the timer & error cache size, default is 1024
  */
-export function circuit<T>(runner: T, openDuration: number = 10 * 1000, cacheSize: number = 1024): T {
+export function circuit<T extends () => any>(runner: T, openDuration: number = 10 * 1000, cacheSize: number = 1024): T {
 
   mustProvide(runner, "runner", "function");
   mustProvide(openDuration, "openDuration", "number");
 
   if (openDuration === 0) { return runner; }
 
-  const breakerOpenTimers = new LRUCacheProvider(cacheSize);
-  const breakerOpenReason = new LRUCacheProvider(cacheSize);
-
   const funcName = runner["name"] || "Unknown";
 
-  const func = async (...args: any[]) => {
-
-    const paramKey = toHashCode(args);
-    const latestFailedTime = breakerOpenTimers.get(paramKey) ?? 0;
-    const availableTime = latestFailedTime + openDuration;
-    if (availableTime > new Date().getTime()) {
-      throw new TemporaryUnAvailableError(
-        `function [${funcName}] is temporary un-available until ${availableTime}`,
-        breakerOpenReason.get(paramKey)
-      );
-    }
-
-    try {
-      // @ts-ignore
-      const rt = runner(...args);
-      if (rt instanceof Promise) {
-        return rt.catch((error) => errorWithCircuit(error, paramKey, breakerOpenTimers, breakerOpenReason));
+  return createFunctionWrapper(runner, {
+    global: {
+      breakerOpenTimers: new LRUCacheProvider(cacheSize),
+      breakerOpenReason: new LRUCacheProvider(cacheSize),
+    },
+    before: (ctx) => {
+      ctx.state.key = toHashCode(ctx.args);
+      const latestFailedTime = ctx.global.breakerOpenTimers.get(ctx.state.key) ?? 0;
+      const availableTime = latestFailedTime + openDuration;
+      if (availableTime > Date.now()) {
+        throw new TemporaryUnAvailableError(
+          `function [${funcName}] is temporary un-available until ${availableTime}`,
+          ctx.global.breakerOpenReason.get(ctx.state.key)
+        );
       }
-      return rt;
-    } catch (error) {
-      errorWithCircuit(error, paramKey, breakerOpenTimers, breakerOpenReason);
-    }
-  };
 
-  // @ts-ignore
-  // overwrite proxy function name
-  return defineFunctionName(func, funcName);
-
+    },
+    error: (ctx, error) => errorWithCircuit(
+      error,
+      ctx.state.key,
+      ctx.global.breakerOpenTimers,
+      ctx.global.breakerOpenReason
+    ),
+  });
 }

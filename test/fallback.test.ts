@@ -52,6 +52,7 @@ describe("fallback", () => {
     // circuit breaker is open
     await expect(runner()).rejects.toThrow(TemporaryUnAvailableError);
     await expect(runner()).rejects.toThrow(TemporaryUnAvailableError);
+
     try {
       await runner();
     } catch (error) {

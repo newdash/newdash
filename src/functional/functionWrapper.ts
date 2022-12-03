@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prefer-arrow-callback */
+import { isAsyncFunction } from "../isAsyncFunction";
 import { defineFunctionName } from "./defineFunctionName";
 
 /**
@@ -102,6 +103,11 @@ const throwError = (ctx: any, err: Error) => { throw err; };
  */
 export function createFunctionWrapper<T extends Func, G extends any>(runner: T, options: WrapperOptions<T, G>): T {
 
+  /**
+   * runner is async function or not
+   */
+  const isAsync = isAsyncFunction(runner);
+
   // return runner direct if no logic
   if (
     options.before === undefined
@@ -133,16 +139,26 @@ export function createFunctionWrapper<T extends Func, G extends any>(runner: T, 
         return earlyValue;
       }
       const rt = options.execute.call(thisContext, ctx);
-      // if is async
+      // if return promise
       // @ts-ignore
       if (rt instanceof Promise) {
         return rt
           .then((result) => options.after.call(thisContext, ctx, result)) // async result
           .catch((error) => options.error.call(thisContext, ctx, error)); // async error
       }
-      // if is sync
-      return options.after.call(thisContext, ctx, rt);
+      // else
+      const returnValue = options.after.call(thisContext, ctx, rt);
+
+      // if runner is async function, must return promise value
+      if (isAsync) {
+        return Promise.resolve(returnValue);
+      }
+      return returnValue;
     } catch (error) {
+      // if runner is async function, must return promise value
+      if (isAsync) {
+        return Promise.reject(error).catch(error => options.error.call(thisContext, ctx, error));
+      }
       // sync error
       return options.error.call(thisContext, ctx, error);
     }
