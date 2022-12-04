@@ -61,7 +61,7 @@ describe("concurrency", () => {
   });
 
   it('should validate reuse values parameter', async () => {
-    expect(() => concurrency.reuse(() => { })).toThrow("must provide 'runner' value with type 'async_function', given: '() => { }'/'function'")
+    expect(() => concurrency.reuse(() => { })).toThrowError()
   });
 
   it('should support reuse values for async function', async () => {

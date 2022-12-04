@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`concurrency should validate reuse values parameter 1`] = `"must provide 'runner' value with type 'async_function', given: '() => { }'/'function'"`;

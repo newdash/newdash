@@ -2,7 +2,7 @@ import * as assert from "assert";
 import lodashStable from "../src";
 
 import {
-    falsey, noop, realm, slice, square, stubFalse, stubObject, stubTrue, typedArrays
+  falsey, noop, realm, root, slice, square, stubFalse, stubObject, stubTrue, typedArrays
 } from "./utils";
 
 import transform from "../src/transform";
@@ -19,11 +19,11 @@ describe("transform", () => {
       object = new Foo,
       expected = lodashStable.map(accumulators, stubTrue);
 
-    const iteratee = function(result, value, key) {
+    const iteratee = function (result, value, key) {
       result[key] = square(value);
     };
 
-    const mapper = function(accumulator, index) {
+    const mapper = function (accumulator, index) {
       return index ? transform(object, iteratee, accumulator) : transform(object, iteratee);
     };
 
@@ -36,7 +36,7 @@ describe("transform", () => {
     expected = lodashStable.map(accumulators, lodashStable.constant({ "a": 1, "b": 4, "c": 9 }));
     actual = lodashStable.map(results, lodashStable.toPlainObject);
 
-    assert.deepStrictEqual(actual, expected);
+    expect(actual).toEqual(expected)
 
     object = { "a": 1, "b": 2, "c": 3 };
     actual = lodashStable.map(accumulators, mapper);
@@ -137,24 +137,24 @@ describe("transform", () => {
     "array": [1, 2, 3],
     "object": { "a": 1, "b": 2, "c": 3 }
   },
-  (object, key) => {
-    it(`should provide correct \`iteratee\` arguments when transforming an ${key}`, () => {
-      let args;
+    (object, key) => {
+      it(`should provide correct \`iteratee\` arguments when transforming an ${key}`, () => {
+        let args;
 
-      transform(object, function() {
-        args || (args = slice.call(arguments));
+        transform(object, function () {
+          args || (args = slice.call(arguments));
+        });
+
+        const first = args[0];
+        if (key == "array") {
+          assert.ok(first !== object && lodashStable.isArray(first));
+          assert.deepStrictEqual(args, [first, 1, 0, object]);
+        } else {
+          assert.ok(first !== object && lodashStable.isPlainObject(first));
+          assert.deepStrictEqual(args, [first, 1, "a", object]);
+        }
       });
-
-      const first = args[0];
-      if (key == "array") {
-        assert.ok(first !== object && lodashStable.isArray(first));
-        assert.deepStrictEqual(args, [first, 1, 0, object]);
-      } else {
-        assert.ok(first !== object && lodashStable.isPlainObject(first));
-        assert.deepStrictEqual(args, [first, 1, "a", object]);
-      }
     });
-  });
 
   it("should create an object from the same realm as `object`", () => {
     const objects = lodashStable.filter(realm, (value) => lodashStable.isObject(value) && !lodashStable.isElement(value));
