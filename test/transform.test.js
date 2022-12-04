@@ -33,10 +33,10 @@ describe("transform", () => {
 
     assert.deepStrictEqual(actual, expected);
 
-    expected = lodashStable.map(accumulators, lodashStable.constant({ "a": 1, "b": 4, "c": 9 }));
+    expected = lodashStable.map(lodashStable.map(accumulators, lodashStable.constant({ "a": 1, "b": 4, "c": 9 })), lodashStable.toPlainObject);
     actual = lodashStable.map(results, lodashStable.toPlainObject);
 
-    expect(actual).toEqual(expected)
+    assert.deepStrictEqual(actual, expected)
 
     object = { "a": 1, "b": 2, "c": 3 };
     actual = lodashStable.map(accumulators, mapper);
