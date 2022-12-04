@@ -22,13 +22,8 @@
  * // => { 'a': 1, 'b': 2, 'c': 3 }
  * ```
  */
-export function toPlainObject(value) {
-  value = Object(value);
-  const result = {};
-  for (const key in value) {
-    result[key] = value[key];
-  }
-  return result;
+export function toPlainObject<T extends any>(value: T): T {
+  return Object.assign({}, value);
 }
 
 export default toPlainObject;
