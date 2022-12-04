@@ -1,7 +1,7 @@
-import { sleep } from "../src";
-import { fallback } from "../src/fallback";
+import { fallback, recommend } from "../src/fallback";
 import { TemporaryUnAvailableError } from "../src/fallback/circuit";
 import { toTry } from "../src/fallback/toTry";
+import { sleep } from "../src/sleep";
 
 
 describe("fallback", () => {
@@ -80,13 +80,30 @@ describe("fallback", () => {
     const fe = () => { throw new Error(); };
     const afe = async () => { throw new Error; };
 
-    // expect(toTry(f1, f2, f3)()).toBe(1);
-    // expect(toTry(fe, fe, f3)()).toBe(3);
+    expect(toTry(f1, f2, f3)()).toBe(1);
+    expect(toTry(fe, fe, f3)()).toBe(3);
     expect(toTry(fe, fe, fv)(123)).toBe(123);
-    // await expect(toTry(af1, af2, af3)()).resolves.toBe(1);
-    // await expect(toTry(af3, afe, af3)()).resolves.toBe(3);
-    // await expect(toTry(afe, afe, afv)(123)).resolves.toBe(123);
+    await expect(toTry(af1, af2, af3)()).resolves.toBe(1);
+    await expect(toTry(af3, afe, af3)()).resolves.toBe(3);
+    await expect(toTry(afe, afe, afv)(123)).resolves.toBe(123);
 
+
+  });
+
+  it('should support recommend fallback logic', async () => {
+
+    const fn = jest.fn().mockResolvedValue(1)
+    const resilientFn = recommend(fn, { circuitOpenDuration: 100 })
+
+    await expect(resilientFn()).resolves.toBe(1)
+    fn.mockRejectedValue(new Error("2"))
+    await expect(resilientFn()).resolves.toBe(1) // circuit open
+    fn.mockResolvedValue(2)
+    await expect(resilientFn()).resolves.toBe(1) // circuit error, then cached value
+    await expect(resilientFn()).resolves.toBe(1) // circuit error, then cached value
+    await expect(resilientFn()).resolves.toBe(1) // circuit error, then cached value
+    await sleep(100) // skip circuit open duration
+    await expect(resilientFn()).resolves.toBe(2) // direct value
 
   });
 

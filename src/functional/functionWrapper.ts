@@ -134,7 +134,7 @@ export function createFunctionWrapper<T extends Func, G extends any>(runner: T, 
       args,
       global: { ...(options?.global ?? {}) },
       runner,
-      state: {},
+      state: { isAsync },
       thisContext,
     };
 
@@ -147,6 +147,7 @@ export function createFunctionWrapper<T extends Func, G extends any>(runner: T, 
       // if return promise
       // @ts-ignore
       if (rt instanceof Promise) {
+        ctx.state.isAsync = true;
         return rt
           .then((result) => options.after.call(thisContext, ctx, result)) // async result
           .catch((error) => options.error.call(thisContext, ctx, error)); // async error

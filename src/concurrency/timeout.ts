@@ -35,9 +35,7 @@ export function timeout<T extends AsyncFunction>(runner: T, timeout: number = 60
     }
   }, timeout);
 
-  // @ts-ignore
-  return defineFunctionName(func, runner.name);
-
+  return defineFunctionName(func, runner.name) as any;
 }
 
 export default timeout;

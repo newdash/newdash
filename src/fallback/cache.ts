@@ -26,7 +26,12 @@ export function fallbackCache<T extends GeneralFunction>(runner: T, cacheSize: n
     after: (ctx, result) => {
       const cache = ctx.global.funcCache;
       const key = ctx.state.key;
-      cache.set(key, result);
+      if (ctx.state?.isAsync === true) {
+        cache.set(key, Promise.resolve(result));
+      }
+      else {
+        cache.set(key, result);
+      }
       return result;
     },
     error: (ctx, error) => {
