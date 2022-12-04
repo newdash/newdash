@@ -91,14 +91,17 @@ describe("fallback", () => {
   });
 
   it('should support recommend fallback logic', async () => {
-
-    const fn = jest.fn().mockResolvedValue(1)
+    let rValue: any = 1
+    const fn = async function () {
+      if (rValue instanceof Error) { throw rValue }
+      return rValue
+    }
     const resilientFn = recommend(fn, { circuitOpenDuration: 100 })
 
     await expect(resilientFn()).resolves.toBe(1)
-    fn.mockRejectedValue(new Error("2"))
+    rValue = new Error("2")
     await expect(resilientFn()).resolves.toBe(1) // circuit open
-    fn.mockResolvedValue(2)
+    rValue = 2
     await expect(resilientFn()).resolves.toBe(1) // circuit error, then cached value
     await expect(resilientFn()).resolves.toBe(1) // circuit error, then cached value
     await expect(resilientFn()).resolves.toBe(1) // circuit error, then cached value
