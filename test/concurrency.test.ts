@@ -1,5 +1,5 @@
-
-import { any } from "../src";
+// @ts-nocheck
+import { any, sleep } from "../src";
 import { concurrency } from "../src/concurrency";
 import { assertShouldThrowError } from "./helpers";
 describe("concurrency", () => {
@@ -57,9 +57,30 @@ describe("concurrency", () => {
   });
 
   it('should support alias of function "any"', () => {
-
     expect(concurrency.any).toBe(any);
+  });
 
+  it('should validate reuse values parameter', async () => {
+    expect(() => concurrency.reuse(() => { })).toThrowErrorMatchingSnapshot()
+  });
+
+  it('should support reuse values for async function', async () => {
+    const fn = async function () {
+      return fn.context_value = (fn.context_value ?? 0) + 1
+    }
+    const reusedFn = concurrency.reuse(fn, 300)
+    await expect(reusedFn()).resolves.toBe(1)
+    await expect(reusedFn()).resolves.toBe(1)
+    await expect(reusedFn()).resolves.toBe(1)
+
+    await sleep(300)
+
+    await expect(reusedFn()).resolves.toBe(2)
+    await expect(reusedFn()).resolves.toBe(2)
+    await expect(reusedFn()).resolves.toBe(2)
+    await expect(reusedFn(1)).resolves.toBe(3)
+    await expect(reusedFn('43')).resolves.toBe(4)
+    await expect(reusedFn()).resolves.toBe(2)
   });
 
 });
