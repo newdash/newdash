@@ -193,6 +193,7 @@ export function cacheIt<T extends Class>(obj: T, options?: CacheItOptions): Cach
  * @category Util
  * @param obj
  * @param options
+ *
  */
 export function cacheIt<T extends object>(obj: T, options?: CacheItOptions): CachedObject<T>
 export function cacheIt<T extends object>(obj: T, options?: CacheItOptions): CachedObject<T>
