@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.22.0](https://github.com/newdash/newdash/compare/v5.22.0-0...v5.22.0) (2023-04-15)
+
+
+### Features
+
+* concurrency reuse ([a4f0756](https://github.com/newdash/newdash/commit/a4f0756fb75802d45087ce4b504da1da26c84cb0))
+* improve cacheIt ([deaef72](https://github.com/newdash/newdash/commit/deaef72e71c7964db8fd8200fa5c214571fe74d8))
+
+
+### Bug Fixes
+
+* transform ([aed4a6e](https://github.com/newdash/newdash/commit/aed4a6e407904a25e673509de6152d1b0c965f78))
+* ut ([0080a52](https://github.com/newdash/newdash/commit/0080a52a6ac190b6b3ba25751933e5011b739352))
+* ut ([171322d](https://github.com/newdash/newdash/commit/171322d54d99f0ce27874b74ddb46899c414ba40))
+* ut for toPlainObject ([1cc0efc](https://github.com/newdash/newdash/commit/1cc0efc0df6a36a098cd5f24ad8b831e6639ee18))
+
 ## [5.22.0-0](https://github.com/newdash/newdash/compare/v5.21.4...v5.22.0-0) (2022-12-03)
 
 
