@@ -1,12 +1,11 @@
 # NewDash
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/newdash/newdash/Github%20CI?label=nodejs%20test)](https://github.com/newdash/newdash/actions?query=workflow%3A%22Github+CI%22)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/newdash/newdash/Deno%20CI?label=deno%20test)](https://github.com/newdash/newdash/actions?query=workflow%3A%22Deno+CI%22)
+[![Github CI](https://github.com/newdash/newdash/actions/workflows/nodejs.yml/badge.svg)](https://github.com/newdash/newdash/actions/workflows/nodejs.yml)
+[![Deno CI](https://github.com/newdash/newdash/actions/workflows/deno.yml/badge.svg)](https://github.com/newdash/newdash/actions/workflows/deno.yml)
 
 [![Codecov](https://codecov.io/gh/newdash/newdash/branch/master/graph/badge.svg)](https://codecov.io/gh/newdash/newdash)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=newdash_newdash&metric=alert_status)](https://sonarcloud.io/dashboard?id=newdash_newdash)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=newdash_newdash&metric=security_rating)](https://sonarcloud.io/dashboard?id=newdash_newdash)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/newdash/newdash.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/newdash/newdash/alerts/)
 [![Netlify](https://img.shields.io/netlify/267b7429-c295-4d0e-90d0-97d772b9a821?label=docs)](https://newdash.netlify.fornever.org/)
 
 [![npm (scoped)](https://img.shields.io/npm/v/@newdash/newdash?label=newdash)](https://www.npmjs.com/package/@newdash/newdash)
