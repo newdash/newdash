@@ -13,6 +13,9 @@ export interface CacheConfig<T> {
   params?: T;
 }
 
+export type LRUCacheConfig = CacheConfig<LRUCacheProviderParam>;
+
+export type TTLCacheConfig = CacheConfig<TTLCacheProviderParam>;
 
 const DEFAULT_CACHE_POLICY: CachePolicy = {
   cacheUndefined: false,
@@ -43,7 +46,7 @@ export interface CacheProvider<K, V> extends Map<K, V> {
  */
 export interface AsyncCacheProvider<K, V> extends CacheProvider<K, Promise<V>> { }
 
-interface LRUCacheProviderParam {
+export interface LRUCacheProviderParam {
   maxEntry: number;
 }
 
@@ -122,7 +125,7 @@ export class LRUCacheProvider<K = any, V = any> extends LRUMap implements CacheP
 
 }
 
-interface TTLCacheProviderParam {
+export interface TTLCacheProviderParam {
   ttl?: number;
   checkInterval?: number;
   maxEntry?: number;

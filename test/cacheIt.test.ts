@@ -36,7 +36,13 @@ describe("cacheIt", () => {
     let idx = 0;
 
     // set max cache size
-    const f = cacheIt((value: number) => (++idx) + value, { providerArgs: [2] });
+    const f = cacheIt((value: number) => (++idx) + value, {
+      providerOptions: {
+        params: {
+          maxEntry: 2
+        }
+      }
+    });
     expect(f.__cache_storage["_maxSize"]).toBe(2);
 
     expect(f(0)).toBe(1);

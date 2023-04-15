@@ -1,4 +1,5 @@
-import { CacheProvider, LRUCacheProvider } from "./cacheProvider";
+/* eslint-disable max-len */
+import { CacheConfig, CacheProvider, LRUCacheProvider } from "./cacheProvider";
 import { toHashCode } from "./functional/toHashCode";
 import { isClass } from "./isClass";
 import { Class, GeneralFunction } from "./types";
@@ -28,25 +29,32 @@ export type CachedFunction<T extends GeneralFunction> = T & {
 }
 
 export type CachedObject<T = any> = {
-  [K in keyof T]: T[K] extends (...args: any[]) => any ? CachedFunction<T[K]> : T[K]
+  [K in keyof T]: T[K] extends (...args: any[]) => any | T[K] ? CachedFunction<T[K]> : T[K]
 }
 
-export type CachedClass<T> = new (...args: any[]) => CachedObject<T>
+export type CachedClass<T extends new (...args: any[]) => any> = new (...args: any[]) => CachedObject<InstanceType<T>>
 
-export interface CacheItOptions {
+export interface CacheItOptions<CACHE_PARAM = any> {
   /**
    * provider type, the constructor of CacheProvider
    */
   provider?: Class<CacheProvider<any, any>>;
   /**
    * provider constructor args
+   *
+   * @deprecated
    */
   providerArgs?: Array<any>;
+  /**
+   * provider config
+   */
+  providerOptions?: CacheConfig<CACHE_PARAM>;
 }
 
 const defaultCacheItOptions: CacheItOptions = {
   provider: LRUCacheProvider,
-  providerArgs: []
+  providerArgs: undefined,
+  providerOptions: {},
 };
 
 /**
@@ -57,7 +65,7 @@ const defaultCacheItOptions: CacheItOptions = {
  * @param options
  */
 function cacheItFunction(obj: any, options?: CacheItOptions) {
-  const cacheProvider = new options.provider(...options.providerArgs);
+  const cacheProvider = options.providerOptions !== undefined ? new options.provider(options.providerOptions) : new options.provider(...options.providerArgs);
 
   const clearCache = (...args: any[]) => {
     cacheProvider.delete(toHashCode(args));
@@ -133,6 +141,23 @@ function cacheItObject(obj: any, options?: CacheItOptions) {
  * @category Util
  * @param obj
  * @param options
+ * @example
+ *
+ * ```ts
+ *
+    // set max cache size
+    const f = cacheIt((value: number) => (++idx) + value, {
+      providerOptions: {
+        params: {
+          max_entries: 2
+        }
+      }
+    });
+    expect(f.__cache_storage["_maxSize"]).toBe(2);
+
+    expect(f(0)).toBe(1);
+    expect(f(0)).toBe(1);
+    ```
  */
 export function cacheIt<T extends GeneralFunction>(obj: T, options?: CacheItOptions): CachedFunction<T>
 /**
@@ -140,8 +165,27 @@ export function cacheIt<T extends GeneralFunction>(obj: T, options?: CacheItOpti
  * @since 5.16.0
  * @param obj
  * @param options
+ *
+ * @example
+ *
+ * ```ts
+ *  class A {
+      constructor(idx = 0) { this.idx = idx; }
+      private idx: number
+      public add(value: number) {
+        return (++this.idx) + value;
+      }
+    }
+    const CachedA = cacheIt(A);
+    const a = new CachedA(1);
+    expect(a.add(0)).toBe(2);
+    expect(a.add(0)).toBe(2);
+
+    expect(a.add(1)).toBe(4);
+    expect(a.add(1)).toBe(4);
+  ```
  */
-export function cacheIt<T>(obj: Class<T>, options?: CacheItOptions): CachedClass<T>
+export function cacheIt<T extends Class>(obj: T, options?: CacheItOptions): CachedClass<T>
 /**
  * make function is cached, default with LRU container
  *
@@ -151,7 +195,8 @@ export function cacheIt<T>(obj: Class<T>, options?: CacheItOptions): CachedClass
  * @param options
  */
 export function cacheIt<T extends object>(obj: T, options?: CacheItOptions): CachedObject<T>
-export function cacheIt(obj: any, options?: CacheItOptions): any {
+export function cacheIt<T extends object>(obj: T, options?: CacheItOptions): CachedObject<T>
+export function cacheIt(obj: any, options?: any): any {
 
   // assign default option
   options = Object.assign({}, defaultCacheItOptions, options);

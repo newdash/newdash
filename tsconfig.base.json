@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "charset": "UTF-8",
     "newLine": "lf",
     "allowJs": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "module": "CommonJS",
     "declaration": true,
+    "skipLibCheck": true,
     "lib": [
       "ES2020",
       "DOM"
