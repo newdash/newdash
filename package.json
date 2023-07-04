@@ -41,8 +41,8 @@
     "release": "npx standard-version --no-verify && git push --follow-tags origin main"
   },
   "devDependencies": {
-    "@babel/cli": "7.22.5",
-    "@babel/core": "7.22.5",
+    "@babel/cli": "7.22.6",
+    "@babel/core": "7.22.6",
     "@babel/plugin-syntax-typescript": "7.22.5",
     "@types/jest": "29.5.2",
     "@types/node": "18.16.19",
