@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@babel/cli": "7.22.6",
-    "@babel/core": "7.22.6",
+    "@babel/core": "7.22.8",
     "@babel/plugin-syntax-typescript": "7.22.5",
     "@types/jest": "29.5.2",
     "@types/node": "18.16.19",
