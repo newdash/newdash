@@ -11,8 +11,7 @@ import toString from "./toString";
  * @param str The string to inspect.
  * @param target The string to search for.
  * @param position The position to search up to.
- * @returns Returns `true` if `string` ends with `target`,
- *  else `false`.
+ * @returns Returns `true` if `string` ends with `target`, else `false`.
  * @see [[includes]],[[startsWith]]
  * @example
  *

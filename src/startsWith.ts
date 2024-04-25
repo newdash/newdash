@@ -27,7 +27,7 @@ import toString from "./toString";
  * // => true
  * ```
  */
-export function startsWith(string: string = "", target: string, position = 0): boolean {
+export function startsWith(string = "", target: string, position = 0): boolean {
   string = toString(string);
   position = position == null
     ? 0

@@ -7,7 +7,7 @@ import words from "./words";
  *
  * @since 3.1.0
  * @category String
- * @param {string} [string=''] The string to convert.
+ * @param s The string to convert.
  * @returns {string} Returns the start cased string.
  * @see camelCase, lowerCase, kebabCase, snakeCase, upperCase, upperFirst
  * @example
@@ -21,10 +21,10 @@ import words from "./words";
  * startCase('__FOO_BAR__')
  * // => 'FOO BAR'
  */
-const startCase = (string) => (
-  words(`${string}`.replace(/['\u2019]/g, "")).reduce((result, word, index) => (
+export function startCase(s = ""): string {
+  return  words(`${s}`.replace(/['\u2019]/g, "")).reduce((result, word, index) => (
     result + (index ? " " : "") + upperFirst(word)
-  ), "")
-);
+  ), "");
+}
 
 export default startCase;

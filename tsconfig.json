@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.base",
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "es2022",
     "module": "CommonJS",
     "outDir": "dist/node",
   }
