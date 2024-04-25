@@ -73,7 +73,7 @@ describe("concurrency", () => {
     await expect(reusedFn()).resolves.toBe(1)
     await expect(reusedFn()).resolves.toBe(1)
 
-    await sleep(300)
+    await sleep(310)
 
     await expect(reusedFn()).resolves.toBe(2)
     await expect(reusedFn()).resolves.toBe(2)
