@@ -33,6 +33,10 @@ if (require.main == module) {
           libPackageJson.main = "./index"
         }
 
+        if (directory == 'es6') {
+          libPackageJson.type = "module"
+        }
+
         await writeFile(path.join(__dirname, "../dist", directory, "package.json"), JSON.stringify(libPackageJson, undefined, 2))
         await copyFile(path.join(__dirname, "../LICENSE"), path.join(__dirname, "../dist", directory, "LICENSE"))
         await copyFile(path.join(__dirname, "../README.md"), path.join(__dirname, "../dist", directory, "README.md"))

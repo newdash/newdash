@@ -18,6 +18,14 @@
 
 ## Quick Start
 
+### ESM
+
+```js
+import first from "@newdash/newdash-es6/first" // only load `first` function
+first("abc")
+// => "a"
+```
+
 ### NodeJS
 
 works as you want.
@@ -37,6 +45,7 @@ import first from "@newdash/newdash/first" // only load `first` function
 first("abc")
 // => "a"
 ```
+
 
 ### Deno Runtime
 
