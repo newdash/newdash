@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.23.0](https://github.com/newdash/newdash/compare/v5.22.1...v5.23.0) (2024-06-08)
+
+
+### Features
+
+* esm for es6 ([354c59e](https://github.com/newdash/newdash/commit/354c59ee4e48a9ede550593eb668b64d87ce2b0f))
+
 ### [5.22.1](https://github.com/newdash/newdash/compare/v5.22.0...v5.22.1) (2024-04-25)
 
 ## [5.22.0](https://github.com/newdash/newdash/compare/v5.22.0-0...v5.22.0) (2023-04-15)
