@@ -35,6 +35,7 @@ if (require.main == module) {
 
         if (directory == 'es6') {
           libPackageJson.type = "module"
+          libPackageJson.main = "./index.js"
         }
 
         await writeFile(path.join(__dirname, "../dist", directory, "package.json"), JSON.stringify(libPackageJson, undefined, 2))
