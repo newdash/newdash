@@ -23,6 +23,7 @@ import isArrayLikeObject from "./isArrayLikeObject";
  * // => [1]
  * ```
  */
+export function difference<T>(array: ArrayLike<T> | null | undefined, ...values: ArrayLike<T>[]): T[];
 export function difference(array: any, ...values: any[]): any {
   return isArrayLikeObject(array)
     ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true))
