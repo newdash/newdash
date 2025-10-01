@@ -45,7 +45,7 @@
     "@babel/core": "7.28.4",
     "@babel/plugin-syntax-typescript": "7.27.1",
     "@types/jest": "29.5.14",
-    "@types/node": "22.18.7",
+    "@types/node": "22.18.8",
     "@typescript-eslint/eslint-plugin": "8.45.0",
     "@typescript-eslint/parser": "8.45.0",
     "colors": "1.4.0",
