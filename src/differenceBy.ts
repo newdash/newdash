@@ -3,6 +3,7 @@ import baseFlatten from "./.internal/baseFlatten";
 import getIteratee from "./.internal/getIteratee";
 import isArrayLikeObject from "./isArrayLikeObject";
 import last from "./last";
+import type {ArrayIteratee, Keys} from './types';
 
 /**
  * This method is like `difference` except that it accepts `iteratee` which
@@ -16,7 +17,7 @@ import last from "./last";
  * @since 5.9.0
  * @category Array
  * @param array The array to inspect.
- * @param values The values to exclude.
+ * @param valuesAndIteratee The values to exclude and an optional iteratee function or property name
  * @returns Returns the new array of filtered values.
  * @example
  *
@@ -29,13 +30,17 @@ import last from "./last";
  * // => [{ 'x': 2 }]
  * ```
  */
-export function differenceBy(array: any, ...values: any[]): any {
-  let iteratee = last(values);
+export function differenceBy<T>(
+  array: ArrayLike<T> | null | undefined,
+  ...valuesAndIteratee: (T[] | ArrayIteratee<T> | Keys<T>)[]
+): T[];
+export function differenceBy(array: any, ...valuesAndIteratee: any[]): any {
+  let iteratee = last(valuesAndIteratee);
   if (isArrayLikeObject(iteratee)) {
     iteratee = undefined;
   }
   return isArrayLikeObject(array)
-    ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true), getIteratee(iteratee, 2))
+    ? baseDifference(array, baseFlatten(valuesAndIteratee, 1, isArrayLikeObject, true), getIteratee(iteratee, 2))
     : [];
 }
 
